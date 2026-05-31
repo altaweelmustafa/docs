@@ -1,0 +1,12 @@
+[[entries]]
+  title = "home"
+  url   = "/"
+
+[[entries]]
+  title = "posts"
+  [entries.post_list]
+    limit = 20
+
+[[entries]]
+  title = "about"
+  url   = "/about"

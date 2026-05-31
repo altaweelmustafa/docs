@@ -1,0 +1,21 @@
+/* Remove underline from post titles */
+h1 a, h2 a, h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove underline from nav links */
+nav a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Or change underline color globally */
+a {
+  text-decoration-color: #999;  /* or 'none' to remove entirely */
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;  /* simple thin line instead */
+}

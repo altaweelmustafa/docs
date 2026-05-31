@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/iot-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=iot-docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 4 – Routing in IoT · IoT Docs</title>
+  <link rel="stylesheet" href="/iot-docs/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/iot-docs/">Home</a><a href="/iot-docs/posts">Docs</a><a href="/iot-docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 4 – Routing in IoT</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-routing-in-iot">What Is Routing in IoT?</a></li>
+    <li><a href="#what-a-routing-protocol-must-decide">What a Routing Protocol Must Decide</a></li>
+    <li><a href="#poor-routing-vs-good-routing">Poor Routing vs. Good Routing</a></li>
+    <li><a href="#factors-considered-in-iot-routing">Factors Considered in IoT Routing</a></li>
+    <li><a href="#common-iot-routing-solutions">Common IoT Routing Solutions</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr>
+  
+
+  <h2 id="what-is-routing-in-iot">What Is Routing in IoT?</h2>
+<p><strong>Routing</strong> is the process of selecting the path that data takes as it travels
+between IoT devices, gateways, coordinators, controller services, or cloud servers.</p>
+<p>Every routing decision directly affects four things:</p>
+<ul>
+<li>Communication delay.</li>
+<li>Energy consumption.</li>
+<li>Bandwidth utilization.</li>
+<li>Network reliability.</li>
+</ul>
+<p>An IoT routing protocol must balance all four simultaneously, on devices with
+severely constrained memory, processing, and battery.</p>
+<hr>
+<h2 id="what-a-routing-protocol-must-decide">What a Routing Protocol Must Decide</h2>
+<ul>
+<li>The best path for data transmission at any given moment.</li>
+<li>How to minimize transmission energy along that path.</li>
+<li>How to avoid congestion and packet loss.</li>
+<li>How to preserve network lifetime by not exhausting any single node&rsquo;s battery.</li>
+</ul>
+<hr>
+<h2 id="poor-routing-vs-good-routing">Poor Routing vs. Good Routing</h2>
+<p><strong>Poor routing</strong> (high-energy path):</p>
+<ul>
+<li>Longer distance between nodes → more transmission power required.</li>
+<li>More packet loss and retransmissions → additional energy burned.</li>
+<li>Higher delay and congestion.</li>
+<li>Nodes on the path drain their batteries faster, shortening network lifetime.</li>
+</ul>
+<p><strong>Good routing</strong> (energy-efficient path):</p>
+<ul>
+<li>Shorter or optimal path with lower transmission power.</li>
+<li>Fewer retransmissions.</li>
+<li>Lower delay and congestion.</li>
+<li>Balanced energy consumption across nodes → longer network lifetime and better QoS.</li>
+</ul>
+<hr>
+<h2 id="factors-considered-in-iot-routing">Factors Considered in IoT Routing</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Factor</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Residual energy</td>
+          <td>Choose nodes with more remaining battery</td>
+      </tr>
+      <tr>
+          <td>Link quality</td>
+          <td>Prefer strong, stable links</td>
+      </tr>
+      <tr>
+          <td>Network load</td>
+          <td>Avoid routing through overloaded nodes</td>
+      </tr>
+      <tr>
+          <td>Hop count / distance</td>
+          <td>Balance hops and transmission energy</td>
+      </tr>
+      <tr>
+          <td>QoS requirements</td>
+          <td>Respect delay, reliability, and priority constraints</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="common-iot-routing-solutions">Common IoT Routing Solutions</h2>
+<p><strong>RPL (Routing Protocol for Low-Power and Lossy Networks)</strong> — the standard
+lightweight routing protocol for constrained IoT devices and wireless sensor
+networks. Builds a tree-like topology toward a root node.</p>
+<p><strong>Clustering-Based Routing (LEACH)</strong> — uses cluster heads as aggregation points,
+reducing the number of long-distance transmissions and distributing energy usage.</p>
+<p><strong>Energy-Aware Routing</strong> — explicitly selects paths based on remaining node battery
+level and per-hop transmission cost, avoiding nodes near depletion.</p>
+<p><strong>AI-Based Routing</strong> — uses machine learning or optimization algorithms to
+dynamically select efficient routes based on real-time network state.</p>
+<hr>
+<p><em>Previous: <a href="/posts/ch2-part3-load-balancing">Chapter 2, Part 3 – Load Balancing</a></em><br>
+<em>Next: <a href="/posts/ch2-part5-rpl">Chapter 2, Part 5 – RPL Protocol</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

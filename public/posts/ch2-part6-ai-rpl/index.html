@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/iot-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=iot-docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 6 – AI-Enhanced RPL Routing · IoT Docs</title>
+  <link rel="stylesheet" href="/iot-docs/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/iot-docs/">Home</a><a href="/iot-docs/posts">Docs</a><a href="/iot-docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 6 – AI-Enhanced RPL Routing</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-limitation-of-traditional-rpl">The Limitation of Traditional RPL</a></li>
+    <li><a href="#what-ai-adds-to-rpl">What AI Adds to RPL</a></li>
+    <li><a href="#intelligent-parent-selection">Intelligent Parent Selection</a></li>
+    <li><a href="#dynamic-objective-function">Dynamic Objective Function</a></li>
+    <li><a href="#ai-techniques-used-in-research">AI Techniques Used in Research</a></li>
+    <li><a href="#benefits-achieved-in-research">Benefits Achieved in Research</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr>
+  
+
+  <h2 id="the-limitation-of-traditional-rpl">The Limitation of Traditional RPL</h2>
+<p>Traditional RPL selects parents using a fixed Objective Function with static weights:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cost = W1*(Delay) + W2*(ETX) + W3*(Energy)
+</span></span></code></pre></div><p>The weights are set at design time and never change. The network is static by
+assumption. But real IoT networks are not static — traffic patterns shift, nodes
+drain their batteries, links degrade, and topology changes. Fixed weights cannot
+adapt to any of this.</p>
+<p><strong>AI makes RPL adaptive instead of static.</strong></p>
+<hr>
+<h2 id="what-ai-adds-to-rpl">What AI Adds to RPL</h2>
+<p>Rather than fixed weights, AI models can dynamically learn:</p>
+<ul>
+<li>Which parent is currently best given real-time conditions.</li>
+<li>Which route is more stable over time.</li>
+<li>Which node is likely to fail soon — and reroute preemptively.</li>
+<li>How to reduce energy consumption across the whole network, not just locally.</li>
+</ul>
+<hr>
+<h2 id="intelligent-parent-selection">Intelligent Parent Selection</h2>
+<p>An AI-enhanced node selects its parent based on predicted performance, not just
+current measurements. It considers:</p>
+<ul>
+<li>Current traffic load and congestion on candidate paths.</li>
+<li>Packet loss rate trends.</li>
+<li>Remaining battery level of candidate parents.</li>
+<li>End-to-end delay predictions.</li>
+</ul>
+<p>During congestion, AI may deliberately select a slightly longer path with lower
+delay — a trade-off a fixed Objective Function cannot make.</p>
+<hr>
+<h2 id="dynamic-objective-function">Dynamic Objective Function</h2>
+<p>Instead of fixed weights, AI adjusts them based on environment and application:</p>
+<p><strong>Healthcare IoT</strong> — latency is critical:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">W1(Delay)=0.60, W2(ETX)=0.20, W3(Energy)=0.10, W4(LinkQuality)=0.10
+</span></span></code></pre></div><p><strong>Environmental monitoring</strong> — energy saving is critical:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">W1(Delay)=0.15, W2(ETX)=0.20, W3(Energy)=0.50, W4(LinkQuality)=0.15
+</span></span></code></pre></div><p>The weights change dynamically with traffic load, node energy levels, link
+conditions, application requirements, and even time of day.</p>
+<hr>
+<h2 id="ai-techniques-used-in-research">AI Techniques Used in Research</h2>
+<hr>
+<p><strong>1. Reinforcement Learning (RL) for Parent Selection</strong></p>
+<hr>
+<p>The node (RL agent) tries different parents and observes outcomes: delay, packet
+loss, energy, stability. Good performance yields a reward; bad performance yields
+a penalty. Over many transmissions, the agent learns which parent consistently gives
+the best long-term results and selects it more often.</p>
+<blockquote>
+<p>RL does not need predefined rules. It learns by interacting with the environment.</p>
+</blockquote>
+<hr>
+<p><strong>2. Deep Q-Network (DQN) for Routing Optimization</strong></p>
+<hr>
+<p>DQN is an advanced form of RL that uses a neural network to predict Q-values
+(expected reward) for each candidate next hop. It handles larger state spaces and
+learns faster than basic RL — better suited for complex, dynamic IoT topologies.</p>
+<hr>
+<p><strong>3. Predictive ML for Link Quality &amp; Congestion</strong></p>
+<hr>
+<p>ML models (Random Forest, XGBoost, LSTM) are trained on historical network data.
+Given current measurements (RSSI, ETX, traffic load, packet loss, mobility), they
+predict future link quality and congestion — before degradation happens. RPL can
+then switch routes <em>proactively</em>, avoiding bad links before they cause retransmissions.</p>
+<hr>
+<p><strong>4. Fuzzy Logic for Dynamic Objective Function</strong></p>
+<hr>
+<p>Fuzzy logic handles uncertainty in routing metrics. Instead of crisp numeric
+thresholds, it uses linguistic rules:</p>
+<ul>
+<li><em>IF Delay is Low AND Energy is High AND ETX is Low → Parent Quality is Excellent</em></li>
+<li><em>IF Delay is High OR ETX is High OR Link Quality is Low → Parent Quality is Poor</em></li>
+</ul>
+<p>The output is a &ldquo;Parent Quality Score&rdquo; that RPL uses for parent selection. Fuzzy
+logic makes the Objective Function context-aware without requiring a full ML model.</p>
+<hr>
+<p><strong>5. Graph Neural Networks (GNN) for Topology Awareness</strong></p>
+<hr>
+<p>GNNs learn from the full network graph as input — capturing multi-hop relationships
+that single-node metrics cannot see. They identify more efficient and reliable routes
+by understanding how the entire topology behaves, not just local link conditions.</p>
+<hr>
+<p><strong>6. Anomaly &amp; Attack Detection Using AI</strong></p>
+<hr>
+<p>Autoencoders, LSTM, and SVM models monitor routing behavior, DIO/DAO patterns,
+packet forwarding, and link changes to detect attacks like sinkhole, blackhole, and
+selective forwarding. This protects RPL routes and enables trust-aware routing.</p>
+<hr>
+<h2 id="benefits-achieved-in-research">Benefits Achieved in Research</h2>
+<ul>
+<li>Higher Packet Delivery Ratio (PDR).</li>
+<li>Lower end-to-end delay.</li>
+<li>Better energy efficiency and longer network lifetime.</li>
+<li>Improved scalability and reliability.</li>
+<li>Better adaptation to dynamic, real-world IoT environments.</li>
+</ul>
+<blockquote>
+<p>AI transforms RPL from a static, rule-based protocol into an <strong>adaptive,
+intelligent, and self-optimizing</strong> routing protocol suitable for real-world IoT.</p>
+</blockquote>
+<hr>
+<p><em>Previous: <a href="/posts/ch2-part5-rpl">Chapter 2, Part 5 – RPL Protocol</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+baseURL = "https://altaweelmustafa.github.io/iot-docs/"
+languageCode = "en-us"
+title = "IoT Docs"
+theme = "sollike"
+
+[params]
+  subtitle = "IoT midterm documentation"
+  footer = "© 2026 Mustafa and Samaa hehe"
+
+[pagination]
+  pagerSize = 10
+
+[markup]
+  [markup.highlight]
+    codeFences  = true
+    guessSyntax = true
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Docs"
+  url = "/posts"
+  weight = 2
+
+[[menu.main]]
+  name = "About"
+  url = "/about"
+  weight = 3

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 5 – RPL Protocol · IoT Docs</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/">Home</a><a href="/posts">Docs</a><a href="/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 5 – RPL Protocol</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  <h2 id="what-is-rpl">What Is RPL?</h2>
+<p><strong>RPL</strong> (Routing Protocol for Low-Power and Lossy Networks) is a lightweight
+distance-vector routing protocol designed specifically for IoT devices — constrained
+sensors with limited memory, processing power, and battery.</p>
+<p>A <strong>lossy network</strong> is one with a high packet drop rate, which is the norm in
+wireless sensor environments. RPL is built to handle this gracefully.</p>
+<p>RPL&rsquo;s core mechanism: it builds a <strong>DODAG</strong> (Destination-Oriented Directed Acyclic
+Graph) — a tree-like, loop-free topology rooted at a single designated root node.</p>
+<hr>
+<h2 id="the-root-node">The Root Node</h2>
+<p>The root is predefined by the network designer — typically a gateway, sink node, or
+coordinator. It always has more power, better memory, and stable energy compared to
+leaf nodes. The root of the DODAG always has <strong>Rank = 0</strong>.</p>
+<hr>
+<h2 id="control-messages-dis-dio-dao-dao-ack">Control Messages: DIS, DIO, DAO, DAO-ACK</h2>
+<p>RPL uses four lightweight control messages to build and maintain the DODAG:</p>
+<hr>
+<p><strong>DIS — DODAG Information Solicitation</strong></p>
+<hr>
+<p>Sent by a new or disconnected node that wants to discover a nearby DODAG.</p>
+<blockquote>
+<p><em>&ldquo;Is there any DODAG near me?&rdquo;</em></p>
+</blockquote>
+<p>Contains sender information, a request for DIO, and optional metrics.</p>
+<hr>
+<p><strong>DIO — DODAG Information Object</strong></p>
+<hr>
+<p>Sent by the root (and forwarded by other nodes) as an advertisement of the DODAG&rsquo;s
+existence. The root multicasts DIO messages periodically.</p>
+<blockquote>
+<p><em>&ldquo;Yes, I am here.&rdquo;</em></p>
+</blockquote>
+<p>Contains: DODAG ID (root&rsquo;s IP address), Rank, Objective Function, Version Number,
+configuration parameters, and routing metrics used for parent selection.</p>
+<hr>
+<p><strong>DAO — Destination Advertisement Object</strong></p>
+<hr>
+<p>Sent upward by a child node toward its selected parent (and eventually the root)
+after joining the DODAG. This builds <strong>downward routes</strong> — so the root knows how to
+reach each node later.</p>
+<blockquote>
+<p><em>&ldquo;I joined through you. Here is my info.&rdquo;</em></p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Example</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Child Address</td>
+          <td>fe80::1234</td>
+          <td>Address of the node sending the DAO</td>
+      </tr>
+      <tr>
+          <td>Preferred Parent</td>
+          <td>fe80::B</td>
+          <td>The parent selected to reach the root</td>
+      </tr>
+      <tr>
+          <td>Reachable Prefix</td>
+          <td>2001:db8:1::/64</td>
+          <td>Networks reachable through this node</td>
+      </tr>
+      <tr>
+          <td>Routing Information</td>
+          <td>Path via Parent B</td>
+          <td>Helps root send packets back downward</td>
+      </tr>
+      <tr>
+          <td>DAO Sequence Number</td>
+          <td>25</td>
+          <td>Identifies newer DAOs, discards stale ones</td>
+      </tr>
+      <tr>
+          <td>Flags</td>
+          <td>0x02</td>
+          <td>Control bits (e.g., request acknowledgment)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>DAO-ACK — DAO Acknowledgement</strong></p>
+<hr>
+<p>Sent by the parent or root in response to a DAO. Confirms successful registration
+or rejects it.</p>
+<blockquote>
+<p><em>&ldquo;I received your DAO. (Success / Fail)&rdquo;</em></p>
+</blockquote>
+<hr>
+<h2 id="rank">Rank</h2>
+<p><strong>Rank</strong> is a node&rsquo;s relative distance toward the root. Smaller rank = closer to
+root = better position in the topology.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Rank(node) = Rank(parent) + Routing Cost
+</span></span></code></pre></div><p>Rank must always <strong>increase</strong> as you move away from the root. This property prevents
+loops — a defining feature of the DODAG structure.</p>
+<p>Rank can depend on multiple factors depending on the Objective Function:</p>
+<ul>
+<li>Hop count</li>
+<li>ETX (Expected Transmission Count)</li>
+<li>Energy level</li>
+<li>Delay</li>
+</ul>
+<hr>
+<h2 id="routing-cost-and-metrics">Routing Cost and Metrics</h2>
+<p>When a node receives DIO messages from multiple candidate parents, it must choose
+the best one. The <strong>Objective Function</strong> transforms routing metrics into a comparable
+cost value.</p>
+<p>Common metrics:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Goal</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ETX</td>
+          <td>Minimize</td>
+          <td>Expected number of transmissions for successful delivery</td>
+      </tr>
+      <tr>
+          <td>Delay / Latency</td>
+          <td>Minimize</td>
+          <td>Time for a packet to traverse the path</td>
+      </tr>
+      <tr>
+          <td>Link Quality</td>
+          <td>Maximize</td>
+          <td>Stability and reliability of the link (RSSI, PDR)</td>
+      </tr>
+      <tr>
+          <td>Hop Count</td>
+          <td>Minimize</td>
+          <td>Number of intermediate nodes to the root</td>
+      </tr>
+      <tr>
+          <td>Residual Energy</td>
+          <td>Maximize</td>
+          <td>Remaining battery on candidate parent</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example cost formula:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cost = W1*(Delay) + W2*(Hop Count) + W3*(ETX) + W4*(Link Quality)
+</span></span></code></pre></div><p>With weights W1=0.4, W2=0.1, W3=0.3, W4=0.2:</p>
+<ul>
+<li>Parent A: Cost = 0.4(80) + 0.1(2) + 0.3(4) + 0.2(60) = <strong>45.4</strong></li>
+<li>Parent B: Cost = 0.4(20) + 0.1(3) + 0.3(1) + 0.2(90) = <strong>26.6</strong></li>
+</ul>
+<p>Node X selects <strong>Parent B</strong> (lower cost).</p>
+<p>Then: <code>Rank(Node X) = Rank(Parent B) + 26.6 = 10 + 26.6 = 36.6</code></p>
+<hr>
+<h2 id="storing-vs-non-storing-nodes">Storing vs. Non-Storing Nodes</h2>
+<p>IoT nodes are severely constrained. Not all of them can maintain a full routing table.</p>
+<p><strong>Storing nodes</strong> keep a complete routing table — they know how to reach every other
+node in the DODAG. This enables fast local forwarding but requires more memory,
+processing, and energy. Gateways and routers are typically storing nodes.</p>
+<p><strong>Non-storing nodes</strong> only know their preferred parent. They do not keep a full
+routing table. All routing decisions go through the root, which holds the complete
+picture. This is ideal for small sensors and constrained devices — minimal memory,
+minimal processing, low energy use.</p>
+<blockquote>
+<p>The root node is always a storing node.</p>
+</blockquote>
+<hr>
+<h2 id="rpl-workflow-dodag-formation-step-by-step">RPL Workflow: DODAG Formation Step by Step</h2>
+<ol>
+<li>Root broadcasts DIO messages advertising the DODAG.</li>
+<li>A new node sends DIS: <em>&ldquo;Is there any DODAG near me?&rdquo;</em></li>
+<li>Neighboring nodes (potential parents) reply with DIO containing their metrics and rank.</li>
+<li>The new node compares received DIOs using the Objective Function.</li>
+<li>The new node selects the best parent.</li>
+<li>The node sends a DAO upward to register its presence and build a downward route.</li>
+<li>The parent/root replies with DAO-ACK confirming registration.</li>
+<li>The newly joined node begins forwarding DIO messages to help expand the DODAG.</li>
+<li>This repeats until all reachable nodes are connected and the DODAG is fully built.</li>
+</ol>
+<p><strong>RPL keeps quiet when everything works correctly</strong> — it uses a Trickle Timer
+mechanism that reduces control message frequency once the network is stable, saving
+energy during normal operation.</p>
+<hr>
+<p><em>Previous: <a href="/posts/ch2-part4-routing">Chapter 2, Part 4 – Routing in IoT</a></em><br>
+<em>Next: <a href="/posts/ch2-part6-ai-rpl">Chapter 2, Part 6 – AI-Enhanced RPL</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

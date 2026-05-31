@@ -1,0 +1,4 @@
+name = "sollike"
+license = "MIT"
+description = "Minimal monospace theme inspired by codepr.github.io"
+min_version = "0.41.0"

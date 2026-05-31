@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Offloading on IoT Docs</title>
+    <link>http://localhost:1313/iot-docs/tags/offloading/</link>
+    <description>Recent content in Offloading on IoT Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/iot-docs/tags/offloading/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 2, Part 1 – Energy Waste in IoT</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part1-energy-waste/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part1-energy-waste/</guid>
+      <description>&lt;h2 id=&#34;why-energy-efficiency-matters&#34;&gt;Why Energy Efficiency Matters&lt;/h2&gt;&#xA;&lt;p&gt;IoT systems are always-on — sensors run continuously, usually on batteries, and&#xA;communication is the single largest consumer of that energy. At scale, inefficient&#xA;designs don&amp;rsquo;t just shorten device lifetimes; they drive up operational cost and&#xA;ultimately collapse the network.&lt;/p&gt;&#xA;&lt;p&gt;The core problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Devices depend on batteries with no easy replacement path.&lt;/li&gt;&#xA;&lt;li&gt;Communication (radio transmission) dominates energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Large-scale deployments multiply every inefficiency.&lt;/li&gt;&#xA;&lt;li&gt;Without efficient protocols and routing, network lifetime collapses.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;main-causes-of-energy-waste&#34;&gt;Main Causes of Energy Waste&lt;/h2&gt;&#xA;&lt;p&gt;Energy inefficiency in IoT comes from multiple overlapping sources. Based on&#xA;literature, the main causes form around these axes:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

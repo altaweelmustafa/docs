@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Load-Balancing on IoT Docs</title>
+    <link>http://localhost:1313/iot-docs/tags/load-balancing/</link>
+    <description>Recent content in Load-Balancing on IoT Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/iot-docs/tags/load-balancing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 2, Part 3 – Load Balancing</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part3-load-balancing/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part3-load-balancing/</guid>
+      <description>&lt;h2 id=&#34;what-is-load-balancing&#34;&gt;What Is Load Balancing?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Load balancing&lt;/strong&gt; is the practice of distributing processing and communication&#xA;tasks fairly among IoT, edge, fog, or cloud nodes so that no single node becomes&#xA;a bottleneck.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-problem-without-it&#34;&gt;The Problem Without It&lt;/h2&gt;&#xA;&lt;p&gt;Imagine 100 sensors and two controller services. Without load balancing, sensors&#xA;naturally route to whichever controller is closest. One controller ends up with the&#xA;majority of the traffic:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;High CPU usage and overload.&lt;/li&gt;&#xA;&lt;li&gt;Higher electric power consumption on that node.&lt;/li&gt;&#xA;&lt;li&gt;Increased delay for all traffic through it.&lt;/li&gt;&#xA;&lt;li&gt;The other controller sits underutilized — wasted capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is not a theoretical edge case. It is the default behavior of unmanaged IoT&#xA;networks.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

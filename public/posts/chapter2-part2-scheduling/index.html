@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 2 – Scheduling · IoT Docs</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/">Home</a><a href="/posts">Docs</a><a href="/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 2 – Scheduling</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  <h2 id="what-is-scheduling-in-iot">What Is Scheduling in IoT?</h2>
+<p><strong>Scheduling</strong> is the mechanism that determines:</p>
+<ul>
+<li><em>When</em> tasks execute.</li>
+<li><em>Which node</em> executes them.</li>
+</ul>
+<p>Done well, scheduling is one of the most powerful levers for reducing power
+consumption. Done poorly, it becomes a major source of waste.</p>
+<hr>
+<h2 id="what-poor-scheduling-looks-like">What Poor Scheduling Looks Like</h2>
+<p>An IoT system with poor scheduling tends to exhibit these failure modes:</p>
+<p><strong>Nodes never sleep.</strong> If tasks are not coordinated, a node stays active all the
+time — consuming full power when it could enter sleep mode between transmissions.
+Sleep modes can reduce power consumption by orders of magnitude; poor scheduling
+prevents nodes from ever reaching them.</p>
+<p><strong>Idle listening.</strong> A node that is awake but not receiving or transmitting anything
+still draws significant power from its radio. Uncoordinated scheduling keeps radios
+on unnecessarily.</p>
+<p><strong>Collisions and retransmissions.</strong> When multiple nodes transmit simultaneously
+without a coordinated schedule, packets collide. Collisions force retransmissions,
+and retransmissions consume additional energy — sometimes more than the original
+transmission itself. Each collision is a small energy budget burned for nothing.</p>
+<hr>
+<h2 id="why-it-compounds">Why It Compounds</h2>
+<p>The failure modes above reinforce each other. More retransmissions mean more active
+radio time. More active radio time means less opportunity for sleep. Less sleep means
+faster battery drain. Faster battery drain means shorter network lifetime — which
+defeats the entire design goal of a long-lived IoT deployment.</p>
+<p>A well-designed scheduling layer coordinates transmission windows, allows nodes to
+enter sleep between windows, and distributes task assignment to balance load across
+the network.</p>
+<hr>
+<p><em>Previous: <a href="/posts/ch2-part1-energy-waste">Chapter 2, Part 1 – Energy Waste in IoT</a></em><br>
+<em>Next: <a href="/posts/ch2-part3-load-balancing">Chapter 2, Part 3 – Load Balancing</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

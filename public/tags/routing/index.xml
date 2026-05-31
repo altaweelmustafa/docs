@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Routing on IoT Docs</title>
+    <link>http://localhost:1313/iot-docs/tags/routing/</link>
+    <description>Recent content in Routing on IoT Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/iot-docs/tags/routing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 2, Part 4 – Routing in IoT</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part4-routing/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part4-routing/</guid>
+      <description>&lt;h2 id=&#34;what-is-routing-in-iot&#34;&gt;What Is Routing in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Routing&lt;/strong&gt; is the process of selecting the path that data takes as it travels&#xA;between IoT devices, gateways, coordinators, controller services, or cloud servers.&lt;/p&gt;&#xA;&lt;p&gt;Every routing decision directly affects four things:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Communication delay.&lt;/li&gt;&#xA;&lt;li&gt;Energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Bandwidth utilization.&lt;/li&gt;&#xA;&lt;li&gt;Network reliability.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An IoT routing protocol must balance all four simultaneously, on devices with&#xA;severely constrained memory, processing, and battery.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-a-routing-protocol-must-decide&#34;&gt;What a Routing Protocol Must Decide&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The best path for data transmission at any given moment.&lt;/li&gt;&#xA;&lt;li&gt;How to minimize transmission energy along that path.&lt;/li&gt;&#xA;&lt;li&gt;How to avoid congestion and packet loss.&lt;/li&gt;&#xA;&lt;li&gt;How to preserve network lifetime by not exhausting any single node&amp;rsquo;s battery.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;poor-routing-vs-good-routing&#34;&gt;Poor Routing vs. Good Routing&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Poor routing&lt;/strong&gt; (high-energy path):&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 2, Part 5 – RPL Protocol</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part5-rpl/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part5-rpl/</guid>
+      <description>&lt;h2 id=&#34;what-is-rpl&#34;&gt;What Is RPL?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RPL&lt;/strong&gt; (Routing Protocol for Low-Power and Lossy Networks) is a lightweight&#xA;distance-vector routing protocol designed specifically for IoT devices — constrained&#xA;sensors with limited memory, processing power, and battery.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;lossy network&lt;/strong&gt; is one with a high packet drop rate, which is the norm in&#xA;wireless sensor environments. RPL is built to handle this gracefully.&lt;/p&gt;&#xA;&lt;p&gt;RPL&amp;rsquo;s core mechanism: it builds a &lt;strong&gt;DODAG&lt;/strong&gt; (Destination-Oriented Directed Acyclic&#xA;Graph) — a tree-like, loop-free topology rooted at a single designated root node.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 2, Part 6 – AI-Enhanced RPL Routing</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part6-ai-rpl/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part6-ai-rpl/</guid>
+      <description>&lt;h2 id=&#34;the-limitation-of-traditional-rpl&#34;&gt;The Limitation of Traditional RPL&lt;/h2&gt;&#xA;&lt;p&gt;Traditional RPL selects parents using a fixed Objective Function with static weights:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cost = W1*(Delay) + W2*(ETX) + W3*(Energy)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The weights are set at design time and never change. The network is static by&#xA;assumption. But real IoT networks are not static — traffic patterns shift, nodes&#xA;drain their batteries, links degrade, and topology changes. Fixed weights cannot&#xA;adapt to any of this.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;AI makes RPL adaptive instead of static.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

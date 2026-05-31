@@ -1,0 +1,248 @@
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ── */
+body {
+  font-family: "Roboto Mono";
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  color: #111;
+  background: #fff;
+  text-align: justify;
+}
+
+strong {
+  font-weight: bold;
+  color: #3c7a82;
+}
+
+/* ── Links ── */
+a {
+  color: #45adba;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Header ── */
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+
+header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Nav ── */
+nav {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* add · between nav links */
+nav a+a::before {
+  content: " · ";
+}
+
+/* ── HR ── */
+hr {
+  border: none;
+  border-top: 1px solid #111;
+  margin: 1.2rem 0;
+}
+
+hr.equals {
+  border: none;
+  border-top: none;
+  text-align: center;
+  overflow: visible;
+}
+
+hr.equals::before {
+  content: "============================================================";
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: #111;
+}
+
+/* ── Post list (home & list pages) ── */
+.subtitle {
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: #555;
+}
+
+.post-entry {
+  margin-bottom: 1.4rem;
+}
+
+.post-entry a {
+  font-weight: bold;
+}
+
+.post-date {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.post-desc {
+  color: #444;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+}
+
+/* ── Single post ── */
+article h2.post-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  text-align: left;
+}
+
+p.post-date {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
+
+/* ── Prose headings ── */
+article h2,
+article h3,
+article h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* ── Paragraphs ── */
+article p {
+  margin-bottom: 1rem;
+}
+
+/* ── Lists ── */
+article ul,
+article ol {
+  margin: 0.8rem 0 0.8rem 1.5rem;
+}
+
+article li {
+  margin-bottom: 0.3rem;
+}
+
+/* ── Blockquote ── */
+blockquote {
+  border-left: 3px solid #ababab;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #676767;
+  font-style: italic;
+}
+
+/* ── Code ── */
+pre {
+  background: #f4f4f4 !important;
+  color: #b34960;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: left;
+  border-radius: 5px;
+}
+
+code {
+  font-family: "JetBrains Mono";
+  font-size: 0.85rem;
+  border-radius: 5px;
+}
+
+:not(pre)>code {
+  background: #f4f4f4;
+  padding: 0.1em 0.3em;
+  color: #b34960;
+}
+
+/* ── Tables ── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+th,
+td {
+  border: 1px solid #bbb;
+  padding: 0.4rem 0.8rem;
+}
+
+th {
+  background: #f4f4f4;
+  font-weight: bold;
+}
+
+/*=== TOC ===== */
+
+.toc {
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+}
+
+.toc ul {
+  margin: 0.5rem 0 0 1rem;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 0.2rem;
+  list-style: disc;
+}
+
+.toc a {
+  color: #45adba;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 3rem;
+  font-size: 0.82rem;
+  color: #888;
+  text-align: center;
+}
+
+footer a {
+  color: #888;
+}

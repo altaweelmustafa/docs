@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dodag on IoT Docs</title>
+    <link>http://localhost:1313/iot-docs/tags/dodag/</link>
+    <description>Recent content in Dodag on IoT Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/iot-docs/tags/dodag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 2, Part 5 – RPL Protocol</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part5-rpl/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part5-rpl/</guid>
+      <description>&lt;h2 id=&#34;what-is-rpl&#34;&gt;What Is RPL?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RPL&lt;/strong&gt; (Routing Protocol for Low-Power and Lossy Networks) is a lightweight&#xA;distance-vector routing protocol designed specifically for IoT devices — constrained&#xA;sensors with limited memory, processing power, and battery.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;lossy network&lt;/strong&gt; is one with a high packet drop rate, which is the norm in&#xA;wireless sensor environments. RPL is built to handle this gracefully.&lt;/p&gt;&#xA;&lt;p&gt;RPL&amp;rsquo;s core mechanism: it builds a &lt;strong&gt;DODAG&lt;/strong&gt; (Destination-Oriented Directed Acyclic&#xA;Graph) — a tree-like, loop-free topology rooted at a single designated root node.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

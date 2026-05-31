@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scheduling on IoT Docs</title>
+    <link>http://localhost:1313/iot-docs/tags/scheduling/</link>
+    <description>Recent content in Scheduling on IoT Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/iot-docs/tags/scheduling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 2, Part 2 – Scheduling</title>
+      <link>http://localhost:1313/iot-docs/posts/ch2-part2-scheduling/</link>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/iot-docs/posts/ch2-part2-scheduling/</guid>
+      <description>&lt;h2 id=&#34;what-is-scheduling-in-iot&#34;&gt;What Is Scheduling in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Scheduling&lt;/strong&gt; is the mechanism that determines:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;When&lt;/em&gt; tasks execute.&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Which node&lt;/em&gt; executes them.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Done well, scheduling is one of the most powerful levers for reducing power&#xA;consumption. Done poorly, it becomes a major source of waste.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-poor-scheduling-looks-like&#34;&gt;What Poor Scheduling Looks Like&lt;/h2&gt;&#xA;&lt;p&gt;An IoT system with poor scheduling tends to exhibit these failure modes:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Nodes never sleep.&lt;/strong&gt; If tasks are not coordinated, a node stays active all the&#xA;time — consuming full power when it could enter sleep mode between transmissions.&#xA;Sleep modes can reduce power consumption by orders of magnitude; poor scheduling&#xA;prevents nodes from ever reaching them.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

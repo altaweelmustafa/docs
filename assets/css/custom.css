@@ -1,0 +1,14 @@
+h1 a, h2 a, h3 a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+nav a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+hr {
+  border: none !important;
+  border-top: 1px solid #ddd !important;
+}

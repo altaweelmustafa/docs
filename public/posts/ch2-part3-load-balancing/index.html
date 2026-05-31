@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/iot-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=iot-docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 3 – Load Balancing · IoT Docs</title>
+  <link rel="stylesheet" href="/iot-docs/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/iot-docs/">Home</a><a href="/iot-docs/posts">Docs</a><a href="/iot-docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 3 – Load Balancing</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-load-balancing">What Is Load Balancing?</a></li>
+    <li><a href="#the-problem-without-it">The Problem Without It</a></li>
+    <li><a href="#the-result-with-it">The Result With It</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr>
+  
+
+  <h2 id="what-is-load-balancing">What Is Load Balancing?</h2>
+<p><strong>Load balancing</strong> is the practice of distributing processing and communication
+tasks fairly among IoT, edge, fog, or cloud nodes so that no single node becomes
+a bottleneck.</p>
+<hr>
+<h2 id="the-problem-without-it">The Problem Without It</h2>
+<p>Imagine 100 sensors and two controller services. Without load balancing, sensors
+naturally route to whichever controller is closest. One controller ends up with the
+majority of the traffic:</p>
+<ul>
+<li>High CPU usage and overload.</li>
+<li>Higher electric power consumption on that node.</li>
+<li>Increased delay for all traffic through it.</li>
+<li>The other controller sits underutilized — wasted capacity.</li>
+</ul>
+<p>This is not a theoretical edge case. It is the default behavior of unmanaged IoT
+networks.</p>
+<hr>
+<h2 id="the-result-with-it">The Result With It</h2>
+<p>When load is distributed evenly across nodes:</p>
+<ul>
+<li>Delay decreases — no single bottleneck to queue behind.</li>
+<li>Congestion reduces — traffic spreads across available paths.</li>
+<li>QoS improves — packets arrive more reliably and on time.</li>
+<li>Energy consumption improves — no single node burns out its battery carrying the
+entire network&rsquo;s load.</li>
+</ul>
+<hr>
+<h2 id="solutions">Solutions</h2>
+<p>Several approaches can achieve load balancing in IoT:</p>
+<p><strong>Dynamic scheduling</strong> — continuously monitors system resources and redistributes
+tasks before any node becomes overloaded.</p>
+<p><strong>Software Defined Networking (SDN)</strong> — a centralized controller with a global
+view of traffic, bandwidth, congestion, and node load can make optimal routing
+decisions in real time.</p>
+<p><strong>AI / Machine Learning</strong> — modern IoT systems increasingly apply reinforcement
+learning, fuzzy logic, and genetic algorithms to predict future traffic patterns,
+detect overloaded nodes early, and optimize energy usage proactively.</p>
+<p><strong>Clustering</strong> — cluster heads act as indirect load balancers. A cluster head
+collects data from its cluster, aggregates it locally, and forwards only the
+processed result — reducing total traffic volume and distributing the forwarding
+burden.</p>
+<hr>
+<p><em>Previous: <a href="/posts/ch2-part2-scheduling">Chapter 2, Part 2 – Scheduling</a></em><br>
+<em>Next: <a href="/posts/ch2-part4-routing">Chapter 2, Part 4 – Routing in IoT</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

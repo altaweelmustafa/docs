@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/iot-docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=iot-docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 1 – Energy Waste in IoT · IoT Docs</title>
+  <link rel="stylesheet" href="/iot-docs/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">IoT Docs</a></h1>
+    <nav>
+      <a href="/iot-docs/">Home</a><a href="/iot-docs/posts">Docs</a><a href="/iot-docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 1 – Energy Waste in IoT</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-energy-efficiency-matters">Why Energy Efficiency Matters</a></li>
+    <li><a href="#main-causes-of-energy-waste">Main Causes of Energy Waste</a></li>
+    <li><a href="#offloading">Offloading</a>
+      <ul>
+        <li><a href="#when-offloading-saves-energy">When offloading saves energy</a></li>
+        <li><a href="#when-offloading-wastes-energy">When offloading wastes energy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr>
+  
+
+  <h2 id="why-energy-efficiency-matters">Why Energy Efficiency Matters</h2>
+<p>IoT systems are always-on — sensors run continuously, usually on batteries, and
+communication is the single largest consumer of that energy. At scale, inefficient
+designs don&rsquo;t just shorten device lifetimes; they drive up operational cost and
+ultimately collapse the network.</p>
+<p>The core problems:</p>
+<ul>
+<li>Devices depend on batteries with no easy replacement path.</li>
+<li>Communication (radio transmission) dominates energy consumption.</li>
+<li>Large-scale deployments multiply every inefficiency.</li>
+<li>Without efficient protocols and routing, network lifetime collapses.</li>
+</ul>
+<hr>
+<h2 id="main-causes-of-energy-waste">Main Causes of Energy Waste</h2>
+<p>Energy inefficiency in IoT comes from multiple overlapping sources. Based on
+literature, the main causes form around these axes:</p>
+<p><strong>Offloading · Scheduling · Resource Management · Load Balancing · Node Deployment ·
+Routing · Clustering · Changing Topology · Congestion · Limited Bandwidth · Latency</strong></p>
+<p>This chapter walks through each one.</p>
+<hr>
+<h2 id="offloading">Offloading</h2>
+<p><strong>Offloading</strong> means moving selected tasks from sensors or edge devices to a fog,
+edge, or cloud layer for processing.</p>
+<p>The problem is not offloading itself — it is <em>bad</em> offloading decisions.</p>
+<h3 id="when-offloading-saves-energy">When offloading saves energy</h3>
+<ul>
+<li>The task is computationally heavy for the local device.</li>
+<li>Network transmission cost is low.</li>
+<li>The fog/cloud node is not already overloaded.</li>
+<li>Only filtered or pre-processed data is transmitted, not raw streams.</li>
+</ul>
+<h3 id="when-offloading-wastes-energy">When offloading wastes energy</h3>
+<ul>
+<li>Raw data is sent unnecessarily when local filtering was possible.</li>
+<li>Network transmission cost is high relative to the computation saved.</li>
+<li>Tasks are forwarded to already-overloaded fog/cloud nodes.</li>
+<li>The offloading decision ignores latency, battery level, and available bandwidth.</li>
+</ul>
+<p>Bad offloading decisions cascade: more raw data in transit means higher
+communication overhead, longer processing times, increased delay, and more
+transmission energy — exactly what offloading was supposed to reduce.</p>
+<blockquote>
+<p><strong>The problem is not offloading. The problem is bad offloading.</strong></p>
+</blockquote>
+<hr>
+<p><em>Next: <a href="/posts/ch2-part2-scheduling">Chapter 2, Part 2 – Scheduling</a></em></p>
+
+</article>
+
+  </main>
+
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa hehe</p>
+    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* Remove underline from post title links */
+h1 a, h2 a, h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Clean up nav links */
+nav a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Replace dotted hr with a simple line */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+}
