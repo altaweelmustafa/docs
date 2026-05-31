@@ -246,3 +246,25 @@ footer {
 footer a {
   color: #888;
 }
+
+/* SORT */
+.sort-bar {
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.sort-bar button {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  background: none;
+  border: 1px solid #aaa;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+
+.sort-bar button:hover {
+  background: #f0f0f0;
+}
+
+
