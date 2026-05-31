@@ -1,11 +1,38 @@
 {{ define "main" }}
-<h2>{{ .Title }}</h2>
+<div class="sort-bar">
+  <span>Sort by:</span>
+  <button onclick="sortPosts('date-desc')">Date ↓</button>
+  <button onclick="sortPosts('date-asc')">Date ↑</button>
+  <button onclick="sortPosts('name-asc')">Name A–Z</button>
+  <button onclick="sortPosts('name-desc')">Name Z–A</button>
+</div>
 
+<div id="post-list">
 {{ range .Pages.ByDate.Reverse }}
-<div class="post-entry">
+<div class="post-entry"
+  data-date="{{ .Date.Format "2006-01-02" }}"
+  data-title="{{ .Title | lower }}">
   <a href="{{ .Permalink }}">{{ .Title }}</a>
   <span class="post-date">— {{ .Date.Format "2006 Jan 02" }}</span>
   {{ with .Description }}<p class="post-desc">{{ . }}</p>{{ end }}
 </div>
 {{ end }}
+</div>
+
+<script>
+function sortPosts(method) {
+  const list = document.getElementById('post-list');
+  const posts = Array.from(list.querySelectorAll('.post-entry'));
+
+  posts.sort((a, b) => {
+    if (method === 'date-desc') return b.dataset.date.localeCompare(a.dataset.date);
+    if (method === 'date-asc')  return a.dataset.date.localeCompare(b.dataset.date);
+    if (method === 'name-asc')  return a.dataset.title.localeCompare(b.dataset.title);
+    if (method === 'name-desc') return b.dataset.title.localeCompare(a.dataset.title);
+  });
+
+  posts.forEach(p => list.appendChild(p));
+}
+</script>
 {{ end }}
+
