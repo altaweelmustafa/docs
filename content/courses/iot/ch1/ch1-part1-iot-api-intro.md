@@ -126,4 +126,3 @@ The following parts cover each in detail.
 
 ---
 
-*Next: [Chapter 1, Part 2 – REST APIs](/courses/iot/ch2/ch1-part2-rest-api)*

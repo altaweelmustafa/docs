@@ -156,4 +156,3 @@ selective forwarding. This protects RPL routes and enables trust-aware routing.
 
 ---
 
-*Previous: [Chapter 2, Part 5 – RPL Protocol](/content/courses/iot/posts/ch2/ch2-part5-rpl.md)*

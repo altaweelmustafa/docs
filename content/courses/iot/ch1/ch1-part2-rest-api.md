@@ -85,5 +85,3 @@ REST can leverage existing HTTP security mechanisms:
 
 ---
 
-*Previous: [Chapter 1, Part 1 – IoT APIs: Introduction & Types](/courses/iot/ch1/ch1-part1-iot-api-intro)*
-*Next: [Chapter 1, Part 3 – REST Caching](/courses/iot/ch1/ch1-part3-rest-caching)*

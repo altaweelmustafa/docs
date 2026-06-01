@@ -63,4 +63,3 @@ transmission energy — exactly what offloading was supposed to reduce.
 
 ---
 
-*Next: [Chapter 2, Part 2 – Scheduling](/content/courses/iot/posts/ch2/ch2-part2-scheduling.md)*

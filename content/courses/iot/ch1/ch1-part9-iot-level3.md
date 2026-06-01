@@ -87,5 +87,3 @@ remain simple and cheap.
 
 ---
 
-*Previous: [Chapter 1, Part 8 – IoT Level-2](/courses/iot/ch1/ch1-part8-iot-level2)*
-*Next: [Chapter 1, Part 10 – IoT Level-4](/courses/iot/ch1/ch1-part10-iot-level4)*

@@ -65,5 +65,3 @@ same proxy path, significantly reducing origin server load at scale.
 
 ---
 
-*Previous: [Chapter 1, Part 3 – REST Caching](/courses/iot/ch1/ch1-part3-rest-caching)*
-*Next: [Chapter 1, Part 5 – WebSocket APIs](/courses/iot/ch1/ch1-part5-websocket-api)*

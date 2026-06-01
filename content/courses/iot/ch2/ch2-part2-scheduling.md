@@ -51,5 +51,3 @@ the network.
 
 ---
 
-*Previous: [Chapter 2, Part 1 – Energy Waste in IoT](/content/courses/iot/posts/ch2/ch2-part1-energy-waste.md)*  
-*Next: [Chapter 2, Part 3 – Load Balancing](/content/courses/iot/posts/ch2/ch2-part3-load-balancing.md)*

@@ -64,5 +64,3 @@ burden.
 
 ---
 
-*Previous: [Chapter 2, Part 2 – Scheduling](/content/courses/iot/posts/ch2/ch2-part2-scheduling.md)*  
-*Next: [Chapter 2, Part 4 – Routing in IoT](/content/courses/iot/posts/ch2/ch2-part4-routing.md)*

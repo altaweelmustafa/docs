@@ -79,5 +79,3 @@ dynamically select efficient routes based on real-time network state.
 
 ---
 
-*Previous: [Chapter 2, Part 3 – Load Balancing](/content/courses/iot/posts/ch2/ch2-part3-load-balancing.md)*  
-*Next: [Chapter 2, Part 5 – RPL Protocol](/content/courses/iot/posts/ch2/ch2-part5-rpl.md)*

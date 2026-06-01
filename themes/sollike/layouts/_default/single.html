@@ -2,7 +2,6 @@
 <article>
   <h2 class="post-title">{{ .Title }}</h2>
   <p class="post-date"><em>posted on {{ .Date.Format "2006 Jan 02" }}</em></p>
-
   {{ if .Params.toc }}
   <nav class="toc">
     <strong>Contents</strong>
@@ -10,22 +9,16 @@
   </nav>
   <hr />
   {{ end }} {{ .Content }}
-
   <nav class="post-nav">
-    <div class="post-nav-back">
-      {{ range .Ancestors.Reverse }} {{ if ne .Kind "home" }}
-      <a href="{{ .Permalink }}">{{ .Title }}</a> / {{ end }} {{ end }}
-    </div>
     <div class="post-nav-arrows">
-      {{ with .PrevInSection }}
-      <a href="{{ .Permalink }}" id="nav-prev">← {{ .Title }}</a>
-      {{ end }} {{ with .NextInSection }}
-      <a href="{{ .Permalink }}" id="nav-next">{{ .Title }} →</a>
+      {{ with .NextInSection }}
+      <a href="{{ .Permalink }}" id="nav-prev"><em>{{ .Title }}</em></a>
+      {{ end }} {{ with .PrevInSection }}
+      <a href="{{ .Permalink }}" id="nav-next"><em>{{ .Title }}</em></a>
       {{ end }}
     </div>
   </nav>
 </article>
-
 <script>
   document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowLeft") {

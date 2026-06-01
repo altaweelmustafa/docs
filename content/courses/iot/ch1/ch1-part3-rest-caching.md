@@ -82,5 +82,3 @@ repeating the underlying work.
 
 ---
 
-*Previous: [Chapter 1, Part 2 – REST APIs](/courses/iot/ch1/ch1-part2-rest-api)*
-*Next: [Chapter 1, Part 4 – Proxy Servers](/courses/iot/ch1/ch1-part4-proxy-servers)*

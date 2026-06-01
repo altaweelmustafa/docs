@@ -74,5 +74,3 @@ over time is large enough to warrant cloud storage rather than local disk.
 
 ---
 
-*Previous: [Chapter 1, Part 7 – IoT Level-1](/courses/iot/ch1/ch1-part7-iot-level1)*
-*Next: [Chapter 1, Part 9 – IoT Level-3](/courses/iot/ch1/ch1-part9-iot-level3)*

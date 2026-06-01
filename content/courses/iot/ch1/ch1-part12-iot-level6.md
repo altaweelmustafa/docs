@@ -123,4 +123,3 @@ commands.
 
 ---
 
-*Previous: [Chapter 1, Part 11 – IoT Level-5](/courses/iot/ch1/ch1-part11-iot-level5)*

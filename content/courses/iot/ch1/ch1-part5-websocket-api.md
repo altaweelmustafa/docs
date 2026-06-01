@@ -136,5 +136,3 @@ other's state at all times without any intermediary polling.
 
 ---
 
-*Previous: [Chapter 1, Part 4 – Proxy Servers](/courses/iot/posts/ch1-part4-proxy-servers)*
-*Next: [Chapter 1, Part 6 – IoT System Components](/courses/iot/posts/ch1-part6-iot-system-components)*

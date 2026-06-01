@@ -52,5 +52,3 @@ The following parts cover each level in detail.
 
 ---
 
-*Previous: [Chapter 1, Part 5 – WebSocket APIs](/courses/iot/ch1/ch1-part5-websocket-api)*
-*Next: [Chapter 1, Part 7 – IoT Level-1](/courses/iot/ch1/ch1-part7-iot-level1)*

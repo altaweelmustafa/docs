@@ -103,5 +103,3 @@ Node 1 and Node 2.
 
 ---
 
-*Previous: [Chapter 1, Part 9 – IoT Level-3](/courses/iot/ch1/ch1-part9-iot-level3)*
-*Next: [Chapter 1, Part 11 – IoT Level-5](/courses/iot/ch1/ch1-part11-iot-level5)*

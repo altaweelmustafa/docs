@@ -181,5 +181,3 @@ energy during normal operation.
 
 ---
 
-*Previous: [Chapter 2, Part 4 – Routing in IoT](/content/courses/iot/posts/ch2/ch2-part4-routing.md)*  
-*Next: [Chapter 2, Part 6 – AI-Enhanced RPL](/content/courses/iot/posts/ch2/ch2-part6-ai-rpl.md)*

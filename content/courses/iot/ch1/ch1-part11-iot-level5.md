@@ -98,5 +98,3 @@ node readings.
 
 ---
 
-*Previous: [Chapter 1, Part 10 – IoT Level-4](/courses/iot/posts/ch1-part10-iot-level4)*
-*Next: [Chapter 1, Part 12 – IoT Level-6](/courses/iot/posts/ch1-part12-iot-level6)*

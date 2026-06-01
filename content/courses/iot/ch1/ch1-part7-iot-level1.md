@@ -104,5 +104,3 @@ over Ethernet or local wireless signals. All data is stored and processed locall
 
 ---
 
-*Previous: [Chapter 1, Part 6 – IoT System Components](/courses/iot/ch1/ch1-part6-iot-system-components)*
-*Next: [Chapter 1, Part 8 – IoT Level-2](/courses/iot/ch1/ch1-part8-iot-level2)*
