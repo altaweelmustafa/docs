@@ -121,5 +121,3 @@ commands.
 > with centralized cloud control. Each level trades local simplicity for cloud
 > scalability and intelligence.
 
----
-

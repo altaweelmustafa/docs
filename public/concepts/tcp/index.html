@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCP · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">TCP</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>TCP</strong> (Transmission Control Protocol) is a connection-oriented transport protocol
+that guarantees reliable, ordered, and error-checked delivery of data between two
+devices.</p>
+<hr>
+<p><strong>What makes TCP reliable:</strong></p>
+<ul>
+<li><strong>Connection establishment</strong> — before any data is sent, TCP performs a
+<strong>three-way handshake</strong>: SYN → SYN-ACK → ACK. Both sides confirm they are ready.</li>
+<li><strong>Acknowledgements</strong> — every packet received must be acknowledged. If no ACK
+arrives, the sender retransmits.</li>
+<li><strong>Ordering</strong> — packets are numbered. If they arrive out of order, TCP reassembles
+them correctly before passing data to the application.</li>
+<li><strong>Error checking</strong> — checksums detect corrupted packets; corrupted packets are
+discarded and retransmitted.</li>
+<li><strong>Flow control</strong> — the receiver tells the sender how much data it can handle,
+preventing overflow.</li>
+</ul>
+<hr>
+<p><strong>The cost:</strong></p>
+<p>Reliability comes with overhead. Handshakes, acknowledgements, and retransmissions
+add latency and consume more bandwidth than <a href="/docs/concepts/udp">UDP</a>.</p>
+<hr>
+<p><strong>When to use TCP:</strong></p>
+<p>Use TCP when correctness matters more than speed — file transfers, web pages, API
+calls, email, database queries.</p>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>IoT applications using <a href="/docs/concepts/rest">REST</a> or <a href="/docs/concepts/https">HTTPS</a>
+run over TCP. When a command must be delivered reliably (turn off a valve, unlock a
+door), TCP is the right choice.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

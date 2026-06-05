@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">IP</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>IP</strong> (Internet Protocol) is the fundamental protocol that gives every device on a
+network a unique address and defines how data is packaged and routed from one device
+to another across networks.</p>
+<hr>
+<p><strong>IP Address:</strong></p>
+<p>An IP address is a unique numerical label assigned to every device on a network.
+Think of it as a postal address — without it, nobody knows where to deliver data.</p>
+<ul>
+<li><strong>IPv4</strong> — 32-bit address, written as four numbers separated by dots: <code>192.168.1.1</code>
+Supports ~4.3 billion unique addresses (running out).</li>
+<li><strong>IPv6</strong> — 128-bit address, written in hexadecimal: <code>2001:db8::1</code>
+Supports an astronomically large number of addresses — designed for IoT scale.</li>
+</ul>
+<hr>
+<p><strong>What IP does:</strong></p>
+<ul>
+<li><strong>Addressing</strong> — assigns source and destination addresses to every packet.</li>
+<li><strong>Routing</strong> — determines the path a packet takes across networks to reach its destination.</li>
+<li><strong>Fragmentation</strong> — breaks large packets into smaller pieces if needed, reassembles at destination.</li>
+</ul>
+<hr>
+<p><strong>What IP does NOT do:</strong></p>
+<p>IP is a best-effort protocol — it does not guarantee delivery, order, or error
+correction. Those responsibilities fall on higher-level protocols like
+<a href="/docs/concepts/tcp">TCP</a> or <a href="/docs/concepts/udp">UDP</a>.</p>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>Every IoT device needs an IP address to communicate over a network. IPv6 is
+especially important in IoT because IPv4 addresses are exhausted and IoT deployments
+can involve millions of devices.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

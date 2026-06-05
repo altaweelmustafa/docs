@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Half Duplex / Full Duplex · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Half Duplex / Full Duplex</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>Duplex</strong> refers to how two devices communicate — specifically, whether they can
+send and receive data at the same time.</p>
+<hr>
+<h2 id="half-duplex">Half Duplex</h2>
+<p>Both sides can send and receive, but <strong>not simultaneously</strong>. Only one side transmits
+at a time — the other must wait.</p>
+<p><strong>Analogy:</strong> A walkie-talkie. You press the button to talk, release to listen. Both
+people cannot speak at the same time — one talks, the other waits.</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Simpler and cheaper to implement.</li>
+<li>Lower bandwidth utilization — the channel is idle while one side waits.</li>
+<li>Collision risk if both sides try to transmit at the same time.</li>
+</ul>
+<p><strong>Examples:</strong> Walkie-talkies, older Ethernet (half-duplex mode), some IoT sensor
+protocols.</p>
+<hr>
+<h2 id="full-duplex">Full Duplex</h2>
+<p>Both sides can send and receive <strong>simultaneously</strong> — at the same time, over the same
+connection.</p>
+<p><strong>Analogy:</strong> A phone call. Both people can speak and hear at the same time.</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Higher throughput — no waiting.</li>
+<li>Requires either two separate channels or a protocol that separates the two
+directions on one channel.</li>
+<li>More complex but significantly more efficient.</li>
+</ul>
+<p><strong>Examples:</strong> Modern Ethernet, telephone networks, <a href="/docs/concepts/tcp">TCP</a>,
+<a href="/docs/concepts/exclusive-pair">WebSocket</a>.</p>
+<hr>
+<h2 id="half-vs-full--quick-comparison">Half vs Full — Quick Comparison</h2>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Half Duplex</th>
+          <th>Full Duplex</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Simultaneous TX/RX</td>
+          <td>No</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>Complexity</td>
+          <td>Lower</td>
+          <td>Higher</td>
+      </tr>
+      <tr>
+          <td>Throughput</td>
+          <td>Lower</td>
+          <td>Higher</td>
+      </tr>
+      <tr>
+          <td>Collision risk</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Example</td>
+          <td>Walkie-talkie</td>
+          <td>Phone call</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>Most modern IoT communication protocols aim for full duplex to enable real-time
+bidirectional data flow — sensors pushing data while simultaneously receiving commands.
+<a href="/docs/concepts/exclusive-pair">WebSocket</a> and <a href="/docs/concepts/tcp">TCP</a> are both
+full-duplex protocols.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

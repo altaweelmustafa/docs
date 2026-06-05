@@ -61,5 +61,3 @@ transmission energy — exactly what offloading was supposed to reduce.
 
 > **The problem is not offloading. The problem is bad offloading.**
 
----
-

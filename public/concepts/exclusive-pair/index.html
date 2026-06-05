@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusive Pair · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Exclusive Pair</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>Exclusive Pair</strong> is a communication model where a <strong>persistent, dedicated connection</strong>
+is established between exactly two specific endpoints — and both sides can send and
+receive data freely as long as the connection is open.</p>
+<hr>
+<p><strong>Key characteristics:</strong></p>
+<ul>
+<li><strong>Persistent</strong> — the connection stays open until one side explicitly closes it.
+No reconnecting for each message.</li>
+<li><strong>Bidirectional</strong> — both sides can send data at any time, independently.</li>
+<li><strong>Dedicated</strong> — the connection is between a specific client and a specific server,
+not shared with others.</li>
+</ul>
+<hr>
+<p><strong>How it differs from request-response:</strong></p>
+<p>In a standard <a href="/docs/concepts/rest">REST</a> interaction, the client sends a request and
+the server replies — then the connection closes. For the next message, a new connection
+must be opened.</p>
+<p>In an exclusive pair model (<a href="/docs/concepts/websocket">WebSocket</a>), the connection
+opens once and stays open. Either side can push data at any moment without waiting
+for the other to ask.</p>
+<hr>
+<p><strong>Real example:</strong></p>
+<p>A smart thermostat and a smart air conditioner establish an exclusive pair channel.
+The thermostat continuously pushes temperature readings; the AC pushes back its
+current energy consumption. Both devices react to each other in real time without
+constantly reconnecting.</p>
+<hr>
+<p><strong>Used in:</strong> WebSocket APIs, device-to-device IoT coordination, real-time dashboards,
+live sensor feeds.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

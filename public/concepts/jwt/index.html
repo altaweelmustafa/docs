@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">JWT</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>JWT</strong> (JSON Web Token) is a compact, self-contained token used to securely transmit
+information between two parties. It is commonly used for <strong>authentication</strong> and
+<strong>authorization</strong> in web and IoT applications.</p>
+<hr>
+<p><strong>Structure:</strong></p>
+<p>A JWT is a string of three Base64-encoded parts separated by dots:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">header</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">signature</span>
+</span></span></code></pre></div><ul>
+<li><strong>Header</strong> — token type and signing algorithm (e.g. <code>HS256</code>).</li>
+<li><strong>Payload</strong> — the actual data (claims): user ID, role, expiry time, etc.</li>
+<li><strong>Signature</strong> — a cryptographic signature that proves the token hasn&rsquo;t been tampered with.</li>
+</ul>
+<hr>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>User logs in with credentials.</li>
+<li>Server verifies credentials and issues a JWT.</li>
+<li>Client stores the JWT (in memory or a cookie).</li>
+<li>On every subsequent request, the client sends the JWT in the request header.</li>
+<li>Server verifies the signature — if valid, it trusts the payload without hitting the database.</li>
+</ol>
+<hr>
+<p><strong>Key property — stateless:</strong></p>
+<p>The server does not need to store session data. Everything needed to verify the
+request is inside the token itself. This makes JWT ideal for distributed systems and
+IoT where many devices communicate with many servers.</p>
+<hr>
+<p><strong>OAuth vs JWT:</strong></p>
+<p>OAuth is a <em>framework</em> defining how authorization flows work. JWT is a <em>token format</em>
+often used to carry the access tokens OAuth issues. They are complementary, not
+alternatives.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

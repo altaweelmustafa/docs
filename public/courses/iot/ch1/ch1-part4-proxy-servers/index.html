@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 1, Part 4 – Proxy Servers · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -47,7 +49,7 @@ servers or internet resources).</p>
 <p>When a client sends a request to access a resource, the request is first routed
 through the proxy server rather than going directly to the destination. The proxy
 then forwards the request on the client&rsquo;s behalf and returns the response.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">YOU ──► PROXY ──► INTERNET
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">YOU =&gt; PROXY =&gt; INTERNET
 </span></span></code></pre></div><hr>
 <h2 id="purposes-of-a-proxy-server">Purposes of a Proxy Server</h2>
 <h3 id="content-filtering">Content Filtering</h3>
@@ -60,8 +62,8 @@ resource that the proxy has already cached, the proxy serves it directly without
 forwarding the request all the way to the origin server. This reduces latency and
 saves bandwidth.</p>
 <h3 id="anonymity-and-privacy">Anonymity and Privacy</h3>
-<p>Proxy servers can mask the IP address of clients, providing a degree of anonymity
-when accessing the internet. The destination server sees the proxy&rsquo;s IP rather than
+<p>Proxy servers can mask the <em><a href="/docs/concepts/ip">IP</a></em> address of clients, providing a degree of anonymity
+when accessing the internet. The destination server sees the proxy&rsquo;s <em><a href="/docs/concepts/ip">IP</a></em> rather than
 the client&rsquo;s.</p>
 <h3 id="security">Security</h3>
 <p>Proxy servers act as a barrier between clients and the internet, inspecting
@@ -76,7 +78,6 @@ through that proxy receive the cached response — no round trip to the origin s
 required.</p>
 <p>This means a single cached API response can serve many IoT devices that share the
 same proxy path, significantly reducing origin server load at scale.</p>
-<hr>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
@@ -108,5 +109,11 @@ same proxy path, significantly reducing origin server load at scale.</p>
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

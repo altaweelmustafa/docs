@@ -101,5 +101,3 @@ Each node writes its own data file (simulating cloud upload). The observer node
 reads both and evaluates alerts independently — no direct communication between
 Node 1 and Node 2.
 
----
-

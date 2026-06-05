@@ -19,7 +19,10 @@
 
 /* ── Base ── */
 body {
-  font-family: "Roboto Mono";
+  font-family:
+    ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono",
+    "Droid Sans Mono", "Consolas", "Courier New", monospace;
   font-size: 17px;
   line-height: 1.7;
   max-width: 960px;
@@ -36,13 +39,35 @@ strong {
 }
 
 /* ── Links ── */
+article a {
+  color: #45adba;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+article a:hover {
+  text-decoration-style: solid;
+}
+
 a {
   color: #45adba;
-  text-decoration: none;
+  text-decoration: underline;
+  font-style: italic;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+/* =========== Highlights ========= */
+mark {
+  background: rgba(54, 214, 200, 0.35);
+  color: inherit;
+  padding: 0.05em 0.15em;
+  border-radius: 2px;
 }
 
 /* ── Header ── */

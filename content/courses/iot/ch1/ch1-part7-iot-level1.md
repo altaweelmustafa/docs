@@ -102,5 +102,3 @@ over Ethernet or local wireless signals. All data is stored and processed locall
 - Interoperability issues between devices from different manufacturers.
 - High initial investment and technical skill requirements for setup.
 
----
-

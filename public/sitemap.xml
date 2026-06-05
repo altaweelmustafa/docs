@@ -59,9 +59,6 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/courses/iot/ch2/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/courses/iot/ch2/ch2-part1-energy-waste/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
@@ -80,10 +77,16 @@
     <loc>http://localhost:1313/docs/courses/iot/ch2/ch2-part6-ai-rpl/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/iot/ch2/</loc>
+    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/tags/chapter1/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/cloud/</loc>
+    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/concepts/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/coordinator/</loc>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTPS · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">HTTPS</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>HTTPS</strong> (HyperText Transfer Protocol Secure) is the secure version of HTTP — the
+protocol used to transfer data between a browser (or any client) and a web server.</p>
+<p>The &ldquo;secure&rdquo; part comes from <strong>TLS</strong> (Transport Layer Security), which wraps the HTTP
+communication in an encrypted tunnel. This means:</p>
+<ul>
+<li>Data sent between client and server is <strong>encrypted</strong> — nobody intercepting the
+traffic can read it.</li>
+<li>The server&rsquo;s identity is <strong>verified</strong> via a digital certificate — you know you&rsquo;re
+talking to the real server, not an impersonator.</li>
+<li>Data <strong>integrity</strong> is guaranteed — it cannot be modified in transit without detection.</li>
+</ul>
+<hr>
+<p><strong>How it works (simplified):</strong></p>
+<ol>
+<li>Client connects to server and says <em>&ldquo;I want to talk securely.&rdquo;</em></li>
+<li>Server sends its <strong>TLS certificate</strong> (issued by a trusted Certificate Authority).</li>
+<li>Client verifies the certificate is legitimate.</li>
+<li>Both sides agree on an <strong>encryption key</strong> (handshake).</li>
+<li>All further communication is encrypted using that key.</li>
+</ol>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>IoT devices sending sensor data or receiving commands over the internet must use HTTPS
+to prevent attackers from reading or injecting data into the communication.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

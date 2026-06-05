@@ -80,5 +80,3 @@ caching:
 With caching, a single computed response is served to many clients without
 repeating the underlying work.
 
----
-

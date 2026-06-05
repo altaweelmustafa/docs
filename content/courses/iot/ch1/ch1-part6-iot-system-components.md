@@ -50,5 +50,3 @@ IoT systems are classified into six levels based on three axes:
 
 The following parts cover each level in detail.
 
----
-

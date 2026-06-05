@@ -118,11 +118,9 @@ from multiple sources in one operation.
 
 The three main communication API styles used in IoT systems are:
 
-- **REST** — follows the Request-Response model
-- **WebSocket** — follows the Exclusive Pair model
-- **SOAP** — Simple Object Access Protocol
+- **REST**: ==follows the Request-Response model==
+- **WebSocket**: ==follows the Exclusive Pair model==
+- **SOAP**: ==Simple Object Access Protocol==
 
 The following parts cover each in detail.
-
----
 

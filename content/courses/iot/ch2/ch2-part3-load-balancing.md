@@ -62,5 +62,3 @@ collects data from its cluster, aggregates it locally, and forwards only the
 processed result — reducing total traffic volume and distributing the forwarding
 burden.
 
----
-

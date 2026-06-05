@@ -96,5 +96,3 @@ The coordinator aggregates all end-node readings into a single upload. Cloud
 analytics evaluates averages across the whole network — not just individual
 node readings.
 
----
-

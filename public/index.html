@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 	<meta name="generator" content="Hugo 0.152.2"><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
@@ -7,9 +8,10 @@
   <title>Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -142,5 +144,11 @@
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

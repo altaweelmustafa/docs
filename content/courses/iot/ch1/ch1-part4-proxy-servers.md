@@ -18,7 +18,7 @@ through the proxy server rather than going directly to the destination. The prox
 then forwards the request on the client's behalf and returns the response.
 
 ```
-YOU ──► PROXY ──► INTERNET
+YOU => PROXY => INTERNET
 ```
 
 ---
@@ -40,8 +40,8 @@ saves bandwidth.
 
 ### Anonymity and Privacy
 
-Proxy servers can mask the IP address of clients, providing a degree of anonymity
-when accessing the internet. The destination server sees the proxy's IP rather than
+Proxy servers can mask the *[IP](/docs/concepts/ip)* address of clients, providing a degree of anonymity
+when accessing the internet. The destination server sees the proxy's *[IP](/docs/concepts/ip)* rather than
 the client's.
 
 ### Security
@@ -62,6 +62,4 @@ required.
 
 This means a single cached API response can serve many IoT devices that share the
 same proxy path, significantly reducing origin server load at scale.
-
----
 

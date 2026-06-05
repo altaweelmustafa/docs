@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 1, Part 10 – IoT Level-4 · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -108,7 +110,6 @@ handle cross-site aggregation and reporting.</p>
 </span></span></code></pre></div><p>Each node writes its own data file (simulating cloud upload). The observer node
 reads both and evaluates alerts independently — no direct communication between
 Node 1 and Node 2.</p>
-<hr>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
@@ -140,5 +141,11 @@ Node 1 and Node 2.</p>
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

@@ -77,5 +77,3 @@ level and per-hop transmission cost, avoiding nodes near depletion.
 **AI-Based Routing** — uses machine learning or optimization algorithms to
 dynamically select efficient routes based on real-time network state.
 
----
-

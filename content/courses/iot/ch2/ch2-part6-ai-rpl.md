@@ -154,5 +154,3 @@ selective forwarding. This protects RPL routes and enables trust-aware routing.
 > AI transforms RPL from a static, rule-based protocol into an **adaptive,
 > intelligent, and self-optimizing** routing protocol suitable for real-world IoT.
 
----
-

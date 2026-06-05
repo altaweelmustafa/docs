@@ -179,5 +179,3 @@ minimal processing, low energy use.
 mechanism that reduces control message frequency once the network is stable, saving
 energy during normal operation.
 
----
-

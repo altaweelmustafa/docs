@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UDP · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">UDP</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>UDP</strong> (User Datagram Protocol) is a connectionless transport protocol that sends
+data as fast as possible with no guarantees — no handshake, no acknowledgements, no
+retransmissions.</p>
+<hr>
+<p><strong>What UDP does NOT do:</strong></p>
+<ul>
+<li>No connection setup before sending.</li>
+<li>No confirmation that packets arrived.</li>
+<li>No retransmission of lost packets.</li>
+<li>No ordering of packets.</li>
+</ul>
+<hr>
+<p><strong>Why would anyone use it?</strong></p>
+<p>Because sometimes speed matters more than correctness. Dropping a packet is better
+than waiting for a retransmission that arrives too late to be useful.</p>
+<hr>
+<p><strong>When to use UDP:</strong></p>
+<ul>
+<li><strong>Live video/audio streaming</strong> — a dropped frame is better than a delayed one.</li>
+<li><strong>Online gaming</strong> — stale position data is useless; better to send the next update.</li>
+<li><strong>DNS lookups</strong> — simple request-response, fast, retried at the application level if needed.</li>
+<li><strong>IoT sensor broadcasts</strong> — periodic temperature readings where missing one value
+doesn&rsquo;t matter because the next one arrives in a second anyway.</li>
+</ul>
+<hr>
+<p><strong>TCP vs UDP — quick comparison:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>TCP</th>
+          <th>UDP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Connection</td>
+          <td>Required (handshake)</td>
+          <td>None</td>
+      </tr>
+      <tr>
+          <td>Reliability</td>
+          <td>Guaranteed</td>
+          <td>Best-effort</td>
+      </tr>
+      <tr>
+          <td>Ordering</td>
+          <td>Yes</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Slower</td>
+          <td>Faster</td>
+      </tr>
+      <tr>
+          <td>Overhead</td>
+          <td>Higher</td>
+          <td>Lower</td>
+      </tr>
+      <tr>
+          <td>Use case</td>
+          <td>Commands, files, APIs</td>
+          <td>Streams, broadcasts, real-time</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>Constrained IoT devices with limited battery and bandwidth often prefer UDP-based
+protocols (like CoAP) over TCP-based ones to reduce overhead and extend network
+lifetime.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

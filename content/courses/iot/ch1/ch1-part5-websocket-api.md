@@ -44,7 +44,7 @@ monitoring.
 
 ### Persistent Connection
 
-In standard HTTP (used by REST), a new TCP connection is established for every
+In standard HTTP (used by REST), a new *[TCP](/docs/concepts/tcp)* connection is established for every
 request-response cycle. WebSocket instead establishes one persistent, full-duplex
 connection that stays open. Both sides can send data at any time without the cost
 of re-establishing the connection.
@@ -133,6 +133,4 @@ other's state at all times without any intermediary polling.
 | Latency | Higher (new connection overhead) | Lower (open connection) |
 | Best for | Periodic data retrieval, configuration | Real-time streaming, live control |
 | IoT example | Temperature sensor POST every minute | Fleet GPS live tracking |
-
----
 

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 2, Part 4 – Routing in IoT · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -112,7 +114,6 @@ reducing the number of long-distance transmissions and distributing energy usage
 level and per-hop transmission cost, avoiding nodes near depletion.</p>
 <p><strong>AI-Based Routing</strong> — uses machine learning or optimization algorithms to
 dynamically select efficient routes based on real-time network state.</p>
-<hr>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
@@ -144,5 +145,11 @@ dynamically select efficient routes based on real-time network state.</p>
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

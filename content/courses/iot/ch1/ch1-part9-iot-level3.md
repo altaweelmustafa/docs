@@ -85,5 +85,3 @@ anomaly detection, delay forecasting — is computationally intensive. Centraliz
 all of this work in the cloud allows it to scale freely while the local nodes
 remain simple and cheap.
 
----
-

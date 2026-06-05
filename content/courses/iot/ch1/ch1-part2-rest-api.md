@@ -79,9 +79,7 @@ requested responses are stored and reused rather than recomputed.
 
 REST can leverage existing HTTP security mechanisms:
 
-- **HTTPS** for encrypted communication.
-- **OAuth** authentication headers.
-- **JWT (JSON Web Tokens)** for access control.
-
----
+- *[HTTPS](/docs/concepts/https)* for encrypted communication.
+- *[OAuth](/docs/concepts/oauth)* authentication headers.
+- *[JWT](/docs/concepts/jwt)* for access control.
 

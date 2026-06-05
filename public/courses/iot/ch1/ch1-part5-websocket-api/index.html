@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 1, Part 5 – WebSocket APIs &amp; Exclusive Pair · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -74,7 +76,7 @@ monitoring.</p>
 <hr>
 <h2 id="how-websocket-reduces-tcp-overhead">How WebSocket Reduces TCP Overhead</h2>
 <h3 id="persistent-connection">Persistent Connection</h3>
-<p>In standard HTTP (used by REST), a new TCP connection is established for every
+<p>In standard HTTP (used by REST), a new <em><a href="/docs/concepts/tcp">TCP</a></em> connection is established for every
 request-response cycle. WebSocket instead establishes one persistent, full-duplex
 connection that stays open. Both sides can send data at any time without the cost
 of re-establishing the connection.</p>
@@ -177,7 +179,6 @@ other&rsquo;s state at all times without any intermediary polling.</p>
       </tr>
   </tbody>
 </table>
-<hr>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
@@ -209,5 +210,11 @@ other&rsquo;s state at all times without any intermediary polling.</p>
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

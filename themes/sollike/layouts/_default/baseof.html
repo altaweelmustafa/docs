@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode | default " en" }}">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
-  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{"css/style.css" | relURL }}">
 </head>
+
 <body>
   <header>
-    <h1><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
+    <h1><a href="{{ " /" | relURL }}">{{ .Site.Title }}</a></h1>
     <nav>
       {{ range .Site.Menus.main -}}
       <a href="{{ .URL }}">{{ .Name }}</a>
@@ -25,5 +27,11 @@
     <p>{{ . | safeHTML }}</p>
     {{ end }}
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

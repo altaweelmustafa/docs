@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter 1, Part 2 – REST APIs · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
+
 <body>
   <header>
-    <h1><a href="/">Docs</a></h1>
+    <h1><a href="/docs/%20/">Docs</a></h1>
     <nav>
       <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
     </nav>
@@ -114,11 +116,10 @@ requested responses are stored and reused rather than recomputed.</p>
 <h3 id="security">Security</h3>
 <p>REST can leverage existing HTTP security mechanisms:</p>
 <ul>
-<li><strong>HTTPS</strong> for encrypted communication.</li>
-<li><strong>OAuth</strong> authentication headers.</li>
-<li><strong>JWT (JSON Web Tokens)</strong> for access control.</li>
+<li><em><a href="/docs/concepts/https">HTTPS</a></em> for encrypted communication.</li>
+<li><em><a href="/docs/concepts/oauth">OAuth</a></em> authentication headers.</li>
+<li><em><a href="/docs/concepts/jwt">JWT</a></em> for access control.</li>
 </ul>
-<hr>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
@@ -150,5 +151,11 @@ requested responses are stored and reused rather than recomputed.</p>
     <p>© 2026 Mustafa and Samaa</p>
     
   </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
 </body>
+
 </html>

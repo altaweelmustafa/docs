@@ -49,5 +49,3 @@ A well-designed scheduling layer coordinates transmission windows, allows nodes 
 enter sleep between windows, and distributes task assignment to balance load across
 the network.
 
----
-

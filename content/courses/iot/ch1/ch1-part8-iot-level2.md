@@ -72,5 +72,3 @@ over time is large enough to warrant cloud storage rather than local disk.
 - Reduces dependence on manual human intervention.
 - Requires minimal water resources compared to scheduled fixed-time irrigation.
 
----
-

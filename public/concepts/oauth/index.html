@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OAuth · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">OAuth</h2>
+  <p class="post-date"><em>posted on 2026 May 31</em></p>
+   <p><strong>OAuth</strong> (Open Authorization) is an authorization framework that lets one application
+access resources on behalf of a user — without the user giving that application their
+password.</p>
+<hr>
+<p><strong>The core idea:</strong></p>
+<p>Instead of sharing credentials, OAuth issues a limited-access <strong>token</strong>. The token
+says <em>&ldquo;this app is allowed to do X on behalf of this user&rdquo;</em> — nothing more.</p>
+<hr>
+<p><strong>Real example:</strong></p>
+<p>You open an app and click <em>&ldquo;Sign in with Google&rdquo;</em>. You never give the app your Google
+password. Instead:</p>
+<ol>
+<li>The app redirects you to Google.</li>
+<li>Google asks: <em>&ldquo;Do you allow this app to access your profile?&rdquo;</em></li>
+<li>You approve.</li>
+<li>Google gives the app a <strong>token</strong>.</li>
+<li>The app uses that token to access only what you approved.</li>
+</ol>
+<hr>
+<p><strong>Key terms:</strong></p>
+<ul>
+<li><strong>Resource Owner</strong> — you, the user.</li>
+<li><strong>Client</strong> — the app requesting access.</li>
+<li><strong>Authorization Server</strong> — the server that issues tokens (e.g. Google).</li>
+<li><strong>Resource Server</strong> — the server holding the protected data.</li>
+<li><strong>Token</strong> — a temporary key granting limited access.</li>
+</ul>
+<hr>
+<p><strong>Why it matters in IoT:</strong></p>
+<p>IoT platforms use OAuth to let third-party apps (dashboards, automation tools) access
+device data without storing user credentials on every connected service.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
