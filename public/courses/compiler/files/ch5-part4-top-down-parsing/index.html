@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 4 – Top-Down Parsing · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 4 – Top-Down Parsing</h2>
+  <p class="post-date"><em>posted on 2026 Jan 01</em></p>
+   <h2 id="chapter-5-part-4--top-down-parsing">Chapter 5, Part 4 – Top-Down Parsing</h2>
+<p><em>posted on 2026 Jan 01</em></p>
+<p><strong>Contents</strong></p>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#foundations-first-and-follow">Foundations: FIRST() and FOLLOW()</a>
+<ul>
+<li><a href="#the-first-function">The FIRST() Function</a></li>
+<li><a href="#the-follow-function">The FOLLOW() Function</a></li>
+<li><a href="#rules-to-compute-first-and-follow">Rules to Compute FIRST() and FOLLOW()</a></li>
+<li><a href="#augmented-grammars">Augmented Grammars</a></li>
+<li><a href="#extended-bnf-and-syntax-diagrams">Extended BNF and Syntax Diagrams</a></li>
+<li><a href="#worked-examples-firstfollow">Worked Examples</a></li>
+</ul>
+</li>
+<li><a href="#recursive-descent-parsing">Recursive Descent Parsing</a>
+<ul>
+<li><a href="#translation-rules">Translation Rules</a></li>
+<li><a href="#worked-examples-recursive-descent">Worked Examples</a></li>
+</ul>
+</li>
+<li><a href="#ll1-parsing">LL(1) Parsing</a>
+<ul>
+<li><a href="#definition-of-ll1">Definition of LL(1)</a></li>
+<li><a href="#building-the-ll1-parsing-table">Building the LL(1) Parsing Table</a></li>
+<li><a href="#worked-examples-ll1">Worked Examples</a></li>
+</ul>
+</li>
+<li><a href="#problems-with-top-down-parsing">Problems with Top-Down Parsing</a>
+<ul>
+<li><a href="#left-recursion">Left Recursion</a></li>
+<li><a href="#the-dangling-else-problem">The Dangling Else Problem</a></li>
+<li><a href="#left-factoring">Left Factoring</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>In top-down parsing, the parser builds the derivation tree from the <strong>root (S) down to the leaves</strong> using <strong>leftmost derivation</strong>.</p>
+<p><strong>Major Problem:</strong> The parser does not know which production rule to apply at each derivation step — it can be non-deterministic for general CFGs.</p>
+<p>We cannot build deterministic top-down parsers for all CFGs. However, for certain restricted classes, we can. Two main deterministic top-down techniques exist:</p>
+<ol>
+<li><strong>Recursive Descent Parsing</strong></li>
+<li><strong>LL(1) Parsing</strong></li>
+</ol>
+<p>Both depend heavily on <strong>FIRST()</strong> and <strong>FOLLOW()</strong> sets.</p>
+<hr>
+<h2 id="foundations-first-and-follow">Foundations: FIRST() and FOLLOW()</h2>
+<h3 id="the-first-function">The FIRST() Function</h3>
+<p>Given a string α ∈ V*, <code>FIRST(α)</code> is the set of all <strong>terminals</strong> that may begin strings derived from α. If <code>α →* λ</code>, then λ ∈ FIRST(α) as well.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">If:  α →* cBx
+</span></span><span class="line"><span class="cl">     α →* ayD
+</span></span><span class="line"><span class="cl">     α →* ab
+</span></span><span class="line"><span class="cl">     α →  ddd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Then:  FIRST(α) = {c, a, d}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">If also: α →* λ
+</span></span><span class="line"><span class="cl">Then:    FIRST(α) = {c, a, d, λ}
+</span></span></code></pre></div><h3 id="the-follow-function">The FOLLOW() Function</h3>
+<p><code>FOLLOW(A)</code> is defined <strong>only for non-terminals</strong>. It is the set of all <strong>terminals</strong> that may appear <strong>immediately after</strong> A in any derivation from S:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FOLLOW(A) = { a | S →* uAβ, where a ∈ FIRST(β) }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">If:  S →* aaXdd
+</span></span><span class="line"><span class="cl">     S →* Xa
+</span></span><span class="line"><span class="cl">     S →* BXc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Then:  FOLLOW(X) = {d, a, c}
+</span></span></code></pre></div><h3 id="rules-to-compute-first-and-follow">Rules to Compute FIRST() and FOLLOW()</h3>
+<ol>
+<li><code>FIRST(λ) = {λ}</code></li>
+<li><code>FIRST(a) = {a}</code> — where a is a terminal</li>
+<li><code>FIRST(aα) = {a}</code></li>
+<li><code>FIRST(XY) = FIRST( FIRST(X) · FIRST(Y) )</code></li>
+<li>Given the production <code>A → αXβ</code>:
+<ul>
+<li>If β ≠ λ: <code>FIRST(β) ⊆ FOLLOW(X)</code></li>
+<li>If β = λ: <code>FOLLOW(A) ⊆ FOLLOW(X)</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Why Rule 5 works:</strong>
+Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
+<ul>
+<li>If β ≠ λ: X is directly followed by β, so FIRST(β) ⊆ FOLLOW(X).</li>
+<li>If β = λ: the production becomes A → αX, so X is followed by whatever follows A — therefore FOLLOW(A) ⊆ FOLLOW(X).</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>FIRST() and FOLLOW() sets contain <strong>terminals only</strong> (λ may appear in FIRST but <strong>never</strong> in FOLLOW).</li>
+<li>Compute FIRST() <strong>bottom-up</strong>; compute FOLLOW() <strong>top-down</strong>.</li>
+<li>When computing FOLLOW(X), search for X on the right-hand side of any production.</li>
+<li><strong>Shortcut:</strong> If λ ∉ FIRST(A), then <code>FIRST(AB) = FIRST(A)</code> — B can be ignored entirely.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="augmented-grammars">Augmented Grammars</h3>
+<p>Given grammar G = (V_N, V_T, S, P), the <strong>augmented grammar</strong> G&rsquo; = (V&rsquo;_N, V&rsquo;_T, S&rsquo;, P&rsquo;) is obtained as:</p>
+<ol>
+<li>V&rsquo;_N = V_N ∪ {S'}</li>
+<li>V&rsquo;_T = V_T ∪ {$}  — where <code>$</code> is the <strong>stop symbol</strong></li>
+<li>S&rsquo; = new starting symbol</li>
+<li>P&rsquo; = P ∪ {S&rsquo; → S$}</li>
+</ol>
+<p><strong>Example</strong> — augmenting the arithmetic grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Original:   E → E + T | T     T → T * F | F     F → (E) | a
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Augmented:  E&#39; → E$
+</span></span><span class="line"><span class="cl">            E  → E + T | T
+</span></span><span class="line"><span class="cl">            T  → T * F | F
+</span></span><span class="line"><span class="cl">            F  → (E) | a
+</span></span></code></pre></div><p>The augmented grammar creates a FOLLOW set for E (FOLLOW(E) = {$, +, )}) by providing a clear start symbol E&rsquo; and stop symbol $.</p>
+<hr>
+<h3 id="extended-bnf-and-syntax-diagrams">Extended BNF and Syntax Diagrams</h3>
+<p>Standard BNF can be verbose for repetitive patterns. <strong>Extended BNF (EBNF)</strong> introduces:</p>
+<ul>
+<li><code>[x]</code> — x appears <strong>zero or one time</strong> (optional)</li>
+<li><code>{x}</code> or <code>(x)*</code> — x appears <strong>zero or more times</strong></li>
+<li><code>(x)+</code> — x appears <strong>one or more times</strong></li>
+</ul>
+<p><strong>Example</strong> — rewriting the arithmetic grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Standard BNF:        EBNF:
+</span></span><span class="line"><span class="cl">E → E + T | T   →   E → T {+T}    or    E → T (+T)*
+</span></span><span class="line"><span class="cl">T → T * F | F   →   T → F {*F}          T → F (*F)*
+</span></span><span class="line"><span class="cl">F → (E) | a     →   F → (E) | a         F → (E) | a
+</span></span></code></pre></div><p><strong>Syntax Diagrams</strong> are a visual representation of EBNF. A <strong>rectangle</strong> represents a non-terminal; an <strong>oval</strong> represents a terminal. Loops allow repetition; branching paths represent alternatives.</p>
+<p>For <code>E → T (+T)*</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">─→─ [T] ─→──────────────→─
+</span></span><span class="line"><span class="cl">          ↑              |
+</span></span><span class="line"><span class="cl">          └──── [+] [T] ←┘
+</span></span></code></pre></div><p>For <code>F → (E) | a</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">─→─ [(] ─ [E] ─ [)] ─→─
+</span></span><span class="line"><span class="cl">  ↘                  ↗
+</span></span><span class="line"><span class="cl">    ─────── [a] ──────
+</span></span></code></pre></div><blockquote>
+<p><strong>Note:</strong> <code>{ }</code>, <code>[ ]</code>, and <code>( )*</code> are <strong>meta-symbols</strong> describing grammar structure — they are not terminals in the language itself.</p>
+</blockquote>
+<hr>
+<h3 id="worked-examples--firstfollow">Worked Examples — FIRST/FOLLOW</h3>
+<p><strong>Example 1:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S&#39; → S$
+</span></span><span class="line"><span class="cl">S  → AB
+</span></span><span class="line"><span class="cl">A  → a | λ
+</span></span><span class="line"><span class="cl">B  → b | λ
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FIRST(A) = {a, λ}
+</span></span><span class="line"><span class="cl">FIRST(B) = {b, λ}
+</span></span><span class="line"><span class="cl">FIRST(S) = FIRST(AB) = FIRST({a,λ}·{b,λ}) = {a, b, λ}
+</span></span><span class="line"><span class="cl">FIRST(S&#39;) = FIRST(S$) = {a, b, $}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FOLLOW(S)  = {$}
+</span></span><span class="line"><span class="cl">FOLLOW(A)  = {b, $}   (FIRST(B)={b}; if B→λ then FOLLOW(S)={$})
+</span></span><span class="line"><span class="cl">FOLLOW(B)  = {$}      (B is at the end, so FOLLOW(S)={$})
+</span></span></code></pre></div><p><strong>Example 2:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S&#39; → S$
+</span></span><span class="line"><span class="cl">S  → aAcb | Abc
+</span></span><span class="line"><span class="cl">A  → b | c | λ
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FIRST(A) = {b, c, λ}
+</span></span><span class="line"><span class="cl">FIRST(S) = {a} ∪ FIRST(Abc) = {a} ∪ {b, c} = {a, b, c}
+</span></span><span class="line"><span class="cl">FIRST(S&#39;) = {a, b, c}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FOLLOW(S) = {$}
+</span></span><span class="line"><span class="cl">FOLLOW(A) = {c, b}
+</span></span></code></pre></div><p><strong>Example 3:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">G → E$
+</span></span><span class="line"><span class="cl">E → E + T | T
+</span></span><span class="line"><span class="cl">T → T * F | F
+</span></span><span class="line"><span class="cl">F → (E) | a
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FIRST(F) = {(, a}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIRST(T):  T →* F*F*...*F, so FIRST(T) = FIRST(F) = {(, a}
+</span></span><span class="line"><span class="cl">           (since λ ∉ FIRST(F), we stop at F)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIRST(E):  E →* T+T+...+T, so FIRST(E) = FIRST(T) = {(, a}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIRST(G) = FIRST(E$) = FIRST(E) = {(, a}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FOLLOW(E) = {$, +, )}
+</span></span><span class="line"><span class="cl">FOLLOW(T) = FOLLOW(E) ∪ {*} = {$, +, *, )}
+</span></span><span class="line"><span class="cl">FOLLOW(F) = FOLLOW(T) = {$, +, *, )}
+</span></span></code></pre></div><hr>
+<h2 id="recursive-descent-parsing">Recursive Descent Parsing</h2>
+<p><strong>Recursive Descent Parsing</strong> is a top-down technique where each non-terminal in the grammar is implemented as a <strong>recursive function</strong>. The parser processes tokens left-to-right, using FIRST and FOLLOW sets to choose the correct production.</p>
+<p>The parser maintains a pointer to the current token. <code>get_token()</code> advances the pointer to the next token.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">while  (  x  &gt;=  100  )  $
+</span></span><span class="line"><span class="cl">  ↑
+</span></span><span class="line"><span class="cl">current token          after get_token() →
+</span></span></code></pre></div><h3 id="translation-rules">Translation Rules</h3>
+<p><strong>Rule 1 — terminal <code>a</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">report_error</span><span class="p">();</span>
+</span></span></code></pre></div><p><strong>Rule 2 — concatenation <code>X → α₁α₂…αₙ</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Code</span><span class="p">(</span><span class="nx">α₁</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Code</span><span class="p">(</span><span class="nx">α₂</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Code</span><span class="p">(</span><span class="nx">αₙ</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Rule 3 — alternatives <code>X → α₁ | α₂ | … | αₙ</code> (no λ):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span>      <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α₁</span><span class="p">))</span> <span class="nx">Code</span><span class="p">(</span><span class="nx">α₁</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α₂</span><span class="p">))</span> <span class="nx">Code</span><span class="p">(</span><span class="nx">α₂</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">αₙ</span><span class="p">))</span> <span class="nx">Code</span><span class="p">(</span><span class="nx">αₙ</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Rule 4 — alternatives with λ (say αₙ = λ):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span>      <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α₁</span><span class="p">))</span>   <span class="nx">Code</span><span class="p">(</span><span class="nx">α₁</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α₂</span><span class="p">))</span>   <span class="nx">Code</span><span class="p">(</span><span class="nx">α₂</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">αₙ</span><span class="err">₋</span><span class="nx">₁</span><span class="p">))</span> <span class="nx">Code</span><span class="p">(</span><span class="nx">αₙ</span><span class="err">₋</span><span class="nx">₁</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="nx">NOT</span> <span class="k">in</span> <span class="nx">FOLLOW</span><span class="p">(</span><span class="nx">X</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// else: apply λ production (do nothing)
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Rule 5 — repetition <code>X → α*</code> (EBNF):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Code</span><span class="p">(</span><span class="nx">α</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Every non-terminal has a corresponding function.</li>
+<li>S&rsquo; (augmented start) is represented by <code>main()</code>.</li>
+<li><code>get_token()</code> is called <strong>only once</strong>, at the start of <code>main()</code>.</li>
+<li>EBNF operators map directly to code constructs: <code>()*</code> → <code>while</code>, <code>[]</code> → <code>if</code>, <code>|</code> → <code>if-else</code>. This makes the translation from grammar to code straightforward.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="worked-examples--recursive-descent">Worked Examples — Recursive Descent</h3>
+<p><strong>Example 1:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">G → E$
+</span></span><span class="line"><span class="cl">E → T (+T)*
+</span></span><span class="line"><span class="cl">T → F (*F)*
+</span></span><span class="line"><span class="cl">F → (E) | a
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">E</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;$&#39;</span><span class="p">)</span> <span class="nx">success</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// E → T (+T)*  [Rules 2 &amp; 5]
+</span></span></span><span class="line"><span class="cl">    <span class="nx">T</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">T</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">T</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// T → F (*F)*  [Rules 2 &amp; 5]
+</span></span></span><span class="line"><span class="cl">    <span class="nx">F</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">F</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// F → (E) | a  [Rule 3]
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">E</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Example 2:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Program → body .
+</span></span><span class="line"><span class="cl">body    → Begin stmt (; stmt)* End
+</span></span><span class="line"><span class="cl">stmt    → Read | Write | body | λ
+</span></span></code></pre></div><p>Valid programs in this language:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Begin Read; Write; Read; End.
+</span></span><span class="line"><span class="cl">Begin Read; End.
+</span></span><span class="line"><span class="cl">Begin Read; Begin Read; Write; End. Write; End.
+</span></span><span class="line"><span class="cl">Begin ; ; ; End.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">body</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="nx">success</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">body</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Begin</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">stmt</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">stmt</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">End</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">stmt</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span>      <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Read</span><span class="p">)</span>  <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Write</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Begin</span><span class="p">)</span> <span class="nx">body</span><span class="p">();</span>   <span class="c1">// FIRST(body) = {Begin}
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="s1">&#39;;&#39;</span> <span class="o">||</span> <span class="nx">token</span> <span class="o">==</span> <span class="nx">End</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">report_error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// else: λ production (empty statement) — FOLLOW(stmt) = {; , End}
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="ll1-parsing">LL(1) Parsing</h2>
+<h3 id="what-is-llk">What is LL(k)?</h3>
+<p>An <strong>LL(k) parser</strong> is a top-down parser that uses <strong>k lookahead symbols</strong> to make parsing decisions:</p>
+<ul>
+<li><strong>L</strong> — scans input from <strong>L</strong>eft to right</li>
+<li><strong>L</strong> — produces a <strong>L</strong>eftmost derivation</li>
+<li><strong>(k)</strong> — uses k tokens of lookahead</li>
+</ul>
+<p>In practice, <strong>k = 1</strong> is sufficient for most programming languages. The larger k, the more powerful the parser — but also more complex to implement.</p>
+<blockquote>
+<p><strong>Note:</strong> Ambiguity only occurs when a non-terminal has <strong>multiple</strong> alternative productions. If each non-terminal has exactly one production, parsing is already deterministic.</p>
+</blockquote>
+<h3 id="definition-of-ll1">Definition of LL(1)</h3>
+<p>LL(1) parsing is <strong>table-driven</strong>. The parsing table directs the parser to the correct production based on: (1) the current non-terminal, and (2) the current input token.</p>
+<p><strong>A grammar is LL(1) if, for every non-terminal A with alternatives <code>A → α₁ | α₂ | … | αₙ</code>:</strong></p>
+<ol>
+<li>
+<p><strong>Disjoint FIRST sets</strong> (when no λ productions exist):
+<code>FIRST(αᵢ) ∩ FIRST(αⱼ) = ∅</code> for all i ≠ j.</p>
+</li>
+<li>
+<p><strong>FIRST and FOLLOW are disjoint</strong> (when one alternative is λ, say αₙ = λ):
+<code>FIRST(αᵢ) ∩ FOLLOW(A) = ∅</code> for all i &lt; n.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Intuition:</strong> Condition 1 ensures no two alternatives can begin with the same token. Condition 2 ensures that when λ is an option, what can start the other alternatives doesn&rsquo;t overlap with what can follow A. Together, one lookahead token is always enough.</p>
+</blockquote>
+<hr>
+<h3 id="building-the-ll1-parsing-table">Building the LL(1) Parsing Table</h3>
+<p><strong>Algorithm:</strong> For each production <code>A → α</code> in the grammar:</p>
+<ul>
+<li>For every <code>a ∈ FIRST(α)</code>: add <code>A → α</code> to <code>T[A, a]</code>.</li>
+<li>If <code>λ ∈ FIRST(α)</code>: for every <code>b ∈ FOLLOW(A)</code>, add <code>A → α</code> to <code>T[A, b]</code>.</li>
+</ul>
+<p>All remaining entries are <strong>error</strong> entries.</p>
+<blockquote>
+<p>If any table cell gets more than one entry, the grammar is <strong>not LL(1)</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="worked-examples--ll1">Worked Examples — LL(1)</h3>
+<p><strong>Example 1 — Floating Point Numbers:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">V  → SR$    (1)
+</span></span><span class="line"><span class="cl">S  → +      (2)
+</span></span><span class="line"><span class="cl">S  → −      (3)
+</span></span><span class="line"><span class="cl">S  → λ      (4)
+</span></span><span class="line"><span class="cl">R  → dN.N   (5)
+</span></span><span class="line"><span class="cl">R  → .dN    (6)
+</span></span><span class="line"><span class="cl">N  → dN     (7)
+</span></span><span class="line"><span class="cl">N  → λ      (8)
+</span></span></code></pre></div><p>FIRST and FOLLOW sets:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FIRST(S) = {+, −, λ}      FOLLOW(S) = {d, .}
+</span></span><span class="line"><span class="cl">FIRST(R) = {d, .}         FOLLOW(R) = {$}
+</span></span><span class="line"><span class="cl">FIRST(N) = {d, λ}         FOLLOW(N) = {., $}
+</span></span></code></pre></div><p>Parsing Table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>V_N \ V_T</th>
+          <th><code>+</code></th>
+          <th><code>−</code></th>
+          <th><code>d</code></th>
+          <th><code>.</code></th>
+          <th><code>$</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>V</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>E</td>
+      </tr>
+      <tr>
+          <td>S</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>4</td>
+          <td>E</td>
+      </tr>
+      <tr>
+          <td>R</td>
+          <td>E</td>
+          <td>E</td>
+          <td>5</td>
+          <td>6</td>
+          <td>E</td>
+      </tr>
+      <tr>
+          <td>N</td>
+          <td>E</td>
+          <td>E</td>
+          <td>7</td>
+          <td>8</td>
+          <td>8</td>
+      </tr>
+  </tbody>
+</table>
+<p>No conflicts → <strong>LL(1) grammar</strong>. L(G) = all floating-point numbers.</p>
+<p><strong>Parsing trace for <code>−dd.d$</code>:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Stack</th>
+          <th>Remaining Input</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>V</td>
+          <td>−dd.d$</td>
+          <td>Production 1</td>
+      </tr>
+      <tr>
+          <td>SR$</td>
+          <td>−dd.d$</td>
+          <td>Production 3</td>
+      </tr>
+      <tr>
+          <td>−R$</td>
+          <td>−dd.d$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>R$</td>
+          <td>dd.d$</td>
+          <td>Production 5</td>
+      </tr>
+      <tr>
+          <td>dN.N$</td>
+          <td>dd.d$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>N.N$</td>
+          <td>d.d$</td>
+          <td>Production 7</td>
+      </tr>
+      <tr>
+          <td>dN.N$</td>
+          <td>d.d$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>N.N$</td>
+          <td>.d$</td>
+          <td>Production 8</td>
+      </tr>
+      <tr>
+          <td>.N$</td>
+          <td>.d$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>N$</td>
+          <td>d$</td>
+          <td>Production 7</td>
+      </tr>
+      <tr>
+          <td>dN$</td>
+          <td>d$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>N$</td>
+          <td>$</td>
+          <td>Production 8</td>
+      </tr>
+      <tr>
+          <td>$</td>
+          <td>$</td>
+          <td>Pop &amp; advance</td>
+      </tr>
+      <tr>
+          <td>λ</td>
+          <td>λ</td>
+          <td><strong>Accept</strong></td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>If at any point the stack top and the current input are <strong>two different terminals</strong>, the parser throws a syntax error.</p>
+</blockquote>
+<p><strong>Example 2 — Block-Statement Language:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">program   → block $         (1)
+</span></span><span class="line"><span class="cl">block     → {decls stmts}   (2)
+</span></span><span class="line"><span class="cl">decls     → D; decls        (3) | λ  (4)
+</span></span><span class="line"><span class="cl">stmts     → statement; stmts (5) | λ (6)
+</span></span><span class="line"><span class="cl">statement → if(7) | while(8) | ass(9) | scan(10) | print(11) | block(12) | λ(13)
+</span></span></code></pre></div><p>FIRST and FOLLOW sets:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FIRST(program)   = {{}
+</span></span><span class="line"><span class="cl">FIRST(block)     = {{}        FOLLOW(block)    = {;, $}
+</span></span><span class="line"><span class="cl">FIRST(decls)     = {D, λ}     FOLLOW(decls)    = {if, while, ass, scan, print, {, }, ;}
+</span></span><span class="line"><span class="cl">FIRST(stmts)     = {if, while, ass, scan, print, {, ;, λ}   FOLLOW(stmts) = {}}
+</span></span><span class="line"><span class="cl">FIRST(statement) = {if, while, ass, scan, print, {, ;, λ}   FOLLOW(statement) = {;}
+</span></span></code></pre></div><p>Parsing Table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>V_N \ V_T</th>
+          <th>if</th>
+          <th>while</th>
+          <th>ass</th>
+          <th>scan</th>
+          <th>print</th>
+          <th><code>{</code></th>
+          <th><code>}</code></th>
+          <th>D</th>
+          <th><code>;</code></th>
+          <th><code>$</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>program</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>block</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>decls</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>3</td>
+          <td>4</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>stmts</td>
+          <td>5</td>
+          <td>5</td>
+          <td>5</td>
+          <td>5</td>
+          <td>5</td>
+          <td>5</td>
+          <td>6</td>
+          <td></td>
+          <td>5</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>statement</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>13</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example 3 — Dangling Else (LL(1) Conflict and Fix):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S&#39; → S$    (1)
+</span></span><span class="line"><span class="cl">S  → iCSE  (2)
+</span></span><span class="line"><span class="cl">E  → eS    (3) | λ  (4)
+</span></span><span class="line"><span class="cl">S  → a     (5)
+</span></span><span class="line"><span class="cl">C  → c     (6)
+</span></span></code></pre></div><p>Initial table has a <strong>conflict</strong> in state E on token <code>e</code> (both productions 3 and 4 apply). <strong>Fix:</strong> remove production 4 from the conflict entry — prefer to shift (match <code>else</code> with the nearest <code>if</code>):</p>
+<table>
+  <thead>
+      <tr>
+          <th>V_N \ V_T</th>
+          <th><code>i</code></th>
+          <th><code>a</code></th>
+          <th><code>e</code></th>
+          <th><code>c</code></th>
+          <th><code>$</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S'</td>
+          <td>1</td>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>S</td>
+          <td>2</td>
+          <td>5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>E</td>
+          <td></td>
+          <td></td>
+          <td>3</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>C</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>6</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> If a grammar is LL(1), it is unambiguous. However, the converse is not necessarily true.</p>
+</blockquote>
+<hr>
+<h2 id="problems-with-top-down-parsing">Problems with Top-Down Parsing</h2>
+<h3 id="left-recursion">Left Recursion</h3>
+<p>A grammar is <strong>left-recursive</strong> if it has a production of the form <code>A → Aα</code>. This causes <strong>infinite recursion</strong> in recursive descent parsing — the function calls itself immediately without consuming any input:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// Translating E → E + T | T directly:
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">E</span><span class="p">();</span>       <span class="c1">// Immediate infinite recursion → stack overflow!
+</span></span></span><span class="line"><span class="cl">    <span class="nx">match</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">T</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Right-recursive grammars don&rsquo;t have this issue — <code>α</code> is processed first, consuming tokens and ensuring the recursion terminates.</p>
+<blockquote>
+<p><strong>Why left recursion violates LL(1):</strong> For <code>A → Aα | β</code>, every derivation must eventually use <code>A → β</code> to terminate. So FIRST(Aα) = FIRST(A) = FIRST(β), meaning <code>FIRST(Aα) ∩ FIRST(β) ≠ ∅</code> — a direct LL(1) violation creating a conflict in the parsing table.</p>
+</blockquote>
+<p><strong>Transformation — Eliminating Left Recursion:</strong></p>
+<p>Given:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A → Aα₁ | Aα₂ | ... | Aαₙ | β₁ | β₂ | ... | βₘ
+</span></span></code></pre></div><p>Introduce a new non-terminal A&rsquo; and rewrite as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A  → β₁A&#39; | β₂A&#39; | ... | βₘA&#39;
+</span></span><span class="line"><span class="cl">A&#39; → α₁A&#39; | α₂A&#39; | ... | αₙA&#39; | λ
+</span></span></code></pre></div><p><strong>Simple example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Before:             After:
+</span></span><span class="line"><span class="cl">A → Ab  (L(G)=ab*) A  → aA&#39;
+</span></span><span class="line"><span class="cl">A → a               A&#39; → bA&#39; | λ
+</span></span></code></pre></div><p><strong>Applied to the arithmetic grammar:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Before:                    After:
+</span></span><span class="line"><span class="cl">E → E + T | T              E  → TE&#39;
+</span></span><span class="line"><span class="cl">T → T * F | F              E&#39; → +TE&#39; | λ
+</span></span><span class="line"><span class="cl">F → (E) | a                T  → FT&#39;
+</span></span><span class="line"><span class="cl">                            T&#39; → *FT&#39; | λ
+</span></span><span class="line"><span class="cl">                            F  → (E) | a
+</span></span></code></pre></div><p>This grammar is unambiguous, handles precedence and associativity correctly, and is ready to be used for parser construction.</p>
+<hr>
+<h3 id="the-dangling-else-problem">The Dangling Else Problem</h3>
+<p>The grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if-stmt → IF condition stmt
+</span></span><span class="line"><span class="cl">if-stmt → IF condition stmt ELSE stmt
+</span></span></code></pre></div><p>is <strong>ambiguous</strong> — the nested statement <code>IF C IF C S ELSE S</code> has two valid derivation trees (ELSE could belong to either IF).</p>
+<p><strong>Solution 1 — Add a delimiter</strong> (e.g. <code>ENDIF</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if-stmt → IF condition stmt ENDIF
+</span></span><span class="line"><span class="cl">if-stmt → IF condition stmt ELSE stmt ENDIF
+</span></span></code></pre></div><p>The grammar becomes unambiguous, but requires more keywords and produces less readable code.</p>
+<p><strong>Solution 2 — Shift preference</strong> (most common in practice):</p>
+<p>When the parser sees ELSE, it <strong>shifts</strong> — attaching ELSE to the <strong>nearest unmatched IF</strong>. This matches the convention of C, Java, Python, and most real languages.</p>
+<ul>
+<li><strong>Advantages:</strong> matches programmer intuition; no extra syntax required.</li>
+<li><strong>Disadvantages:</strong> grammar remains technically ambiguous; relies on parser behavior rather than grammar rules.</li>
+</ul>
+<hr>
+<h3 id="left-factoring">Left Factoring</h3>
+<p>When two productions share a common prefix:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A → αβ
+</span></span><span class="line"><span class="cl">A → αγ
+</span></span></code></pre></div><p>This is not LL(1) — both alternatives start with α, creating a conflict. <strong>Fix:</strong> introduce a new non-terminal to factor out the common prefix:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A → αB
+</span></span><span class="line"><span class="cl">B → β | γ
+</span></span></code></pre></div><p><strong>Applied to if…else:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Before:
+</span></span><span class="line"><span class="cl">  if-stmt → IF condition stmt
+</span></span><span class="line"><span class="cl">  if-stmt → IF condition stmt ELSE stmt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">After:
+</span></span><span class="line"><span class="cl">  if-stmt   → IF condition stmt else-part
+</span></span><span class="line"><span class="cl">  else-part → ELSE stmt | λ
+</span></span></code></pre></div><p>Left factoring reduces the number of choices in the parsing table. However, it does <strong>not</strong> resolve the underlying ambiguity of the dangling else — the shift-preference rule is still needed alongside it.</p>
+<p><a href="../ch5-part5-bottom-up-parsing/"><em>Chapter 5, Part 5 – Bottom-Up Parsing</em></a></p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/files/ch5-part3-parsing/" id="nav-prev"><em>Chapter 5, Part 3 – Parsing</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

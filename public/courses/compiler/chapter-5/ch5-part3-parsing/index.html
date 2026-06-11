@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 3 – Parsing · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 3 – Parsing</h2>
+  <p class="post-date"><em>posted on 2026 Jan 01</em></p>
+   <h2 id="chapter-5-part-3--parsing">Chapter 5, Part 3 – Parsing</h2>
+<p><em>posted on 2026 Jan 01</em></p>
+<p><strong>Contents</strong></p>
+<ul>
+<li><a href="#what-is-parsing">What is Parsing?</a></li>
+<li><a href="#parsing-techniques">Parsing Techniques</a></li>
+<li><a href="#ambiguity">Ambiguity</a></li>
+</ul>
+<hr>
+<h2 id="what-is-parsing">What is Parsing?</h2>
+<p><strong>Parsing</strong> is the process of analyzing a sequence of tokens to determine its grammatical structure with respect to a given formal grammar.</p>
+<p>Given a grammar G = (V_N, V_T, S, P) and an input string w, the parser answers: <strong>Is w ∈ L(G)?</strong></p>
+<p>The parser&rsquo;s job:</p>
+<ol>
+<li><strong>Accept or Reject</strong> — determine if the input string is a valid sentence in the language.</li>
+<li><strong>Report Errors</strong> — if invalid, identify and report syntax errors.</li>
+<li><strong>Build Structure</strong> — if valid, construct a parse tree representing the syntactic structure.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Parsers in general do not construct explicit trees in practice. However, conceptually, parsing can be understood as attempting to build a derivation that shows how the input derives from the start symbol.</p>
+</blockquote>
+<hr>
+<h2 id="parsing-techniques">Parsing Techniques</h2>
+<p>There are 2 main parsing techniques used by a compiler.</p>
+<h3 id="top-down-parsing">Top-Down Parsing</h3>
+<p>The parser builds the derivation tree <strong>from the root (S) down to the leaves (sentence)</strong> — it tries to derive the sentence using <strong>leftmost derivation</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S  →*  program    (leftmost derivation)
+</span></span></code></pre></div><p><strong>Example</strong> — checking if <code>+dd.d$</code> is in the language of the grammar <code>V → SR$</code>, <code>S → + | − | λ</code>, <code>R → .dN | dN.N</code>, <code>N → dN | λ</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">V → SR$ → +R$ → +dN.N$ → +ddN.N$ → +dd.N$ → +dd.dN$ → +dd.d$  ✓
+</span></span></code></pre></div><p>Since we ended with all terminals, the sentence is valid. The parse tree for this derivation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">         V
+</span></span><span class="line"><span class="cl">        / \
+</span></span><span class="line"><span class="cl">       S   R            $
+</span></span><span class="line"><span class="cl">       |   |\ \
+</span></span><span class="line"><span class="cl">       +   d N . N
+</span></span><span class="line"><span class="cl">             |     \
+</span></span><span class="line"><span class="cl">             d N  d N
+</span></span><span class="line"><span class="cl">               |      \
+</span></span><span class="line"><span class="cl">               λ       λ
+</span></span></code></pre></div><blockquote>
+<p><strong>Major Problem:</strong> The parser does not know which production to select at each derivation step — this is the central challenge of top-down parsing. We will learn how to solve this with Recursive Descent and LL(1) parsing.</p>
+</blockquote>
+<h3 id="bottom-up-parsing">Bottom-Up Parsing</h3>
+<p>The parser builds the derivation tree <strong>from the leaves (sentence) up to the root (S)</strong> — it applies <strong>reduction</strong> steps (the opposite of derivation) until the starting symbol is reached. The resulting tree built from leaves to root is called a <strong>B-Tree</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Sentence  →*  S    (reduction)
+</span></span></code></pre></div><blockquote>
+<p><strong>Note:</strong> The string λ is present everywhere implicitly, and can be inserted wherever needed.</p>
+</blockquote>
+<p><strong>Example</strong> — reducing <code>+dd.d$</code> back to V:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+dd.d$ → +ddλ.d$ → +ddN.d$ → +dN.d$ → +dN.dλ$
+</span></span><span class="line"><span class="cl">       → +dN.dN$ → +dN.N$ → +R$ → SR$ → V  ✓
+</span></span></code></pre></div><p>The sentence is in the grammar. However, taking the wrong reduction path leads to a deadlock:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+dd.d$ → +ddλ.d$ → +ddN.d$ → +dN.d$ → +dN.dλ$
+</span></span><span class="line"><span class="cl">       → +dN.dN$ → +dNR$ → +NR$ → SNR$ → Deadlock
+</span></span></code></pre></div><blockquote>
+<p><strong>Major Problem:</strong> Which substring should be selected for reduction at each step? This is the central challenge of bottom-up parsing — it is solved using <strong>handles</strong> and LR parsing techniques.</p>
+</blockquote>
+<hr>
+<h2 id="ambiguity">Ambiguity</h2>
+<p>Consider the grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">num → num d
+</span></span><span class="line"><span class="cl">num → d
+</span></span></code></pre></div><p>The sentence <code>dddd</code> has exactly one derivation tree — there is only one way to derive it. This grammar is <strong>unambiguous</strong>.</p>
+<p><strong>Definition:</strong> A grammar G is <strong>ambiguous</strong> if there is <strong>at least one sentence with more than one derivation tree</strong> — that is, there is more than one way to derive the sentence. This makes the parsing algorithm non-deterministic.</p>
+<p><strong>Example</strong> — the grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E → E + E
+</span></span><span class="line"><span class="cl">E → E * E
+</span></span><span class="line"><span class="cl">E → (E) | a
+</span></span></code></pre></div><p>The sentence <code>a + a * a</code> has <strong>two</strong> derivation trees:</p>
+<p><em>Tree 1 — represents <code>a + (a * a)</code> (multiplication first — mathematically correct):</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
+</span></span><span class="line"><span class="cl">       /|\
+</span></span><span class="line"><span class="cl">      E + E
+</span></span><span class="line"><span class="cl">      |   /|\
+</span></span><span class="line"><span class="cl">      a  E * E
+</span></span><span class="line"><span class="cl">         |   |
+</span></span><span class="line"><span class="cl">         a   a
+</span></span></code></pre></div><p><em>Tree 2 — represents <code>(a + a) * a</code> (addition first — incorrect by convention):</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
+</span></span><span class="line"><span class="cl">       /|\
+</span></span><span class="line"><span class="cl">      E * E
+</span></span><span class="line"><span class="cl">     /|\  |
+</span></span><span class="line"><span class="cl">    E + E a
+</span></span><span class="line"><span class="cl">    |   |
+</span></span><span class="line"><span class="cl">    a   a
+</span></span></code></pre></div><p>Because both trees are valid derivations of the same sentence, this grammar is <strong>ambiguous</strong>. The grammar does not enforce operator precedence.</p>
+<h3 id="attempt-1--separating-operations-into-levels">Attempt 1 — Separating Operations into Levels</h3>
+<p>To enforce precedence (multiplication before addition):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E → E + E | T
+</span></span><span class="line"><span class="cl">T → T * T | F
+</span></span><span class="line"><span class="cl">F → (E) | a
+</span></span></code></pre></div><p>This solves the precedence problem — <code>a + a * a</code> now correctly represents <code>a + (a * a)</code>. But the sentence <code>a + a + a</code> still has more than one derivation tree, so <strong>associativity</strong> is not yet resolved.</p>
+<h3 id="solution--left-associative-grammar">Solution — Left-Associative Grammar</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E → E + T | T
+</span></span><span class="line"><span class="cl">T → T * F | F
+</span></span><span class="line"><span class="cl">F → (E) | a
+</span></span></code></pre></div><p>Derivation tree for <code>a + a + a</code> — only one possible tree, representing <code>(a + a) + a</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
+</span></span><span class="line"><span class="cl">       /|\
+</span></span><span class="line"><span class="cl">      E + T
+</span></span><span class="line"><span class="cl">     /|\   \
+</span></span><span class="line"><span class="cl">    E + T   F
+</span></span><span class="line"><span class="cl">    |   |   |
+</span></span><span class="line"><span class="cl">    T   F   a
+</span></span><span class="line"><span class="cl">    |   |
+</span></span><span class="line"><span class="cl">    F   a
+</span></span><span class="line"><span class="cl">    |
+</span></span><span class="line"><span class="cl">    a
+</span></span></code></pre></div><p>Derivation tree for <code>a + a * a</code> — only one possible tree, representing <code>a + (a * a)</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
+</span></span><span class="line"><span class="cl">       /|\
+</span></span><span class="line"><span class="cl">      E + T
+</span></span><span class="line"><span class="cl">      |   /|\
+</span></span><span class="line"><span class="cl">      T  T * F
+</span></span><span class="line"><span class="cl">      |  |   |
+</span></span><span class="line"><span class="cl">      F  F   a
+</span></span><span class="line"><span class="cl">      |  |
+</span></span><span class="line"><span class="cl">      a  a
+</span></span></code></pre></div><p>This grammar solves all three major problems:</p>
+<ul>
+<li><strong>Ambiguity</strong> — only one derivation tree per sentence.</li>
+<li><strong>Precedence</strong> — multiplication has higher precedence than addition (<code>*</code> is deeper in the tree).</li>
+<li><strong>Associativity</strong> — operations of the same level associate left-to-right.</li>
+</ul>
+<h3 id="alternative--right-associative-grammar">Alternative — Right-Associative Grammar</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">E → T + E | T
+</span></span><span class="line"><span class="cl">T → F * T | F
+</span></span><span class="line"><span class="cl">F → (E) | a
+</span></span></code></pre></div><p>This grammar is also unambiguous, but interprets <code>a + a + a</code> as <code>a + (a + a)</code> — right-to-left. Since standard mathematics and most programming languages associate left-to-right, <strong>the left-associative grammar is the correct solution</strong> for arithmetic expressions.</p>
+<p><a href="../ch5-part4-top-down-parsing/"><em>Chapter 5, Part 4 – Top-Down Parsing</em></a></p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/chapter-5/ch5-part2-grammar/" id="nav-prev"><em>Chapter 5, Part 2 – Grammar</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/compiler/chapter-5/ch5-part4-top-down-parsing/" id="nav-next"><em>Chapter 5, Part 4 – Top-Down Parsing</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

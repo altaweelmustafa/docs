@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 1 – Introduction to Syntax Analysis · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 1 – Introduction to Syntax Analysis</h2>
+  <p class="post-date"><em>posted on 2026 Jan 01</em></p>
+   <h2 id="chapter-5-part-1--introduction-to-syntax-analysis">Chapter 5, Part 1 – Introduction to Syntax Analysis</h2>
+<p><em>posted on 2026 Jan 01</em></p>
+<p><strong>Contents</strong></p>
+<ul>
+<li><a href="#what-is-a-syntax-analyzer">What is a Syntax Analyzer?</a></li>
+<li><a href="#connecting-the-scanner-and-parser">Connecting the Scanner and Parser</a></li>
+</ul>
+<hr>
+<h2 id="what-is-a-syntax-analyzer">What is a Syntax Analyzer?</h2>
+<p>A <strong>Syntax Analyzer</strong> (or <strong>Parser</strong>) is an algorithm that groups the set of tokens sent by the Scanner to form syntax structures such as Expressions, Statements, Blocks, and so on.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Scanner  →  Set of Tokens  →  Parser (Syntax Analyzer)  →  Syntax Structures
+</span></span></code></pre></div><p>Simply put, the parser examines whether the source code written follows the <strong>grammar</strong> (production rules) of the language.</p>
+<p>The syntax structure of programming languages — and even spoken languages — can be expressed using <strong>BNF notation</strong> (Backus–Naur Form). For example, in spoken English:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sentence    → noun-phrase verb-phrase
+</span></span><span class="line"><span class="cl">noun-phrase → article noun
+</span></span><span class="line"><span class="cl">article     → THE | A | AN | ...
+</span></span><span class="line"><span class="cl">noun        → STUDENT | BOOK | ...
+</span></span><span class="line"><span class="cl">verb-phrase → verb noun-phrase
+</span></span><span class="line"><span class="cl">verb        → READS | BUYS | ...
+</span></span></code></pre></div><p>A derivation of a sentence from this grammar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sentence
+</span></span><span class="line"><span class="cl">→ noun-phrase verb-phrase
+</span></span><span class="line"><span class="cl">→ article noun verb-phrase
+</span></span><span class="line"><span class="cl">→ THE noun verb-phrase
+</span></span><span class="line"><span class="cl">→ THE STUDENT verb-phrase
+</span></span><span class="line"><span class="cl">→ THE STUDENT verb noun-phrase
+</span></span><span class="line"><span class="cl">→ THE STUDENT READS noun-phrase
+</span></span><span class="line"><span class="cl">→ THE STUDENT READS article noun
+</span></span><span class="line"><span class="cl">→ THE STUDENT READS A noun
+</span></span><span class="line"><span class="cl">→ THE STUDENT READS A BOOK
+</span></span></code></pre></div><p>In a similar manner, the parser tries to derive your source program from the <strong>starting symbol</strong> of the grammar.</p>
+<blockquote>
+<p><strong>Note — Syntax vs. Semantics:</strong> A sentence like <em>THE BOOK BUYS A STUDENT</em> is syntactically correct but semantically meaningless. The parser only verifies syntactic correctness; semantic analysis is performed later by the semantic analyzer.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note — BNF Notation:</strong> The formal BNF notation uses angle brackets and <code>::=</code>, for example <code>⟨sentence⟩ ::= ⟨noun-phrase⟩⟨verb-phrase⟩</code>. We use the simpler arrow notation throughout this chapter since it is easier to work with.</p>
+</blockquote>
+<hr>
+<h2 id="connecting-the-scanner-and-parser">Connecting the Scanner and Parser</h2>
+<p>The first two compilation phases work together to understand the structure of source code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Source Code (characters)
+</span></span><span class="line"><span class="cl">        ↓  [uses Regular Grammars]
+</span></span><span class="line"><span class="cl">    Scanner (Chapter 4)
+</span></span><span class="line"><span class="cl">        ↓  Tokens
+</span></span><span class="line"><span class="cl">    Parser (Chapter 5)
+</span></span><span class="line"><span class="cl">        ↓  [uses Context-Free Grammars]
+</span></span><span class="line"><span class="cl">  Syntax Tree (Program Structure)
+</span></span></code></pre></div><p><strong>Example: From Characters to Syntax</strong></p>
+<p>Consider the line of source code: <code>while (x &gt;= 100)</code></p>
+<p><strong>Phase 1 – Scanner (Lexical Analysis):</strong></p>
+<p>The scanner processes the character stream and identifies individual tokens using Regular Expressions / FSA:</p>
+<ul>
+<li><code>while</code> → matches the pattern for keywords</li>
+<li><code>x</code> → matches <code>L(L|d)*</code> for identifiers</li>
+<li><code>&gt;=</code> → matches the pattern for operators</li>
+<li><code>100</code> → matches <code>[+|−]d+</code> for integers</li>
+<li><code>(</code> and <code>)</code> → special symbols</li>
+</ul>
+<p>Output of Scanner: <code>[while, (, x, &gt;=, 100, )]</code></p>
+<p><strong>Phase 2 – Parser (Syntax Analysis):</strong></p>
+<p>The parser takes the token stream and verifies it forms valid syntax structures according to Context-Free Grammar production rules such as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">while-stmt  → WHILE ( condition ) statement
+</span></span><span class="line"><span class="cl">condition   → expression op expression
+</span></span><span class="line"><span class="cl">expression  → identifier | number
+</span></span></code></pre></div><p>Output of Parser: A <strong>syntax tree</strong> representing the program structure.</p>
+<p><strong>Understanding &ldquo;Language&rdquo; in Both Contexts:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Chapter 4: Scanner</th>
+          <th>Chapter 5: Parser</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Language means</td>
+          <td>Pattern for ONE token type</td>
+          <td>Structure of the ENTIRE program</td>
+      </tr>
+      <tr>
+          <td>Example</td>
+          <td>`L(L</td>
+          <td>d)*` represents all valid identifiers</td>
+      </tr>
+      <tr>
+          <td>Uses</td>
+          <td>Regular Grammars</td>
+          <td>Context-Free Grammars</td>
+      </tr>
+      <tr>
+          <td>Power</td>
+          <td>Simpler, less powerful</td>
+          <td>More powerful, more complex</td>
+      </tr>
+      <tr>
+          <td>Task</td>
+          <td>Groups characters into tokens</td>
+          <td>Groups tokens into syntax structures</td>
+      </tr>
+  </tbody>
+</table>
+<p><a href="../ch5-part2-grammar/"><em>Chapter 5, Part 2 – Grammar</em></a></p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/compiler/files/ch5-part2-grammar/" id="nav-next"><em>Chapter 5, Part 2 – Grammar</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
