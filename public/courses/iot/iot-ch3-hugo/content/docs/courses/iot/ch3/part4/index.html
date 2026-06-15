@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 4 – Data Modification and Common IoT Attacks · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 4 – Data Modification and Common IoT Attacks</h2>
+  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
+   <p>IoT devices collect and transmit sensitive data. If attackers can read, modify, or misuse that data, the system may make unsafe decisions.</p>
+<h2 id="modification-of-sensitive-data">Modification of sensitive data</h2>
+<p>Data can be captured during transit, changed, and then forwarded to the intended node.</p>
+<p>The entire message does not always need to be changed. Sometimes changing one field is enough to cause harm.</p>
+<h3 id="three-modification-types">Three modification types</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Content modification</td>
+          <td>Part of the information is changed</td>
+      </tr>
+      <tr>
+          <td>Sequence modification</td>
+          <td>Data is delivered in the wrong order</td>
+      </tr>
+      <tr>
+          <td>Time modification</td>
+          <td>Old data is delayed or replayed later</td>
+      </tr>
+  </tbody>
+</table>
+<p>Examples of impact:</p>
+<ul>
+<li>A health reading may be changed before reaching the server.</li>
+<li>Traffic information may be delayed or modified.</li>
+<li>A command sent to an actuator may be changed.</li>
+</ul>
+<h3 id="prevention-ideas">Prevention ideas</h3>
+<ul>
+<li>End-to-end encryption</li>
+<li>Message authentication codes</li>
+<li>Digital signatures</li>
+<li>Sequence numbers</li>
+<li>Timestamps</li>
+<li>Replay protection</li>
+<li>Firmware and software updates</li>
+</ul>
+<h2 id="eavesdropping">Eavesdropping</h2>
+<p>Eavesdropping means secretly listening to communication to steal data.</p>
+<p>In IoT, stolen data may include:</p>
+<ul>
+<li>Sensor readings</li>
+<li>Device identifiers</li>
+<li>Commands</li>
+<li>Credentials</li>
+<li>Location information</li>
+<li>Personal or health data</li>
+</ul>
+<p>The attacker does not need to change data for eavesdropping to be harmful. Reading sensitive data is enough to break confidentiality.</p>
+<p>Common defenses include encryption, secure protocols, disabling unnecessary services, and monitoring traffic for suspicious activity.</p>
+<h2 id="rogue-access-point">Rogue access point</h2>
+<p>A rogue access point is a fake network access point that tricks users or IoT devices into connecting.</p>
+<p>After a victim connects, traffic may pass through the attacker&rsquo;s device. This can expose logins, sensor data, commands, or private information.</p>
+<p>Defenses include:</p>
+<ul>
+<li>Strong Wi-Fi authentication</li>
+<li>Avoiding unknown networks</li>
+<li>Certificate validation</li>
+<li>VPN use where appropriate</li>
+<li>Network segmentation</li>
+<li>Monitoring for duplicate or suspicious network names</li>
+</ul>
+<h2 id="privilege-escalation">Privilege escalation</h2>
+<p>Privilege escalation means gaining more access rights than allowed.</p>
+<p>Two common forms are:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Horizontal escalation</td>
+          <td>Moving to another device or account with similar privilege level</td>
+      </tr>
+      <tr>
+          <td>Vertical escalation</td>
+          <td>Gaining higher privilege on the same device or system</td>
+      </tr>
+  </tbody>
+</table>
+<p>Common causes include:</p>
+<ul>
+<li>Default or shared credentials</li>
+<li>Unpatched vulnerabilities</li>
+<li>Misconfigured permissions</li>
+<li>Insecure update mechanisms</li>
+<li>Weak access control</li>
+<li>Lack of network segmentation</li>
+</ul>
+<p>Possible impact includes data theft, malware installation, botnet participation, service disruption, and hiding attacker activity.</p>
+<h2 id="brute-force-attack">Brute-force attack</h2>
+<p>A brute-force attack tries many password guesses until access is obtained.</p>
+<p>IoT devices are often vulnerable because some users keep default or weak passwords.</p>
+<p>Defenses include:</p>
+<ul>
+<li>Changing default credentials immediately</li>
+<li>Strong unique passwords</li>
+<li>Account lockout or throttling</li>
+<li>Multi-factor authentication where possible</li>
+<li>Disabling unnecessary remote access</li>
+<li>Monitoring failed login attempts</li>
+<li>Keeping firmware updated</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Attack</th>
+          <th>Main security property affected</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data modification</td>
+          <td>Integrity</td>
+      </tr>
+      <tr>
+          <td>Eavesdropping</td>
+          <td>Confidentiality</td>
+      </tr>
+      <tr>
+          <td>Rogue access point</td>
+          <td>Confidentiality and authentication</td>
+      </tr>
+      <tr>
+          <td>Privilege escalation</td>
+          <td>Authorization and access control</td>
+      </tr>
+      <tr>
+          <td>Brute-force</td>
+          <td>Authentication</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/iot/iot-ch3-hugo/content/docs/courses/iot/ch3/part3/" id="nav-prev"><em>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/iot/iot-ch3-hugo/content/docs/courses/iot/ch3/part5/" id="nav-next"><em>Chapter 3, Part 5 – Attacks as per Architecture</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

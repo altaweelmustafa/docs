@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – IoT System Phases · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – IoT System Phases</h2>
+  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
+   <p>IoT security becomes easier to understand when the system is divided into phases. Each phase has its own role, and each role introduces possible security risks.</p>
+<h2 id="1-data-collection--acquisition--perception">1. Data collection / acquisition / perception</h2>
+<p>This phase collects data from IoT devices or things.</p>
+<p>Examples include:</p>
+<ul>
+<li>Sensors that collect dynamic data</li>
+<li>RFID tags that identify static objects</li>
+<li>Chips inside vehicles or moving devices</li>
+<li>Body sensors in healthcare systems</li>
+</ul>
+<p>The main security idea is that the system must trust the source of the collected data. If the device is fake, compromised, or misconfigured, the whole system may make decisions based on wrong data.</p>
+<h2 id="2-storage">2. Storage</h2>
+<p>After data is collected, it needs to be stored.</p>
+<p>Storage may happen in:</p>
+<ul>
+<li>Local memory on the IoT device</li>
+<li>A local gateway</li>
+<li>A cloud data center</li>
+</ul>
+<p>Many IoT devices have limited memory and processing power, so cloud storage is often used. This makes storage easier, but it also introduces cloud-related risks such as leakage, unauthorized access, and data sovereignty concerns.</p>
+<h2 id="3-intelligent-processing">3. Intelligent processing</h2>
+<p>In this phase, the system analyzes data and provides smart services.</p>
+<p>The processing unit may:</p>
+<ul>
+<li>Answer user queries</li>
+<li>Detect events</li>
+<li>Control connected devices</li>
+<li>Trigger automatic actions</li>
+</ul>
+<p>The security risk here is that wrong or manipulated data can lead to wrong decisions. In critical systems such as healthcare, traffic, or factories, that can cause serious damage.</p>
+<h2 id="4-data-transmission">4. Data transmission</h2>
+<p>Data transmission happens between different parts of the IoT system:</p>
+<ul>
+<li>From sensors or RFID tags to data centers</li>
+<li>From storage to processing units</li>
+<li>From processors to controllers, devices, or end users</li>
+</ul>
+<p>This phase needs confidentiality, integrity, and authentication. Attackers may try to listen to data, modify it, replay old messages, or pretend to be a legitimate device.</p>
+<h2 id="5-delivery">5. Delivery</h2>
+<p>Delivery means sending processed data or commands to the correct destination on time.</p>
+<p>A secure delivery process should make sure that:</p>
+<ul>
+<li>Data reaches the intended receiver</li>
+<li>Data is not changed during delivery</li>
+<li>Commands are delivered on time</li>
+<li>Legitimate users and devices can still access the service</li>
+</ul>
+<h2 id="quick-summary">Quick summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Phase</th>
+          <th>Main purpose</th>
+          <th>Main security concern</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data collection</td>
+          <td>Gather data from devices</td>
+          <td>Fake or compromised data source</td>
+      </tr>
+      <tr>
+          <td>Storage</td>
+          <td>Keep data locally or in the cloud</td>
+          <td>Leakage, access control, data loss</td>
+      </tr>
+      <tr>
+          <td>Processing</td>
+          <td>Analyze data and control devices</td>
+          <td>Wrong decisions from manipulated data</td>
+      </tr>
+      <tr>
+          <td>Transmission</td>
+          <td>Move data between components</td>
+          <td>Eavesdropping, modification, replay</td>
+      </tr>
+      <tr>
+          <td>Delivery</td>
+          <td>Send final result or command</td>
+          <td>Delay, alteration, or wrong receiver</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/iot/iot-ch3-hugo/content/docs/courses/iot/ch3/part2/" id="nav-next"><em>Chapter 3, Part 2 – Phase Attacks and Data Protection</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

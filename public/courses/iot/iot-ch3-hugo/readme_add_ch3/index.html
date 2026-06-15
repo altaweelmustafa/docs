@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title"></h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h1 id="add-iot-chapter-3-to-the-hugo-site">Add IoT Chapter 3 to the Hugo site</h1>
+<p>This pack adds <strong>Chapter 3: IoT as Interconnection of Threats</strong> up to slide 40, ending at <strong>Attacks as per architecture</strong>.</p>
+<h2 id="1-copy-the-chapter-folder">1) Copy the chapter folder</h2>
+<p>From your Hugo project root:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp -r content/docs/courses/iot/ch3 YOUR_HUGO_PROJECT/content/docs/courses/iot/
+</span></span></code></pre></div><p>If you unzip this pack inside the Hugo project root, you can just keep the <code>content/docs/courses/iot/ch3/</code> folder where it is.</p>
+<h2 id="2-add-the-chapter-3-link-to-the-iot-security-page">2) Add the Chapter 3 link to the IoT Security page</h2>
+<p>Open:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">content/docs/courses/iot/_index.md
+</span></span></code></pre></div><p>Add this after Chapter 2:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">[<span class="nt">Chapter 3: IoT as Interconnection of Threats</span>](<span class="na">ch3/</span>)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IoT phases, phase-based threats, availability attacks, data modification, eavesdropping, privilege escalation, brute-force attacks, and architecture-based attacks up to slide 40.
+</span></span></code></pre></div><h2 id="3-run-locally">3) Run locally</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D
+</span></span></code></pre></div><p>Open:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost:1313/docs/courses/iot/ch3/
+</span></span></code></pre></div>
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

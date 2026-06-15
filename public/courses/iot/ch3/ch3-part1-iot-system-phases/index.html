@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – IoT System Phases · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – IoT System Phases</h2>
+  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-are-the-phases-of-an-iot-system">What Are the Phases of an IoT System?</a></li>
+    <li><a href="#phase-i-data-collection--acquisition--perception">Phase I: Data Collection / Acquisition / Perception</a></li>
+    <li><a href="#phase-ii-storage">Phase II: Storage</a></li>
+    <li><a href="#phase-iii-intelligent-processing">Phase III: Intelligent Processing</a></li>
+    <li><a href="#phase-iv-data-transmission">Phase IV: Data Transmission</a></li>
+    <li><a href="#phase-v-delivery">Phase V: Delivery</a></li>
+    <li><a href="#quick-summary">Quick Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="what-are-the-phases-of-an-iot-system">What Are the Phases of an IoT System?</h2>
+<blockquote>
+<p>IoT security becomes easier to understand when the system is divided into phases.
+Each phase has a specific role, and each role introduces different security risks.</p>
+</blockquote>
+<p>An IoT system usually moves data through five main phases: collecting data,
+storing it, processing it, transmitting it, and delivering the result to users or
+other devices.</p>
+<hr>
+<h2 id="phase-i-data-collection--acquisition--perception">Phase I: Data Collection / Acquisition / Perception</h2>
+<p>This phase collects or acquires data from IoT devices and things.</p>
+<p>Examples of data collectors include:</p>
+<ul>
+<li>Sensors that collect dynamic readings.</li>
+<li>RFID tags that identify static objects.</li>
+<li>Chips inside vehicles or moving devices.</li>
+<li>Body sensors in healthcare systems.</li>
+</ul>
+<p>The main security concern is trust. If the device is fake, compromised, or
+misconfigured, the whole IoT system may make decisions based on wrong data.</p>
+<hr>
+<h2 id="phase-ii-storage">Phase II: Storage</h2>
+<p>After data is collected, it must be stored.</p>
+<p>Storage may happen in:</p>
+<ul>
+<li>Local memory on the IoT device.</li>
+<li>A nearby gateway or local system.</li>
+<li>A cloud data center.</li>
+</ul>
+<p>Many IoT devices have limited memory and low processing power, so cloud storage is
+commonly used. This solves the storage problem but introduces new risks such as
+unauthorized access, data leakage, and data sovereignty issues.</p>
+<hr>
+<h2 id="phase-iii-intelligent-processing">Phase III: Intelligent Processing</h2>
+<p>In this phase, the system analyzes stored data and provides smart services.</p>
+<p>Processing may include:</p>
+<ul>
+<li>Answering user queries.</li>
+<li>Detecting events or anomalies.</li>
+<li>Controlling connected devices.</li>
+<li>Triggering automatic actions.</li>
+</ul>
+<p>The major risk is that wrong or modified data can lead to wrong decisions. In
+critical systems such as healthcare, traffic, or factories, this can cause serious
+harm.</p>
+<hr>
+<h2 id="phase-iv-data-transmission">Phase IV: Data Transmission</h2>
+<p>Data transmission happens between different parts of the IoT system.</p>
+<p>Examples include:</p>
+<ul>
+<li>Sensors, RFID tags, or chips sending data to data centers.</li>
+<li>Data centers sending data to processing units.</li>
+<li>Processors sending commands to controllers, devices, or end users.</li>
+</ul>
+<p>Transmission needs confidentiality, integrity, and authentication. Attackers may
+try to listen to data, modify it, replay old messages, or pretend to be legitimate
+devices.</p>
+<hr>
+<h2 id="phase-v-delivery">Phase V: Delivery</h2>
+<p>Delivery means sending the processed data or control command to the correct
+receiver.</p>
+<p>A secure delivery process should ensure that:</p>
+<ul>
+<li>Data reaches the intended receiver.</li>
+<li>Data is not changed during delivery.</li>
+<li>Commands arrive on time.</li>
+<li>Legitimate users and devices can still access the service.</li>
+</ul>
+<hr>
+<h2 id="quick-summary">Quick Summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Phase</th>
+          <th>Main Purpose</th>
+          <th>Main Security Concern</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data collection</td>
+          <td>Gather data from devices</td>
+          <td>Fake or compromised data source</td>
+      </tr>
+      <tr>
+          <td>Storage</td>
+          <td>Store data locally or in the cloud</td>
+          <td>Leakage, access control, data loss</td>
+      </tr>
+      <tr>
+          <td>Processing</td>
+          <td>Analyze data and control devices</td>
+          <td>Wrong decisions from manipulated data</td>
+      </tr>
+      <tr>
+          <td>Transmission</td>
+          <td>Move data between components</td>
+          <td>Eavesdropping, modification, replay</td>
+      </tr>
+      <tr>
+          <td>Delivery</td>
+          <td>Send final result or command</td>
+          <td>Delay, alteration, or wrong receiver</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/" id="nav-next"><em>Chapter 3, Part 2 – Phase Attacks and Data Protection</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

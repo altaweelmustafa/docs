@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Privilege-Escalation on Docs</title>
+    <link>http://localhost:1313/docs/tags/privilege-escalation/</link>
+    <description>Recent content in Privilege-Escalation on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/privilege-escalation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</title>
+      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</guid>
+      <description>&lt;h2 id=&#34;modification-of-sensitive-data&#34;&gt;Modification of Sensitive Data&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Data can be captured during transit, modified, and then forwarded to the intended&#xA;node.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The entire message does not always need to be changed. Sometimes changing one&#xA;field is enough to cause harm.&lt;/p&gt;&#xA;&lt;p&gt;For example:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A medical reading may be modified before reaching a hospital server.&lt;/li&gt;&#xA;&lt;li&gt;Traffic information may be delayed or changed.&lt;/li&gt;&#xA;&lt;li&gt;A control command sent to an actuator may be altered.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-modification-types&#34;&gt;Three Modification Types&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;          &lt;th&gt;Example Impact&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Content modification&lt;/td&gt;&#xA;          &lt;td&gt;Part of the information is changed&lt;/td&gt;&#xA;          &lt;td&gt;A sensor value is changed from normal to critical&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Sequence modification&lt;/td&gt;&#xA;          &lt;td&gt;Data is delivered in the wrong order&lt;/td&gt;&#xA;          &lt;td&gt;The receiver reconstructs the message incorrectly&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Time modification&lt;/td&gt;&#xA;          &lt;td&gt;Old data is delayed or replayed later&lt;/td&gt;&#xA;          &lt;td&gt;The system acts on outdated information&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;These attacks affect integrity because the receiver can no longer trust that the&#xA;message is correct.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

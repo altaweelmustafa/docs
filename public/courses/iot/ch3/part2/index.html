@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 2 – Phase Attacks and Data Protection · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 2 – Phase Attacks and Data Protection</h2>
+  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
+   <p>The IoT system phases introduce different attacks. The early slides focus especially on the data perception and storage phases, where sensitive data can be exposed, lost, or modified.</p>
+<h2 id="phase-attacks-overview">Phase attacks overview</h2>
+<p>The main phase-based attack concerns are:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Phase</th>
+          <th>Example threats</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data perception</td>
+          <td>Data leakage, data sovereignty, data breach, authentication problems</td>
+      </tr>
+      <tr>
+          <td>Storage</td>
+          <td>Availability attacks, access control issues, integrity attacks</td>
+      </tr>
+      <tr>
+          <td>Processing</td>
+          <td>Authentication attacks</td>
+      </tr>
+      <tr>
+          <td>Transmission</td>
+          <td>Channel security attacks, session hijacking, routing attacks, flooding</td>
+      </tr>
+      <tr>
+          <td>Delivery</td>
+          <td>Human or machine misuse, attacker-controlled delivery</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="data-leakage-or-data-breach">Data leakage or data breach</h2>
+<p>Data leakage means unauthorized data is exposed to an unintended destination.</p>
+<p>It can be:</p>
+<ul>
+<li>Internal or external</li>
+<li>Intentional or accidental</li>
+<li>Caused by hardware or software</li>
+<li>Caused by weak security, misconfiguration, or malicious behavior</li>
+</ul>
+<p>In IoT, leakage is dangerous because devices may collect private information such as home activity, health readings, or industrial production data.</p>
+<h3 id="how-leakage-can-happen">How leakage can happen</h3>
+<p>Common causes include:</p>
+<ul>
+<li>Weak encryption</li>
+<li>Default passwords</li>
+<li>Default configurations</li>
+<li>Vulnerable network protocols</li>
+<li>Human mistakes</li>
+<li>Accidental sharing</li>
+<li>Misconfigured devices or cloud services</li>
+</ul>
+<h3 id="consequences">Consequences</h3>
+<p>Possible consequences include:</p>
+<ul>
+<li>Privacy breaches</li>
+<li>Exposure of health or personal data</li>
+<li>Disrupted industrial operations</li>
+<li>Loss of reliability and trust</li>
+<li>Business or safety impact</li>
+</ul>
+<h3 id="countermeasures">Countermeasures</h3>
+<p>Useful countermeasures include:</p>
+<ul>
+<li>Encrypting data at rest</li>
+<li>Regular security updates</li>
+<li>Strong authentication, such as MFA</li>
+<li>Network segmentation</li>
+<li>Data minimization</li>
+<li>User and employee awareness</li>
+</ul>
+<h2 id="data-sovereignty">Data sovereignty</h2>
+<p>Data sovereignty means that digitally stored information is subject to the laws of the country where it is stored or processed.</p>
+<p>This matters in IoT because cloud services may store data across different countries. Organizations may not always know where their data is physically stored, which can create legal and privacy concerns.</p>
+<h2 id="data-loss">Data loss</h2>
+<p>Data loss is different from data leakage.</p>
+<ul>
+<li>Data leakage means data is exposed to unauthorized parties.</li>
+<li>Data loss means data disappears, becomes corrupted, or becomes unavailable.</li>
+</ul>
+<p>Data loss may happen because of:</p>
+<ul>
+<li>Hardware failure</li>
+<li>Software failure</li>
+<li>Accidental deletion</li>
+<li>Natural disasters</li>
+<li>Corruption or unavailable storage</li>
+</ul>
+<p>The focus for data loss is backup, recovery, and availability.</p>
+<h2 id="data-authentication">Data authentication</h2>
+<p>Data authentication checks that received data really came from the expected source and was not changed during transit.</p>
+<p>It supports:</p>
+<ul>
+<li>Integrity: the data was not altered</li>
+<li>Originality: the data came from a legitimate device or user</li>
+</ul>
+<p>This is important because IoT data may be used to control real-world actions. For example, a sensor reading may cause a machine, alarm, or actuator to respond.</p>
+<p>Authentication can use methods such as message authentication codes, challenge-response techniques, asymmetric cryptography, and multi-factor authentication, depending on device capabilities.</p>
+<h2 id="iot-authentication-challenges">IoT authentication challenges</h2>
+<p>IoT authentication is difficult because of:</p>
+<ul>
+<li>Lack of one universal standard</li>
+<li>Large numbers of devices</li>
+<li>Limited processing power</li>
+<li>Limited memory</li>
+<li>Need for low energy consumption</li>
+<li>Different vendors and protocols</li>
+</ul>
+<p>A good IoT authentication solution must be scalable, lightweight, and strong enough to prevent spoofing or tampering.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part1/" id="nav-prev"><em>Chapter 3, Part 1 – IoT System Phases</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part3/" id="nav-next"><em>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 5 – Attacks as per Architecture · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 5 – Attacks as per Architecture</h2>
+  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
+   <p>IoT does not have only one fixed architecture. Different vendors and applications may use different designs.</p>
+<p>A common view divides IoT into four layers:</p>
+<ol>
+<li>Sensing / perception layer</li>
+<li>Network layer</li>
+<li>Transport layer</li>
+<li>Application layer</li>
+</ol>
+<p>Each layer has different responsibilities and different security risks.</p>
+<h2 id="1-sensing--perception-layer">1. Sensing / perception layer</h2>
+<p>This is the lowest layer. It includes sensors, RFID tags, actuators, and physical devices that collect data from the environment.</p>
+<p>Possible attacks include:</p>
+<ul>
+<li>External attacks on devices</li>
+<li>Witch attack</li>
+<li>Wormhole and sewage pool attacks</li>
+<li>Broadcast authentication and flooding attacks</li>
+<li>Link layer attacks</li>
+<li>HELLO flooding</li>
+<li>Selective forwarding</li>
+<li>Access control attacks</li>
+</ul>
+<p>The main concern is that physical and low-level devices may be exposed, resource-limited, and easier to compromise.</p>
+<h2 id="2-network-layer">2. Network layer</h2>
+<p>The network layer connects devices and routes data.</p>
+<p>Possible attacks include:</p>
+<ul>
+<li>Routing protocol attacks</li>
+<li>Address compromise</li>
+</ul>
+<p>If routing is manipulated, data can be delayed, dropped, redirected, or sent through an attacker-controlled path.</p>
+<h2 id="3-transport-layer">3. Transport layer</h2>
+<p>The transport layer handles end-to-end data transfer between communicating entities.</p>
+<p>Possible attacks include:</p>
+<ul>
+<li>Denial of service</li>
+<li>Distributed denial of service</li>
+<li>Masquerade attacks</li>
+<li>Man-in-the-middle attacks</li>
+<li>Cross-heterogeneity issues</li>
+</ul>
+<p>The main concern is keeping communication reliable, authenticated, and available.</p>
+<h2 id="4-application-layer">4. Application layer</h2>
+<p>The application layer provides services to users and organizations.</p>
+<p>Possible attacks include:</p>
+<ul>
+<li>Revealing sensitive data</li>
+<li>Data destruction</li>
+<li>User authentication attacks</li>
+<li>Intellectual property attacks</li>
+</ul>
+<p>The main concern is protecting user data, application logic, access control, and service trust.</p>
+<h2 id="layer-summary">Layer summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th>IoT layer</th>
+          <th>Main role</th>
+          <th>Example security risks</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Sensing / perception</td>
+          <td>Collect physical-world data</td>
+          <td>Device compromise, flooding, selective forwarding</td>
+      </tr>
+      <tr>
+          <td>Network</td>
+          <td>Route and address communication</td>
+          <td>Routing attacks, address compromise</td>
+      </tr>
+      <tr>
+          <td>Transport</td>
+          <td>Transfer data between endpoints</td>
+          <td>DoS, DDoS, masquerade, man-in-the-middle</td>
+      </tr>
+      <tr>
+          <td>Application</td>
+          <td>Provide user services</td>
+          <td>Data exposure, authentication attacks, data destruction</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="main-idea">Main idea</h2>
+<p>Attacks as per architecture help us classify threats by where they happen. This makes it easier to choose the right protection method for each layer instead of treating IoT security as one general problem.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/iot/iot-ch3-hugo/content/docs/courses/iot/ch3/part4/" id="nav-prev"><em>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

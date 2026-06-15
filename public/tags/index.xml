@@ -253,5 +253,82 @@
       <guid>http://localhost:1313/docs/tags/wsn/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Automata</title>
+      <link>http://localhost:1313/docs/tags/automata/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/automata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compiler</title>
+      <link>http://localhost:1313/docs/tags/compiler/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/compiler/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Construction</title>
+      <link>http://localhost:1313/docs/tags/construction/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/construction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DFSA</title>
+      <link>http://localhost:1313/docs/tags/dfsa/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/dfsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FSA</title>
+      <link>http://localhost:1313/docs/tags/fsa/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/fsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Languages</title>
+      <link>http://localhost:1313/docs/tags/languages/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/languages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lexical-Analysis</title>
+      <link>http://localhost:1313/docs/tags/lexical-analysis/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/lexical-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NDFSA</title>
+      <link>http://localhost:1313/docs/tags/ndfsa/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/ndfsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regular-Expressions</title>
+      <link>http://localhost:1313/docs/tags/regular-expressions/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/regular-expressions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Scanner</title>
+      <link>http://localhost:1313/docs/tags/scanner/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/scanner/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tokens</title>
+      <link>http://localhost:1313/docs/tags/tokens/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/tokens/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
