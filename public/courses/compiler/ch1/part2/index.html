@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 2 – Syntax &amp; Semantics · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 2 – Syntax &amp; Semantics</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-2-syntax--semantics">Part 2: Syntax &amp; Semantics</a></li>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#semantics">Semantics</a>
+      <ul>
+        <li><a href="#the-translation-pipeline">The Translation Pipeline</a></li>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-1---introduction-and-background">Chapter 1 - Introduction and Background</h1>
+<h2 id="part-2-syntax--semantics">Part 2: Syntax &amp; Semantics</h2>
+<hr>
+<h2 id="syntax">Syntax</h2>
+<p>Syntax is the grammar of the programming language. It describes structures like expressions, statements, and blocks.</p>
+<p>Syntax is formally described using a <strong>Context Free Grammar (CFG)</strong>, a set of static algorithms and frameworks.</p>
+<hr>
+<h2 id="semantics">Semantics</h2>
+<p>Semantics gives meaning to the syntax structures. It&rsquo;s much harder to pin down precisely than syntax. For example, the meaning of an if/else statement has to be implemented correctly so the compiler generates the right code.</p>
+<p>There&rsquo;s no clean formal system for semantic analysis the way CFG works for syntax. There is a framework called <strong>Syntax Directed Translation (SDT)</strong> used to express semantic analysis.</p>
+<h3 id="the-translation-pipeline">The Translation Pipeline</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Code -&gt; Scanner (Lexical Structure) -&gt; Tokens -&gt; Syntax Analyzer -&gt; Object Code
+</span></span></code></pre></div><p>The Scanner reads the source and groups characters into <strong>Tokens</strong>. The Syntax Analyzer then takes those tokens and tries to build valid syntax structures, moving to the next group of tokens once the current one checks out.</p>
+<h3 id="example">Example</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span> <span class="n">n</span><span class="o">++</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div><p>Tokens: <code>if</code>, <code>(</code>, <code>x</code>, <code>!=</code>, <code>1</code>, <code>)</code>, <code>{</code>, <code>n</code>, <code>++</code>, <code>;</code>, <code>}</code></p>
+<p>The Syntax Analyzer checks this piece by piece:</p>
+<ol>
+<li>Is <code>if(x!=1)</code> valid?</li>
+<li>Is <code>n++;</code> valid?</li>
+<li>Is the whole if-statement valid?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/" id="nav-prev"><em>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch1/part3/" id="nav-next"><em>Chapter 1, Part 3 – Paradigms of Programming Languages</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

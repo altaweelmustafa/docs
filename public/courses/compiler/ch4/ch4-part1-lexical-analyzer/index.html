@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 1 – What is a Lexical Analyzer? · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 1 – What is a Lexical Analyzer?</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#type-checking-implementation">Type Checking Implementation</a></li>
+    <li><a href="#lexical-analysis-errors">Lexical Analysis Errors</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <p>A <strong>Lexical Analyzer</strong> or <strong>Scanner</strong> is an algorithm that groups the characters of the source code to form <strong>Tokens</strong>, and returns the <strong>Internal Representation Number</strong> of these tokens — a kind of ID assigned to each token.</p>
+<p>These tokens are divided into 3 kinds:</p>
+<ol>
+<li>
+<p><strong>Names</strong> — any name in a program, divided into 3 types:</p>
+<ul>
+<li><strong>Keywords/Reserved</strong>: words such as <code>if</code>, <code>else</code>, <code>while</code>. These cannot be used as variable names.</li>
+<li><strong>User Defined Names</strong>: names declared by the user.</li>
+<li><strong>Standard Identifiers</strong>: such as <code>sin</code>, <code>cos</code>, <code>sqrt</code>. Like reserved words, these cannot be used as variable names and are not included in production rules.</li>
+</ul>
+</li>
+<li>
+<p><strong>Values</strong> — such as integers (<code>1, 2, 3</code>) or floating point (<code>1.1, 2.34</code>) etc.</p>
+</li>
+<li>
+<p><strong>Special Symbols/Tokens</strong> — logical (<code>==</code>, <code>&amp;&amp;</code>, <code>||</code>) and arithmetic operations (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>), parentheses (<code>[]</code>, <code>{}</code>, <code>()</code>), or any other tokens not from the first or second kind.</p>
+</li>
+</ol>
+<p><strong>Example:</strong> Applying the scanner to this code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">while(x&gt;=100)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    n +=x;
+</span></span><span class="line"><span class="cl">    x++
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Produces the tokens:</p>
+<p><code>while</code> , <code>(</code> , <code>x</code> , <code>&gt;=</code> , <code>100</code> , <code>)</code> , <code>{</code> , <code>n</code> , <code>+=</code> , <code>x</code> , <code>;</code> , <code>x</code> , <code>++</code> , <code>}</code></p>
+<p>Referencing these against a keywords table gives each token its Internal Representation Number. Note that all user-defined names share the same number — to the syntax analyzer, it only matters that a variable exists, not what it&rsquo;s called.</p>
+<hr>
+<h2 id="type-checking-implementation">Type Checking Implementation</h2>
+<p>During analysis, the compiler builds the <strong>Symbol Table</strong> — constructed at declaration time. It contains user-defined names (mostly variables), their type, and their values.</p>
+<p><strong>Example code:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">// assume it does addition
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="nf">compute</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+</span></span></code></pre></div><p><strong>Initial Symbol Table:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Data type</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>compute</td>
+          <td>function-name</td>
+          <td>integer</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>n</td>
+          <td>variable</td>
+          <td>integer</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>x</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>3.5</td>
+      </tr>
+      <tr>
+          <td>y</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>m</td>
+          <td>constant</td>
+          <td>integer</td>
+          <td>10</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Final Symbol Table (after execution):</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Data type</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>compute</td>
+          <td>function-name</td>
+          <td>integer</td>
+          <td>20</td>
+      </tr>
+      <tr>
+          <td>n</td>
+          <td>variable</td>
+          <td>integer</td>
+          <td>30</td>
+      </tr>
+      <tr>
+          <td>x</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>3.5</td>
+      </tr>
+      <tr>
+          <td>y</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>m</td>
+          <td>constant</td>
+          <td>integer</td>
+          <td>10</td>
+      </tr>
+  </tbody>
+</table>
+<p>To perform type checking, the compiler takes the name and checks the keywords table. If not found there, it checks the symbol table. If the variable is not in the symbol table, it throws an <strong>unknown symbol error</strong>. If found but the operation is incompatible with the variable&rsquo;s type, it throws a <strong>type mismatch error</strong>.</p>
+<p>At this stage the compiler maintains two main tables:</p>
+<ol>
+<li><strong>Keywords Table</strong> — contains all reserved words with their internal representation numbers.</li>
+<li><strong>Symbol Table</strong> — stores user-defined identifiers along with their type, data type, and values.</li>
+</ol>
+<hr>
+<h2 id="lexical-analysis-errors">Lexical Analysis Errors</h2>
+<p>When the scanner encounters a new word, it first compares it against the reserved words table. If not found, it treats it as a user-defined identifier and checks the symbol table. Errors that may occur:</p>
+<ol>
+<li>
+<p><strong>Illegal Character Error</strong> — the scanner encounters a character not part of the language&rsquo;s alphabet (e.g. <code>@</code>, <code>#</code>, <code>$</code> where not defined). A valid token cannot be formed.</p>
+</li>
+<li>
+<p><strong>Undeclared Variable Error</strong> — a word is encountered that is not present in the symbol table. Error message: <code>&quot;Undeclared variable&quot;</code> or <code>&quot;Unknown symbol&quot;</code>.</p>
+</li>
+<li>
+<p><strong>Type Mismatch Error</strong> — the type retrieved from the symbol table is incompatible with the operation being performed (e.g. assigning a float to an integer variable).</p>
+</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch4/ch4-part2-regular-expressions/" id="nav-next"><em>Chapter 4, Part 2 – Regular Expressions</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

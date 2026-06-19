@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oop on Docs</title>
+    <link>http://localhost:1313/docs/tags/oop/</link>
+    <description>Recent content in Oop on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/oop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
+      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-3-paradigms-of-programming-languages&#34;&gt;Part 3: Paradigms of Programming Languages&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;There are 4 paradigms of programming languages.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

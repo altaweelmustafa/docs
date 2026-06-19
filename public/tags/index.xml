@@ -6,8 +6,316 @@
     <description>Recent content in Tags on Docs</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/docs/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai-Languages</title>
+      <link>http://localhost:1313/docs/tags/ai-languages/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/ai-languages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cobol</title>
+      <link>http://localhost:1313/docs/tags/cobol/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/cobol/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compiler</title>
+      <link>http://localhost:1313/docs/tags/compiler/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/compiler/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cost</title>
+      <link>http://localhost:1313/docs/tags/cost/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/cost/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Definitions</title>
+      <link>http://localhost:1313/docs/tags/definitions/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/definitions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Error-Detection</title>
+      <link>http://localhost:1313/docs/tags/error-detection/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/error-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fortran</title>
+      <link>http://localhost:1313/docs/tags/fortran/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/fortran/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interpreter</title>
+      <link>http://localhost:1313/docs/tags/interpreter/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/interpreter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Intro</title>
+      <link>http://localhost:1313/docs/tags/intro/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/intro/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lexical-Analysis</title>
+      <link>http://localhost:1313/docs/tags/lexical-analysis/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/lexical-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lisp</title>
+      <link>http://localhost:1313/docs/tags/lisp/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/lisp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oop</title>
+      <link>http://localhost:1313/docs/tags/oop/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/oop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Orthogonality</title>
+      <link>http://localhost:1313/docs/tags/orthogonality/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/orthogonality/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paradigms</title>
+      <link>http://localhost:1313/docs/tags/paradigms/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/paradigms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pl-Domains</title>
+      <link>http://localhost:1313/docs/tags/pl-domains/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/pl-domains/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming-Languages</title>
+      <link>http://localhost:1313/docs/tags/programming-languages/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/programming-languages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Prolog</title>
+      <link>http://localhost:1313/docs/tags/prolog/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/prolog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Readability</title>
+      <link>http://localhost:1313/docs/tags/readability/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/readability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reliability</title>
+      <link>http://localhost:1313/docs/tags/reliability/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/reliability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Runtime-Environment</title>
+      <link>http://localhost:1313/docs/tags/runtime-environment/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/runtime-environment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Semantics</title>
+      <link>http://localhost:1313/docs/tags/semantics/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/semantics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Syntax</title>
+      <link>http://localhost:1313/docs/tags/syntax/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/syntax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tokens</title>
+      <link>http://localhost:1313/docs/tags/tokens/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/tokens/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Translator</title>
+      <link>http://localhost:1313/docs/tags/translator/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/translator/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Writability</title>
+      <link>http://localhost:1313/docs/tags/writability/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/writability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Architecture</title>
+      <link>http://localhost:1313/docs/tags/architecture/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Attacks</title>
+      <link>http://localhost:1313/docs/tags/attacks/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/attacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Authentication</title>
+      <link>http://localhost:1313/docs/tags/authentication/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Availability</title>
+      <link>http://localhost:1313/docs/tags/availability/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/availability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Brute-Force</title>
+      <link>http://localhost:1313/docs/tags/brute-force/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/brute-force/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chapter3</title>
+      <link>http://localhost:1313/docs/tags/chapter3/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/chapter3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data-Leakage</title>
+      <link>http://localhost:1313/docs/tags/data-leakage/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/data-leakage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data-Modification</title>
+      <link>http://localhost:1313/docs/tags/data-modification/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/data-modification/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ddos</title>
+      <link>http://localhost:1313/docs/tags/ddos/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/ddos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eavesdropping</title>
+      <link>http://localhost:1313/docs/tags/eavesdropping/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/eavesdropping/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Flooding</title>
+      <link>http://localhost:1313/docs/tags/flooding/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/flooding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Iot</title>
+      <link>http://localhost:1313/docs/tags/iot/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/iot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Layers</title>
+      <link>http://localhost:1313/docs/tags/layers/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/layers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phase-Attacks</title>
+      <link>http://localhost:1313/docs/tags/phase-attacks/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/phase-attacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Phases</title>
+      <link>http://localhost:1313/docs/tags/phases/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/phases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Privilege-Escalation</title>
+      <link>http://localhost:1313/docs/tags/privilege-escalation/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/privilege-escalation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>http://localhost:1313/docs/tags/security/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spoofing</title>
+      <link>http://localhost:1313/docs/tags/spoofing/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/spoofing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Threats</title>
+      <link>http://localhost:1313/docs/tags/threats/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/threats/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ai</title>
       <link>http://localhost:1313/docs/tags/ai/</link>
@@ -20,13 +328,6 @@
       <link>http://localhost:1313/docs/tags/api/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tags/api/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Architecture</title>
-      <link>http://localhost:1313/docs/tags/architecture/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/architecture/</guid>
       <description></description>
     </item>
     <item>
@@ -97,13 +398,6 @@
       <link>http://localhost:1313/docs/tags/http/</link>
       <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tags/http/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Iot</title>
-      <link>http://localhost:1313/docs/tags/iot/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/iot/</guid>
       <description></description>
     </item>
     <item>
@@ -254,17 +548,17 @@
       <description></description>
     </item>
     <item>
+      <title>Scanner</title>
+      <link>http://localhost:1313/docs/tags/scanner/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tags/scanner/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Automata</title>
       <link>http://localhost:1313/docs/tags/automata/</link>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tags/automata/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Compiler</title>
-      <link>http://localhost:1313/docs/tags/compiler/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/compiler/</guid>
       <description></description>
     </item>
     <item>
@@ -296,13 +590,6 @@
       <description></description>
     </item>
     <item>
-      <title>Lexical-Analysis</title>
-      <link>http://localhost:1313/docs/tags/lexical-analysis/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/lexical-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>NDFSA</title>
       <link>http://localhost:1313/docs/tags/ndfsa/</link>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
@@ -314,20 +601,6 @@
       <link>http://localhost:1313/docs/tags/regular-expressions/</link>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tags/regular-expressions/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Scanner</title>
-      <link>http://localhost:1313/docs/tags/scanner/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/scanner/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tokens</title>
-      <link>http://localhost:1313/docs/tags/tokens/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/tags/tokens/</guid>
       <description></description>
     </item>
   </channel>

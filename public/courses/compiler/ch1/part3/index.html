@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 3 – Paradigms of Programming Languages · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 3 – Paradigms of Programming Languages</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-3-paradigms-of-programming-languages">Part 3: Paradigms of Programming Languages</a></li>
+    <li><a href="#imperative--procedural-paradigm">Imperative / Procedural Paradigm</a></li>
+    <li><a href="#functional-paradigm">Functional Paradigm</a></li>
+    <li><a href="#logical-paradigm">Logical Paradigm</a></li>
+    <li><a href="#object-oriented-paradigm">Object Oriented Paradigm</a></li>
+    <li><a href="#language-evolution">Language Evolution</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-1---introduction-and-background">Chapter 1 - Introduction and Background</h1>
+<h2 id="part-3-paradigms-of-programming-languages">Part 3: Paradigms of Programming Languages</h2>
+<hr>
+<p>There are 4 paradigms of programming languages.</p>
+<hr>
+<h2 id="imperative--procedural-paradigm">Imperative / Procedural Paradigm</h2>
+<p>Also called the <strong>Von Neumann model</strong>, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:</p>
+<ol>
+<li>Sequential execution of instructions</li>
+<li>Using variables to represent memory locations</li>
+<li>Using assignment statements to change a variable&rsquo;s value</li>
+</ol>
+<p>Pascal and C are designed around this paradigm.</p>
+<p><strong>Example: GCD in Pascal</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">function gcd(x,y:integer):integer;
+</span></span><span class="line"><span class="cl">Begin
+</span></span><span class="line"><span class="cl">  If (x = y) then
+</span></span><span class="line"><span class="cl">    gcd:=x
+</span></span><span class="line"><span class="cl">  else
+</span></span><span class="line"><span class="cl">    if (x &gt; y) then
+</span></span><span class="line"><span class="cl">      gcd:=gcd(x-y,y)
+</span></span><span class="line"><span class="cl">    else
+</span></span><span class="line"><span class="cl">      gcd:=gcd(x,y-x);
+</span></span><span class="line"><span class="cl">End
+</span></span></code></pre></div><p><strong>Same program in C</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">m</span><span class="p">,</span><span class="n">m</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="o">-</span><span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="functional-paradigm">Functional Paradigm</h2>
+<p>Computation is based on evaluating or calling functions. Sometimes called an &ldquo;applicative&rdquo; language. Characterized by:</p>
+<ol>
+<li>No notion of variables or assignment statements</li>
+<li>No loops, repetition happens through recursive calls</li>
+</ol>
+<p><strong>LISP</strong> (LISt Programming) is the classic example. In LISP, everything is a list:</p>
+<blockquote>
+<p>A list is a sequence of things separated by blanks and surrounded by parentheses.</p>
+</blockquote>
+<p>Examples:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">+</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">if</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>   <span class="c1">; if a is true, value is b, otherwise value is c</span>
+</span></span></code></pre></div><p><strong>Small LISP programs</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nb">defun</span> <span class="nv">f</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nf">+</span> <span class="nv">x</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;f</span>
+</span></span><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nv">f</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;4</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nb">defun</span> <span class="nv">ff</span><span class="p">(</span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nf">+</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;ff</span>
+</span></span><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nv">ff</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;5</span>
+</span></span></code></pre></div><p><strong>GCD in LISP</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nb">defun</span> <span class="nf">gcd</span><span class="p">(</span><span class="nv">n</span> <span class="nv">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">=</span> <span class="nv">n</span> <span class="nv">m</span><span class="p">)</span> <span class="nv">n</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="nf">&gt;</span> <span class="nv">n</span> <span class="nv">m</span><span class="p">)</span> <span class="p">(</span><span class="nf">gcd</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="nv">m</span><span class="p">)</span> <span class="nv">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="p">(</span><span class="nf">gcd</span> <span class="p">(</span><span class="nv">n</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">m</span> <span class="nv">n</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;gcd</span>
+</span></span><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nf">gcd</span> <span class="mi">18</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;2</span>
+</span></span></code></pre></div><p><strong>Power function (x^n) in LISP</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nb">defun</span> <span class="nv">pwr</span><span class="p">(</span><span class="nv">x</span> <span class="nv">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nf">=</span> <span class="nv">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nf">*</span> <span class="nv">x</span> <span class="p">(</span><span class="nv">pwr</span> <span class="nv">x</span> <span class="p">(</span><span class="nf">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;pwr</span>
+</span></span><span class="line"><span class="cl"><span class="nf">&gt;</span><span class="p">(</span><span class="nv">pwr</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">&gt;16</span>
+</span></span></code></pre></div><hr>
+<h2 id="logical-paradigm">Logical Paradigm</h2>
+<p>Based on symbolic logic. The program is a set of statements describing what&rsquo;s true. <strong>PROLOG</strong> (PROgramming LOGical) is the classic example.</p>
+<p><strong>GCD in PROLOG</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-prolog" data-lang="prolog"><span class="line"><span class="cl"><span class="nf">gcd</span><span class="p">(</span><span class="s">u</span><span class="p">,</span><span class="s">v</span><span class="p">,</span><span class="s">u</span><span class="p">)</span> <span class="p">:-</span> <span class="s">v</span> <span class="o">=</span> <span class="mf">0.</span>
+</span></span><span class="line"><span class="cl"><span class="nf">gcd</span><span class="p">(</span><span class="s">u</span><span class="p">,</span><span class="s">v</span><span class="p">,</span><span class="s">x</span><span class="p">)</span> <span class="p">:-</span> <span class="s">v</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s">y</span> <span class="o">is</span> <span class="s">u</span> <span class="o">mod</span> <span class="s">v</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nf">gcd</span><span class="p">(</span><span class="s">v</span><span class="p">,</span><span class="s">y</span><span class="p">,</span><span class="s">x</span><span class="p">).</span>
+</span></span></code></pre></div><hr>
+<h2 id="object-oriented-paradigm">Object Oriented Paradigm</h2>
+<p>Introduces the notions of <strong>Object</strong> and <strong>Class</strong>. Became widespread in the 90s. Advantages include:</p>
+<ul>
+<li>Encapsulation of data and functions</li>
+<li>Inheritance</li>
+<li>Polymorphism</li>
+</ul>
+<hr>
+<h2 id="language-evolution">Language Evolution</h2>
+<p>The general lineage runs: <strong>Imperative -&gt; Functional -&gt; Logical -&gt; Object Oriented</strong>, with each paradigm branching off and influencing later language design.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch1/part2/" id="nav-prev"><em>Chapter 1, Part 2 – Syntax &amp; Semantics</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

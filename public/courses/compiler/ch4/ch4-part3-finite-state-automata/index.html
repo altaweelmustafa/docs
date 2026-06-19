@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 3 – Finite State Automata (FSA) · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 3 – Finite State Automata (FSA)</h2>
+  <p class="post-date"><em>posted on 2026 Jan 01</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fsa-example">FSA Example</a></li>
+    <li><a href="#types-of-finite-state-automata">Types of Finite State Automata</a>
+      <ul>
+        <li><a href="#non-deterministic-fsa-ndfsa">Non-Deterministic FSA (NDFSA)</a></li>
+        <li><a href="#deterministic-fsa-dfsa">Deterministic FSA (DFSA)</a></li>
+      </ul>
+    </li>
+    <li><a href="#transformation-of-ndfsa-to-dfsa">Transformation of NDFSA to DFSA</a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#step-1-remove-λ-transitions">Step 1: Remove λ Transitions</a></li>
+        <li><a href="#step-2-remove-non-determinism">Step 2: Remove Non-Determinism</a></li>
+        <li><a href="#step-3-remove-inaccessible-states">Step 3: Remove Inaccessible States</a></li>
+        <li><a href="#step-4-merge-equivalent-states">Step 4: Merge Equivalent States</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <p>The algorithm that recognizes strings of regular languages is called the <strong>Finite State Automata (FSA)</strong>, also known as the Finite State Machine or Finite State System. It contains:</p>
+<ol>
+<li>A set of states.</li>
+<li>Transitions between states.</li>
+<li>An input string to be examined.</li>
+</ol>
+<hr>
+<h2 id="fsa-example">FSA Example</h2>
+<p>Consider this FSA for floating point numbers, with states <code>Q = {S, A, B, G, H}</code>:</p>
+<ul>
+<li><strong>S</strong> — Starting State</li>
+<li><strong>H</strong> — Final (Halt) State</li>
+<li>Transitions: <code>{+, −, d, .}</code></li>
+</ul>
+<p>Tracking the input <code>&quot;-511.32&quot;</code> through the states:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S --&gt; A --&gt; B --&gt; B --&gt; B --&gt; H --&gt; H --&gt; H
+</span></span><span class="line"><span class="cl">-     d     d     d     .     d     d
+</span></span></code></pre></div><p>Since we end in the final state H, the string is <strong>accepted</strong>.</p>
+<p><strong>Definition:</strong> A string is accepted if after scanning the whole string we end up in a final state.</p>
+<p>The language accepted by this machine is:</p>
+<p><code>L(M) = [+|−](d+. | .d+ | d+.d+) = [+|−](d+.d* | d*.d+)</code></p>
+<hr>
+<h2 id="types-of-finite-state-automata">Types of Finite State Automata</h2>
+<h3 id="non-deterministic-fsa-ndfsa">Non-Deterministic FSA (NDFSA)</h3>
+<p>A FSA is <strong>non-deterministic</strong> if any of the following is true:</p>
+<ol>
+<li>There are <strong>λ-transitions</strong> in the FSA.</li>
+<li>There is <strong>more than one transition</strong> from the same state on the same input.</li>
+</ol>
+<p>Non-determinism requires backtracking to implement — which is extremely slow and impractical in a compiler.</p>
+<h3 id="deterministic-fsa-dfsa">Deterministic FSA (DFSA)</h3>
+<p>A FSA is <strong>deterministic</strong> if both of the following are true:</p>
+<ol>
+<li>There are <strong>no λ-transitions</strong>.</li>
+<li>There is <strong>no more than one transition</strong> from the same state on the same input.</li>
+</ol>
+<p><strong>Only Deterministic FSAs are used in compilers.</strong> Fortunately, any NDFSA can be transformed into an equivalent DFSA.</p>
+<hr>
+<h2 id="transformation-of-ndfsa-to-dfsa">Transformation of NDFSA to DFSA</h2>
+<p>The transformation consists of 4 steps:</p>
+<ol>
+<li>Removal of λ transitions.</li>
+<li>Removal of non-determinism.</li>
+<li>Removal of inaccessible states.</li>
+<li>Merging equivalent states.</li>
+</ol>
+<p>Steps 3 and 4 are post-processing — at that point the machine is already deterministic.</p>
+<h3 id="example">Example</h3>
+<p>Given the NDFSA for integers and floating point numbers, with <code>L(G) = [+|−](d+ | d+.d+ | d+. | .d+)</code>:</p>
+<p><strong>Initial transition table:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+          <th>λ</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S</td>
+          <td>A</td>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td>A</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>B,C</td>
+          <td>E</td>
+      </tr>
+      <tr>
+          <td>B</td>
+          <td></td>
+          <td></td>
+          <td>F</td>
+          <td>B</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>C</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D</td>
+          <td>C</td>
+      </tr>
+      <tr>
+          <td>D</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D</td>
+          <td>F</td>
+      </tr>
+      <tr>
+          <td>E</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>G</td>
+          <td>E</td>
+      </tr>
+      <tr>
+          <td>G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+          <td>F</td>
+      </tr>
+      <tr>
+          <td>F</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="step-1-remove-λ-transitions">Step 1: Remove λ Transitions</h3>
+<p>For each state with a λ-transition, copy all transitions from the target state into the source state. Mark states that have a λ-transition to a final state as final. Delete the λ column.</p>
+<p><strong>After removing λ transitions:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S</td>
+          <td>A</td>
+          <td>A</td>
+          <td>G</td>
+          <td>B,C,E</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td>G</td>
+          <td>B,C,E</td>
+      </tr>
+      <tr>
+          <td>B</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>B</td>
+      </tr>
+      <tr>
+          <td>C</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D,C</td>
+      </tr>
+      <tr>
+          <td>D</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D</td>
+      </tr>
+      <tr>
+          <td>E</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>G,E</td>
+      </tr>
+      <tr>
+          <td>G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>F</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="step-2-remove-non-determinism">Step 2: Remove Non-Determinism</h3>
+<p>Treat each set of states as a new single state. If any state in the set is a final state, mark the new state as final.</p>
+<p><strong>After resolving all non-deterministic states:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S</td>
+          <td>A</td>
+          <td>A</td>
+          <td>G</td>
+          <td>B,C,E</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td>G</td>
+          <td>B,C,E</td>
+      </tr>
+      <tr>
+          <td>G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>B,C,E</td>
+          <td></td>
+          <td></td>
+          <td>D,G</td>
+          <td>B,C,E</td>
+      </tr>
+      <tr>
+          <td>D,G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D,H</td>
+      </tr>
+      <tr>
+          <td>D,H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>D,H</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="step-3-remove-inaccessible-states">Step 3: Remove Inaccessible States</h3>
+<p>Start from S, mark all reachable states exhaustively. Delete unmarked states.</p>
+<p><strong>After removal, renaming [B,C,E] → X, [D,G] → Y, [D,H] → Z:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S</td>
+          <td>A</td>
+          <td>A</td>
+          <td>G</td>
+          <td>X</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td>G</td>
+          <td>X</td>
+      </tr>
+      <tr>
+          <td>G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>X</td>
+          <td></td>
+          <td></td>
+          <td>Y</td>
+          <td>X</td>
+      </tr>
+      <tr>
+          <td>Y</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Z</td>
+      </tr>
+      <tr>
+          <td>Z</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Z</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="step-4-merge-equivalent-states">Step 4: Merge Equivalent States</h3>
+<p><strong>Definition:</strong> States p and q are equivalent if for every input string X, the machine accepts X starting from p if and only if it accepts X starting from q.</p>
+<p>Separate final from non-final states:</p>
+<ul>
+<li><code>Q − F = {S, A, G}</code></li>
+<li><code>F = {H, X, Y, Z}</code></li>
+</ul>
+<p><strong>Feasible pairs table:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Feasible pairs</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+          <th>Marked</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(H, Y)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H,Z</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>(H, Z)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H,Z</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>(Y, Z)</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Z,Z</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>No pairs are marked → <code>H ≡ Y ≡ Z → H</code></p>
+<p><strong>Final simplified table:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>+</th>
+          <th>-</th>
+          <th>.</th>
+          <th>d</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>S</td>
+          <td>A</td>
+          <td>A</td>
+          <td>G</td>
+          <td>X</td>
+      </tr>
+      <tr>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td>G</td>
+          <td>X</td>
+      </tr>
+      <tr>
+          <td>G</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>H</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+      </tr>
+      <tr>
+          <td>X</td>
+          <td></td>
+          <td></td>
+          <td>H</td>
+          <td>X</td>
+      </tr>
+  </tbody>
+</table>
+<p>This is the <strong>minimum state machine</strong>, and it accepts the same language:</p>
+<p><code>L(G) = [+|−]{d+, d+.d+, d+., .d+}</code></p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch4/ch4-part2-regular-expressions/" id="nav-prev"><em>Chapter 4, Part 2 – Regular Expressions</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/" id="nav-next"><em>Chapter 4, Part 4 – Creating a NDFSA from a Regular Expression</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

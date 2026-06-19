@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 4 – Creating a NDFSA from a Regular Expression · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 4 – Creating a NDFSA from a Regular Expression</h2>
+  <p class="post-date"><em>posted on 2026 Jan 01</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fsm-for-basic-tokens">FSM for Basic Tokens</a></li>
+    <li><a href="#construction-methodology">Construction Methodology</a></li>
+    <li><a href="#construction-rules">Construction Rules</a>
+      <ul>
+        <li><a href="#concatenation-r1r2">Concatenation: R1R2</a></li>
+        <li><a href="#union-r1r2">Union: R1|R2</a></li>
+        <li><a href="#kleene-star-r">Kleene Star: R*</a></li>
+        <li><a href="#positive-closure-r">Positive Closure: R+</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-example-lld">Complete Example: L(L|d)*</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="fsm-for-basic-tokens">FSM for Basic Tokens</h2>
+<p>Simple finite state machines for basic tokens:</p>
+<p><strong>Names</strong> — <code>Letter(Letter|digit)* = L(L|d)*</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S --L--&gt; F
+</span></span><span class="line"><span class="cl">         |
+</span></span><span class="line"><span class="cl">      L,d (loop)
+</span></span></code></pre></div><p><strong>Integers</strong> — <code>[+|−]digit(digit)* = [+|−]d+</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S --+/--&gt; A --d--&gt; F
+</span></span><span class="line"><span class="cl">               |
+</span></span><span class="line"><span class="cl">             d (loop)
+</span></span></code></pre></div><p>Both machines are deterministic: no λ-transitions, no state has multiple transitions on the same input.</p>
+<hr>
+<h2 id="construction-methodology">Construction Methodology</h2>
+<p>To construct a NDFSA from a regular expression:</p>
+<ol>
+<li>
+<p>Decompose the expression into <strong>primitive components</strong>:</p>
+<ul>
+<li>For the empty string λ: <code>X --λ--&gt; Y</code></li>
+<li>For a symbol <code>a ∈ V</code>: <code>X --a--&gt; Y</code></li>
+</ul>
+</li>
+<li>
+<p>Apply <strong>construction rules</strong> to combine primitives into complex expressions.</p>
+</li>
+</ol>
+<p>Given N1 and N2 are FSAs accepting R1 and R2 respectively, each with a start state and a final state.</p>
+<hr>
+<h2 id="construction-rules">Construction Rules</h2>
+<h3 id="concatenation-r1r2">Concatenation: R1R2</h3>
+<p>Merge the final state of N1 with the start state of N2. The merged state is <strong>no longer final</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">N1: S1 ... [F1/S2] N2: ... F2
+</span></span></code></pre></div><h3 id="union-r1r2">Union: R1|R2</h3>
+<p>Create a new start state with λ-transitions to both N1 and N2. Connect both final states to a new final state via λ.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       λ --&gt; N1 --&gt; λ
+</span></span><span class="line"><span class="cl">S --&gt;                  --&gt; F
+</span></span><span class="line"><span class="cl">       λ --&gt; N2 --&gt; λ
+</span></span></code></pre></div><h3 id="kleene-star-r">Kleene Star: R*</h3>
+<p>Allow zero or more repetitions. Add a λ-bypass from start to final, and a λ-loop from final back to start.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S --λ--&gt; N --λ--&gt; F
+</span></span><span class="line"><span class="cl"> \________________/
+</span></span><span class="line"><span class="cl">         λ (bypass)
+</span></span></code></pre></div><h3 id="positive-closure-r">Positive Closure: R+</h3>
+<p>Same as R* but <strong>without</strong> the λ-bypass — ensuring at least one execution.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S --&gt; N --&gt; F
+</span></span><span class="line"><span class="cl">      ^_____|
+</span></span><span class="line"><span class="cl">          λ
+</span></span></code></pre></div><hr>
+<h2 id="complete-example-lld">Complete Example: L(L|d)*</h2>
+<p><strong>Step 1: Remove λ transitions</strong></p>
+<p>Initial state table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>L</th>
+          <th>d</th>
+          <th>λ</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td>3,9,4,6</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td>4,6</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>5</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td></td>
+          <td></td>
+          <td>8,3,9,4,6</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td></td>
+          <td>7</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td></td>
+          <td></td>
+          <td>8,3,9,4,6</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td></td>
+          <td></td>
+          <td>3,9,4,6</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>After removing λ column (marking reachable final states):</p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>L</th>
+          <th>d</th>
+          <th>Marked</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td></td>
+          <td>✓</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>5</td>
+          <td>7</td>
+          <td>✓</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>5</td>
+          <td>7</td>
+          <td>✓</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>5</td>
+          <td>7</td>
+          <td>✓</td>
+      </tr>
+  </tbody>
+</table>
+<p>States 3, 4, 6, 8, 9 are inaccessible — removed.</p>
+<p><strong>Step 2: Remove Non-Determinism</strong></p>
+<p>All remaining states are already deterministic.</p>
+<p><strong>Step 3: Remove Inaccessible States</strong></p>
+<p>Already done above.</p>
+<p><strong>Step 4: Merge Equivalent States</strong></p>
+<p>Feasible pairs table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Feasible pairs</th>
+          <th>L</th>
+          <th>d</th>
+          <th>Marked</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(2,5)</td>
+          <td>(5,5)</td>
+          <td>(7,7)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>(2,7)</td>
+          <td>(5,5)</td>
+          <td>(7,7)</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>(5,7)</td>
+          <td>(5,5)</td>
+          <td>(7,7)</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>No pairs marked → <code>2 ≡ 5 ≡ 7 → 2</code></p>
+<p><strong>Final state table:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>L</th>
+          <th>d</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>2</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+<p>The final DFSA has just 2 states and accepts the language <code>L(L|d)*</code> — identifiers starting with a letter followed by any letters or digits.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/" id="nav-prev"><em>Chapter 4, Part 3 – Finite State Automata (FSA)</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

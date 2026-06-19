@@ -1,6 +1,6 @@
 ---
 title: "Chapter 4, Part 1 – What is a Lexical Analyzer?"
-date: 2026-01-01
+date: 2026-05-29
 weight: 1
 toc: true
 tags: ["compiler", "lexical-analysis", "scanner", "tokens"]
@@ -57,7 +57,7 @@ n = compute(m, m) + 10;
 **Initial Symbol Table:**
 
 | Name    | Type          | Data type | Value |
-|---------|---------------|-----------|-------|
+| ------- | ------------- | --------- | ----- |
 | compute | function-name | integer   | 0     |
 | n       | variable      | integer   | 0     |
 | x       | variable      | float     | 3.5   |
@@ -67,7 +67,7 @@ n = compute(m, m) + 10;
 **Final Symbol Table (after execution):**
 
 | Name    | Type          | Data type | Value |
-|---------|---------------|-----------|-------|
+| ------- | ------------- | --------- | ----- |
 | compute | function-name | integer   | 20    |
 | n       | variable      | integer   | 30    |
 | x       | variable      | float     | 3.5   |

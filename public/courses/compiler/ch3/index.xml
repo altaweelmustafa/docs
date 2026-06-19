@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chapter 3: PL Principles on Docs</title>
+    <link>http://localhost:1313/docs/courses/compiler/ch3/</link>
+    <description>Recent content in Chapter 3: PL Principles on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/courses/compiler/ch3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p1/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p1/</guid>
+      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-1-language-translation-compilers--interpreters&#34;&gt;Part 1: Language Translation, Compilers &amp;amp; Interpreters&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;language-translation-history&#34;&gt;Language Translation History&lt;/h2&gt;&#xA;&lt;p&gt;Early programmers used &lt;strong&gt;Machine Language&lt;/strong&gt;, the language of numbers. Programs were written in HEX, then translated automatically to binary.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2 4 63&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3 4 46&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5 4 57&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Later came &lt;strong&gt;Assembly&lt;/strong&gt;, which just gave mnemonics to machine language instructions. In compiler construction, there&amp;rsquo;s no real difference between Assembly and Machine Language. The hex program above becomes:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 3, Part 2 – Runtime Environment &amp; Error Detection</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p2/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p2/</guid>
+      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-2-runtime-environment--error-detection&#34;&gt;Part 2: Runtime Environment &amp;amp; Error Detection&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;runtime-environment&#34;&gt;Runtime Environment&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The space allocation for programs and data in memory during execution.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;There are 3 types:&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-fully-static-environment&#34;&gt;1. Fully-Static Environment&lt;/h3&gt;&#xA;&lt;p&gt;All properties of the language are predetermined before execution. Address allocation happens when the code is loaded, not when it runs.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;FORTRAN&lt;/strong&gt; is the classic example. All variable memory locations are fixed during execution. FORTRAN also only has one type of procedure, the &lt;strong&gt;subroutine&lt;/strong&gt;, and subroutines can&amp;rsquo;t be nested. This also rules out recursion. So the original FORTRAN fits a fully-static environment well.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 3, Part 3 – Programming Languages Domains</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p3/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p3/</guid>
+      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-3-programming-languages-domains&#34;&gt;Part 3: Programming Languages Domains&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Programming languages are generally split into several domains based on their use case.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Domain&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;          &lt;th&gt;Example Languages&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Scientific&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Applications with a computational base. Where programming originally started.&lt;/td&gt;&#xA;          &lt;td&gt;FORTRAN, C, ALGOL60&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Business&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Applications for commercial use, especially banking. Came after the scientific domain.&lt;/td&gt;&#xA;          &lt;td&gt;COBOL (and database languages), JAVA&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Artificial Intelligence&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Languages built for AI work&lt;/td&gt;&#xA;          &lt;td&gt;LISP, PROLOG&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Systems Programming&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Programming all aspects of the computer, including hardware&lt;/td&gt;&#xA;          &lt;td&gt;Machine Language, Assembly, C&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Very High Level Languages&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Essentially scripting languages&lt;/td&gt;&#xA;          &lt;td&gt;Python, Bash&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 3, Part 4 – Language Evaluation Criteria</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p4/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p4/</guid>
+      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-4-language-evaluation-criteria&#34;&gt;Part 4: Language Evaluation Criteria&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;which-language-is-the-best&#34;&gt;Which Language is the Best?&lt;/h2&gt;&#xA;&lt;p&gt;There&amp;rsquo;s no single &amp;ldquo;best&amp;rdquo; programming language. We can only say a language is &lt;strong&gt;more suitable for a certain application&lt;/strong&gt;. Comparisons only really make sense within similar languages or similar domains, on benchmarks like speed, space usage, ease of use, available libraries, and so on.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;readability&#34;&gt;Readability&lt;/h2&gt;&#xA;&lt;p&gt;The most important criteria of a programming language (we made these languages to be understood, after all). It&amp;rsquo;s about how easy a piece of code is to read and understand.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

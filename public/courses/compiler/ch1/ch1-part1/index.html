@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-1-nature-of-the-course--what-is-a-programming-language">Part 1: Nature of the Course &amp; What is a Programming Language</a></li>
+    <li><a href="#nature-of-the-course">Nature of the Course</a></li>
+    <li><a href="#three-views-of-a-programming-language">Three Views of a Programming Language</a></li>
+    <li><a href="#why-study-programming-language-concepts">Why Study Programming Language Concepts</a></li>
+    <li><a href="#what-is-a-programming-language">What is a Programming Language?</a>
+      <ul>
+        <li><a href="#the-three-key-concepts">The Three Key Concepts</a></li>
+      </ul>
+    </li>
+    <li><a href="#two-parts-of-a-programming-language">Two Parts of a Programming Language</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-1---introduction-and-background">Chapter 1 - Introduction and Background</h1>
+<h2 id="part-1-nature-of-the-course--what-is-a-programming-language">Part 1: Nature of the Course &amp; What is a Programming Language</h2>
+<hr>
+<h2 id="nature-of-the-course">Nature of the Course</h2>
+<p>There are 4 ways to teach a programming languages course:</p>
+<ol>
+<li>How to program in several languages</li>
+<li>Survey of the history and nature of several languages</li>
+<li>How to implement programming languages</li>
+<li>The conceptual issues of programming languages (concepts and paradigms)</li>
+</ol>
+<p>This course focuses on the 4th approach. We study the structural issues of programming languages, summed up in two words: <strong>Concepts and Paradigms</strong>.</p>
+<ul>
+<li><strong>Concepts</strong>: the basic structure of a PL, like syntax, semantics, data types, control structures</li>
+<li><strong>Paradigms</strong>: the model or approach used to reason about and solve a problem</li>
+</ul>
+<hr>
+<h2 id="three-views-of-a-programming-language">Three Views of a Programming Language</h2>
+<table>
+  <thead>
+      <tr>
+          <th>View</th>
+          <th>Who</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Designer</td>
+          <td>The inventor of the language</td>
+      </tr>
+      <tr>
+          <td>Implementer</td>
+          <td>The one who builds the compiler or interpreter</td>
+      </tr>
+      <tr>
+          <td>User</td>
+          <td>The one who writes programs in the language</td>
+      </tr>
+  </tbody>
+</table>
+<p>The course covers all three, with a bit more focus on the implementer side.</p>
+<hr>
+<h2 id="why-study-programming-language-concepts">Why Study Programming Language Concepts</h2>
+<ol>
+<li>Increases your ability to express programming ideas</li>
+<li>Understanding a language&rsquo;s structure makes it easier to learn other languages</li>
+<li>Increases your ability to design new languages (example: the if/else statement is ambiguous, so a language designer has to account for that ambiguity when writing production rules)</li>
+<li>Pushes computing forward as a field overall</li>
+</ol>
+<hr>
+<h2 id="what-is-a-programming-language">What is a Programming Language?</h2>
+<p>A language is a system of signs used to communicate. All languages, spoken or programmed, have grammar and vocabulary.</p>
+<p>In programming languages, grammar comes from a set of <strong>Production Rules</strong>. The key difference from spoken language is that these rules are strict, with no exceptions.</p>
+<p>General definition:</p>
+<blockquote>
+<p>A programming language is a system of signs used by a person to communicate with a computer.</p>
+</blockquote>
+<p>More specific definition:</p>
+<blockquote>
+<p>A programming language is a notational system for describing <strong>computation</strong> in <strong>machine readable</strong> and <strong>human readable</strong> form.</p>
+</blockquote>
+<h3 id="the-three-key-concepts">The Three Key Concepts</h3>
+<p><strong>1. Computation</strong></p>
+<p>This is what computers actually do. Everything in a computer eventually breaks down into small computational steps, mostly arithmetic.</p>
+<p><strong>2. Machine Readable</strong></p>
+<p>There needs to be an algorithm that translates the code in an unambiguous, finite way. This algorithm should be simple and run in time proportional to the program&rsquo;s size. We get machine readability by restricting the syntax to a <strong>Context-Free Grammar (CFG)</strong>, which lets us build translator algorithms.</p>
+<p><strong>3. Human Readable</strong></p>
+<p>A program also has to be readable by people. This is where high-level languages come in, through <strong>abstraction</strong>:</p>
+<ul>
+<li><strong>Data Abstraction</strong>: giving variables and types meaningful names
+<ul>
+<li>Simple: int, char</li>
+<li>Structured: arrays, strings</li>
+</ul>
+</li>
+<li><strong>Control Abstraction</strong>: grouping instructions
+<ul>
+<li>Simple: an assignment like <code>X = X + 3</code> (fetch X, add 3, store back) packed into one statement</li>
+<li>Structured: if/else, case, while, procedures, functions, blocks</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="two-parts-of-a-programming-language">Two Parts of a Programming Language</h2>
+<p>For a more precise definition, a programming language splits into:</p>
+<ol>
+<li><strong>Syntax</strong> - the structure</li>
+<li><strong>Semantics</strong> - the meaning</li>
+</ol>
+<p>This is the concrete definition we&rsquo;ll work with going forward.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch1/part2/" id="nav-next"><em>Chapter 1, Part 2 – Syntax &amp; Semantics</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

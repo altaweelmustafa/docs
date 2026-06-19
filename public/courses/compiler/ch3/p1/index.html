@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-1-language-translation-compilers--interpreters">Part 1: Language Translation, Compilers &amp; Interpreters</a></li>
+    <li><a href="#language-translation-history">Language Translation History</a></li>
+    <li><a href="#what-is-a-translator">What is a Translator?</a></li>
+    <li><a href="#compilers">Compilers</a></li>
+    <li><a href="#interpreters">Interpreters</a></li>
+    <li><a href="#shared-steps-between-compilers-and-interpreters">Shared Steps Between Compilers and Interpreters</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-3---programming-languages-principles">Chapter 3 - Programming Languages Principles</h1>
+<h2 id="part-1-language-translation-compilers--interpreters">Part 1: Language Translation, Compilers &amp; Interpreters</h2>
+<hr>
+<h2 id="language-translation-history">Language Translation History</h2>
+<p>Early programmers used <strong>Machine Language</strong>, the language of numbers. Programs were written in HEX, then translated automatically to binary.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">2 4 63
+</span></span><span class="line"><span class="cl">3 4 46
+</span></span><span class="line"><span class="cl">5 4 57
+</span></span></code></pre></div><p>Later came <strong>Assembly</strong>, which just gave mnemonics to machine language instructions. In compiler construction, there&rsquo;s no real difference between Assembly and Machine Language. The hex program above becomes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LOD 4,X
+</span></span><span class="line"><span class="cl">ADD 4,Y
+</span></span><span class="line"><span class="cl">STO 4,Z
+</span></span></code></pre></div><p>Assuming 4 is a register, this means:</p>
+<ul>
+<li>Load the contents of memory location 63 (named X) into register 4</li>
+<li>Add the value at memory location 46 (named Y) to register 4</li>
+<li>Store the result from register 4 into memory location 57 (named Z)</li>
+</ul>
+<p>This was still hard to work with, so <strong>High Level Languages</strong> came next: Pascal, Basic, ADA, C, and so on. With high level languages came the need for <strong>Translators</strong>.</p>
+<hr>
+<h2 id="what-is-a-translator">What is a Translator?</h2>
+<blockquote>
+<p>A translator is an algorithm that translates source code into target code.</p>
+</blockquote>
+<ul>
+<li>Source = assembly, target = machine language -&gt; the translator is an <strong>Assembler</strong></li>
+<li>Source = high-level language, target = assembly or machine language -&gt; the translator is a <strong>Compiler</strong></li>
+</ul>
+<hr>
+<h2 id="compilers">Compilers</h2>
+<blockquote>
+<p>A compiler is an algorithm that translates a high level language program into an assembly or machine language program.</p>
+</blockquote>
+<p><strong>Compilation and execution process (C example):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Source Code (*.c) -&gt; Compiler (gcc) -&gt; Object Code (*.obj) -&gt; Executable Code (*.bin) -&gt; Output Data
+</span></span></code></pre></div><p>(Library linking and input data feed in along the way)</p>
+<p>A compiler generates <strong>Object Code (Machine Code)</strong>.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Advantages</th>
+          <th>Disadvantages</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Generates object code</td>
+          <td>Complex and hard to implement</td>
+      </tr>
+      <tr>
+          <td>Faster program execution</td>
+          <td>Not portable</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="interpreters">Interpreters</h2>
+<blockquote>
+<p>An interpreter is an algorithm that translates source code into intermediate code, which is then executed by another algorithm with input data to produce output.</p>
+</blockquote>
+<p><strong>General process:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Source Code -&gt; Interpreter -&gt; Intermediate Code -&gt; Another Algorithm -&gt; Output Data
+</span></span></code></pre></div><p><strong>Example:</strong> converting infix to postfix and then evaluating it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Infix Code -&gt; Translator Converter -&gt; Postfix Code -&gt; Some Program -&gt; Result
+</span></span></code></pre></div><p><strong>Java example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*.java -&gt; Java Compiler -&gt; Byte Code -&gt; JVM -&gt; Result
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Advantages</th>
+          <th>Disadvantages</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Generates portable intermediate code</td>
+          <td>Slower</td>
+      </tr>
+      <tr>
+          <td>Easier to implement</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="shared-steps-between-compilers-and-interpreters">Shared Steps Between Compilers and Interpreters</h2>
+<p>Both perform the same core steps:</p>
+<ol>
+<li><strong>Lexical Analysis (Scanner)</strong>: groups characters into <strong>Tokens</strong>. Only catches illegal character errors.</li>
+<li><strong>Syntax Analysis (Parser)</strong>: groups tokens into syntax structures.</li>
+<li><strong>Semantic Analysis</strong>: gives the syntax structures meaning. The hardest task of the three.</li>
+<li><strong>Code Generation</strong>: compilers produce object code, interpreters produce intermediate code. This is where they differ.</li>
+</ol>
+<p>Even though this looks like a strict pipeline, in practice these steps aren&rsquo;t fully independent. Almost all modern compilers are <strong>one-pass compilers</strong>, meaning these stages happen together rather than as separate sequential passes.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch3/p2/" id="nav-next"><em>Chapter 3, Part 2 – Runtime Environment &amp; Error Detection</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Semantics on Docs</title>
+    <link>http://localhost:1313/docs/tags/semantics/</link>
+    <description>Recent content in Semantics on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/semantics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 2 – Syntax &amp; Semantics</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch1/part2/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch1/part2/</guid>
+      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-2-syntax--semantics&#34;&gt;Part 2: Syntax &amp;amp; Semantics&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;&#xA;&lt;p&gt;Syntax is the grammar of the programming language. It describes structures like expressions, statements, and blocks.&lt;/p&gt;&#xA;&lt;p&gt;Syntax is formally described using a &lt;strong&gt;Context Free Grammar (CFG)&lt;/strong&gt;, a set of static algorithms and frameworks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;semantics&#34;&gt;Semantics&lt;/h2&gt;&#xA;&lt;p&gt;Semantics gives meaning to the syntax structures. It&amp;rsquo;s much harder to pin down precisely than syntax. For example, the meaning of an if/else statement has to be implemented correctly so the compiler generates the right code.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

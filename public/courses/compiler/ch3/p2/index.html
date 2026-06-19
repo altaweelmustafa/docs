@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 2 – Runtime Environment &amp; Error Detection · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 2 – Runtime Environment &amp; Error Detection</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-2-runtime-environment--error-detection">Part 2: Runtime Environment &amp; Error Detection</a></li>
+    <li><a href="#runtime-environment">Runtime Environment</a>
+      <ul>
+        <li><a href="#1-fully-static-environment">1. Fully-Static Environment</a></li>
+        <li><a href="#2-fully-dynamic-environment">2. Fully-Dynamic Environment</a></li>
+        <li><a href="#3-stack-based-environment">3. Stack-Based Environment</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-detection-and-recovery">Error Detection and Recovery</a>
+      <ul>
+        <li><a href="#4-types-of-errors">4 Types of Errors</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-3---programming-languages-principles">Chapter 3 - Programming Languages Principles</h1>
+<h2 id="part-2-runtime-environment--error-detection">Part 2: Runtime Environment &amp; Error Detection</h2>
+<hr>
+<h2 id="runtime-environment">Runtime Environment</h2>
+<blockquote>
+<p>The space allocation for programs and data in memory during execution.</p>
+</blockquote>
+<p>There are 3 types:</p>
+<h3 id="1-fully-static-environment">1. Fully-Static Environment</h3>
+<p>All properties of the language are predetermined before execution. Address allocation happens when the code is loaded, not when it runs.</p>
+<p><strong>FORTRAN</strong> is the classic example. All variable memory locations are fixed during execution. FORTRAN also only has one type of procedure, the <strong>subroutine</strong>, and subroutines can&rsquo;t be nested. This also rules out recursion. So the original FORTRAN fits a fully-static environment well.</p>
+<h3 id="2-fully-dynamic-environment">2. Fully-Dynamic Environment</h3>
+<p>Better suited for dynamically computed procedures, like <strong>LISP</strong>. Works best with functional and logical programming, since it allows recursive function calls through dynamic allocation.</p>
+<h3 id="3-stack-based-environment">3. Stack-Based Environment</h3>
+<p>A hybrid of the two above. Static allocation handles variables and data structures, while a <strong>stack</strong> handles recursion, nested functions, and procedures during execution. This is the most common scheme today.</p>
+<p>Used in block-structured (imperative/procedural) languages: ALGOL-like languages including Pascal, C, Modula, Ada, etc.</p>
+<p><strong>General rule of thumb:</strong></p>
+<ul>
+<li>Languages with strong static structure tend to be <strong>compiled</strong> (imperative languages)</li>
+<li>Languages with more dynamic structure tend to be <strong>interpreted</strong> (functional, logical languages)</li>
+</ul>
+<hr>
+<h2 id="error-detection-and-recovery">Error Detection and Recovery</h2>
+<p>There&rsquo;s always a trade-off between speed and robustness in error handling. Faster error handling tends to be less robust, while more complex error handling makes debugging easier at the cost of processing power and time.</p>
+<h3 id="4-types-of-errors">4 Types of Errors</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+          <th>When Detected</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Lexical</strong></td>
+          <td>Illegal character detected (e.g. <code>#</code> in C)</td>
+          <td>During Lexical Analysis. Easiest to find and fix.</td>
+      </tr>
+      <tr>
+          <td><strong>Syntax</strong></td>
+          <td>Grammar/production rule violation (e.g. missing semicolon)</td>
+          <td>During Syntax Analysis. A bit harder, still manageable.</td>
+      </tr>
+      <tr>
+          <td><strong>Semantic</strong></td>
+          <td>Split into static and dynamic</td>
+          <td>See below</td>
+      </tr>
+      <tr>
+          <td><strong>Logical</strong></td>
+          <td>Mismatch between what the programmer meant and what the code actually does</td>
+          <td>Hardest to fix, purely human error</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Semantic errors break down further:</strong></p>
+<ul>
+<li><strong>Static</strong>: caught before execution (e.g. type mismatch)</li>
+<li><strong>Dynamic</strong>: only caught during execution (e.g. division by zero)</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch3/p1/" id="nav-prev"><em>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/compiler/ch3/p3/" id="nav-next"><em>Chapter 3, Part 3 – Programming Languages Domains</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

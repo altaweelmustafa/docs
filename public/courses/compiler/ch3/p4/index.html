@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 4 – Language Evaluation Criteria · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 4 – Language Evaluation Criteria</h2>
+  <p class="post-date"><em>posted on 2026 Jun 19</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-4-language-evaluation-criteria">Part 4: Language Evaluation Criteria</a></li>
+    <li><a href="#which-language-is-the-best">Which Language is the Best?</a></li>
+    <li><a href="#readability">Readability</a></li>
+    <li><a href="#writability">Writability</a></li>
+    <li><a href="#reliability">Reliability</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#other-factors">Other Factors</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h1 id="chapter-3---programming-languages-principles">Chapter 3 - Programming Languages Principles</h1>
+<h2 id="part-4-language-evaluation-criteria">Part 4: Language Evaluation Criteria</h2>
+<hr>
+<h2 id="which-language-is-the-best">Which Language is the Best?</h2>
+<p>There&rsquo;s no single &ldquo;best&rdquo; programming language. We can only say a language is <strong>more suitable for a certain application</strong>. Comparisons only really make sense within similar languages or similar domains, on benchmarks like speed, space usage, ease of use, available libraries, and so on.</p>
+<hr>
+<h2 id="readability">Readability</h2>
+<p>The most important criteria of a programming language (we made these languages to be understood, after all). It&rsquo;s about how easy a piece of code is to read and understand.</p>
+<p><strong>What contributes to readability:</strong></p>
+<ul>
+<li>
+<p><strong>Simplicity</strong>: a language with too many basic components is harder to learn. People tend to gravitate to just a subset of features based on personal preference. Example: while/for/recursion all exist, but everyone has their favorite. Same with <code>x=x+1</code>, <code>x+=1</code>, <code>x++</code>, <code>++x</code>, multiple ways to do the same thing.</p>
+</li>
+<li>
+<p><strong>Orthogonality</strong>: the symmetry of relationships among the primitives that combine to form language constructs. The language shouldn&rsquo;t behave differently in different contexts.</p>
+<ul>
+<li>Example: in Pascal, loop blocks must use <code>BEGIN...END</code>, except the <code>REPEAT...UNTIL</code> statement, which breaks that pattern.</li>
+<li>Example: on IBM mainframe, <code>A Reg1,mem</code> works but <code>AR Reg1,Reg2</code> is a separate instruction for register-to-register addition.</li>
+<li>VAX, by contrast, has just one <code>Add op1,op2</code> instruction for all operand types (memory or register), making it more orthogonal.</li>
+</ul>
+<blockquote>
+<p>The less orthogonality, the more instructions there are. The more orthogonality, the more problems for the compiler.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Control Structures</strong>: early languages like FORTRAN and COBOL had very limited control structures (COBOL only had the for loop), which pushed people toward heavy <code>goto</code> usage and hurt readability. Block-structured programming in the 70s fixed this.</p>
+</li>
+<li>
+<p><strong>Data Types and Structures</strong>: a missing or unclear data type can hurt readability. Pascal has a real Boolean type:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flag:Boolean;
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">flag:=true;
+</span></span><span class="line"><span class="cl">if flag then ...
+</span></span></code></pre></div><p>C has no boolean type, so a flag is usually faked with an int:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">flag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span> <span class="p">...</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Syntax Considerations</strong>: identifier length, separators, and use of keywords (like <code>BEGIN</code>/<code>END</code>) in compound statements all factor in too.</p>
+</li>
+</ul>
+<hr>
+<h2 id="writability">Writability</h2>
+<p>The ability to write programs in a language. Closely tied to readability, the same factors that make a language readable tend to make it writable.</p>
+<p>Writability should be compared <strong>within the same domain</strong>. COBOL isn&rsquo;t suited for scientific programs, ALGOL60 is. Similarly, ALGOL60 isn&rsquo;t a great fit for AI work compared to PROLOG.</p>
+<hr>
+<h2 id="reliability">Reliability</h2>
+<p>How much we can &ldquo;trust&rdquo; a language to perform well under all conditions. Affected by:</p>
+<ul>
+<li><strong>Type Checking</strong>: verifying that operands of an operation have compatible types</li>
+<li><strong>Exception Handling</strong>: the ability to detect an error, report it, and recover from it</li>
+<li><strong>Aliasing</strong>: having two or more distinct names referencing the same memory location</li>
+</ul>
+<hr>
+<h2 id="cost">Cost</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Cost Type</th>
+          <th>What It Depends On</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Programmer Training</td>
+          <td>Simplicity and orthogonality</td>
+      </tr>
+      <tr>
+          <td>Software Creation</td>
+          <td>Writability</td>
+      </tr>
+      <tr>
+          <td>Compilation</td>
+          <td>Time/processing power/space needed to compile</td>
+      </tr>
+      <tr>
+          <td>Execution</td>
+          <td>Time/processing power/space needed to run</td>
+      </tr>
+      <tr>
+          <td>Compiler Development</td>
+          <td>Building the compiler itself</td>
+      </tr>
+      <tr>
+          <td>Maintenance</td>
+          <td>Readability</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="other-factors">Other Factors</h2>
+<ul>
+<li><strong>Portability</strong>: can the program move and run on a different platform? A big plus.</li>
+<li><strong>Generality</strong>: is the language general purpose, usable for everything?</li>
+<li><strong>Efficiency</strong>: covers three areas
+<ul>
+<li>Efficiency in translation</li>
+<li>Efficiency in execution</li>
+<li>Efficiency in writing programs</li>
+</ul>
+</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/compiler/ch3/p3/" id="nav-prev"><em>Chapter 3, Part 3 – Programming Languages Domains</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

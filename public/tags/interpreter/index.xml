@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Interpreter on Docs</title>
+    <link>http://localhost:1313/docs/tags/interpreter/</link>
+    <description>Recent content in Interpreter on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/interpreter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p1/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p1/</guid>
+      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-1-language-translation-compilers--interpreters&#34;&gt;Part 1: Language Translation, Compilers &amp;amp; Interpreters&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;language-translation-history&#34;&gt;Language Translation History&lt;/h2&gt;&#xA;&lt;p&gt;Early programmers used &lt;strong&gt;Machine Language&lt;/strong&gt;, the language of numbers. Programs were written in HEX, then translated automatically to binary.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2 4 63&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3 4 46&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5 4 57&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Later came &lt;strong&gt;Assembly&lt;/strong&gt;, which just gave mnemonics to machine language instructions. In compiler construction, there&amp;rsquo;s no real difference between Assembly and Machine Language. The hex program above becomes:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
