@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 9, Part 2 – Frame Allocation, Global vs. Local Replacement &amp; Thrashing · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 9, Part 2 – Frame Allocation, Global vs. Local Replacement &amp; Thrashing</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#allocation-of-frames-to-processes">Allocation of Frames to Processes</a>
+      <ul>
+        <li><a href="#1-equal-allocation">(1) Equal Allocation</a></li>
+        <li><a href="#2-proportional-allocation-by-size">(2) Proportional Allocation (by Size)</a></li>
+        <li><a href="#3-proportional-allocation-by-priority">(3) Proportional Allocation (by Priority)</a></li>
+      </ul>
+    </li>
+    <li><a href="#global-vs-local-replacement">Global vs. Local Replacement</a></li>
+    <li><a href="#thrashing">Thrashing</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="allocation-of-frames-to-processes">Allocation of Frames to Processes</h2>
+<p>How many frames does each process get?</p>
+<h3 id="1-equal-allocation">(1) Equal Allocation</h3>
+<p>Every process gets the same number of frames.</p>
+<p><strong>Example:</strong> 100 frames, 5 processes → each gets <code>100 / 5 = 20 frames</code>.</p>
+<p><strong>Problem:</strong> Unfair and poor performance — a small process wastes frames, a large one starves.</p>
+<hr>
+<h3 id="2-proportional-allocation-by-size">(2) Proportional Allocation (by Size)</h3>
+<p>Let <code>Si</code> = size of process <code>Pi</code>, <code>M</code> = total frames in memory.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Frames for Pi = (Si / ΣSi) × M
+</span></span></code></pre></div><p><strong>Example:</strong> M = 100 frames, 3 processes with sizes 100, 400, 700 KB:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">P1 = (100/1200) × 100 ≈  8 frames
+</span></span><span class="line"><span class="cl">P2 = (400/1200) × 100 ≈ 34 frames
+</span></span><span class="line"><span class="cl">P3 = (700/1200) × 100 ≈ 58 frames
+</span></span></code></pre></div><hr>
+<h3 id="3-proportional-allocation-by-priority">(3) Proportional Allocation (by Priority)</h3>
+<p>Same formula but using <strong>priority</strong> instead of size. Higher priority → more frames.</p>
+<p><strong>Example:</strong> 100 frames, priorities 2, 3, 7:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">P1 = (2/12) × 100 ≈ 17 frames
+</span></span><span class="line"><span class="cl">P2 = (3/12) × 100 = 25 frames
+</span></span><span class="line"><span class="cl">P3 = (7/12) × 100 ≈ 58 frames
+</span></span></code></pre></div><hr>
+<h2 id="global-vs-local-replacement">Global vs. Local Replacement</h2>
+<ul>
+<li><strong>Global Replacement:</strong> A process can steal a frame from <em>any other process</em>. More flexible, commonly used.</li>
+<li><strong>Local Replacement:</strong> A process can only replace its <em>own</em> frames. More predictable but can underutilize memory.</li>
+</ul>
+<hr>
+<h2 id="thrashing">Thrashing</h2>
+<p><strong>Thrashing</strong> occurs when the OS is spending most of its time swapping pages in and out rather than executing processes.</p>
+<p><strong>Why it happens:</strong></p>
+<ol>
+<li>A process has too few frames allocated → high page fault rate.</li>
+<li>OS sees low CPU utilization → increases degree of multiprogramming (adds more processes).</li>
+<li>Each new process takes frames from others → all processes fault more.</li>
+<li>The system spirals: OS is almost entirely doing page swapping.</li>
+</ol>
+<p><strong>Graph:</strong> Page faults vs. allocated frames — performance plummets at low frame counts, then levels off as frames increase. The &ldquo;poor performance&rdquo; zone is thrashing.</p>
+<p><strong>Solution:</strong> Reduce the degree of multiprogramming or use a working-set model to allocate enough frames for each process&rsquo;s active pages.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch9/ch9-part1/" id="nav-prev"><em>Chapter 9, Part 1 – Virtual Memory: Demand Paging &amp; Page Replacement</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

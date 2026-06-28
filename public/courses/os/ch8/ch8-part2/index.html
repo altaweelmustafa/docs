@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2-non-contiguous-allocation--paging">[2] Non-Contiguous Allocation — Paging</a></li>
+    <li><a href="#address-translation">Address Translation</a></li>
+    <li><a href="#page-table-size-problem">Page Table Size Problem</a></li>
+    <li><a href="#where-is-the-active-page-table-stored">Where Is the Active Page Table Stored?</a>
+      <ul>
+        <li><a href="#1-registers">(1) Registers</a></li>
+        <li><a href="#2-memory--ptbr--ptlr">(2) Memory — PTBR + PTLR</a></li>
+        <li><a href="#3-memory--registers--tlb-associative-registers">(3) Memory + Registers — TLB (Associative Registers)</a></li>
+      </ul>
+    </li>
+    <li><a href="#multi-level-page-tables">Multi-Level Page Tables</a></li>
+    <li><a href="#memory-protection-in-paging">Memory Protection in Paging</a></li>
+    <li><a href="#paging-advantages--shared-pages">Paging Advantages — Shared Pages</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="2-non-contiguous-allocation--paging">[2] Non-Contiguous Allocation — Paging</h2>
+<ul>
+<li>The logical program is divided into equal-size chunks called <strong>pages</strong>.</li>
+<li>Physical memory is divided into equal-size chunks called <strong>frames</strong> (same size as pages).</li>
+<li>Pages can be placed into any free frames — no need for contiguous memory.</li>
+</ul>
+<hr>
+<h2 id="address-translation">Address Translation</h2>
+<p>The OS uses a <strong>page table</strong>: a table that maps each page number (P) to its frame number (F).</p>
+<p><strong>Logical Address layout:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LA → [ P | d ]
+</span></span><span class="line"><span class="cl">      page#  offset
+</span></span></code></pre></div><p><strong>Translation formulas:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">P  = LA / Page Size
+</span></span><span class="line"><span class="cl">d  = LA % Page Size
+</span></span><span class="line"><span class="cl">PA = F × Page Size + d
+</span></span></code></pre></div><p><strong>Example</strong> (Page Size = 100 bytes, LA = 271):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">P = 271 / 100 = 2
+</span></span><span class="line"><span class="cl">d = 271 % 100 = 71
+</span></span><span class="line"><span class="cl">→ Page table says page 2 is in frame 1012
+</span></span><span class="line"><span class="cl">PA = 1012 × 100 + 71 = 101,271
+</span></span></code></pre></div><blockquote>
+<p><strong>Note:</strong> <code>/</code> and <code>%</code> are multiplication-class operations — they take time. In practice, page size is always a power of 2 (typically <code>4096 = 2¹²</code>), so the CPU extracts <code>d</code> from the <strong>low-order n bits</strong> and <code>P</code> from the remaining high-order bits — no division needed.</p>
+</blockquote>
+<hr>
+<h2 id="page-table-size-problem">Page Table Size Problem</h2>
+<p>For large address spaces the page table itself gets enormous:</p>
+<table>
+  <thead>
+      <tr>
+          <th>LA bits</th>
+          <th>Page Size</th>
+          <th>Page Table Size</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>32 bits</td>
+          <td>4 KB (2¹²)</td>
+          <td>2²⁰ × 4 B = <strong>4 MB</strong></td>
+      </tr>
+      <tr>
+          <td>40 bits</td>
+          <td>4 KB</td>
+          <td>2²⁸ × 4 B = <strong>1 GB</strong></td>
+      </tr>
+      <tr>
+          <td>48 bits</td>
+          <td>4 KB</td>
+          <td>2³⁶ × 4 B = <strong>256 GB</strong></td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="where-is-the-active-page-table-stored">Where Is the Active Page Table Stored?</h2>
+<p>Three options:</p>
+<h3 id="1-registers">(1) Registers</h3>
+<p>Works only if the page table is very small (e.g., PDP-11: LA = 16 bits, Page Size = 8192 = 2¹³ → only 2³ = 8 pages, table = 32 bytes).</p>
+<h3 id="2-memory--ptbr--ptlr">(2) Memory — PTBR + PTLR</h3>
+<p>Keep the page table in main memory; identify it with the <strong>Page Table Base Register (PTBR)</strong> and <strong>Page Table Limit Register (PTLR)</strong>.</p>
+<p><strong>Problem:</strong> Every instruction now requires <strong>two memory accesses</strong> — one to look up the page table, one to fetch the actual instruction/data.</p>
+<h3 id="3-memory--registers--tlb-associative-registers">(3) Memory + Registers — TLB (Associative Registers)</h3>
+<p>A small, fast set of registers called <strong>Translation Look-aside Buffers (TLB)</strong> caches recently used <code>(Page#, Frame#)</code> pairs.</p>
+<ul>
+<li>If the page is in the TLB (<strong>hit</strong>): PA computed in one step.</li>
+<li>If not (<strong>miss</strong>): fall back to the page table in memory.</li>
+</ul>
+<p><strong>Effective Access Time (EAT):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EAT = h × (m + t) + (1 − h) × (2m + t)
+</span></span></code></pre></div><p>Where <code>h</code> = hit ratio, <code>m</code> = memory access time, <code>t</code> = TLB search time.</p>
+<p><strong>Example:</strong> m = 100 ns, t = 1 ns, h = 0.95 → EAT = 108 ns.</p>
+<hr>
+<h2 id="multi-level-page-tables">Multi-Level Page Tables</h2>
+<p>Since the page table for a 32-bit LA is 4 MB (too big to keep contiguous), we can split it into <strong>levels</strong>:</p>
+<p><strong>Two-level (LA = 32 bits, Page Size = 4 KB):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LA → [ P1 (8 bits) | P2 (12 bits) | d (12 bits) ]
+</span></span></code></pre></div><ul>
+<li>Outer page table size: 2⁸ × 4 = 1 KB</li>
+<li>Inner page table size: 2¹² × 4 = 16 KB</li>
+</ul>
+<p><strong>Four-level (LA = 48 bits):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LA → [ P1(6) | P2(10) | P3(10) | P4(10) | d(12) ]
+</span></span></code></pre></div><p><strong>Problem:</strong> More levels = more memory accesses. With good TLB coverage, performance stays acceptable.</p>
+<hr>
+<h2 id="memory-protection-in-paging">Memory Protection in Paging</h2>
+<p>Additional bits are stored in each page table entry:</p>
+<ul>
+<li><strong>Legal/Illegal Bit:</strong> <code>1</code> = legal page, <code>0</code> = illegal (accessing triggers a fault).</li>
+<li><strong>R/W Bit:</strong> <code>1</code> = read/write page, <code>0</code> = read-only page.</li>
+</ul>
+<hr>
+<h2 id="paging-advantages--shared-pages">Paging Advantages — Shared Pages</h2>
+<p>Two processes can map different page table entries to the <strong>same frame</strong> in physical memory (e.g., shared library code). Only one copy of the code lives in memory.</p>
+<p><strong>Disadvantage:</strong> Some feel the program being split into many pieces in memory is a concern (mostly philosophical).</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch8/ch8-part1/" id="nav-prev"><em>Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/os/ch8/ch8-part3/" id="nav-next"><em>Chapter 8, Part 3 – Segmentation &amp; Segmentation with Paging</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

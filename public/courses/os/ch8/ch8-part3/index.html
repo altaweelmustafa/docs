@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8, Part 3 – Segmentation &amp; Segmentation with Paging · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 8, Part 3 – Segmentation &amp; Segmentation with Paging</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#segmentation">Segmentation</a></li>
+    <li><a href="#segmentation-with-paging">Segmentation with Paging</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="segmentation">Segmentation</h2>
+<p>Paging separates the user&rsquo;s view of memory from actual memory. <strong>Segmentation</strong> preserves the user&rsquo;s logical view: a program is a collection of named segments (main program, stack, data structures, functions/procedures).</p>
+<p>Each segment has a <strong>segment number (S)</strong> and a <strong>displacement/offset (d)</strong>.</p>
+<p><strong>Segment Table</strong> stores <code>(Base, Limit)</code> per segment:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LA → [ S | d ]
+</span></span><span class="line"><span class="cl">PA  = Base[S] + d        (if d &lt; Limit[S], else → fault)
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Seg#</th>
+          <th>Base</th>
+          <th>Limit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>27,000</td>
+          <td>7,000</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>1,000</td>
+          <td>5,000</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>18,000</td>
+          <td>3,000</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>21,000</td>
+          <td>2,000</td>
+      </tr>
+  </tbody>
+</table>
+<p>Given LA with <code>S = 2, d = 350</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PA = 18,000 + 350 = 18,350
+</span></span></code></pre></div><hr>
+<h2 id="segmentation-with-paging">Segmentation with Paging</h2>
+<p><em>&ldquo;Paging the segments&rdquo;</em> — combine both schemes.</p>
+<p>Each segment is divided into pages. The segment table now points to a <strong>page table</strong> for that segment instead of a direct base address.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LA → [ S | P | d ]
+</span></span><span class="line"><span class="cl">         ↓
+</span></span><span class="line"><span class="cl">  Segment table[S] → address of page table
+</span></span><span class="line"><span class="cl">         ↓
+</span></span><span class="line"><span class="cl">  Page table[P] → Frame F
+</span></span><span class="line"><span class="cl">         ↓
+</span></span><span class="line"><span class="cl">  PA = F × Page Size + d
+</span></span></code></pre></div><p><strong>Example:</strong> If segment size = 64 KB and page size = 4 KB, each segment contains 16 pages.</p>
+<p>This scheme gives the flexibility of segmentation (logical units) with the non-contiguous placement advantage of paging.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch8/ch8-part2/" id="nav-prev"><em>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

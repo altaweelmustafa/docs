@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deadlock-Prevention on Docs</title>
+    <link>http://localhost:1313/docs/tags/deadlock-prevention/</link>
+    <description>Recent content in Deadlock-Prevention on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/deadlock-prevention/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 7 – Deadlocks</title>
+      <link>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</guid>
+      <description>&lt;h2 id=&#34;deadlock--definition&#34;&gt;Deadlock — Definition&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Deadlock&lt;/strong&gt;: a set of waiting (blocked) processes where each process is holding a resource and waiting for other processes to release their resources.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Simple example:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        PR-1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      ↗       ↖&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   P₁   (cycle)  P₂&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      ↘       ↗&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        PR-2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;P₁ holds PR-1 and waits for PR-2. P₂ holds PR-2 and waits for PR-1 → neither can proceed.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;system-model&#34;&gt;System Model&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;We have resource types: R₀, R₁, &amp;hellip;, Rₙ₋₁ (e.g. HD, tapes, printers).&lt;/li&gt;&#xA;&lt;li&gt;We have Wⱼ instances of each resource type Rⱼ.&lt;/li&gt;&#xA;&lt;li&gt;Each process uses resources in the following order:&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Use&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Release&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;deadlock-handling&#34;&gt;Deadlock Handling&lt;/h3&gt;&#xA;&lt;p&gt;The OS handles deadlocks in one of two ways:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

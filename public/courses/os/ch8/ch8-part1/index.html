@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-memory-management">What is Memory Management?</a></li>
+    <li><a href="#logical-address-vs-physical-address">Logical Address vs. Physical Address</a></li>
+    <li><a href="#binding-times">Binding Times</a></li>
+    <li><a href="#1-contiguous-allocation--multiple-partitions">[1] Contiguous Allocation – Multiple Partitions</a>
+      <ul>
+        <li><a href="#1-fixed-regions--ibm-mft">(1) Fixed Regions — IBM MFT</a></li>
+        <li><a href="#2-dynamic-variable-regions">(2) Dynamic (Variable) Regions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="what-is-memory-management">What is Memory Management?</h2>
+<p><strong>Ordinary Memory Management</strong> means all programs must be admitted (allocated) into memory <strong>before</strong> execution starts.</p>
+<hr>
+<h2 id="logical-address-vs-physical-address">Logical Address vs. Physical Address</h2>
+<ul>
+<li><strong>Logical Address (LA):</strong> The address seen in your program — it&rsquo;s the offset of the address within the program.</li>
+<li><strong>Physical Address (PA):</strong> The actual address in memory.</li>
+</ul>
+<p>The OS maps logical addresses to physical ones at runtime:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PA = LA + Base Register
+</span></span><span class="line"><span class="cl">Example: PA = 172 + 21568 = 21740
+</span></span></code></pre></div><hr>
+<h2 id="binding-times">Binding Times</h2>
+<p>When does the OS determine physical addresses?</p>
+<ol>
+<li><strong>At Compilation Time</strong> — PAs are assigned at the beginning. The program must be loaded at the same memory location every time and cannot change location during execution.</li>
+<li><strong>At Loading Time</strong> — PAs are decided when the program is loaded into memory. Problem: the program still can&rsquo;t be moved during execution.</li>
+<li><strong>At Execution Time</strong> <em>(Best)</em> — The most flexible. Our objective is to compute the PA and give it to the CPU for instruction fetch. This is the basis of modern memory management.</li>
+</ol>
+<hr>
+<h2 id="1-contiguous-allocation--multiple-partitions">[1] Contiguous Allocation – Multiple Partitions</h2>
+<p>Memory is divided into partitions (regions). Every region holds only one process. When a region becomes free, a new program loads into it.</p>
+<p><strong>Hardware support needed:</strong> Base Register + Limit Register.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PA = LA + Base Register
+</span></span></code></pre></div><p>The CPU checks: if <code>LA &lt; Limit Register</code> → compute PA; otherwise → <strong>memory fault</strong>.</p>
+<h3 id="1-fixed-regions--ibm-mft">(1) Fixed Regions — IBM MFT</h3>
+<p>Memory is divided into a <strong>fixed number of partitions</strong> with fixed sizes. The degree of multiprogramming is bounded by the number of regions.</p>
+<p><strong>Job Scheduling</strong> — how does the OS select a job for a region?</p>
+<ul>
+<li><strong>(a)</strong> Each region has its own queue of waiting jobs.</li>
+<li><strong>(b)</strong> One shared queue for all jobs.</li>
+</ul>
+<p>Scheduling policies: FCFS (with or without skip), Best Fit, Best Available Fit.</p>
+<p><strong>Problem: Internal Fragmentation</strong> — unused memory <em>inside</em> a region (the job is smaller than the partition).</p>
+<p><strong>External Fragmentation</strong> — an unused region too small to fit any available job.</p>
+<h3 id="2-dynamic-variable-regions">(2) Dynamic (Variable) Regions</h3>
+<p>Partitions are created dynamically to fit the size of each arriving job. Over time, memory ends up as a mix of allocated regions and <strong>holes</strong> (external fragmentation).</p>
+<p><strong>Job Scheduling — How to select a hole for a process:</strong></p>
+<ul>
+<li><strong>(1) First Fit</strong> — pick the first hole big enough.</li>
+<li><strong>(2) Best Fit</strong> — pick the smallest hole that fits.</li>
+<li><strong>(3) Worst Fit</strong> — pick the largest hole.</li>
+</ul>
+<p><strong>Problem: External Fragmentation</strong> → <strong>Solution: Compaction</strong> (move all processes together to merge holes).</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/os/ch8/ch8-part2/" id="nav-next"><em>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

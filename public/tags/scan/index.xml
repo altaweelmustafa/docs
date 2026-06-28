@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SCAN on Docs</title>
+    <link>http://localhost:1313/docs/tags/scan/</link>
+    <description>Recent content in SCAN on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/scan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 10 – Disk Scheduling</title>
+      <link>http://localhost:1313/docs/courses/os/ch10/ch10-part1/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch10/ch10-part1/</guid>
+      <description>&lt;h2 id=&#34;hard-disk-structure&#34;&gt;Hard Disk Structure&lt;/h2&gt;&#xA;&lt;p&gt;A hard disk address is &lt;code&gt;(track#, surface#, block#)&lt;/code&gt; — e.g., &lt;code&gt;(225, 3, 17)&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;HD Access Time = Seek Time + Latency Time + Transfer Time&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Seek Time:&lt;/strong&gt; Time for the R/W head to move to the correct track (mechanical — the dominant cost).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Latency Time:&lt;/strong&gt; Time for the disk to rotate to the correct sector.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Transfer Time:&lt;/strong&gt; Time to actually read/write the data.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;We have no control over latency or transfer time, but we &lt;strong&gt;can reduce seek time&lt;/strong&gt; by choosing a smart disk scheduling algorithm.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

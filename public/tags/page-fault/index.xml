@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Page-Fault on Docs</title>
+    <link>http://localhost:1313/docs/tags/page-fault/</link>
+    <description>Recent content in Page-Fault on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/page-fault/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 9, Part 1 – Virtual Memory: Demand Paging &amp; Page Replacement</title>
+      <link>http://localhost:1313/docs/courses/os/ch9/ch9-part1/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch9/ch9-part1/</guid>
+      <description>&lt;h2 id=&#34;virtual-memory-management&#34;&gt;Virtual Memory Management&lt;/h2&gt;&#xA;&lt;p&gt;Virtual memory allows running programs &lt;strong&gt;larger than physical memory&lt;/strong&gt; by loading only the needed parts.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;No need for the entire program to be in memory — only the active pages are required.&lt;/li&gt;&#xA;&lt;li&gt;Main mechanism: &lt;strong&gt;Demand Paging&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;demand-paging&#34;&gt;Demand Paging&lt;/h2&gt;&#xA;&lt;p&gt;The page table gains a &lt;strong&gt;Valid/Invalid (V/I) bit&lt;/strong&gt; per entry:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;1&lt;/code&gt; = page is in memory (valid)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;0&lt;/code&gt; = page is NOT in memory (invalid)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;When the CPU accesses a page with V/I = 0, a &lt;strong&gt;page fault&lt;/strong&gt; occurs:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 11 – File System: Access Methods &amp; Disk Allocation · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 11 – File System: Access Methods &amp; Disk Allocation</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#file-access-methods">File Access Methods</a>
+      <ul>
+        <li><a href="#sequential-access">Sequential Access</a></li>
+        <li><a href="#direct-access">Direct Access</a></li>
+      </ul>
+    </li>
+    <li><a href="#device-directory">Device Directory</a></li>
+    <li><a href="#disk-allocation-methods">Disk Allocation Methods</a>
+      <ul>
+        <li><a href="#1-contiguous-allocation">(1) Contiguous Allocation</a></li>
+        <li><a href="#2-linked-allocation">(2) Linked Allocation</a></li>
+        <li><a href="#3-indexed-allocation">(3) Indexed Allocation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="file-access-methods">File Access Methods</h2>
+<p>Every file has:</p>
+<ul>
+<li><strong>Location:</strong> Address of the first block in the file (constant, can&rsquo;t be changed).</li>
+<li><strong>File Pointer (FP):</strong> The current position where the next read/write will occur.</li>
+</ul>
+<h3 id="sequential-access">Sequential Access</h3>
+<p>Read/write the <strong>next</strong> block in sequence.</p>
+<p>Example: If FP is at block 7, sequential access reads/writes block 8.</p>
+<h3 id="direct-access">Direct Access</h3>
+<p>Read/write <strong>any block</strong> by its relative number <code>n</code> within the file.</p>
+<hr>
+<h2 id="device-directory">Device Directory</h2>
+<p>Every storage device has a <strong>device directory</strong> — essentially a hash table containing information about all files stored on that device.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>FP</th>
+          <th>Size</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>sam.txt</td>
+          <td>11</td>
+          <td>11</td>
+          <td>6</td>
+      </tr>
+  </tbody>
+</table>
+<p>The <strong>Location</strong> field stores the address of the file&rsquo;s first block.</p>
+<hr>
+<h2 id="disk-allocation-methods">Disk Allocation Methods</h2>
+<p>How are disk blocks selected and allocated to a file?</p>
+<h3 id="1-contiguous-allocation">(1) Contiguous Allocation</h3>
+<p>The OS selects a run of <strong>contiguous blocks</strong> for the entire file.</p>
+<p><strong>Device Directory entry:</strong> <code>(Name, Location, Size)</code></p>
+<p><strong>Example:</strong> <code>test.dat</code> starts at block 13, size 7 → occupies blocks 13–19.</p>
+<p><strong>Accessing block #n:</strong> <code>PA = Location + n − 1</code></p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Supports both sequential and direct access easily.</li>
+<li>Sequential: next block = FP + 1.</li>
+<li>Direct: <code>PA = Location + n − 1</code>.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ol>
+<li><strong>Fragmentation (holes)</strong> → Solution: Compaction (defrag).</li>
+<li><strong>Major problem:</strong> What if the file grows? What if we need to insert or delete a block mid-file? Requires relocating the entire file.</li>
+</ol>
+<hr>
+<h3 id="2-linked-allocation">(2) Linked Allocation</h3>
+<p>File blocks are scattered on disk, each block contains a <strong>pointer to the next block</strong> — forming a linked list.</p>
+<p><strong>Device Directory entry:</strong> <code>(Name, Location, Size)</code> — Location = first block only.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>No fragmentation.</li>
+<li>File can grow, insert, and delete freely.</li>
+</ul>
+<p><strong>Major Disadvantage:</strong></p>
+<ul>
+<li>Only supports <strong>sequential access</strong> easily.</li>
+<li>Direct access requires traversing the entire chain — slow.</li>
+<li>Solution: Use an <strong>index file</strong> that lists all block addresses in order.</li>
+</ul>
+<hr>
+<h3 id="3-indexed-allocation">(3) Indexed Allocation</h3>
+<p>Each file has at least one <strong>index block</strong> that contains the addresses of all of the file&rsquo;s data blocks.</p>
+<p>The device directory stores the address of the index block. The File Pointer (FP) points into the index.</p>
+<p><strong>Accessing block #n:</strong></p>
+<ul>
+<li>Sequential: <code>next block = IND[n++]</code></li>
+<li>Direct: <code>PA = IND[n]</code></li>
+</ul>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Supports both sequential and direct access.</li>
+</ul>
+<p><strong>Disadvantage:</strong></p>
+<ul>
+<li>Wasted space for the index block — every file needs at least one, even tiny files.</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

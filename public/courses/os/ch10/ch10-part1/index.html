@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10 – Disk Scheduling · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 10 – Disk Scheduling</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hard-disk-structure">Hard Disk Structure</a></li>
+    <li><a href="#disk-scheduling-algorithms">Disk Scheduling Algorithms</a>
+      <ul>
+        <li><a href="#1-fcfs--first-come-first-served">(1) FCFS — First Come, First Served</a></li>
+        <li><a href="#2-sstf--shortest-seek-time-first">(2) SSTF — Shortest Seek Time First</a></li>
+        <li><a href="#3-scan-elevator-algorithm">(3) SCAN (Elevator Algorithm)</a></li>
+        <li><a href="#4-c-scan-circular-scan">(4) C-SCAN (Circular SCAN)</a></li>
+        <li><a href="#5-look">(5) LOOK</a></li>
+        <li><a href="#6-c-look-circular-look">(6) C-LOOK (Circular LOOK)</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="hard-disk-structure">Hard Disk Structure</h2>
+<p>A hard disk address is <code>(track#, surface#, block#)</code> — e.g., <code>(225, 3, 17)</code>.</p>
+<p><strong>HD Access Time = Seek Time + Latency Time + Transfer Time</strong></p>
+<ul>
+<li><strong>Seek Time:</strong> Time for the R/W head to move to the correct track (mechanical — the dominant cost).</li>
+<li><strong>Latency Time:</strong> Time for the disk to rotate to the correct sector.</li>
+<li><strong>Transfer Time:</strong> Time to actually read/write the data.</li>
+</ul>
+<p>We have no control over latency or transfer time, but we <strong>can reduce seek time</strong> by choosing a smart disk scheduling algorithm.</p>
+<hr>
+<h2 id="disk-scheduling-algorithms">Disk Scheduling Algorithms</h2>
+<p><strong>Setup for all examples:</strong></p>
+<ul>
+<li>HD has 200 tracks (0–199)</li>
+<li>Request queue: <code>98, 183, 37, 122, 14, 124, 65, 67</code></li>
+<li>R/W head currently at track <strong>53</strong>, previously at track <strong>40</strong> (moving right)</li>
+</ul>
+<hr>
+<h3 id="1-fcfs--first-come-first-served">(1) FCFS — First Come, First Served</h3>
+<p>Serve requests in arrival order.</p>
+<p>Movement: <code>53 → 98 → 183 → 37 → 122 → 14 → 124 → 65 → 67</code></p>
+<p><strong>Average Head Movement (AHM) ≈ 98 tracks/job</strong> — very high, lots of back-and-forth.</p>
+<hr>
+<h3 id="2-sstf--shortest-seek-time-first">(2) SSTF — Shortest Seek Time First</h3>
+<p>Always serve the request <strong>closest to the current head position</strong>.</p>
+<p>Movement: <code>53 → 65 → 67 → 37 → 14 → 98 → 122 → 124 → 183</code></p>
+<p><strong>AHM ≈ 29 tracks/job</strong> — optimal solution (minimum).</p>
+<p><strong>Problem:</strong> Starvation — requests far from the head may wait forever.</p>
+<hr>
+<h3 id="3-scan-elevator-algorithm">(3) SCAN (Elevator Algorithm)</h3>
+<p>The head moves in one direction, serving all requests along the way, then <strong>reverses</strong> at the end.</p>
+<p>Movement: <code>53 → 65 → 67 → 98 → 122 → 124 → 183 → 199 → 37 → 14</code></p>
+<p><strong>AHM ≈ 41 tracks/job</strong></p>
+<hr>
+<h3 id="4-c-scan-circular-scan">(4) C-SCAN (Circular SCAN)</h3>
+<p>Like SCAN but after reaching one end, the head jumps back to the <strong>beginning</strong> without serving on the return trip.</p>
+<p>Movement: <code>53 → 65 → 67 → 98 → 122 → 124 → 183 → 199 → (jump to 0) → 14 → 37</code></p>
+<p><strong>AHM ≈ 47 tracks/job</strong> — more uniform wait times than SCAN.</p>
+<hr>
+<h3 id="5-look">(5) LOOK</h3>
+<p>Like SCAN but the head only goes as far as the <strong>last request</strong> in each direction (doesn&rsquo;t travel to the physical end of the disk).</p>
+<p>Movement: <code>53 → 65 → 67 → 98 → 122 → 124 → 183 → (reverse) → 37 → 14</code></p>
+<p><strong>AHM ≈ 37 tracks/job</strong></p>
+<hr>
+<h3 id="6-c-look-circular-look">(6) C-LOOK (Circular LOOK)</h3>
+<p>Like C-SCAN but jumps back to the <strong>first pending request</strong> instead of track 0.</p>
+<p>Movement: <code>53 → 65 → 67 → 98 → 122 → 124 → 183 → (jump to 14) → 14 → 37</code></p>
+<p><strong>AHM ≈ 42 tracks/job</strong></p>
+<hr>
+<h2 id="summary">Summary</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Algorithm</th>
+          <th>AHM (example)</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>FCFS</td>
+          <td>~98</td>
+          <td>Simple, poor performance</td>
+      </tr>
+      <tr>
+          <td>SSTF</td>
+          <td>~29</td>
+          <td>Optimal seek, risk of starvation</td>
+      </tr>
+      <tr>
+          <td>SCAN</td>
+          <td>~41</td>
+          <td>Good balance, no starvation</td>
+      </tr>
+      <tr>
+          <td>C-SCAN</td>
+          <td>~47</td>
+          <td>Uniform wait times</td>
+      </tr>
+      <tr>
+          <td>LOOK</td>
+          <td>~37</td>
+          <td>Better than SCAN (no wasted travel)</td>
+      </tr>
+      <tr>
+          <td>C-LOOK</td>
+          <td>~42</td>
+          <td>Better than C-SCAN</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

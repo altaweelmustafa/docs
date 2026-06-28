@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6 – Concurrent Processes &amp; Process Synchronization · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 6 – Concurrent Processes &amp; Process Synchronization</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#concurrent-processes">Concurrent Processes</a></li>
+    <li><a href="#precedence-graph">Precedence Graph</a></li>
+    <li><a href="#concurrency-condition--bernsteins-conditions">Concurrency Condition — Bernstein&rsquo;s Conditions</a></li>
+    <li><a href="#fork--join-constructs">Fork &amp; Join Constructs</a>
+      <ul>
+        <li><a href="#example-two-statements-from-before-using-forkjoin">Example (two statements from before, using Fork/Join):</a></li>
+      </ul>
+    </li>
+    <li><a href="#parbegin--parend-concurrent-statement">Parbegin / Parend (Concurrent Statement)</a></li>
+    <li><a href="#process-synchronization">Process Synchronization</a>
+      <ul>
+        <li><a href="#the-problem--bounded-buffer-with-counter">The Problem — Bounded Buffer with Counter</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-critical-section-problem">The Critical Section Problem</a>
+      <ul>
+        <li><a href="#structure-of-process-pᵢ">Structure of Process Pᵢ</a></li>
+        <li><a href="#solution-requirements">Solution Requirements</a></li>
+        <li><a href="#types-of-solutions">Types of Solutions</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-solutions">Software Solutions</a>
+      <ul>
+        <li><a href="#algorithm-1--turn-variable">Algorithm 1 — Turn Variable</a></li>
+        <li><a href="#algorithm-2--flag-array">Algorithm 2 — Flag Array</a></li>
+        <li><a href="#algorithm-3--petersons-solution-combined">Algorithm 3 — Peterson&rsquo;s Solution (Combined)</a></li>
+        <li><a href="#bakery-algorithm--generalization-for-n-processes">Bakery Algorithm — Generalization for n Processes</a></li>
+        <li><a href="#drawbacks-of-software-solutions">Drawbacks of Software Solutions</a></li>
+      </ul>
+    </li>
+    <li><a href="#hardware-solutions">Hardware Solutions</a>
+      <ul>
+        <li><a href="#disable-interrupts">Disable Interrupts</a></li>
+        <li><a href="#test-and-set">Test-and-Set</a></li>
+      </ul>
+    </li>
+    <li><a href="#operating-system-solution--semaphores">Operating System Solution — Semaphores</a>
+      <ul>
+        <li><a href="#semaphore-implementation-no-busy-waiting">Semaphore Implementation (No Busy Waiting)</a></li>
+      </ul>
+    </li>
+    <li><a href="#classical-problems-of-synchronization">Classical Problems of Synchronization</a>
+      <ul>
+        <li><a href="#1-bounded-buffer-problem">1. Bounded Buffer Problem</a></li>
+        <li><a href="#2-readers-writers-problem">2. Readers-Writers Problem</a></li>
+        <li><a href="#3-dining-philosophers-problem">3. Dining Philosophers Problem</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="concurrent-processes">Concurrent Processes</h2>
+<p>Concurrent processes are either:</p>
+<ul>
+<li><strong>Independent</strong>: cannot affect or be affected by the execution of another process.</li>
+<li><strong>Cooperating</strong>: can affect or be affected by another process (share data).</li>
+</ul>
+<hr>
+<h2 id="precedence-graph">Precedence Graph</h2>
+<p>A <strong>precedence graph</strong> is a directed graph whose nodes correspond to statements. An edge from node Sᵢ to node Sⱼ means that Sⱼ is only executed <strong>after</strong> Sᵢ completes.</p>
+<p><strong>Example:</strong> Given statements:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(1) a = x + y
+</span></span><span class="line"><span class="cl">(2) b = z + 1
+</span></span><span class="line"><span class="cl">(3) c = a - b
+</span></span><span class="line"><span class="cl">(4) w = c + 1
+</span></span></code></pre></div><ul>
+<li>(1) and (2) <strong>can</strong> be executed concurrently (no dependency).</li>
+<li>(3) depends on both (1) and (2) → cannot run concurrently with either.</li>
+<li>(4) depends on (3) → cannot run concurrently with (3).</li>
+</ul>
+<hr>
+<h2 id="concurrency-condition--bernsteins-conditions">Concurrency Condition — Bernstein&rsquo;s Conditions</h2>
+<p><strong>Define:</strong></p>
+<ul>
+<li><code>R(Sᵢ)</code> = READ set — all variables <strong>read</strong> by statement Sᵢ.</li>
+<li><code>W(Sᵢ)</code> = WRITE set — all variables <strong>written</strong> by statement Sᵢ.</li>
+</ul>
+<p><strong>Two statements S₁ and S₂ can execute concurrently if and only if:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R(S₁) ∩ W(S₂) = ∅
+</span></span><span class="line"><span class="cl">W(S₁) ∩ R(S₂) = ∅
+</span></span><span class="line"><span class="cl">W(S₁) ∩ W(S₂) = ∅
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S₁: a = x + y     R(S₁) = {x,y},  W(S₁) = {a}
+</span></span><span class="line"><span class="cl">S₂: b = z + 1     R(S₂) = {z},    W(S₂) = {b}
+</span></span></code></pre></div><ul>
+<li><code>{x,y} ∩ {b} = ∅</code> ✓</li>
+<li><code>{a} ∩ {z} = ∅</code> ✓</li>
+<li><code>{a} ∩ {b} = ∅</code> ✓ → <strong>S₁ and S₂ can run concurrently.</strong></li>
+</ul>
+<p><strong>Counter-example:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S₃: c = a - b     R(S₃) = {a,b}
+</span></span><span class="line"><span class="cl">R(S₃) ∩ W(S₂) = {a,b} ∩ {b} ≠ ∅ → Cannot run concurrently.
+</span></span></code></pre></div><hr>
+<h2 id="fork--join-constructs">Fork &amp; Join Constructs</h2>
+<p>Since precedence graphs are difficult to use directly in programs, <strong>Fork</strong> and <strong>Join</strong> are used.</p>
+<ul>
+<li><strong>Fork L</strong>: splits one computation into two concurrent computations. One starts at label L, the other continues after the fork.</li>
+<li><strong>Join</strong>: recombines two concurrent computations. The first to finish waits for the other.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">count = number of computations to join;
+</span></span><span class="line"><span class="cl">function join:
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    count = count - 1;
+</span></span><span class="line"><span class="cl">    if (count != 0) quit (stop this computation);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><blockquote>
+<p><strong>Very Important Note</strong>: The <code>join</code> statement must be executed <strong>atomically</strong> — one process at a time; it cannot be executed concurrently.</p>
+</blockquote>
+<h3 id="example-two-statements-from-before-using-forkjoin">Example (two statements from before, using Fork/Join):</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">count = 2;
+</span></span><span class="line"><span class="cl">Fork L₁;
+</span></span><span class="line"><span class="cl">    a = x + y;    ← concurrent
+</span></span><span class="line"><span class="cl">    goto L₂;
+</span></span><span class="line"><span class="cl">L₁: b = z + 1;   ← concurrent
+</span></span><span class="line"><span class="cl">L₂: join count;
+</span></span><span class="line"><span class="cl">    c = a - b;
+</span></span><span class="line"><span class="cl">    w = c + 1;
+</span></span></code></pre></div><hr>
+<h2 id="parbegin--parend-concurrent-statement">Parbegin / Parend (Concurrent Statement)</h2>
+<p>A higher-level construct by Dijkstra. All statements enclosed between <code>parbegin</code> and <code>parend</code> execute <strong>concurrently</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S₀;
+</span></span><span class="line"><span class="cl">parbegin
+</span></span><span class="line"><span class="cl">    S₁;
+</span></span><span class="line"><span class="cl">    S₂;
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    Sₙ;
+</span></span><span class="line"><span class="cl">parend;
+</span></span><span class="line"><span class="cl">Sₙ₊₁;
+</span></span></code></pre></div><p><strong>Example (our four statements):</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">parbegin
+</span></span><span class="line"><span class="cl">    a = x + y;   ← concurrent
+</span></span><span class="line"><span class="cl">    b = z + 1;   ← concurrent
+</span></span><span class="line"><span class="cl">parend;
+</span></span><span class="line"><span class="cl">c = a - b;       ← not concurrent (sequential)
+</span></span><span class="line"><span class="cl">w = c + 1;
+</span></span></code></pre></div><hr>
+<h2 id="process-synchronization">Process Synchronization</h2>
+<h3 id="the-problem--bounded-buffer-with-counter">The Problem — Bounded Buffer with Counter</h3>
+<p>Adding a <code>counter</code> variable to the producer-consumer buffer (incremented when item added, decremented when item removed) seems logical but introduces a <strong>race condition</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// Producer                    // Consumer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>         <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Implemented as:             // Implemented as:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">register1</span> <span class="o">=</span> <span class="n">counter</span>            <span class="n">register2</span> <span class="o">=</span> <span class="n">counter</span>
+</span></span><span class="line"><span class="cl"><span class="n">register1</span> <span class="o">=</span> <span class="n">register1</span> <span class="o">+</span> <span class="mi">1</span>     <span class="n">register2</span> <span class="o">=</span> <span class="n">register2</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">counter</span> <span class="o">=</span> <span class="n">register1</span>            <span class="n">counter</span> <span class="o">=</span> <span class="n">register2</span>
+</span></span></code></pre></div><p>If both execute <strong>concurrently</strong>, execution interleaving can give wrong results:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S0: producer: register1 = counter        {register1 = 5}
+</span></span><span class="line"><span class="cl">S1: producer: register1 = register1+1   {register1 = 6}
+</span></span><span class="line"><span class="cl">S2: consumer: register2 = counter        {register2 = 5}
+</span></span><span class="line"><span class="cl">S3: consumer: register2 = register2-1   {register2 = 4}
+</span></span><span class="line"><span class="cl">S4: producer: counter = register1        {count = 6}
+</span></span><span class="line"><span class="cl">S5: consumer: counter = register2        {count = 4}  ← WRONG!
+</span></span></code></pre></div><blockquote>
+<p>Concurrent access to shared data may result in <strong>data inconsistency</strong>. Shared data must be accessed <strong>atomically</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="the-critical-section-problem">The Critical Section Problem</h2>
+<p><strong>Race Condition</strong>: when several processes access and manipulate shared data concurrently, and the outcome depends on the particular order of access.</p>
+<p><strong>Critical Section</strong>: the code segment in which the shared data is accessed.</p>
+<p><strong>Problem</strong>: ensure that when one process is executing in its critical section, <strong>no other process is allowed to execute in its critical section</strong>.</p>
+<h3 id="structure-of-process-pᵢ">Structure of Process Pᵢ</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">repeat
+</span></span><span class="line"><span class="cl">    [entry section]      ← condition to enter critical section
+</span></span><span class="line"><span class="cl">    critical section
+</span></span><span class="line"><span class="cl">    [exit section]       ← what to do after leaving critical section
+</span></span><span class="line"><span class="cl">    remainder section
+</span></span><span class="line"><span class="cl">until false;
+</span></span></code></pre></div><h3 id="solution-requirements">Solution Requirements</h3>
+<ol>
+<li><strong>Mutual Exclusion</strong>: if Pᵢ is in its critical section, no other process can be in theirs. One process at a time.</li>
+<li><strong>Progress</strong>: if no process is in the critical section and some want to enter, the selection cannot be postponed indefinitely.</li>
+<li><strong>Bounded Waiting</strong>: there must be a bound on the number of times other processes can enter the critical section after a process has made a request. No process waits forever.</li>
+</ol>
+<h3 id="types-of-solutions">Types of Solutions</h3>
+<ul>
+<li><strong>Software Solutions</strong> (Programming): algorithms relying only on positive processing speed; use busy waiting.</li>
+<li><strong>Hardware Solutions</strong>: rely on special machine instructions (system calls).</li>
+<li><strong>OS Solutions</strong>: ready functions/data structures to support the programmer.</li>
+</ul>
+<hr>
+<h2 id="software-solutions">Software Solutions</h2>
+<h3 id="algorithm-1--turn-variable">Algorithm 1 — Turn Variable</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>  <span class="c1">// 0 or 1; if turn == i, Pᵢ can enter its critical section
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ                // Process Pⱼ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                          <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>             <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* busy wait */</span><span class="p">;</span>              <span class="cm">/* busy wait */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">critical</span> <span class="n">section</span><span class="p">;</span>             <span class="n">critical</span> <span class="n">section</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">turn</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>                     <span class="n">turn</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">remainder</span> <span class="n">section</span><span class="p">;</span>            <span class="n">remainder</span> <span class="n">section</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>                <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><strong>Mutual Exclusion</strong>: ✓</li>
+<li><strong>Bounded Waiting</strong>: ✓ (each waits at most 1 turn)</li>
+<li><strong>Progress</strong>: ✗ — strict alternation; if P₀ finishes fast and P₁ is slow, P₀ must wait even if critical section is free.</li>
+</ul>
+<h3 id="algorithm-2--flag-array">Algorithm 2 — Flag Array</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// flag[i] = true means Pᵢ is ready to enter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="cm">/* do nothing */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">critical</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">remainder</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><strong>Does NOT work</strong>: both can set their flags to true simultaneously → <strong>infinite loop</strong> (&ldquo;After you.&rdquo; &ldquo;No, after you.&rdquo; &ldquo;I insist.&rdquo; …)</li>
+</ul>
+<h3 id="algorithm-3--petersons-solution-combined">Algorithm 3 — Peterson&rsquo;s Solution (Combined)</h3>
+<p>Combines <code>turn</code> and <code>flag</code> from Algorithms 1 &amp; 2:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// flag[0] = flag[1] = false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Process P₀                      // Process P₁
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                                <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>                     <span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                           <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>          <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* do nothing */</span><span class="p">;</span>                   <span class="cm">/* do nothing */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">critical</span> <span class="n">section</span>                    <span class="n">critical</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>                    <span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">remainder</span> <span class="n">section</span>                   <span class="n">remainder</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>                      <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><strong>Meets all three requirements</strong> — solves the critical section problem for <strong>two processes</strong>.</li>
+<li><code>flag[i]</code> says &ldquo;I want to enter the critical section.&rdquo;</li>
+<li><code>turn</code> resolves conflicts when both are ready — both give up their turn, so one will win.</li>
+</ul>
+<h3 id="bakery-algorithm--generalization-for-n-processes">Bakery Algorithm — Generalization for n Processes</h3>
+<p>Each process takes a number. The process with the lowest number gets service next (like a bakery).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">choosing</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>  <span class="c1">// initialized to false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>        <span class="c1">// initialized to 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">...,</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="cm">/* do nothing */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">((</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">j</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">i</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="cm">/* do nothing */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">critical</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl">    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">remainder</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><ul>
+<li><code>(a,b) &lt; (c,d)</code> if <code>a &lt; c</code>, or if <code>a == c</code> and <code>b &lt; d</code> (lexicographic order).</li>
+<li>Meets all three requirements for <strong>n processes</strong>.</li>
+</ul>
+<h3 id="drawbacks-of-software-solutions">Drawbacks of Software Solutions</h3>
+<ul>
+<li>Complicated to program.</li>
+<li><strong>Busy waiting</strong> — wastes CPU cycles.</li>
+<li>Better to <strong>block</strong> waiting processes (just like I/O waiting).</li>
+</ul>
+<hr>
+<h2 id="hardware-solutions">Hardware Solutions</h2>
+<h3 id="disable-interrupts">Disable Interrupts</h3>
+<p>On a <strong>uni-processor</strong>: disable interrupts during the critical section.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Repeat
+</span></span><span class="line"><span class="cl">    disable interrupts
+</span></span><span class="line"><span class="cl">    critical section
+</span></span><span class="line"><span class="cl">    enable interrupts
+</span></span><span class="line"><span class="cl">    remainder section
+</span></span><span class="line"><span class="cl">Forever
+</span></span></code></pre></div><ul>
+<li>Works on single-processor only.</li>
+<li>Does <strong>not</strong> work on multiprocessors.</li>
+<li>During critical section, multiprogramming is not utilized → <strong>performance penalty</strong>.</li>
+</ul>
+<h3 id="test-and-set">Test-and-Set</h3>
+<p>An atomic hardware instruction that tests and modifies a word in a single operation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">boolean</span> <span class="nf">Test_and_Set</span><span class="p">(</span><span class="n">Boolean</span> <span class="o">&amp;</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">boolean</span> <span class="n">test</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">test</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Shared data:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">boolean</span> <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nf">Test_and_Set</span><span class="p">(</span><span class="n">lock</span><span class="p">))</span> <span class="cm">/* do nothing */</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">critical</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">remainder</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Must be executed <strong>atomically</strong> by hardware.</p>
+</blockquote>
+<hr>
+<h2 id="operating-system-solution--semaphores">Operating System Solution — Semaphores</h2>
+<p>A <strong>semaphore</strong> S is an integer variable accessed only via two <strong>atomic</strong> (indivisible) operations:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>   <span class="k">while</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/*</span> <span class="k">do</span> <span class="n">nothing</span> <span class="o">*/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">           <span class="n">S</span> <span class="o">=</span> <span class="n">S</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">signal</span><span class="p">(</span><span class="n">S</span><span class="p">):</span> <span class="n">S</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span></code></pre></div><ul>
+<li><code>wait</code> → <strong>closes</strong> the critical section (checks if it&rsquo;s empty).</li>
+<li><code>signal</code> → <strong>opens</strong> the critical section.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: <code>wait</code> and <code>signal</code> must be executed <strong>atomically</strong>.</p>
+</blockquote>
+<p><strong>Usage for mutual exclusion:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">mutex</span><span class="p">:</span> <span class="n">semaphore</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Repeat</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">critical</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl">    <span class="k">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">remainder</span> <span class="n">section</span>
+</span></span><span class="line"><span class="cl"><span class="n">Forever</span>
+</span></span></code></pre></div><p><strong>Problem with basic semaphore</strong>: busy waiting.</p>
+<h3 id="semaphore-implementation-no-busy-waiting">Semaphore Implementation (No Busy Waiting)</h3>
+<p>Define semaphore as a struct with a waiting list:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">semaphore</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span> <span class="o">*</span><span class="n">L</span><span class="p">;</span>  <span class="c1">// list of waiting processes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">signal</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><strong>block</strong>: suspends the process.</li>
+<li><strong>wakeup(P)</strong>: resumes the blocked process P.</li>
+</ul>
+<hr>
+<h2 id="classical-problems-of-synchronization">Classical Problems of Synchronization</h2>
+<h3 id="1-bounded-buffer-problem">1. Bounded Buffer Problem</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="c1">// counting semaphore
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">semaphore</span> <span class="n">empty</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">// counting semaphore
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">// binary semaphore (mutual exclusion)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Producer                   // Consumer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                           <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">produce</span> <span class="n">item</span> <span class="n">in</span> <span class="n">nextp</span><span class="p">;</span>         <span class="nf">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">wait</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>  <span class="c1">// buffer full?  wait(mutex);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>  <span class="c1">// counter       remove item from buffer to nextc;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">add</span> <span class="n">nextp</span> <span class="n">to</span> <span class="n">buffer</span><span class="p">;</span>           <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>                 <span class="nf">signal</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>                  <span class="n">consume</span> <span class="n">item</span> <span class="n">in</span> <span class="n">nextc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>                 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="2-readers-writers-problem">2. Readers-Writers Problem</h3>
+<p>Multiple readers can read simultaneously, but a writer needs exclusive access.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">wrt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">readcount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Writer                    // Reader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wait</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>                   <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">writing</span> <span class="n">is</span> <span class="n">performed</span><span class="p">;</span>      <span class="n">readcount</span> <span class="o">=</span> <span class="n">readcount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">signal</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>                 <span class="k">if</span> <span class="p">(</span><span class="n">readcount</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="nf">wait</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                             <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">reading</span> <span class="n">is</span> <span class="n">performed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                             <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                             <span class="n">readcount</span> <span class="o">=</span> <span class="n">readcount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                             <span class="k">if</span> <span class="p">(</span><span class="n">readcount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="nf">signal</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                             <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span></code></pre></div><h3 id="3-dining-philosophers-problem">3. Dining Philosophers Problem</h3>
+<p>5 philosophers sit at a circular table. Each needs 2 chopsticks (semaphores) to eat.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">chopstick</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// all available
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Philosopher i:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="n">mod</span> <span class="mi">5</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">eat</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="n">mod</span> <span class="mi">5</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">think</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Problems</strong>: (1) <strong>Deadlock</strong> — all philosophers pick up their left chopstick simultaneously. (2) <strong>Starvation</strong>.</p>
+<p><strong>Solution</strong>: philosophers pick up chopsticks in order <code>min(i, (i+1)%5)</code> first, then <code>max(i, (i+1)%5)</code>.</p>
+</blockquote>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

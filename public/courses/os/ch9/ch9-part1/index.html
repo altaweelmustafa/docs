@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 9, Part 1 – Virtual Memory: Demand Paging &amp; Page Replacement · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 9, Part 1 – Virtual Memory: Demand Paging &amp; Page Replacement</h2>
+  <p class="post-date"><em>posted on 2026 May 29</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#virtual-memory-management">Virtual Memory Management</a></li>
+    <li><a href="#demand-paging">Demand Paging</a></li>
+    <li><a href="#performance-of-demand-paging">Performance of Demand Paging</a></li>
+    <li><a href="#page-replacement-algorithms">Page Replacement Algorithms</a>
+      <ul>
+        <li><a href="#1-fifo--first-in-first-out">[1] FIFO — First In, First Out</a></li>
+        <li><a href="#2-optimal-replacement">[2] Optimal Replacement</a></li>
+        <li><a href="#3-lru--least-recently-used">[3] LRU — Least Recently Used</a></li>
+        <li><a href="#lru-approximation--reference-bit">LRU Approximation — Reference Bit</a></li>
+        <li><a href="#counting-algorithms">Counting Algorithms</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="virtual-memory-management">Virtual Memory Management</h2>
+<p>Virtual memory allows running programs <strong>larger than physical memory</strong> by loading only the needed parts.</p>
+<ul>
+<li>No need for the entire program to be in memory — only the active pages are required.</li>
+<li>Main mechanism: <strong>Demand Paging</strong>.</li>
+</ul>
+<hr>
+<h2 id="demand-paging">Demand Paging</h2>
+<p>The page table gains a <strong>Valid/Invalid (V/I) bit</strong> per entry:</p>
+<ul>
+<li><code>1</code> = page is in memory (valid)</li>
+<li><code>0</code> = page is NOT in memory (invalid)</li>
+</ul>
+<p>When the CPU accesses a page with V/I = 0, a <strong>page fault</strong> occurs:</p>
+<ol>
+<li>OS looks for a free frame in memory.</li>
+<li>Swaps the required page <strong>in</strong> from disk (HDD).</li>
+<li>Updates the page table (set frame number, V/I = 1).</li>
+<li>Resumes execution.</li>
+</ol>
+<p>If there is <strong>no free frame</strong>, the OS selects a <strong>victim frame</strong>, swaps it <strong>out</strong> to disk, then swaps the required page in.</p>
+<hr>
+<h2 id="performance-of-demand-paging">Performance of Demand Paging</h2>
+<p>Let:</p>
+<ul>
+<li><code>P</code> = page fault rate (<code>0 ≤ P ≤ 1</code>)</li>
+<li><code>M</code> = memory access time</li>
+<li>Swap time = page fault overhead</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EAT = (1 − P) × M + P × [swap-in + maybe swap-out + M]
+</span></span></code></pre></div><p><strong>Example:</strong> M = 10 µs, swap time = 10 ms, 40% of faults need swap-out:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">EAT = (1−P)×10 + P×[10,000 + 0.4×10,000 + 10]
+</span></span><span class="line"><span class="cl">    ≈ 10 + 14,000P
+</span></span></code></pre></div><p><strong>Objective: Minimize page fault rate P.</strong></p>
+<blockquote>
+<p><strong>Note:</strong> A &ldquo;dirty bit&rdquo; is added to the page table. If <code>dirty = 1</code>, the page was modified and must be written to disk on swap-out. If <code>dirty = 0</code>, skip the write — saves time.</p>
+</blockquote>
+<hr>
+<h2 id="page-replacement-algorithms">Page Replacement Algorithms</h2>
+<p>The OS must pick the <strong>victim frame</strong> wisely to keep <code>P</code> low.</p>
+<h3 id="1-fifo--first-in-first-out">[1] FIFO — First In, First Out</h3>
+<p>Replace the page that entered memory <strong>first</strong> (oldest page).</p>
+<p><strong>Example</strong> (3 frames, reference string: <code>1 2 3 4 1 2 5 1 2 3 4 5</code>):</p>
+<ul>
+<li><strong>9 page faults</strong></li>
+</ul>
+<p><strong>Problem:</strong> Adding more frames can <em>increase</em> page faults → <strong>Belady&rsquo;s Anomaly</strong>.</p>
+<hr>
+<h3 id="2-optimal-replacement">[2] Optimal Replacement</h3>
+<p>Replace the page that will <strong>not be used for the longest time</strong> in the future.</p>
+<p>Same example:</p>
+<ul>
+<li><strong>7 page faults</strong> (minimum possible)</li>
+</ul>
+<p><strong>Major problem:</strong> The OS cannot know the future. Used only as a <strong>benchmark</strong> to evaluate other algorithms.</p>
+<hr>
+<h3 id="3-lru--least-recently-used">[3] LRU — Least Recently Used</h3>
+<p>Replace the page that <strong>has not been used for the longest time in the past</strong>.</p>
+<p>Same example:</p>
+<ul>
+<li><strong>10 page faults</strong> (3 frames) / <strong>8 page faults</strong> (4 frames)</li>
+</ul>
+<p>LRU has no Belady&rsquo;s Anomaly.</p>
+<p><strong>Implementation options:</strong></p>
+<ol>
+<li>
+<p><strong>Counter:</strong> Add a timestamp field to each page table entry recording the last access time. At replacement, pick the entry with the oldest timestamp.</p>
+</li>
+<li>
+<p><strong>Queue/Stack:</strong> Every time a page is used, move it to the front of a queue (or push to top of stack). The back of the queue / bottom of stack = LRU victim.</p>
+</li>
+</ol>
+<hr>
+<h3 id="lru-approximation--reference-bit">LRU Approximation — Reference Bit</h3>
+<p>Add a <strong>reference bit</strong> to each page table entry:</p>
+<ul>
+<li><code>1</code> = page was referenced (read or written) recently</li>
+<li><code>0</code> = page has not been referenced</li>
+</ul>
+<p><strong>LRU approximation:</strong> replace the page whose reference bit is <code>0</code>.</p>
+<h4 id="second-chance-clock-algorithm">Second Chance (Clock Algorithm)</h4>
+<p>Pages are arranged in a circular queue. The pointer moves counter-clockwise:</p>
+<ul>
+<li>Reference bit = <code>1</code> → clear to <code>0</code>, skip (give it a second chance).</li>
+<li>Reference bit = <code>0</code> → <strong>replace</strong> this page.</li>
+</ul>
+<h4 id="enhanced-second-chance">Enhanced Second Chance</h4>
+<p>Uses both (reference bit, dirty bit):</p>
+<table>
+  <thead>
+      <tr>
+          <th>(ref, dirty)</th>
+          <th>Meaning</th>
+          <th>Priority to replace</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(0, 0)</td>
+          <td>Not referenced, not modified</td>
+          <td><strong>Best</strong> ①</td>
+      </tr>
+      <tr>
+          <td>(1, 0)</td>
+          <td>Referenced, not modified</td>
+          <td>②</td>
+      </tr>
+      <tr>
+          <td>(0, 1)</td>
+          <td>Not referenced, but modified</td>
+          <td>③</td>
+      </tr>
+      <tr>
+          <td>(1, 1)</td>
+          <td>Referenced and modified</td>
+          <td><strong>Worst</strong> ④</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="counting-algorithms">Counting Algorithms</h3>
+<ul>
+<li><strong>MFU (Most Frequently Used):</strong> Replace the page used the <strong>most</strong> times — reasoning: it&rsquo;s probably done.</li>
+<li><strong>LFU (Least Frequently Used):</strong> Replace the page used the <strong>least</strong> times — it was barely needed.</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/os/ch9/ch9-part2/" id="nav-next"><em>Chapter 9, Part 2 – Frame Allocation, Global vs. Local Replacement &amp; Thrashing</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

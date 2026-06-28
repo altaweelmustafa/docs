@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Disk-Allocation on Docs</title>
+    <link>http://localhost:1313/docs/tags/disk-allocation/</link>
+    <description>Recent content in Disk-Allocation on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/disk-allocation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 11 – File System: Access Methods &amp; Disk Allocation</title>
+      <link>http://localhost:1313/docs/courses/os/ch11/ch11-part1/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch11/ch11-part1/</guid>
+      <description>&lt;h2 id=&#34;file-access-methods&#34;&gt;File Access Methods&lt;/h2&gt;&#xA;&lt;p&gt;Every file has:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; Address of the first block in the file (constant, can&amp;rsquo;t be changed).&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;File Pointer (FP):&lt;/strong&gt; The current position where the next read/write will occur.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;sequential-access&#34;&gt;Sequential Access&lt;/h3&gt;&#xA;&lt;p&gt;Read/write the &lt;strong&gt;next&lt;/strong&gt; block in sequence.&lt;/p&gt;&#xA;&lt;p&gt;Example: If FP is at block 7, sequential access reads/writes block 8.&lt;/p&gt;&#xA;&lt;h3 id=&#34;direct-access&#34;&gt;Direct Access&lt;/h3&gt;&#xA;&lt;p&gt;Read/write &lt;strong&gt;any block&lt;/strong&gt; by its relative number &lt;code&gt;n&lt;/code&gt; within the file.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;device-directory&#34;&gt;Device Directory&lt;/h2&gt;&#xA;&lt;p&gt;Every storage device has a &lt;strong&gt;device directory&lt;/strong&gt; — essentially a hash table containing information about all files stored on that device.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
