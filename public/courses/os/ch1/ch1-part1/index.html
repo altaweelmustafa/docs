@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 1, Part 1 – What Operating Systems Do &amp; Computer-System Organization · Docs</title>
+  <title>Chapter 1, Part 1 – OS Goals, Computer Structure &amp; History · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,151 +19,146 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 1, Part 1 – What Operating Systems Do &amp; Computer-System Organization</h2>
+  <h2 class="post-title">Chapter 1, Part 1 – OS Goals, Computer Structure &amp; History</h2>
   <p class="post-date"><em>posted on 2026 Jun 28</em></p>
   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#what-is-an-operating-system">What is an Operating System?</a>
+    <li><a href="#operating-system-goals">Operating System Goals</a>
       <ul>
-        <li><a href="#user-view">User View</a></li>
-        <li><a href="#system-view">System View</a></li>
+        <li><a href="#other-goals-utilization-of-computer-resources">Other Goals: Utilization of Computer Resources</a></li>
       </ul>
     </li>
-    <li><a href="#computer-system-organization">Computer-System Organization</a>
+    <li><a href="#computer-resources">Computer Resources</a></li>
+    <li><a href="#computer-system-structure">Computer System Structure</a>
       <ul>
-        <li><a href="#basic-hardware-setup">Basic Hardware Setup</a></li>
-        <li><a href="#bootstrap-program">Bootstrap Program</a></li>
-        <li><a href="#interrupts">Interrupts</a></li>
-        <li><a href="#storage-structure">Storage Structure</a></li>
-        <li><a href="#io-structure">I/O Structure</a></li>
+        <li><a href="#machine-language-assembly-language">Machine Language (Assembly Language)</a></li>
+      </ul>
+    </li>
+    <li><a href="#operating-system-views-os-goals">Operating System Views (OS Goals)</a></li>
+    <li><a href="#history--evolution-of-the-os">History &amp; Evolution of the OS</a>
+      <ul>
+        <li><a href="#early-systems-first-generation">Early Systems (First Generation)</a></li>
+        <li><a href="#early-software-tools">Early Software Tools</a></li>
+        <li><a href="#why-performance-was-poor">Why Performance Was Poor</a></li>
       </ul>
     </li>
   </ul>
 </nav>
   </nav>
   <hr />
-   <h2 id="what-is-an-operating-system">What is an Operating System?</h2>
-<p>An <strong>Operating System (OS)</strong> is a program that acts as an intermediary between the user of a computer and the computer hardware. Its goals are:</p>
-<ul>
-<li>Execute user programs and make problem-solving easier.</li>
-<li>Make the computer system convenient to use.</li>
-<li>Use the computer hardware in an efficient manner.</li>
-</ul>
-<p>A computer system can be divided into four components:</p>
+   <h2 id="operating-system-goals">Operating System Goals</h2>
+<p>An <strong>Operating System (OS)</strong> is a set of algorithms that run the computer machine. It manages the computer resources and must do so <strong>efficiently</strong>.</p>
+<p>The OS has three goals:</p>
 <ol>
-<li><strong>Hardware</strong> – CPU, memory, and I/O devices; the basic computing resources.</li>
-<li><strong>Operating System</strong> – controls and coordinates hardware use among applications and users.</li>
-<li><strong>Application Programs</strong> – word processors, compilers, browsers, games; define how resources are used to solve user problems.</li>
-<li><strong>Users</strong> – people, machines, or other computers.</li>
+<li><strong>Overall goal</strong> — Execute user programs.</li>
+<li><strong>Primary goal</strong> — Conveniency: it&rsquo;s easier for the user to interact with the OS than to deal directly with machine/assembly language.</li>
+<li><strong>Secondary goal</strong> — Efficiency: make the best use of available hardware resources.</li>
 </ol>
-<h3 id="user-view">User View</h3>
-<p>From the user&rsquo;s perspective, the OS is designed mostly for <strong>ease of use</strong>, with some attention to performance and none to resource utilization. Embedded or dedicated devices (smart TVs, car systems) have little or no user interface at all.</p>
-<h3 id="system-view">System View</h3>
-<p>From the system&rsquo;s perspective the OS plays two roles:</p>
+<h3 id="other-goals-utilization-of-computer-resources">Other Goals: Utilization of Computer Resources</h3>
+<p>The OS must maximize the utilization of all computer resources:</p>
 <ul>
-<li><strong>Resource Allocator</strong> – manages all resources (CPU time, memory space, I/O devices) and decides between conflicting requests to achieve fair and efficient use.</li>
-<li><strong>Control Program</strong> – controls the execution of user programs to prevent errors and improper use of the computer.</li>
+<li><strong>CPU Utilization</strong> — keep the CPU as busy as possible.</li>
+<li><strong>Memory Utilization</strong> — use memory as much as possible.</li>
+<li><strong>I/O Device Utilization</strong> — keep I/O devices active.</li>
 </ul>
 <blockquote>
-<p><strong>Kernel</strong>: the one program running at all times on the computer. Everything else is either a system program or an application program.</p>
+<p><strong>Throughput</strong>: the number of jobs (programs) that finish execution per unit of time. System performance is measured with throughput.</p>
 </blockquote>
 <hr>
-<h2 id="computer-system-organization">Computer-System Organization</h2>
-<h3 id="basic-hardware-setup">Basic Hardware Setup</h3>
-<p>One or more CPUs and device controllers connect through a common <strong>bus</strong>, providing access to shared memory. CPUs and device controllers can execute concurrently, competing for memory cycles.</p>
-<p>Each device controller:</p>
-<ul>
-<li>Is in charge of a specific device type (disk, keyboard, video card).</li>
-<li>Has a local buffer.</li>
-<li>Moves data between its local buffer and main memory.</li>
-</ul>
-<h3 id="bootstrap-program">Bootstrap Program</h3>
-<p>The <strong>bootstrap program</strong> is the very first program that runs when the computer is powered on or rebooted.</p>
-<ul>
-<li>Stored in <strong>ROM</strong> or <strong>EPROM</strong> (known as <strong>firmware</strong>).</li>
-<li>Initializes all aspects of the system (CPU registers, device controllers, memory contents).</li>
-<li>Loads the OS kernel into memory and starts its execution.</li>
-</ul>
-<h3 id="interrupts">Interrupts</h3>
-<p>The OS is largely <strong>interrupt-driven</strong>. Hardware can trigger an interrupt at any time by sending a signal to the CPU via the system bus. Software triggers an interrupt via a <strong>system call</strong> (also called a monitor call).</p>
-<p>When an interrupt occurs:</p>
+<h2 id="computer-resources">Computer Resources</h2>
+<p>The three main computer resources managed by the OS:</p>
 <ol>
-<li>The CPU stops what it is doing.</li>
-<li>Control transfers to a fixed location containing the start address of the <strong>interrupt service routine (ISR)</strong>.</li>
-<li>The ISR executes.</li>
-<li>The CPU resumes the interrupted computation.</li>
+<li><strong>CPU</strong></li>
+<li><strong>Memory</strong></li>
+<li><strong>I/O Devices</strong></li>
 </ol>
-<p>Interrupts are managed through an <strong>interrupt vector</strong> — a table of addresses for all interrupt service routines, usually stored in low memory.</p>
-<ul>
-<li><strong>Interrupt request line</strong>: checked by the CPU after each instruction.</li>
-<li><strong>Maskable interrupts</strong>: can be disabled temporarily.</li>
-<li><strong>Non-maskable interrupts</strong>: reserved for events like unrecoverable memory errors.</li>
-</ul>
-<h3 id="storage-structure">Storage Structure</h3>
-<p>The CPU can only load instructions from <strong>main memory (RAM)</strong>. Programs must be loaded into RAM to run.</p>
-<ul>
-<li><strong>Main memory</strong>: volatile; loses data on power loss; implemented as <strong>DRAM</strong>.</li>
-<li><strong>Secondary storage</strong>: non-volatile, large-capacity; magnetic disks, SSDs.</li>
-<li><strong>ROM</strong>: stores firmware; non-volatile; cannot be written.</li>
-<li><strong>EEPROM</strong>: can be changed but infrequently (e.g., smartphone firmware).</li>
-</ul>
-<p><strong>Storage unit sizes:</strong></p>
+<hr>
+<h2 id="computer-system-structure">Computer System Structure</h2>
+<p>A computer system is composed of four layers:</p>
 <table>
   <thead>
       <tr>
-          <th>Unit</th>
-          <th>Size</th>
+          <th>Layer</th>
+          <th>Description</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Bit</td>
-          <td>0 or 1</td>
+          <td><strong>1. Hardware</strong></td>
+          <td>Physical devices (chips, wires, power supplies) + Microprogram (primitive software that communicates with physical devices — an interpreter that fetches and executes machine language instructions)</td>
       </tr>
       <tr>
-          <td>Byte</td>
-          <td>8 bits</td>
+          <td><strong>2. Operating System</strong></td>
+          <td>Controls and coordinates use of hardware among users and applications</td>
       </tr>
       <tr>
-          <td>Kilobyte</td>
-          <td>1,024 bytes</td>
+          <td><strong>3. Application Packages</strong></td>
+          <td>Compilers, databases, etc.</td>
       </tr>
       <tr>
-          <td>Megabyte</td>
-          <td>1,024² bytes</td>
-      </tr>
-      <tr>
-          <td>Gigabyte</td>
-          <td>1,024³ bytes</td>
-      </tr>
-      <tr>
-          <td>Terabyte</td>
-          <td>1,024⁴ bytes</td>
-      </tr>
-      <tr>
-          <td>Petabyte</td>
-          <td>1,024⁵ bytes</td>
+          <td><strong>4. User Programs</strong></td>
+          <td>Programs written and run by users</td>
       </tr>
   </tbody>
 </table>
-<h3 id="io-structure">I/O Structure</h3>
-<p>Each device controller maintains a local buffer and a set of special-purpose registers. Device drivers provide a uniform interface between the controller and the rest of the OS.</p>
-<p><strong>I/O cycle (interrupt-driven):</strong></p>
+<h3 id="machine-language-assembly-language">Machine Language (Assembly Language)</h3>
+<p>The <strong>microprogram</strong> fetches and executes machine language instructions. It acts as an interpreter between the hardware and the OS.</p>
+<hr>
+<h2 id="operating-system-views-os-goals">Operating System Views (OS Goals)</h2>
+<p>The OS can be viewed from multiple perspectives, each corresponding to a goal:</p>
 <ol>
-<li>Driver loads registers in controller.</li>
-<li>Controller examines registers and starts transfer to local buffer.</li>
-<li>On completion, controller raises an interrupt.</li>
-<li>Driver returns control (with data or status) to the OS.</li>
+<li>
+<p><strong>Control Program</strong> <em>(Overall goal)</em> — controls the execution of all programs to prevent errors and improper use of the computer.</p>
+</li>
+<li>
+<p><strong>Extended Machine</strong> <em>(Primary goal)</em> — an extension of the physical machine. It hides all the complexity of system programming and provides the user with a simple, clean machine to deal with. The user doesn&rsquo;t have to deal with machine/assembly language.</p>
+</li>
+<li>
+<p><strong>Resource Manager</strong> <em>(Secondary goal)</em> — manages the computer resources (CPU, memory, I/O) efficiently.</p>
+</li>
+<li>
+<p><strong>Kernel</strong> — the part of the OS that is always running and executing instructions.</p>
+</li>
 </ol>
-<p><strong>DMA (Direct Memory Access)</strong>: for high-speed devices, the controller transfers an entire block of data directly to/from memory without CPU intervention. Only one interrupt is raised per block (not per byte).</p>
+<hr>
+<h2 id="history--evolution-of-the-os">History &amp; Evolution of the OS</h2>
+<h3 id="early-systems-first-generation">Early Systems (First Generation)</h3>
+<ul>
+<li>Programs were written on <strong>punch cards</strong> — each line of code required one card. A 200-line program required 200 cards.</li>
+<li>Input: card reader → computer → Output: printer/paper/tape.</li>
+<li><strong>Hexadecimal</strong> was used for programming.</li>
+</ul>
+<h3 id="early-software-tools">Early Software Tools</h3>
+<p>Early software was developed to ease programming:</p>
+<ul>
+<li><strong>Machine Language</strong> — direct binary instructions.</li>
+<li><strong>Assembly Language</strong> (Assemblers) — symbolic representation of machine instructions.</li>
+<li><strong>Loaders</strong> — load programs into memory.</li>
+<li><strong>Linkers</strong> — link software additions (libraries) to programs.</li>
+<li><strong>Compilers</strong> — translate high-level language to machine code.</li>
+</ul>
+<h3 id="why-performance-was-poor">Why Performance Was Poor</h3>
+<ul>
+<li>A great deal of time was wasted in <strong>setup time</strong>.</li>
+<li><strong>No overlap</strong> between I/O and CPU execution.</li>
+<li><strong>Low CPU utilization</strong> due to the big speed difference between I/O and CPU.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>A fast card reader can read 1200 cards/min = 20 cards/sec.
+The CPU can process 300 cards/sec.
+Each job: 60 sec card reading + 4 sec CPU.
+CPU utilization = 4 / 64 ≈ <strong>6%</strong></p>
+</blockquote>
+<p>The CPU sat idle for 94% of the time waiting for I/O.</p>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
        
-      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part2/" id="nav-next"><em>Chapter 1, Part 2 – Computer-System Architecture &amp; Operating-System Structure</em></a>
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part2/" id="nav-next"><em>Chapter 1, Part 2 – Offline Operation, Buffering, Spooling &amp; System Types</em></a>
       
     </div>
   </nav>

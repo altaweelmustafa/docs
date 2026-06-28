@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4 – Threads · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4 – Threads</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#threads">Threads</a>
+      <ul>
+        <li><a href="#process-heavyweight-process">Process (Heavyweight Process)</a></li>
+      </ul>
+    </li>
+    <li><a href="#thread-lightweight-process">Thread (Lightweight Process)</a>
+      <ul>
+        <li><a href="#what-a-thread-contains-private-to-each-thread">What a Thread Contains (Private to each thread)</a></li>
+        <li><a href="#what-all-peer-threads-share-within-one-process">What All Peer Threads Share (within one process)</a></li>
+      </ul>
+    </li>
+    <li><a href="#two-kinds-of-thread-support">Two Kinds of Thread Support</a>
+      <ul>
+        <li><a href="#1-user-level-threads">(1) User-Level Threads</a></li>
+        <li><a href="#2-kernel-level-threads">(2) Kernel-Level Threads</a></li>
+        <li><a href="#relationship-between-user-threads-and-kernel-threads">Relationship Between User Threads and Kernel Threads</a></li>
+      </ul>
+    </li>
+    <li><a href="#threading-models">Threading Models</a>
+      <ul>
+        <li><a href="#1-many-to-one">(1) Many-To-One</a></li>
+        <li><a href="#2-one-to-one">(2) One-To-One</a></li>
+        <li><a href="#3-many-to-many">(3) Many-To-Many</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary-table">Summary Table</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="threads">Threads</h2>
+<h3 id="process-heavyweight-process">Process (Heavyweight Process)</h3>
+<p>A traditional <strong>process</strong> (also called a heavyweight process) contains:</p>
+<p><strong>Shared among all threads in the process:</strong></p>
+<ul>
+<li>Code Section</li>
+<li>Data Section</li>
+<li>Opened Files</li>
+</ul>
+<p><strong>Private to the process instance (PCB):</strong></p>
+<ul>
+<li>Process ID</li>
+<li>Register Set</li>
+<li>Program Counter (PC)</li>
+<li>Stack Section</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──────────────────────────────┐
+</span></span><span class="line"><span class="cl">│  Code Section │ Data Section │ Open Files  │
+</span></span><span class="line"><span class="cl">├──────────────────────────────┤
+</span></span><span class="line"><span class="cl">│  PID │ Register Set │ Stack  │
+</span></span><span class="line"><span class="cl">│            PC →  ~~~~~       │
+</span></span><span class="line"><span class="cl">└──────────────────────────────┘
+</span></span><span class="line"><span class="cl">             Single-threaded Process
+</span></span></code></pre></div><hr>
+<h2 id="thread-lightweight-process">Thread (Lightweight Process)</h2>
+<p>A <strong>thread</strong> is a lightweight process. It is the basic unit of CPU utilization.</p>
+<h3 id="what-a-thread-contains-private-to-each-thread">What a Thread Contains (Private to each thread)</h3>
+<ul>
+<li><strong>Program Counter (PC)</strong></li>
+<li><strong>Register Set</strong></li>
+<li><strong>Stack Section</strong></li>
+</ul>
+<h3 id="what-all-peer-threads-share-within-one-process">What All Peer Threads Share (within one process)</h3>
+<ul>
+<li><strong>Code Section</strong></li>
+<li><strong>Data Section</strong></li>
+<li><strong>I/O Resources</strong> (opened files)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌───────────────────────────────────────────┐
+</span></span><span class="line"><span class="cl">│   Code Section │ Data Section │ Open Files │   ← Shared
+</span></span><span class="line"><span class="cl">├────────────────────┬──────────────────────┤
+</span></span><span class="line"><span class="cl">│  ID │ Reg │ Stack │  ID │ Reg │ Stack     │   ← Per thread
+</span></span><span class="line"><span class="cl">│    PC → ~~~~~     │    PC → ~~~~~         │
+</span></span><span class="line"><span class="cl">└────────────────────┴──────────────────────┘
+</span></span><span class="line"><span class="cl">              Multi-threaded Process (2 threads)
+</span></span></code></pre></div><blockquote>
+<p><strong>Advantage of threads</strong>: <strong>Sharing Resources</strong> — threads within the same process share memory and files, so they can communicate without inter-process communication overhead.</p>
+</blockquote>
+<hr>
+<h2 id="two-kinds-of-thread-support">Two Kinds of Thread Support</h2>
+<h3 id="1-user-level-threads">(1) User-Level Threads</h3>
+<ul>
+<li>Thread management is entirely the <strong>responsibility of the user</strong> (the application).</li>
+<li>Very complex and difficult to implement correctly.</li>
+<li>The OS kernel is not aware of these threads.</li>
+</ul>
+<h3 id="2-kernel-level-threads">(2) Kernel-Level Threads</h3>
+<ul>
+<li><strong>Most modern OSes support</strong> this kind of threading.</li>
+<li>The kernel manages threads directly.</li>
+<li>The OS is aware of and schedules threads.</li>
+</ul>
+<h3 id="relationship-between-user-threads-and-kernel-threads">Relationship Between User Threads and Kernel Threads</h3>
+<ul>
+<li>Think of <strong>user threads as processes (programs)</strong>.</li>
+<li>Think of <strong>kernel threads as CPUs</strong>.</li>
+</ul>
+<hr>
+<h2 id="threading-models">Threading Models</h2>
+<h3 id="1-many-to-one">(1) Many-To-One</h3>
+<p>Many user threads are mapped to <strong>one</strong> kernel thread.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      (K)           ← 1 kernel thread
+</span></span><span class="line"><span class="cl">     / | \
+</span></span><span class="line"><span class="cl">    U  U  U         ← many user threads
+</span></span></code></pre></div><blockquote>
+<p><strong>Disadvantage</strong>: No concurrent execution — if one user thread blocks, all block (since only one kernel thread).</p>
+</blockquote>
+<hr>
+<h3 id="2-one-to-one">(2) One-To-One</h3>
+<p>Each <strong>user thread</strong> is assigned its own <strong>kernel thread</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(K)  (K)  (K)       ← kernel threads
+</span></span><span class="line"><span class="cl"> |    |    |
+</span></span><span class="line"><span class="cl"> U    U    U        ← user threads
+</span></span></code></pre></div><blockquote>
+<p><strong>Main advantage</strong>: Allows <strong>concurrent execution</strong> — each thread runs independently.</p>
+<p><strong>Disadvantage</strong>: We need enough kernel threads — creating too many can overwhelm the system.</p>
+</blockquote>
+<hr>
+<h3 id="3-many-to-many">(3) Many-To-Many</h3>
+<p>Many user threads are mapped to an <strong>equal or smaller number</strong> of kernel threads.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(K)  (K)  (K)       ← kernel threads (≤ user threads)
+</span></span><span class="line"><span class="cl">  ╲  |  ╱
+</span></span><span class="line"><span class="cl">   U U U U U        ← user threads
+</span></span></code></pre></div><blockquote>
+<p><strong>Best of both worlds</strong>: Allows concurrency (unlike Many-To-One) and doesn&rsquo;t require as many kernel threads as One-To-One.</p>
+</blockquote>
+<hr>
+<h2 id="summary-table">Summary Table</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Model</th>
+          <th>User Threads</th>
+          <th>Kernel Threads</th>
+          <th>Concurrent?</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Many-To-One</strong></td>
+          <td>Many</td>
+          <td>1</td>
+          <td>✗ No</td>
+          <td>Simple but blocks all on I/O</td>
+      </tr>
+      <tr>
+          <td><strong>One-To-One</strong></td>
+          <td>N</td>
+          <td>N</td>
+          <td>✓ Yes</td>
+          <td>Needs many kernel threads</td>
+      </tr>
+      <tr>
+          <td><strong>Many-To-Many</strong></td>
+          <td>Many</td>
+          <td>≤ Many</td>
+          <td>✓ Yes</td>
+          <td>Most flexible, most complex</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

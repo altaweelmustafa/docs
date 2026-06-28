@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 2 – Process Creation, Termination &amp; Cooperating Processes · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 2 – Process Creation, Termination &amp; Cooperating Processes</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#process-creation">Process Creation</a>
+      <ul>
+        <li><a href="#resource-sharing-options">Resource Sharing Options</a></li>
+        <li><a href="#execution-options">Execution Options</a></li>
+        <li><a href="#address-space">Address Space</a></li>
+        <li><a href="#unixlinux-example-fork-and-exec">Unix/Linux Example: <code>fork</code> and <code>exec</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#process-termination">Process Termination</a>
+      <ul>
+        <li><a href="#normal-termination">Normal Termination</a></li>
+        <li><a href="#abnormal-termination-abort">Abnormal Termination (Abort)</a></li>
+      </ul>
+    </li>
+    <li><a href="#cooperating-processes">Cooperating Processes</a>
+      <ul>
+        <li><a href="#advantages-of-process-cooperation">Advantages of Process Cooperation</a></li>
+        <li><a href="#concurrency-requirements">Concurrency Requirements</a></li>
+      </ul>
+    </li>
+    <li><a href="#producer-consumer-problem">Producer-Consumer Problem</a>
+      <ul>
+        <li><a href="#real-world-examples">Real-World Examples</a></li>
+        <li><a href="#data-structures-required">Data Structures Required</a></li>
+        <li><a href="#circular-buffer-conditions">Circular Buffer Conditions</a></li>
+        <li><a href="#buffer-diagram">Buffer Diagram</a></li>
+        <li><a href="#producer-process">Producer Process</a></li>
+        <li><a href="#consumer-process">Consumer Process</a></li>
+        <li><a href="#disadvantage">Disadvantage</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="process-creation">Process Creation</h2>
+<p>A <strong>parent process</strong> creates <strong>children processes</strong>, which in turn can create other processes — forming a <strong>tree of processes</strong>.</p>
+<p>The root of the tree is the <strong>INIT</strong> process (in Unix/Linux).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        INIT
+</span></span><span class="line"><span class="cl">          |
+</span></span><span class="line"><span class="cl">        Parent
+</span></span><span class="line"><span class="cl">       /       \
+</span></span><span class="line"><span class="cl">    Child₁    Child₂
+</span></span><span class="line"><span class="cl">   / | \ \
+</span></span><span class="line"><span class="cl">  c  c  c  c
+</span></span></code></pre></div><h3 id="resource-sharing-options">Resource Sharing Options</h3>
+<p>When a parent creates a child, there are three resource-sharing possibilities:</p>
+<ol>
+<li><strong>Parent and children share all</strong> of the parent&rsquo;s resources.</li>
+<li><strong>Children share a subset</strong> of parent&rsquo;s resources.</li>
+<li><strong>Parent and child share no resources</strong> — they compete for all resources.</li>
+</ol>
+<h3 id="execution-options">Execution Options</h3>
+<ul>
+<li><strong>Parent and children execute concurrently.</strong></li>
+<li><strong>Parent waits</strong> until children terminate.</li>
+</ul>
+<h3 id="address-space">Address Space</h3>
+<blockquote>
+<p><strong>Address Space</strong> = allocation of process in memory.</p>
+</blockquote>
+<ul>
+<li><strong>Child is a duplicate of parent</strong> (same code and data).</li>
+<li>OR child has a <strong>new program loaded into it</strong>.</li>
+</ul>
+<h3 id="unixlinux-example-fork-and-exec">Unix/Linux Example: <code>fork</code> and <code>exec</code></h3>
+<ul>
+<li><strong><code>fork</code></strong> system call — creates a new process (child is a duplicate of parent).</li>
+<li><strong><code>exec</code></strong> system call — used after a fork to <strong>replace</strong> the process&rsquo;s memory space with a new program.</li>
+</ul>
+<p><strong>Example flow:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">fork()
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Computation runs concurrently on:
+</span></span><span class="line"><span class="cl">  CPU₀ (parent)    CPU₁ (child)
+</span></span><span class="line"><span class="cl">  (parallel execution)
+</span></span></code></pre></div><hr>
+<h2 id="process-termination">Process Termination</h2>
+<p>A process terminates when it executes its <strong>last statement</strong> and asks the OS to delete it (<code>exit</code>).</p>
+<h3 id="normal-termination">Normal Termination</h3>
+<ul>
+<li>Output data from child is passed to parent <strong>via fork</strong>.</li>
+<li>Process resources are <strong>deallocated by OS</strong>.</li>
+<li>When a process is killed, all its resources are deallocated.</li>
+</ul>
+<h3 id="abnormal-termination-abort">Abnormal Termination (Abort)</h3>
+<p>A <strong>parent may terminate</strong> the execution of its child process. Reasons:</p>
+<ol>
+<li>Task assigned to child is <strong>no longer required</strong>.</li>
+<li>Child has <strong>exceeded its allocated resources</strong>.</li>
+<li><strong>Parent is exiting</strong> — the OS doesn&rsquo;t allow the child to continue if its parent terminates.</li>
+</ol>
+<blockquote>
+<p><strong>Cascading Termination</strong>: If the parent process ends (<code>exit</code>), all children and subchildren are also exited.</p>
+</blockquote>
+<hr>
+<h2 id="cooperating-processes">Cooperating Processes</h2>
+<p>Concurrent processes are either:</p>
+<ol>
+<li><strong>Independent process</strong> — cannot affect or be affected by the execution of another process. Does not share data with others.</li>
+<li><strong>Cooperating process</strong> — can affect or be affected by the execution of another process. Shares data.</li>
+</ol>
+<h3 id="advantages-of-process-cooperation">Advantages of Process Cooperation</h3>
+<ul>
+<li><strong>Information sharing</strong> — multiple processes can access shared data.</li>
+<li><strong>Computation speed-up</strong> — tasks can be split and run in parallel.</li>
+<li><strong>Modularity</strong> — system is designed in modular fashion.</li>
+<li><strong>Convenience</strong> — a user may work on several tasks simultaneously.</li>
+</ul>
+<h3 id="concurrency-requirements">Concurrency Requirements</h3>
+<p>Talking about concurrency requires:</p>
+<ul>
+<li>Cooperation among processes (communication among processes).</li>
+<li><strong>Synchronization</strong> of process actions.</li>
+</ul>
+<hr>
+<h2 id="producer-consumer-problem">Producer-Consumer Problem</h2>
+<p>The classic example of cooperating concurrent processes.</p>
+<ul>
+<li><strong>Producer process</strong> — produces information (data).</li>
+<li><strong>Consumer process</strong> — consumes this information.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Producer → [ Data / Buffer ] → Consumer
+</span></span><span class="line"><span class="cl">           (concurrently)
+</span></span></code></pre></div><h3 id="real-world-examples">Real-World Examples</h3>
+<ul>
+<li>A <strong>print program</strong> produces characters consumed by the <strong>printer</strong>.</li>
+<li>A <strong>compiler</strong> produces assembly code consumed by the <strong>assembler</strong>.</li>
+<li>An <strong>assembler</strong> produces machine language code consumed by the <strong>loader</strong>.</li>
+</ul>
+<h3 id="data-structures-required">Data Structures Required</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>          <span class="c1">// size of buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="n">item</span><span class="p">;</span>            <span class="c1">// item = char, bit, word
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">var</span> <span class="kt">int</span> <span class="n">buffer</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">in</span><span class="p">;</span>               <span class="c1">// index where we add items to the buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">out</span><span class="p">;</span>              <span class="c1">// index where we take items from the buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">item</span> <span class="n">nextP</span><span class="p">;</span>           <span class="c1">// next produced item
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">item</span> <span class="n">nextC</span><span class="p">;</span>           <span class="c1">// next consumed item
+</span></span></span></code></pre></div><p>A <strong>circular buffer</strong> is used in the implementation.</p>
+<h3 id="circular-buffer-conditions">Circular Buffer Conditions</h3>
+<ul>
+<li><strong>Buffer is Full</strong>: <code>(in + 1) % n == out</code></li>
+<li><strong>Buffer is Empty</strong>: <code>in == out</code></li>
+</ul>
+<h3 id="buffer-diagram">Buffer Diagram</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[6]  E
+</span></span><span class="line"><span class="cl">[5]  D
+</span></span><span class="line"><span class="cl">[4]  C       → out = 2
+</span></span><span class="line"><span class="cl">[3]  B
+</span></span><span class="line"><span class="cl">[2]  A       → in = 1  (next slot to write)
+</span></span><span class="line"><span class="cl">[1] ///
+</span></span><span class="line"><span class="cl">[0]  F
+</span></span><span class="line"><span class="cl">    Buffer (n = 7)
+</span></span></code></pre></div><h3 id="producer-process">Producer Process</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">repeat
+</span></span><span class="line"><span class="cl">    produce an item in nextP;
+</span></span><span class="line"><span class="cl">    while ((in + 1) % n == out)   // busy waiting (buffer full)
+</span></span><span class="line"><span class="cl">        no-operation;
+</span></span><span class="line"><span class="cl">    buffer[in] = nextP;
+</span></span><span class="line"><span class="cl">    in = (in + 1) % n;
+</span></span><span class="line"><span class="cl">until false
+</span></span></code></pre></div><h3 id="consumer-process">Consumer Process</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">repeat
+</span></span><span class="line"><span class="cl">    while (in == out)             // busy waiting (buffer empty)
+</span></span><span class="line"><span class="cl">        no-operation;
+</span></span><span class="line"><span class="cl">    nextC = buffer[out];
+</span></span><span class="line"><span class="cl">    out = (out + 1) % n;
+</span></span><span class="line"><span class="cl">    consume the item;
+</span></span><span class="line"><span class="cl">until false
+</span></span></code></pre></div><blockquote>
+<p>Producer and Consumer <strong>run concurrently</strong>.</p>
+</blockquote>
+<h3 id="disadvantage">Disadvantage</h3>
+<p>We can only use <strong>(n − 1) buffers</strong> if we have <strong>n</strong> buffer slots. One slot is always kept empty to distinguish between full and empty states.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch3/ch3-part1/" id="nav-prev"><em>Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

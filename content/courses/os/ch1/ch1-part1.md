@@ -1,117 +1,105 @@
 ---
-title: "Chapter 1, Part 1 – What Operating Systems Do & Computer-System Organization"
+title: "Chapter 1, Part 1 – OS Goals, Computer Structure & History"
 date: 2026-06-28
 weight: 1
 toc: true
-tags:
-  [
-    "operating-systems",
-    "introduction",
-    "computer-organization",
-    "bootstrap",
-    "interrupts",
-  ]
-description: "Defining the OS from the user and system perspective, and how CPUs, memory, and I/O devices cooperate through a shared bus."
+tags: ["operating-systems", "goals", "hardware", "history", "throughput"]
+description: "Operating system goals, the four layers of a computer system, OS views, and the history of early batch systems."
 author: "Mustafa Altaweel"
 ---
 
-## What is an Operating System?
+## Operating System Goals
 
-An **Operating System (OS)** is a program that acts as an intermediary between the user of a computer and the computer hardware. Its goals are:
+An **Operating System (OS)** is a set of algorithms that run the computer machine. It manages the computer resources and must do so **efficiently**.
 
-- Execute user programs and make problem-solving easier.
-- Make the computer system convenient to use.
-- Use the computer hardware in an efficient manner.
+The OS has three goals:
 
-A computer system can be divided into four components:
+1. **Overall goal** — Execute user programs.
+2. **Primary goal** — Conveniency: it's easier for the user to interact with the OS than to deal directly with machine/assembly language.
+3. **Secondary goal** — Efficiency: make the best use of available hardware resources.
 
-1. **Hardware** – CPU, memory, and I/O devices; the basic computing resources.
-2. **Operating System** – controls and coordinates hardware use among applications and users.
-3. **Application Programs** – word processors, compilers, browsers, games; define how resources are used to solve user problems.
-4. **Users** – people, machines, or other computers.
+### Other Goals: Utilization of Computer Resources
 
-### User View
+The OS must maximize the utilization of all computer resources:
 
-From the user's perspective, the OS is designed mostly for **ease of use**, with some attention to performance and none to resource utilization. Embedded or dedicated devices (smart TVs, car systems) have little or no user interface at all.
+- **CPU Utilization** — keep the CPU as busy as possible.
+- **Memory Utilization** — use memory as much as possible.
+- **I/O Device Utilization** — keep I/O devices active.
 
-### System View
-
-From the system's perspective the OS plays two roles:
-
-- **Resource Allocator** – manages all resources (CPU time, memory space, I/O devices) and decides between conflicting requests to achieve fair and efficient use.
-- **Control Program** – controls the execution of user programs to prevent errors and improper use of the computer.
-
-> **Kernel**: the one program running at all times on the computer. Everything else is either a system program or an application program.
+> **Throughput**: the number of jobs (programs) that finish execution per unit of time. System performance is measured with throughput.
 
 ---
 
-## Computer-System Organization
+## Computer Resources
 
-### Basic Hardware Setup
+The three main computer resources managed by the OS:
 
-One or more CPUs and device controllers connect through a common **bus**, providing access to shared memory. CPUs and device controllers can execute concurrently, competing for memory cycles.
+1. **CPU**
+2. **Memory**
+3. **I/O Devices**
 
-Each device controller:
+---
 
-- Is in charge of a specific device type (disk, keyboard, video card).
-- Has a local buffer.
-- Moves data between its local buffer and main memory.
+## Computer System Structure
 
-### Bootstrap Program
+A computer system is composed of four layers:
 
-The **bootstrap program** is the very first program that runs when the computer is powered on or rebooted.
+| Layer                       | Description                                                                                                                                                                                          |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1. Hardware**             | Physical devices (chips, wires, power supplies) + Microprogram (primitive software that communicates with physical devices — an interpreter that fetches and executes machine language instructions) |
+| **2. Operating System**     | Controls and coordinates use of hardware among users and applications                                                                                                                                |
+| **3. Application Packages** | Compilers, databases, etc.                                                                                                                                                                           |
+| **4. User Programs**        | Programs written and run by users                                                                                                                                                                    |
 
-- Stored in **ROM** or **EPROM** (known as **firmware**).
-- Initializes all aspects of the system (CPU registers, device controllers, memory contents).
-- Loads the OS kernel into memory and starts its execution.
+### Machine Language (Assembly Language)
 
-### Interrupts
+The **microprogram** fetches and executes machine language instructions. It acts as an interpreter between the hardware and the OS.
 
-The OS is largely **interrupt-driven**. Hardware can trigger an interrupt at any time by sending a signal to the CPU via the system bus. Software triggers an interrupt via a **system call** (also called a monitor call).
+---
 
-When an interrupt occurs:
+## Operating System Views (OS Goals)
 
-1. The CPU stops what it is doing.
-2. Control transfers to a fixed location containing the start address of the **interrupt service routine (ISR)**.
-3. The ISR executes.
-4. The CPU resumes the interrupted computation.
+The OS can be viewed from multiple perspectives, each corresponding to a goal:
 
-Interrupts are managed through an **interrupt vector** — a table of addresses for all interrupt service routines, usually stored in low memory.
+1. **Control Program** _(Overall goal)_ — controls the execution of all programs to prevent errors and improper use of the computer.
 
-- **Interrupt request line**: checked by the CPU after each instruction.
-- **Maskable interrupts**: can be disabled temporarily.
-- **Non-maskable interrupts**: reserved for events like unrecoverable memory errors.
+2. **Extended Machine** _(Primary goal)_ — an extension of the physical machine. It hides all the complexity of system programming and provides the user with a simple, clean machine to deal with. The user doesn't have to deal with machine/assembly language.
 
-### Storage Structure
+3. **Resource Manager** _(Secondary goal)_ — manages the computer resources (CPU, memory, I/O) efficiently.
 
-The CPU can only load instructions from **main memory (RAM)**. Programs must be loaded into RAM to run.
+4. **Kernel** — the part of the OS that is always running and executing instructions.
 
-- **Main memory**: volatile; loses data on power loss; implemented as **DRAM**.
-- **Secondary storage**: non-volatile, large-capacity; magnetic disks, SSDs.
-- **ROM**: stores firmware; non-volatile; cannot be written.
-- **EEPROM**: can be changed but infrequently (e.g., smartphone firmware).
+---
 
-**Storage unit sizes:**
+## History & Evolution of the OS
 
-| Unit     | Size         |
-| -------- | ------------ |
-| Bit      | 0 or 1       |
-| Byte     | 8 bits       |
-| Kilobyte | 1,024 bytes  |
-| Megabyte | 1,024² bytes |
-| Gigabyte | 1,024³ bytes |
-| Terabyte | 1,024⁴ bytes |
-| Petabyte | 1,024⁵ bytes |
+### Early Systems (First Generation)
 
-### I/O Structure
+- Programs were written on **punch cards** — each line of code required one card. A 200-line program required 200 cards.
+- Input: card reader → computer → Output: printer/paper/tape.
+- **Hexadecimal** was used for programming.
 
-Each device controller maintains a local buffer and a set of special-purpose registers. Device drivers provide a uniform interface between the controller and the rest of the OS.
+### Early Software Tools
 
-**I/O cycle (interrupt-driven):**
+Early software was developed to ease programming:
 
-1. Driver loads registers in controller.
-2. Controller examines registers and starts transfer to local buffer.
-3. On completion, controller raises an interrupt.
-4. Driver returns control (with data or status) to the OS.
+- **Machine Language** — direct binary instructions.
+- **Assembly Language** (Assemblers) — symbolic representation of machine instructions.
+- **Loaders** — load programs into memory.
+- **Linkers** — link software additions (libraries) to programs.
+- **Compilers** — translate high-level language to machine code.
 
-**DMA (Direct Memory Access)**: for high-speed devices, the controller transfers an entire block of data directly to/from memory without CPU intervention. Only one interrupt is raised per block (not per byte).
+### Why Performance Was Poor
+
+- A great deal of time was wasted in **setup time**.
+- **No overlap** between I/O and CPU execution.
+- **Low CPU utilization** due to the big speed difference between I/O and CPU.
+
+**Example:**
+
+> A fast card reader can read 1200 cards/min = 20 cards/sec.
+> The CPU can process 300 cards/sec.
+> Each job: 60 sec card reading + 4 sec CPU.
+> CPU utilization = 4 / 64 ≈ **6%**
+
+The CPU sat idle for 94% of the time waiting for I/O.

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#process-concept">Process Concept</a>
+      <ul>
+        <li><a href="#types-of-processes-in-the-system">Types of Processes in the System</a></li>
+      </ul>
+    </li>
+    <li><a href="#process-contents-memory-layout">Process Contents (Memory Layout)</a></li>
+    <li><a href="#process-states">Process States</a>
+      <ul>
+        <li><a href="#state-transition-diagram">State Transition Diagram</a></li>
+      </ul>
+    </li>
+    <li><a href="#process-control-block-pcb">Process Control Block (PCB)</a>
+      <ul>
+        <li><a href="#pcb-contains">PCB Contains</a></li>
+      </ul>
+    </li>
+    <li><a href="#scheduling--system-queues">Scheduling &amp; System Queues</a>
+      <ul>
+        <li><a href="#queue-types">Queue Types</a></li>
+      </ul>
+    </li>
+    <li><a href="#three-levels-of-scheduling">Three Levels of Scheduling</a>
+      <ul>
+        <li><a href="#long-term-scheduling-job-scheduling">Long-Term Scheduling (&ldquo;Job Scheduling&rdquo;)</a></li>
+        <li><a href="#short-term-scheduling-cpu-scheduling">Short-Term Scheduling (&ldquo;CPU Scheduling&rdquo;)</a></li>
+        <li><a href="#job-scheduling-strategy-mix-of-cpu--io-bound-jobs">Job Scheduling Strategy: Mix of CPU &amp; I/O Bound Jobs</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="process-concept">Process Concept</h2>
+<blockquote>
+<p><strong>Definition</strong>: A <strong>process</strong> is a program in execution.
+<code>process ≡ program ≡ job</code></p>
+</blockquote>
+<p>A <strong>program</strong> is a passive entity (a file on disk). A <strong>process</strong> is an active entity — a program loaded into memory and executing.</p>
+<h3 id="types-of-processes-in-the-system">Types of Processes in the System</h3>
+<ol>
+<li><strong>Batch Process</strong> — generally has low priority.</li>
+<li><strong>Time Sharing Process</strong> — interactive; includes users, program development, data entry, gaming.</li>
+<li><strong>System Tasks</strong> — e.g. interrupt handling.</li>
+</ol>
+<hr>
+<h2 id="process-contents-memory-layout">Process Contents (Memory Layout)</h2>
+<p>A process in memory contains three sections:</p>
+<ol>
+<li>
+<p><strong>Code Section (Program Counter &ldquo;PC&rdquo;)</strong></p>
+<ul>
+<li>Holds the instructions of the program.</li>
+<li><strong>PC</strong> = the address of the instruction currently being executed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Section</strong></p>
+<ul>
+<li>Memory allocation where input and output data is stored.</li>
+<li>Global variables (static).</li>
+</ul>
+</li>
+<li>
+<p><strong>Stack Section</strong></p>
+<ul>
+<li>Used for function calls, local variables, return addresses.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌─────────────────┐
+</span></span><span class="line"><span class="cl">│   Code Section  │  ← PC points here
+</span></span><span class="line"><span class="cl">│      &#34;PC&#34;       │
+</span></span><span class="line"><span class="cl">├─────────────────┤
+</span></span><span class="line"><span class="cl">│   Stack Section │  ↕ grows/shrinks
+</span></span><span class="line"><span class="cl">├─────────────────┤
+</span></span><span class="line"><span class="cl">│   Data Section  │
+</span></span><span class="line"><span class="cl">└─────────────────┘
+</span></span><span class="line"><span class="cl">        Process
+</span></span></code></pre></div><hr>
+<h2 id="process-states">Process States</h2>
+<p>A process passes through <strong>5 states</strong> during its lifetime:</p>
+<table>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>NEW</strong></td>
+          <td>The process has been newly created. It enters the <strong>Job Queue (Pool)</strong>.</td>
+      </tr>
+      <tr>
+          <td><strong>READY</strong></td>
+          <td>The process is loaded into memory and ready to run; it is in the <strong>Ready Queue</strong> waiting for the CPU.</td>
+      </tr>
+      <tr>
+          <td><strong>RUNNING</strong></td>
+          <td>The process has the CPU and is executing.</td>
+      </tr>
+      <tr>
+          <td><strong>WAITING</strong></td>
+          <td>The process is waiting for some event to happen — typically waiting for I/O completion.</td>
+      </tr>
+      <tr>
+          <td><strong>TERMINATED</strong></td>
+          <td>The process has finished execution.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="state-transition-diagram">State Transition Diagram</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">         CPU Scheduling              Exit
+</span></span><span class="line"><span class="cl">  NEW → READY ──────────→ RUNNING ────────→ TERMINATED
+</span></span><span class="line"><span class="cl">          ↑    ← Interrupt ←  |
+</span></span><span class="line"><span class="cl">          |                   | I/O needed
+</span></span><span class="line"><span class="cl">          |    I/O Completed  ↓
+</span></span><span class="line"><span class="cl">          └──────────── WAITING
+</span></span></code></pre></div><hr>
+<h2 id="process-control-block-pcb">Process Control Block (PCB)</h2>
+<p><strong>Where is data about the process stored?</strong></p>
+<p>→ In the <strong>Process Control Block (PCB)</strong> — a data structure (essentially a table) that the OS maintains for every process.</p>
+<h3 id="pcb-contains">PCB Contains</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Process ID</strong></td>
+          <td>Unique identifier for the process</td>
+      </tr>
+      <tr>
+          <td><strong>Process State</strong></td>
+          <td>Current state (New, Ready, Running, Waiting, Terminated)</td>
+      </tr>
+      <tr>
+          <td><strong>Program Counter (PC)</strong></td>
+          <td>Address of the next instruction to execute</td>
+      </tr>
+      <tr>
+          <td><strong>Registers</strong></td>
+          <td>Snapshot of all CPU registers</td>
+      </tr>
+      <tr>
+          <td><strong>Scheduling Info</strong></td>
+          <td>Priority, scheduling queue pointers</td>
+      </tr>
+      <tr>
+          <td><strong>Memory Info</strong></td>
+          <td>Base and limit registers</td>
+      </tr>
+      <tr>
+          <td><strong>Accounting Info</strong></td>
+          <td>CPU time used, time limits, job IDs</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="scheduling--system-queues">Scheduling &amp; System Queues</h2>
+<h3 id="queue-types">Queue Types</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Job Queue (Pool)
+</span></span><span class="line"><span class="cl">     ↓ [Long-Term / Job Scheduling]
+</span></span><span class="line"><span class="cl">Ready Queue ──[Short-Term / CPU Scheduling]──→ CPU → Exit
+</span></span><span class="line"><span class="cl">     ↑  ↑                                      |
+</span></span><span class="line"><span class="cl">     |  └──── &#34;queue is finished&#34; (Interrupt) ←┘
+</span></span><span class="line"><span class="cl">     |                                          |
+</span></span><span class="line"><span class="cl">     └── I/O Completed ← I/O Queue ←── I/O required
+</span></span><span class="line"><span class="cl">         &#34;HD Scheduling Algorithm&#34;
+</span></span></code></pre></div><p>There is also an <strong>Intermediate Queue</strong> fed by <strong>Medium-Term Scheduling</strong>.</p>
+<hr>
+<h2 id="three-levels-of-scheduling">Three Levels of Scheduling</h2>
+<h3 id="long-term-scheduling-job-scheduling">Long-Term Scheduling (&ldquo;Job Scheduling&rdquo;)</h3>
+<ul>
+<li>Selects a job from the <strong>Job Queue (pool)</strong> to be admitted into memory.</li>
+<li>Once admitted, the job is added to the <strong>Ready Queue</strong>.</li>
+<li>Invoked infrequently (seconds, minutes) → the OS has <strong>enough time</strong> to decide carefully which job to fetch.</li>
+<li><strong>Controls the degree of multiprogramming</strong> (the number of jobs in the Ready Queue / memory).</li>
+</ul>
+<h3 id="short-term-scheduling-cpu-scheduling">Short-Term Scheduling (&ldquo;CPU Scheduling&rdquo;)</h3>
+<ul>
+<li>Selects a process from the <strong>Ready Queue</strong> to be given the CPU to <strong>run</strong>.</li>
+<li>Invoked very frequently (milliseconds, microseconds, nanoseconds) → must be <strong>very fast</strong>.</li>
+</ul>
+<h3 id="job-scheduling-strategy-mix-of-cpu--io-bound-jobs">Job Scheduling Strategy: Mix of CPU &amp; I/O Bound Jobs</h3>
+<ul>
+<li>If most jobs in memory are <strong>CPU-bound</strong>: CPU is always busy but I/O queues are <strong>empty</strong> → unbalanced.</li>
+<li>If most jobs in memory are <strong>I/O-bound</strong>: I/O queues are always full but CPU is almost <strong>free</strong> → unbalanced.</li>
+<li><strong>Long-Term Scheduling</strong> selects a <strong>mix of CPU-bound and I/O-bound jobs</strong> so the system will be <strong>reasonably balanced</strong>.</li>
+</ul>
+<blockquote>
+<p><strong>Degree of Multiprogramming</strong> = the number of jobs in memory (Ready Queue). Long-Term Scheduling controls this degree.</p>
+</blockquote>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/os/ch3/ch3-part2/" id="nav-next"><em>Chapter 3, Part 2 – Process Creation, Termination &amp; Cooperating Processes</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
 ---
-title: "Chapter 2: Energy Waste in IoT"
-description: "Offloading, scheduling, load balancing, routing, RPL protocol, and AI-enhanced RPL."
+title: "Chapter 2: Computer System Operations"
+description: "Device controllers, interrupts, I/O types, DMA, primary and secondary storage, cache memory, dual-mode operation, and hardware protection."
 ---

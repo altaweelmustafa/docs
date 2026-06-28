@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Threads on Docs</title>
+    <link>http://localhost:1313/docs/tags/threads/</link>
+    <description>Recent content in Threads on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/threads/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 4 – Threads</title>
+      <link>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</guid>
+      <description>&lt;h2 id=&#34;threads&#34;&gt;Threads&lt;/h2&gt;&#xA;&lt;h3 id=&#34;process-heavyweight-process&#34;&gt;Process (Heavyweight Process)&lt;/h3&gt;&#xA;&lt;p&gt;A traditional &lt;strong&gt;process&lt;/strong&gt; (also called a heavyweight process) contains:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Shared among all threads in the process:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Code Section&lt;/li&gt;&#xA;&lt;li&gt;Data Section&lt;/li&gt;&#xA;&lt;li&gt;Opened Files&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private to the process instance (PCB):&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Process ID&lt;/li&gt;&#xA;&lt;li&gt;Register Set&lt;/li&gt;&#xA;&lt;li&gt;Program Counter (PC)&lt;/li&gt;&#xA;&lt;li&gt;Stack Section&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────────────────────────┐&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  Code Section │ Data Section │ Open Files  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├──────────────────────────────┤&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  PID │ Register Set │ Stack  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│            PC →  ~~~~~       │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──────────────────────────────┘&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             Single-threaded Process&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;thread-lightweight-process&#34;&gt;Thread (Lightweight Process)&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;thread&lt;/strong&gt; is a lightweight process. It is the basic unit of CPU utilization.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

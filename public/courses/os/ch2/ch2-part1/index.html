@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2 – Computer System Operations · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2 – Computer System Operations</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#computer-system-operations">Computer System Operations</a>
+      <ul>
+        <li><a href="#hardware-setup">Hardware Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#interrupts">Interrupts</a>
+      <ul>
+        <li><a href="#examples-of-interrupts">Examples of Interrupts</a></li>
+        <li><a href="#os-services-can-be-requested-via">OS Services Can Be Requested Via</a></li>
+        <li><a href="#interrupt-handling">Interrupt Handling</a></li>
+      </ul>
+    </li>
+    <li><a href="#io-interrupt-structure">I/O Interrupt Structure</a>
+      <ul>
+        <li><a href="#two-types-of-io">Two Types of I/O</a></li>
+      </ul>
+    </li>
+    <li><a href="#direct-memory-access-dma">Direct Memory Access (DMA)</a>
+      <ul>
+        <li><a href="#problem-with-slow-devices-eg-keyboard">Problem with slow devices (e.g. keyboard)</a></li>
+        <li><a href="#problem-with-fast-devices-eg-hard-disk">Problem with fast devices (e.g. Hard Disk)</a></li>
+        <li><a href="#dma-solution">DMA Solution</a></li>
+      </ul>
+    </li>
+    <li><a href="#primary-storage-main-memory--ram-volatile">Primary Storage (Main Memory — RAM) &ldquo;Volatile&rdquo;</a>
+      <ul>
+        <li><a href="#cpu-instructions-on-memory">CPU Instructions on Memory</a></li>
+        <li><a href="#instruction-cycle">Instruction Cycle</a></li>
+      </ul>
+    </li>
+    <li><a href="#secondary-storage">Secondary Storage</a>
+      <ul>
+        <li><a href="#storage-hierarchy-fastest--slowest">Storage Hierarchy (fastest → slowest)</a></li>
+      </ul>
+    </li>
+    <li><a href="#cache-memory">Cache Memory</a>
+      <ul>
+        <li><a href="#examples-of-caching">Examples of Caching</a></li>
+        <li><a href="#icr-operation">ICR Operation</a></li>
+        <li><a href="#cache-levels">Cache Levels</a></li>
+      </ul>
+    </li>
+    <li><a href="#hardware-protection">Hardware Protection</a></li>
+    <li><a href="#dual-mode-of-operation">Dual Mode of Operation</a>
+      <ul>
+        <li><a href="#implementation">Implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#io-protection">I/O Protection</a></li>
+    <li><a href="#memory-protection">Memory Protection</a>
+      <ul>
+        <li><a href="#how-the-os-computes-the-physical-address">How the OS Computes the Physical Address</a></li>
+      </ul>
+    </li>
+    <li><a href="#cpu-protection">CPU Protection</a></li>
+    <li><a href="#operating-system-structure">Operating System Structure</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="computer-system-operations">Computer System Operations</h2>
+<h3 id="hardware-setup">Hardware Setup</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CPU ← → Disk Controller
+</span></span><span class="line"><span class="cl">         Tape Controller
+</span></span><span class="line"><span class="cl">         Printer Controller
+</span></span><span class="line"><span class="cl">         Device Controller(s)
+</span></span><span class="line"><span class="cl">              ↕
+</span></span><span class="line"><span class="cl">           Main Bus
+</span></span><span class="line"><span class="cl">              ↕
+</span></span><span class="line"><span class="cl">       Memory Controller → Memory
+</span></span></code></pre></div><p>Key facts:</p>
+<ul>
+<li><strong>I/O can run concurrently with the CPU.</strong></li>
+<li>Each <strong>device controller</strong> is in charge of a particular device type.</li>
+<li>Each device controller has a <strong>local buffer</strong>.</li>
+<li>The CPU moves data <strong>from/to main memory</strong> to/from the local buffers.</li>
+<li>I/O transfers data from the device to the <strong>local buffer of the controller</strong>.</li>
+<li>The device controller informs the CPU that it has finished its operation by causing an <strong>interrupt</strong>.</li>
+</ul>
+<hr>
+<h2 id="interrupts">Interrupts</h2>
+<p>An <strong>interrupt</strong> is a signal sent to the CPU by:</p>
+<ul>
+<li><strong>Hardware</strong> (e.g. I/O completion) — hardware interrupt.</li>
+<li><strong>Software</strong> — called a <strong>Trap</strong> (e.g. division by zero, invalid memory access, request for OS service).</li>
+</ul>
+<h3 id="examples-of-interrupts">Examples of Interrupts</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Cause</th>
+          <th>Type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Completion of an I/O operation</td>
+          <td>Hardware Interrupt</td>
+      </tr>
+      <tr>
+          <td>Division by zero</td>
+          <td>Software Interrupt (Trap)</td>
+      </tr>
+      <tr>
+          <td>Invalid memory access</td>
+          <td>Hardware Interrupt</td>
+      </tr>
+      <tr>
+          <td>Request of an OS service</td>
+          <td>System Call (Trap)</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Operating Systems are interrupt-driven</strong> — the CPU is &ldquo;interrupted&rdquo; to handle events.</p>
+</blockquote>
+<h3 id="os-services-can-be-requested-via">OS Services Can Be Requested Via</h3>
+<ol>
+<li><strong>System Program</strong> — e.g. <code>format a:</code>, <code>copy A.dat B.dat</code></li>
+<li><strong>System Call</strong> — an assembly language instruction.</li>
+</ol>
+<h3 id="interrupt-handling">Interrupt Handling</h3>
+<p>There are two methods for handling interrupts:</p>
+<h4 id="1-interrupt-vector-table">(1) Interrupt Vector (Table)</h4>
+<p>A table stored in memory containing the <strong>addresses</strong> of all interrupt service routines.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>An interrupt arrives from the hard disk (number 45).</li>
+<li>CPU looks up entry [45] in the interrupt vector.</li>
+<li>Entry [45] holds the address <code>0x25164</code>.</li>
+<li>CPU jumps to the service routine at that address and executes it.</li>
+</ul>
+<h4 id="2-by-polling">(2) By Polling</h4>
+<p>The CPU periodically checks each device to see if it needs service (less efficient).</p>
+<hr>
+<h2 id="io-interrupt-structure">I/O Interrupt Structure</h2>
+<p>Each device has a <strong>device controller</strong> that includes a local buffer and an <strong>Instruction Register (IR)</strong>. When an I/O instruction is fetched from your program:</p>
+<ol>
+<li>The instruction is loaded into the IR of the device controller.</li>
+<li>The device controller fetches data from the hard disk into its local buffer.</li>
+<li>When done, it raises an interrupt.</li>
+</ol>
+<h3 id="two-types-of-io">Two Types of I/O</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Behavior</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Synchronous I/O</strong></td>
+          <td>After I/O starts, control returns to the program <strong>only upon I/O completion</strong>. The CPU waits (busy-wait / <code>loop: jmp loop</code>). CPU is idle during I/O.</td>
+      </tr>
+      <tr>
+          <td><strong>Asynchronous I/O</strong></td>
+          <td>After I/O starts, control switches to <strong>another program</strong> without waiting for I/O completion. CPU stays productive.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="direct-memory-access-dma">Direct Memory Access (DMA)</h2>
+<h3 id="problem-with-slow-devices-eg-keyboard">Problem with slow devices (e.g. keyboard)</h3>
+<ul>
+<li>Keyboard sends 1 character every <strong>1 millisecond</strong> (1 ms = 1000 µs).</li>
+<li>CPU needs <strong>2 µs</strong> for the service routine to handle each interrupt.</li>
+<li>CPU is left with 1000 − 2 = <strong>998 µs</strong> free → interrupt-driven I/O is fine here.</li>
+</ul>
+<h3 id="problem-with-fast-devices-eg-hard-disk">Problem with fast devices (e.g. Hard Disk)</h3>
+<ul>
+<li>Hard disk can send/receive a character every <strong>4 µs</strong>.</li>
+<li>CPU needs <strong>2 µs</strong> per interrupt → CPU is left with only 4 − 2 = <strong>2 µs</strong> free.</li>
+<li>The CPU is overwhelmed by constant interrupts → very inefficient.</li>
+</ul>
+<h3 id="dma-solution">DMA Solution</h3>
+<ul>
+<li>The OS sends <strong>one entire block</strong> of data at a time.</li>
+<li>Sends only <strong>one interrupt</strong> per block (not per byte).</li>
+<li>The device controller transfers the block <strong>directly</strong> between its local buffer and main memory, without CPU intervention.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Memory ← (one block of data) ← Local Buffer ← Device
+</span></span><span class="line"><span class="cl">                                     ↑
+</span></span><span class="line"><span class="cl">                               CPU only interrupted once
+</span></span></code></pre></div><hr>
+<h2 id="primary-storage-main-memory--ram-volatile">Primary Storage (Main Memory — RAM) &ldquo;Volatile&rdquo;</h2>
+<ul>
+<li>Memory is the largest storage medium accessed <strong>directly</strong> by the CPU.</li>
+<li>Memory is an <strong>array of words</strong>, each having an <strong>address</strong>.</li>
+<li>Word size = <strong>2–8 bytes</strong> (most common: 4 bytes).</li>
+</ul>
+<h3 id="cpu-instructions-on-memory">CPU Instructions on Memory</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Load</strong></td>
+          <td>Fetch (get) an instruction from memory into the <strong>Instruction Register (IR)</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Store</strong></td>
+          <td>Store a register&rsquo;s value into a memory location</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="instruction-cycle">Instruction Cycle</h3>
+<p>The CPU repeatedly executes this cycle:</p>
+<ol>
+<li><strong>Fetch</strong> — get next instruction from memory into IR.</li>
+<li><strong>Decode</strong> — analyze the instruction.</li>
+<li><strong>Execute</strong> — perform the operation with the given operands.</li>
+<li><strong>Store the result</strong> — write the result back to memory.</li>
+</ol>
+<hr>
+<h2 id="secondary-storage">Secondary Storage</h2>
+<p><strong>Hard disks, tapes, CDs, Flash memories&hellip;</strong></p>
+<p>Factors that affect secondary storage:</p>
+<ol>
+<li><strong>Speed</strong></li>
+<li><strong>Cost</strong></li>
+<li><strong>Volatility</strong> (مؤقت / دائم)</li>
+</ol>
+<h3 id="storage-hierarchy-fastest--slowest">Storage Hierarchy (fastest → slowest)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Registers
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Caches
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">RAM (Main Memory)
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Hard Disk (HD)
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Tapes
+</span></span><span class="line"><span class="cl">    ↓ (slower)
+</span></span><span class="line"><span class="cl">  ...etc
+</span></span></code></pre></div><hr>
+<h2 id="cache-memory">Cache Memory</h2>
+<p><strong>Caching</strong> is copying data to a faster storage medium to speed up execution and ensure good performance.</p>
+<h3 id="examples-of-caching">Examples of Caching</h3>
+<ol>
+<li>Memory (RAM) is considered a <strong>cache for the Hard Disk</strong>.</li>
+<li>Registers are considered a <strong>cache for Memory</strong>.</li>
+<li><strong>Instruction Cache Register (ICR)</strong> — caches the next instruction before the CPU needs it.</li>
+</ol>
+<h3 id="icr-operation">ICR Operation</h3>
+<ul>
+<li>Steps ① and ② (fetching from memory into ICR, and ICR to IR) run <strong>concurrently (in parallel)</strong>.</li>
+<li>Fetching from ICR to IR is much faster than fetching from RAM to IR directly.</li>
+</ul>
+<h3 id="cache-levels">Cache Levels</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Level</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>L1</strong></td>
+          <td>Fastest — built within the CPU itself.</td>
+      </tr>
+      <tr>
+          <td><strong>L2</strong></td>
+          <td>Bigger but slower than L1.</td>
+      </tr>
+      <tr>
+          <td>L3, etc.</td>
+          <td>Even bigger and slower.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="hardware-protection">Hardware Protection</h2>
+<p>The OS must protect computer resources. There are 3 areas to protect:</p>
+<ol>
+<li><strong>I/O devices</strong></li>
+<li><strong>Memory</strong></li>
+<li><strong>CPU</strong></li>
+</ol>
+<hr>
+<h2 id="dual-mode-of-operation">Dual Mode of Operation</h2>
+<p>The OS runs in <strong>two modes</strong> to protect itself and resources:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Mode</th>
+          <th>Mode Bit</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Monitor Mode</strong> (Supervisor)</td>
+          <td>0</td>
+          <td>OS executes on behalf of itself (e.g. handling interrupts). Full hardware access.</td>
+      </tr>
+      <tr>
+          <td><strong>User Mode</strong></td>
+          <td>1</td>
+          <td>OS executes user programs. Restricted access.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="implementation">Implementation</h3>
+<p>One hardware bit called the <strong>&ldquo;mode bit&rdquo;</strong> indicates the current mode:</p>
+<ul>
+<li><code>0</code> → Monitor mode</li>
+<li><code>1</code> → User mode</li>
+</ul>
+<blockquote>
+<p><strong>Privileged Instruction</strong>: an instruction that can only be executed in <strong>monitor mode</strong> (i.e. by the OS).</p>
+</blockquote>
+<hr>
+<h2 id="io-protection">I/O Protection</h2>
+<p><strong>All I/O instructions are made Privileged Instructions.</strong></p>
+<p>This means only the OS (in monitor mode) can execute I/O instructions. User programs must request I/O via a system call.</p>
+<hr>
+<h2 id="memory-protection">Memory Protection</h2>
+<p>To protect the memory allocation space of user programs and the OS itself, the hardware uses two registers:</p>
+<ul>
+<li><strong>Base Register</strong> — holds the starting physical address of the process.</li>
+<li><strong>Limit Register</strong> — holds the size of the memory region.</li>
+</ul>
+<p><strong>Key concepts:</strong></p>
+<ul>
+<li><strong>Logical Address (LA)</strong> — the offset of an instruction in your program; the address seen in your program.</li>
+<li><strong>Physical Address (PA)</strong> — the actual address in memory.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PA = Logical Address + Base Register
+</span></span></code></pre></div><p><strong>Example:</strong> If Base Register = 4262, Limit Register = 1000, and LA = 738:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PA = 738 + 4262 = 4998
+</span></span></code></pre></div><h3 id="how-the-os-computes-the-physical-address">How the OS Computes the Physical Address</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CPU generates LA
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">  LA &lt; Limit Register?  → No → Memory Fault (trap)
+</span></span><span class="line"><span class="cl">      ↓ Yes
+</span></span><span class="line"><span class="cl">  PA = LA + Base Register
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">  PA &lt; (Base + Limit)?  → No → Memory Fault
+</span></span><span class="line"><span class="cl">      ↓ Yes
+</span></span><span class="line"><span class="cl">  Access granted → PA
+</span></span></code></pre></div><hr>
+<h2 id="cpu-protection">CPU Protection</h2>
+<p>A <strong>timer</strong> is used to prevent a user program from running forever and monopolizing the CPU.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>OS loads an integer value (e.g. 10,000) into the timer — this represents a number of <strong>clock ticks</strong>.</li>
+<li>With every clock tick, the timer is decremented by 1.</li>
+<li>When the timer reaches <strong>zero</strong>, it sends an <strong>interrupt</strong> to the CPU.</li>
+<li>The CPU receives the interrupt and executes the <strong>interrupt service routine</strong>, which is responsible for <strong>checking and reclaiming the CPU</strong>.</li>
+</ol>
+<blockquote>
+<p>The timer can also be used for <strong>computer time calculation</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="operating-system-structure">Operating System Structure</h2>
+<p>The OS provides three main management functions:</p>
+<ol>
+<li><strong>Process Management</strong></li>
+<li><strong>Memory Management</strong></li>
+<li><strong>File System (I/O) Management</strong></li>
+</ol>
+<p>OS services can be provided by two methods:</p>
+<ul>
+<li><strong>System Call</strong> — an assembly language instruction.</li>
+<li><strong>System Programs</strong> — higher-level programs that use system calls.</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
