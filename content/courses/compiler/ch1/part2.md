@@ -5,11 +5,7 @@ weight: 2
 toc: true
 tags: ["programming-languages", "syntax", "semantics", "tokens"]
 description: "How CFG defines syntax, and how the scanner/parser pipeline turns code into tokens and structures."
----
-
-# Chapter 1 - Introduction and Background
-## Part 2: Syntax & Semantics
-
+author: "Mustafa Altaweel, Samaa Kali"
 ---
 
 ## Syntax

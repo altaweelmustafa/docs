@@ -7,10 +7,7 @@ tags: ["programming-languages", "intro", "definitions"]
 description: "Why we study PL concepts and paradigms, and the formal definition of a programming language."
 ---
 
-# Chapter 1 - Introduction and Background
-## Part 1: Nature of the Course & What is a Programming Language
 
----
 
 ## Nature of the Course
 

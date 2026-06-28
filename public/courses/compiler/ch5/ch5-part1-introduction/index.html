@@ -21,15 +21,18 @@
 <article>
   <h2 class="post-title">Chapter 5, Part 1 – Introduction to Syntax Analysis</h2>
   <p class="post-date"><em>posted on 2026 Jan 01</em></p>
-   <h2 id="chapter-5-part-1--introduction-to-syntax-analysis">Chapter 5, Part 1 – Introduction to Syntax Analysis</h2>
-<p><em>posted on 2026 Jan 01</em></p>
-<p><strong>Contents</strong></p>
-<ul>
-<li><a href="#what-is-a-syntax-analyzer">What is a Syntax Analyzer?</a></li>
-<li><a href="#connecting-the-scanner-and-parser">Connecting the Scanner and Parser</a></li>
-</ul>
-<hr>
-<h2 id="what-is-a-syntax-analyzer">What is a Syntax Analyzer?</h2>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-syntax-analyzer">What is a Syntax Analyzer?</a></li>
+    <li><a href="#connecting-the-scanner-and-parser">Connecting the Scanner and Parser</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="what-is-a-syntax-analyzer">What is a Syntax Analyzer?</h2>
 <p>A <strong>Syntax Analyzer</strong> (or <strong>Parser</strong>) is an algorithm that groups the set of tokens sent by the Scanner to form syntax structures such as Expressions, Statements, Blocks, and so on.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Scanner  →  Set of Tokens  →  Parser (Syntax Analyzer)  →  Syntax Structures
 </span></span></code></pre></div><p>Simply put, the parser examines whether the source code written follows the <strong>grammar</strong> (production rules) of the language.</p>
@@ -103,8 +106,8 @@
       </tr>
       <tr>
           <td>Example</td>
-          <td>`L(L</td>
-          <td>d)*` represents all valid identifiers</td>
+          <td><code>L(L or d)\*</code> represents all valid identifiers</td>
+          <td><code>L(G)</code> represents all valid programs</td>
       </tr>
       <tr>
           <td>Uses</td>
@@ -123,7 +126,6 @@
       </tr>
   </tbody>
 </table>
-<p><a href="../ch5-part2-grammar/"><em>Chapter 5, Part 2 – Grammar</em></a></p>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">

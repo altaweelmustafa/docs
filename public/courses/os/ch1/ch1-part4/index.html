@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 4 – Storage Management, Protection &amp; Security, Kernel Data Structures · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 4 – Storage Management, Protection &amp; Security, Kernel Data Structures</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#storage-management">Storage Management</a>
+      <ul>
+        <li><a href="#file-system-management">File-System Management</a></li>
+        <li><a href="#mass-storage-management">Mass-Storage Management</a></li>
+        <li><a href="#storage-hierarchy">Storage Hierarchy</a></li>
+        <li><a href="#caching">Caching</a></li>
+      </ul>
+    </li>
+    <li><a href="#protection-and-security">Protection and Security</a>
+      <ul>
+        <li><a href="#protection">Protection</a></li>
+        <li><a href="#security">Security</a></li>
+      </ul>
+    </li>
+    <li><a href="#kernel-data-structures">Kernel Data Structures</a>
+      <ul>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#stacks-and-queues">Stacks and Queues</a></li>
+        <li><a href="#trees">Trees</a></li>
+        <li><a href="#hash-maps">Hash Maps</a></li>
+        <li><a href="#bitmaps">Bitmaps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="storage-management">Storage Management</h2>
+<p>The OS abstracts the physical properties of storage devices into a logical storage unit — the <strong>file</strong>. Each storage medium (disk, USB, tape) is controlled by a device driver that hides hardware details.</p>
+<h3 id="file-system-management">File-System Management</h3>
+<p>Files are usually organized into <strong>directories</strong>. The OS manages:</p>
+<ul>
+<li>Creating and deleting files and directories.</li>
+<li>Primitives to manipulate files and directories.</li>
+<li>Mapping files onto secondary storage.</li>
+<li>Backing up files to non-volatile media.</li>
+</ul>
+<p>Access control on most systems determines who can access what (read, write, execute).</p>
+<h3 id="mass-storage-management">Mass-Storage Management</h3>
+<p>Since main memory is volatile and too small, the computer must provide <strong>secondary storage</strong> (usually magnetic disks or SSDs) to hold data and programs permanently.</p>
+<p>OS responsibilities:</p>
+<ul>
+<li>Free-space management.</li>
+<li>Storage allocation.</li>
+<li>Disk scheduling (ordering read/write requests for efficiency).</li>
+</ul>
+<p><strong>Tertiary storage</strong> (optical disks, magnetic tape) is used for backups and archiving.</p>
+<h3 id="storage-hierarchy">Storage Hierarchy</h3>
+<p>Storage systems are organized in a hierarchy based on <strong>speed</strong>, <strong>cost</strong>, and <strong>volatility</strong>:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Level</th>
+          <th>Type</th>
+          <th>Speed</th>
+          <th>Cost</th>
+          <th>Volatile?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Registers</td>
+          <td>Fastest</td>
+          <td>Highest</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Cache</td>
+          <td>Very fast</td>
+          <td>High</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Main memory (RAM)</td>
+          <td>Fast</td>
+          <td>Medium</td>
+          <td>Yes</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>SSD / NVM</td>
+          <td>Medium</td>
+          <td>Low</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Magnetic disk (HDD)</td>
+          <td>Slow</td>
+          <td>Very low</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>Optical disk</td>
+          <td>Very slow</td>
+          <td>Lowest</td>
+          <td>No</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>Magnetic tape</td>
+          <td>Slowest</td>
+          <td>Lowest</td>
+          <td>No</td>
+      </tr>
+  </tbody>
+</table>
+<p>As we move up the hierarchy: faster, smaller, and more expensive. As we move down: slower, larger, and cheaper.</p>
+<h3 id="caching">Caching</h3>
+<p><strong>Caching</strong> is a fundamental OS/hardware principle. Information is temporarily copied from a slower level to a faster one. The faster storage (cache) is checked first; if the data is there (<strong>cache hit</strong>), it is used directly. Otherwise (<strong>cache miss</strong>), data is copied from the slower storage into the cache.</p>
+<p>Cache sizes are limited — <strong>cache management</strong> (deciding what to keep and what to evict) is an important design problem.</p>
+<p><strong>Data migration example</strong> — value <code>A</code> may reside at multiple levels simultaneously:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Magnetic disk → Main memory → Cache → Hardware register
+</span></span></code></pre></div><p>In a multiprocessor environment, <strong>cache coherency</strong> must be maintained — all CPUs must see the most recent value of a shared datum.</p>
+<hr>
+<h2 id="protection-and-security">Protection and Security</h2>
+<h3 id="protection">Protection</h3>
+<p><strong>Protection</strong> is any mechanism for controlling the access of processes or users to resources defined by the computer system.</p>
+<ul>
+<li>Distinguishes between authorized and unauthorized use.</li>
+<li>Provides means to specify the controls to be imposed and enforce them.</li>
+<li>Prevents a malfunctioning process from interfering with others.</li>
+</ul>
+<h3 id="security">Security</h3>
+<p><strong>Security</strong> defends the system against internal and external attacks:</p>
+<ul>
+<li>Denial-of-service (DoS).</li>
+<li>Worms and viruses.</li>
+<li>Identity theft.</li>
+<li>Theft of service.</li>
+</ul>
+<p>Systems generally distinguish between <strong>user identities</strong>:</p>
+<ul>
+<li><strong>User ID (UID)</strong>: a unique number associated with each user; included with all files, processes, and threads.</li>
+<li><strong>Group ID (GID)</strong>: allows sets of users to be defined and controlled as a group.</li>
+<li><strong>Privilege escalation</strong>: allows a user to gain extra permissions temporarily (e.g., <code>sudo</code> in Linux).</li>
+</ul>
+<hr>
+<h2 id="kernel-data-structures">Kernel Data Structures</h2>
+<p>The OS kernel relies on classic data structures to manage resources efficiently. Understanding them is essential to understanding OS implementation.</p>
+<h3 id="lists">Lists</h3>
+<ul>
+<li><strong>Array</strong>: fixed-size, direct access by index.</li>
+<li><strong>Linked list</strong>: variable size, efficient insertion/deletion; used heavily in the kernel.
+<ul>
+<li>Singly linked, doubly linked, circularly linked.</li>
+</ul>
+</li>
+</ul>
+<h3 id="stacks-and-queues">Stacks and Queues</h3>
+<ul>
+<li><strong>Stack</strong>: LIFO — used for function call frames, interrupt handling.</li>
+<li><strong>Queue</strong>: FIFO — used for CPU scheduling ready queues, I/O request queues.</li>
+</ul>
+<h3 id="trees">Trees</h3>
+<ul>
+<li><strong>Binary search tree</strong> (BST): O(log n) search in best case, O(n) worst case.</li>
+<li><strong>Balanced BST</strong> (e.g., red-black tree): guaranteed O(log n) — Linux uses a red-black tree for CPU scheduling (<code>CFS</code>).</li>
+</ul>
+<h3 id="hash-maps">Hash Maps</h3>
+<ul>
+<li>Hash function maps a key to a bucket index.</li>
+<li>O(1) average lookup — used for file-system directory lookups, process tables, page tables.</li>
+</ul>
+<h3 id="bitmaps">Bitmaps</h3>
+<p>A <strong>bitmap</strong> is a string of <code>n</code> binary digits representing the status of <code>n</code> items. Example: disk block availability (1 = free, 0 = used). Compact and fast for set operations.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part3/" id="nav-prev"><em>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

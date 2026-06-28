@@ -2,18 +2,7 @@
 title: "Chapter 5, Part 3 – Parsing"
 description: "Top-down and bottom-up parsing techniques, and how to detect and resolve grammar ambiguity."
 date: 2026-01-01
----
-
-## Chapter 5, Part 3 – Parsing
-
-*posted on 2026 Jan 01*
-
-**Contents**
-
-- [What is Parsing?](#what-is-parsing)
-- [Parsing Techniques](#parsing-techniques)
-- [Ambiguity](#ambiguity)
-
+toc: true
 ---
 
 ## What is Parsing?
@@ -117,7 +106,7 @@ E → (E) | a
 
 The sentence `a + a * a` has **two** derivation trees:
 
-*Tree 1 — represents `a + (a * a)` (multiplication first — mathematically correct):*
+_Tree 1 — represents `a + (a _ a)` (multiplication first — mathematically correct):\*
 
 ```
         E
@@ -129,7 +118,7 @@ The sentence `a + a * a` has **two** derivation trees:
          a   a
 ```
 
-*Tree 2 — represents `(a + a) * a` (addition first — incorrect by convention):*
+_Tree 2 — represents `(a + a) _ a` (addition first — incorrect by convention):\*
 
 ```
         E
@@ -194,6 +183,7 @@ Derivation tree for `a + a * a` — only one possible tree, representing `a + (a
 ```
 
 This grammar solves all three major problems:
+
 - **Ambiguity** — only one derivation tree per sentence.
 - **Precedence** — multiplication has higher precedence than addition (`*` is deeper in the tree).
 - **Associativity** — operations of the same level associate left-to-right.
@@ -207,5 +197,3 @@ F → (E) | a
 ```
 
 This grammar is also unambiguous, but interprets `a + a + a` as `a + (a + a)` — right-to-left. Since standard mathematics and most programming languages associate left-to-right, **the left-associative grammar is the correct solution** for arithmetic expressions.
-
-[*Chapter 5, Part 4 – Top-Down Parsing*](../ch5-part4-top-down-parsing/)

@@ -38,6 +38,9 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/</loc>
+    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -418,5 +421,11 @@
     <loc>http://localhost:1313/docs/books/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch1/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch2/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch3/</loc>
   </url>
 </urlset>

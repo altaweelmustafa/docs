@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Process-Management on Docs</title>
+    <link>http://localhost:1313/docs/tags/process-management/</link>
+    <description>Recent content in Process-Management on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/process-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</title>
+      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</guid>
+      <description>&lt;h2 id=&#34;operating-system-operations&#34;&gt;Operating-System Operations&lt;/h2&gt;&#xA;&lt;h3 id=&#34;interrupt-driven-operation&#34;&gt;Interrupt-Driven Operation&lt;/h3&gt;&#xA;&lt;p&gt;Modern operating systems are &lt;strong&gt;interrupt-driven&lt;/strong&gt;. If there are no processes to execute and no I/O devices to service, the OS waits for something to happen. Events are signaled via interrupts (hardware) or &lt;strong&gt;traps/exceptions&lt;/strong&gt; (software).&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;trap&lt;/strong&gt; (or exception) is a software-generated interrupt caused by:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An error (division by zero, invalid memory access).&lt;/li&gt;&#xA;&lt;li&gt;A specific request from a user program — a &lt;strong&gt;system call&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;dual-mode-operation&#34;&gt;Dual-Mode Operation&lt;/h3&gt;&#xA;&lt;p&gt;To protect the OS from errant user programs (and user programs from each other), hardware provides at least two modes:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

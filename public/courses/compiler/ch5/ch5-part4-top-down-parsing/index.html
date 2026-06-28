@@ -21,44 +21,48 @@
 <article>
   <h2 class="post-title">Chapter 5, Part 4 – Top-Down Parsing</h2>
   <p class="post-date"><em>posted on 2026 Jan 01</em></p>
-   <h2 id="chapter-5-part-4--top-down-parsing">Chapter 5, Part 4 – Top-Down Parsing</h2>
-<p><em>posted on 2026 Jan 01</em></p>
-<p><strong>Contents</strong></p>
-<ul>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#foundations-first-and-follow">Foundations: FIRST() and FOLLOW()</a>
-<ul>
-<li><a href="#the-first-function">The FIRST() Function</a></li>
-<li><a href="#the-follow-function">The FOLLOW() Function</a></li>
-<li><a href="#rules-to-compute-first-and-follow">Rules to Compute FIRST() and FOLLOW()</a></li>
-<li><a href="#augmented-grammars">Augmented Grammars</a></li>
-<li><a href="#extended-bnf-and-syntax-diagrams">Extended BNF and Syntax Diagrams</a></li>
-<li><a href="#worked-examples-firstfollow">Worked Examples</a></li>
-</ul>
-</li>
-<li><a href="#recursive-descent-parsing">Recursive Descent Parsing</a>
-<ul>
-<li><a href="#translation-rules">Translation Rules</a></li>
-<li><a href="#worked-examples-recursive-descent">Worked Examples</a></li>
-</ul>
-</li>
-<li><a href="#ll1-parsing">LL(1) Parsing</a>
-<ul>
-<li><a href="#definition-of-ll1">Definition of LL(1)</a></li>
-<li><a href="#building-the-ll1-parsing-table">Building the LL(1) Parsing Table</a></li>
-<li><a href="#worked-examples-ll1">Worked Examples</a></li>
-</ul>
-</li>
-<li><a href="#problems-with-top-down-parsing">Problems with Top-Down Parsing</a>
-<ul>
-<li><a href="#left-recursion">Left Recursion</a></li>
-<li><a href="#the-dangling-else-problem">The Dangling Else Problem</a></li>
-<li><a href="#left-factoring">Left Factoring</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="overview">Overview</h2>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#foundations-first-and-follow">Foundations: FIRST() and FOLLOW()</a>
+      <ul>
+        <li><a href="#the-first-function">The FIRST() Function</a></li>
+        <li><a href="#the-follow-function">The FOLLOW() Function</a></li>
+        <li><a href="#rules-to-compute-first-and-follow">Rules to Compute FIRST() and FOLLOW()</a></li>
+        <li><a href="#augmented-grammars">Augmented Grammars</a></li>
+        <li><a href="#extended-bnf-and-syntax-diagrams">Extended BNF and Syntax Diagrams</a></li>
+        <li><a href="#worked-examples--firstfollow">Worked Examples — FIRST/FOLLOW</a></li>
+      </ul>
+    </li>
+    <li><a href="#recursive-descent-parsing">Recursive Descent Parsing</a>
+      <ul>
+        <li><a href="#translation-rules">Translation Rules</a></li>
+        <li><a href="#worked-examples--recursive-descent">Worked Examples — Recursive Descent</a></li>
+      </ul>
+    </li>
+    <li><a href="#ll1-parsing">LL(1) Parsing</a>
+      <ul>
+        <li><a href="#what-is-llk">What is LL(k)?</a></li>
+        <li><a href="#definition-of-ll1">Definition of LL(1)</a></li>
+        <li><a href="#building-the-ll1-parsing-table">Building the LL(1) Parsing Table</a></li>
+        <li><a href="#worked-examples--ll1">Worked Examples — LL(1)</a></li>
+      </ul>
+    </li>
+    <li><a href="#problems-with-top-down-parsing">Problems with Top-Down Parsing</a>
+      <ul>
+        <li><a href="#left-recursion">Left Recursion</a></li>
+        <li><a href="#the-dangling-else-problem">The Dangling Else Problem</a></li>
+        <li><a href="#left-factoring">Left Factoring</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="overview">Overview</h2>
 <p>In top-down parsing, the parser builds the derivation tree from the <strong>root (S) down to the leaves</strong> using <strong>leftmost derivation</strong>.</p>
 <p><strong>Major Problem:</strong> The parser does not know which production rule to apply at each derivation step — it can be non-deterministic for general CFGs.</p>
 <p>We cannot build deterministic top-down parsers for all CFGs. However, for certain restricted classes, we can. Two main deterministic top-down techniques exist:</p>
@@ -211,10 +215,8 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">current token          after get_token() →
 </span></span></code></pre></div><h3 id="translation-rules">Translation Rules</h3>
 <p><strong>Rule 1 — terminal <code>a</code>:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">a</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">get_token</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="k">else</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">report_error</span><span class="p">();</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">a</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span> <span class="nx">report_error</span><span class="p">();</span>
 </span></span></code></pre></div><p><strong>Rule 2 — concatenation <code>X → α₁α₂…αₙ</code>:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">Code</span><span class="p">(</span><span class="nx">α₁</span><span class="p">);</span>
@@ -679,9 +681,9 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 <p>A grammar is <strong>left-recursive</strong> if it has a production of the form <code>A → Aα</code>. This causes <strong>infinite recursion</strong> in recursive descent parsing — the function calls itself immediately without consuming any input:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// Translating E → E + T | T directly:
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">E</span><span class="p">();</span>       <span class="c1">// Immediate infinite recursion → stack overflow!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">match</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">T</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">E</span><span class="p">();</span> <span class="c1">// Immediate infinite recursion → stack overflow!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">match</span><span class="p">(</span><span class="s2">&#34;+&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">T</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Right-recursive grammars don&rsquo;t have this issue — <code>α</code> is processed first, consuming tokens and ensuring the recursion terminates.</p>
 <blockquote>
@@ -738,7 +740,6 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">  if-stmt   → IF condition stmt else-part
 </span></span><span class="line"><span class="cl">  else-part → ELSE stmt | λ
 </span></span></code></pre></div><p>Left factoring reduces the number of choices in the parsing table. However, it does <strong>not</strong> resolve the underlying ambiguity of the dangling else — the shift-preference rule is still needed alongside it.</p>
-<p><a href="../ch5-part5-bottom-up-parsing/"><em>Chapter 5, Part 5 – Bottom-Up Parsing</em></a></p>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">

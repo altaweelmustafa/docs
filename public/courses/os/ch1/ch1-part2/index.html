@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 2 – Computer-System Architecture &amp; Operating-System Structure · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 2 – Computer-System Architecture &amp; Operating-System Structure</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#computer-system-architecture">Computer-System Architecture</a>
+      <ul>
+        <li><a href="#single-processor-systems">Single-Processor Systems</a></li>
+        <li><a href="#multiprocessor-systems">Multiprocessor Systems</a></li>
+        <li><a href="#multi-core-systems">Multi-Core Systems</a></li>
+        <li><a href="#clustered-systems">Clustered Systems</a></li>
+      </ul>
+    </li>
+    <li><a href="#operating-system-structure">Operating-System Structure</a>
+      <ul>
+        <li><a href="#multiprogramming">Multiprogramming</a></li>
+        <li><a href="#timesharing-multitasking">Timesharing (Multitasking)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="computer-system-architecture">Computer-System Architecture</h2>
+<h3 id="single-processor-systems">Single-Processor Systems</h3>
+<p>Most systems historically used a <strong>single general-purpose processor</strong>. They also contain special-purpose processors (disk, keyboard, graphics) that run a limited instruction set and do not run user processes.</p>
+<h3 id="multiprocessor-systems">Multiprocessor Systems</h3>
+<p>Also called <strong>parallel systems</strong> or <strong>tightly coupled systems</strong>. They have two or more processors sharing a computer bus, clock, memory, and peripheral devices.</p>
+<p><strong>Advantages:</strong></p>
+<ol>
+<li><strong>Increased throughput</strong> — more work done in less time. Speedup ratio is less than <code>N</code> for <code>N</code> processors due to coordination overhead.</li>
+<li><strong>Economy of scale</strong> — cheaper than equivalent separate systems since resources are shared.</li>
+<li><strong>Increased reliability</strong> — failure of one processor slows but doesn&rsquo;t halt the system (<strong>graceful degradation</strong> / <strong>fault tolerance</strong>).</li>
+</ol>
+<p><strong>Two types:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Asymmetric Multiprocessing (AMP)</strong></td>
+          <td>A boss processor controls the system and assigns work to worker processors.</td>
+      </tr>
+      <tr>
+          <td><strong>Symmetric Multiprocessing (SMP)</strong></td>
+          <td>All processors are peers; each runs its own copy of the OS and can perform all tasks. Most common today.</td>
+      </tr>
+  </tbody>
+</table>
+<p>In SMP, all CPUs share one physical address space. The number of processes that can run simultaneously scales with the processor count.</p>
+<h3 id="multi-core-systems">Multi-Core Systems</h3>
+<p>Multiple computing cores reside on a single chip. On-chip communication is faster than between-chip communication, and a multi-core chip uses less power than multiple single-core chips.</p>
+<h3 id="clustered-systems">Clustered Systems</h3>
+<p>Clustered systems couple <strong>multiple independent systems (nodes)</strong> over a LAN or InfiniBand. They share storage (usually via a <strong>storage-area network, SAN</strong>) and provide <strong>high availability</strong>.</p>
+<p><strong>Two types:</strong></p>
+<ul>
+<li><strong>Asymmetric clustering</strong>: one machine is in hot-standby mode, monitoring the active server. If the active server fails, the standby takes over (<strong>failover</strong>).</li>
+<li><strong>Symmetric clustering</strong>: multiple nodes run applications and monitor each other. More efficient since all hardware is in use.</li>
+</ul>
+<p>Some clusters are designed for <strong>high-performance computing (HPC)</strong>. Applications must be written to use <strong>parallelization</strong>. Clusters can also implement <strong>distributed lock manager (DLM)</strong> to avoid conflicting operations across nodes.</p>
+<hr>
+<h2 id="operating-system-structure">Operating-System Structure</h2>
+<h3 id="multiprogramming">Multiprogramming</h3>
+<p>A single user cannot keep the CPU and I/O devices busy at all times. <strong>Multiprogramming</strong> solves this by organizing multiple jobs so the CPU always has something to execute.</p>
+<ul>
+<li>A subset of all jobs is kept in memory.</li>
+<li>One job is selected and run via <strong>job scheduling</strong>.</li>
+<li>When a job must wait (e.g., for I/O), the OS switches to another job.</li>
+<li>The CPU is never idle as long as at least one job needs to execute.</li>
+</ul>
+<h3 id="timesharing-multitasking">Timesharing (Multitasking)</h3>
+<p><strong>Timesharing</strong> is a logical extension of multiprogramming in which the CPU switches jobs so frequently that users can interact with each job while it is running, creating <strong>interactive computing</strong>.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Response time should be <strong>&lt; 1 second</strong>.</li>
+<li>Each user has at least one program executing in memory — this is called a <strong>process</strong>.</li>
+<li>If several processes are ready to run simultaneously → <strong>CPU scheduling</strong>.</li>
+<li>If processes do not fit in memory → <strong>swapping</strong> (moving processes in and out of memory).</li>
+<li><strong>Virtual memory</strong> allows execution of processes not completely in memory.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Multiprogramming</th>
+          <th>Timesharing</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Goal</td>
+          <td>Maximize CPU utilization</td>
+          <td>Minimize response time</td>
+      </tr>
+      <tr>
+          <td>Interaction</td>
+          <td>None (batch)</td>
+          <td>Interactive</td>
+      </tr>
+      <tr>
+          <td>Scheduling</td>
+          <td>Job scheduling</td>
+          <td>CPU scheduling</td>
+      </tr>
+      <tr>
+          <td>Memory</td>
+          <td>Subset of jobs</td>
+          <td>Swapping / virtual memory</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part1/" id="nav-prev"><em>Chapter 1, Part 1 – What Operating Systems Do &amp; Computer-System Organization</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part3/" id="nav-next"><em>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

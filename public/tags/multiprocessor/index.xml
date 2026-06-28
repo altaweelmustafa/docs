@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Multiprocessor on Docs</title>
+    <link>http://localhost:1313/docs/tags/multiprocessor/</link>
+    <description>Recent content in Multiprocessor on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/multiprocessor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 2 – Computer-System Architecture &amp; Operating-System Structure</title>
+      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</guid>
+      <description>&lt;h2 id=&#34;computer-system-architecture&#34;&gt;Computer-System Architecture&lt;/h2&gt;&#xA;&lt;h3 id=&#34;single-processor-systems&#34;&gt;Single-Processor Systems&lt;/h3&gt;&#xA;&lt;p&gt;Most systems historically used a &lt;strong&gt;single general-purpose processor&lt;/strong&gt;. They also contain special-purpose processors (disk, keyboard, graphics) that run a limited instruction set and do not run user processes.&lt;/p&gt;&#xA;&lt;h3 id=&#34;multiprocessor-systems&#34;&gt;Multiprocessor Systems&lt;/h3&gt;&#xA;&lt;p&gt;Also called &lt;strong&gt;parallel systems&lt;/strong&gt; or &lt;strong&gt;tightly coupled systems&lt;/strong&gt;. They have two or more processors sharing a computer bus, clock, memory, and peripheral devices.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Advantages:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Increased throughput&lt;/strong&gt; — more work done in less time. Speedup ratio is less than &lt;code&gt;N&lt;/code&gt; for &lt;code&gt;N&lt;/code&gt; processors due to coordination overhead.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Economy of scale&lt;/strong&gt; — cheaper than equivalent separate systems since resources are shared.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Increased reliability&lt;/strong&gt; — failure of one processor slows but doesn&amp;rsquo;t halt the system (&lt;strong&gt;graceful degradation&lt;/strong&gt; / &lt;strong&gt;fault tolerance&lt;/strong&gt;).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;strong&gt;Two types:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

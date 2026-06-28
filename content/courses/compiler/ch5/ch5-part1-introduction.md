@@ -2,17 +2,7 @@
 title: "Chapter 5, Part 1 – Introduction to Syntax Analysis"
 description: "What the parser does, BNF notation, and how the scanner connects to the parser."
 date: 2026-01-01
----
-
-## Chapter 5, Part 1 – Introduction to Syntax Analysis
-
-*posted on 2026 Jan 01*
-
-**Contents**
-
-- [What is a Syntax Analyzer?](#what-is-a-syntax-analyzer)
-- [Connecting the Scanner and Parser](#connecting-the-scanner-and-parser)
-
+toc: true
 ---
 
 ## What is a Syntax Analyzer?
@@ -53,7 +43,7 @@ sentence
 
 In a similar manner, the parser tries to derive your source program from the **starting symbol** of the grammar.
 
-> **Note — Syntax vs. Semantics:** A sentence like *THE BOOK BUYS A STUDENT* is syntactically correct but semantically meaningless. The parser only verifies syntactic correctness; semantic analysis is performed later by the semantic analyzer.
+> **Note — Syntax vs. Semantics:** A sentence like _THE BOOK BUYS A STUDENT_ is syntactically correct but semantically meaningless. The parser only verifies syntactic correctness; semantic analysis is performed later by the semantic analyzer.
 
 > **Note — BNF Notation:** The formal BNF notation uses angle brackets and `::=`, for example `⟨sentence⟩ ::= ⟨noun-phrase⟩⟨verb-phrase⟩`. We use the simpler arrow notation throughout this chapter since it is easier to work with.
 
@@ -103,12 +93,10 @@ Output of Parser: A **syntax tree** representing the program structure.
 
 **Understanding "Language" in Both Contexts:**
 
-| | Chapter 4: Scanner | Chapter 5: Parser |
-|---|---|---|
-| Language means | Pattern for ONE token type | Structure of the ENTIRE program |
-| Example | `L(L|d)*` represents all valid identifiers | `L(G)` represents all valid programs |
-| Uses | Regular Grammars | Context-Free Grammars |
-| Power | Simpler, less powerful | More powerful, more complex |
-| Task | Groups characters into tokens | Groups tokens into syntax structures |
-
-[*Chapter 5, Part 2 – Grammar*](../ch5-part2-grammar/)
+|                | Chapter 4: Scanner                             | Chapter 5: Parser                    |
+| -------------- | ---------------------------------------------- | ------------------------------------ |
+| Language means | Pattern for ONE token type                     | Structure of the ENTIRE program      |
+| Example        | `L(L or d)\*` represents all valid identifiers | `L(G)` represents all valid programs |
+| Uses           | Regular Grammars                               | Context-Free Grammars                |
+| Power          | Simpler, less powerful                         | More powerful, more complex          |
+| Task           | Groups characters into tokens                  | Groups tokens into syntax structures |

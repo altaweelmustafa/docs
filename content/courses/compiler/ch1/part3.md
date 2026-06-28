@@ -5,15 +5,7 @@ weight: 3
 toc: true
 tags: ["programming-languages", "paradigms", "lisp", "prolog", "oop"]
 description: "Imperative, functional, logical, and object oriented paradigms with code examples."
----
-
-# Chapter 1 - Introduction and Background
-## Part 3: Paradigms of Programming Languages
-
----
-
-There are 4 paradigms of programming languages.
-
+author: "Mustafa Altaweel, Samaa Kali"
 ---
 
 ## Imperative / Procedural Paradigm
@@ -27,6 +19,7 @@ Also called the **Von Neumann model**, based on single processor sequential exec
 Pascal and C are designed around this paradigm.
 
 **Example: GCD in Pascal**
+
 ```pascal
 function gcd(x,y:integer):integer;
 Begin
@@ -41,6 +34,7 @@ End
 ```
 
 **Same program in C**
+
 ```c
 int gcd(int n, int m)
 {
@@ -70,6 +64,7 @@ Computation is based on evaluating or calling functions. Sometimes called an "ap
 > A list is a sequence of things separated by blanks and surrounded by parentheses.
 
 Examples:
+
 ```lisp
 (+ a b)
 (+ 2 3)
@@ -95,6 +90,7 @@ Examples:
 ```
 
 **GCD in LISP**
+
 ```lisp
 >(defun gcd(n m)
    (if (= n m) n
@@ -106,6 +102,7 @@ Examples:
 ```
 
 **Power function (x^n) in LISP**
+
 ```lisp
 >(defun pwr(x n)
    (if (= n 0) 1
@@ -122,6 +119,7 @@ Examples:
 Based on symbolic logic. The program is a set of statements describing what's true. **PROLOG** (PROgramming LOGical) is the classic example.
 
 **GCD in PROLOG**
+
 ```prolog
 gcd(u,v,u) :- v = 0.
 gcd(u,v,x) :- v > 0,

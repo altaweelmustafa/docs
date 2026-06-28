@@ -21,16 +21,30 @@
 <article>
   <h2 class="post-title">Chapter 5, Part 3 – Parsing</h2>
   <p class="post-date"><em>posted on 2026 Jan 01</em></p>
-   <h2 id="chapter-5-part-3--parsing">Chapter 5, Part 3 – Parsing</h2>
-<p><em>posted on 2026 Jan 01</em></p>
-<p><strong>Contents</strong></p>
-<ul>
-<li><a href="#what-is-parsing">What is Parsing?</a></li>
-<li><a href="#parsing-techniques">Parsing Techniques</a></li>
-<li><a href="#ambiguity">Ambiguity</a></li>
-</ul>
-<hr>
-<h2 id="what-is-parsing">What is Parsing?</h2>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-parsing">What is Parsing?</a></li>
+    <li><a href="#parsing-techniques">Parsing Techniques</a>
+      <ul>
+        <li><a href="#top-down-parsing">Top-Down Parsing</a></li>
+        <li><a href="#bottom-up-parsing">Bottom-Up Parsing</a></li>
+      </ul>
+    </li>
+    <li><a href="#ambiguity">Ambiguity</a>
+      <ul>
+        <li><a href="#attempt-1--separating-operations-into-levels">Attempt 1 — Separating Operations into Levels</a></li>
+        <li><a href="#solution--left-associative-grammar">Solution — Left-Associative Grammar</a></li>
+        <li><a href="#alternative--right-associative-grammar">Alternative — Right-Associative Grammar</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="what-is-parsing">What is Parsing?</h2>
 <p><strong>Parsing</strong> is the process of analyzing a sequence of tokens to determine its grammatical structure with respect to a given formal grammar.</p>
 <p>Given a grammar G = (V_N, V_T, S, P) and an input string w, the parser answers: <strong>Is w ∈ L(G)?</strong></p>
 <p>The parser&rsquo;s job:</p>
@@ -90,7 +104,7 @@
 </span></span><span class="line"><span class="cl">E → E * E
 </span></span><span class="line"><span class="cl">E → (E) | a
 </span></span></code></pre></div><p>The sentence <code>a + a * a</code> has <strong>two</strong> derivation trees:</p>
-<p><em>Tree 1 — represents <code>a + (a * a)</code> (multiplication first — mathematically correct):</em></p>
+<p>_Tree 1 — represents <code>a + (a _ a)</code> (multiplication first — mathematically correct):*</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
 </span></span><span class="line"><span class="cl">       /|\
 </span></span><span class="line"><span class="cl">      E + E
@@ -98,7 +112,7 @@
 </span></span><span class="line"><span class="cl">      a  E * E
 </span></span><span class="line"><span class="cl">         |   |
 </span></span><span class="line"><span class="cl">         a   a
-</span></span></code></pre></div><p><em>Tree 2 — represents <code>(a + a) * a</code> (addition first — incorrect by convention):</em></p>
+</span></span></code></pre></div><p>_Tree 2 — represents <code>(a + a) _ a</code> (addition first — incorrect by convention):*</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        E
 </span></span><span class="line"><span class="cl">       /|\
 </span></span><span class="line"><span class="cl">      E * E
@@ -150,7 +164,6 @@
 </span></span><span class="line"><span class="cl">T → F * T | F
 </span></span><span class="line"><span class="cl">F → (E) | a
 </span></span></code></pre></div><p>This grammar is also unambiguous, but interprets <code>a + a + a</code> as <code>a + (a + a)</code> — right-to-left. Since standard mathematics and most programming languages associate left-to-right, <strong>the left-associative grammar is the correct solution</strong> for arithmetic expressions.</p>
-<p><a href="../ch5-part4-top-down-parsing/"><em>Chapter 5, Part 4 – Top-Down Parsing</em></a></p>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">

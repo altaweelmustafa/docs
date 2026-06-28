@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</h2>
+  <p class="post-date"><em>posted on 2026 Jun 28</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#operating-system-operations">Operating-System Operations</a>
+      <ul>
+        <li><a href="#interrupt-driven-operation">Interrupt-Driven Operation</a></li>
+        <li><a href="#dual-mode-operation">Dual-Mode Operation</a></li>
+        <li><a href="#timer">Timer</a></li>
+      </ul>
+    </li>
+    <li><a href="#process-management">Process Management</a>
+      <ul>
+        <li><a href="#single-threaded-vs-multi-threaded">Single-threaded vs. Multi-threaded</a></li>
+        <li><a href="#os-responsibilities-for-processes">OS Responsibilities for Processes</a></li>
+      </ul>
+    </li>
+    <li><a href="#memory-management">Memory Management</a>
+      <ul>
+        <li><a href="#why-memory-management-matters">Why Memory Management Matters</a></li>
+        <li><a href="#os-responsibilities-for-memory">OS Responsibilities for Memory</a></li>
+        <li><a href="#key-concepts">Key Concepts</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="operating-system-operations">Operating-System Operations</h2>
+<h3 id="interrupt-driven-operation">Interrupt-Driven Operation</h3>
+<p>Modern operating systems are <strong>interrupt-driven</strong>. If there are no processes to execute and no I/O devices to service, the OS waits for something to happen. Events are signaled via interrupts (hardware) or <strong>traps/exceptions</strong> (software).</p>
+<p>A <strong>trap</strong> (or exception) is a software-generated interrupt caused by:</p>
+<ul>
+<li>An error (division by zero, invalid memory access).</li>
+<li>A specific request from a user program — a <strong>system call</strong>.</li>
+</ul>
+<h3 id="dual-mode-operation">Dual-Mode Operation</h3>
+<p>To protect the OS from errant user programs (and user programs from each other), hardware provides at least two modes:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Mode</th>
+          <th>Also Called</th>
+          <th>Privileges</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>User mode</strong></td>
+          <td>Mode bit = 1</td>
+          <td>Restricted — cannot execute privileged instructions</td>
+      </tr>
+      <tr>
+          <td><strong>Kernel mode</strong></td>
+          <td>Monitor mode / supervisor mode (Mode bit = 0)</td>
+          <td>Full access to hardware and all instructions</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Privileged instructions</strong> (e.g., I/O control, interrupt management, timer manipulation) can only execute in kernel mode. Attempting them in user mode triggers a hardware trap.</p>
+<p><strong>Lifecycle of a system call:</strong></p>
+<ol>
+<li>User process invokes a system call (trap to kernel mode).</li>
+<li>Mode bit flips to 0 (kernel mode).</li>
+<li>OS executes the requested service.</li>
+<li>Mode bit flips back to 1 (user mode); control returns to user process.</li>
+</ol>
+<h3 id="timer">Timer</h3>
+<p>The OS uses a <strong>timer</strong> to prevent a user program from running forever and never returning control. The timer generates an interrupt after a specified period.</p>
+<ul>
+<li>The OS sets the timer before scheduling a user process.</li>
+<li>When the timer fires, control returns to the OS.</li>
+<li>The OS then decides whether to continue or terminate the process.</li>
+<li>Timer instructions are <strong>privileged</strong> so users cannot manipulate them.</li>
+</ul>
+<hr>
+<h2 id="process-management">Process Management</h2>
+<p>A <strong>process</strong> is a program in execution — it is the unit of work in a system. A program is a passive entity (a file on disk); a process is an active entity (it has a program counter, stack, heap, and data section).</p>
+<h3 id="single-threaded-vs-multi-threaded">Single-threaded vs. Multi-threaded</h3>
+<ul>
+<li><strong>Single-threaded process</strong>: one program counter — executes instructions sequentially.</li>
+<li><strong>Multi-threaded process</strong>: one program counter per thread — multiple sequences of instructions executing concurrently.</li>
+</ul>
+<h3 id="os-responsibilities-for-processes">OS Responsibilities for Processes</h3>
+<p>The OS is responsible for:</p>
+<ol>
+<li><strong>Creating and deleting</strong> both user and system processes.</li>
+<li><strong>Scheduling</strong> processes and threads on CPUs.</li>
+<li><strong>Suspending and resuming</strong> processes.</li>
+<li>Providing mechanisms for <strong>process synchronization</strong>.</li>
+<li>Providing mechanisms for <strong>inter-process communication (IPC)</strong>.</li>
+<li>Providing mechanisms for <strong>deadlock handling</strong>.</li>
+</ol>
+<blockquote>
+<p>All these processes execute concurrently on one or more CPUs by multiplexing the CPU among them.</p>
+</blockquote>
+<hr>
+<h2 id="memory-management">Memory Management</h2>
+<p><strong>Main memory</strong> is central to all modern computer operation. It is the only large storage area the CPU can access directly (along with registers and cache).</p>
+<h3 id="why-memory-management-matters">Why Memory Management Matters</h3>
+<ul>
+<li>CPU can only execute instructions loaded in main memory.</li>
+<li>For a program to be executed, it must be mapped to absolute addresses and loaded into memory.</li>
+<li>Multiple programs may reside in memory simultaneously → the OS must manage allocation.</li>
+</ul>
+<h3 id="os-responsibilities-for-memory">OS Responsibilities for Memory</h3>
+<ol>
+<li>Keeping track of <strong>which parts of memory are currently being used</strong> and by whom.</li>
+<li><strong>Deciding which processes and data to move</strong> into and out of memory.</li>
+<li><strong>Allocating and deallocating</strong> memory space as needed.</li>
+</ol>
+<h3 id="key-concepts">Key Concepts</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Logical address</strong></td>
+          <td>Address generated by the CPU (virtual address)</td>
+      </tr>
+      <tr>
+          <td><strong>Physical address</strong></td>
+          <td>Actual address seen by memory hardware</td>
+      </tr>
+      <tr>
+          <td><strong>MMU</strong></td>
+          <td>Memory Management Unit — hardware that maps logical → physical addresses</td>
+      </tr>
+      <tr>
+          <td><strong>Swapping</strong></td>
+          <td>Moving entire processes between memory and disk when memory is full</td>
+      </tr>
+      <tr>
+          <td><strong>Virtual memory</strong></td>
+          <td>Allows execution of processes larger than physical memory by swapping pages/segments</td>
+      </tr>
+  </tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part2/" id="nav-prev"><em>Chapter 1, Part 2 – Computer-System Architecture &amp; Operating-System Structure</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/os/ch1/ch1-part4/" id="nav-next"><em>Chapter 1, Part 4 – Storage Management, Protection &amp; Security, Kernel Data Structures</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

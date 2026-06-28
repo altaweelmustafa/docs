@@ -2,34 +2,7 @@
 title: "Chapter 5, Part 4 – Top-Down Parsing"
 description: "FIRST and FOLLOW sets, Recursive Descent Parsing, LL(1) Parsing, and problems with top-down parsing."
 date: 2026-01-01
----
-
-## Chapter 5, Part 4 – Top-Down Parsing
-
-*posted on 2026 Jan 01*
-
-**Contents**
-
-- [Overview](#overview)
-- [Foundations: FIRST() and FOLLOW()](#foundations-first-and-follow)
-  - [The FIRST() Function](#the-first-function)
-  - [The FOLLOW() Function](#the-follow-function)
-  - [Rules to Compute FIRST() and FOLLOW()](#rules-to-compute-first-and-follow)
-  - [Augmented Grammars](#augmented-grammars)
-  - [Extended BNF and Syntax Diagrams](#extended-bnf-and-syntax-diagrams)
-  - [Worked Examples](#worked-examples-firstfollow)
-- [Recursive Descent Parsing](#recursive-descent-parsing)
-  - [Translation Rules](#translation-rules)
-  - [Worked Examples](#worked-examples-recursive-descent)
-- [LL(1) Parsing](#ll1-parsing)
-  - [Definition of LL(1)](#definition-of-ll1)
-  - [Building the LL(1) Parsing Table](#building-the-ll1-parsing-table)
-  - [Worked Examples](#worked-examples-ll1)
-- [Problems with Top-Down Parsing](#problems-with-top-down-parsing)
-  - [Left Recursion](#left-recursion)
-  - [The Dangling Else Problem](#the-dangling-else-problem)
-  - [Left Factoring](#left-factoring)
-
+toc: true
 ---
 
 ## Overview
@@ -93,10 +66,12 @@ Then:  FOLLOW(X) = {d, a, c}
 
 > **Why Rule 5 works:**
 > Consider the derivation `S →* uAG → uαXβG`.
+>
 > - If β ≠ λ: X is directly followed by β, so FIRST(β) ⊆ FOLLOW(X).
 > - If β = λ: the production becomes A → αX, so X is followed by whatever follows A — therefore FOLLOW(A) ⊆ FOLLOW(X).
 
 > **Notes:**
+>
 > - FIRST() and FOLLOW() sets contain **terminals only** (λ may appear in FIRST but **never** in FOLLOW).
 > - Compute FIRST() **bottom-up**; compute FOLLOW() **top-down**.
 > - When computing FOLLOW(X), search for X on the right-hand side of any production.
@@ -106,10 +81,10 @@ Then:  FOLLOW(X) = {d, a, c}
 
 ### Augmented Grammars
 
-Given grammar G = (V_N, V_T, S, P), the **augmented grammar** G' = (V'_N, V'_T, S', P') is obtained as:
+Given grammar G = (V_N, V_T, S, P), the **augmented grammar** G' = (V'\_N, V'\_T, S', P') is obtained as:
 
-1. V'_N = V_N ∪ {S'}
-2. V'_T = V_T ∪ {$}  — where `$` is the **stop symbol**
+1. V'\_N = V_N ∪ {S'}
+2. V'\_T = V_T ∪ {$}  — where `$` is the **stop symbol**
 3. S' = new starting symbol
 4. P' = P ∪ {S' → S$}
 
@@ -148,6 +123,7 @@ F → (E) | a     →   F → (E) | a         F → (E) | a
 **Syntax Diagrams** are a visual representation of EBNF. A **rectangle** represents a non-terminal; an **oval** represents a terminal. Loops allow repetition; branching paths represent alternatives.
 
 For `E → T (+T)*`:
+
 ```
 ─→─ [T] ─→──────────────→─
           ↑              |
@@ -155,6 +131,7 @@ For `E → T (+T)*`:
 ```
 
 For `F → (E) | a`:
+
 ```
 ─→─ [(] ─ [E] ─ [)] ─→─
   ↘                  ↗
@@ -247,10 +224,8 @@ current token          after get_token() →
 **Rule 1 — terminal `a`:**
 
 ```javascript
-if (token == a)
-    get_token();
-else
-    report_error();
+if (token == a) get_token();
+else report_error();
 ```
 
 **Rule 2 — concatenation `X → α₁α₂…αₙ`:**
@@ -300,6 +275,7 @@ Code(X) {
 ```
 
 > **Notes:**
+>
 > - Every non-terminal has a corresponding function.
 > - S' (augmented start) is represented by `main()`.
 > - `get_token()` is called **only once**, at the start of `main()`.
@@ -363,6 +339,7 @@ stmt    → Read | Write | body | λ
 ```
 
 Valid programs in this language:
+
 ```
 Begin Read; Write; Read; End.
 Begin Read; End.
@@ -463,6 +440,7 @@ N  → λ      (8)
 ```
 
 FIRST and FOLLOW sets:
+
 ```
 FIRST(S) = {+, −, λ}      FOLLOW(S) = {d, .}
 FIRST(R) = {d, .}         FOLLOW(R) = {$}
@@ -472,7 +450,7 @@ FIRST(N) = {d, λ}         FOLLOW(N) = {., $}
 Parsing Table:
 
 | V_N \ V_T | `+` | `−` | `d` | `.` | `$` |
-|-----------|-----|-----|-----|-----|-----|
+| --------- | --- | --- | --- | --- | --- |
 | V         | 1   | 1   | 1   | 1   | E   |
 | S         | 2   | 3   | 4   | 4   | E   |
 | R         | E   | E   | 5   | 6   | E   |
@@ -482,22 +460,22 @@ No conflicts → **LL(1) grammar**. L(G) = all floating-point numbers.
 
 **Parsing trace for `−dd.d$`:**
 
-| Stack    | Remaining Input | Action       |
-|----------|----------------|--------------|
-| V        | −dd.d$         | Production 1 |
-| SR$      | −dd.d$         | Production 3 |
-| −R$      | −dd.d$         | Pop & advance|
-| R$       | dd.d$          | Production 5 |
-| dN.N$    | dd.d$          | Pop & advance|
-| N.N$     | d.d$           | Production 7 |
-| dN.N$    | d.d$           | Pop & advance|
-| N.N$     | .d$            | Production 8 |
-| .N$      | .d$            | Pop & advance|
-| N$       | d$             | Production 7 |
-| dN$      | d$             | Pop & advance|
-| N$       | $              | Production 8 |
-| $        | $              | Pop & advance|
-| λ        | λ              | **Accept**   |
+| Stack | Remaining Input | Action        |
+| ----- | --------------- | ------------- |
+| V     | −dd.d$          | Production 1  |
+| SR$   | −dd.d$          | Production 3  |
+| −R$   | −dd.d$          | Pop & advance |
+| R$    | dd.d$           | Production 5  |
+| dN.N$ | dd.d$           | Pop & advance |
+| N.N$  | d.d$            | Production 7  |
+| dN.N$ | d.d$            | Pop & advance |
+| N.N$  | .d$             | Production 8  |
+| .N$   | .d$             | Pop & advance |
+| N$    | d$              | Production 7  |
+| dN$   | d$              | Pop & advance |
+| N$    | $               | Production 8  |
+| $     | $               | Pop & advance |
+| λ     | λ               | **Accept**    |
 
 > If at any point the stack top and the current input are **two different terminals**, the parser throws a syntax error.
 
@@ -512,6 +490,7 @@ statement → if(7) | while(8) | ass(9) | scan(10) | print(11) | block(12) | λ(
 ```
 
 FIRST and FOLLOW sets:
+
 ```
 FIRST(program)   = {{}
 FIRST(block)     = {{}        FOLLOW(block)    = {;, $}
@@ -522,13 +501,13 @@ FIRST(statement) = {if, while, ass, scan, print, {, ;, λ}   FOLLOW(statement) =
 
 Parsing Table:
 
-| V_N \ V_T | if | while | ass | scan | print | `{` | `}` | D | `;` | `$` |
-|-----------|----|-------|-----|------|-------|-----|-----|---|-----|-----|
-| program   |    |       |     |      |       | 1   |     |   |     |     |
-| block     |    |       |     |      |       | 2   |     |   |     |     |
-| decls     | 4  | 4     | 4   | 4    | 4     | 4   | 4   | 3 | 4   |     |
-| stmts     | 5  | 5     | 5   | 5    | 5     | 5   | 6   |   | 5   |     |
-| statement | 7  | 8     | 9   | 10   | 11    | 2   |     |   |     | 13  |
+| V_N \ V_T | if  | while | ass | scan | print | `{` | `}` | D   | `;` | `$` |
+| --------- | --- | ----- | --- | ---- | ----- | --- | --- | --- | --- | --- |
+| program   |     |       |     |      |       | 1   |     |     |     |     |
+| block     |     |       |     |      |       | 2   |     |     |     |     |
+| decls     | 4   | 4     | 4   | 4    | 4     | 4   | 4   | 3   | 4   |     |
+| stmts     | 5   | 5     | 5   | 5    | 5     | 5   | 6   |     | 5   |     |
+| statement | 7   | 8     | 9   | 10   | 11    | 2   |     |     |     | 13  |
 
 **Example 3 — Dangling Else (LL(1) Conflict and Fix):**
 
@@ -543,7 +522,7 @@ C  → c     (6)
 Initial table has a **conflict** in state E on token `e` (both productions 3 and 4 apply). **Fix:** remove production 4 from the conflict entry — prefer to shift (match `else` with the nearest `if`):
 
 | V_N \ V_T | `i` | `a` | `e` | `c` | `$` |
-|-----------|-----|-----|-----|-----|-----|
+| --------- | --- | --- | --- | --- | --- |
 | S'        | 1   | 1   |     |     |     |
 | S         | 2   | 5   |     |     |     |
 | E         |     |     | 3   |     |     |
@@ -562,9 +541,9 @@ A grammar is **left-recursive** if it has a production of the form `A → Aα`. 
 ```javascript
 // Translating E → E + T | T directly:
 function E() {
-    E();       // Immediate infinite recursion → stack overflow!
-    match('+');
-    T();
+  E(); // Immediate infinite recursion → stack overflow!
+  match("+");
+  T();
 }
 ```
 
@@ -575,11 +554,13 @@ Right-recursive grammars don't have this issue — `α` is processed first, cons
 **Transformation — Eliminating Left Recursion:**
 
 Given:
+
 ```
 A → Aα₁ | Aα₂ | ... | Aαₙ | β₁ | β₂ | ... | βₘ
 ```
 
 Introduce a new non-terminal A' and rewrite as:
+
 ```
 A  → β₁A' | β₂A' | ... | βₘA'
 A' → α₁A' | α₂A' | ... | αₙA' | λ
@@ -666,5 +647,3 @@ After:
 ```
 
 Left factoring reduces the number of choices in the parsing table. However, it does **not** resolve the underlying ambiguity of the dangling else — the shift-preference rule is still needed alongside it.
-
-[*Chapter 5, Part 5 – Bottom-Up Parsing*](../ch5-part5-bottom-up-parsing/)

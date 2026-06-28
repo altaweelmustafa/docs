@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data-Structures on Docs</title>
+    <link>http://localhost:1313/docs/tags/data-structures/</link>
+    <description>Recent content in Data-Structures on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 4 – Storage Management, Protection &amp; Security, Kernel Data Structures</title>
+      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part4/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part4/</guid>
+      <description>&lt;h2 id=&#34;storage-management&#34;&gt;Storage Management&lt;/h2&gt;&#xA;&lt;p&gt;The OS abstracts the physical properties of storage devices into a logical storage unit — the &lt;strong&gt;file&lt;/strong&gt;. Each storage medium (disk, USB, tape) is controlled by a device driver that hides hardware details.&lt;/p&gt;&#xA;&lt;h3 id=&#34;file-system-management&#34;&gt;File-System Management&lt;/h3&gt;&#xA;&lt;p&gt;Files are usually organized into &lt;strong&gt;directories&lt;/strong&gt;. The OS manages:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Creating and deleting files and directories.&lt;/li&gt;&#xA;&lt;li&gt;Primitives to manipulate files and directories.&lt;/li&gt;&#xA;&lt;li&gt;Mapping files onto secondary storage.&lt;/li&gt;&#xA;&lt;li&gt;Backing up files to non-volatile media.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Access control on most systems determines who can access what (read, write, execute).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

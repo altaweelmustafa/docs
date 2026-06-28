@@ -2,20 +2,7 @@
 title: "Chapter 5, Part 2 – Grammar"
 description: "Formal definition of grammar, productions, derivation algorithms, derivation trees, and Chomsky's grammar classes."
 date: 2026-01-01
----
-
-## Chapter 5, Part 2 – Grammar
-
-*posted on 2026 Jan 01*
-
-**Contents**
-
-- [Formal Definition](#formal-definition)
-- [Productions](#productions)
-- [Algorithms for Derivation](#algorithms-for-derivation)
-- [Derivation Trees](#derivation-trees)
-- [Classes of Grammars](#classes-of-grammars)
-
+toc: true
 ---
 
 ## Formal Definition
@@ -28,6 +15,7 @@ A grammar **G = (V_N, V_T, S, P)** where:
 4. **P** — a set of **production rules** that define the grammar structure.
 
 > **Notes:**
+>
 > - `V_N ∩ V_T = ∅` — the two sets are disjoint.
 > - `V_N ∪ V_T = V` — together they form the full vocabulary.
 
@@ -38,6 +26,7 @@ A grammar **G = (V_N, V_T, S, P)** where:
 - Greek letters α, β, γ, … → strings formed from V_N or V_T (i.e. from V)
 
 For example, if `V_N = {S, A, B}` and `V_T = {0, 1}`:
+
 ```
 α = A11B
 β = S110B
@@ -77,6 +66,7 @@ Productions:
 ```
 
 Some derivations:
+
 ```
 S → abC → abc                           ∈ L(G)
 S → aSBC → aabCBC → aabBCC → aabbCC → aabbcC → aabbcc   ∈ L(G)
@@ -99,15 +89,16 @@ Productions:
 ```
 
 Some derivations:
+
 ```
 E → T → F → n                          ∈ L(E)
 E → E + T → T + T → ... → n + n        ∈ L(E)
 E → E + T → ... → n + (n * n)          ∈ L(E)
 ```
 
-Therefore: **L(G) = { any arithmetic expression with * and + }**, where n is a number (operand).
+Therefore: **L(G) = { any arithmetic expression with \* and + }**, where n is a number (operand).
 
-> Adding productions `E → E + T | E − T | T` and `T → T * F | T / F | T % F` would give a language expressing all arithmetic expressions with *, ÷, +, −.
+> Adding productions `E → E + T | E − T | T` and `T → T * F | T / F | T % F` would give a language expressing all arithmetic expressions with \*, ÷, +, −.
 
 **Example 3 — a simple programming language:**
 
@@ -126,6 +117,7 @@ Non-terminals: `{Program, block, stmt-List, statement, if-stmt, while-stmt, read
 Terminals: `{"{", "}", "#", ";", "if", "while", "read", "write"}`
 
 Some derivations:
+
 ```
 Program → block # → {stmt-list} # → {λ} # → {} #
 Program → block # → {stmt-list} # → {read ; write ;} #
@@ -156,20 +148,23 @@ Both arrive at the same final sentence regardless of the order used.
 **Example** — grammar `V → SR$`, `S → + | − | λ`, `R → .dN | dN.N`, `N → dN | λ`:
 
 Leftmost derivation of `−ddd.d$`:
+
 ```
 V → SR$ → −R$ → −dN.N$ → −ddN.N$ → −dddN.N$ → −ddd.N$ → −ddd.dN$ → −ddd.d$
 ```
 
 Rightmost derivation of `−ddd.d$`:
+
 ```
 V → SR$ → SdN.N$ → SdN.dN$ → SdN.d$ → SddN.d$ → SdddN.d$ → Sddd.d$ → −ddd.d$
 ```
 
 > **Which strategy does each parser type use?**
+>
 > - **Top-down parsers** use leftmost derivation.
 > - **Bottom-up parsers** use rightmost derivation (in reverse).
 
-> **Important distinction:** Leftmost/rightmost describe *which non-terminal to replace* at each step. Top-down/bottom-up describe the *direction of the parse tree construction*. These are separate concepts.
+> **Important distinction:** Leftmost/rightmost describe _which non-terminal to replace_ at each step. Top-down/bottom-up describe the _direction of the parse tree construction_. These are separate concepts.
 
 ---
 
@@ -213,9 +208,10 @@ For each production `α → β`, `|α| ≤ |β|` — the right-hand side is at l
 
 **3. Context-Free Grammar (CFG)**
 
-Each production has the form `A → α`, where A is a **single non-terminal** and α ∈ V*. This is the **most important class** — most programming language structures are context-free. We will mostly work with this class.
+Each production has the form `A → α`, where A is a **single non-terminal** and α ∈ V\*. This is the **most important class** — most programming language structures are context-free. We will mostly work with this class.
 
-> V* = all strings formed from V, including λ. So α can be:
+> V\* = all strings formed from V, including λ. So α can be:
+>
 > - A mix of terminals and non-terminals (e.g. `aAbC`)
 > - Only terminals (e.g. `abc`)
 > - Only non-terminals (e.g. `ABC`)
@@ -226,11 +222,13 @@ Each production has the form `A → α`, where A is a **single non-terminal** an
 Each production has the form `A → aB` or `A → a`, where A, B ∈ V_N and a ∈ V_T, with the exception `S → λ`. This is more restrictive than CFG because the right-hand side must be a single terminal, or a single terminal followed by a single non-terminal.
 
 > **Subset relationship:** Regular Grammars ⊂ Context-Free Grammars
+>
 > - Every regular grammar is also a context-free grammar.
 > - Regular grammars are simpler and used by **scanners**.
 > - Context-free grammars are more powerful and used by **parsers**.
 
 Example:
+
 ```
 A → aA     (terminal followed by non-terminal)
 A → a      (single terminal)
@@ -238,5 +236,3 @@ A → a      (single terminal)
 
 Adding A → λ gives L(G) = a*
 ```
-
-[*Chapter 5, Part 3 – Parsing*](../ch5-part3-parsing/)
