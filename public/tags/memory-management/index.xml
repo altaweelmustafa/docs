@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Memory-Management on Docs</title>
-    <link>http://localhost:1313/docs/tags/memory-management/</link>
-    <description>Recent content in Memory-Management on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/memory-management/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</title>
-      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</guid>
-      <description>&lt;h2 id=&#34;operating-system-operations&#34;&gt;Operating-System Operations&lt;/h2&gt;&#xA;&lt;h3 id=&#34;interrupt-driven-operation&#34;&gt;Interrupt-Driven Operation&lt;/h3&gt;&#xA;&lt;p&gt;Modern operating systems are &lt;strong&gt;interrupt-driven&lt;/strong&gt;. If there are no processes to execute and no I/O devices to service, the OS waits for something to happen. Events are signaled via interrupts (hardware) or &lt;strong&gt;traps/exceptions&lt;/strong&gt; (software).&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;trap&lt;/strong&gt; (or exception) is a software-generated interrupt caused by:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An error (division by zero, invalid memory access).&lt;/li&gt;&#xA;&lt;li&gt;A specific request from a user program — a &lt;strong&gt;system call&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;dual-mode-operation&#34;&gt;Dual-Mode Operation&lt;/h3&gt;&#xA;&lt;p&gt;To protect the OS from errant user programs (and user programs from each other), hardware provides at least two modes:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Memory-Management on Docs</title>
+		<link>http://localhost:1313/docs/tags/memory-management/</link>
+		<description>Recent content in Memory-Management on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/memory-management/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation</title>
+				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</guid>
+				<description>&lt;h2 id=&#34;what-is-memory-management&#34;&gt;What is Memory Management?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ordinary Memory Management&lt;/strong&gt; means all programs must be admitted (allocated) into memory &lt;strong&gt;before&lt;/strong&gt; execution starts.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;logical-address-vs-physical-address&#34;&gt;Logical Address vs. Physical Address&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Logical Address (LA):&lt;/strong&gt; The address seen in your program — it&amp;rsquo;s the offset of the address within the program.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Physical Address (PA):&lt;/strong&gt; The actual address in memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The OS maps logical addresses to physical ones at runtime:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PA = LA + Base Register&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Example: PA = 172 + 21568 = 21740&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;binding-times&#34;&gt;Binding Times&lt;/h2&gt;&#xA;&lt;p&gt;When does the OS determine physical addresses?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</title>
+				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</guid>
+				<description>&lt;h2 id=&#34;2-non-contiguous-allocation--paging&#34;&gt;[2] Non-Contiguous Allocation — Paging&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The logical program is divided into equal-size chunks called &lt;strong&gt;pages&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Physical memory is divided into equal-size chunks called &lt;strong&gt;frames&lt;/strong&gt; (same size as pages).&lt;/li&gt;&#xA;&lt;li&gt;Pages can be placed into any free frames — no need for contiguous memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;address-translation&#34;&gt;Address Translation&lt;/h2&gt;&#xA;&lt;p&gt;The OS uses a &lt;strong&gt;page table&lt;/strong&gt;: a table that maps each page number (P) to its frame number (F).&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Logical Address layout:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LA → [ P | d ]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      page#  offset&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Translation formulas:&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 8, Part 3 – Segmentation &amp; Segmentation with Paging</title>
+				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part3/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part3/</guid>
+				<description>&lt;h2 id=&#34;segmentation&#34;&gt;Segmentation&lt;/h2&gt;&#xA;&lt;p&gt;Paging separates the user&amp;rsquo;s view of memory from actual memory. &lt;strong&gt;Segmentation&lt;/strong&gt; preserves the user&amp;rsquo;s logical view: a program is a collection of named segments (main program, stack, data structures, functions/procedures).&lt;/p&gt;&#xA;&lt;p&gt;Each segment has a &lt;strong&gt;segment number (S)&lt;/strong&gt; and a &lt;strong&gt;displacement/offset (d)&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Segment Table&lt;/strong&gt; stores &lt;code&gt;(Base, Limit)&lt;/code&gt; per segment:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LA → [ S | d ]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PA  = Base[S] + d        (if d &amp;lt; Limit[S], else → fault)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Seg#&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Base&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Limit&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;0&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;27,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;7,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;5,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;18,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;3,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;3&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;21,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Given LA with &lt;code&gt;S = 2, d = 350&lt;/code&gt;:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Caching on Docs</title>
-    <link>http://localhost:1313/docs/tags/caching/</link>
-    <description>Recent content in Caching on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/caching/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – REST Caching</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
-      <description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Caching on Docs</title>
+		<link>http://localhost:1313/docs/tags/caching/</link>
+		<description>Recent content in Caching on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/caching/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 3 – REST Caching</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
+				<description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

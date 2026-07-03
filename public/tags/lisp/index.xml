@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Lisp on Docs</title>
-    <link>http://localhost:1313/docs/tags/lisp/</link>
-    <description>Recent content in Lisp on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/lisp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
-      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-3-paradigms-of-programming-languages&#34;&gt;Part 3: Paradigms of Programming Languages&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;There are 4 paradigms of programming languages.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 2 – Runtime Environment &amp; Error Detection</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch3/p2/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch3/p2/</guid>
-      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-2-runtime-environment--error-detection&#34;&gt;Part 2: Runtime Environment &amp;amp; Error Detection&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;runtime-environment&#34;&gt;Runtime Environment&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The space allocation for programs and data in memory during execution.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;There are 3 types:&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-fully-static-environment&#34;&gt;1. Fully-Static Environment&lt;/h3&gt;&#xA;&lt;p&gt;All properties of the language are predetermined before execution. Address allocation happens when the code is loaded, not when it runs.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;FORTRAN&lt;/strong&gt; is the classic example. All variable memory locations are fixed during execution. FORTRAN also only has one type of procedure, the &lt;strong&gt;subroutine&lt;/strong&gt;, and subroutines can&amp;rsquo;t be nested. This also rules out recursion. So the original FORTRAN fits a fully-static environment well.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Lisp on Docs</title>
+		<link>http://localhost:1313/docs/tags/lisp/</link>
+		<description>Recent content in Lisp on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/lisp/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
+				<description>&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example: GCD in Pascal&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;function gcd(x,y:integer):integer;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Begin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If (x = y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    gcd:=x&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (x &amp;gt; y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x-y,y)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x,y-x);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Same program in C&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 2 – Runtime Environment &amp; Error Detection</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch3/p2/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch3/p2/</guid>
+				<description>&lt;h2 id=&#34;runtime-environment&#34;&gt;Runtime Environment&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The space allocation for programs and data in memory during execution.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;There are 3 types:&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-fully-static-environment&#34;&gt;1. Fully-Static Environment&lt;/h3&gt;&#xA;&lt;p&gt;All properties of the language are predetermined before execution. Address allocation happens when the code is loaded, not when it runs.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;FORTRAN&lt;/strong&gt; is the classic example. All variable memory locations are fixed during execution. FORTRAN also only has one type of procedure, the &lt;strong&gt;subroutine&lt;/strong&gt;, and subroutines can&amp;rsquo;t be nested. This also rules out recursion. So the original FORTRAN fits a fully-static environment well.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

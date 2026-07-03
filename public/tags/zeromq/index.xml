@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Zeromq on Docs</title>
+		<link>http://localhost:1313/docs/tags/zeromq/</link>
+		<description>Recent content in Zeromq on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/zeromq/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4, Part 2 – Message-Oriented Communication</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-full/chapter-4/part-2-message-oriented-communication/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-full/chapter-4/part-2-message-oriented-communication/</guid>
+				<description>&lt;h2 id=&#34;transient-messaging-with-sockets&#34;&gt;Transient messaging with sockets&lt;/h2&gt;&#xA;&lt;p&gt;Sockets provide low-level communication endpoints.&lt;/p&gt;&#xA;&lt;p&gt;Berkeley socket operations:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Operation&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;socket&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Create communication endpoint.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;bind&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Attach local address to socket.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;listen&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Set maximum number of pending connection requests.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;accept&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Block until connection request arrives.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;connect&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Actively establish connection.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;send&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Send data.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;receive&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Receive data.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;close&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Release connection.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Important: sockets are powerful but low-level, so programming mistakes are common.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;simple-socket-serverclient-idea&#34;&gt;Simple socket server/client idea&lt;/h2&gt;&#xA;&lt;p&gt;Server flow:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;create socket&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bind to host/port&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;listen&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;accept connection&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;repeat:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    receive data&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    send response&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;close&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Client flow:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

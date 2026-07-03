@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ai-Languages on Docs</title>
-    <link>http://localhost:1313/docs/tags/ai-languages/</link>
-    <description>Recent content in Ai-Languages on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/ai-languages/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 3 – Programming Languages Domains</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch3/p3/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch3/p3/</guid>
-      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-3-programming-languages-domains&#34;&gt;Part 3: Programming Languages Domains&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Programming languages are generally split into several domains based on their use case.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Domain&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;          &lt;th&gt;Example Languages&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Scientific&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Applications with a computational base. Where programming originally started.&lt;/td&gt;&#xA;          &lt;td&gt;FORTRAN, C, ALGOL60&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Business&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Applications for commercial use, especially banking. Came after the scientific domain.&lt;/td&gt;&#xA;          &lt;td&gt;COBOL (and database languages), JAVA&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Artificial Intelligence&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Languages built for AI work&lt;/td&gt;&#xA;          &lt;td&gt;LISP, PROLOG&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Systems Programming&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Programming all aspects of the computer, including hardware&lt;/td&gt;&#xA;          &lt;td&gt;Machine Language, Assembly, C&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Very High Level Languages&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Essentially scripting languages&lt;/td&gt;&#xA;          &lt;td&gt;Python, Bash&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Ai-Languages on Docs</title>
+		<link>http://localhost:1313/docs/tags/ai-languages/</link>
+		<description>Recent content in Ai-Languages on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/ai-languages/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 3 – Programming Languages Domains</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch3/p3/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch3/p3/</guid>
+				<description>&lt;p&gt;Programming languages are generally split into several domains based on their use case.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Domain&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Description&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Example Languages&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Scientific&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Applications with a computational base. Where programming originally started.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;FORTRAN, C, ALGOL60&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Business&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Applications for commercial use, especially banking. Came after the scientific domain.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;COBOL (and database languages), JAVA&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Artificial Intelligence&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Languages built for AI work&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;LISP, PROLOG&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Systems Programming&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Programming all aspects of the computer, including hardware&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Machine Language, Assembly, C&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Very High Level Languages&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Essentially scripting languages&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Python, Bash&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+			</item>
+	</channel>
 </rss>

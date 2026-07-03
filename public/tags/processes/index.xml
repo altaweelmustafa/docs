@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Processes on Docs</title>
+		<link>http://localhost:1313/docs/tags/processes/</link>
+		<description>Recent content in Processes on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/processes/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3 – Processes</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-3-processes/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-3-processes/</guid>
+				<description>&lt;h2 id=&#34;processes-and-threads&#34;&gt;Processes and Threads&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Distributed systems use processes and threads to structure work across many&#xA;machines. Threads are especially useful because they help hide blocking and&#xA;exploit parallelism.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A &lt;strong&gt;processor&lt;/strong&gt; executes instructions. A &lt;strong&gt;thread&lt;/strong&gt; is a minimal software processor&#xA;that runs a sequence of instructions. A &lt;strong&gt;process&lt;/strong&gt; is a software processor that&#xA;can contain one or more threads.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Concept&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Processor&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Hardware that executes instructions&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Thread&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Minimal execution context for a sequence of instructions&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Process&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Execution environment that may contain one or more threads&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;context-switching&#34;&gt;Context Switching&lt;/h2&gt;&#xA;&lt;p&gt;Context switching means stopping one execution and saving enough information to&#xA;continue it later.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 1 – Physical, Logical, and Vector Clocks · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 1 – Physical, Logical, and Vector Clocks</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#physical-clocks">Physical clocks</a></li>
+    <li><a href="#precision-vs-accuracy">Precision vs accuracy</a></li>
+    <li><a href="#clock-drift">Clock drift</a></li>
+    <li><a href="#detecting-and-adjusting-time-using-a-time-server">Detecting and adjusting time using a time server</a></li>
+    <li><a href="#reference-broadcast-synchronization-rbs">Reference Broadcast Synchronization (RBS)</a></li>
+    <li><a href="#happened-before-relation">Happened-before relation</a></li>
+    <li><a href="#lamport-logical-clocks">Lamport logical clocks</a>
+      <ul>
+        <li><a href="#lamport-rules">Lamport rules</a></li>
+        <li><a href="#important-limitation">Important limitation</a></li>
+      </ul>
+    </li>
+    <li><a href="#vector-clocks">Vector clocks</a>
+      <ul>
+        <li><a href="#vector-clock-update-rules">Vector clock update rules</a></li>
+      </ul>
+    </li>
+    <li><a href="#comparing-vector-timestamps">Comparing vector timestamps</a></li>
+    <li><a href="#causally-ordered-multicast">Causally ordered multicast</a></li>
+    <li><a href="#example-check">Example check</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="physical-clocks">Physical clocks</h2>
+<p>Sometimes we need exact real time, not just event order.</p>
+<p>The real-world reference is UTC: Universal Coordinated Time.</p>
+<p>UTC is based on atomic clocks and is broadcast through radio/satellite systems.</p>
+<hr>
+<h2 id="precision-vs-accuracy">Precision vs accuracy</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+					<th>Formula</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Precision</td>
+					<td>Clocks of different machines are close to each other.</td>
+					<td>`∀t, ∀p,q:</td>
+			</tr>
+			<tr>
+					<td>Accuracy</td>
+					<td>A machine clock is close to real UTC time.</td>
+					<td>`∀t, ∀p:</td>
+			</tr>
+	</tbody>
+</table>
+<table>
+	<thead>
+			<tr>
+					<th>Synchronization type</th>
+					<th>Goal</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Internal synchronization</td>
+					<td>Keep clocks precise relative to each other.</td>
+			</tr>
+			<tr>
+					<td>External synchronization</td>
+					<td>Keep clocks accurate relative to UTC.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="clock-drift">Clock drift</h2>
+<p>Hardware clocks are not perfect. They can run fast or slow.</p>
+<p>A clock has maximum drift rate <code>ρ</code>.</p>
+<p>If <code>F(t)</code> is hardware oscillator frequency and <code>F</code> is ideal frequency:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1 - ρ ≤ F(t)/F ≤ 1 + ρ
+</span></span></code></pre></div><p>The software clock follows hardware interrupts, so it inherits clock drift.</p>
+<hr>
+<h2 id="detecting-and-adjusting-time-using-a-time-server">Detecting and adjusting time using a time server</h2>
+<p>A client can ask a time server for time.</p>
+<p>Times:</p>
+<ul>
+<li><code>T1</code>: client sends request,</li>
+<li><code>T2</code>: server receives request,</li>
+<li><code>T3</code>: server sends response,</li>
+<li><code>T4</code>: client receives response.</li>
+</ul>
+<p>Assumption:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">T2 - T1 ≈ T4 - T3
+</span></span></code></pre></div><p>Offset and delay can be estimated from these timestamps. Network Time Protocol (NTP) collects multiple <code>(offset, delay)</code> pairs and chooses the offset with minimal associated delay.</p>
+<hr>
+<h2 id="reference-broadcast-synchronization-rbs">Reference Broadcast Synchronization (RBS)</h2>
+<p>RBS idea:</p>
+<ol>
+<li>A node broadcasts reference message <code>m</code>.</li>
+<li>Each receiving node <code>p</code> records local receive time <code>Tp,m</code>.</li>
+<li>Nodes compare receive times to estimate offsets.</li>
+</ol>
+<p>Important: RBS focuses on receivers and removes sender uncertainty from the critical path.</p>
+<p>The slides warn that simple averaging is not enough because drift changes over time, so linear regression is used:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Offset[p,q](t) = αt + β
+</span></span></code></pre></div><hr>
+<h2 id="happened-before-relation">Happened-before relation</h2>
+<p>Often exact time is less important than event order.</p>
+<p>The happened-before relation <code>→</code> defines partial ordering:</p>
+<ol>
+<li>If <code>a</code> and <code>b</code> are events in the same process and <code>a</code> occurs before <code>b</code>, then <code>a → b</code>.</li>
+<li>If <code>a</code> is sending a message and <code>b</code> is receiving that message, then <code>a → b</code>.</li>
+<li>If <code>a → b</code> and <code>b → c</code>, then <code>a → c</code>.</li>
+</ol>
+<p>This gives only partial order because concurrent events may not be ordered.</p>
+<hr>
+<h2 id="lamport-logical-clocks">Lamport logical clocks</h2>
+<p>Goal: assign timestamp <code>C(e)</code> to each event <code>e</code> so that happened-before is respected.</p>
+<p>Required properties:</p>
+<ul>
+<li>If <code>a → b</code> in same process, then <code>C(a) &lt; C(b)</code>.</li>
+<li>If <code>a</code> sends message and <code>b</code> receives it, then <code>C(a) &lt; C(b)</code>.</li>
+</ul>
+<h3 id="lamport-rules">Lamport rules</h3>
+<p>Each process <code>Pi</code> has local counter <code>Ci</code>.</p>
+<ol>
+<li>Before each local event, increment <code>Ci</code>.</li>
+<li>When <code>Pi</code> sends message <code>m</code>, attach timestamp <code>ts(m) = Ci</code>.</li>
+<li>When <code>Pj</code> receives <code>m</code>, set <code>Cj = max(Cj, ts(m))</code>, then increment before delivering.</li>
+<li>If timestamps tie, break ties with process ID.</li>
+</ol>
+<h3 id="important-limitation">Important limitation</h3>
+<p>Lamport clocks guarantee:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">if a → b, then C(a) &lt; C(b)
+</span></span></code></pre></div><p>But they do <strong>not</strong> guarantee:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">if C(a) &lt; C(b), then a → b
+</span></span></code></pre></div><p>So Lamport clocks can order events, but cannot always prove causality.</p>
+<hr>
+<h2 id="vector-clocks">Vector clocks</h2>
+<p>Vector clocks solve more causality information than Lamport clocks.</p>
+<p>Each process <code>Pi</code> maintains vector <code>VCi</code>.</p>
+<p>Meaning:</p>
+<ul>
+<li><code>VCi[i]</code> is <code>Pi</code>&rsquo;s own logical clock,</li>
+<li><code>VCi[j] = k</code> means <code>Pi</code> knows that <code>k</code> events occurred at <code>Pj</code>.</li>
+</ul>
+<h3 id="vector-clock-update-rules">Vector clock update rules</h3>
+<ol>
+<li>Before an event at <code>Pi</code>: <code>VCi[i] = VCi[i] + 1</code>.</li>
+<li>When <code>Pi</code> sends message <code>m</code>, it attaches <code>ts(m) = VCi</code> after increment.</li>
+<li>When <code>Pj</code> receives <code>m</code>, for each <code>k</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">VCj[k] = max(VCj[k], ts(m)[k])
+</span></span></code></pre></div><p>then <code>Pj</code> increments its own entry and delivers.</p>
+<hr>
+<h2 id="comparing-vector-timestamps">Comparing vector timestamps</h2>
+<p>We say <code>a</code> may causally precede <code>b</code> if:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">for all k: ts(a)[k] ≤ ts(b)[k]
+</span></span><span class="line"><span class="cl">and for at least one k: ts(a)[k] &lt; ts(b)[k]
+</span></span></code></pre></div><p>Cases:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Comparison</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>ts(a) &lt; ts(b)</code></td>
+					<td><code>a</code> may causally precede <code>b</code>.</td>
+			</tr>
+			<tr>
+					<td><code>ts(a) &gt; ts(b)</code></td>
+					<td><code>b</code> may causally precede <code>a</code>.</td>
+			</tr>
+			<tr>
+					<td>neither <code>&lt;</code> nor <code>&gt;</code></td>
+					<td>events are concurrent / may conflict.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Example:</p>
+<ul>
+<li><code>(2,1,0) &lt; (4,3,0)</code> because every component is <code>≤</code> and at least one is <code>&lt;</code>.</li>
+<li><code>(4,1,0)</code> and <code>(2,3,0)</code> are incomparable because first component is larger in one vector, second component larger in the other.</li>
+</ul>
+<hr>
+<h2 id="causally-ordered-multicast">Causally ordered multicast</h2>
+<p>Goal:</p>
+<blockquote>
+<p>Deliver a message only after all causally preceding messages have been delivered.</p>
+</blockquote>
+<p>Adjusted rule:</p>
+<ul>
+<li>increment vector clock only when sending,</li>
+<li>receiver adjusts vector clock when receiving.</li>
+</ul>
+<p>A message <code>m</code> from <code>Pi</code> with timestamp <code>ts(m)</code> can be delivered at <code>Pj</code> only if:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ts(m)[i] = VCj[i] + 1
+</span></span><span class="line"><span class="cl">and for all k ≠ i: ts(m)[k] ≤ VCj[k]
+</span></span></code></pre></div><p>Interpretation:</p>
+<ol>
+<li>The message is the next expected message from sender <code>Pi</code>.</li>
+<li>All causal dependencies from other processes are already known at <code>Pj</code>.</li>
+</ol>
+<hr>
+<h2 id="example-check">Example check</h2>
+<p>Given:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">VC3 = [0, 2, 2]
+</span></span><span class="line"><span class="cl">ts(m) = [1, 3, 0]
+</span></span><span class="line"><span class="cl">message from P1
+</span></span></code></pre></div><p>Delivery test at <code>P3</code>:</p>
+<ol>
+<li>Sender is <code>P1</code>, so check <code>ts(m)[1] = VC3[1] + 1</code>: <code>1 = 0 + 1</code>, true.</li>
+<li>For other entries: <code>ts(m)[2] = 3 ≤ VC3[2] = 2</code> is false.</li>
+</ol>
+<p>So <code>P3</code> must postpone delivery because it is missing causal information from <code>P2</code>.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Compare precision and accuracy.</li>
+<li>What is clock drift?</li>
+<li>Define happened-before relation.</li>
+<li>Apply Lamport clock rules to a message send/receive.</li>
+<li>Why do Lamport clocks not prove causality?</li>
+<li>Compare two vector timestamps and decide if ordered or concurrent.</li>
+<li>Apply causal multicast delivery conditions.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/" id="nav-next"><em>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

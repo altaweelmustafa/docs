@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Api on Docs</title>
-    <link>http://localhost:1313/docs/tags/api/</link>
-    <description>Recent content in Api on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/api/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – IoT APIs: Introduction &amp; Types</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</guid>
-      <description>&lt;h2 id=&#34;what-is-an-iot-api&#34;&gt;What Is an IoT API?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An IoT API (Application Programming Interface) is a standardized communication&#xA;bridge between IoT devices and the external applications or systems that interact&#xA;with them.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Instead of every smart home app needing to understand each manufacturer&amp;rsquo;s&#xA;proprietary protocol, an API provides a unified interface. A single application can&#xA;control thermostats, lights, door locks, and security cameras from different vendors&#xA;because the API abstracts the underlying hardware differences away.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 2 – REST APIs</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
-      <description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 3 – REST Caching</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
-      <description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 4 – Proxy Servers</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</guid>
-      <description>&lt;h2 id=&#34;what-is-a-proxy-server&#34;&gt;What Is a Proxy Server?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A proxy server is an intermediary server that acts as a gateway between clients&#xA;(such as web browsers or applications) and destination servers (such as web&#xA;servers or internet resources).&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When a client sends a request to access a resource, the request is first routed&#xA;through the proxy server rather than going directly to the destination. The proxy&#xA;then forwards the request on the client&amp;rsquo;s behalf and returns the response.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 5 – WebSocket APIs &amp; Exclusive Pair</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</guid>
-      <description>&lt;h2 id=&#34;what-are-websocket-apis&#34;&gt;What Are WebSocket APIs?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;WebSocket APIs enable bi-directional, full-duplex communication between a client&#xA;and a server over a single persistent connection.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike REST, where the client always initiates a request and waits for a response,&#xA;WebSocket allows both sides to send messages to each other at any time after the&#xA;connection is established.&lt;/p&gt;&#xA;&lt;p&gt;WebSocket APIs follow the &lt;strong&gt;Exclusive Pair&lt;/strong&gt; communication model.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-websocket-for-iot&#34;&gt;Why WebSocket for IoT?&lt;/h2&gt;&#xA;&lt;p&gt;WebSocket is the standard choice for IoT scenarios requiring real-time data&#xA;exchange:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Api on Docs</title>
+		<link>http://localhost:1313/docs/tags/api/</link>
+		<description>Recent content in Api on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/api/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – IoT APIs: Introduction &amp; Types</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</guid>
+				<description>&lt;h2 id=&#34;what-is-an-iot-api&#34;&gt;What Is an IoT API?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An IoT API (Application Programming Interface) is a standardized communication&#xA;bridge between IoT devices and the external applications or systems that interact&#xA;with them.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Instead of every smart home app needing to understand each manufacturer&amp;rsquo;s&#xA;proprietary protocol, an API provides a unified interface. A single application can&#xA;control thermostats, lights, door locks, and security cameras from different vendors&#xA;because the API abstracts the underlying hardware differences away.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 2 – REST APIs</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
+				<description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 3 – REST Caching</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
+				<description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 4 – Proxy Servers</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</guid>
+				<description>&lt;h2 id=&#34;what-is-a-proxy-server&#34;&gt;What Is a Proxy Server?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A proxy server is an intermediary server that acts as a gateway between clients&#xA;(such as web browsers or applications) and destination servers (such as web&#xA;servers or internet resources).&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When a client sends a request to access a resource, the request is first routed&#xA;through the proxy server rather than going directly to the destination. The proxy&#xA;then forwards the request on the client&amp;rsquo;s behalf and returns the response.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 5 – WebSocket APIs &amp; Exclusive Pair</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</guid>
+				<description>&lt;h2 id=&#34;what-are-websocket-apis&#34;&gt;What Are WebSocket APIs?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;WebSocket APIs enable bi-directional, full-duplex communication between a client&#xA;and a server over a single persistent connection.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike REST, where the client always initiates a request and waits for a response,&#xA;WebSocket allows both sides to send messages to each other at any time after the&#xA;connection is established.&lt;/p&gt;&#xA;&lt;p&gt;WebSocket APIs follow the &lt;strong&gt;Exclusive Pair&lt;/strong&gt; communication model.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-websocket-for-iot&#34;&gt;Why WebSocket for IoT?&lt;/h2&gt;&#xA;&lt;p&gt;WebSocket is the standard choice for IoT scenarios requiring real-time data&#xA;exchange:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

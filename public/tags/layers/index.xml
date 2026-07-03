@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Layers on Docs</title>
-    <link>http://localhost:1313/docs/tags/layers/</link>
-    <description>Recent content in Layers on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/layers/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 5 – Attacks as per Architecture</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</guid>
-      <description>&lt;h2 id=&#34;attacks-as-per-architecture&#34;&gt;Attacks as per Architecture&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT has not been confined to one fixed architecture. Different vendors and&#xA;applications may adopt different layers.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A common IoT architecture has four layers:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sensing / perception layer.&lt;/li&gt;&#xA;&lt;li&gt;Network layer.&lt;/li&gt;&#xA;&lt;li&gt;Transport layer.&lt;/li&gt;&#xA;&lt;li&gt;Application layer.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each layer has different responsibilities and different security risks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-sensing--perception-layer&#34;&gt;1. Sensing / Perception Layer&lt;/h2&gt;&#xA;&lt;p&gt;The sensing or perception layer is the lowest layer. It includes sensors, RFID&#xA;tags, actuators, and physical devices that collect data from the environment.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Layers on Docs</title>
+		<link>http://localhost:1313/docs/tags/layers/</link>
+		<description>Recent content in Layers on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/layers/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 5 – Attacks as per Architecture</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</guid>
+				<description>&lt;h2 id=&#34;attacks-as-per-architecture&#34;&gt;Attacks as per Architecture&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT has not been confined to one fixed architecture. Different vendors and&#xA;applications may adopt different layers.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A common IoT architecture has four layers:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sensing / perception layer.&lt;/li&gt;&#xA;&lt;li&gt;Network layer.&lt;/li&gt;&#xA;&lt;li&gt;Transport layer.&lt;/li&gt;&#xA;&lt;li&gt;Application layer.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each layer has different responsibilities and different security risks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-sensing--perception-layer&#34;&gt;1. Sensing / Perception Layer&lt;/h2&gt;&#xA;&lt;p&gt;The sensing or perception layer is the lowest layer. It includes sensors, RFID&#xA;tags, actuators, and physical devices that collect data from the environment.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

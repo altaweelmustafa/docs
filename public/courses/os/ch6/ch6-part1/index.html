@@ -167,9 +167,9 @@
 <h3 id="the-problem--bounded-buffer-with-counter">The Problem — Bounded Buffer with Counter</h3>
 <p>Adding a <code>counter</code> variable to the producer-consumer buffer (incremented when item added, decremented when item removed) seems logical but introduces a <strong>race condition</strong>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// Producer                    // Consumer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>         <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>         <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// Implemented as:             // Implemented as:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">register1</span> <span class="o">=</span> <span class="n">counter</span>            <span class="n">register2</span> <span class="o">=</span> <span class="n">counter</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">register1</span> <span class="o">=</span> <span class="n">counter</span>            <span class="n">register2</span> <span class="o">=</span> <span class="n">counter</span>
 </span></span><span class="line"><span class="cl"><span class="n">register1</span> <span class="o">=</span> <span class="n">register1</span> <span class="o">+</span> <span class="mi">1</span>     <span class="n">register2</span> <span class="o">=</span> <span class="n">register2</span> <span class="o">-</span> <span class="mi">1</span>
 </span></span><span class="line"><span class="cl"><span class="n">counter</span> <span class="o">=</span> <span class="n">register1</span>            <span class="n">counter</span> <span class="o">=</span> <span class="n">register2</span>
 </span></span></code></pre></div><p>If both execute <strong>concurrently</strong>, execution interleaving can give wrong results:</p>
@@ -210,9 +210,9 @@
 <h2 id="software-solutions">Software Solutions</h2>
 <h3 id="algorithm-1--turn-variable">Algorithm 1 — Turn Variable</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>  <span class="c1">// 0 or 1; if turn == i, Pᵢ can enter its critical section
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ                // Process Pⱼ
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                          <span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>                          <span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>             <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="n">j</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/* busy wait */</span><span class="p">;</span>              <span class="cm">/* busy wait */</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">critical</span> <span class="n">section</span><span class="p">;</span>             <span class="n">critical</span> <span class="n">section</span><span class="p">;</span>
@@ -226,9 +226,9 @@
 </ul>
 <h3 id="algorithm-2--flag-array">Algorithm 2 — Flag Array</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// flag[i] = true means Pᵢ is ready to enter
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="cm">/* do nothing */</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">critical</span> <span class="n">section</span>
@@ -242,9 +242,9 @@
 <p>Combines <code>turn</code> and <code>flag</code> from Algorithms 1 &amp; 2:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// flag[0] = flag[1] = false
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Process P₀                      // Process P₁
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                                <span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>                                <span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>                     <span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                           <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>          <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
@@ -261,8 +261,8 @@
 <h3 id="bakery-algorithm--generalization-for-n-processes">Bakery Algorithm — Generalization for n Processes</h3>
 <p>Each process takes a number. The process with the lowest number gets service next (like a bakery).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">choosing</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>  <span class="c1">// initialized to false
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>        <span class="c1">// initialized to 0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>        <span class="c1">// initialized to 0
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">...,</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -310,10 +310,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Shared data:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">boolean</span> <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">boolean</span> <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Process Pᵢ
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nf">Test_and_Set</span><span class="p">(</span><span class="n">lock</span><span class="p">))</span> <span class="cm">/* do nothing */</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">critical</span> <span class="n">section</span>
 </span></span><span class="line"><span class="cl">    <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
@@ -350,7 +350,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">semaphore</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">List</span> <span class="o">*</span><span class="n">L</span><span class="p">;</span>  <span class="c1">// list of waiting processes
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nf">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
@@ -373,15 +373,15 @@
 <h2 id="classical-problems-of-synchronization">Classical Problems of Synchronization</h2>
 <h3 id="1-bounded-buffer-problem">1. Bounded Buffer Problem</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="c1">// counting semaphore
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">semaphore</span> <span class="n">empty</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">// counting semaphore
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">// binary semaphore (mutual exclusion)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">empty</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>   <span class="c1">// counting semaphore
+</span></span></span><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">// binary semaphore (mutual exclusion)
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Producer                   // Consumer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>                           <span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>                           <span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">produce</span> <span class="n">item</span> <span class="n">in</span> <span class="n">nextp</span><span class="p">;</span>         <span class="nf">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">wait</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>  <span class="c1">// buffer full?  wait(mutex);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>  <span class="c1">// counter       remove item from buffer to nextc;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">add</span> <span class="n">nextp</span> <span class="n">to</span> <span class="n">buffer</span><span class="p">;</span>           <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>  <span class="c1">// counter       remove item from buffer to nextc;
+</span></span></span><span class="line"><span class="cl">  <span class="n">add</span> <span class="n">nextp</span> <span class="n">to</span> <span class="n">buffer</span><span class="p">;</span>           <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>                 <span class="nf">signal</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">signal</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>                  <span class="n">consume</span> <span class="n">item</span> <span class="n">in</span> <span class="n">nextc</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>                 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span>
@@ -392,7 +392,7 @@
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">readcount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Writer                    // Reader
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">wait</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>                   <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nf">wait</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>                   <span class="nf">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="n">writing</span> <span class="n">is</span> <span class="n">performed</span><span class="p">;</span>      <span class="n">readcount</span> <span class="o">=</span> <span class="n">readcount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nf">signal</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>                 <span class="k">if</span> <span class="p">(</span><span class="n">readcount</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="nf">wait</span><span class="p">(</span><span class="n">wrt</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">                             <span class="nf">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
@@ -405,9 +405,9 @@
 <p>5 philosophers sit at a circular table. Each needs 2 chopsticks (semaphores) to eat.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl"><span class="n">chopstick</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// all available
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Philosopher i:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">do</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="n">mod</span> <span class="mi">5</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">eat</span><span class="p">;</span>

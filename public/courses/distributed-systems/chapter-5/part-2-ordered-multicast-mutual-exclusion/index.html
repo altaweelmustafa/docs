@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#totally-ordered-multicast">Totally ordered multicast</a></li>
+    <li><a href="#totally-ordered-multicast-solution">Totally ordered multicast solution</a></li>
+    <li><a href="#lamport-clocks-for-mutual-exclusion">Lamport clocks for mutual exclusion</a></li>
+    <li><a href="#mutual-exclusion-problem">Mutual exclusion problem</a></li>
+    <li><a href="#centralized-permission-based-mutual-exclusion">Centralized permission-based mutual exclusion</a></li>
+    <li><a href="#ricart--agrawala-distributed-mutual-exclusion">Ricart &amp; Agrawala distributed mutual exclusion</a></li>
+    <li><a href="#token-ring-algorithm">Token ring algorithm</a></li>
+    <li><a href="#decentralized-voting-mutual-exclusion">Decentralized voting mutual exclusion</a></li>
+    <li><a href="#mutual-exclusion-comparison-table">Mutual exclusion comparison table</a></li>
+    <li><a href="#zookeeper-locking">ZooKeeper locking</a>
+      <ul>
+        <li><a href="#race-condition">Race condition</a></li>
+        <li><a href="#version-notation">Version notation</a></li>
+        <li><a href="#locking-protocol">Locking protocol</a></li>
+      </ul>
+    </li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="totally-ordered-multicast">Totally ordered multicast</h2>
+<p>Problem:</p>
+<p>Concurrent updates on replicated data must be seen in the same order everywhere.</p>
+<p>Example from slides:</p>
+<ul>
+<li>Initial account: <code>$1000</code>.</li>
+<li><code>P1</code> adds <code>$100</code>.</li>
+<li><code>P2</code> increments by <code>1%</code>.</li>
+</ul>
+<p>If replicas apply updates in different orders:</p>
+<ul>
+<li>add then 1% → <code>$1111</code>,</li>
+<li>1% then add → <code>$1110</code>.</li>
+</ul>
+<p>So all replicas must apply updates in the same order.</p>
+<hr>
+<h2 id="totally-ordered-multicast-solution">Totally ordered multicast solution</h2>
+<p>Each process keeps a local queue ordered by timestamp.</p>
+<p>Rules:</p>
+<ol>
+<li>Process <code>Pi</code> sends timestamped message <code>mi</code> to all processes.</li>
+<li><code>Pi</code> puts <code>mi</code> in its own queue.</li>
+<li>Any incoming message at <code>Pj</code> is inserted in <code>queuej</code> according to timestamp.</li>
+<li>Incoming messages are acknowledged to every other process.</li>
+</ol>
+<p>A process <code>Pj</code> delivers message <code>mi</code> only if:</p>
+<ol>
+<li><code>mi</code> is at the head of <code>queuej</code>, and</li>
+<li>for every process <code>Pk</code>, there is a message in <code>queuej</code> with a larger timestamp.</li>
+</ol>
+<p>Assumption:</p>
+<ul>
+<li>communication is reliable,</li>
+<li>communication is FIFO ordered.</li>
+</ul>
+<hr>
+<h2 id="lamport-clocks-for-mutual-exclusion">Lamport clocks for mutual exclusion</h2>
+<p>Mutual exclusion is about agreeing on the order in which processes enter a critical region.</p>
+<p>Analogy:</p>
+<ul>
+<li>totally ordered multicast: all processes build the same message order,</li>
+<li>mutual exclusion: all processes agree on the same request order.</li>
+</ul>
+<p>Lamport-style mutual exclusion uses:</p>
+<ul>
+<li>timestamped <code>ENTER</code> request,</li>
+<li>acknowledgments,</li>
+<li><code>RELEASE</code> messages,</li>
+<li>sorted local queues.</li>
+</ul>
+<p>A process may enter when:</p>
+<ol>
+<li>its own request is at the head of the queue,</li>
+<li>it has heard from all other processes.</li>
+</ol>
+<hr>
+<h2 id="mutual-exclusion-problem">Mutual exclusion problem</h2>
+<p>Several processes want exclusive access to a shared resource.</p>
+<p>Basic solution categories:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Category</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Permission-based</td>
+					<td>Process asks one or more processes for permission.</td>
+			</tr>
+			<tr>
+					<td>Token-based</td>
+					<td>Process can enter only when it holds the token.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="centralized-permission-based-mutual-exclusion">Centralized permission-based mutual exclusion</h2>
+<p>A coordinator grants access.</p>
+<p>Flow:</p>
+<ol>
+<li><code>P1</code> asks coordinator for permission.</li>
+<li>Coordinator grants permission.</li>
+<li><code>P2</code> asks while <code>P1</code> is using resource.</li>
+<li>Coordinator delays reply to <code>P2</code>.</li>
+<li><code>P1</code> releases resource.</li>
+<li>Coordinator grants permission to <code>P2</code>.</li>
+</ol>
+<p>Messages per entry/exit: <code>3</code></p>
+<p>Delay before entry: <code>2</code> message times.</p>
+<p>Advantages:</p>
+<ul>
+<li>simple,</li>
+<li>efficient message count.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>coordinator bottleneck,</li>
+<li>coordinator is single point of failure.</li>
+</ul>
+<hr>
+<h2 id="ricart--agrawala-distributed-mutual-exclusion">Ricart &amp; Agrawala distributed mutual exclusion</h2>
+<p>This is like Lamport mutual exclusion but with deferred acknowledgments.</p>
+<p>A process sends request to all other processes.</p>
+<p>A receiver replies only if:</p>
+<ol>
+<li>it has no interest in the resource, or</li>
+<li>it is waiting but has lower priority than requester.</li>
+</ol>
+<p>Priority is decided by timestamp, with process ID as tie breaker.</p>
+<p>If receiver has higher priority, it defers the reply until after it exits.</p>
+<p>Messages per entry/exit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">2(N - 1)
+</span></span></code></pre></div><p>Delay:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">2(N - 1)
+</span></span></code></pre></div><p>Advantages:</p>
+<ul>
+<li>no central coordinator,</li>
+<li>fully distributed decision.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>many messages,</li>
+<li>every process must participate,</li>
+<li>failure of a process can block progress unless failure handling exists.</li>
+</ul>
+<hr>
+<h2 id="token-ring-algorithm">Token ring algorithm</h2>
+<p>Processes are organized in a logical ring. A token circulates.</p>
+<p>Rule:</p>
+<ul>
+<li>process holding token may enter critical region,</li>
+<li>if it does not need the resource, it passes token on.</li>
+</ul>
+<p>Messages per entry/exit: <code>1 ... ∞</code></p>
+<p>Delay: <code>0 ... N-1</code> message times.</p>
+<p>Advantages:</p>
+<ul>
+<li>no permission requests to all processes,</li>
+<li>fair if token circulates correctly.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>token loss is serious,</li>
+<li>process failure can break ring,</li>
+<li>waiting time depends on token position.</li>
+</ul>
+<hr>
+<h2 id="decentralized-voting-mutual-exclusion">Decentralized voting mutual exclusion</h2>
+<p>Assume every resource is replicated <code>N</code> times. Each replica has its own coordinator.</p>
+<p>To access resource:</p>
+<ul>
+<li>a process must get majority vote from <code>m &gt; N/2</code> coordinators,</li>
+<li>coordinators respond immediately.</li>
+</ul>
+<p>Assumption:</p>
+<p>A coordinator that crashes recovers quickly but forgets permissions it granted.</p>
+<p>Correctness violation can happen if enough coordinators reset and grant conflicting permissions.</p>
+<p>Definitions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p = Δt / T
+</span></span></code></pre></div><p>where <code>p</code> is probability a coordinator resets during interval <code>Δt</code>, and <code>T</code> is lifetime.</p>
+<p>Probability that <code>k</code> out of <code>m</code> reset:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">P[k] = C(m,k) p^k (1-p)^(m-k)
+</span></span></code></pre></div><p>Violation happens when:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">f ≥ 2m - N
+</span></span></code></pre></div><p>Violation probability:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Σ from k=2m-N to m of P[k]
+</span></span></code></pre></div><p>Exam idea:</p>
+<ul>
+<li>larger majority can reduce violation probability,</li>
+<li>but larger majority increases communication cost and may hurt availability.</li>
+</ul>
+<hr>
+<h2 id="mutual-exclusion-comparison-table">Mutual exclusion comparison table</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Algorithm</th>
+					<th style="text-align: right">Messages per entry/exit</th>
+					<th style="text-align: right">Delay before entry</th>
+					<th>Main weakness</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Centralized</td>
+					<td style="text-align: right"><code>3</code></td>
+					<td style="text-align: right"><code>2</code></td>
+					<td>Coordinator bottleneck/failure.</td>
+			</tr>
+			<tr>
+					<td>Distributed / Ricart &amp; Agrawala</td>
+					<td style="text-align: right"><code>2(N-1)</code></td>
+					<td style="text-align: right"><code>2(N-1)</code></td>
+					<td>High message cost; process failures.</td>
+			</tr>
+			<tr>
+					<td>Token ring</td>
+					<td style="text-align: right"><code>1 ... ∞</code></td>
+					<td style="text-align: right"><code>0 ... N-1</code></td>
+					<td>Lost token or broken ring.</td>
+			</tr>
+			<tr>
+					<td>Decentralized</td>
+					<td style="text-align: right"><code>2kN + (k-1)N/2 + N</code></td>
+					<td style="text-align: right"><code>2kN + (k-1)N/2</code></td>
+					<td>More complex, majority/failure tradeoff.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="zookeeper-locking">ZooKeeper locking</h2>
+<p>ZooKeeper provides a centralized coordination service with a tree-like namespace.</p>
+<p>Basics:</p>
+<ul>
+<li>clients can create/delete/update/check nodes,</li>
+<li>communication is nonblocking,</li>
+<li>clients can subscribe to change notifications.</li>
+</ul>
+<h3 id="race-condition">Race condition</h3>
+<p>Simple lock idea:</p>
+<ol>
+<li><code>C1</code> creates <code>/lock</code>.</li>
+<li><code>C2</code> wants lock but sees <code>/lock</code> exists.</li>
+<li>Before <code>C2</code> subscribes to notification, <code>C1</code> deletes <code>/lock</code>.</li>
+<li><code>C2</code> subscribes and waits forever because it missed the change.</li>
+</ol>
+<p>Solution: use version numbers and notification protocol carefully.</p>
+<h3 id="version-notation">Version notation</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Notation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>W(n,k)a</code></td>
+					<td>Write value <code>a</code> to node <code>n</code> only if current version is <code>k</code>.</td>
+			</tr>
+			<tr>
+					<td><code>R(n,k)</code></td>
+					<td>Current version of node <code>n</code> is <code>k</code>.</td>
+			</tr>
+			<tr>
+					<td><code>R(n)</code></td>
+					<td>Client asks current value of node <code>n</code>.</td>
+			</tr>
+			<tr>
+					<td><code>R(n,k)a</code></td>
+					<td>Returned value <code>a</code> with version <code>k</code>.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="locking-protocol">Locking protocol</h3>
+<ol>
+<li>Client creates <code>/lock</code>.</li>
+<li>If <code>/lock</code> exists, another client subscribes to changes.</li>
+<li>Owner deletes <code>/lock</code> on unlock.</li>
+<li>Subscribers are notified and try again.</li>
+</ol>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Why do replicated database updates need total order?</li>
+<li>What are the delivery conditions in totally ordered multicast?</li>
+<li>Compare permission-based and token-based mutual exclusion.</li>
+<li>Explain Ricart &amp; Agrawala.</li>
+<li>Compare centralized, distributed, token ring, and decentralized algorithms.</li>
+<li>What race condition can happen in simple ZooKeeper locking?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-5/part-1-clocks-logical-vector/" id="nav-prev"><em>Chapter 5, Part 1 – Physical, Logical, and Vector Clocks</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-5/part-3-election-algorithms/" id="nav-next"><em>Chapter 5, Part 3 – Election Algorithms</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

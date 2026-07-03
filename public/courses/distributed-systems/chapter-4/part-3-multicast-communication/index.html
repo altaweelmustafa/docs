@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 3 – Multicast Communication · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 3 – Multicast Communication</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#application-level-multicasting">Application-level multicasting</a></li>
+    <li><a href="#chord-based-application-level-multicast">Chord-based application-level multicast</a></li>
+    <li><a href="#cost-metrics-for-alm">Cost metrics for ALM</a></li>
+    <li><a href="#flooding">Flooding</a></li>
+    <li><a href="#probabilistic-flooding">Probabilistic flooding</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="application-level-multicasting">Application-level multicasting</h2>
+<p>Multicasting means sending data to a group.</p>
+<p>In application-level multicast, nodes organize themselves into an overlay network and use that overlay to disseminate data.</p>
+<p>Common overlay structures:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Structure</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Tree</td>
+					<td>Unique paths from root to members. Simple and efficient but vulnerable to tree failures.</td>
+			</tr>
+			<tr>
+					<td>Mesh</td>
+					<td>Multiple paths, more robust, but needs routing and duplicate control.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="chord-based-application-level-multicast">Chord-based application-level multicast</h2>
+<p>Basic approach from slides:</p>
+<ol>
+<li>Initiator generates multicast identifier <code>mid</code>.</li>
+<li>Lookup <code>succ(mid)</code>, the node responsible for <code>mid</code>.</li>
+<li>Request routes to <code>succ(mid)</code>, which becomes tree root.</li>
+<li>If process <code>P</code> wants to join, it sends join request to root.</li>
+<li>When request arrives at <code>Q</code>:
+<ul>
+<li>if <code>Q</code> has not seen a join request before, it becomes a forwarder and <code>P</code> becomes child of <code>Q</code>,</li>
+<li>if <code>Q</code> already knows about the tree, <code>P</code> becomes child of <code>Q</code> and request stops.</li>
+</ul>
+</li>
+</ol>
+<p>Main idea:</p>
+<blockquote>
+<p>The overlay routing path is reused to build the multicast tree.</p>
+</blockquote>
+<hr>
+<h2 id="cost-metrics-for-alm">Cost metrics for ALM</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Link stress</td>
+					<td>How many times the same physical link carries the same multicast message.</td>
+			</tr>
+			<tr>
+					<td>Stretch</td>
+					<td>Ratio between overlay path delay and direct network-level path delay.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Formula:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">stretch = ALM path length / network-level path length
+</span></span></code></pre></div><p>Example from slides:</p>
+<p>If overlay path length is <code>73</code> and network path length is <code>47</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">stretch = 73 / 47
+</span></span></code></pre></div><p>Low stress and low stretch are better.</p>
+<hr>
+<h2 id="flooding">Flooding</h2>
+<p>Flooding is a simple multicast method.</p>
+<p>Rule:</p>
+<ol>
+<li>Node <code>P</code> sends message <code>m</code> to all neighbors.</li>
+<li>Each neighbor forwards <code>m</code> to its neighbors except the sender.</li>
+<li>A node forwards only if it has not seen <code>m</code> before.</li>
+</ol>
+<p>Advantages:</p>
+<ul>
+<li>simple,</li>
+<li>robust,</li>
+<li>no tree construction needed.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>can create many duplicate messages,</li>
+<li>expensive in dense networks,</li>
+<li>needs message IDs/history to avoid loops.</li>
+</ul>
+<hr>
+<h2 id="probabilistic-flooding">Probabilistic flooding</h2>
+<p>Variation:</p>
+<p>A node forwards a message with probability <code>pflood</code>.</p>
+<p>This probability may depend on:</p>
+<ul>
+<li>node degree,</li>
+<li>neighbor degree,</li>
+<li>desired reliability/overhead tradeoff.</li>
+</ul>
+<p>Tradeoff:</p>
+<ul>
+<li>higher <code>pflood</code> → better reachability but more overhead,</li>
+<li>lower <code>pflood</code> → less overhead but higher chance some nodes miss message.</li>
+</ul>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What is application-level multicast?</li>
+<li>Why are trees common in multicast overlays?</li>
+<li>Explain link stress and stretch.</li>
+<li>How does flooding avoid infinite loops?</li>
+<li>What is the tradeoff in probabilistic flooding?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-4/part-2-message-oriented-communication/" id="nav-prev"><em>Chapter 4, Part 2 – Message-Oriented Communication</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-4/part-4-epidemic-protocols/" id="nav-next"><em>Chapter 4, Part 4 – Epidemic Protocols and Deletion</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

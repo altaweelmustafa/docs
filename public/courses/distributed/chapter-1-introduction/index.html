@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1 – Introduction to Distributed Systems · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1 – Introduction to Distributed Systems</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-distributed-system">What Is a Distributed System?</a></li>
+    <li><a href="#two-views-of-building-distributed-systems">Two Views of Building Distributed Systems</a></li>
+    <li><a href="#main-design-goals">Main Design Goals</a></li>
+    <li><a href="#resource-sharing">Resource Sharing</a></li>
+    <li><a href="#distribution-transparency">Distribution Transparency</a></li>
+    <li><a href="#why-full-transparency-is-not-always-good">Why Full Transparency Is Not Always Good</a></li>
+    <li><a href="#openness">Openness</a></li>
+    <li><a href="#dependability">Dependability</a></li>
+    <li><a href="#failure-error-and-fault">Failure, Error, and Fault</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#scalability">Scalability</a></li>
+    <li><a href="#why-scalability-is-hard">Why Scalability Is Hard</a></li>
+    <li><a href="#scaling-techniques">Scaling Techniques</a></li>
+    <li><a href="#types-of-distributed-systems">Types of Distributed Systems</a></li>
+    <li><a href="#high-performance-distributed-computing">High-Performance Distributed Computing</a></li>
+    <li><a href="#distributed-information-systems">Distributed Information Systems</a></li>
+    <li><a href="#pervasive-systems">Pervasive Systems</a></li>
+    <li><a href="#common-pitfalls">Common Pitfalls</a></li>
+    <li><a href="#quick-summary">Quick Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="what-is-a-distributed-system">What Is a Distributed System?</h2>
+<blockquote>
+<p>A distributed system is a networked computer system where processes and
+resources are spread across multiple computers, but they cooperate to provide a
+service.</p>
+</blockquote>
+<p>A useful distinction is between <strong>decentralized</strong> and <strong>distributed</strong> systems.
+In a decentralized system, processes and resources are necessarily spread across
+multiple computers. In a distributed system, they are spread enough that the
+system must handle communication, coordination, failures, and distance as part
+of its design.</p>
+<p>A system can also look logically centralized while being physically distributed.
+For example, a naming service may appear as one service to users, but internally
+it can run on many machines.</p>
+<hr>
+<h2 id="two-views-of-building-distributed-systems">Two Views of Building Distributed Systems</h2>
+<p>There are two common ways to think about building distributed systems:</p>
+<table>
+	<thead>
+			<tr>
+					<th>View</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Integrative view</td>
+					<td>Connect existing networked systems into one larger system</td>
+			</tr>
+			<tr>
+					<td>Expansive view</td>
+					<td>Extend an existing networked system by adding more computers</td>
+			</tr>
+	</tbody>
+</table>
+<p>The important idea is that adding more machines is not enough. The system must
+also deal with communication delays, partial failures, security, and management.</p>
+<hr>
+<h2 id="main-design-goals">Main Design Goals</h2>
+<p>Distributed systems are usually designed to achieve four major goals:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Goal</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Resource sharing</td>
+					<td>Let users and applications share files, storage, services, devices, or computing power</td>
+			</tr>
+			<tr>
+					<td>Distribution transparency</td>
+					<td>Hide the fact that resources are spread over different machines</td>
+			</tr>
+			<tr>
+					<td>Openness</td>
+					<td>Make the system easy to integrate, extend, and interoperate with other systems</td>
+			</tr>
+			<tr>
+					<td>Scalability</td>
+					<td>Keep the system working well as users, distance, or organizations increase</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="resource-sharing">Resource Sharing</h2>
+<p>Resource sharing means that many users or applications can access shared
+resources through the network.</p>
+<p>Examples include:</p>
+<ul>
+<li>Cloud storage and shared files.</li>
+<li>Shared mail services.</li>
+<li>Shared web hosting.</li>
+<li>Content distribution networks.</li>
+<li>Peer-assisted multimedia streaming.</li>
+</ul>
+<p>The slogan <strong>&ldquo;the network is the computer&rdquo;</strong> captures the idea that useful
+computing power can come from many connected machines, not only one local
+machine.</p>
+<hr>
+<h2 id="distribution-transparency">Distribution Transparency</h2>
+<p>Distribution transparency means hiding distribution details from users or
+programs.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Transparency Type</th>
+					<th>What It Hides</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access transparency</td>
+					<td>Differences in data representation and access methods</td>
+			</tr>
+			<tr>
+					<td>Location transparency</td>
+					<td>Where an object or resource is located</td>
+			</tr>
+			<tr>
+					<td>Relocation transparency</td>
+					<td>That a resource may move while being used</td>
+			</tr>
+			<tr>
+					<td>Migration transparency</td>
+					<td>That a resource may move to another location</td>
+			</tr>
+			<tr>
+					<td>Replication transparency</td>
+					<td>That multiple copies exist</td>
+			</tr>
+			<tr>
+					<td>Concurrency transparency</td>
+					<td>That multiple users access the same resource</td>
+			</tr>
+			<tr>
+					<td>Failure transparency</td>
+					<td>Failures and recovery of resources</td>
+			</tr>
+	</tbody>
+</table>
+<p>Transparency is usually implemented in <strong>middleware</strong>, which sits between the
+application and the operating system.</p>
+<hr>
+<h2 id="why-full-transparency-is-not-always-good">Why Full Transparency Is Not Always Good</h2>
+<p>Full transparency sounds nice, but it can be impossible or too expensive.</p>
+<p>Some problems cannot be fully hidden:</p>
+<ul>
+<li>Network latency cannot always be hidden.</li>
+<li>A slow machine can look similar to a failed machine.</li>
+<li>A client may not know whether a server completed an operation before crashing.</li>
+<li>Keeping replicas perfectly consistent requires time and synchronization.</li>
+<li>Full transparency may reduce performance.</li>
+</ul>
+<p>Sometimes it is better to expose distribution. For example, location-based
+services need to know where users are, and users may need to know that a remote
+server is not responding.</p>
+<hr>
+<h2 id="openness">Openness</h2>
+<p>An open distributed system uses clear interfaces so that components can work
+with other systems.</p>
+<p>A system is open when it supports:</p>
+<ul>
+<li>Well-defined interfaces.</li>
+<li>Interoperability between different systems.</li>
+<li>Portability of applications.</li>
+<li>Easy extension.</li>
+</ul>
+<p>A key idea is separating <strong>policy</strong> from <strong>mechanism</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Policy</td>
+					<td>The rule or decision, such as what level of secrecy is required</td>
+			</tr>
+			<tr>
+					<td>Mechanism</td>
+					<td>The tool used to implement the policy, such as encryption algorithms</td>
+			</tr>
+	</tbody>
+</table>
+<p>A strict separation gives flexibility, but it can also increase configuration and
+management complexity.</p>
+<hr>
+<h2 id="dependability">Dependability</h2>
+<p>Dependability means that the system can be trusted to provide correct service.
+A component may depend on another component if its correctness relies on that
+other component.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Availability</td>
+					<td>The system is ready for use</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>The system continues delivering correct service</td>
+			</tr>
+			<tr>
+					<td>Safety</td>
+					<td>The probability of catastrophic failure is very low</td>
+			</tr>
+			<tr>
+					<td>Maintainability</td>
+					<td>Failed parts can be repaired easily</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="failure-error-and-fault">Failure, Error, and Fault</h2>
+<p>These three words are related, but they do not mean the same thing.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Failure</td>
+					<td>A component does not meet its specification</td>
+					<td>A program crashes</td>
+			</tr>
+			<tr>
+					<td>Error</td>
+					<td>A bad internal state that can lead to failure</td>
+					<td>A programming bug is triggered</td>
+			</tr>
+			<tr>
+					<td>Fault</td>
+					<td>The cause of the error</td>
+					<td>A design mistake or bad code</td>
+			</tr>
+	</tbody>
+</table>
+<p>Fault handling includes prevention, tolerance, removal, and forecasting.</p>
+<hr>
+<h2 id="security">Security</h2>
+<p>A distributed system that is not secure cannot be considered dependable.</p>
+<p>Important security goals include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Goal</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Confidentiality</td>
+					<td>Only authorized parties can see information</td>
+			</tr>
+			<tr>
+					<td>Integrity</td>
+					<td>Only authorized changes can be made</td>
+			</tr>
+			<tr>
+					<td>Authentication</td>
+					<td>Verify the identity of an entity</td>
+			</tr>
+			<tr>
+					<td>Authorization</td>
+					<td>Decide whether an authenticated entity has access rights</td>
+			</tr>
+			<tr>
+					<td>Trust</td>
+					<td>Expect that another entity will behave in a specific way</td>
+			</tr>
+	</tbody>
+</table>
+<p>Common mechanisms include symmetric encryption, asymmetric encryption, secure
+hashing, and digital signatures.</p>
+<hr>
+<h2 id="scalability">Scalability</h2>
+<p>Scalability means the system can grow without breaking or becoming too slow.</p>
+<p>There are three main types:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Scalability Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Size scalability</td>
+					<td>The number of users, processes, or nodes increases</td>
+			</tr>
+			<tr>
+					<td>Geographical scalability</td>
+					<td>The distance between nodes increases</td>
+			</tr>
+			<tr>
+					<td>Administrative scalability</td>
+					<td>The number of organizations or domains increases</td>
+			</tr>
+	</tbody>
+</table>
+<p>Many systems handle size scalability, but geographical and administrative
+scalability are often harder.</p>
+<hr>
+<h2 id="why-scalability-is-hard">Why Scalability Is Hard</h2>
+<p>Centralized solutions can run into limits because of:</p>
+<ul>
+<li>CPU capacity.</li>
+<li>Storage capacity.</li>
+<li>Disk transfer rate.</li>
+<li>Network capacity between users and the service.</li>
+<li>Long-distance latency.</li>
+<li>Unreliable WAN links.</li>
+<li>Different administrative policies.</li>
+</ul>
+<p>As utilization gets close to 100%, response time can grow very quickly. A system
+that looks fine at low load may become unusable when the service is almost fully
+busy.</p>
+<hr>
+<h2 id="scaling-techniques">Scaling Techniques</h2>
+<p>Common scaling techniques include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hide communication latency</td>
+					<td>Use asynchronous communication so the client does not wait unnecessarily</td>
+			</tr>
+			<tr>
+					<td>Move computation</td>
+					<td>Move work closer to the client or closer to the data</td>
+			</tr>
+			<tr>
+					<td>Partitioning</td>
+					<td>Split data or work across multiple machines</td>
+			</tr>
+			<tr>
+					<td>Replication</td>
+					<td>Keep multiple copies of data or services</td>
+			</tr>
+			<tr>
+					<td>Caching</td>
+					<td>Store frequently used data near the user</td>
+			</tr>
+	</tbody>
+</table>
+<p>Replication and caching improve performance, but they introduce a major problem:
+<strong>consistency</strong>. If one copy changes, the other copies may become outdated.
+Keeping all copies perfectly synchronized usually requires global coordination,
+which does not scale well.</p>
+<hr>
+<h2 id="types-of-distributed-systems">Types of Distributed Systems</h2>
+<p>Distributed systems can be classified into several major groups.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Examples</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>High-performance distributed computing</td>
+					<td>Uses many machines to solve large computational problems</td>
+					<td>Cluster computing, grid computing, cloud infrastructure</td>
+			</tr>
+			<tr>
+					<td>Distributed information systems</td>
+					<td>Integrates applications and data across organizations</td>
+					<td>Transaction processing, enterprise application integration, middleware</td>
+			</tr>
+			<tr>
+					<td>Pervasive systems</td>
+					<td>Systems with small, mobile, or embedded devices</td>
+					<td>Ubiquitous computing, mobile computing, sensor networks</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="high-performance-distributed-computing">High-Performance Distributed Computing</h2>
+<p>High-performance distributed computing includes systems such as clusters and
+grids.</p>
+<table>
+	<thead>
+			<tr>
+					<th>System</th>
+					<th>Main Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Cluster computing</td>
+					<td>A group of similar high-end machines connected through a LAN</td>
+			</tr>
+			<tr>
+					<td>Grid computing</td>
+					<td>Heterogeneous resources spread across organizations and wide-area networks</td>
+			</tr>
+			<tr>
+					<td>Cloud computing</td>
+					<td>Computing resources offered as services, often using virtualization</td>
+			</tr>
+	</tbody>
+</table>
+<p>Grid systems often use <strong>virtual organizations</strong>, where users from different
+administrative domains are grouped for authorization and resource sharing.</p>
+<hr>
+<h2 id="distributed-information-systems">Distributed Information Systems</h2>
+<p>Distributed information systems focus on integrating applications.</p>
+<p>Important approaches include:</p>
+<ul>
+<li>File transfer.</li>
+<li>Shared databases.</li>
+<li>Remote Procedure Call, or RPC.</li>
+<li>Message-oriented middleware.</li>
+<li>Enterprise Application Integration.</li>
+<li>Transaction Processing Monitors.</li>
+</ul>
+<p>Transactions are important because they aim to provide <strong>ACID</strong> properties:
+atomicity, consistency, isolation, and durability.</p>
+<hr>
+<h2 id="pervasive-systems">Pervasive Systems</h2>
+<p>Pervasive systems blend naturally into the user environment. They often involve
+small, mobile, embedded, or battery-powered devices.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Subtype</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Ubiquitous computing</td>
+					<td>Continuous interaction between users and devices</td>
+			</tr>
+			<tr>
+					<td>Mobile computing</td>
+					<td>Devices move and their location or connectivity changes</td>
+			</tr>
+			<tr>
+					<td>Sensor and actuator networks</td>
+					<td>Many simple nodes sense or act on the physical environment</td>
+			</tr>
+	</tbody>
+</table>
+<p>Mobile devices commonly act as clients of cloud or edge services.</p>
+<hr>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<p>Distributed systems often become complex because designers make false
+assumptions.</p>
+<p>Common false assumptions include:</p>
+<ul>
+<li>The network is reliable.</li>
+<li>The network is secure.</li>
+<li>The network is homogeneous.</li>
+<li>The topology does not change.</li>
+<li>Latency is zero.</li>
+<li>Bandwidth is infinite.</li>
+<li>Transport cost is zero.</li>
+<li>There is one administrator.</li>
+</ul>
+<p>These assumptions are dangerous because distributed systems are affected by
+latency, failures, security issues, heterogeneity, and changing environments.</p>
+<hr>
+<h2 id="quick-summary">Quick Summary</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Key Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Distributed system</td>
+					<td>Multiple computers cooperate as one system</td>
+			</tr>
+			<tr>
+					<td>Transparency</td>
+					<td>Hide distribution details when useful</td>
+			</tr>
+			<tr>
+					<td>Openness</td>
+					<td>Use interfaces and mechanisms that support integration</td>
+			</tr>
+			<tr>
+					<td>Dependability</td>
+					<td>Keep services available, reliable, safe, and maintainable</td>
+			</tr>
+			<tr>
+					<td>Security</td>
+					<td>Protect confidentiality, integrity, identity, and access</td>
+			</tr>
+			<tr>
+					<td>Scalability</td>
+					<td>Grow in size, distance, or administration without collapse</td>
+			</tr>
+			<tr>
+					<td>Pitfalls</td>
+					<td>Never assume the network is perfect</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/distributed/chapter-3-processes/" id="nav-next"><em>Chapter 3 – Processes</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

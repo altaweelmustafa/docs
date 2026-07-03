@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rest on Docs</title>
-    <link>http://localhost:1313/docs/tags/rest/</link>
-    <description>Recent content in Rest on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/rest/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 2 – REST APIs</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
-      <description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 3 – REST Caching</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
-      <description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Rest on Docs</title>
+		<link>http://localhost:1313/docs/tags/rest/</link>
+		<description>Recent content in Rest on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 2 – REST APIs</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
+				<description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 3 – REST Caching</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
+				<description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

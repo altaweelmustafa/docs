@@ -1,173 +1,178 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Iot on Docs</title>
-    <link>http://localhost:1313/docs/tags/iot/</link>
-    <description>Recent content in Iot on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/iot/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 1 – IoT System Phases</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part1-iot-system-phases/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part1-iot-system-phases/</guid>
-      <description>&lt;h2 id=&#34;what-are-the-phases-of-an-iot-system&#34;&gt;What Are the Phases of an IoT System?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT security becomes easier to understand when the system is divided into phases.&#xA;Each phase has a specific role, and each role introduces different security risks.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;An IoT system usually moves data through five main phases: collecting data,&#xA;storing it, processing it, transmitting it, and delivering the result to users or&#xA;other devices.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;phase-i-data-collection--acquisition--perception&#34;&gt;Phase I: Data Collection / Acquisition / Perception&lt;/h2&gt;&#xA;&lt;p&gt;This phase collects or acquires data from IoT devices and things.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 1 – IoT APIs: Introduction &amp; Types</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</guid>
-      <description>&lt;h2 id=&#34;what-is-an-iot-api&#34;&gt;What Is an IoT API?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An IoT API (Application Programming Interface) is a standardized communication&#xA;bridge between IoT devices and the external applications or systems that interact&#xA;with them.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Instead of every smart home app needing to understand each manufacturer&amp;rsquo;s&#xA;proprietary protocol, an API provides a unified interface. A single application can&#xA;control thermostats, lights, door locks, and security cameras from different vendors&#xA;because the API abstracts the underlying hardware differences away.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 2 – Phase Attacks and Data Protection</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</guid>
-      <description>&lt;h2 id=&#34;phase-attacks-overview&#34;&gt;Phase Attacks Overview&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Each IoT phase has its own security concerns. The early phases focus heavily on&#xA;data exposure, trust, storage, and authentication.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The main phase-based threats are:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Phase&lt;/th&gt;&#xA;          &lt;th&gt;Example Threats&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Data perception&lt;/td&gt;&#xA;          &lt;td&gt;Data leakage, data sovereignty, data breach, authentication problems&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Storage&lt;/td&gt;&#xA;          &lt;td&gt;Availability attacks, access control issues, integrity attacks&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Processing&lt;/td&gt;&#xA;          &lt;td&gt;Authentication attacks&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Transmission&lt;/td&gt;&#xA;          &lt;td&gt;Channel security attacks, session hijacking, routing attacks, flooding&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Delivery&lt;/td&gt;&#xA;          &lt;td&gt;Human misuse, machine misuse, attacker-controlled delivery&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;data-leakage-or-data-breach&#34;&gt;Data Leakage or Data Breach&lt;/h2&gt;&#xA;&lt;p&gt;Data leakage means unauthorized data is exposed to an unintended destination.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 2 – REST APIs</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
-      <description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</guid>
-      <description>&lt;h2 id=&#34;attacks-on-availability&#34;&gt;Attacks on Availability&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Availability means legitimate users can access the system when needed.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In IoT, availability is critical because many systems control real-world services&#xA;such as health monitoring, industrial equipment, transportation, and smart homes.&lt;/p&gt;&#xA;&lt;p&gt;A major threat to availability is denial of service. In a denial-of-service attack,&#xA;the target is overloaded so that normal users cannot access it. When the overload&#xA;comes from many distributed devices, it becomes a distributed denial-of-service&#xA;attack.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 3 – REST Caching</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
-      <description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</guid>
-      <description>&lt;h2 id=&#34;modification-of-sensitive-data&#34;&gt;Modification of Sensitive Data&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Data can be captured during transit, modified, and then forwarded to the intended&#xA;node.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The entire message does not always need to be changed. Sometimes changing one&#xA;field is enough to cause harm.&lt;/p&gt;&#xA;&lt;p&gt;For example:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A medical reading may be modified before reaching a hospital server.&lt;/li&gt;&#xA;&lt;li&gt;Traffic information may be delayed or changed.&lt;/li&gt;&#xA;&lt;li&gt;A control command sent to an actuator may be altered.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-modification-types&#34;&gt;Three Modification Types&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Type&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;          &lt;th&gt;Example Impact&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Content modification&lt;/td&gt;&#xA;          &lt;td&gt;Part of the information is changed&lt;/td&gt;&#xA;          &lt;td&gt;A sensor value is changed from normal to critical&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Sequence modification&lt;/td&gt;&#xA;          &lt;td&gt;Data is delivered in the wrong order&lt;/td&gt;&#xA;          &lt;td&gt;The receiver reconstructs the message incorrectly&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Time modification&lt;/td&gt;&#xA;          &lt;td&gt;Old data is delayed or replayed later&lt;/td&gt;&#xA;          &lt;td&gt;The system acts on outdated information&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;These attacks affect integrity because the receiver can no longer trust that the&#xA;message is correct.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 4 – Proxy Servers</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</guid>
-      <description>&lt;h2 id=&#34;what-is-a-proxy-server&#34;&gt;What Is a Proxy Server?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A proxy server is an intermediary server that acts as a gateway between clients&#xA;(such as web browsers or applications) and destination servers (such as web&#xA;servers or internet resources).&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When a client sends a request to access a resource, the request is first routed&#xA;through the proxy server rather than going directly to the destination. The proxy&#xA;then forwards the request on the client&amp;rsquo;s behalf and returns the response.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 5 – Attacks as per Architecture</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</guid>
-      <description>&lt;h2 id=&#34;attacks-as-per-architecture&#34;&gt;Attacks as per Architecture&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT has not been confined to one fixed architecture. Different vendors and&#xA;applications may adopt different layers.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A common IoT architecture has four layers:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sensing / perception layer.&lt;/li&gt;&#xA;&lt;li&gt;Network layer.&lt;/li&gt;&#xA;&lt;li&gt;Transport layer.&lt;/li&gt;&#xA;&lt;li&gt;Application layer.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each layer has different responsibilities and different security risks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-sensing--perception-layer&#34;&gt;1. Sensing / Perception Layer&lt;/h2&gt;&#xA;&lt;p&gt;The sensing or perception layer is the lowest layer. It includes sensors, RFID&#xA;tags, actuators, and physical devices that collect data from the environment.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 5 – WebSocket APIs &amp; Exclusive Pair</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</guid>
-      <description>&lt;h2 id=&#34;what-are-websocket-apis&#34;&gt;What Are WebSocket APIs?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;WebSocket APIs enable bi-directional, full-duplex communication between a client&#xA;and a server over a single persistent connection.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike REST, where the client always initiates a request and waits for a response,&#xA;WebSocket allows both sides to send messages to each other at any time after the&#xA;connection is established.&lt;/p&gt;&#xA;&lt;p&gt;WebSocket APIs follow the &lt;strong&gt;Exclusive Pair&lt;/strong&gt; communication model.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-websocket-for-iot&#34;&gt;Why WebSocket for IoT?&lt;/h2&gt;&#xA;&lt;p&gt;WebSocket is the standard choice for IoT scenarios requiring real-time data&#xA;exchange:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 6 – IoT System Components &amp; Deployment Levels</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part6-iot-system-components/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part6-iot-system-components/</guid>
-      <description>&lt;h2 id=&#34;iot-system-components&#34;&gt;IoT System Components&lt;/h2&gt;&#xA;&lt;p&gt;Every IoT system — regardless of scale or complexity — is built from the same core&#xA;set of components. Understanding these is the foundation for understanding how the&#xA;deployment levels differ from each other.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Component&lt;/th&gt;&#xA;          &lt;th&gt;Role&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Device&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Hardware that performs sensing, actuation, identification, and remote monitoring&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Resource&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Software on the device for reading sensors, processing data, controlling actuators, and enabling network access&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Controller Service&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Native service on the device that relays data to web services and receives commands from the application; enables remote management&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Database&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Local or cloud storage for data generated by the IoT device&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Web Service&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Communication bridge between device, application, database, and analytics — implemented via REST or WebSocket&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Analysis Component&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Processes IoT data and presents results in a form the user can understand&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Application&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;User-facing interface for monitoring, control, viewing system status, and processed data&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-six-iot-deployment-levels&#34;&gt;The Six IoT Deployment Levels&lt;/h2&gt;&#xA;&lt;p&gt;IoT systems are classified into six levels based on three axes:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 7 – IoT Level-1</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-1&#34;&gt;What Is IoT Level-1?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-1 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation, stores data locally, performs analysis locally, and hosts the&#xA;application — all on the same device.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;No cloud is involved. Everything runs on one controller.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Low-cost, low-complexity solutions where data volumes are small and&#xA;analysis is not computationally intensive.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Local]                          [Cloud]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  App&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▲&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Communication&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Services ◄──── Controller Service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ▲                            ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Database                     Resource&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                     ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  Device&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;● Monitoring Node — performs analysis and stores data locally&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;All components reside on the local node. The cloud side is unused at this level.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 8 – IoT Level-2</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-2&#34;&gt;What Is IoT Level-2?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-2 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation and &lt;strong&gt;local analysis&lt;/strong&gt;. Data is stored in the cloud and the&#xA;application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The key difference from Level-1: analysis still happens locally on the device, but&#xA;storage moves to the cloud. The application is also cloud-hosted rather than&#xA;running on the device.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions where data volumes are large enough to require cloud&#xA;storage, but the primary analysis logic is simple enough to run on the local node.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 9 – IoT Level-3</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-3&#34;&gt;What Is IoT Level-3?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-3 IoT system has a &lt;strong&gt;single node&lt;/strong&gt;. Data is &lt;strong&gt;stored and analyzed in&#xA;the cloud&lt;/strong&gt;. The application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike Level-2 where analysis runs locally, Level-3 offloads both storage and&#xA;analysis entirely to the cloud. A central gateway device aggregates data from&#xA;connected sensors and forwards it upward.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions with large data volumes that require computationally&#xA;intensive analysis — beyond what a local node can handle.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 10 – IoT Level-4</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-4&#34;&gt;What Is IoT Level-4?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-4 IoT system has &lt;strong&gt;multiple nodes&lt;/strong&gt; that each perform local analysis.&#xA;Data is stored in the cloud. The application is cloud-based. It includes both&#xA;local and cloud-based &lt;strong&gt;observer nodes&lt;/strong&gt; that can subscribe to and receive data&#xA;collected in the cloud from IoT devices.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The jump from Level-3 to Level-4 is: &lt;strong&gt;multiple nodes&lt;/strong&gt; plus &lt;strong&gt;observer nodes&lt;/strong&gt;&#xA;that subscribe to cloud data for additional processing, visualization, or&#xA;alerting.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 11 – IoT Level-5</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-5&#34;&gt;What Is IoT Level-5?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-5 IoT system has &lt;strong&gt;multiple end nodes&lt;/strong&gt; and &lt;strong&gt;one coordinator node&lt;/strong&gt;.&#xA;End nodes perform sensing and/or actuation. The coordinator node collects data&#xA;from the end nodes and forwards it to the cloud. Data is stored and analyzed in&#xA;the cloud, and the application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-5 is the standard &lt;strong&gt;Wireless Sensor Network (WSN)&lt;/strong&gt; deployment template.&#xA;Rather than each node communicating independently with the cloud, all end nodes&#xA;report to a single coordinator that handles the upward data transmission.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 12 – IoT Level-6</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-6&#34;&gt;What Is IoT Level-6?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-6 IoT system has &lt;strong&gt;multiple independent end nodes&lt;/strong&gt; that each perform&#xA;sensing and/or actuation and send data directly to the cloud. A &lt;strong&gt;centralized&#xA;controller&lt;/strong&gt; in the cloud is aware of the status of all end nodes and sends&#xA;control commands back to them. The analytics component analyzes data and stores&#xA;results in the cloud database. Results are visualized through the cloud&#xA;application.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-6 is the most complete IoT deployment model. There is no coordinator node&#xA;aggregating data locally — each node is independent and communicates directly with&#xA;the cloud. Intelligence is fully centralized in the cloud controller.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 1 – Energy Waste in IoT</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part1-energy-waste/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part1-energy-waste/</guid>
-      <description>&lt;h2 id=&#34;why-energy-efficiency-matters&#34;&gt;Why Energy Efficiency Matters&lt;/h2&gt;&#xA;&lt;p&gt;IoT systems are always-on — sensors run continuously, usually on batteries, and&#xA;communication is the single largest consumer of that energy. At scale, inefficient&#xA;designs don&amp;rsquo;t just shorten device lifetimes; they drive up operational cost and&#xA;ultimately collapse the network.&lt;/p&gt;&#xA;&lt;p&gt;The core problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Devices depend on batteries with no easy replacement path.&lt;/li&gt;&#xA;&lt;li&gt;Communication (radio transmission) dominates energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Large-scale deployments multiply every inefficiency.&lt;/li&gt;&#xA;&lt;li&gt;Without efficient protocols and routing, network lifetime collapses.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;main-causes-of-energy-waste&#34;&gt;Main Causes of Energy Waste&lt;/h2&gt;&#xA;&lt;p&gt;Energy inefficiency in IoT comes from multiple overlapping sources. Based on&#xA;literature, the main causes form around these axes:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 2 – Scheduling</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part2-scheduling/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part2-scheduling/</guid>
-      <description>&lt;h2 id=&#34;what-is-scheduling-in-iot&#34;&gt;What Is Scheduling in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Scheduling&lt;/strong&gt; is the mechanism that determines:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;When&lt;/em&gt; tasks execute.&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Which node&lt;/em&gt; executes them.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Done well, scheduling is one of the most powerful levers for reducing power&#xA;consumption. Done poorly, it becomes a major source of waste.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-poor-scheduling-looks-like&#34;&gt;What Poor Scheduling Looks Like&lt;/h2&gt;&#xA;&lt;p&gt;An IoT system with poor scheduling tends to exhibit these failure modes:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Nodes never sleep.&lt;/strong&gt; If tasks are not coordinated, a node stays active all the&#xA;time — consuming full power when it could enter sleep mode between transmissions.&#xA;Sleep modes can reduce power consumption by orders of magnitude; poor scheduling&#xA;prevents nodes from ever reaching them.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 3 – Load Balancing</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part3-load-balancing/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part3-load-balancing/</guid>
-      <description>&lt;h2 id=&#34;what-is-load-balancing&#34;&gt;What Is Load Balancing?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Load balancing&lt;/strong&gt; is the practice of distributing processing and communication&#xA;tasks fairly among IoT, edge, fog, or cloud nodes so that no single node becomes&#xA;a bottleneck.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-problem-without-it&#34;&gt;The Problem Without It&lt;/h2&gt;&#xA;&lt;p&gt;Imagine 100 sensors and two controller services. Without load balancing, sensors&#xA;naturally route to whichever controller is closest. One controller ends up with the&#xA;majority of the traffic:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;High CPU usage and overload.&lt;/li&gt;&#xA;&lt;li&gt;Higher electric power consumption on that node.&lt;/li&gt;&#xA;&lt;li&gt;Increased delay for all traffic through it.&lt;/li&gt;&#xA;&lt;li&gt;The other controller sits underutilized — wasted capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is not a theoretical edge case. It is the default behavior of unmanaged IoT&#xA;networks.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 4 – Routing in IoT</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part4-routing/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part4-routing/</guid>
-      <description>&lt;h2 id=&#34;what-is-routing-in-iot&#34;&gt;What Is Routing in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Routing&lt;/strong&gt; is the process of selecting the path that data takes as it travels&#xA;between IoT devices, gateways, coordinators, controller services, or cloud servers.&lt;/p&gt;&#xA;&lt;p&gt;Every routing decision directly affects four things:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Communication delay.&lt;/li&gt;&#xA;&lt;li&gt;Energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Bandwidth utilization.&lt;/li&gt;&#xA;&lt;li&gt;Network reliability.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An IoT routing protocol must balance all four simultaneously, on devices with&#xA;severely constrained memory, processing, and battery.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-a-routing-protocol-must-decide&#34;&gt;What a Routing Protocol Must Decide&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The best path for data transmission at any given moment.&lt;/li&gt;&#xA;&lt;li&gt;How to minimize transmission energy along that path.&lt;/li&gt;&#xA;&lt;li&gt;How to avoid congestion and packet loss.&lt;/li&gt;&#xA;&lt;li&gt;How to preserve network lifetime by not exhausting any single node&amp;rsquo;s battery.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;poor-routing-vs-good-routing&#34;&gt;Poor Routing vs. Good Routing&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Poor routing&lt;/strong&gt; (high-energy path):&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 5 – RPL Protocol</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part5-rpl/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part5-rpl/</guid>
-      <description>&lt;h2 id=&#34;what-is-rpl&#34;&gt;What Is RPL?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RPL&lt;/strong&gt; (Routing Protocol for Low-Power and Lossy Networks) is a lightweight&#xA;distance-vector routing protocol designed specifically for IoT devices — constrained&#xA;sensors with limited memory, processing power, and battery.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;lossy network&lt;/strong&gt; is one with a high packet drop rate, which is the norm in&#xA;wireless sensor environments. RPL is built to handle this gracefully.&lt;/p&gt;&#xA;&lt;p&gt;RPL&amp;rsquo;s core mechanism: it builds a &lt;strong&gt;DODAG&lt;/strong&gt; (Destination-Oriented Directed Acyclic&#xA;Graph) — a tree-like, loop-free topology rooted at a single designated root node.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 2, Part 6 – AI-Enhanced RPL Routing</title>
-      <link>http://localhost:1313/docs/courses/iot/ch2/ch2-part6-ai-rpl/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part6-ai-rpl/</guid>
-      <description>&lt;h2 id=&#34;the-limitation-of-traditional-rpl&#34;&gt;The Limitation of Traditional RPL&lt;/h2&gt;&#xA;&lt;p&gt;Traditional RPL selects parents using a fixed Objective Function with static weights:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cost = W1*(Delay) + W2*(ETX) + W3*(Energy)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The weights are set at design time and never change. The network is static by&#xA;assumption. But real IoT networks are not static — traffic patterns shift, nodes&#xA;drain their batteries, links degrade, and topology changes. Fixed weights cannot&#xA;adapt to any of this.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;AI makes RPL adaptive instead of static.&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Iot on Docs</title>
+		<link>http://localhost:1313/docs/tags/iot/</link>
+		<description>Recent content in Iot on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 1 – IoT System Phases</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part1-iot-system-phases/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part1-iot-system-phases/</guid>
+				<description>&lt;h2 id=&#34;what-are-the-phases-of-an-iot-system&#34;&gt;What Are the Phases of an IoT System?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT security becomes easier to understand when the system is divided into phases.&#xA;Each phase has a specific role, and each role introduces different security risks.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;An IoT system usually moves data through five main phases: collecting data,&#xA;storing it, processing it, transmitting it, and delivering the result to users or&#xA;other devices.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;phase-i-data-collection--acquisition--perception&#34;&gt;Phase I: Data Collection / Acquisition / Perception&lt;/h2&gt;&#xA;&lt;p&gt;This phase collects or acquires data from IoT devices and things.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 1 – IoT APIs: Introduction &amp; Types</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</guid>
+				<description>&lt;h2 id=&#34;what-is-an-iot-api&#34;&gt;What Is an IoT API?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;An IoT API (Application Programming Interface) is a standardized communication&#xA;bridge between IoT devices and the external applications or systems that interact&#xA;with them.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Instead of every smart home app needing to understand each manufacturer&amp;rsquo;s&#xA;proprietary protocol, an API provides a unified interface. A single application can&#xA;control thermostats, lights, door locks, and security cameras from different vendors&#xA;because the API abstracts the underlying hardware differences away.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 2 – Phase Attacks and Data Protection</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</guid>
+				<description>&lt;h2 id=&#34;phase-attacks-overview&#34;&gt;Phase Attacks Overview&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Each IoT phase has its own security concerns. The early phases focus heavily on&#xA;data exposure, trust, storage, and authentication.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The main phase-based threats are:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Phase&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Example Threats&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data perception&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data leakage, data sovereignty, data breach, authentication problems&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Storage&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Availability attacks, access control issues, integrity attacks&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Processing&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Authentication attacks&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transmission&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Channel security attacks, session hijacking, routing attacks, flooding&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Delivery&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Human misuse, machine misuse, attacker-controlled delivery&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;data-leakage-or-data-breach&#34;&gt;Data Leakage or Data Breach&lt;/h2&gt;&#xA;&lt;p&gt;Data leakage means unauthorized data is exposed to an unintended destination.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 2 – REST APIs</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</guid>
+				<description>&lt;h2 id=&#34;what-is-rest&#34;&gt;What Is REST?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;REST (Representational State Transfer) is a set of architectural principles for&#xA;designing web services that focus on a system&amp;rsquo;s resources and how their states&#xA;are addressed and transferred.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;REST APIs follow the &lt;strong&gt;request-response&lt;/strong&gt; communication model. An HTTP client sends&#xA;a request; the server processes it and sends back a response. The REST constraints&#xA;apply to all components, connectors, and data elements within a distributed&#xA;hypermedia system.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;IoT example:&lt;/strong&gt; A temperature sensor periodically sends readings to a cloud server&#xA;by making HTTP POST requests to a RESTful API endpoint.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</guid>
+				<description>&lt;h2 id=&#34;attacks-on-availability&#34;&gt;Attacks on Availability&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Availability means legitimate users can access the system when needed.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In IoT, availability is critical because many systems control real-world services&#xA;such as health monitoring, industrial equipment, transportation, and smart homes.&lt;/p&gt;&#xA;&lt;p&gt;A major threat to availability is denial of service. In a denial-of-service attack,&#xA;the target is overloaded so that normal users cannot access it. When the overload&#xA;comes from many distributed devices, it becomes a distributed denial-of-service&#xA;attack.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 3 – REST Caching</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part3-rest-caching/</guid>
+				<description>&lt;h2 id=&#34;what-is-api-caching&#34;&gt;What Is API Caching?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Caching in the REST communication model means storing a copy of a response at&#xA;some intermediate point — client or server side — so that repeated requests for&#xA;the same resource do not require a full round trip to the origin server.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Caching is one of REST&amp;rsquo;s core performance advantages. It reduces latency, lowers&#xA;server load, and makes applications more responsive under repeated or concurrent&#xA;requests.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part4-data-modification-common-attacks/</guid>
+				<description>&lt;h2 id=&#34;modification-of-sensitive-data&#34;&gt;Modification of Sensitive Data&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Data can be captured during transit, modified, and then forwarded to the intended&#xA;node.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The entire message does not always need to be changed. Sometimes changing one&#xA;field is enough to cause harm.&lt;/p&gt;&#xA;&lt;p&gt;For example:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A medical reading may be modified before reaching a hospital server.&lt;/li&gt;&#xA;&lt;li&gt;Traffic information may be delayed or changed.&lt;/li&gt;&#xA;&lt;li&gt;A control command sent to an actuator may be altered.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-modification-types&#34;&gt;Three Modification Types&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Type&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Example Impact&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Content modification&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Part of the information is changed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;A sensor value is changed from normal to critical&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Sequence modification&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data is delivered in the wrong order&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The receiver reconstructs the message incorrectly&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Time modification&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Old data is delayed or replayed later&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The system acts on outdated information&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;These attacks affect integrity because the receiver can no longer trust that the&#xA;message is correct.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 4 – Proxy Servers</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</guid>
+				<description>&lt;h2 id=&#34;what-is-a-proxy-server&#34;&gt;What Is a Proxy Server?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A proxy server is an intermediary server that acts as a gateway between clients&#xA;(such as web browsers or applications) and destination servers (such as web&#xA;servers or internet resources).&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When a client sends a request to access a resource, the request is first routed&#xA;through the proxy server rather than going directly to the destination. The proxy&#xA;then forwards the request on the client&amp;rsquo;s behalf and returns the response.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 5 – Attacks as per Architecture</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part5-attacks-as-per-architecture/</guid>
+				<description>&lt;h2 id=&#34;attacks-as-per-architecture&#34;&gt;Attacks as per Architecture&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;IoT has not been confined to one fixed architecture. Different vendors and&#xA;applications may adopt different layers.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A common IoT architecture has four layers:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sensing / perception layer.&lt;/li&gt;&#xA;&lt;li&gt;Network layer.&lt;/li&gt;&#xA;&lt;li&gt;Transport layer.&lt;/li&gt;&#xA;&lt;li&gt;Application layer.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each layer has different responsibilities and different security risks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-sensing--perception-layer&#34;&gt;1. Sensing / Perception Layer&lt;/h2&gt;&#xA;&lt;p&gt;The sensing or perception layer is the lowest layer. It includes sensors, RFID&#xA;tags, actuators, and physical devices that collect data from the environment.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 5 – WebSocket APIs &amp; Exclusive Pair</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</guid>
+				<description>&lt;h2 id=&#34;what-are-websocket-apis&#34;&gt;What Are WebSocket APIs?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;WebSocket APIs enable bi-directional, full-duplex communication between a client&#xA;and a server over a single persistent connection.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike REST, where the client always initiates a request and waits for a response,&#xA;WebSocket allows both sides to send messages to each other at any time after the&#xA;connection is established.&lt;/p&gt;&#xA;&lt;p&gt;WebSocket APIs follow the &lt;strong&gt;Exclusive Pair&lt;/strong&gt; communication model.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;why-websocket-for-iot&#34;&gt;Why WebSocket for IoT?&lt;/h2&gt;&#xA;&lt;p&gt;WebSocket is the standard choice for IoT scenarios requiring real-time data&#xA;exchange:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 6 – IoT System Components &amp; Deployment Levels</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part6-iot-system-components/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part6-iot-system-components/</guid>
+				<description>&lt;h2 id=&#34;iot-system-components&#34;&gt;IoT System Components&lt;/h2&gt;&#xA;&lt;p&gt;Every IoT system — regardless of scale or complexity — is built from the same core&#xA;set of components. Understanding these is the foundation for understanding how the&#xA;deployment levels differ from each other.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Component&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Role&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Device&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Hardware that performs sensing, actuation, identification, and remote monitoring&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Resource&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Software on the device for reading sensors, processing data, controlling actuators, and enabling network access&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Controller Service&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Native service on the device that relays data to web services and receives commands from the application; enables remote management&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Database&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Local or cloud storage for data generated by the IoT device&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Web Service&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Communication bridge between device, application, database, and analytics — implemented via REST or WebSocket&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Analysis Component&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Processes IoT data and presents results in a form the user can understand&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Application&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;User-facing interface for monitoring, control, viewing system status, and processed data&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-six-iot-deployment-levels&#34;&gt;The Six IoT Deployment Levels&lt;/h2&gt;&#xA;&lt;p&gt;IoT systems are classified into six levels based on three axes:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 7 – IoT Level-1</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-1&#34;&gt;What Is IoT Level-1?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-1 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation, stores data locally, performs analysis locally, and hosts the&#xA;application — all on the same device.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;No cloud is involved. Everything runs on one controller.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Low-cost, low-complexity solutions where data volumes are small and&#xA;analysis is not computationally intensive.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Local]                          [Cloud]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  App&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▲&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Communication&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Services ◄──── Controller Service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ▲                            ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Database                     Resource&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                     ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  Device&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;● Monitoring Node — performs analysis and stores data locally&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;All components reside on the local node. The cloud side is unused at this level.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 8 – IoT Level-2</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-2&#34;&gt;What Is IoT Level-2?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-2 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation and &lt;strong&gt;local analysis&lt;/strong&gt;. Data is stored in the cloud and the&#xA;application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The key difference from Level-1: analysis still happens locally on the device, but&#xA;storage moves to the cloud. The application is also cloud-hosted rather than&#xA;running on the device.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions where data volumes are large enough to require cloud&#xA;storage, but the primary analysis logic is simple enough to run on the local node.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 9 – IoT Level-3</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-3&#34;&gt;What Is IoT Level-3?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-3 IoT system has a &lt;strong&gt;single node&lt;/strong&gt;. Data is &lt;strong&gt;stored and analyzed in&#xA;the cloud&lt;/strong&gt;. The application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike Level-2 where analysis runs locally, Level-3 offloads both storage and&#xA;analysis entirely to the cloud. A central gateway device aggregates data from&#xA;connected sensors and forwards it upward.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions with large data volumes that require computationally&#xA;intensive analysis — beyond what a local node can handle.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 10 – IoT Level-4</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-4&#34;&gt;What Is IoT Level-4?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-4 IoT system has &lt;strong&gt;multiple nodes&lt;/strong&gt; that each perform local analysis.&#xA;Data is stored in the cloud. The application is cloud-based. It includes both&#xA;local and cloud-based &lt;strong&gt;observer nodes&lt;/strong&gt; that can subscribe to and receive data&#xA;collected in the cloud from IoT devices.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The jump from Level-3 to Level-4 is: &lt;strong&gt;multiple nodes&lt;/strong&gt; plus &lt;strong&gt;observer nodes&lt;/strong&gt;&#xA;that subscribe to cloud data for additional processing, visualization, or&#xA;alerting.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 11 – IoT Level-5</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-5&#34;&gt;What Is IoT Level-5?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-5 IoT system has &lt;strong&gt;multiple end nodes&lt;/strong&gt; and &lt;strong&gt;one coordinator node&lt;/strong&gt;.&#xA;End nodes perform sensing and/or actuation. The coordinator node collects data&#xA;from the end nodes and forwards it to the cloud. Data is stored and analyzed in&#xA;the cloud, and the application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-5 is the standard &lt;strong&gt;Wireless Sensor Network (WSN)&lt;/strong&gt; deployment template.&#xA;Rather than each node communicating independently with the cloud, all end nodes&#xA;report to a single coordinator that handles the upward data transmission.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 12 – IoT Level-6</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-6&#34;&gt;What Is IoT Level-6?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-6 IoT system has &lt;strong&gt;multiple independent end nodes&lt;/strong&gt; that each perform&#xA;sensing and/or actuation and send data directly to the cloud. A &lt;strong&gt;centralized&#xA;controller&lt;/strong&gt; in the cloud is aware of the status of all end nodes and sends&#xA;control commands back to them. The analytics component analyzes data and stores&#xA;results in the cloud database. Results are visualized through the cloud&#xA;application.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-6 is the most complete IoT deployment model. There is no coordinator node&#xA;aggregating data locally — each node is independent and communicates directly with&#xA;the cloud. Intelligence is fully centralized in the cloud controller.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 1 – Energy Waste in IoT</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part1-energy-waste/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part1-energy-waste/</guid>
+				<description>&lt;h2 id=&#34;why-energy-efficiency-matters&#34;&gt;Why Energy Efficiency Matters&lt;/h2&gt;&#xA;&lt;p&gt;IoT systems are always-on — sensors run continuously, usually on batteries, and&#xA;communication is the single largest consumer of that energy. At scale, inefficient&#xA;designs don&amp;rsquo;t just shorten device lifetimes; they drive up operational cost and&#xA;ultimately collapse the network.&lt;/p&gt;&#xA;&lt;p&gt;The core problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Devices depend on batteries with no easy replacement path.&lt;/li&gt;&#xA;&lt;li&gt;Communication (radio transmission) dominates energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Large-scale deployments multiply every inefficiency.&lt;/li&gt;&#xA;&lt;li&gt;Without efficient protocols and routing, network lifetime collapses.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;main-causes-of-energy-waste&#34;&gt;Main Causes of Energy Waste&lt;/h2&gt;&#xA;&lt;p&gt;Energy inefficiency in IoT comes from multiple overlapping sources. Based on&#xA;literature, the main causes form around these axes:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 2 – Scheduling</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part2-scheduling/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part2-scheduling/</guid>
+				<description>&lt;h2 id=&#34;what-is-scheduling-in-iot&#34;&gt;What Is Scheduling in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Scheduling&lt;/strong&gt; is the mechanism that determines:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;When&lt;/em&gt; tasks execute.&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Which node&lt;/em&gt; executes them.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Done well, scheduling is one of the most powerful levers for reducing power&#xA;consumption. Done poorly, it becomes a major source of waste.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-poor-scheduling-looks-like&#34;&gt;What Poor Scheduling Looks Like&lt;/h2&gt;&#xA;&lt;p&gt;An IoT system with poor scheduling tends to exhibit these failure modes:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Nodes never sleep.&lt;/strong&gt; If tasks are not coordinated, a node stays active all the&#xA;time — consuming full power when it could enter sleep mode between transmissions.&#xA;Sleep modes can reduce power consumption by orders of magnitude; poor scheduling&#xA;prevents nodes from ever reaching them.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 3 – Load Balancing</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part3-load-balancing/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part3-load-balancing/</guid>
+				<description>&lt;h2 id=&#34;what-is-load-balancing&#34;&gt;What Is Load Balancing?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Load balancing&lt;/strong&gt; is the practice of distributing processing and communication&#xA;tasks fairly among IoT, edge, fog, or cloud nodes so that no single node becomes&#xA;a bottleneck.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-problem-without-it&#34;&gt;The Problem Without It&lt;/h2&gt;&#xA;&lt;p&gt;Imagine 100 sensors and two controller services. Without load balancing, sensors&#xA;naturally route to whichever controller is closest. One controller ends up with the&#xA;majority of the traffic:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;High CPU usage and overload.&lt;/li&gt;&#xA;&lt;li&gt;Higher electric power consumption on that node.&lt;/li&gt;&#xA;&lt;li&gt;Increased delay for all traffic through it.&lt;/li&gt;&#xA;&lt;li&gt;The other controller sits underutilized — wasted capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is not a theoretical edge case. It is the default behavior of unmanaged IoT&#xA;networks.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 4 – Routing in IoT</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part4-routing/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part4-routing/</guid>
+				<description>&lt;h2 id=&#34;what-is-routing-in-iot&#34;&gt;What Is Routing in IoT?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Routing&lt;/strong&gt; is the process of selecting the path that data takes as it travels&#xA;between IoT devices, gateways, coordinators, controller services, or cloud servers.&lt;/p&gt;&#xA;&lt;p&gt;Every routing decision directly affects four things:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Communication delay.&lt;/li&gt;&#xA;&lt;li&gt;Energy consumption.&lt;/li&gt;&#xA;&lt;li&gt;Bandwidth utilization.&lt;/li&gt;&#xA;&lt;li&gt;Network reliability.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;An IoT routing protocol must balance all four simultaneously, on devices with&#xA;severely constrained memory, processing, and battery.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-a-routing-protocol-must-decide&#34;&gt;What a Routing Protocol Must Decide&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The best path for data transmission at any given moment.&lt;/li&gt;&#xA;&lt;li&gt;How to minimize transmission energy along that path.&lt;/li&gt;&#xA;&lt;li&gt;How to avoid congestion and packet loss.&lt;/li&gt;&#xA;&lt;li&gt;How to preserve network lifetime by not exhausting any single node&amp;rsquo;s battery.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;poor-routing-vs-good-routing&#34;&gt;Poor Routing vs. Good Routing&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Poor routing&lt;/strong&gt; (high-energy path):&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 5 – RPL Protocol</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part5-rpl/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part5-rpl/</guid>
+				<description>&lt;h2 id=&#34;what-is-rpl&#34;&gt;What Is RPL?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;RPL&lt;/strong&gt; (Routing Protocol for Low-Power and Lossy Networks) is a lightweight&#xA;distance-vector routing protocol designed specifically for IoT devices — constrained&#xA;sensors with limited memory, processing power, and battery.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;lossy network&lt;/strong&gt; is one with a high packet drop rate, which is the norm in&#xA;wireless sensor environments. RPL is built to handle this gracefully.&lt;/p&gt;&#xA;&lt;p&gt;RPL&amp;rsquo;s core mechanism: it builds a &lt;strong&gt;DODAG&lt;/strong&gt; (Destination-Oriented Directed Acyclic&#xA;Graph) — a tree-like, loop-free topology rooted at a single designated root node.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 6 – AI-Enhanced RPL Routing</title>
+				<link>http://localhost:1313/docs/courses/iot/ch2/ch2-part6-ai-rpl/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch2/ch2-part6-ai-rpl/</guid>
+				<description>&lt;h2 id=&#34;the-limitation-of-traditional-rpl&#34;&gt;The Limitation of Traditional RPL&lt;/h2&gt;&#xA;&lt;p&gt;Traditional RPL selects parents using a fixed Objective Function with static weights:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cost = W1*(Delay) + W2*(ETX) + W3*(Energy)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The weights are set at design time and never change. The network is static by&#xA;assumption. But real IoT networks are not static — traffic patterns shift, nodes&#xA;drain their batteries, links degrade, and topology changes. Fixed weights cannot&#xA;adapt to any of this.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;AI makes RPL adaptive instead of static.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

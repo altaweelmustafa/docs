@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 3 – Dependability, Security, and Scalability · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 3 – Dependability, Security, and Scalability</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dependability">Dependability</a>
+      <ul>
+        <li><a href="#dependability-requirements">Dependability requirements</a></li>
+        <li><a href="#availability-vs-reliability">Availability vs reliability</a></li>
+      </ul>
+    </li>
+    <li><a href="#reliability-metrics">Reliability metrics</a></li>
+    <li><a href="#failure-error-fault">Failure, error, fault</a></li>
+    <li><a href="#handling-faults">Handling faults</a></li>
+    <li><a href="#security-is-part-of-dependability">Security is part of dependability</a></li>
+    <li><a href="#security-mechanisms">Security mechanisms</a>
+      <ul>
+        <li><a href="#encryption-notation">Encryption notation</a></li>
+        <li><a href="#symmetric-cryptosystem">Symmetric cryptosystem</a></li>
+        <li><a href="#asymmetric-cryptosystem">Asymmetric cryptosystem</a></li>
+        <li><a href="#secure-hashing">Secure hashing</a></li>
+      </ul>
+    </li>
+    <li><a href="#scalability">Scalability</a>
+      <ul>
+        <li><a href="#three-types-of-scalability">Three types of scalability</a></li>
+      </ul>
+    </li>
+    <li><a href="#size-scalability-bottlenecks">Size scalability bottlenecks</a></li>
+    <li><a href="#formal-queue-model-for-centralized-service">Formal queue model for centralized service</a>
+      <ul>
+        <li><a href="#utilization">Utilization</a></li>
+        <li><a href="#probability-of-k-requests">Probability of k requests</a></li>
+        <li><a href="#average-number-of-requests">Average number of requests</a></li>
+        <li><a href="#throughput">Throughput</a></li>
+        <li><a href="#response-time">Response time</a></li>
+      </ul>
+    </li>
+    <li><a href="#geographical-scalability-problems">Geographical scalability problems</a></li>
+    <li><a href="#administrative-scalability-problems">Administrative scalability problems</a></li>
+    <li><a href="#techniques-for-scaling">Techniques for scaling</a></li>
+    <li><a href="#the-replication-problem">The replication problem</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="dependability">Dependability</h2>
+<p>A distributed system is dependable when users can trust it to provide correct service when needed.</p>
+<p>A component may depend on other components. This matters because failure can propagate: if one service depends on another failing service, the first service may also fail.</p>
+<h3 id="dependability-requirements">Dependability requirements</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+					<th>Simple example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Availability</td>
+					<td>The system is ready for use.</td>
+					<td>Website responds now.</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>Continuous correct service.</td>
+					<td>Website works correctly for a long period.</td>
+			</tr>
+			<tr>
+					<td>Safety</td>
+					<td>Very low probability of catastrophic failure.</td>
+					<td>Medical/traffic system avoids dangerous output.</td>
+			</tr>
+			<tr>
+					<td>Maintainability</td>
+					<td>Failed system can be repaired easily.</td>
+					<td>Restart or replace component quickly.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="availability-vs-reliability">Availability vs reliability</h3>
+<ul>
+<li><strong>Availability</strong> is about being usable at a specific moment.</li>
+<li><strong>Reliability</strong> is about continuous correct behavior during an interval.</li>
+</ul>
+<p>A system can have high availability but lower reliability if it recovers quickly but fails often.</p>
+<hr>
+<h2 id="reliability-metrics">Reliability metrics</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>MTTF</td>
+					<td>Mean Time To Failure: average time until a component fails.</td>
+			</tr>
+			<tr>
+					<td>MTTR</td>
+					<td>Mean Time To Repair: average repair time.</td>
+			</tr>
+			<tr>
+					<td>MTBF</td>
+					<td>Mean Time Between Failures: <code>MTTF + MTTR</code>.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam note:</p>
+<ul>
+<li>Increase <code>MTTF</code> to make failures less frequent.</li>
+<li>Decrease <code>MTTR</code> to recover faster.</li>
+<li>Both help dependability, but they are not the same.</li>
+</ul>
+<hr>
+<h2 id="failure-error-fault">Failure, error, fault</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Failure</td>
+					<td>Component does not meet specification.</td>
+					<td>Program crashes.</td>
+			</tr>
+			<tr>
+					<td>Error</td>
+					<td>Incorrect internal state that may lead to failure.</td>
+					<td>Wrong variable value.</td>
+			</tr>
+			<tr>
+					<td>Fault</td>
+					<td>Cause of the error.</td>
+					<td>Programming bug, hardware defect, bad design.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Relationship:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">fault  →  error  →  failure
+</span></span><span class="line"><span class="cl">cause     bad state  visible wrong behavior
+</span></span></code></pre></div><hr>
+<h2 id="handling-faults">Handling faults</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Meaning</th>
+					<th>Example idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Fault prevention</td>
+					<td>Prevent faults from occurring.</td>
+					<td>Better design, careful hiring, code standards.</td>
+			</tr>
+			<tr>
+					<td>Fault tolerance</td>
+					<td>Continue working despite faults.</td>
+					<td>Replication, backup server, retry.</td>
+			</tr>
+			<tr>
+					<td>Fault removal</td>
+					<td>Reduce or eliminate existing faults.</td>
+					<td>Testing, debugging, patching.</td>
+			</tr>
+			<tr>
+					<td>Fault forecasting</td>
+					<td>Estimate present/future faults and their effects.</td>
+					<td>Reliability analysis.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="security-is-part-of-dependability">Security is part of dependability</h2>
+<p>A distributed system that is not secure is not dependable.</p>
+<p>Main security requirements:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Confidentiality</td>
+					<td>Information is disclosed only to authorized parties.</td>
+			</tr>
+			<tr>
+					<td>Integrity</td>
+					<td>Alterations can be made only in authorized ways.</td>
+			</tr>
+			<tr>
+					<td>Availability</td>
+					<td>Authorized users can access the system.</td>
+			</tr>
+			<tr>
+					<td>Authentication</td>
+					<td>Verify identity of users/services.</td>
+			</tr>
+			<tr>
+					<td>Authorization</td>
+					<td>Decide what verified users may do.</td>
+			</tr>
+			<tr>
+					<td>Non-repudiation</td>
+					<td>A party cannot deny an action later.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="security-mechanisms">Security mechanisms</h2>
+<p>The slides introduce security mechanisms using keys and hashing.</p>
+<h3 id="encryption-notation">Encryption notation</h3>
+<p><code>K(data)</code> means data is encrypted or decrypted using key <code>K</code>.</p>
+<h3 id="symmetric-cryptosystem">Symmetric cryptosystem</h3>
+<p>In symmetric encryption, the same secret key is used for encryption and decryption.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">DK(EK(data)) = data
+</span></span><span class="line"><span class="cl">and DK = EK
+</span></span></code></pre></div><p>Main issue: both parties need the same secret key, so key distribution is difficult.</p>
+<h3 id="asymmetric-cryptosystem">Asymmetric cryptosystem</h3>
+<p>In asymmetric encryption, one key is public and the other is private.</p>
+<p>Common use:</p>
+<ul>
+<li>encrypt with public key, decrypt with private key,</li>
+<li>sign with private key, verify with public key.</li>
+</ul>
+<p>Main issue: usually slower than symmetric encryption.</p>
+<h3 id="secure-hashing">Secure hashing</h3>
+<p>A secure hash function <code>H(data)</code> returns a fixed-length string.</p>
+<p>Important properties:</p>
+<ul>
+<li>small data change gives completely different hash,</li>
+<li>hard to find two inputs with same hash,</li>
+<li>useful for integrity checking.</li>
+</ul>
+<hr>
+<h2 id="scalability">Scalability</h2>
+<p>A scalable system can handle growth without unacceptable performance loss or management complexity.</p>
+<h3 id="three-types-of-scalability">Three types of scalability</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Growth dimension</th>
+					<th>Example problem</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Size scalability</td>
+					<td>More users, processes, or data.</td>
+					<td>One server cannot handle all requests.</td>
+			</tr>
+			<tr>
+					<td>Geographical scalability</td>
+					<td>Larger physical distance.</td>
+					<td>WAN latency makes synchronous calls slow.</td>
+			</tr>
+			<tr>
+					<td>Administrative scalability</td>
+					<td>More organizations/domains.</td>
+					<td>Different policies, security rules, payment rules.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="size-scalability-bottlenecks">Size scalability bottlenecks</h2>
+<p>Centralized solutions often hit limits in:</p>
+<ol>
+<li>CPU computation capacity.</li>
+<li>Storage capacity and disk transfer rate.</li>
+<li>Network capacity between users and the service.</li>
+</ol>
+<hr>
+<h2 id="formal-queue-model-for-centralized-service">Formal queue model for centralized service</h2>
+<p>Assume a centralized service with:</p>
+<ul>
+<li>request arrival rate <code>λ</code>,</li>
+<li>processing capacity <code>μ</code> requests/second,</li>
+<li>service time <code>S = 1/μ</code>.</li>
+</ul>
+<h3 id="utilization">Utilization</h3>
+<p>Utilization is the fraction of time the service is busy:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">U = λ / μ
+</span></span></code></pre></div><h3 id="probability-of-k-requests">Probability of k requests</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">pk = (1 - U) U^k
+</span></span></code></pre></div><h3 id="average-number-of-requests">Average number of requests</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">N = U / (1 - U)
+</span></span></code></pre></div><h3 id="throughput">Throughput</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">X = λ
+</span></span></code></pre></div><h3 id="response-time">Response time</h3>
+<p>Response time is total time after a request is submitted:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">R = N / X = S / (1 - U)
+</span></span><span class="line"><span class="cl">R / S = 1 / (1 - U)
+</span></span></code></pre></div><p>Important conclusion:</p>
+<ul>
+<li>If <code>U</code> is small, response time is close to service time.</li>
+<li>If <code>U</code> approaches 1, response time becomes extremely large.</li>
+<li>Solution: reduce service time <code>S</code>, add capacity, partition work, cache, or replicate.</li>
+</ul>
+<hr>
+<h2 id="geographical-scalability-problems">Geographical scalability problems</h2>
+<p>Going from LAN to WAN is not simple.</p>
+<p>Problems:</p>
+<ul>
+<li>Synchronous client-server interactions become slow due to latency.</li>
+<li>WAN links are less reliable than LAN links.</li>
+<li>Streaming or interactive systems may fail if latency/bandwidth assumptions are wrong.</li>
+</ul>
+<hr>
+<h2 id="administrative-scalability-problems">Administrative scalability problems</h2>
+<p>Administrative scalability fails when different organizations have conflicting policies.</p>
+<p>Examples:</p>
+<ul>
+<li>who pays for resource usage,</li>
+<li>who manages the service,</li>
+<li>what security rules apply,</li>
+<li>who can access which resources.</li>
+</ul>
+<hr>
+<h2 id="techniques-for-scaling">Techniques for scaling</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Main idea</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hide communication latency</td>
+					<td>Use asynchronous communication.</td>
+					<td>Send request and handle reply later.</td>
+			</tr>
+			<tr>
+					<td>Move computation to client</td>
+					<td>Let clients do work.</td>
+					<td>Browser scripts, Java applets historically.</td>
+			</tr>
+			<tr>
+					<td>Partition data/computation</td>
+					<td>Split work across machines.</td>
+					<td>DNS, WWW, sharded databases.</td>
+			</tr>
+			<tr>
+					<td>Replication</td>
+					<td>Store multiple copies.</td>
+					<td>Replicated file servers, replicated databases.</td>
+			</tr>
+			<tr>
+					<td>Caching</td>
+					<td>Keep temporary copies close to user.</td>
+					<td>Browser cache, proxy cache, CDN.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="the-replication-problem">The replication problem</h2>
+<p>Replication helps performance and availability, but creates consistency problems.</p>
+<p>If there are multiple copies and one copy is modified, that copy becomes different from the others.</p>
+<p>Keeping all copies always consistent usually requires global synchronization, which hurts scalability.</p>
+<p>Exam sentence:</p>
+<blockquote>
+<p>Replication improves availability and performance, but consistency is the price.</p>
+</blockquote>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Explain failure, error, and fault with one example.</li>
+<li>What is the difference between availability and reliability?</li>
+<li>Why does security belong to dependability?</li>
+<li>Given <code>λ</code> and <code>μ</code>, compute utilization and response time.</li>
+<li>Why does replication hurt consistency?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch1/part-2-design-goals-transparency-openness/" id="nav-prev"><em>Chapter 1, Part 2 – Design Goals, Transparency, and Openness</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch1/part-4-classification-of-distributed-systems/" id="nav-next"><em>Chapter 1, Part 4 – Classification of Distributed Systems</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

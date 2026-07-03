@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Availability on Docs</title>
-    <link>http://localhost:1313/docs/tags/availability/</link>
-    <description>Recent content in Availability on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/availability/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</guid>
-      <description>&lt;h2 id=&#34;attacks-on-availability&#34;&gt;Attacks on Availability&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Availability means legitimate users can access the system when needed.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In IoT, availability is critical because many systems control real-world services&#xA;such as health monitoring, industrial equipment, transportation, and smart homes.&lt;/p&gt;&#xA;&lt;p&gt;A major threat to availability is denial of service. In a denial-of-service attack,&#xA;the target is overloaded so that normal users cannot access it. When the overload&#xA;comes from many distributed devices, it becomes a distributed denial-of-service&#xA;attack.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Availability on Docs</title>
+		<link>http://localhost:1313/docs/tags/availability/</link>
+		<description>Recent content in Availability on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/availability/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</guid>
+				<description>&lt;h2 id=&#34;attacks-on-availability&#34;&gt;Attacks on Availability&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Availability means legitimate users can access the system when needed.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In IoT, availability is critical because many systems control real-world services&#xA;such as health monitoring, industrial equipment, transportation, and smart homes.&lt;/p&gt;&#xA;&lt;p&gt;A major threat to availability is denial of service. In a denial-of-service attack,&#xA;the target is overloaded so that normal users cannot access it. When the overload&#xA;comes from many distributed devices, it becomes a distributed denial-of-service&#xA;attack.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

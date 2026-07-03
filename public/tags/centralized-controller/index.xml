@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Centralized-Controller on Docs</title>
-    <link>http://localhost:1313/docs/tags/centralized-controller/</link>
-    <description>Recent content in Centralized-Controller on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/centralized-controller/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 12 – IoT Level-6</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-6&#34;&gt;What Is IoT Level-6?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-6 IoT system has &lt;strong&gt;multiple independent end nodes&lt;/strong&gt; that each perform&#xA;sensing and/or actuation and send data directly to the cloud. A &lt;strong&gt;centralized&#xA;controller&lt;/strong&gt; in the cloud is aware of the status of all end nodes and sends&#xA;control commands back to them. The analytics component analyzes data and stores&#xA;results in the cloud database. Results are visualized through the cloud&#xA;application.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-6 is the most complete IoT deployment model. There is no coordinator node&#xA;aggregating data locally — each node is independent and communicates directly with&#xA;the cloud. Intelligence is fully centralized in the cloud controller.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Centralized-Controller on Docs</title>
+		<link>http://localhost:1313/docs/tags/centralized-controller/</link>
+		<description>Recent content in Centralized-Controller on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/centralized-controller/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 12 – IoT Level-6</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-6&#34;&gt;What Is IoT Level-6?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-6 IoT system has &lt;strong&gt;multiple independent end nodes&lt;/strong&gt; that each perform&#xA;sensing and/or actuation and send data directly to the cloud. A &lt;strong&gt;centralized&#xA;controller&lt;/strong&gt; in the cloud is aware of the status of all end nodes and sends&#xA;control commands back to them. The analytics component analyzes data and stores&#xA;results in the cloud database. Results are visualized through the cloud&#xA;application.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-6 is the most complete IoT deployment model. There is no coordinator node&#xA;aggregating data locally — each node is independent and communicates directly with&#xA;the cloud. Intelligence is fully centralized in the cloud controller.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

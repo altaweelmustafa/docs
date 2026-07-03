@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Epidemic-Protocols on Docs</title>
+		<link>http://localhost:1313/docs/tags/epidemic-protocols/</link>
+		<description>Recent content in Epidemic-Protocols on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/epidemic-protocols/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4, Part 4 – Epidemic Protocols and Deletion</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-full/chapter-4/part-4-epidemic-protocols/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-full/chapter-4/part-4-epidemic-protocols/</guid>
+				<description>&lt;h2 id=&#34;epidemic-protocols&#34;&gt;Epidemic protocols&lt;/h2&gt;&#xA;&lt;p&gt;Epidemic protocols spread updates like infections.&lt;/p&gt;&#xA;&lt;p&gt;Assumptions in slides:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;no write-write conflicts,&lt;/li&gt;&#xA;&lt;li&gt;updates occur at one server,&lt;/li&gt;&#xA;&lt;li&gt;replicas pass updated state to only a few neighbors,&lt;/li&gt;&#xA;&lt;li&gt;propagation is lazy, not immediate,&lt;/li&gt;&#xA;&lt;li&gt;eventually every replica should receive updates.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;two-forms-of-epidemics&#34;&gt;Two forms of epidemics&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Form&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Anti-entropy&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Replicas regularly choose another replica and exchange differences until both become consistent.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Rumor spreading&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;A newly updated replica tells other replicas; replicas may eventually stop spreading.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;anti-entropy-operations&#34;&gt;Anti-entropy operations&lt;/h2&gt;&#xA;&lt;p&gt;A node &lt;code&gt;P&lt;/code&gt; selects another node &lt;code&gt;Q&lt;/code&gt; at random.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

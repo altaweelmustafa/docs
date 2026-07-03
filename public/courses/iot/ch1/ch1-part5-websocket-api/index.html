@@ -139,45 +139,45 @@ other&rsquo;s state at all times without any intermediary polling.</p>
 <hr>
 <h2 id="rest-vs-websocket">REST vs WebSocket</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Feature</th>
-          <th>REST</th>
-          <th>WebSocket</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Communication model</td>
-          <td>Request-Response</td>
-          <td>Exclusive Pair (persistent)</td>
-      </tr>
-      <tr>
-          <td>Direction</td>
-          <td>Client initiates only</td>
-          <td>Fully bidirectional</td>
-      </tr>
-      <tr>
-          <td>Connection</td>
-          <td>New per request</td>
-          <td>Persistent, one-time handshake</td>
-      </tr>
-      <tr>
-          <td>Latency</td>
-          <td>Higher (new connection overhead)</td>
-          <td>Lower (open connection)</td>
-      </tr>
-      <tr>
-          <td>Best for</td>
-          <td>Periodic data retrieval, configuration</td>
-          <td>Real-time streaming, live control</td>
-      </tr>
-      <tr>
-          <td>IoT example</td>
-          <td>Temperature sensor POST every minute</td>
-          <td>Fleet GPS live tracking</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th>REST</th>
+					<th>WebSocket</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Communication model</td>
+					<td>Request-Response</td>
+					<td>Exclusive Pair (persistent)</td>
+			</tr>
+			<tr>
+					<td>Direction</td>
+					<td>Client initiates only</td>
+					<td>Fully bidirectional</td>
+			</tr>
+			<tr>
+					<td>Connection</td>
+					<td>New per request</td>
+					<td>Persistent, one-time handshake</td>
+			</tr>
+			<tr>
+					<td>Latency</td>
+					<td>Higher (new connection overhead)</td>
+					<td>Lower (open connection)</td>
+			</tr>
+			<tr>
+					<td>Best for</td>
+					<td>Periodic data retrieval, configuration</td>
+					<td>Real-time streaming, live control</td>
+			</tr>
+			<tr>
+					<td>IoT example</td>
+					<td>Temperature sensor POST every minute</td>
+					<td>Fleet GPS live tracking</td>
+			</tr>
+	</tbody>
 </table>
 
   <nav class="post-nav">

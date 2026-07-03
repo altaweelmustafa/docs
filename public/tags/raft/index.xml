@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Raft on Docs</title>
+		<link>http://localhost:1313/docs/tags/raft/</link>
+		<description>Recent content in Raft on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/raft/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 5, Part 3 – Election Algorithms</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-full/chapter-5/part-3-election-algorithms/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-full/chapter-5/part-3-election-algorithms/</guid>
+				<description>&lt;h2 id=&#34;why-election-algorithms&#34;&gt;Why election algorithms?&lt;/h2&gt;&#xA;&lt;p&gt;Some distributed algorithms need one process to act as coordinator.&lt;/p&gt;&#xA;&lt;p&gt;Problem:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;If the coordinator fails, how do we dynamically choose a new one?&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Manual selection creates a single point of failure. Election algorithms let processes agree on a new coordinator.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;basic-assumptions&#34;&gt;Basic assumptions&lt;/h2&gt;&#xA;&lt;p&gt;Traditional election algorithms often assume:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;All processes have unique IDs.&lt;/li&gt;&#xA;&lt;li&gt;All processes know all process IDs.&lt;/li&gt;&#xA;&lt;li&gt;A process may not know which processes are currently up.&lt;/li&gt;&#xA;&lt;li&gt;Election means selecting the highest-ID process that is alive.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;bully-algorithm&#34;&gt;Bully algorithm&lt;/h2&gt;&#xA;&lt;p&gt;Assume processes are &lt;code&gt;P0, P1, ..., PN-1&lt;/code&gt; and ID of &lt;code&gt;Pk&lt;/code&gt; is &lt;code&gt;k&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

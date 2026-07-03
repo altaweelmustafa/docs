@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Phase-Attacks on Docs</title>
-    <link>http://localhost:1313/docs/tags/phase-attacks/</link>
-    <description>Recent content in Phase-Attacks on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/phase-attacks/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 2 – Phase Attacks and Data Protection</title>
-      <link>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</link>
-      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</guid>
-      <description>&lt;h2 id=&#34;phase-attacks-overview&#34;&gt;Phase Attacks Overview&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Each IoT phase has its own security concerns. The early phases focus heavily on&#xA;data exposure, trust, storage, and authentication.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The main phase-based threats are:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Phase&lt;/th&gt;&#xA;          &lt;th&gt;Example Threats&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Data perception&lt;/td&gt;&#xA;          &lt;td&gt;Data leakage, data sovereignty, data breach, authentication problems&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Storage&lt;/td&gt;&#xA;          &lt;td&gt;Availability attacks, access control issues, integrity attacks&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Processing&lt;/td&gt;&#xA;          &lt;td&gt;Authentication attacks&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Transmission&lt;/td&gt;&#xA;          &lt;td&gt;Channel security attacks, session hijacking, routing attacks, flooding&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Delivery&lt;/td&gt;&#xA;          &lt;td&gt;Human misuse, machine misuse, attacker-controlled delivery&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;data-leakage-or-data-breach&#34;&gt;Data Leakage or Data Breach&lt;/h2&gt;&#xA;&lt;p&gt;Data leakage means unauthorized data is exposed to an unintended destination.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Phase-Attacks on Docs</title>
+		<link>http://localhost:1313/docs/tags/phase-attacks/</link>
+		<description>Recent content in Phase-Attacks on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/phase-attacks/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 2 – Phase Attacks and Data Protection</title>
+				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</link>
+				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part2-phase-attacks-data-protection/</guid>
+				<description>&lt;h2 id=&#34;phase-attacks-overview&#34;&gt;Phase Attacks Overview&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Each IoT phase has its own security concerns. The early phases focus heavily on&#xA;data exposure, trust, storage, and authentication.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The main phase-based threats are:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Phase&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Example Threats&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data perception&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data leakage, data sovereignty, data breach, authentication problems&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Storage&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Availability attacks, access control issues, integrity attacks&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Processing&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Authentication attacks&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transmission&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Channel security attacks, session hijacking, routing attacks, flooding&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Delivery&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Human misuse, machine misuse, attacker-controlled delivery&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;data-leakage-or-data-breach&#34;&gt;Data Leakage or Data Breach&lt;/h2&gt;&#xA;&lt;p&gt;Data leakage means unauthorized data is exposed to an unintended destination.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

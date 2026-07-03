@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Lexical-Analysis on Docs</title>
-    <link>http://localhost:1313/docs/tags/lexical-analysis/</link>
-    <description>Recent content in Lexical-Analysis on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/lexical-analysis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 4, Part 1 – What is a Lexical Analyzer?</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</link>
-      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</guid>
-      <description>&lt;p&gt;A &lt;strong&gt;Lexical Analyzer&lt;/strong&gt; or &lt;strong&gt;Scanner&lt;/strong&gt; is an algorithm that groups the characters of the source code to form &lt;strong&gt;Tokens&lt;/strong&gt;, and returns the &lt;strong&gt;Internal Representation Number&lt;/strong&gt; of these tokens — a kind of ID assigned to each token.&lt;/p&gt;&#xA;&lt;p&gt;These tokens are divided into 3 kinds:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — any name in a program, divided into 3 types:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Keywords/Reserved&lt;/strong&gt;: words such as &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;else&lt;/code&gt;, &lt;code&gt;while&lt;/code&gt;. These cannot be used as variable names.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;User Defined Names&lt;/strong&gt;: names declared by the user.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Standard Identifiers&lt;/strong&gt;: such as &lt;code&gt;sin&lt;/code&gt;, &lt;code&gt;cos&lt;/code&gt;, &lt;code&gt;sqrt&lt;/code&gt;. Like reserved words, these cannot be used as variable names and are not included in production rules.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Values&lt;/strong&gt; — such as integers (&lt;code&gt;1, 2, 3&lt;/code&gt;) or floating point (&lt;code&gt;1.1, 2.34&lt;/code&gt;) etc.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch3/p1/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch3/p1/</guid>
-      <description>&lt;h1 id=&#34;chapter-3---programming-languages-principles&#34;&gt;Chapter 3 - Programming Languages Principles&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-1-language-translation-compilers--interpreters&#34;&gt;Part 1: Language Translation, Compilers &amp;amp; Interpreters&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;language-translation-history&#34;&gt;Language Translation History&lt;/h2&gt;&#xA;&lt;p&gt;Early programmers used &lt;strong&gt;Machine Language&lt;/strong&gt;, the language of numbers. Programs were written in HEX, then translated automatically to binary.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2 4 63&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3 4 46&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5 4 57&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Later came &lt;strong&gt;Assembly&lt;/strong&gt;, which just gave mnemonics to machine language instructions. In compiler construction, there&amp;rsquo;s no real difference between Assembly and Machine Language. The hex program above becomes:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Lexical-Analysis on Docs</title>
+		<link>http://localhost:1313/docs/tags/lexical-analysis/</link>
+		<description>Recent content in Lexical-Analysis on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/lexical-analysis/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4, Part 1 – What is a Lexical Analyzer?</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</guid>
+				<description>&lt;p&gt;A &lt;strong&gt;Lexical Analyzer&lt;/strong&gt; or &lt;strong&gt;Scanner&lt;/strong&gt; is an algorithm that groups the characters of the source code to form &lt;strong&gt;Tokens&lt;/strong&gt;, and returns the &lt;strong&gt;Internal Representation Number&lt;/strong&gt; of these tokens — a kind of ID assigned to each token.&lt;/p&gt;&#xA;&lt;p&gt;These tokens are divided into 3 kinds:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — any name in a program, divided into 3 types:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Keywords/Reserved&lt;/strong&gt;: words such as &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;else&lt;/code&gt;, &lt;code&gt;while&lt;/code&gt;. These cannot be used as variable names.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;User Defined Names&lt;/strong&gt;: names declared by the user.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Standard Identifiers&lt;/strong&gt;: such as &lt;code&gt;sin&lt;/code&gt;, &lt;code&gt;cos&lt;/code&gt;, &lt;code&gt;sqrt&lt;/code&gt;. Like reserved words, these cannot be used as variable names and are not included in production rules.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Values&lt;/strong&gt; — such as integers (&lt;code&gt;1, 2, 3&lt;/code&gt;) or floating point (&lt;code&gt;1.1, 2.34&lt;/code&gt;) etc.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 1 – Language Translation, Compilers &amp; Interpreters</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch3/p1/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch3/p1/</guid>
+				<description>&lt;h2 id=&#34;language-translation-history&#34;&gt;Language Translation History&lt;/h2&gt;&#xA;&lt;p&gt;Early programmers used &lt;strong&gt;Machine Language&lt;/strong&gt;, the language of numbers. Programs were written in HEX, then translated automatically to binary.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2 4 63&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3 4 46&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5 4 57&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Later came &lt;strong&gt;Assembly&lt;/strong&gt;, which just gave mnemonics to machine language instructions. In compiler construction, there&amp;rsquo;s no real difference between Assembly and Machine Language. The hex program above becomes:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LOD 4,X&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ADD 4,Y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;STO 4,Z&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Assuming 4 is a register, this means:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

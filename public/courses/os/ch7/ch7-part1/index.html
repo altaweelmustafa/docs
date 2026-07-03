@@ -98,30 +98,30 @@
 <h2 id="necessary-conditions-for-deadlock">Necessary Conditions for Deadlock</h2>
 <p>All <strong>four</strong> of the following conditions must hold <strong>simultaneously</strong> for a deadlock to occur:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Condition</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>(1) Mutual Exclusion</strong></td>
-          <td>The resource type must be used exclusively — it cannot be shared by more than one process at a time.</td>
-      </tr>
-      <tr>
-          <td><strong>(2) Hold &amp; Wait</strong></td>
-          <td>Each process is holding a resource type and waiting for another process to release the resource of the same type.</td>
-      </tr>
-      <tr>
-          <td><strong>(3) No Pre-emption</strong></td>
-          <td>Cannot remove (forcibly take away) any of the resources from a process holding them.</td>
-      </tr>
-      <tr>
-          <td><strong>(4) Circular Wait</strong></td>
-          <td>There exists a sequence of processes ⟨P₀, P₁, P₂, &hellip;, Pₙ₋₁⟩ such that P₀ waits for P₁, P₁ waits for P₂, &hellip;, Pₙ₋₂ waits for Pₙ₋₁, and Pₙ₋₁ waits for P₀. This forms a <strong>cycle</strong>.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Condition</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>(1) Mutual Exclusion</strong></td>
+					<td>The resource type must be used exclusively — it cannot be shared by more than one process at a time.</td>
+			</tr>
+			<tr>
+					<td><strong>(2) Hold &amp; Wait</strong></td>
+					<td>Each process is holding a resource type and waiting for another process to release the resource of the same type.</td>
+			</tr>
+			<tr>
+					<td><strong>(3) No Pre-emption</strong></td>
+					<td>Cannot remove (forcibly take away) any of the resources from a process holding them.</td>
+			</tr>
+			<tr>
+					<td><strong>(4) Circular Wait</strong></td>
+					<td>There exists a sequence of processes ⟨P₀, P₁, P₂, &hellip;, Pₙ₋₁⟩ such that P₀ waits for P₁, P₁ waits for P₂, &hellip;, Pₙ₋₂ waits for Pₙ₋₁, and Pₙ₋₁ waits for P₀. This forms a <strong>cycle</strong>.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="resource-allocation-graph">Resource Allocation Graph</h2>
@@ -170,7 +170,7 @@ If each resource type has exactly <strong>one instance</strong> → cycle means 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">semaphore</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// Philosopher i:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Repeat</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">Repeat</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Think</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="nf">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span><span class="p">)]);</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">wait</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="nf">max</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span><span class="p">)]);</span>
@@ -195,34 +195,34 @@ If each resource type has exactly <strong>one instance</strong> → cycle means 
 <h3 id="example-single-resource-type-tape-units">Example (single resource type: tape units)</h3>
 <p>12 tape units, 3 processes. Snapshot:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Max Needs</th>
-          <th>Allocated</th>
-          <th>Current Needs</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₀</td>
-          <td>10</td>
-          <td>5</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>P₁</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>9</td>
-          <td>3</td>
-          <td>7</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Max Needs</th>
+					<th>Allocated</th>
+					<th>Current Needs</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₀</td>
+					<td>10</td>
+					<td>5</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>P₁</td>
+					<td>4</td>
+					<td>2</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>9</td>
+					<td>3</td>
+					<td>7</td>
+			</tr>
+	</tbody>
 </table>
 <p>Available = 12 − (5+2+3) = <strong>3</strong></p>
 <p>Safe sequence: ⟨P₁, P₀, P₂⟩</p>
@@ -262,111 +262,111 @@ If each resource type has exactly <strong>one instance</strong> → cycle means 
 </span></span><span class="line"><span class="cl">   else → System is UNSAFE
 </span></span></code></pre></div><h3 id="example-1">Example</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Max</th>
-          <th>Allocation</th>
-          <th>Need</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₀</td>
-          <td>10</td>
-          <td>5</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>P₁</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>9</td>
-          <td>2</td>
-          <td>7</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Max</th>
+					<th>Allocation</th>
+					<th>Need</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₀</td>
+					<td>10</td>
+					<td>5</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>P₁</td>
+					<td>4</td>
+					<td>2</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>9</td>
+					<td>2</td>
+					<td>7</td>
+			</tr>
+	</tbody>
 </table>
 <p>Available (W) = 3</p>
 <p><strong>Step-by-step:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Step</th>
-          <th>W</th>
-          <th>K array</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Start</td>
-          <td>3</td>
-          <td>[1,1,1]</td>
-      </tr>
-      <tr>
-          <td>P₁ (Need=2 ≤ 3)</td>
-          <td>3+2=5</td>
-          <td>[1,0,1]</td>
-      </tr>
-      <tr>
-          <td>P₀ (Need=5 ≤ 5)</td>
-          <td>5+5=10</td>
-          <td>[0,0,1]</td>
-      </tr>
-      <tr>
-          <td>P₂ (Need=7 ≤ 10)</td>
-          <td>10+2=12</td>
-          <td>[0,0,0]</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Step</th>
+					<th>W</th>
+					<th>K array</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Start</td>
+					<td>3</td>
+					<td>[1,1,1]</td>
+			</tr>
+			<tr>
+					<td>P₁ (Need=2 ≤ 3)</td>
+					<td>3+2=5</td>
+					<td>[1,0,1]</td>
+			</tr>
+			<tr>
+					<td>P₀ (Need=5 ≤ 5)</td>
+					<td>5+5=10</td>
+					<td>[0,0,1]</td>
+			</tr>
+			<tr>
+					<td>P₂ (Need=7 ≤ 10)</td>
+					<td>10+2=12</td>
+					<td>[0,0,0]</td>
+			</tr>
+	</tbody>
 </table>
 <p>All K[i] = 0 → <strong>System is SAFE</strong>. Safe sequence: ⟨P₁, P₀, P₂⟩.</p>
 <h3 id="multi-resource-bankers-example">Multi-Resource Banker&rsquo;s Example</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Allocation (A B C)</th>
-          <th>Max (A B C)</th>
-          <th>Need (A B C)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₀</td>
-          <td>0 1 0</td>
-          <td>7 5 3</td>
-          <td>7 4 3</td>
-      </tr>
-      <tr>
-          <td>P₁</td>
-          <td>2 0 0</td>
-          <td>3 2 2</td>
-          <td>1 2 2</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>3 0 2</td>
-          <td>9 0 2</td>
-          <td>6 0 0</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>2 1 1</td>
-          <td>2 2 2</td>
-          <td>0 1 1</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>0 0 2</td>
-          <td>4 3 3</td>
-          <td>4 3 1</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Allocation (A B C)</th>
+					<th>Max (A B C)</th>
+					<th>Need (A B C)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₀</td>
+					<td>0 1 0</td>
+					<td>7 5 3</td>
+					<td>7 4 3</td>
+			</tr>
+			<tr>
+					<td>P₁</td>
+					<td>2 0 0</td>
+					<td>3 2 2</td>
+					<td>1 2 2</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>3 0 2</td>
+					<td>9 0 2</td>
+					<td>6 0 0</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>2 1 1</td>
+					<td>2 2 2</td>
+					<td>0 1 1</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>0 0 2</td>
+					<td>4 3 3</td>
+					<td>4 3 1</td>
+			</tr>
+	</tbody>
 </table>
 <p>Total = (10, 5, 7). Available = (3, 3, 2).</p>
 <p>Safe sequence: <strong>⟨P₁, P₃, P₀, P₂, P₄⟩</strong></p>

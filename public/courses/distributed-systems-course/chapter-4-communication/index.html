@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4 – Communication · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4 – Communication</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#communication-in-distributed-systems">Communication in Distributed Systems</a></li>
+    <li><a href="#layered-protocols">Layered Protocols</a></li>
+    <li><a href="#tcp-and-udp">TCP and UDP</a></li>
+    <li><a href="#middleware">Middleware</a></li>
+    <li><a href="#types-of-communication">Types of Communication</a>
+      <ul>
+        <li><a href="#transient-vs-persistent">Transient vs Persistent</a></li>
+        <li><a href="#synchronous-vs-asynchronous">Synchronous vs Asynchronous</a></li>
+      </ul>
+    </li>
+    <li><a href="#clientserver-communication">Client/Server Communication</a></li>
+    <li><a href="#message-oriented-middleware">Message-Oriented Middleware</a></li>
+    <li><a href="#remote-procedure-call-rpc">Remote Procedure Call, RPC</a></li>
+    <li><a href="#basic-rpc-steps">Basic RPC Steps</a></li>
+    <li><a href="#parameter-passing-in-rpc">Parameter Passing in RPC</a></li>
+    <li><a href="#asynchronous-rpc">Asynchronous RPC</a></li>
+    <li><a href="#transient-messaging-with-sockets">Transient Messaging with Sockets</a></li>
+    <li><a href="#zeromq-patterns">ZeroMQ Patterns</a></li>
+    <li><a href="#mpi">MPI</a></li>
+    <li><a href="#queue-based-messaging">Queue-Based Messaging</a></li>
+    <li><a href="#message-brokers">Message Brokers</a></li>
+    <li><a href="#amqp">AMQP</a></li>
+    <li><a href="#multicast-communication">Multicast Communication</a></li>
+    <li><a href="#application-level-multicasting">Application-Level Multicasting</a></li>
+    <li><a href="#gossip-based-data-dissemination">Gossip-Based Data Dissemination</a></li>
+    <li><a href="#anti-entropy-and-rumor-spreading">Anti-Entropy and Rumor Spreading</a></li>
+    <li><a href="#deleting-values-in-gossip-systems">Deleting Values in Gossip Systems</a></li>
+    <li><a href="#quick-summary">Quick Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="communication-in-distributed-systems">Communication in Distributed Systems</h2>
+<blockquote>
+<p>Distributed systems are built from components that run on different machines.
+Communication is the way those components exchange requests, replies, events,
+updates, and coordination messages.</p>
+</blockquote>
+<p>Communication can happen at a low level through sockets, or at a higher level
+through middleware, RPC, queues, publish-subscribe systems, or multicast.</p>
+<hr>
+<h2 id="layered-protocols">Layered Protocols</h2>
+<p>Traditional networking uses layers such as physical, data link, network,
+transport, and application layers.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Layer</th>
+					<th>Main Role</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Physical</td>
+					<td>Transmits bits between sender and receiver</td>
+			</tr>
+			<tr>
+					<td>Data link</td>
+					<td>Groups bits into frames and handles local error or flow control</td>
+			</tr>
+			<tr>
+					<td>Network</td>
+					<td>Routes packets through a network</td>
+			</tr>
+			<tr>
+					<td>Transport</td>
+					<td>Provides communication facilities such as TCP or UDP</td>
+			</tr>
+			<tr>
+					<td>Application</td>
+					<td>Implements application-specific protocols</td>
+			</tr>
+	</tbody>
+</table>
+<p>For many distributed systems, the transport layer is where practical
+communication begins.</p>
+<hr>
+<h2 id="tcp-and-udp">TCP and UDP</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>TCP</td>
+					<td>Connection-oriented</td>
+					<td>Reliable, stream-oriented communication</td>
+			</tr>
+			<tr>
+					<td>UDP</td>
+					<td>Datagram-oriented</td>
+					<td>Best-effort communication without reliability guarantees</td>
+			</tr>
+	</tbody>
+</table>
+<p>TCP is useful when reliable ordered data is needed. UDP is useful when the
+application can tolerate loss or wants lower overhead.</p>
+<hr>
+<h2 id="middleware">Middleware</h2>
+<p>Middleware provides common services above the operating system and network.</p>
+<p>Middleware may provide:</p>
+<ul>
+<li>Communication protocols.</li>
+<li>Marshaling and unmarshaling of data.</li>
+<li>Naming protocols.</li>
+<li>Security protocols.</li>
+<li>Replication and caching mechanisms.</li>
+<li>Scaling support.</li>
+</ul>
+<p>The goal is to keep application code simpler by hiding repeated distributed
+systems concerns.</p>
+<hr>
+<h2 id="types-of-communication">Types of Communication</h2>
+<p>Two important distinctions are used.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Distinction</th>
+					<th>Options</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Lifetime of message</td>
+					<td>Transient or persistent</td>
+			</tr>
+			<tr>
+					<td>Waiting behavior</td>
+					<td>Asynchronous or synchronous</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="transient-vs-persistent">Transient vs Persistent</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Transient communication</td>
+					<td>If a message cannot be delivered immediately, it may be discarded</td>
+			</tr>
+			<tr>
+					<td>Persistent communication</td>
+					<td>The message is stored until it can be delivered</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="synchronous-vs-asynchronous">Synchronous vs Asynchronous</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Synchronous communication</td>
+					<td>Sender waits for delivery, processing, or reply</td>
+			</tr>
+			<tr>
+					<td>Asynchronous communication</td>
+					<td>Sender continues without waiting for immediate completion</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="clientserver-communication">Client/Server Communication</h2>
+<p>Classic client/server communication is usually transient and synchronous.</p>
+<p>This means:</p>
+<ul>
+<li>Client and server must both be active.</li>
+<li>The client sends a request and blocks until a reply arrives.</li>
+<li>The server waits for incoming requests and processes them.</li>
+</ul>
+<p>Drawbacks include:</p>
+<ul>
+<li>The client cannot do other work while waiting.</li>
+<li>Failures must be handled immediately.</li>
+<li>The model does not fit applications such as mail, news, or event systems.</li>
+</ul>
+<hr>
+<h2 id="message-oriented-middleware">Message-Oriented Middleware</h2>
+<p>Message-oriented middleware supports persistent asynchronous communication.</p>
+<p>The basic idea is:</p>
+<ul>
+<li>Processes send messages to queues.</li>
+<li>The sender does not need to wait for the receiver.</li>
+<li>Middleware stores messages and may provide fault tolerance.</li>
+<li>Sender and receiver can be decoupled in time and location.</li>
+</ul>
+<hr>
+<h2 id="remote-procedure-call-rpc">Remote Procedure Call, RPC</h2>
+<p>RPC tries to make remote communication look like a normal procedure call.</p>
+<p>The main idea is that a client calls a local stub. The stub packages the request
+into a message, sends it to the server, receives the reply, unpacks it, and
+returns the result to the client.</p>
+<hr>
+<h2 id="basic-rpc-steps">Basic RPC Steps</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Step</th>
+					<th>Action</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1</td>
+					<td>Client calls the client stub</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>Stub builds a message and calls the local OS</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>Client OS sends the message to the server OS</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>Server OS gives the message to the server stub</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>Server stub unpacks parameters and calls the server procedure</td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>Server procedure returns a result</td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>Server stub builds the reply message</td>
+			</tr>
+			<tr>
+					<td>8</td>
+					<td>Reply is sent back to the client</td>
+			</tr>
+			<tr>
+					<td>9</td>
+					<td>Client stub unpacks the result</td>
+			</tr>
+			<tr>
+					<td>10</td>
+					<td>Client receives the result as if it came from a local call</td>
+			</tr>
+	</tbody>
+</table>
+<p>RPC hides communication, but it cannot hide all distribution problems.</p>
+<hr>
+<h2 id="parameter-passing-in-rpc">Parameter Passing in RPC</h2>
+<p>Parameter passing is harder in RPC than in local procedure calls.</p>
+<p>Problems include:</p>
+<ul>
+<li>Client and server may use different byte ordering.</li>
+<li>Basic data types may be represented differently.</li>
+<li>Complex data structures must be encoded correctly.</li>
+<li>Passing references to remote memory is not like passing local references.</li>
+</ul>
+<p>RPC often uses <strong>copy-in/copy-out</strong> semantics. Remote reference mechanisms can
+improve access transparency, but full transparency is still difficult.</p>
+<hr>
+<h2 id="asynchronous-rpc">Asynchronous RPC</h2>
+<p>Asynchronous RPC removes strict request-reply waiting. The client sends the
+request and continues working without waiting for the server response.</p>
+<p>This helps when:</p>
+<ul>
+<li>The operation takes a long time.</li>
+<li>The client has other work to do.</li>
+<li>Multiple RPCs can run in parallel.</li>
+<li>A request is sent to a group of servers.</li>
+</ul>
+<hr>
+<h2 id="transient-messaging-with-sockets">Transient Messaging with Sockets</h2>
+<p>Sockets are low-level communication endpoints.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Socket Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>socket</td>
+					<td>Create a communication endpoint</td>
+			</tr>
+			<tr>
+					<td>bind</td>
+					<td>Attach a local address</td>
+			</tr>
+			<tr>
+					<td>listen</td>
+					<td>Wait for incoming connection requests</td>
+			</tr>
+			<tr>
+					<td>accept</td>
+					<td>Accept a client connection</td>
+			</tr>
+			<tr>
+					<td>connect</td>
+					<td>Connect to a server</td>
+			</tr>
+			<tr>
+					<td>send</td>
+					<td>Send data</td>
+			</tr>
+			<tr>
+					<td>receive</td>
+					<td>Receive data</td>
+			</tr>
+			<tr>
+					<td>close</td>
+					<td>Release the connection</td>
+			</tr>
+	</tbody>
+</table>
+<p>Sockets are flexible, but they are low level and easy to use incorrectly.</p>
+<hr>
+<h2 id="zeromq-patterns">ZeroMQ Patterns</h2>
+<p>ZeroMQ provides higher-level asynchronous communication patterns.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Pattern</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Request-reply</td>
+					<td>Client sends request and receives reply</td>
+			</tr>
+			<tr>
+					<td>Publish-subscribe</td>
+					<td>Publisher sends messages to subscribers interested in a topic</td>
+			</tr>
+			<tr>
+					<td>Pipeline</td>
+					<td>Producer sends tasks to workers</td>
+			</tr>
+	</tbody>
+</table>
+<p>These patterns simplify common messaging designs compared with raw sockets.</p>
+<hr>
+<h2 id="mpi">MPI</h2>
+<p>MPI is useful when many processes need flexible message passing, especially in
+high-performance computing.</p>
+<p>It includes blocking and nonblocking operations such as send, receive,
+nonblocking send, and nonblocking receive.</p>
+<hr>
+<h2 id="queue-based-messaging">Queue-Based Messaging</h2>
+<p>Queue-based messaging provides persistent communication using middleware queues.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>PUT</td>
+					<td>Append a message to a queue</td>
+			</tr>
+			<tr>
+					<td>GET</td>
+					<td>Block until a queue has a message, then remove it</td>
+			</tr>
+			<tr>
+					<td>POLL</td>
+					<td>Check for a message without blocking</td>
+			</tr>
+			<tr>
+					<td>NOTIFY</td>
+					<td>Install a handler called when a message arrives</td>
+			</tr>
+	</tbody>
+</table>
+<p>Queue managers route messages between queues. This lets applications communicate
+even if they do not run at the same time.</p>
+<hr>
+<h2 id="message-brokers">Message Brokers</h2>
+<p>A message broker helps applications with different message formats communicate.</p>
+<p>A broker can:</p>
+<ul>
+<li>Transform messages into the target format.</li>
+<li>Act as an application gateway.</li>
+<li>Provide routing based on subjects or topics.</li>
+<li>Support publish-subscribe behavior.</li>
+</ul>
+<hr>
+<h2 id="amqp">AMQP</h2>
+<p>AMQP, the Advanced Message Queuing Protocol, is a protocol for high-level
+messaging.</p>
+<p>Its model includes:</p>
+<ul>
+<li>A stable connection.</li>
+<li>One-way channels.</li>
+<li>Sessions built from channels.</li>
+<li>Links that maintain state about message transfers.</li>
+<li>Queues and exchanges for routing messages.</li>
+</ul>
+<p>AMQP is commonly associated with systems such as RabbitMQ.</p>
+<hr>
+<h2 id="multicast-communication">Multicast Communication</h2>
+<p>Multicast sends data to a group of nodes.</p>
+<p>In distributed systems, multicast is often implemented at the application level
+using an overlay network.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Approach</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Tree-based multicast</td>
+					<td>Nodes form a tree, giving unique paths for data dissemination</td>
+			</tr>
+			<tr>
+					<td>Mesh-based multicast</td>
+					<td>Nodes form a mesh and need routing decisions</td>
+			</tr>
+			<tr>
+					<td>Flooding</td>
+					<td>Each node forwards a message to neighbors that have not seen it before</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="application-level-multicasting">Application-Level Multicasting</h2>
+<p>In application-level multicast, the distributed system builds its own overlay
+network above the physical network.</p>
+<p>Important cost metrics include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Link stress</td>
+					<td>How many times the same physical link carries the same message</td>
+			</tr>
+			<tr>
+					<td>Stretch</td>
+					<td>Ratio between overlay path delay and direct network path delay</td>
+			</tr>
+	</tbody>
+</table>
+<p>A good multicast overlay tries to reduce both link stress and stretch.</p>
+<hr>
+<h2 id="gossip-based-data-dissemination">Gossip-Based Data Dissemination</h2>
+<p>Gossip protocols spread updates in a way similar to how rumors spread.</p>
+<p>Assumptions often include:</p>
+<ul>
+<li>Updates are initially performed at one server.</li>
+<li>A replica passes updates to a few neighbors.</li>
+<li>Propagation is lazy, not immediate.</li>
+<li>Eventually, every replica should receive the update.</li>
+</ul>
+<hr>
+<h2 id="anti-entropy-and-rumor-spreading">Anti-Entropy and Rumor Spreading</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Anti-entropy</td>
+					<td>Replicas regularly choose another replica and exchange differences</td>
+			</tr>
+			<tr>
+					<td>Rumor spreading</td>
+					<td>A newly updated replica tells several others about the update</td>
+			</tr>
+	</tbody>
+</table>
+<p>Anti-entropy can use:</p>
+<ul>
+<li>Pull: a node pulls updates from another node.</li>
+<li>Push: a node pushes its updates to another node.</li>
+<li>Push-pull: both nodes exchange updates.</li>
+</ul>
+<p>Push-pull dissemination is very effective and can spread updates in logarithmic
+rounds under suitable assumptions.</p>
+<hr>
+<h2 id="deleting-values-in-gossip-systems">Deleting Values in Gossip Systems</h2>
+<p>Deleting data is tricky. If a server simply removes a value, another replica may
+later send the old value back again.</p>
+<p>The solution is to represent deletion as a special update called a <strong>death
+certificate</strong>.</p>
+<p>A death certificate must remain long enough to reach all replicas, but it cannot
+stay forever. The system must either detect global propagation or keep the
+certificate for a safe maximum lifetime.</p>
+<hr>
+<h2 id="quick-summary">Quick Summary</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Key Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Middleware</td>
+					<td>Common services for communication, naming, security, and scaling</td>
+			</tr>
+			<tr>
+					<td>RPC</td>
+					<td>Makes remote calls look like local procedure calls</td>
+			</tr>
+			<tr>
+					<td>Sockets</td>
+					<td>Low-level transient communication endpoints</td>
+			</tr>
+			<tr>
+					<td>Message queues</td>
+					<td>Persistent asynchronous communication</td>
+			</tr>
+			<tr>
+					<td>Broker</td>
+					<td>Translates and routes messages</td>
+			</tr>
+			<tr>
+					<td>AMQP</td>
+					<td>Standard-style protocol for message queuing</td>
+			</tr>
+			<tr>
+					<td>Multicast</td>
+					<td>Send data to a group of nodes</td>
+			</tr>
+			<tr>
+					<td>Gossip</td>
+					<td>Spread updates gradually through peer exchanges</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-course/chapter-3-processes/" id="nav-prev"><em>Chapter 3 – Processes</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems-course/chapter-5-coordination/" id="nav-next"><em>Chapter 5 – Coordination</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

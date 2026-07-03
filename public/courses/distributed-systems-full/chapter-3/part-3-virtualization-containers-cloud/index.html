@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 3 – Virtualization, Containers, and Cloud · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 3 – Virtualization, Containers, and Cloud</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-virtualization-matters">Why virtualization matters</a></li>
+    <li><a href="#interfaces-that-can-be-virtualized">Interfaces that can be virtualized</a></li>
+    <li><a href="#ways-of-virtualization">Ways of virtualization</a></li>
+    <li><a href="#sensitive-and-privileged-instructions">Sensitive and privileged instructions</a></li>
+    <li><a href="#condition-for-virtualization">Condition for virtualization</a></li>
+    <li><a href="#containers">Containers</a></li>
+    <li><a href="#planetlab-example">PlanetLab example</a></li>
+    <li><a href="#vms-and-cloud-computing">VMs and cloud computing</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-virtualization-matters">Why virtualization matters</h2>
+<p>Virtualization is important in distributed systems because it supports:</p>
+<ul>
+<li>portability,</li>
+<li>code migration,</li>
+<li>isolation between components,</li>
+<li>isolation from failing or attacked components,</li>
+<li>flexibility when hardware changes faster than software.</li>
+</ul>
+<p>Basic idea:</p>
+<blockquote>
+<p>Virtualization mimics an interface so software can run as if it had its own machine or environment.</p>
+</blockquote>
+<hr>
+<h2 id="interfaces-that-can-be-virtualized">Interfaces that can be virtualized</h2>
+<p>The slides mention interfaces at different levels.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Interface</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Instruction Set Architecture (ISA)</td>
+					<td>Machine instructions available to software.</td>
+			</tr>
+			<tr>
+					<td>System calls</td>
+					<td>Operations offered by the OS to programs.</td>
+			</tr>
+			<tr>
+					<td>Library/API calls</td>
+					<td>Higher-level programming interface.</td>
+			</tr>
+	</tbody>
+</table>
+<p>ISA contains:</p>
+<ul>
+<li><strong>privileged instructions:</strong> should only be executed by the OS,</li>
+<li><strong>general instructions:</strong> can be executed by normal programs.</li>
+</ul>
+<hr>
+<h2 id="ways-of-virtualization">Ways of virtualization</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>How it works</th>
+					<th>Example idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Process VM</td>
+					<td>Interpreter/emulator runs a separate instruction set on top of an OS.</td>
+					<td>Java Virtual Machine style.</td>
+			</tr>
+			<tr>
+					<td>Native VMM</td>
+					<td>Virtual machine monitor runs close to hardware with minimal OS support.</td>
+					<td>Bare-metal hypervisor.</td>
+			</tr>
+			<tr>
+					<td>Hosted VMM</td>
+					<td>VMM runs on top of a full OS and delegates work to it.</td>
+					<td>VirtualBox/VMware Workstation style.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="sensitive-and-privileged-instructions">Sensitive and privileged instructions</h2>
+<p>Important definitions:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Instruction type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Privileged instruction</td>
+					<td>Causes a trap if executed in user mode.</td>
+			</tr>
+			<tr>
+					<td>Nonprivileged instruction</td>
+					<td>Does not trap in user mode.</td>
+			</tr>
+			<tr>
+					<td>Control-sensitive instruction</td>
+					<td>Can change machine configuration.</td>
+			</tr>
+			<tr>
+					<td>Behavior-sensitive instruction</td>
+					<td>Its behavior depends on execution context.</td>
+			</tr>
+			<tr>
+					<td>Sensitive instruction</td>
+					<td>Control-sensitive or behavior-sensitive.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="condition-for-virtualization">Condition for virtualization</h2>
+<p>Necessary condition:</p>
+<blockquote>
+<p>A VMM can be constructed if all sensitive instructions are a subset of privileged instructions.</p>
+</blockquote>
+<p>Why?</p>
+<p>Because if a sensitive instruction is executed by a guest OS, it must trap to the VMM so the VMM can control it.</p>
+<p>Problem:</p>
+<p>Some architectures have sensitive instructions that do not trap in user mode. Then the VMM cannot safely intercept them.</p>
+<p>Solutions:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Solution</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Emulate all instructions</td>
+					<td>Interpret every instruction. Correct but slow.</td>
+			</tr>
+			<tr>
+					<td>Binary translation/wrapping</td>
+					<td>Replace problematic instructions with safe VMM calls.</td>
+			</tr>
+			<tr>
+					<td>Paravirtualization</td>
+					<td>Modify guest OS so it avoids problematic instructions or uses hypercalls.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="containers">Containers</h2>
+<p>Containers are lighter than full VMs because they share the host kernel but isolate processes.</p>
+<p>Main mechanisms:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Mechanism</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Namespaces</td>
+					<td>Give processes their own view of identifiers such as process IDs, network, filesystem.</td>
+			</tr>
+			<tr>
+					<td>Union file system</td>
+					<td>Combine file-system layers; only top layer is writable.</td>
+			</tr>
+			<tr>
+					<td>Control groups</td>
+					<td>Limit resources such as CPU, memory, and I/O.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam contrast:</p>
+<table>
+	<thead>
+			<tr>
+					<th>VM</th>
+					<th>Container</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Virtualizes hardware/OS environment.</td>
+					<td>Isolates processes using same kernel.</td>
+			</tr>
+			<tr>
+					<td>Heavier, stronger isolation.</td>
+					<td>Lighter, faster startup.</td>
+			</tr>
+			<tr>
+					<td>Easier to run different OS kernels.</td>
+					<td>Harder/impossible to run different kernel.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="planetlab-example">PlanetLab example</h2>
+<p>PlanetLab is an example of using virtualization for shared distributed experiments.</p>
+<p>Basic situation:</p>
+<ul>
+<li>different organizations contribute machines,</li>
+<li>many distributed applications share them,</li>
+<li>isolation is needed so experiments do not interfere.</li>
+</ul>
+<p>Vserver:</p>
+<ul>
+<li>independent protected environment,</li>
+<li>has its own libraries and server versions,</li>
+<li>applications get collections of vservers across machines.</li>
+</ul>
+<p>Slice:</p>
+<ul>
+<li>a distributed collection of vservers assigned to an experiment/application.</li>
+</ul>
+<hr>
+<h2 id="vms-and-cloud-computing">VMs and cloud computing</h2>
+<p>Three common cloud service models:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th>Provides</th>
+					<th>User manages</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>IaaS</td>
+					<td>Infrastructure such as VMs, storage, networks.</td>
+					<td>OS, runtime, apps.</td>
+			</tr>
+			<tr>
+					<td>PaaS</td>
+					<td>Platform services such as runtime, databases, frameworks.</td>
+					<td>Application code/data.</td>
+			</tr>
+			<tr>
+					<td>SaaS</td>
+					<td>Complete applications.</td>
+					<td>Mostly configuration/use.</td>
+			</tr>
+	</tbody>
+</table>
+<p>In IaaS, the provider rents a VM instead of a physical machine. Multiple customers may share the same physical machine, while the VM provides isolation.</p>
+<p>Important limitation:</p>
+<p>VMs provide strong functional isolation, but performance isolation may not be perfect because customers still share physical hardware.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Why is virtualization useful in distributed systems?</li>
+<li>Compare process VM, native VMM, and hosted VMM.</li>
+<li>What is the virtualization condition involving sensitive and privileged instructions?</li>
+<li>What are namespaces, union file systems, and control groups?</li>
+<li>Compare IaaS, PaaS, and SaaS.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-3/part-2-thread-implementations-and-usage/" id="nav-prev"><em>Chapter 3, Part 2 – Thread Implementations and Distributed Use</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-3/part-4-clients-and-servers/" id="nav-next"><em>Chapter 3, Part 4 – Clients and Servers</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

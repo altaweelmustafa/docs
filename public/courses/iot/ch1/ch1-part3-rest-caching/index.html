@@ -79,40 +79,40 @@ responses, or dynamic data that is expensive to regenerate on every request.</p>
 <hr>
 <h2 id="client-side-vs-server-side-caching">Client-Side vs Server-Side Caching</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Aspect</th>
-          <th>Client-Side</th>
-          <th>Server-Side</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Location</strong></td>
-          <td>User&rsquo;s device (browser, app)</td>
-          <td>Origin server or proxy</td>
-      </tr>
-      <tr>
-          <td><strong>Control</strong></td>
-          <td>Client, guided by server headers</td>
-          <td>Server</td>
-      </tr>
-      <tr>
-          <td><strong>Purpose</strong></td>
-          <td>Reduce repeated fetches for the same resource</td>
-          <td>Reduce redundant server processing</td>
-      </tr>
-      <tr>
-          <td><strong>Headers used</strong></td>
-          <td><code>Cache-Control</code>, <code>Expires</code></td>
-          <td><code>Cache-Control</code>, <code>Expires</code> (set by server)</td>
-      </tr>
-      <tr>
-          <td><strong>Examples</strong></td>
-          <td>Browser cache (HTML, CSS, JS, images)</td>
-          <td>Cached DB queries, computed API responses</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Aspect</th>
+					<th>Client-Side</th>
+					<th>Server-Side</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Location</strong></td>
+					<td>User&rsquo;s device (browser, app)</td>
+					<td>Origin server or proxy</td>
+			</tr>
+			<tr>
+					<td><strong>Control</strong></td>
+					<td>Client, guided by server headers</td>
+					<td>Server</td>
+			</tr>
+			<tr>
+					<td><strong>Purpose</strong></td>
+					<td>Reduce repeated fetches for the same resource</td>
+					<td>Reduce redundant server processing</td>
+			</tr>
+			<tr>
+					<td><strong>Headers used</strong></td>
+					<td><code>Cache-Control</code>, <code>Expires</code></td>
+					<td><code>Cache-Control</code>, <code>Expires</code> (set by server)</td>
+			</tr>
+			<tr>
+					<td><strong>Examples</strong></td>
+					<td>Browser cache (HTML, CSS, JS, images)</td>
+					<td>Cached DB queries, computed API responses</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="why-caching-matters-in-iot">Why Caching Matters in IoT</h2>

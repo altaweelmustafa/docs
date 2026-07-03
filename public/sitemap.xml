@@ -1,7 +1,32 @@
+
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/docs/courses/os/ch1/ch1-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch2/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch3/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch4/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch5/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch6/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch7/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,8 +36,29 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part1-iot-api-intro/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch10/ch10-part1/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch11/ch11-part1/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch8/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch9/ch9-part1/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch9/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch1/part2/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
@@ -26,8 +72,23 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part2-rest-api/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch10/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch11/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch9/ch9-part2/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part2-regular-expressions/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch2/ch2-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch1/part3/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
@@ -41,8 +102,17 @@
     <loc>http://localhost:1313/docs/courses/os/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch8/ch8-part3/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/distributed-systems/</loc>
+    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch3/ch3-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch3/p1/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
@@ -56,6 +126,9 @@
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch3/ch3-part2/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch3/p2/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -65,11 +138,17 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part5-websocket-api/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch3/p3/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part6-iot-system-components/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch5/ch5-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch3/p4/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
@@ -77,8 +156,14 @@
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch6/ch6-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
@@ -91,6 +176,162 @@
   </url><url>
     <loc>http://localhost:1313/docs/courses/iot/ch1/ch1-part12-iot-level6/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/</loc>
+    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/</loc>
+    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/bankers-algorithm/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/buffer/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/buffering/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cache/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/concurrency/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/context-switch/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cooperating-processes/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cpu-scheduling/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/critical-section/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/deadlock/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/deadlock-avoidance/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/deadlock-prevention/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dma/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dual-mode/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/fcfs/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/fork/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/goals/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/hardware/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/hardware-protection/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/history/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/interrupts/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/kernel-threads/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/multilevel-queues/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/multiprogramming/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/multithreading/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/mutex/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/operating-systems/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/parallel-systems/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/pcb/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/priority/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/process/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/process-creation/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/process-states/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/producer-consumer/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/real-time/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/resource-allocation/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/round-robin/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/scheduling/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/semaphores/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/sjf/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/spooling/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/storage/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/synchronization/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/termination/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/thread-models/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/threads/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/throughput/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/timesharing/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/user-threads/</loc>
+    <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/ai-languages/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
@@ -110,13 +351,7 @@
     <loc>http://localhost:1313/docs/tags/cost/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/courses/</loc>
-    <lastmod>2026-06-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/definitions/</loc>
-    <lastmod>2026-06-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/error-detection/</loc>
@@ -168,9 +403,6 @@
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/syntax/</loc>
-    <lastmod>2026-06-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/tokens/</loc>
@@ -353,9 +585,6 @@
     <loc>http://localhost:1313/docs/tags/proxy/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/real-time/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/rest/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
@@ -365,19 +594,88 @@
     <loc>http://localhost:1313/docs/tags/rpl/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/scheduling/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/websocket/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/wsn/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/tags/binding/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch4/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/tags/contiguous/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/contiguous-allocation/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/demand-paging/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/disk-allocation/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/disk-scheduling/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/file-system/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/frame-allocation/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/hard-disk/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/indexed/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/linked/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/memory-management/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/os/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/page-fault/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/page-replacement/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/page-table/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/paging/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/scan/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/tags/scanner/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/seek-time/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/segmentation/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/sstf/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/thrashing/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/tlb/</loc>
+    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/virtual-memory/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/automata/</loc>
@@ -421,11 +719,5 @@
     <loc>http://localhost:1313/docs/books/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/courses/os/ch1/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/courses/os/ch2/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/courses/os/ch3/</loc>
   </url>
 </urlset>

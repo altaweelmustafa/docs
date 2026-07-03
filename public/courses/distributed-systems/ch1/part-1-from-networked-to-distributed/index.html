@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 1 – From Networked to Distributed Systems · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 1 – From Networked to Distributed Systems</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-big-idea">The big idea</a></li>
+    <li><a href="#two-views-on-realizing-distributed-systems">Two views on realizing distributed systems</a></li>
+    <li><a href="#centralized-does-not-always-mean-physically-one-machine">Centralized does not always mean physically one machine</a></li>
+    <li><a href="#perspectives-on-distributed-systems">Perspectives on distributed systems</a></li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="the-big-idea">The big idea</h2>
+<p>A networked system is not automatically a distributed system. A distributed system is designed so that several independent computers cooperate and appear as one coherent system.</p>
+<p>The chapter starts by comparing three shapes:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Shape</th>
+					<th>Simple meaning</th>
+					<th>Risk</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Centralized</td>
+					<td>One center controls or serves most things.</td>
+					<td>Bottleneck and single point of failure.</td>
+			</tr>
+			<tr>
+					<td>Decentralized</td>
+					<td>Multiple centers or clusters exist.</td>
+					<td>Still may not provide one coherent system.</td>
+			</tr>
+			<tr>
+					<td>Distributed</td>
+					<td>Nodes cooperate through a network as part of one system design.</td>
+					<td>Harder coordination, failure handling, and consistency.</td>
+			</tr>
+	</tbody>
+</table>
+<p>The slides ask: when does a decentralized system become distributed? The answer is not simply “when we add one more link.” A system becomes distributed because of its <strong>behavior and design goals</strong>, not only because of its graph shape.</p>
+<hr>
+<h2 id="two-views-on-realizing-distributed-systems">Two views on realizing distributed systems</h2>
+<table>
+	<thead>
+			<tr>
+					<th>View</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Integrative view</td>
+					<td>Connect existing networked computer systems into a larger system.</td>
+					<td>Integrating old business applications so they cooperate.</td>
+			</tr>
+			<tr>
+					<td>Expansive view</td>
+					<td>Extend an existing networked system with more computers.</td>
+					<td>Adding servers to scale an online service.</td>
+			</tr>
+	</tbody>
+</table>
+<p>The integrative view starts with already-existing systems and tries to make them work together. The expansive view starts with one system and grows it.</p>
+<hr>
+<h2 id="centralized-does-not-always-mean-physically-one-machine">Centralized does not always mean physically one machine</h2>
+<p>A common misconception is: “centralized solutions cannot scale.” The correct answer is more subtle.</p>
+<p>A system can be:</p>
+<ul>
+<li><strong>Logically centralized:</strong> there is one logical authority or namespace.</li>
+<li><strong>Physically distributed:</strong> the implementation is spread across many machines.</li>
+</ul>
+<p>Example: DNS root service is logically centralized because it represents one root of the naming system, but it is physically distributed across many servers.</p>
+<p>Exam sentence:</p>
+<blockquote>
+<p>Centralization can be logical while implementation is physically distributed, so centralization does not always mean one machine.</p>
+</blockquote>
+<hr>
+<h2 id="perspectives-on-distributed-systems">Perspectives on distributed systems</h2>
+<p>Distributed systems are complex, so we study them from several perspectives:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Perspective</th>
+					<th>Main question</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Architecture</td>
+					<td>How are components organized?</td>
+			</tr>
+			<tr>
+					<td>Process</td>
+					<td>What processes exist, and how do they relate?</td>
+			</tr>
+			<tr>
+					<td>Communication</td>
+					<td>How do components exchange data?</td>
+			</tr>
+			<tr>
+					<td>Coordination</td>
+					<td>How do components agree on order, access, time, or leadership?</td>
+			</tr>
+	</tbody>
+</table>
+<p>These are exactly the later chapters: processes, communication, and coordination.</p>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>A distributed system is not just “many computers connected.” It is a system where distribution is part of the design, and where the system must handle naming, communication, failures, consistency, scalability, and transparency.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What is the difference between centralized, decentralized, and distributed?</li>
+<li>Why is DNS a good example of logical centralization but physical distribution?</li>
+<li>What are the four perspectives used to study distributed systems?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch1/part-2-design-goals-transparency-openness/" id="nav-next"><em>Chapter 1, Part 2 – Design Goals, Transparency, and Openness</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

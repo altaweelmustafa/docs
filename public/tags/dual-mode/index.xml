@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dual-Mode on Docs</title>
-    <link>http://localhost:1313/docs/tags/dual-mode/</link>
-    <description>Recent content in Dual-Mode on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/dual-mode/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – OS Operations, Process Management &amp; Memory Management</title>
-      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part3/</guid>
-      <description>&lt;h2 id=&#34;operating-system-operations&#34;&gt;Operating-System Operations&lt;/h2&gt;&#xA;&lt;h3 id=&#34;interrupt-driven-operation&#34;&gt;Interrupt-Driven Operation&lt;/h3&gt;&#xA;&lt;p&gt;Modern operating systems are &lt;strong&gt;interrupt-driven&lt;/strong&gt;. If there are no processes to execute and no I/O devices to service, the OS waits for something to happen. Events are signaled via interrupts (hardware) or &lt;strong&gt;traps/exceptions&lt;/strong&gt; (software).&lt;/p&gt;&#xA;&lt;p&gt;A &lt;strong&gt;trap&lt;/strong&gt; (or exception) is a software-generated interrupt caused by:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An error (division by zero, invalid memory access).&lt;/li&gt;&#xA;&lt;li&gt;A specific request from a user program — a &lt;strong&gt;system call&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;dual-mode-operation&#34;&gt;Dual-Mode Operation&lt;/h3&gt;&#xA;&lt;p&gt;To protect the OS from errant user programs (and user programs from each other), hardware provides at least two modes:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Dual-Mode on Docs</title>
+		<link>http://localhost:1313/docs/tags/dual-mode/</link>
+		<description>Recent content in Dual-Mode on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/dual-mode/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2 – Computer System Operations</title>
+				<link>http://localhost:1313/docs/courses/os/ch2/ch2-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch2/ch2-part1/</guid>
+				<description>&lt;h2 id=&#34;computer-system-operations&#34;&gt;Computer System Operations&lt;/h2&gt;&#xA;&lt;h3 id=&#34;hardware-setup&#34;&gt;Hardware Setup&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CPU ← → Disk Controller&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Tape Controller&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Printer Controller&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         Device Controller(s)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              ↕&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           Main Bus&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              ↕&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       Memory Controller → Memory&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Key facts:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;I/O can run concurrently with the CPU.&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Each &lt;strong&gt;device controller&lt;/strong&gt; is in charge of a particular device type.&lt;/li&gt;&#xA;&lt;li&gt;Each device controller has a &lt;strong&gt;local buffer&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;The CPU moves data &lt;strong&gt;from/to main memory&lt;/strong&gt; to/from the local buffers.&lt;/li&gt;&#xA;&lt;li&gt;I/O transfers data from the device to the &lt;strong&gt;local buffer of the controller&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;The device controller informs the CPU that it has finished its operation by causing an &lt;strong&gt;interrupt&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;interrupts&#34;&gt;Interrupts&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;interrupt&lt;/strong&gt; is a signal sent to the CPU by:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -114,30 +114,30 @@
 </ul>
 <h3 id="examples-of-interrupts">Examples of Interrupts</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Cause</th>
-          <th>Type</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Completion of an I/O operation</td>
-          <td>Hardware Interrupt</td>
-      </tr>
-      <tr>
-          <td>Division by zero</td>
-          <td>Software Interrupt (Trap)</td>
-      </tr>
-      <tr>
-          <td>Invalid memory access</td>
-          <td>Hardware Interrupt</td>
-      </tr>
-      <tr>
-          <td>Request of an OS service</td>
-          <td>System Call (Trap)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Cause</th>
+					<th>Type</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Completion of an I/O operation</td>
+					<td>Hardware Interrupt</td>
+			</tr>
+			<tr>
+					<td>Division by zero</td>
+					<td>Software Interrupt (Trap)</td>
+			</tr>
+			<tr>
+					<td>Invalid memory access</td>
+					<td>Hardware Interrupt</td>
+			</tr>
+			<tr>
+					<td>Request of an OS service</td>
+					<td>System Call (Trap)</td>
+			</tr>
+	</tbody>
 </table>
 <blockquote>
 <p><strong>Operating Systems are interrupt-driven</strong> — the CPU is &ldquo;interrupted&rdquo; to handle events.</p>
@@ -170,22 +170,22 @@
 </ol>
 <h3 id="two-types-of-io">Two Types of I/O</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Behavior</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Synchronous I/O</strong></td>
-          <td>After I/O starts, control returns to the program <strong>only upon I/O completion</strong>. The CPU waits (busy-wait / <code>loop: jmp loop</code>). CPU is idle during I/O.</td>
-      </tr>
-      <tr>
-          <td><strong>Asynchronous I/O</strong></td>
-          <td>After I/O starts, control switches to <strong>another program</strong> without waiting for I/O completion. CPU stays productive.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Behavior</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Synchronous I/O</strong></td>
+					<td>After I/O starts, control returns to the program <strong>only upon I/O completion</strong>. The CPU waits (busy-wait / <code>loop: jmp loop</code>). CPU is idle during I/O.</td>
+			</tr>
+			<tr>
+					<td><strong>Asynchronous I/O</strong></td>
+					<td>After I/O starts, control switches to <strong>another program</strong> without waiting for I/O completion. CPU stays productive.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="direct-memory-access-dma">Direct Memory Access (DMA)</h2>
@@ -219,22 +219,22 @@
 </ul>
 <h3 id="cpu-instructions-on-memory">CPU Instructions on Memory</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Instruction</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Load</strong></td>
-          <td>Fetch (get) an instruction from memory into the <strong>Instruction Register (IR)</strong></td>
-      </tr>
-      <tr>
-          <td><strong>Store</strong></td>
-          <td>Store a register&rsquo;s value into a memory location</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Instruction</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Load</strong></td>
+					<td>Fetch (get) an instruction from memory into the <strong>Instruction Register (IR)</strong></td>
+			</tr>
+			<tr>
+					<td><strong>Store</strong></td>
+					<td>Store a register&rsquo;s value into a memory location</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="instruction-cycle">Instruction Cycle</h3>
 <p>The CPU repeatedly executes this cycle:</p>
@@ -281,26 +281,26 @@
 </ul>
 <h3 id="cache-levels">Cache Levels</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Level</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>L1</strong></td>
-          <td>Fastest — built within the CPU itself.</td>
-      </tr>
-      <tr>
-          <td><strong>L2</strong></td>
-          <td>Bigger but slower than L1.</td>
-      </tr>
-      <tr>
-          <td>L3, etc.</td>
-          <td>Even bigger and slower.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Level</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>L1</strong></td>
+					<td>Fastest — built within the CPU itself.</td>
+			</tr>
+			<tr>
+					<td><strong>L2</strong></td>
+					<td>Bigger but slower than L1.</td>
+			</tr>
+			<tr>
+					<td>L3, etc.</td>
+					<td>Even bigger and slower.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="hardware-protection">Hardware Protection</h2>
@@ -314,25 +314,25 @@
 <h2 id="dual-mode-of-operation">Dual Mode of Operation</h2>
 <p>The OS runs in <strong>two modes</strong> to protect itself and resources:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Mode</th>
-          <th>Mode Bit</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Monitor Mode</strong> (Supervisor)</td>
-          <td>0</td>
-          <td>OS executes on behalf of itself (e.g. handling interrupts). Full hardware access.</td>
-      </tr>
-      <tr>
-          <td><strong>User Mode</strong></td>
-          <td>1</td>
-          <td>OS executes user programs. Restricted access.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Mode</th>
+					<th>Mode Bit</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Monitor Mode</strong> (Supervisor)</td>
+					<td>0</td>
+					<td>OS executes on behalf of itself (e.g. handling interrupts). Full hardware access.</td>
+			</tr>
+			<tr>
+					<td><strong>User Mode</strong></td>
+					<td>1</td>
+					<td>OS executes user programs. Restricted access.</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="implementation">Implementation</h3>
 <p>One hardware bit called the <strong>&ldquo;mode bit&rdquo;</strong> indicates the current mode:</p>

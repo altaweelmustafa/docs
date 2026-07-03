@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 1 – Foundations and RPC · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 1 – Foundations and RPC</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-networking-model">Basic networking model</a></li>
+    <li><a href="#low-level-layers-recap">Low-level layers recap</a></li>
+    <li><a href="#transport-layer">Transport layer</a></li>
+    <li><a href="#middleware-layer">Middleware layer</a></li>
+    <li><a href="#types-of-communication">Types of communication</a></li>
+    <li><a href="#places-for-synchronization">Places for synchronization</a></li>
+    <li><a href="#client-server-communication">Client-server communication</a></li>
+    <li><a href="#messaging">Messaging</a></li>
+    <li><a href="#remote-procedure-call-rpc">Remote Procedure Call (RPC)</a></li>
+    <li><a href="#basic-rpc-operation">Basic RPC operation</a></li>
+    <li><a href="#parameter-passing-in-rpc">Parameter passing in RPC</a>
+      <ul>
+        <li><a href="#marshaling-and-unmarshaling">Marshaling and unmarshaling</a></li>
+      </ul>
+    </li>
+    <li><a href="#copy-incopy-out-semantics">Copy in/copy out semantics</a></li>
+    <li><a href="#asynchronous-rpc">Asynchronous RPC</a></li>
+    <li><a href="#multiple-rpcs">Multiple RPCs</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="basic-networking-model">Basic networking model</h2>
+<p>Traditional networking is layered. The slides mention that this model has drawbacks for distributed systems:</p>
+<ul>
+<li>focuses mainly on message passing,</li>
+<li>includes functionality that may be unnecessary,</li>
+<li>can violate access transparency.</li>
+</ul>
+<hr>
+<h2 id="low-level-layers-recap">Low-level layers recap</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Layer</th>
+					<th>Role</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Physical</td>
+					<td>Specification and transmission of bits.</td>
+			</tr>
+			<tr>
+					<td>Data link</td>
+					<td>Groups bits into frames; handles error/flow control.</td>
+			</tr>
+			<tr>
+					<td>Network</td>
+					<td>Routes packets through a network.</td>
+			</tr>
+	</tbody>
+</table>
+<p>For many distributed systems, the lowest-level useful interface is the network layer.</p>
+<hr>
+<h2 id="transport-layer">Transport layer</h2>
+<p>The transport layer provides actual communication facilities for most distributed systems.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>TCP</td>
+					<td>Connection-oriented, reliable, stream-oriented communication.</td>
+			</tr>
+			<tr>
+					<td>UDP</td>
+					<td>Unreliable best-effort datagram communication.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="middleware-layer">Middleware layer</h2>
+<p>Middleware exists to provide common services and protocols for many applications.</p>
+<p>Examples of middleware services:</p>
+<ul>
+<li>communication protocols,</li>
+<li>marshaling/unmarshaling data,</li>
+<li>naming protocols,</li>
+<li>security protocols,</li>
+<li>scaling mechanisms such as replication and caching.</li>
+</ul>
+<p>After middleware handles general distributed-system problems, the application only needs application-specific protocols.</p>
+<hr>
+<h2 id="types-of-communication">Types of communication</h2>
+<p>Two important dimensions:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Dimension</th>
+					<th>Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Durability</td>
+					<td>Transient</td>
+					<td>Message is discarded if it cannot be delivered immediately.</td>
+			</tr>
+			<tr>
+					<td>Durability</td>
+					<td>Persistent</td>
+					<td>Message is stored until it can be delivered.</td>
+			</tr>
+			<tr>
+					<td>Synchronization</td>
+					<td>Asynchronous</td>
+					<td>Sender continues without waiting.</td>
+			</tr>
+			<tr>
+					<td>Synchronization</td>
+					<td>Synchronous</td>
+					<td>Sender waits at some point.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="places-for-synchronization">Places for synchronization</h2>
+<p>A sender can synchronize at different points:</p>
+<ol>
+<li><strong>At request submission:</strong> wait until the system accepts the request.</li>
+<li><strong>At request delivery:</strong> wait until request reaches receiver.</li>
+<li><strong>After request processing:</strong> wait until receiver processes and replies.</li>
+</ol>
+<p>The more the sender waits, the more synchronous the communication feels.</p>
+<hr>
+<h2 id="client-server-communication">Client-server communication</h2>
+<p>Classic client/server is usually:</p>
+<ul>
+<li>transient,</li>
+<li>synchronous,</li>
+<li>request/reply.</li>
+</ul>
+<p>Properties:</p>
+<ul>
+<li>client and server must be active at communication time,</li>
+<li>client sends request and blocks until reply,</li>
+<li>server waits for requests and processes them.</li>
+</ul>
+<p>Drawbacks:</p>
+<ul>
+<li>client cannot do other work while waiting,</li>
+<li>failures must be handled immediately,</li>
+<li>not suitable for systems like email/news where receiver may be offline.</li>
+</ul>
+<hr>
+<h2 id="messaging">Messaging</h2>
+<p>Message-oriented middleware targets persistent asynchronous communication.</p>
+<p>Properties:</p>
+<ul>
+<li>processes send messages to queues,</li>
+<li>sender does not need immediate reply,</li>
+<li>middleware can provide fault tolerance,</li>
+<li>sender and receiver can be decoupled in time.</li>
+</ul>
+<hr>
+<h2 id="remote-procedure-call-rpc">Remote Procedure Call (RPC)</h2>
+<p>RPC tries to make remote communication look like a local procedure call.</p>
+<p>Why RPC is attractive:</p>
+<ul>
+<li>programmers understand procedure calls,</li>
+<li>procedures can be treated as black boxes,</li>
+<li>in principle, a procedure can run on another machine.</li>
+</ul>
+<p>Main idea:</p>
+<blockquote>
+<p>Hide communication between caller and callee behind the procedure-call mechanism.</p>
+</blockquote>
+<hr>
+<h2 id="basic-rpc-operation">Basic RPC operation</h2>
+<p>Steps:</p>
+<ol>
+<li>Client calls a client stub.</li>
+<li>Client stub builds a message and asks local OS to send it.</li>
+<li>Client OS sends message to remote OS.</li>
+<li>Server OS gives message to server stub.</li>
+<li>Server stub unpacks parameters and calls server procedure.</li>
+<li>Server procedure executes and returns result to server stub.</li>
+<li>Server stub builds reply message.</li>
+<li>Reply is sent back through OS/network.</li>
+<li>Client stub receives reply.</li>
+<li>Client stub unpacks result and returns to client code.</li>
+</ol>
+<hr>
+<h2 id="parameter-passing-in-rpc">Parameter passing in RPC</h2>
+<p>RPC is harder than just wrapping parameters in a message.</p>
+<p>Problems:</p>
+<ul>
+<li>machines may use different byte ordering,</li>
+<li>integers/floats/characters may be represented differently,</li>
+<li>arrays/records/unions need agreed encoding,</li>
+<li>pointers/references cannot be passed like local references,</li>
+<li>failures are different from local calls.</li>
+</ul>
+<h3 id="marshaling-and-unmarshaling">Marshaling and unmarshaling</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Marshaling</td>
+					<td>Convert parameters/results into byte sequence for transmission.</td>
+			</tr>
+			<tr>
+					<td>Unmarshaling</td>
+					<td>Convert byte sequence back into machine-specific representation.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="copy-incopy-out-semantics">Copy in/copy out semantics</h2>
+<p>Assumption:</p>
+<ul>
+<li>procedure receives copies of parameters,</li>
+<li>during execution, nothing can be assumed about original parameter values,</li>
+<li>all data operated on should be passed as parameters.</li>
+</ul>
+<p>This excludes normal local references to global memory.</p>
+<p>Conclusion:</p>
+<blockquote>
+<p>Full access transparency cannot be completely achieved with RPC.</p>
+</blockquote>
+<p>Remote references can improve transparency by allowing remote objects/data to be accessed through reference-like handles.</p>
+<hr>
+<h2 id="asynchronous-rpc">Asynchronous RPC</h2>
+<p>Asynchronous RPC tries to remove strict request-reply blocking.</p>
+<p>Basic idea:</p>
+<ul>
+<li>client sends request,</li>
+<li>client continues without waiting,</li>
+<li>reply may be ignored, polled, or handled later.</li>
+</ul>
+<p>This helps hide latency and improve concurrency.</p>
+<hr>
+<h2 id="multiple-rpcs">Multiple RPCs</h2>
+<p>A client may send one RPC request to a group of servers.</p>
+<p>Use cases:</p>
+<ul>
+<li>parallel search,</li>
+<li>replicated service calls,</li>
+<li>collecting results from multiple services,</li>
+<li>improving availability by contacting several replicas.</li>
+</ul>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Compare TCP and UDP.</li>
+<li>What services does middleware provide?</li>
+<li>Compare transient and persistent communication.</li>
+<li>Why is classic client-server synchronous?</li>
+<li>Explain the 10-step RPC flow.</li>
+<li>Why is full access transparency hard in RPC?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch4/part-2-message-oriented-communication/" id="nav-next"><em>Chapter 4, Part 2 – Message-Oriented Communication</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Level3 on Docs</title>
-    <link>http://localhost:1313/docs/tags/level3/</link>
-    <description>Recent content in Level3 on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/level3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 9 – IoT Level-3</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-3&#34;&gt;What Is IoT Level-3?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-3 IoT system has a &lt;strong&gt;single node&lt;/strong&gt;. Data is &lt;strong&gt;stored and analyzed in&#xA;the cloud&lt;/strong&gt;. The application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike Level-2 where analysis runs locally, Level-3 offloads both storage and&#xA;analysis entirely to the cloud. A central gateway device aggregates data from&#xA;connected sensors and forwards it upward.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions with large data volumes that require computationally&#xA;intensive analysis — beyond what a local node can handle.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Level3 on Docs</title>
+		<link>http://localhost:1313/docs/tags/level3/</link>
+		<description>Recent content in Level3 on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/level3/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 9 – IoT Level-3</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part9-iot-level3/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-3&#34;&gt;What Is IoT Level-3?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-3 IoT system has a &lt;strong&gt;single node&lt;/strong&gt;. Data is &lt;strong&gt;stored and analyzed in&#xA;the cloud&lt;/strong&gt;. The application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Unlike Level-2 where analysis runs locally, Level-3 offloads both storage and&#xA;analysis entirely to the cloud. A central gateway device aggregates data from&#xA;connected sensors and forwards it upward.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions with large data volumes that require computationally&#xA;intensive analysis — beyond what a local node can handle.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

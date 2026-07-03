@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Introduction on Docs</title>
-    <link>http://localhost:1313/docs/tags/introduction/</link>
-    <description>Recent content in Introduction on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – What Operating Systems Do &amp; Computer-System Organization</title>
-      <link>http://localhost:1313/docs/courses/os/ch1/ch1_part1/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch1/ch1_part1/</guid>
-      <description>&lt;h2 id=&#34;what-is-an-operating-system&#34;&gt;What is an Operating System?&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;Operating System (OS)&lt;/strong&gt; is a program that acts as an intermediary between the user of a computer and the computer hardware. Its goals are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Execute user programs and make problem-solving easier.&lt;/li&gt;&#xA;&lt;li&gt;Make the computer system convenient to use.&lt;/li&gt;&#xA;&lt;li&gt;Use the computer hardware in an efficient manner.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A computer system can be divided into four components:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Hardware&lt;/strong&gt; – CPU, memory, and I/O devices; the basic computing resources.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Operating System&lt;/strong&gt; – controls and coordinates hardware use among applications and users.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Application Programs&lt;/strong&gt; – word processors, compilers, browsers, games; define how resources are used to solve user problems.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Users&lt;/strong&gt; – people, machines, or other computers.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;user-view&#34;&gt;User View&lt;/h3&gt;&#xA;&lt;p&gt;From the user&amp;rsquo;s perspective, the OS is designed mostly for &lt;strong&gt;ease of use&lt;/strong&gt;, with some attention to performance and none to resource utilization. Embedded or dedicated devices (smart TVs, car systems) have little or no user interface at all.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Introduction on Docs</title>
+		<link>http://localhost:1313/docs/tags/introduction/</link>
+		<description>Recent content in Introduction on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1 – Introduction to Distributed Systems</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-1-introduction/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-1-introduction/</guid>
+				<description>&lt;h2 id=&#34;what-is-a-distributed-system&#34;&gt;What Is a Distributed System?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A distributed system is a networked computer system where processes and&#xA;resources are spread across multiple computers, but they cooperate to provide a&#xA;service.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A useful distinction is between &lt;strong&gt;decentralized&lt;/strong&gt; and &lt;strong&gt;distributed&lt;/strong&gt; systems.&#xA;In a decentralized system, processes and resources are necessarily spread across&#xA;multiple computers. In a distributed system, they are spread enough that the&#xA;system must handle communication, coordination, failures, and distance as part&#xA;of its design.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

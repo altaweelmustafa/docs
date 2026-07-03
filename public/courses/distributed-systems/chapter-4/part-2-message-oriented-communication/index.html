@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 2 – Message-Oriented Communication · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 2 – Message-Oriented Communication</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#transient-messaging-with-sockets">Transient messaging with sockets</a></li>
+    <li><a href="#simple-socket-serverclient-idea">Simple socket server/client idea</a></li>
+    <li><a href="#zeromq-making-sockets-easier">ZeroMQ: making sockets easier</a></li>
+    <li><a href="#request-reply-pattern">Request-reply pattern</a></li>
+    <li><a href="#publish-subscribe-pattern">Publish-subscribe pattern</a></li>
+    <li><a href="#pipeline-pattern">Pipeline pattern</a></li>
+    <li><a href="#mpi-operations">MPI operations</a></li>
+    <li><a href="#queue-based-messaging">Queue-based messaging</a></li>
+    <li><a href="#message-oriented-middleware-mom">Message-oriented middleware (MOM)</a></li>
+    <li><a href="#queue-managers">Queue managers</a></li>
+    <li><a href="#message-brokers">Message brokers</a></li>
+    <li><a href="#amqp">AMQP</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="transient-messaging-with-sockets">Transient messaging with sockets</h2>
+<p>Sockets provide low-level communication endpoints.</p>
+<p>Berkeley socket operations:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>socket</code></td>
+					<td>Create communication endpoint.</td>
+			</tr>
+			<tr>
+					<td><code>bind</code></td>
+					<td>Attach local address to socket.</td>
+			</tr>
+			<tr>
+					<td><code>listen</code></td>
+					<td>Set maximum number of pending connection requests.</td>
+			</tr>
+			<tr>
+					<td><code>accept</code></td>
+					<td>Block until connection request arrives.</td>
+			</tr>
+			<tr>
+					<td><code>connect</code></td>
+					<td>Actively establish connection.</td>
+			</tr>
+			<tr>
+					<td><code>send</code></td>
+					<td>Send data.</td>
+			</tr>
+			<tr>
+					<td><code>receive</code></td>
+					<td>Receive data.</td>
+			</tr>
+			<tr>
+					<td><code>close</code></td>
+					<td>Release connection.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Important: sockets are powerful but low-level, so programming mistakes are common.</p>
+<hr>
+<h2 id="simple-socket-serverclient-idea">Simple socket server/client idea</h2>
+<p>Server flow:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">create socket
+</span></span><span class="line"><span class="cl">bind to host/port
+</span></span><span class="line"><span class="cl">listen
+</span></span><span class="line"><span class="cl">accept connection
+</span></span><span class="line"><span class="cl">repeat:
+</span></span><span class="line"><span class="cl">    receive data
+</span></span><span class="line"><span class="cl">    send response
+</span></span><span class="line"><span class="cl">close
+</span></span></code></pre></div><p>Client flow:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">create socket
+</span></span><span class="line"><span class="cl">connect to server
+</span></span><span class="line"><span class="cl">send request
+</span></span><span class="line"><span class="cl">receive response
+</span></span><span class="line"><span class="cl">close
+</span></span></code></pre></div><hr>
+<h2 id="zeromq-making-sockets-easier">ZeroMQ: making sockets easier</h2>
+<p>ZeroMQ gives higher-level communication patterns using paired sockets.</p>
+<p>All communication is asynchronous internally.</p>
+<p>Three patterns in the slides:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Pattern</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Request-reply</td>
+					<td>Client sends request, server replies.</td>
+					<td>RPC-like communication.</td>
+			</tr>
+			<tr>
+					<td>Publish-subscribe</td>
+					<td>Publisher sends messages; subscribers receive matching topics.</td>
+					<td>News/time updates.</td>
+			</tr>
+			<tr>
+					<td>Pipeline</td>
+					<td>Producer pushes work; workers pull work.</td>
+					<td>Task distribution.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="request-reply-pattern">Request-reply pattern</h2>
+<p>Server uses reply socket (<code>REP</code>), client uses request socket (<code>REQ</code>).</p>
+<p>Flow:</p>
+<ol>
+<li>Server binds to address.</li>
+<li>Client connects.</li>
+<li>Client sends request.</li>
+<li>Server receives and replies.</li>
+<li>Client receives reply.</li>
+</ol>
+<p>Good for simple request/response services.</p>
+<hr>
+<h2 id="publish-subscribe-pattern">Publish-subscribe pattern</h2>
+<p>Publisher broadcasts messages with topics. Subscribers choose topics.</p>
+<p>Example:</p>
+<ul>
+<li>publisher sends messages starting with <code>TIME</code>,</li>
+<li>subscriber subscribes to <code>TIME</code>,</li>
+<li>subscriber receives only matching messages.</li>
+</ul>
+<p>Good for event/news dissemination.</p>
+<hr>
+<h2 id="pipeline-pattern">Pipeline pattern</h2>
+<p>Producer sends tasks to workers.</p>
+<p>Flow:</p>
+<ol>
+<li>Producer creates workload.</li>
+<li>Producer pushes workload.</li>
+<li>Workers pull tasks.</li>
+<li>Workers execute tasks.</li>
+</ol>
+<p>Good for load distribution.</p>
+<hr>
+<h2 id="mpi-operations">MPI operations</h2>
+<p>MPI gives flexible message-passing operations, often used in parallel/distributed computing.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>MPI_BSEND</code></td>
+					<td>Append outgoing message to local send buffer.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SEND</code></td>
+					<td>Send and wait until copied to local or remote buffer.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SSEND</code></td>
+					<td>Send and wait until transmission starts.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SENDRECV</code></td>
+					<td>Send message and wait for reply.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_ISEND</code></td>
+					<td>Start send and continue.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_ISSEND</code></td>
+					<td>Start send and wait until receipt starts.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_RECV</code></td>
+					<td>Receive; block if no message.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_IRECV</code></td>
+					<td>Check/receive without blocking.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="queue-based-messaging">Queue-based messaging</h2>
+<p>Queue-based messaging supports persistent communication.</p>
+<p>Instead of sender directly contacting receiver, sender puts message in a queue.</p>
+<p>Core operations:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>PUT</code></td>
+					<td>Append message to a queue.</td>
+			</tr>
+			<tr>
+					<td><code>GET</code></td>
+					<td>Block until queue has message, then remove first message.</td>
+			</tr>
+			<tr>
+					<td><code>POLL</code></td>
+					<td>Check queue and remove message if available; never block.</td>
+			</tr>
+			<tr>
+					<td><code>NOTIFY</code></td>
+					<td>Install handler called when message arrives.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="message-oriented-middleware-mom">Message-oriented middleware (MOM)</h2>
+<p>MOM provides asynchronous persistent communication using middleware-level queues.</p>
+<p>Important idea:</p>
+<ul>
+<li>queues correspond to buffers at communication servers,</li>
+<li>applications put messages into local queues,</li>
+<li>queue managers route messages to other queues.</li>
+</ul>
+<hr>
+<h2 id="queue-managers">Queue managers</h2>
+<p>Applications can only put into or get from local queues. Therefore, queue managers must route messages between queues.</p>
+<p>This is why queue-based messaging needs routing infrastructure.</p>
+<hr>
+<h2 id="message-brokers">Message brokers</h2>
+<p>Message queuing assumes applications share message format and protocol.</p>
+<p>A message broker helps when applications are heterogeneous.</p>
+<p>Broker roles:</p>
+<ul>
+<li>transform incoming messages to target format,</li>
+<li>act as application gateway,</li>
+<li>support subject-based routing / publish-subscribe.</li>
+</ul>
+<hr>
+<h2 id="amqp">AMQP</h2>
+<p>AMQP was designed as a standard protocol for high-level messaging, similar in spirit to how TCP standardizes transport.</p>
+<p>Basic model:</p>
+<ul>
+<li>client sets up stable connection,</li>
+<li>connection contains channels,</li>
+<li>two one-way channels can form a session,</li>
+<li>links are like sockets and maintain message transfer state.</li>
+</ul>
+<p>AMQP producer/consumer examples in the slides show:</p>
+<ul>
+<li>declaring exchanges,</li>
+<li>declaring queues,</li>
+<li>binding queues to routing keys,</li>
+<li>publishing messages,</li>
+<li>consumers reading and acknowledging messages.</li>
+</ul>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>List socket operations and their meanings.</li>
+<li>Compare request-reply, publish-subscribe, and pipeline.</li>
+<li>What is the difference between <code>GET</code>, <code>POLL</code>, and <code>NOTIFY</code>?</li>
+<li>Why do queue managers need routing?</li>
+<li>What does a message broker do?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-4/part-1-foundations-and-rpc/" id="nav-prev"><em>Chapter 4, Part 1 – Foundations and RPC</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-4/part-3-multicast-communication/" id="nav-next"><em>Chapter 4, Part 3 – Multicast Communication</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

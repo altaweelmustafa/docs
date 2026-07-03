@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 2 – Design Goals, Transparency, and Openness · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 2 – Design Goals, Transparency, and Openness</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overall-design-goals">Overall design goals</a></li>
+    <li><a href="#resource-sharing">Resource sharing</a></li>
+    <li><a href="#distribution-transparency">Distribution transparency</a>
+      <ul>
+        <li><a href="#types-of-transparency">Types of transparency</a></li>
+        <li><a href="#important-difference-relocation-vs-migration">Important difference: relocation vs migration</a></li>
+      </ul>
+    </li>
+    <li><a href="#full-transparency-is-not-always-good">Full transparency is not always good</a></li>
+    <li><a href="#openness">Openness</a>
+      <ul>
+        <li><a href="#policies-vs-mechanisms">Policies vs mechanisms</a></li>
+        <li><a href="#why-strict-separation-can-be-hard">Why strict separation can be hard</a></li>
+      </ul>
+    </li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="overall-design-goals">Overall design goals</h2>
+<p>Distributed systems are usually designed to achieve four main goals:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Goal</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Resource sharing</td>
+					<td>Allow users/applications to share files, storage, printers, services, data, computation, etc.</td>
+			</tr>
+			<tr>
+					<td>Distribution transparency</td>
+					<td>Hide the fact that components are distributed.</td>
+			</tr>
+			<tr>
+					<td>Openness</td>
+					<td>Make the system easy to extend, integrate, and reuse.</td>
+			</tr>
+			<tr>
+					<td>Scalability</td>
+					<td>Keep working when size, distance, or administration grows.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="resource-sharing">Resource sharing</h2>
+<p>Resource sharing means making resources available to users and applications across the network.</p>
+<p>Examples:</p>
+<ul>
+<li>Cloud storage and shared files.</li>
+<li>Peer-to-peer multimedia streaming.</li>
+<li>Shared mail services.</li>
+<li>Shared web hosting and content distribution networks.</li>
+</ul>
+<p>Important idea: sharing is not enough. Once resources are shared, we also need security, concurrency control, naming, fault tolerance, and performance management.</p>
+<hr>
+<h2 id="distribution-transparency">Distribution transparency</h2>
+<p>Transparency means the system hides distribution details from users and programmers.</p>
+<p>The user should not need to know:</p>
+<ul>
+<li>where the resource is,</li>
+<li>how many copies exist,</li>
+<li>whether another user is accessing it,</li>
+<li>whether a failure happened and recovery occurred.</li>
+</ul>
+<h3 id="types-of-transparency">Types of transparency</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Transparency type</th>
+					<th>What it hides</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access</td>
+					<td>Differences in data representation and access method.</td>
+					<td>Remote file access looks like local file access.</td>
+			</tr>
+			<tr>
+					<td>Location</td>
+					<td>Where an object/resource is located.</td>
+					<td>Use <code>www.example.com</code> instead of knowing the server IP.</td>
+			</tr>
+			<tr>
+					<td>Relocation</td>
+					<td>Object can move while in use.</td>
+					<td>A service moves to another server during execution.</td>
+			</tr>
+			<tr>
+					<td>Migration</td>
+					<td>Object can move to another location.</td>
+					<td>VM or mobile code moves to a new host.</td>
+			</tr>
+			<tr>
+					<td>Replication</td>
+					<td>Multiple copies exist.</td>
+					<td>User sees one database, even if many replicas exist.</td>
+			</tr>
+			<tr>
+					<td>Concurrency</td>
+					<td>Resource is shared by independent users.</td>
+					<td>Two users update shared data safely.</td>
+			</tr>
+			<tr>
+					<td>Failure</td>
+					<td>Failure and recovery of an object.</td>
+					<td>Request is retried on another server.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="important-difference-relocation-vs-migration">Important difference: relocation vs migration</h3>
+<ul>
+<li><strong>Migration transparency:</strong> hides that something moved.</li>
+<li><strong>Relocation transparency:</strong> hides that something moved while it was being used.</li>
+</ul>
+<p>Relocation is stronger.</p>
+<hr>
+<h2 id="full-transparency-is-not-always-good">Full transparency is not always good</h2>
+<p>The slides warn that aiming for complete transparency may be too much.</p>
+<p>Why?</p>
+<ol>
+<li><strong>Latency cannot be fully hidden.</strong> Remote communication takes time.</li>
+<li><strong>Failures cannot be perfectly hidden.</strong> A slow machine and a failed machine can look the same for a while.</li>
+<li><strong>Sometimes users need to know distribution exists.</strong> Example: location-based services, time zones, or reporting that a remote server is not responding.</li>
+</ol>
+<p>Exam sentence:</p>
+<blockquote>
+<p>Transparency is useful, but complete transparency can be impossible or even harmful because latency, failures, and location-specific behavior may need to be exposed.</p>
+</blockquote>
+<hr>
+<h2 id="openness">Openness</h2>
+<p>An open distributed system offers components that can easily be used by or integrated into other systems.</p>
+<p>Openness usually requires:</p>
+<ul>
+<li>clear interfaces,</li>
+<li>standard protocols,</li>
+<li>separation between implementation and interface,</li>
+<li>ability to replace or extend components.</li>
+</ul>
+<h3 id="policies-vs-mechanisms">Policies vs mechanisms</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Policy</td>
+					<td>What decision should be made?</td>
+					<td>What consistency level do we require?</td>
+			</tr>
+			<tr>
+					<td>Mechanism</td>
+					<td>How do we make that decision possible?</td>
+					<td>Replication protocol or cache invalidation mechanism.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Examples of policies:</p>
+<ul>
+<li>What consistency do we require for cached data?</li>
+<li>Which operations can downloaded code perform?</li>
+<li>What quality of service is needed under low bandwidth?</li>
+<li>What secrecy level is needed for communication?</li>
+</ul>
+<h3 id="why-strict-separation-can-be-hard">Why strict separation can be hard</h3>
+<p>Separating policy from mechanism sounds good, but if the separation is too strict, the system may need many configuration options and become hard to manage.</p>
+<p>So the goal is balance: flexible enough to be open, but not so configurable that it becomes impossible to operate.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Define distribution transparency.</li>
+<li>List and explain the seven transparency types.</li>
+<li>Why is full transparency sometimes impossible?</li>
+<li>What is the difference between policy and mechanism?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-1/part-1-from-networked-to-distributed/" id="nav-prev"><em>Chapter 1, Part 1 – From Networked to Distributed Systems</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-1/part-3-dependability-security-scalability/" id="nav-next"><em>Chapter 1, Part 3 – Dependability, Security, and Scalability</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

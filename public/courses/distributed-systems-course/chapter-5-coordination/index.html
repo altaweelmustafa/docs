@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5 – Coordination · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5 – Coordination</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#coordination-in-distributed-systems">Coordination in Distributed Systems</a></li>
+    <li><a href="#physical-clocks">Physical Clocks</a></li>
+    <li><a href="#precision-and-accuracy">Precision and Accuracy</a></li>
+    <li><a href="#clock-drift">Clock Drift</a></li>
+    <li><a href="#time-servers-and-ntp-idea">Time Servers and NTP Idea</a></li>
+    <li><a href="#reference-broadcast-synchronization">Reference Broadcast Synchronization</a></li>
+    <li><a href="#logical-clocks">Logical Clocks</a></li>
+    <li><a href="#lamport-logical-clocks">Lamport Logical Clocks</a></li>
+    <li><a href="#totally-ordered-multicast">Totally Ordered Multicast</a></li>
+    <li><a href="#vector-clocks">Vector Clocks</a></li>
+    <li><a href="#causally-ordered-multicast">Causally Ordered Multicast</a></li>
+    <li><a href="#mutual-exclusion">Mutual Exclusion</a></li>
+    <li><a href="#centralized-mutual-exclusion">Centralized Mutual Exclusion</a></li>
+    <li><a href="#ricart-and-agrawala-algorithm">Ricart and Agrawala Algorithm</a></li>
+    <li><a href="#token-ring-algorithm">Token Ring Algorithm</a></li>
+    <li><a href="#decentralized-mutual-exclusion">Decentralized Mutual Exclusion</a></li>
+    <li><a href="#comparing-mutual-exclusion-algorithms">Comparing Mutual Exclusion Algorithms</a></li>
+    <li><a href="#zookeeper-and-locks">ZooKeeper and Locks</a></li>
+    <li><a href="#election-algorithms">Election Algorithms</a></li>
+    <li><a href="#bully-algorithm">Bully Algorithm</a></li>
+    <li><a href="#ring-election-algorithm">Ring Election Algorithm</a></li>
+    <li><a href="#leader-election-in-zookeeper-and-raft">Leader Election in ZooKeeper and Raft</a></li>
+    <li><a href="#gossip-based-coordination">Gossip-Based Coordination</a></li>
+    <li><a href="#secure-gossiping">Secure Gossiping</a></li>
+    <li><a href="#distributed-event-matching">Distributed Event Matching</a></li>
+    <li><a href="#secure-publish-subscribe">Secure Publish-Subscribe</a></li>
+    <li><a href="#location-systems">Location Systems</a></li>
+    <li><a href="#quick-summary">Quick Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="coordination-in-distributed-systems">Coordination in Distributed Systems</h2>
+<blockquote>
+<p>Coordination is about getting independent machines to agree on time, ordering,
+access to shared resources, leadership, membership, and shared state.</p>
+</blockquote>
+<p>Coordination is hard because distributed systems usually do not have a perfect
+global clock, communication can be delayed, and processes can fail independently.</p>
+<hr>
+<h2 id="physical-clocks">Physical Clocks</h2>
+<p>Sometimes a system needs real time, not only event ordering. Physical clock
+synchronization tries to keep machine clocks close to each other or close to UTC.</p>
+<p>UTC is based on highly accurate atomic clocks and can be broadcast through radio
+or satellite.</p>
+<hr>
+<h2 id="precision-and-accuracy">Precision and Accuracy</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Precision</td>
+					<td>How close two machine clocks are to each other</td>
+			</tr>
+			<tr>
+					<td>Accuracy</td>
+					<td>How close a machine clock is to real UTC time</td>
+			</tr>
+			<tr>
+					<td>Internal synchronization</td>
+					<td>Keep clocks precise relative to each other</td>
+			</tr>
+			<tr>
+					<td>External synchronization</td>
+					<td>Keep clocks accurate relative to real time</td>
+			</tr>
+	</tbody>
+</table>
+<p>A system may have clocks that agree with each other but are all wrong compared
+to real time. That is precise but not accurate.</p>
+<hr>
+<h2 id="clock-drift">Clock Drift</h2>
+<p>Clock drift happens because hardware clocks do not tick at exactly the same rate.</p>
+<p>A clock may be:</p>
+<ul>
+<li>Fast.</li>
+<li>Perfect.</li>
+<li>Slow.</li>
+</ul>
+<p>Clock synchronization algorithms must account for drift and adjust clocks before
+they move too far apart.</p>
+<hr>
+<h2 id="time-servers-and-ntp-idea">Time Servers and NTP Idea</h2>
+<p>A client can ask a time server for the current time. The challenge is that the
+request and response take time to travel through the network.</p>
+<p>The client estimates:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Value</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Offset</td>
+					<td>How far the client clock is from the server clock</td>
+			</tr>
+			<tr>
+					<td>Delay</td>
+					<td>Approximate network delay of the exchange</td>
+			</tr>
+	</tbody>
+</table>
+<p>Network Time Protocol collects offset and delay pairs and prefers the offset
+associated with the smallest delay.</p>
+<hr>
+<h2 id="reference-broadcast-synchronization">Reference Broadcast Synchronization</h2>
+<p>Reference Broadcast Synchronization, or RBS, uses a reference message broadcast
+to multiple receivers.</p>
+<p>The idea is:</p>
+<ul>
+<li>A node broadcasts a reference message.</li>
+<li>Each receiver records the local time when the message arrived.</li>
+<li>Receivers compare their recorded times.</li>
+<li>Linear regression can be used to model clock drift over time.</li>
+</ul>
+<p>RBS focuses on receiver-to-receiver synchronization instead of sender-to-receiver
+synchronization.</p>
+<hr>
+<h2 id="logical-clocks">Logical Clocks</h2>
+<p>Often the exact physical time is less important than the order of events.
+Logical clocks provide ordering without requiring a global physical clock.</p>
+<p>The key relation is <strong>happened-before</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Rule</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Same process</td>
+					<td>If event <code>a</code> occurs before event <code>b</code> in the same process, then <code>a → b</code></td>
+			</tr>
+			<tr>
+					<td>Message passing</td>
+					<td>Sending a message happens before receiving that message</td>
+			</tr>
+			<tr>
+					<td>Transitivity</td>
+					<td>If <code>a → b</code> and <code>b → c</code>, then <code>a → c</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>This gives a partial ordering of events in a distributed system.</p>
+<hr>
+<h2 id="lamport-logical-clocks">Lamport Logical Clocks</h2>
+<p>Lamport clocks attach a timestamp to each event so the timestamps respect the
+happened-before relation.</p>
+<p>Each process keeps a counter.</p>
+<p>Rules:</p>
+<ol>
+<li>Before each local event, increment the local counter.</li>
+<li>When sending a message, attach the current counter value.</li>
+<li>When receiving a message, set the local counter to the maximum of the local
+counter and the received timestamp, then increment it.</li>
+</ol>
+<p>Lamport clocks guarantee that if <code>a → b</code>, then <code>C(a) &lt; C(b)</code>. However, the
+reverse is not always true: <code>C(a) &lt; C(b)</code> does not prove that <code>a</code> caused <code>b</code>.</p>
+<hr>
+<h2 id="totally-ordered-multicast">Totally Ordered Multicast</h2>
+<p>Totally ordered multicast ensures that all replicas deliver updates in the same
+order.</p>
+<p>This is important when concurrent updates can lead to different final values.
+For example, if one process adds money and another process applies interest,
+replicas must perform the operations in the same order.</p>
+<p>Basic idea:</p>
+<ul>
+<li>Each message is timestamped.</li>
+<li>Each process stores incoming messages in a local queue ordered by timestamp.</li>
+<li>Messages are acknowledged.</li>
+<li>A message is delivered only when it is safe to know that no smaller timestamped
+message will arrive later.</li>
+</ul>
+<hr>
+<h2 id="vector-clocks">Vector Clocks</h2>
+<p>Vector clocks improve on Lamport clocks by capturing potential causality.</p>
+<p>Each process keeps a vector. If there are <code>N</code> processes, each timestamp has <code>N</code>
+entries.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Entry</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>VCi[i]</code></td>
+					<td>Number of events known from process <code>Pi</code> itself</td>
+			</tr>
+			<tr>
+					<td><code>VCi[j]</code></td>
+					<td>Number of events from process <code>Pj</code> known by process <code>Pi</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>Rules:</p>
+<ol>
+<li>Before executing an event, increment the local vector entry.</li>
+<li>When sending a message, attach the whole vector.</li>
+<li>When receiving a message, take the element-wise maximum with the received
+vector, then update the local entry.</li>
+</ol>
+<p>Vector clocks can tell whether one event may causally precede another or whether
+two events are concurrent.</p>
+<hr>
+<h2 id="causally-ordered-multicast">Causally Ordered Multicast</h2>
+<p>Causally ordered multicast delivers a message only after all messages that could
+causally precede it have already been delivered.</p>
+<p>For a message from process <code>Pi</code>, a receiver <code>Pj</code> delays delivery until:</p>
+<ul>
+<li>The message is the next expected message from <code>Pi</code>.</li>
+<li>All other vector-clock entries are not ahead of what <code>Pj</code> already knows.</li>
+</ul>
+<p>This prevents an effect from being delivered before its possible cause.</p>
+<hr>
+<h2 id="mutual-exclusion">Mutual Exclusion</h2>
+<p>Mutual exclusion is needed when several processes want exclusive access to a
+shared resource.</p>
+<p>Two main approaches are:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Approach</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Permission-based</td>
+					<td>A process must get permission before entering the critical region</td>
+			</tr>
+			<tr>
+					<td>Token-based</td>
+					<td>A process may enter only when it holds a token</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="centralized-mutual-exclusion">Centralized Mutual Exclusion</h2>
+<p>A simple approach is to use one coordinator.</p>
+<p>Steps:</p>
+<ol>
+<li>A process asks the coordinator for permission.</li>
+<li>If the resource is free, the coordinator grants permission.</li>
+<li>If the resource is busy, the coordinator delays the reply.</li>
+<li>When the current process releases the resource, the coordinator grants access
+to the next waiting process.</li>
+</ol>
+<p>This is simple, but the coordinator can become a bottleneck or point of failure.</p>
+<hr>
+<h2 id="ricart-and-agrawala-algorithm">Ricart and Agrawala Algorithm</h2>
+<p>Ricart and Agrawala is a distributed permission-based algorithm.</p>
+<p>A process replies to another process&rsquo;s request only if:</p>
+<ul>
+<li>It has no interest in the shared resource, or</li>
+<li>It also wants the resource but the requester has higher priority according to
+timestamps.</li>
+</ul>
+<p>Otherwise, the reply is deferred.</p>
+<p>The algorithm avoids a central coordinator, but it requires many messages.</p>
+<hr>
+<h2 id="token-ring-algorithm">Token Ring Algorithm</h2>
+<p>In the token ring algorithm, processes are organized in a logical ring.</p>
+<ul>
+<li>The token circulates around the ring.</li>
+<li>A process may enter the critical region only when it has the token.</li>
+<li>If it does not need the resource, it passes the token to the next process.</li>
+</ul>
+<p>The algorithm is simple, but losing the token or a node failure requires recovery.</p>
+<hr>
+<h2 id="decentralized-mutual-exclusion">Decentralized Mutual Exclusion</h2>
+<p>In decentralized mutual exclusion, the resource is replicated and each replica
+has a coordinator.</p>
+<p>A process needs a majority vote from coordinators before entering the critical
+region.</p>
+<p>This reduces dependence on one coordinator, but correctness depends on how many
+coordinators fail or forget granted permissions.</p>
+<hr>
+<h2 id="comparing-mutual-exclusion-algorithms">Comparing Mutual Exclusion Algorithms</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Algorithm</th>
+					<th>Main Advantage</th>
+					<th>Main Disadvantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Centralized</td>
+					<td>Simple and low message count</td>
+					<td>Coordinator bottleneck/failure</td>
+			</tr>
+			<tr>
+					<td>Ricart and Agrawala</td>
+					<td>No central coordinator</td>
+					<td>Many messages and deferred replies</td>
+			</tr>
+			<tr>
+					<td>Token ring</td>
+					<td>Simple permission rule</td>
+					<td>Token loss and ring maintenance</td>
+			</tr>
+			<tr>
+					<td>Decentralized voting</td>
+					<td>More fault tolerant than one coordinator</td>
+					<td>More complex correctness analysis</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="zookeeper-and-locks">ZooKeeper and Locks</h2>
+<p>ZooKeeper provides a tree-based namespace similar to a file system. Clients can
+create, delete, update, and check nodes.</p>
+<p>A simple lock can be represented by a node such as <code>/lock</code>.</p>
+<p>Possible race condition:</p>
+<ol>
+<li>Client <code>C1</code> creates <code>/lock</code>.</li>
+<li>Client <code>C2</code> wants the lock and sees that <code>/lock</code> exists.</li>
+<li>Before <code>C2</code> subscribes to changes, <code>C1</code> deletes <code>/lock</code>.</li>
+<li><code>C2</code> then subscribes and waits, even though the lock was already released.</li>
+</ol>
+<p>Version numbers and notification mechanisms help avoid this race.</p>
+<hr>
+<h2 id="election-algorithms">Election Algorithms</h2>
+<p>Election algorithms select a coordinator dynamically.</p>
+<p>Basic assumptions often include:</p>
+<ul>
+<li>Each process has a unique ID.</li>
+<li>Processes know the IDs of other processes.</li>
+<li>The goal is to elect the highest-ID process that is still alive.</li>
+</ul>
+<hr>
+<h2 id="bully-algorithm">Bully Algorithm</h2>
+<p>In the bully algorithm, if a process notices that the coordinator is not
+responding, it starts an election.</p>
+<p>Steps:</p>
+<ol>
+<li>It sends election messages to all processes with higher IDs.</li>
+<li>If no higher process responds, it becomes coordinator.</li>
+<li>If a higher process responds, that process takes over the election.</li>
+</ol>
+<p>The highest live process eventually becomes coordinator.</p>
+<hr>
+<h2 id="ring-election-algorithm">Ring Election Algorithm</h2>
+<p>In a ring election algorithm:</p>
+<ul>
+<li>Processes are arranged in a logical ring.</li>
+<li>A process sends an election message to its successor.</li>
+<li>Each live process adds itself to the list.</li>
+<li>When the message returns to the initiator, the process with highest priority is
+elected.</li>
+<li>A coordinator message is sent around the ring.</li>
+</ul>
+<hr>
+<h2 id="leader-election-in-zookeeper-and-raft">Leader Election in ZooKeeper and Raft</h2>
+<p>ZooKeeper-style leader election considers both server identity and transaction
+freshness. A server with more up-to-date transaction information may be preferred.</p>
+<p>Raft uses terms and server states:</p>
+<table>
+	<thead>
+			<tr>
+					<th>State</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Follower</td>
+					<td>Waits for leader messages</td>
+			</tr>
+			<tr>
+					<td>Candidate</td>
+					<td>Starts an election when no leader heartbeat is received</td>
+			</tr>
+			<tr>
+					<td>Leader</td>
+					<td>Sends regular heartbeats and manages the group</td>
+			</tr>
+	</tbody>
+</table>
+<p>A candidate becomes leader after receiving votes from a majority.
+Different timeout values help avoid repeated simultaneous elections.</p>
+<hr>
+<h2 id="gossip-based-coordination">Gossip-Based Coordination</h2>
+<p>Gossip can also be used for coordination tasks.</p>
+<p>Examples include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Use</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Data dissemination</td>
+					<td>Spread updates through peer exchanges</td>
+			</tr>
+			<tr>
+					<td>Aggregation</td>
+					<td>Compute values such as averages over many nodes</td>
+			</tr>
+			<tr>
+					<td>Peer sampling</td>
+					<td>Let nodes obtain random peers without knowing the whole network</td>
+			</tr>
+			<tr>
+					<td>Overlay construction</td>
+					<td>Build structured neighbor relationships through local exchanges</td>
+			</tr>
+	</tbody>
+</table>
+<p>In aggregation, if two nodes gossip and have values <code>vi</code> and <code>vj</code>, both can set
+their values to <code>(vi + vj) / 2</code>. Eventually, nodes converge toward the global
+average.</p>
+<hr>
+<h2 id="secure-gossiping">Secure Gossiping</h2>
+<p>Gossip systems can be attacked. In a hub attack, colluding nodes return links
+only to each other, causing many benign nodes to point only to attackers.</p>
+<p>One defense is gathering statistics about indegree distributions. If attackers do
+not know whether a response will be used for normal operation or measurement,
+they are pressured to follow the protocol.</p>
+<hr>
+<h2 id="distributed-event-matching">Distributed Event Matching</h2>
+<p>In publish-subscribe systems:</p>
+<ul>
+<li>A subscriber states which events it is interested in.</li>
+<li>A publisher sends a notification.</li>
+<li>The system checks whether the notification matches the subscription.</li>
+</ul>
+<p>The hard part is implementing matching in a scalable way.</p>
+<p>Selective routing can forward notifications only to relevant nodes instead of
+broadcasting everything.</p>
+<hr>
+<h2 id="secure-publish-subscribe">Secure Publish-Subscribe</h2>
+<p>Secure publish-subscribe is difficult because publishers and subscribers may need
+mutual anonymity.</p>
+<p>Challenges include:</p>
+<ul>
+<li>A secure channel may not be possible if parties do not know each other.</li>
+<li>Message integrity is harder when the source is hidden.</li>
+<li>A trusted broker may not be realistic for sensitive data.</li>
+</ul>
+<p>One solution is searching over encrypted data, such as using Public-Key Encryption
+with Keyword Search, or PEKS.</p>
+<hr>
+<h2 id="location-systems">Location Systems</h2>
+<p>Large-scale distributed systems often need a notion of distance or proximity.
+Location systems estimate where nodes are.</p>
+<p>Examples include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>GPS</td>
+					<td>Uses satellite signals and timing equations</td>
+			</tr>
+			<tr>
+					<td>WiFi-based location</td>
+					<td>Uses known access points and estimated distances</td>
+			</tr>
+			<tr>
+					<td>Logical positioning</td>
+					<td>Uses latency or network measurements to compute relative position</td>
+			</tr>
+	</tbody>
+</table>
+<p>Location is useful for selecting nearby servers, reducing latency, and improving
+routing decisions.</p>
+<hr>
+<h2 id="quick-summary">Quick Summary</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Key Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Physical clock</td>
+					<td>Measures real time but may drift</td>
+			</tr>
+			<tr>
+					<td>Logical clock</td>
+					<td>Orders events without real time</td>
+			</tr>
+			<tr>
+					<td>Lamport clock</td>
+					<td>Preserves happened-before ordering</td>
+			</tr>
+			<tr>
+					<td>Vector clock</td>
+					<td>Captures possible causality and concurrency</td>
+			</tr>
+			<tr>
+					<td>Mutual exclusion</td>
+					<td>Controls exclusive access to shared resources</td>
+			</tr>
+			<tr>
+					<td>Election algorithm</td>
+					<td>Dynamically selects a coordinator or leader</td>
+			</tr>
+			<tr>
+					<td>Gossip coordination</td>
+					<td>Uses peer exchanges for dissemination, aggregation, and overlays</td>
+			</tr>
+			<tr>
+					<td>Publish-subscribe</td>
+					<td>Matches notifications to subscriptions</td>
+			</tr>
+			<tr>
+					<td>Location system</td>
+					<td>Estimates node position or proximity</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-course/chapter-4-communication/" id="nav-prev"><em>Chapter 4 – Communication</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

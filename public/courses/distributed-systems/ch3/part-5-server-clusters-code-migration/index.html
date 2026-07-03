@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 5 – Server Clusters and Code Migration · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 5 – Server Clusters and Code Migration</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#server-clusters">Server clusters</a></li>
+    <li><a href="#request-dispatching-bottleneck">Request dispatching bottleneck</a></li>
+    <li><a href="#servers-spread-across-the-internet">Servers spread across the Internet</a>
+      <ul>
+        <li><a href="#dns-based-dispatching">DNS-based dispatching</a></li>
+      </ul>
+    </li>
+    <li><a href="#cdn-idea-akamai-style-caching">CDN idea: Akamai-style caching</a></li>
+    <li><a href="#code-migration">Code migration</a></li>
+    <li><a href="#code-mobility-components">Code mobility components</a></li>
+    <li><a href="#weak-vs-strong-mobility">Weak vs strong mobility</a></li>
+    <li><a href="#migration-in-heterogeneous-systems">Migration in heterogeneous systems</a></li>
+    <li><a href="#migrating-a-virtual-machine">Migrating a virtual machine</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="server-clusters">Server clusters</h2>
+<p>A server cluster is a group of servers working together to provide one service.</p>
+<p>Common three-tier organization:</p>
+<ol>
+<li><strong>First tier:</strong> request dispatching / front-end.</li>
+<li><strong>Second tier:</strong> application or service logic.</li>
+<li><strong>Third tier:</strong> storage/database/backend resources.</li>
+</ol>
+<p>Crucial element: the first tier passes incoming requests to the correct server.</p>
+<hr>
+<h2 id="request-dispatching-bottleneck">Request dispatching bottleneck</h2>
+<p>If the first tier handles all communication to/from the cluster, it can become a bottleneck.</p>
+<p>Solution idea: <strong>TCP handoff</strong>.</p>
+<p>Basic idea:</p>
+<ol>
+<li>Front-end receives request.</li>
+<li>Front-end chooses a back-end server.</li>
+<li>TCP connection is handed off or redirected so back-end can handle communication.</li>
+</ol>
+<p>This reduces pressure on the front-end.</p>
+<hr>
+<h2 id="servers-spread-across-the-internet">Servers spread across the Internet</h2>
+<p>Spreading servers across the Internet improves locality but creates administrative problems.</p>
+<p>Common solution:</p>
+<ul>
+<li>use data centers from a single cloud provider,</li>
+<li>use DNS-based request dispatching.</li>
+</ul>
+<h3 id="dns-based-dispatching">DNS-based dispatching</h3>
+<ol>
+<li>Client looks up service name through DNS.</li>
+<li>Client IP is part of the request context.</li>
+<li>DNS server returns address of a nearby replica.</li>
+</ol>
+<p>Problem:</p>
+<p>The DNS resolver may not be close to the actual client, so “nearest to resolver” may not mean “nearest to client.”</p>
+<hr>
+<h2 id="cdn-idea-akamai-style-caching">CDN idea: Akamai-style caching</h2>
+<p>A CDN places caches/servers close to users.</p>
+<p>Important note from the slides:</p>
+<p>A cache may store more than passive files. Application code can also be moved closer to the user.</p>
+<p>This improves:</p>
+<ul>
+<li>latency,</li>
+<li>bandwidth usage,</li>
+<li>scalability,</li>
+<li>availability.</li>
+</ul>
+<hr>
+<h2 id="code-migration">Code migration</h2>
+<p>Code migration means moving code from one machine to another.</p>
+<p>Reasons:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Reason</th>
+					<th>Explanation</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Load distribution</td>
+					<td>Move work so servers are sufficiently loaded and energy is not wasted.</td>
+			</tr>
+			<tr>
+					<td>Move computation near data</td>
+					<td>Avoid sending huge data across network.</td>
+			</tr>
+			<tr>
+					<td>Flexibility</td>
+					<td>Move code to client when needed instead of pre-installing everything.</td>
+			</tr>
+			<tr>
+					<td>Privacy/security/legal limits</td>
+					<td>If data cannot move, move code to the data.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Example: federated machine learning moves computation/model updates near data instead of collecting raw private data centrally.</p>
+<hr>
+<h2 id="code-mobility-components">Code mobility components</h2>
+<p>An object or process can be seen as having:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Component</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Code segment</td>
+					<td>Actual program instructions.</td>
+			</tr>
+			<tr>
+					<td>Data segment</td>
+					<td>State/data used by code.</td>
+			</tr>
+			<tr>
+					<td>Execution state</td>
+					<td>Current execution context of thread/process.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="weak-vs-strong-mobility">Weak vs strong mobility</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>What moves?</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Weak mobility</td>
+					<td>Code + data.</td>
+					<td>Execution restarts at destination.</td>
+			</tr>
+			<tr>
+					<td>Strong mobility</td>
+					<td>Code + data + execution state.</td>
+					<td>Execution continues from where it stopped.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Weak mobility forms:</p>
+<ul>
+<li><strong>code shipping:</strong> push code to another machine,</li>
+<li><strong>code fetching:</strong> destination pulls code when needed.</li>
+</ul>
+<p>Strong mobility forms:</p>
+<ul>
+<li><strong>migration:</strong> move object/process completely,</li>
+<li><strong>cloning:</strong> create a copy in same execution state.</li>
+</ul>
+<hr>
+<h2 id="migration-in-heterogeneous-systems">Migration in heterogeneous systems</h2>
+<p>Main problem:</p>
+<p>Different machines may use different hardware, OS, runtime, and process/thread context representation.</p>
+<p>Only practical solution:</p>
+<p>Use an abstract machine implemented on different platforms.</p>
+<p>Examples:</p>
+<ul>
+<li>interpreted languages with their own VM,</li>
+<li>virtual machine monitors.</li>
+</ul>
+<p>Containers are much harder to migrate across heterogeneous OS environments because they depend on the underlying kernel.</p>
+<hr>
+<h2 id="migrating-a-virtual-machine">Migrating a virtual machine</h2>
+<p>Three alternatives:</p>
+<ol>
+<li><strong>Pre-copy:</strong> push memory pages to the new machine and resend pages modified during migration.</li>
+<li><strong>Stop-and-copy:</strong> stop the VM, copy memory, restart at destination.</li>
+<li><strong>Post-copy / pull-on-demand:</strong> start VM at destination and fetch pages as needed.</li>
+</ol>
+<p>Tradeoff:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Advantage</th>
+					<th>Disadvantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pre-copy</td>
+					<td>Less downtime.</td>
+					<td>May resend dirty pages many times.</td>
+			</tr>
+			<tr>
+					<td>Stop-and-copy</td>
+					<td>Simple and consistent.</td>
+					<td>High downtime.</td>
+			</tr>
+			<tr>
+					<td>Pull-on-demand</td>
+					<td>Starts quickly at destination.</td>
+					<td>Page faults/network delay after start.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Important warning:</p>
+<p>A complete VM migration can take tens of seconds, and the service may be unavailable for multiple seconds.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What is request dispatching?</li>
+<li>Why can the first tier become a bottleneck?</li>
+<li>How does DNS support request dispatching for geographically distributed servers?</li>
+<li>Why migrate code instead of data?</li>
+<li>Compare weak mobility and strong mobility.</li>
+<li>Compare three VM migration strategies.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch3/part-4-clients-and-servers/" id="nav-prev"><em>Chapter 3, Part 4 – Clients and Servers</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

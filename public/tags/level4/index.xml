@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Level4 on Docs</title>
-    <link>http://localhost:1313/docs/tags/level4/</link>
-    <description>Recent content in Level4 on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/level4/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 10 – IoT Level-4</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-4&#34;&gt;What Is IoT Level-4?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-4 IoT system has &lt;strong&gt;multiple nodes&lt;/strong&gt; that each perform local analysis.&#xA;Data is stored in the cloud. The application is cloud-based. It includes both&#xA;local and cloud-based &lt;strong&gt;observer nodes&lt;/strong&gt; that can subscribe to and receive data&#xA;collected in the cloud from IoT devices.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The jump from Level-3 to Level-4 is: &lt;strong&gt;multiple nodes&lt;/strong&gt; plus &lt;strong&gt;observer nodes&lt;/strong&gt;&#xA;that subscribe to cloud data for additional processing, visualization, or&#xA;alerting.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Level4 on Docs</title>
+		<link>http://localhost:1313/docs/tags/level4/</link>
+		<description>Recent content in Level4 on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/level4/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 10 – IoT Level-4</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part10-iot-level4/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-4&#34;&gt;What Is IoT Level-4?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-4 IoT system has &lt;strong&gt;multiple nodes&lt;/strong&gt; that each perform local analysis.&#xA;Data is stored in the cloud. The application is cloud-based. It includes both&#xA;local and cloud-based &lt;strong&gt;observer nodes&lt;/strong&gt; that can subscribe to and receive data&#xA;collected in the cloud from IoT devices.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The jump from Level-3 to Level-4 is: &lt;strong&gt;multiple nodes&lt;/strong&gt; plus &lt;strong&gt;observer nodes&lt;/strong&gt;&#xA;that subscribe to cloud data for additional processing, visualization, or&#xA;alerting.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

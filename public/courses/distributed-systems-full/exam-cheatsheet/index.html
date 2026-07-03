@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Cheatsheet · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Exam Cheatsheet</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-1-must-know-definitions">Chapter 1: Must-know definitions</a></li>
+    <li><a href="#transparency-types">Transparency types</a></li>
+    <li><a href="#dependability">Dependability</a></li>
+    <li><a href="#security-triad">Security triad</a></li>
+    <li><a href="#scalability-formulas">Scalability formulas</a></li>
+    <li><a href="#chapter-3-process-and-thread-essentials">Chapter 3: Process and thread essentials</a></li>
+    <li><a href="#chapter-4-communication-essentials">Chapter 4: Communication essentials</a></li>
+    <li><a href="#chapter-4-epidemic-protocol-formulas">Chapter 4: Epidemic protocol formulas</a></li>
+    <li><a href="#chapter-5-clock-essentials">Chapter 5: Clock essentials</a></li>
+    <li><a href="#lamport-logical-clocks">Lamport logical clocks</a></li>
+    <li><a href="#vector-clocks">Vector clocks</a></li>
+    <li><a href="#causal-multicast-delivery-test">Causal multicast delivery test</a></li>
+    <li><a href="#mutual-exclusion-comparison">Mutual exclusion comparison</a></li>
+    <li><a href="#election-algorithms">Election algorithms</a></li>
+    <li><a href="#last-night-exam-checklist">Last-night exam checklist</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="chapter-1-must-know-definitions">Chapter 1: Must-know definitions</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Distributed system</td>
+					<td>A collection of independent computers that appears to users as one coherent system.</td>
+			</tr>
+			<tr>
+					<td>Centralized</td>
+					<td>One main node controls or stores the service.</td>
+			</tr>
+			<tr>
+					<td>Decentralized</td>
+					<td>Control is spread, but the system may still have weak structure or partial interconnection.</td>
+			</tr>
+			<tr>
+					<td>Distributed</td>
+					<td>Components cooperate through a network and the system is designed around distribution.</td>
+			</tr>
+			<tr>
+					<td>Middleware</td>
+					<td>Software layer that hides distribution and provides common services such as communication, naming, security, replication, caching, and marshaling.</td>
+			</tr>
+			<tr>
+					<td>Transparency</td>
+					<td>Hiding distribution from users/applications.</td>
+			</tr>
+			<tr>
+					<td>Openness</td>
+					<td>Components can be reused, replaced, extended, or integrated with other systems.</td>
+			</tr>
+			<tr>
+					<td>Scalability</td>
+					<td>Ability to handle growth in size, geography, or administration without unacceptable performance or management problems.</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="transparency-types">Transparency types</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Hides what?</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access</td>
+					<td>Differences in data representation and access method</td>
+					<td>Local file vs remote file looks similar</td>
+			</tr>
+			<tr>
+					<td>Location</td>
+					<td>Where a resource is located</td>
+					<td>Use a name, not an IP address</td>
+			</tr>
+			<tr>
+					<td>Relocation</td>
+					<td>Resource can move while in use</td>
+					<td>Mobile object/server changes location</td>
+			</tr>
+			<tr>
+					<td>Migration</td>
+					<td>Resource may move to another location</td>
+					<td>VM moves to another host</td>
+			</tr>
+			<tr>
+					<td>Replication</td>
+					<td>Multiple copies exist</td>
+					<td>User sees one service, not many replicas</td>
+			</tr>
+			<tr>
+					<td>Concurrency</td>
+					<td>Many users share the same resource</td>
+					<td>Bank account updates are coordinated</td>
+			</tr>
+			<tr>
+					<td>Failure</td>
+					<td>Failure and recovery</td>
+					<td>System retries or switches replica</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="dependability">Dependability</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Availability</td>
+					<td>Ready for use now.</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>Continuous correct service over time.</td>
+			</tr>
+			<tr>
+					<td>Safety</td>
+					<td>Very low chance of catastrophic failure.</td>
+			</tr>
+			<tr>
+					<td>Maintainability</td>
+					<td>Easy to repair after failure.</td>
+			</tr>
+			<tr>
+					<td>Failure</td>
+					<td>Component does not meet its specification.</td>
+			</tr>
+			<tr>
+					<td>Error</td>
+					<td>Incorrect internal state that may cause failure.</td>
+			</tr>
+			<tr>
+					<td>Fault</td>
+					<td>Root cause of the error.</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Metrics:</strong></p>
+<ul>
+<li><code>MTTF</code>: average time until failure.</li>
+<li><code>MTTR</code>: average time to repair.</li>
+<li><code>MTBF = MTTF + MTTR</code>.</li>
+</ul>
+<h2 id="security-triad">Security triad</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Confidentiality</td>
+					<td>Only authorized parties can read data.</td>
+			</tr>
+			<tr>
+					<td>Integrity</td>
+					<td>Only authorized changes are allowed; tampering is detected/prevented.</td>
+			</tr>
+			<tr>
+					<td>Availability</td>
+					<td>Authorized users can access the system when needed.</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="scalability-formulas">Scalability formulas</h2>
+<p>For a centralized service modeled as a queue:</p>
+<ul>
+<li>Arrival rate: <code>λ</code></li>
+<li>Service capacity: <code>μ</code></li>
+<li>Service time: <code>S = 1/μ</code></li>
+<li>Utilization: <code>U = λ/μ</code></li>
+<li>Average number of requests in system: <code>N = U/(1-U)</code></li>
+<li>Throughput: <code>X = λ</code></li>
+<li>Response time: <code>R = N/X = S/(1-U)</code></li>
+<li>Ratio: <code>R/S = 1/(1-U)</code></li>
+</ul>
+<p><strong>Important exam conclusion:</strong> when <code>U → 1</code>, response time grows very fast. A service near 100% utilization becomes unusable.</p>
+<h2 id="chapter-3-process-and-thread-essentials">Chapter 3: Process and thread essentials</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Processor</td>
+					<td>Physical execution engine for instructions.</td>
+			</tr>
+			<tr>
+					<td>Thread</td>
+					<td>Minimal software processor/execution context.</td>
+			</tr>
+			<tr>
+					<td>Process</td>
+					<td>Software processor containing one or more threads plus address space/resources.</td>
+			</tr>
+			<tr>
+					<td>Processor context</td>
+					<td>CPU registers such as PC, SP, addressing registers.</td>
+			</tr>
+			<tr>
+					<td>Thread context</td>
+					<td>Processor context plus thread state.</td>
+			</tr>
+			<tr>
+					<td>Process context</td>
+					<td>Thread context plus memory-management information such as MMU registers.</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Why threads?</strong> avoid blocking, exploit multicore parallelism, reduce process-switching overhead, and structure servers/clients more cleanly.</p>
+<p><strong>Thread-level parallelism:</strong></p>
+<p><code>TLP = (Σ i·ci) / (1 - c0)</code></p>
+<p>where <code>ci</code> is the fraction of time exactly <code>i</code> threads execute simultaneously.</p>
+<h2 id="chapter-4-communication-essentials">Chapter 4: Communication essentials</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Transient communication</td>
+					<td>Message is discarded if it cannot be delivered immediately.</td>
+			</tr>
+			<tr>
+					<td>Persistent communication</td>
+					<td>Message is stored until it can be delivered.</td>
+			</tr>
+			<tr>
+					<td>Synchronous communication</td>
+					<td>Sender/client waits.</td>
+			</tr>
+			<tr>
+					<td>Asynchronous communication</td>
+					<td>Sender/client continues without waiting.</td>
+			</tr>
+			<tr>
+					<td>RPC</td>
+					<td>Remote Procedure Call hides message passing behind a procedure call.</td>
+			</tr>
+			<tr>
+					<td>MOM</td>
+					<td>Message-oriented middleware uses queues for persistent asynchronous messaging.</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>RPC steps:</strong> client calls stub → stub marshals parameters → OS/network sends → server stub unmarshals → server executes → reply goes back through the reverse path.</p>
+<p><strong>Why full access transparency is hard in RPC:</strong> remote calls cannot behave exactly like local calls because parameters need marshaling, references are hard, failures are different, and communication takes time.</p>
+<h2 id="chapter-4-epidemic-protocol-formulas">Chapter 4: Epidemic protocol formulas</h2>
+<p>Anti-entropy:</p>
+<ul>
+<li>Pull: <code>p(i+1) = p(i)^2</code></li>
+<li>Push: approximately <code>p(i+1) = p(i)e^-1</code> when <code>p(i)</code> is small and <code>N</code> is large.</li>
+<li>Push-pull reaches everyone in about <code>O(log N)</code> rounds.</li>
+</ul>
+<p>Rumor spreading:</p>
+<p><code>s = e^(-(1/pstop + 1)(1-s))</code></p>
+<p>Important: rumor spreading alone may leave some nodes ignorant; use anti-entropy or death certificates when correctness matters.</p>
+<h2 id="chapter-5-clock-essentials">Chapter 5: Clock essentials</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Precision</td>
+					<td>Clocks of machines are close to each other.</td>
+			</tr>
+			<tr>
+					<td>Accuracy</td>
+					<td>A clock is close to real UTC time.</td>
+			</tr>
+			<tr>
+					<td>Internal synchronization</td>
+					<td>Keep clocks mutually precise.</td>
+			</tr>
+			<tr>
+					<td>External synchronization</td>
+					<td>Keep clocks accurate with respect to UTC.</td>
+			</tr>
+			<tr>
+					<td>Clock drift</td>
+					<td>Hardware clocks run slightly fast/slow.</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>Precision formula:</strong> <code>∀t, ∀p,q: |Cp(t) - Cq(t)| ≤ π</code><br>
+<strong>Accuracy formula:</strong> <code>∀t, ∀p: |Cp(t) - t| ≤ α</code></p>
+<h2 id="lamport-logical-clocks">Lamport logical clocks</h2>
+<p>Rules:</p>
+<ol>
+<li>Before each local event, increment local counter.</li>
+<li>When sending message, attach current counter as timestamp.</li>
+<li>When receiving message with timestamp <code>ts(m)</code>, set local counter to <code>max(local, ts(m))</code>, then increment.</li>
+<li>If timestamps tie, break ties using process IDs.</li>
+</ol>
+<p>Guarantee:</p>
+<ul>
+<li>If <code>a → b</code>, then <code>C(a) &lt; C(b)</code>.</li>
+<li>But <code>C(a) &lt; C(b)</code> does <strong>not</strong> prove <code>a → b</code>.</li>
+</ul>
+<h2 id="vector-clocks">Vector clocks</h2>
+<p><code>a</code> causally precedes <code>b</code> if:</p>
+<ul>
+<li>for all <code>k</code>: <code>ts(a)[k] ≤ ts(b)[k]</code></li>
+<li>and for at least one <code>k</code>: <code>ts(a)[k] &lt; ts(b)[k]</code></li>
+</ul>
+<p>If neither vector is less than the other, the events are concurrent/conflicting.</p>
+<h2 id="causal-multicast-delivery-test">Causal multicast delivery test</h2>
+<p>Message <code>m</code> from process <code>Pi</code> with timestamp <code>ts(m)</code> can be delivered at <code>Pj</code> when:</p>
+<ol>
+<li><code>ts(m)[i] = VCj[i] + 1</code></li>
+<li>For all <code>k ≠ i</code>: <code>ts(m)[k] ≤ VCj[k]</code></li>
+</ol>
+<h2 id="mutual-exclusion-comparison">Mutual exclusion comparison</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Algorithm</th>
+					<th>Idea</th>
+					<th style="text-align: right">Messages per entry/exit</th>
+					<th style="text-align: right">Delay</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Centralized</td>
+					<td>Ask coordinator</td>
+					<td style="text-align: right">3</td>
+					<td style="text-align: right">2 message times</td>
+			</tr>
+			<tr>
+					<td>Ricart &amp; Agrawala / distributed</td>
+					<td>Ask all other processes</td>
+					<td style="text-align: right"><code>2(N-1)</code></td>
+					<td style="text-align: right"><code>2(N-1)</code></td>
+			</tr>
+			<tr>
+					<td>Token ring</td>
+					<td>Token grants access</td>
+					<td style="text-align: right"><code>1 ... ∞</code></td>
+					<td style="text-align: right"><code>0 ... N-1</code></td>
+			</tr>
+			<tr>
+					<td>Decentralized voting</td>
+					<td>Need majority of replica coordinators</td>
+					<td style="text-align: right">Larger, depends on attempts</td>
+					<td style="text-align: right">Depends on attempts</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="election-algorithms">Election algorithms</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Algorithm</th>
+					<th>Main idea</th>
+					<th>Best for</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Bully</td>
+					<td>Higher-ID alive process wins.</td>
+					<td>Small/known groups.</td>
+			</tr>
+			<tr>
+					<td>Ring election</td>
+					<td>Election message circulates ring; highest priority wins.</td>
+					<td>Logical ring organization.</td>
+			</tr>
+			<tr>
+					<td>ZooKeeper leader election</td>
+					<td>Prefer server with most recent transaction, then higher ID.</td>
+					<td>Replicated coordination service.</td>
+			</tr>
+			<tr>
+					<td>Raft</td>
+					<td>Followers become candidates after timeout; majority vote elects leader.</td>
+					<td>Replicated logs/consensus.</td>
+			</tr>
+			<tr>
+					<td>Proof of stake</td>
+					<td>Random token owner becomes leader; more tokens means higher chance.</td>
+					<td>Blockchain-style systems.</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="last-night-exam-checklist">Last-night exam checklist</h2>
+<ul>
+<li>Explain transparency and give examples.</li>
+<li>Distinguish availability vs reliability.</li>
+<li>Solve simple utilization/response-time question.</li>
+<li>Compare cluster vs grid vs cloud/edge/pervasive.</li>
+<li>Explain threads vs processes and user-level vs kernel-level threads.</li>
+<li>Explain RPC and why parameter passing is difficult.</li>
+<li>Compare transient/persistent and sync/async communication.</li>
+<li>Explain anti-entropy, rumor spreading, and death certificates.</li>
+<li>Update Lamport clocks and vector clocks from a scenario.</li>
+<li>Decide if two vector timestamps are causally ordered or concurrent.</li>
+<li>Compare mutual-exclusion algorithms.</li>
+<li>Explain bully, ring, ZooKeeper, and Raft elections.</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/coverage-map/" id="nav-prev"><em>Coverage Map</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

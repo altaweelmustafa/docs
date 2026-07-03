@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 4 – Classification of Distributed Systems · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 4 – Classification of Distributed Systems</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-classify-distributed-systems">Why classify distributed systems?</a></li>
+    <li><a href="#high-performance-distributed-computing">High-performance distributed computing</a>
+      <ul>
+        <li><a href="#parallel-computing">Parallel computing</a></li>
+      </ul>
+    </li>
+    <li><a href="#distributed-shared-memory-dsm">Distributed Shared Memory (DSM)</a></li>
+    <li><a href="#cluster-computing">Cluster computing</a></li>
+    <li><a href="#grid-computing">Grid computing</a></li>
+    <li><a href="#grid-architecture-layers">Grid architecture layers</a></li>
+    <li><a href="#distributed-information-systems">Distributed information systems</a></li>
+    <li><a href="#transactions-and-acid">Transactions and ACID</a></li>
+    <li><a href="#transaction-processing-monitor-tp-monitor">Transaction Processing Monitor (TP Monitor)</a></li>
+    <li><a href="#middleware-and-eai">Middleware and EAI</a></li>
+    <li><a href="#how-applications-can-be-integrated">How applications can be integrated</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-classify-distributed-systems">Why classify distributed systems?</h2>
+<p>Distributed systems come in many forms. The chapter groups them into broad categories so you know what problem each type solves.</p>
+<p>Main categories:</p>
+<ol>
+<li>High-performance distributed computing.</li>
+<li>Distributed information systems.</li>
+<li>Distributed pervasive systems.</li>
+</ol>
+<hr>
+<h2 id="high-performance-distributed-computing">High-performance distributed computing</h2>
+<p>This category focuses on using many machines/processors to compute faster or handle large workloads.</p>
+<h3 id="parallel-computing">Parallel computing</h3>
+<p>Parallel computing started as the high-performance direction of distributed computing.</p>
+<p>Important distinction:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Multiprocessor / multicore</td>
+					<td>Multiple processors/cores share memory tightly.</td>
+			</tr>
+			<tr>
+					<td>Multicomputer</td>
+					<td>Multiple computers connected by a network.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Multiprocessors are easier to program because memory sharing is natural. Multicomputers scale better physically but are harder to program.</p>
+<hr>
+<h2 id="distributed-shared-memory-dsm">Distributed Shared Memory (DSM)</h2>
+<p>DSM tries to make a multicomputer look like it has shared memory.</p>
+<p>Basic idea:</p>
+<ul>
+<li>Each processor has its own memory.</li>
+<li>The system creates one virtual address space.</li>
+<li>If processor A accesses a page stored at processor B, the OS fetches the page from B.</li>
+</ul>
+<p>Why it sounded good:</p>
+<ul>
+<li>programmers can use a shared-memory model,</li>
+<li>easier than message passing.</li>
+</ul>
+<p>Why it failed in practice:</p>
+<ul>
+<li>performance could not compete with real multiprocessors,</li>
+<li>page movement and synchronization were expensive,</li>
+<li>expectations were too high.</li>
+</ul>
+<hr>
+<h2 id="cluster-computing">Cluster computing</h2>
+<p>A cluster is a group of high-end systems connected through a LAN.</p>
+<p>Typical properties:</p>
+<ul>
+<li>homogeneous hardware/software,</li>
+<li>same OS or near-identical OS,</li>
+<li>tightly coupled management node(s),</li>
+<li>often used for high performance or high availability.</li>
+</ul>
+<p>Exam contrast:</p>
+<blockquote>
+<p>Cluster = many similar machines in one local environment.</p>
+</blockquote>
+<hr>
+<h2 id="grid-computing">Grid computing</h2>
+<p>A grid connects many nodes from different places and organizations.</p>
+<p>Typical properties:</p>
+<ul>
+<li>heterogeneous machines,</li>
+<li>spread across several organizations,</li>
+<li>can span a WAN,</li>
+<li>resource sharing is done through virtual organizations.</li>
+</ul>
+<p>A virtual organization is a group of users/IDs allowed to use shared resources across real organizations.</p>
+<p>Exam contrast:</p>
+<blockquote>
+<p>Grid = heterogeneous resources across organizations.</p>
+</blockquote>
+<hr>
+<h2 id="grid-architecture-layers">Grid architecture layers</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Layer</th>
+					<th>Responsibility</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Fabric</td>
+					<td>Interfaces to local resources: state, capabilities, locking.</td>
+			</tr>
+			<tr>
+					<td>Connectivity</td>
+					<td>Communication, transaction, and authentication protocols.</td>
+			</tr>
+			<tr>
+					<td>Resource</td>
+					<td>Manages one resource: create process, read data, control local access.</td>
+			</tr>
+			<tr>
+					<td>Collective</td>
+					<td>Manages multiple resources: discovery, scheduling, replication.</td>
+			</tr>
+			<tr>
+					<td>Application</td>
+					<td>Actual grid applications.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="distributed-information-systems">Distributed information systems</h2>
+<p>These systems focus on integrating information and applications.</p>
+<p>Original problem:</p>
+<p>Organizations had many networked applications, but interoperability was difficult.</p>
+<p>Basic integration approach:</p>
+<ol>
+<li>A client sends requests to different applications.</li>
+<li>The client collects results.</li>
+<li>The client presents one coherent result to the user.</li>
+</ol>
+<p>Next step: direct application-to-application communication, called Enterprise Application Integration (EAI).</p>
+<hr>
+<h2 id="transactions-and-acid">Transactions and ACID</h2>
+<p>A transaction is a sequence of operations that should behave as one unit.</p>
+<p>Common primitives:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Primitive</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>BEGIN TRANSACTION</code></td>
+					<td>Start transaction.</td>
+			</tr>
+			<tr>
+					<td><code>END TRANSACTION</code></td>
+					<td>Try to commit transaction.</td>
+			</tr>
+			<tr>
+					<td><code>ABORT TRANSACTION</code></td>
+					<td>Cancel and restore old values.</td>
+			</tr>
+			<tr>
+					<td><code>READ</code></td>
+					<td>Read data.</td>
+			</tr>
+			<tr>
+					<td><code>WRITE</code></td>
+					<td>Write data.</td>
+			</tr>
+	</tbody>
+</table>
+<p>ACID properties:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Property</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Atomicity</td>
+					<td>All-or-nothing; transaction appears indivisible.</td>
+			</tr>
+			<tr>
+					<td>Consistency</td>
+					<td>System invariants remain valid.</td>
+			</tr>
+			<tr>
+					<td>Isolation</td>
+					<td>Concurrent transactions do not interfere incorrectly.</td>
+			</tr>
+			<tr>
+					<td>Durability</td>
+					<td>Once committed, changes are permanent.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="transaction-processing-monitor-tp-monitor">Transaction Processing Monitor (TP Monitor)</h2>
+<p>When transaction data is spread across multiple servers, a TP monitor coordinates the transaction.</p>
+<p>Its job is to make distributed transaction execution look like one reliable transaction.</p>
+<hr>
+<h2 id="middleware-and-eai">Middleware and EAI</h2>
+<p>Middleware supports integration by providing communication facilities.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Middleware style</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>RPC</td>
+					<td>Request is written like a local procedure call, but sent as messages to another machine.</td>
+			</tr>
+			<tr>
+					<td>MOM</td>
+					<td>Message-oriented middleware sends messages to logical contact points/queues and forwards to subscribers.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="how-applications-can-be-integrated">How applications can be integrated</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Advantage</th>
+					<th>Problem</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>File transfer</td>
+					<td>Simple.</td>
+					<td>Not flexible; must manage file formats, layout, update propagation.</td>
+			</tr>
+			<tr>
+					<td>Shared database</td>
+					<td>More flexible.</td>
+					<td>Needs common schema and can become bottleneck.</td>
+			</tr>
+			<tr>
+					<td>RPC</td>
+					<td>Good when one application needs to execute operations in another.</td>
+					<td>Caller and callee usually must be active at same time.</td>
+			</tr>
+			<tr>
+					<td>Messaging</td>
+					<td>Decouples sender and receiver in time and space.</td>
+					<td>Requires message infrastructure and routing.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Compare cluster and grid computing.</li>
+<li>Why did DSM not become very successful?</li>
+<li>What are the layers of grid architecture?</li>
+<li>What does ACID mean?</li>
+<li>Compare file transfer, shared database, RPC, and messaging for integration.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-1/part-3-dependability-security-scalability/" id="nav-prev"><em>Chapter 1, Part 3 – Dependability, Security, and Scalability</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-1/part-5-pervasive-systems-and-pitfalls/" id="nav-next"><em>Chapter 1, Part 5 – Pervasive Systems and Pitfalls</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

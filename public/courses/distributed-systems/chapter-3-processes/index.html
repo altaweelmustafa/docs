@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3 – Processes · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3 – Processes</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#processes-and-threads">Processes and Threads</a></li>
+    <li><a href="#context-switching">Context Switching</a></li>
+    <li><a href="#why-use-threads">Why Use Threads?</a></li>
+    <li><a href="#user-level-and-kernel-level-threads">User-Level and Kernel-Level Threads</a></li>
+    <li><a href="#threads-in-distributed-systems">Threads in Distributed Systems</a>
+      <ul>
+        <li><a href="#client-side-use">Client-side use</a></li>
+        <li><a href="#server-side-use">Server-side use</a></li>
+      </ul>
+    </li>
+    <li><a href="#dispatcherworker-model">Dispatcher/Worker Model</a></li>
+    <li><a href="#virtualization">Virtualization</a></li>
+    <li><a href="#interfaces-used-in-virtualization">Interfaces Used in Virtualization</a></li>
+    <li><a href="#virtual-machines-and-containers">Virtual Machines and Containers</a></li>
+    <li><a href="#cloud-service-types">Cloud Service Types</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#servers">Servers</a></li>
+    <li><a href="#out-of-band-communication">Out-of-Band Communication</a></li>
+    <li><a href="#stateless-and-stateful-servers">Stateless and Stateful Servers</a></li>
+    <li><a href="#object-servers">Object Servers</a></li>
+    <li><a href="#server-clusters">Server Clusters</a></li>
+    <li><a href="#code-migration">Code Migration</a></li>
+    <li><a href="#weak-and-strong-mobility">Weak and Strong Mobility</a></li>
+    <li><a href="#migration-in-heterogeneous-systems">Migration in Heterogeneous Systems</a></li>
+    <li><a href="#quick-summary">Quick Summary</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="processes-and-threads">Processes and Threads</h2>
+<blockquote>
+<p>Distributed systems use processes and threads to structure work across many
+machines. Threads are especially useful because they help hide blocking and
+exploit parallelism.</p>
+</blockquote>
+<p>A <strong>processor</strong> executes instructions. A <strong>thread</strong> is a minimal software processor
+that runs a sequence of instructions. A <strong>process</strong> is a software processor that
+can contain one or more threads.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Processor</td>
+					<td>Hardware that executes instructions</td>
+			</tr>
+			<tr>
+					<td>Thread</td>
+					<td>Minimal execution context for a sequence of instructions</td>
+			</tr>
+			<tr>
+					<td>Process</td>
+					<td>Execution environment that may contain one or more threads</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="context-switching">Context Switching</h2>
+<p>Context switching means stopping one execution and saving enough information to
+continue it later.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Context Type</th>
+					<th>What It Contains</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Processor context</td>
+					<td>Register values such as stack pointer and program counter</td>
+			</tr>
+			<tr>
+					<td>Thread context</td>
+					<td>Processor context plus thread state in memory</td>
+			</tr>
+			<tr>
+					<td>Process context</td>
+					<td>Thread context plus process-level information such as MMU state</td>
+			</tr>
+	</tbody>
+</table>
+<p>Thread switching is usually cheaper than process switching because threads in the
+same process share the same address space.</p>
+<hr>
+<h2 id="why-use-threads">Why Use Threads?</h2>
+<p>Threads are useful for three main reasons:</p>
+<ul>
+<li><strong>Avoid needless blocking:</strong> if one thread waits for I/O, another thread can run.</li>
+<li><strong>Exploit parallelism:</strong> threads can run on different cores.</li>
+<li><strong>Avoid process switching:</strong> a large application can be organized as multiple
+threads instead of multiple processes.</li>
+</ul>
+<p>The trade-off is that threads share memory, so programming mistakes can cause
+one thread to corrupt data used by another thread.</p>
+<hr>
+<h2 id="user-level-and-kernel-level-threads">User-Level and Kernel-Level Threads</h2>
+<p>There are two main implementation choices.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Thread Type</th>
+					<th>Advantage</th>
+					<th>Disadvantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>User-level threads</td>
+					<td>Fast operations inside one process</td>
+					<td>If the kernel blocks the process, all its user threads may block</td>
+			</tr>
+			<tr>
+					<td>Kernel-level threads</td>
+					<td>Kernel can schedule threads independently</td>
+					<td>Thread operations require kernel involvement</td>
+			</tr>
+	</tbody>
+</table>
+<p>Some systems combine both by letting kernel threads execute user-level threads.
+This tries to get efficiency and proper blocking behavior at the same time, but
+it increases complexity.</p>
+<hr>
+<h2 id="threads-in-distributed-systems">Threads in Distributed Systems</h2>
+<p>Threads are very common in distributed clients and servers.</p>
+<h3 id="client-side-use">Client-side use</h3>
+<p>A web browser can fetch multiple files at the same time. Each blocking request
+can run in a separate thread, so the browser can keep displaying content while
+other files are still loading.</p>
+<h3 id="server-side-use">Server-side use</h3>
+<p>A server can use a dispatcher thread to accept incoming requests and worker
+threads to handle them. This lets the server continue accepting new clients even
+while other requests are blocked on disk, network, or database operations.</p>
+<hr>
+<h2 id="dispatcherworker-model">Dispatcher/Worker Model</h2>
+<p>The dispatcher/worker model is a common server structure.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Component</th>
+					<th>Role</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Dispatcher</td>
+					<td>Receives incoming requests</td>
+			</tr>
+			<tr>
+					<td>Worker</td>
+					<td>Handles a request in a separate thread or process</td>
+			</tr>
+			<tr>
+					<td>Queue</td>
+					<td>Stores requests waiting for workers</td>
+			</tr>
+	</tbody>
+</table>
+<p>This model improves parallelism and makes blocking operations easier to handle.</p>
+<hr>
+<h2 id="virtualization">Virtualization</h2>
+<p>Virtualization mimics the interface of one system on top of another system.
+It is important because hardware changes quickly, while software often needs to
+keep running for a long time.</p>
+<p>Virtualization helps with:</p>
+<ul>
+<li>Portability.</li>
+<li>Code migration.</li>
+<li>Isolation between components.</li>
+<li>Running old software on new hardware.</li>
+<li>Protecting applications from failures or attacks in other components.</li>
+</ul>
+<hr>
+<h2 id="interfaces-used-in-virtualization">Interfaces Used in Virtualization</h2>
+<p>Virtualization can mimic different kinds of interfaces.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Interface</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Instruction Set Architecture</td>
+					<td>Machine instructions, including privileged and general instructions</td>
+			</tr>
+			<tr>
+					<td>System calls</td>
+					<td>Services offered by the operating system</td>
+			</tr>
+			<tr>
+					<td>Library calls / API</td>
+					<td>Functions offered to applications</td>
+			</tr>
+	</tbody>
+</table>
+<p>A virtual machine monitor works best when sensitive instructions trap to the
+operating system. If they do not, the system may need emulation,
+paravirtualization, or instruction rewriting.</p>
+<hr>
+<h2 id="virtual-machines-and-containers">Virtual Machines and Containers</h2>
+<p>Virtual machines and containers both provide isolation, but they do it at
+different levels.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Technology</th>
+					<th>Main Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Virtual machine</td>
+					<td>Runs a guest system on top of a virtual machine monitor</td>
+			</tr>
+			<tr>
+					<td>Container</td>
+					<td>Gives processes isolated views of resources while sharing the host OS kernel</td>
+			</tr>
+	</tbody>
+</table>
+<p>Containers commonly use:</p>
+<ul>
+<li><strong>Namespaces:</strong> each container gets its own view of identifiers.</li>
+<li><strong>Union file systems:</strong> file layers are combined, with writes going to the top
+layer.</li>
+<li><strong>Control groups:</strong> resource usage can be limited.</li>
+</ul>
+<p>Containers are lightweight, but because they depend on the host operating system,
+migration across heterogeneous systems is harder than it looks.</p>
+<hr>
+<h2 id="cloud-service-types">Cloud Service Types</h2>
+<p>Virtual machines are heavily used in cloud computing.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Service Type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Infrastructure as a Service</td>
+					<td>Provides basic computing infrastructure such as VMs</td>
+			</tr>
+			<tr>
+					<td>Platform as a Service</td>
+					<td>Provides system-level services and deployment platforms</td>
+			</tr>
+			<tr>
+					<td>Software as a Service</td>
+					<td>Provides complete applications to users</td>
+			</tr>
+	</tbody>
+</table>
+<p>IaaS lets a provider rent virtual machines instead of physical machines, giving
+customers isolation while allowing the provider to share hardware.</p>
+<hr>
+<h2 id="clients">Clients</h2>
+<p>A client is the part of the system that interacts with users or calls remote
+services.</p>
+<p>Client-side software often supports distribution transparency:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Transparency</th>
+					<th>Client-side Support</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access transparency</td>
+					<td>Client stubs hide remote calls</td>
+			</tr>
+			<tr>
+					<td>Location transparency</td>
+					<td>Client software tracks the actual location of a service</td>
+			</tr>
+			<tr>
+					<td>Migration transparency</td>
+					<td>Client software adapts when a resource moves</td>
+			</tr>
+			<tr>
+					<td>Replication transparency</td>
+					<td>A client stub can call multiple replicas</td>
+			</tr>
+			<tr>
+					<td>Failure transparency</td>
+					<td>Client-side code may retry or mask server failures</td>
+			</tr>
+	</tbody>
+</table>
+<p>Web browsers and virtual desktop environments are examples of networked user
+interfaces that make remote applications feel local.</p>
+<hr>
+<h2 id="servers">Servers</h2>
+<p>A server is a process that provides a service for clients. It waits for requests,
+handles them, and returns results.</p>
+<p>There are two basic server types:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Server Type</th>
+					<th>Behavior</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Iterative server</td>
+					<td>Handles one request completely before accepting the next</td>
+			</tr>
+			<tr>
+					<td>Concurrent server</td>
+					<td>Uses threads or processes to handle multiple requests at once</td>
+			</tr>
+	</tbody>
+</table>
+<p>Concurrent servers are the norm because distributed systems often involve
+blocking operations, such as disk access or communication with other services.</p>
+<hr>
+<h2 id="out-of-band-communication">Out-of-Band Communication</h2>
+<p>Sometimes a server needs to be interrupted while it is handling a request.
+This is called out-of-band communication.</p>
+<p>Possible solutions include:</p>
+<ul>
+<li>Use a separate port for urgent messages.</li>
+<li>Use a separate thread or process for urgent data.</li>
+<li>Use transport-layer support such as TCP urgent data.</li>
+<li>Use operating-system signaling techniques.</li>
+</ul>
+<hr>
+<h2 id="stateless-and-stateful-servers">Stateless and Stateful Servers</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Server Type</th>
+					<th>Meaning</th>
+					<th>Advantage</th>
+					<th>Disadvantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Stateless server</td>
+					<td>Does not remember client state after each request</td>
+					<td>Simpler recovery and fewer inconsistencies</td>
+					<td>May lose performance opportunities</td>
+			</tr>
+			<tr>
+					<td>Stateful server</td>
+					<td>Keeps information about clients</td>
+					<td>Can improve performance through caching or prefetching</td>
+					<td>More state must be recovered after failures</td>
+			</tr>
+	</tbody>
+</table>
+<p>Stateful servers can be very fast when clients cache data, but the system must
+handle consistency and recovery carefully.</p>
+<hr>
+<h2 id="object-servers">Object Servers</h2>
+<p>An object server hosts objects and handles remote invocations on them.
+Important design questions include:</p>
+<ul>
+<li>Where is the object code stored?</li>
+<li>Where is the object data stored?</li>
+<li>Which threading model is used?</li>
+<li>Should modified object state be kept?</li>
+</ul>
+<p>An <strong>object adapter</strong> implements an activation policy for objects.</p>
+<hr>
+<h2 id="server-clusters">Server Clusters</h2>
+<p>A server cluster uses multiple servers to provide one service.</p>
+<p>A common organization has three tiers:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Tier</th>
+					<th>Role</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>First tier</td>
+					<td>Dispatches requests to the correct server</td>
+			</tr>
+			<tr>
+					<td>Middle tier</td>
+					<td>Runs application logic</td>
+			</tr>
+			<tr>
+					<td>Back-end tier</td>
+					<td>Stores data or provides persistent services</td>
+			</tr>
+	</tbody>
+</table>
+<p>The first tier can become a bottleneck, so techniques such as request dispatching,
+TCP handoff, DNS redirection, and content delivery networks may be used.</p>
+<hr>
+<h2 id="code-migration">Code Migration</h2>
+<p>Code migration means moving code, data, or execution state to another machine.</p>
+<p>Reasons for code migration include:</p>
+<ul>
+<li>Load distribution.</li>
+<li>Moving computation closer to data.</li>
+<li>Reducing communication.</li>
+<li>Dynamic configuration.</li>
+<li>Privacy and legal restrictions, where data cannot be moved but code can.</li>
+</ul>
+<p>An example is federated machine learning, where models or code move toward data
+instead of collecting private data in one place.</p>
+<hr>
+<h2 id="weak-and-strong-mobility">Weak and Strong Mobility</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Mobility Type</th>
+					<th>What Moves</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Weak mobility</td>
+					<td>Code and data</td>
+					<td>Execution restarts at the destination</td>
+			</tr>
+			<tr>
+					<td>Strong mobility</td>
+					<td>Code, data, and execution state</td>
+					<td>Execution continues from the migrated state</td>
+			</tr>
+	</tbody>
+</table>
+<p>Weak mobility is simpler. Strong mobility is more powerful, but it is difficult
+because process and thread state depend on hardware, operating systems, and
+runtime environments.</p>
+<hr>
+<h2 id="migration-in-heterogeneous-systems">Migration in Heterogeneous Systems</h2>
+<p>Migration is hard when source and target machines are different.</p>
+<p>Problems include:</p>
+<ul>
+<li>Different instruction sets.</li>
+<li>Different operating systems.</li>
+<li>Different process or thread contexts.</li>
+<li>Different runtime environments.</li>
+</ul>
+<p>A common solution is to use an abstract machine, such as an interpreter, virtual
+machine, or virtual machine monitor.</p>
+<hr>
+<h2 id="quick-summary">Quick Summary</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Key Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Thread</td>
+					<td>Lightweight execution unit inside a process</td>
+			</tr>
+			<tr>
+					<td>Context switch</td>
+					<td>Save execution state and switch to another execution</td>
+			</tr>
+			<tr>
+					<td>Multithreading</td>
+					<td>Helps hide blocking and exploit parallelism</td>
+			</tr>
+			<tr>
+					<td>Virtualization</td>
+					<td>Mimics interfaces to improve portability and isolation</td>
+			</tr>
+			<tr>
+					<td>Container</td>
+					<td>Lightweight isolation using the host OS kernel</td>
+			</tr>
+			<tr>
+					<td>Client</td>
+					<td>Uses remote services and hides distribution details</td>
+			</tr>
+			<tr>
+					<td>Server</td>
+					<td>Provides services to clients</td>
+			</tr>
+			<tr>
+					<td>Code migration</td>
+					<td>Moves code closer to work, data, or better resources</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-1-introduction/" id="nav-prev"><em>Chapter 1 – Introduction to Distributed Systems</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-4-communication/" id="nav-next"><em>Chapter 4 – Communication</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

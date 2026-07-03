@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Coverage on Docs</title>
+		<link>http://localhost:1313/docs/tags/coverage/</link>
+		<description>Recent content in Coverage on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/coverage/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Coverage Map</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-full/coverage-map/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-full/coverage-map/</guid>
+				<description>&lt;h2 id=&#34;coverage-map&#34;&gt;Coverage map&lt;/h2&gt;&#xA;&lt;p&gt;This page maps the uploaded chapters to the new note pages.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Uploaded PDF&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Covered in&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Chapter 1: Introduction&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;chapter-1/part-1&lt;/code&gt; through &lt;code&gt;chapter-1/part-5&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Chapter 3: Processes&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;chapter-3/part-1&lt;/code&gt; through &lt;code&gt;chapter-3/part-5&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Chapter 4: Communication&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;chapter-4/part-1&lt;/code&gt; through &lt;code&gt;chapter-4/part-4&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Chapter 5: Coordination&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;code&gt;chapter-5/part-1&lt;/code&gt; through &lt;code&gt;chapter-5/part-5&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;what-is-intentionally-changed-from-the-slides&#34;&gt;What is intentionally changed from the slides&lt;/h2&gt;&#xA;&lt;p&gt;These notes do not copy the slides word-for-word. They rewrite the content into:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;definitions,&lt;/li&gt;&#xA;&lt;li&gt;tables,&lt;/li&gt;&#xA;&lt;li&gt;exam explanations,&lt;/li&gt;&#xA;&lt;li&gt;formulas,&lt;/li&gt;&#xA;&lt;li&gt;algorithm steps,&lt;/li&gt;&#xA;&lt;li&gt;common comparison questions.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This makes them easier to study from directly.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

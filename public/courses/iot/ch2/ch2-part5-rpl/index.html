@@ -81,45 +81,45 @@ reach each node later.</p>
 <p><em>&ldquo;I joined through you. Here is my info.&rdquo;</em></p>
 </blockquote>
 <table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Example</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Child Address</td>
-          <td>fe80::1234</td>
-          <td>Address of the node sending the DAO</td>
-      </tr>
-      <tr>
-          <td>Preferred Parent</td>
-          <td>fe80::B</td>
-          <td>The parent selected to reach the root</td>
-      </tr>
-      <tr>
-          <td>Reachable Prefix</td>
-          <td>2001:db8:1::/64</td>
-          <td>Networks reachable through this node</td>
-      </tr>
-      <tr>
-          <td>Routing Information</td>
-          <td>Path via Parent B</td>
-          <td>Helps root send packets back downward</td>
-      </tr>
-      <tr>
-          <td>DAO Sequence Number</td>
-          <td>25</td>
-          <td>Identifies newer DAOs, discards stale ones</td>
-      </tr>
-      <tr>
-          <td>Flags</td>
-          <td>0x02</td>
-          <td>Control bits (e.g., request acknowledgment)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Example</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Child Address</td>
+					<td>fe80::1234</td>
+					<td>Address of the node sending the DAO</td>
+			</tr>
+			<tr>
+					<td>Preferred Parent</td>
+					<td>fe80::B</td>
+					<td>The parent selected to reach the root</td>
+			</tr>
+			<tr>
+					<td>Reachable Prefix</td>
+					<td>2001:db8:1::/64</td>
+					<td>Networks reachable through this node</td>
+			</tr>
+			<tr>
+					<td>Routing Information</td>
+					<td>Path via Parent B</td>
+					<td>Helps root send packets back downward</td>
+			</tr>
+			<tr>
+					<td>DAO Sequence Number</td>
+					<td>25</td>
+					<td>Identifies newer DAOs, discards stale ones</td>
+			</tr>
+			<tr>
+					<td>Flags</td>
+					<td>0x02</td>
+					<td>Control bits (e.g., request acknowledgment)</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <p><strong>DAO-ACK — DAO Acknowledgement</strong></p>
@@ -150,40 +150,40 @@ the best one. The <strong>Objective Function</strong> transforms routing metrics
 cost value.</p>
 <p>Common metrics:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Metric</th>
-          <th>Goal</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>ETX</td>
-          <td>Minimize</td>
-          <td>Expected number of transmissions for successful delivery</td>
-      </tr>
-      <tr>
-          <td>Delay / Latency</td>
-          <td>Minimize</td>
-          <td>Time for a packet to traverse the path</td>
-      </tr>
-      <tr>
-          <td>Link Quality</td>
-          <td>Maximize</td>
-          <td>Stability and reliability of the link (RSSI, PDR)</td>
-      </tr>
-      <tr>
-          <td>Hop Count</td>
-          <td>Minimize</td>
-          <td>Number of intermediate nodes to the root</td>
-      </tr>
-      <tr>
-          <td>Residual Energy</td>
-          <td>Maximize</td>
-          <td>Remaining battery on candidate parent</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Goal</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ETX</td>
+					<td>Minimize</td>
+					<td>Expected number of transmissions for successful delivery</td>
+			</tr>
+			<tr>
+					<td>Delay / Latency</td>
+					<td>Minimize</td>
+					<td>Time for a packet to traverse the path</td>
+			</tr>
+			<tr>
+					<td>Link Quality</td>
+					<td>Maximize</td>
+					<td>Stability and reliability of the link (RSSI, PDR)</td>
+			</tr>
+			<tr>
+					<td>Hop Count</td>
+					<td>Minimize</td>
+					<td>Number of intermediate nodes to the root</td>
+			</tr>
+			<tr>
+					<td>Residual Energy</td>
+					<td>Maximize</td>
+					<td>Remaining battery on candidate parent</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example cost formula:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cost = W1*(Delay) + W2*(Hop Count) + W3*(ETX) + W4*(Link Quality)

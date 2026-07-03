@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 5 – Location Systems · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 5 – Location Systems</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-location-matters">Why location matters</a></li>
+    <li><a href="#computing-position-with-landmarks">Computing position with landmarks</a></li>
+    <li><a href="#gps">GPS</a></li>
+    <li><a href="#wifi-based-location-services">WiFi-based location services</a></li>
+    <li><a href="#war-driving">War driving</a></li>
+    <li><a href="#logical-positioning-of-nodes">Logical positioning of nodes</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-location-matters">Why location matters</h2>
+<p>In large-scale distributed systems, nodes can be spread across wide areas.</p>
+<p>We often need proximity or distance for:</p>
+<ul>
+<li>choosing nearest server,</li>
+<li>routing efficiently,</li>
+<li>placing replicas,</li>
+<li>reducing latency,</li>
+<li>location-aware services.</li>
+</ul>
+<p>Before using proximity, we need to determine node location.</p>
+<hr>
+<h2 id="computing-position-with-landmarks">Computing position with landmarks</h2>
+<p>Observation:</p>
+<p>A node <code>P</code> needs <code>d + 1</code> landmarks to compute its position in a <code>d</code>-dimensional space.</p>
+<p>Examples:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Space</th>
+					<th style="text-align: right">Dimensions</th>
+					<th style="text-align: right">Landmarks needed</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Line</td>
+					<td style="text-align: right">1D</td>
+					<td style="text-align: right">2</td>
+			</tr>
+			<tr>
+					<td>Plane</td>
+					<td style="text-align: right">2D</td>
+					<td style="text-align: right">3</td>
+			</tr>
+			<tr>
+					<td>3D space</td>
+					<td style="text-align: right">3D</td>
+					<td style="text-align: right">4</td>
+			</tr>
+	</tbody>
+</table>
+<p>For two-dimensional space, <code>P</code> solves three equations for unknown <code>(xP, yP)</code>.</p>
+<hr>
+<h2 id="gps">GPS</h2>
+<p>GPS uses satellites as landmarks.</p>
+<p>Assuming satellite clocks are accurate and synchronized:</p>
+<ul>
+<li>signal takes time to reach receiver,</li>
+<li>receiver clock is not synchronized with satellites,</li>
+<li>receiver must solve for position and clock error.</li>
+</ul>
+<p>Important observation:</p>
+<blockquote>
+<p>GPS needs 4 satellites because there are 4 unknowns: three position coordinates plus receiver clock offset.</p>
+</blockquote>
+<hr>
+<h2 id="wifi-based-location-services">WiFi-based location services</h2>
+<p>Basic idea:</p>
+<ol>
+<li>Have a database of known access points (APs) and coordinates.</li>
+<li>Estimate distance to APs.</li>
+<li>With 3 detected APs, compute position in 2D.</li>
+</ol>
+<hr>
+<h2 id="war-driving">War driving</h2>
+<p>War driving is a way to build an AP-location database.</p>
+<p>Method:</p>
+<ul>
+<li>use WiFi-enabled device plus GPS receiver,</li>
+<li>move through an area,</li>
+<li>record observed APs and GPS coordinates.</li>
+</ul>
+<p>To estimate AP location:</p>
+<p>If AP was detected at <code>N</code> known locations <code>x1, x2, ..., xN</code>, compute centroid:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">xAP = (Σ xi) / N
+</span></span></code></pre></div><p>Problems:</p>
+<ul>
+<li>GPS detection points have limited accuracy,</li>
+<li>AP transmission range is nonuniform,</li>
+<li>number of samples may be too low.</li>
+</ul>
+<hr>
+<h2 id="logical-positioning-of-nodes">Logical positioning of nodes</h2>
+<p>Sometimes measured latency to landmarks is used as a distance estimate.</p>
+<p>Problems:</p>
+<ul>
+<li>measured latencies fluctuate,</li>
+<li>computed distances can be inconsistent,</li>
+<li>network distance is not always physical distance.</li>
+</ul>
+<p>Example issue:</p>
+<p>In a 1D space, inconsistent distances may make it impossible to place nodes in a way that satisfies all measured latencies.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Why do distributed systems need node location/proximity?</li>
+<li>How many landmarks are needed in <code>d</code> dimensions?</li>
+<li>Why does GPS need 4 satellites?</li>
+<li>How does WiFi-based positioning work?</li>
+<li>What problems happen when using latency as distance?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch5/part-4-gossip-event-matching/" id="nav-prev"><em>Chapter 5, Part 4 – Gossip Coordination and Event Matching</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

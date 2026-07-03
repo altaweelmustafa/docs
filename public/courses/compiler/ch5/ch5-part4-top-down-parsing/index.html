@@ -241,7 +241,7 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="nx">NOT</span> <span class="k">in</span> <span class="nx">FOLLOW</span><span class="p">(</span><span class="nx">X</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">report_error</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// else: apply λ production (do nothing)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p><strong>Rule 5 — repetition <code>X → α*</code> (EBNF):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">Code</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">token</span> <span class="k">in</span> <span class="nx">FIRST</span><span class="p">(</span><span class="nx">α</span><span class="p">))</span>
@@ -271,7 +271,7 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// E → T (+T)*  [Rules 2 &amp; 5]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">T</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">T</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">T</span><span class="p">();</span>
@@ -279,7 +279,7 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">T</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// T → F (*F)*  [Rules 2 &amp; 5]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">F</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">F</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">F</span><span class="p">();</span>
@@ -287,7 +287,7 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{</span>        <span class="c1">// F → (E) | a  [Rule 3]
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">get_token</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">E</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">current_token</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
@@ -330,10 +330,10 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span>      <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Read</span><span class="p">)</span>  <span class="nx">get_token</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Write</span><span class="p">)</span> <span class="nx">get_token</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="nx">Begin</span><span class="p">)</span> <span class="nx">body</span><span class="p">();</span>   <span class="c1">// FIRST(body) = {Begin}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="s1">&#39;;&#39;</span> <span class="o">||</span> <span class="nx">token</span> <span class="o">==</span> <span class="nx">End</span><span class="p">))</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">token</span> <span class="o">==</span> <span class="s1">&#39;;&#39;</span> <span class="o">||</span> <span class="nx">token</span> <span class="o">==</span> <span class="nx">End</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">report_error</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// else: λ production (empty statement) — FOLLOW(stmt) = {; , End}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><hr>
 <h2 id="ll1-parsing">LL(1) Parsing</h2>
 <h3 id="what-is-llk">What is LL(k)?</h3>
@@ -391,133 +391,133 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">FIRST(N) = {d, λ}         FOLLOW(N) = {., $}
 </span></span></code></pre></div><p>Parsing Table:</p>
 <table>
-  <thead>
-      <tr>
-          <th>V_N \ V_T</th>
-          <th><code>+</code></th>
-          <th><code>−</code></th>
-          <th><code>d</code></th>
-          <th><code>.</code></th>
-          <th><code>$</code></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>V</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>E</td>
-      </tr>
-      <tr>
-          <td>S</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>E</td>
-      </tr>
-      <tr>
-          <td>R</td>
-          <td>E</td>
-          <td>E</td>
-          <td>5</td>
-          <td>6</td>
-          <td>E</td>
-      </tr>
-      <tr>
-          <td>N</td>
-          <td>E</td>
-          <td>E</td>
-          <td>7</td>
-          <td>8</td>
-          <td>8</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>V_N \ V_T</th>
+					<th><code>+</code></th>
+					<th><code>−</code></th>
+					<th><code>d</code></th>
+					<th><code>.</code></th>
+					<th><code>$</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>V</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>E</td>
+			</tr>
+			<tr>
+					<td>S</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>4</td>
+					<td>E</td>
+			</tr>
+			<tr>
+					<td>R</td>
+					<td>E</td>
+					<td>E</td>
+					<td>5</td>
+					<td>6</td>
+					<td>E</td>
+			</tr>
+			<tr>
+					<td>N</td>
+					<td>E</td>
+					<td>E</td>
+					<td>7</td>
+					<td>8</td>
+					<td>8</td>
+			</tr>
+	</tbody>
 </table>
 <p>No conflicts → <strong>LL(1) grammar</strong>. L(G) = all floating-point numbers.</p>
 <p><strong>Parsing trace for <code>−dd.d$</code>:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Stack</th>
-          <th>Remaining Input</th>
-          <th>Action</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>V</td>
-          <td>−dd.d$</td>
-          <td>Production 1</td>
-      </tr>
-      <tr>
-          <td>SR$</td>
-          <td>−dd.d$</td>
-          <td>Production 3</td>
-      </tr>
-      <tr>
-          <td>−R$</td>
-          <td>−dd.d$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>R$</td>
-          <td>dd.d$</td>
-          <td>Production 5</td>
-      </tr>
-      <tr>
-          <td>dN.N$</td>
-          <td>dd.d$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>N.N$</td>
-          <td>d.d$</td>
-          <td>Production 7</td>
-      </tr>
-      <tr>
-          <td>dN.N$</td>
-          <td>d.d$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>N.N$</td>
-          <td>.d$</td>
-          <td>Production 8</td>
-      </tr>
-      <tr>
-          <td>.N$</td>
-          <td>.d$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>N$</td>
-          <td>d$</td>
-          <td>Production 7</td>
-      </tr>
-      <tr>
-          <td>dN$</td>
-          <td>d$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>N$</td>
-          <td>$</td>
-          <td>Production 8</td>
-      </tr>
-      <tr>
-          <td>$</td>
-          <td>$</td>
-          <td>Pop &amp; advance</td>
-      </tr>
-      <tr>
-          <td>λ</td>
-          <td>λ</td>
-          <td><strong>Accept</strong></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Stack</th>
+					<th>Remaining Input</th>
+					<th>Action</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>V</td>
+					<td>−dd.d$</td>
+					<td>Production 1</td>
+			</tr>
+			<tr>
+					<td>SR$</td>
+					<td>−dd.d$</td>
+					<td>Production 3</td>
+			</tr>
+			<tr>
+					<td>−R$</td>
+					<td>−dd.d$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>R$</td>
+					<td>dd.d$</td>
+					<td>Production 5</td>
+			</tr>
+			<tr>
+					<td>dN.N$</td>
+					<td>dd.d$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>N.N$</td>
+					<td>d.d$</td>
+					<td>Production 7</td>
+			</tr>
+			<tr>
+					<td>dN.N$</td>
+					<td>d.d$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>N.N$</td>
+					<td>.d$</td>
+					<td>Production 8</td>
+			</tr>
+			<tr>
+					<td>.N$</td>
+					<td>.d$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>N$</td>
+					<td>d$</td>
+					<td>Production 7</td>
+			</tr>
+			<tr>
+					<td>dN$</td>
+					<td>d$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>N$</td>
+					<td>$</td>
+					<td>Production 8</td>
+			</tr>
+			<tr>
+					<td>$</td>
+					<td>$</td>
+					<td>Pop &amp; advance</td>
+			</tr>
+			<tr>
+					<td>λ</td>
+					<td>λ</td>
+					<td><strong>Accept</strong></td>
+			</tr>
+	</tbody>
 </table>
 <blockquote>
 <p>If at any point the stack top and the current input are <strong>two different terminals</strong>, the parser throws a syntax error.</p>
@@ -536,88 +536,88 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">FIRST(statement) = {if, while, ass, scan, print, {, ;, λ}   FOLLOW(statement) = {;}
 </span></span></code></pre></div><p>Parsing Table:</p>
 <table>
-  <thead>
-      <tr>
-          <th>V_N \ V_T</th>
-          <th>if</th>
-          <th>while</th>
-          <th>ass</th>
-          <th>scan</th>
-          <th>print</th>
-          <th><code>{</code></th>
-          <th><code>}</code></th>
-          <th>D</th>
-          <th><code>;</code></th>
-          <th><code>$</code></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>program</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>block</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>decls</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>3</td>
-          <td>4</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>stmts</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>5</td>
-          <td>6</td>
-          <td></td>
-          <td>5</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>statement</td>
-          <td>7</td>
-          <td>8</td>
-          <td>9</td>
-          <td>10</td>
-          <td>11</td>
-          <td>2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>13</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>V_N \ V_T</th>
+					<th>if</th>
+					<th>while</th>
+					<th>ass</th>
+					<th>scan</th>
+					<th>print</th>
+					<th><code>{</code></th>
+					<th><code>}</code></th>
+					<th>D</th>
+					<th><code>;</code></th>
+					<th><code>$</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>program</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>1</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>block</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>decls</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>3</td>
+					<td>4</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>stmts</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>6</td>
+					<td></td>
+					<td>5</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>statement</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>13</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Example 3 — Dangling Else (LL(1) Conflict and Fix):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">S&#39; → S$    (1)
@@ -627,50 +627,50 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 </span></span><span class="line"><span class="cl">C  → c     (6)
 </span></span></code></pre></div><p>Initial table has a <strong>conflict</strong> in state E on token <code>e</code> (both productions 3 and 4 apply). <strong>Fix:</strong> remove production 4 from the conflict entry — prefer to shift (match <code>else</code> with the nearest <code>if</code>):</p>
 <table>
-  <thead>
-      <tr>
-          <th>V_N \ V_T</th>
-          <th><code>i</code></th>
-          <th><code>a</code></th>
-          <th><code>e</code></th>
-          <th><code>c</code></th>
-          <th><code>$</code></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>S'</td>
-          <td>1</td>
-          <td>1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>S</td>
-          <td>2</td>
-          <td>5</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>E</td>
-          <td></td>
-          <td></td>
-          <td>3</td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>C</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>6</td>
-          <td></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>V_N \ V_T</th>
+					<th><code>i</code></th>
+					<th><code>a</code></th>
+					<th><code>e</code></th>
+					<th><code>c</code></th>
+					<th><code>$</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>S'</td>
+					<td>1</td>
+					<td>1</td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>S</td>
+					<td>2</td>
+					<td>5</td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>E</td>
+					<td></td>
+					<td></td>
+					<td>3</td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>C</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>6</td>
+					<td></td>
+			</tr>
+	</tbody>
 </table>
 <blockquote>
 <p><strong>Note:</strong> If a grammar is LL(1), it is unambiguous. However, the converse is not necessarily true.</p>
@@ -680,9 +680,9 @@ Consider the derivation <code>S →* uAG → uαXβG</code>.</p>
 <h3 id="left-recursion">Left Recursion</h3>
 <p>A grammar is <strong>left-recursive</strong> if it has a production of the form <code>A → Aα</code>. This causes <strong>infinite recursion</strong> in recursive descent parsing — the function calls itself immediately without consuming any input:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// Translating E → E + T | T directly:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">E</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">E</span><span class="p">();</span> <span class="c1">// Immediate infinite recursion → stack overflow!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">match</span><span class="p">(</span><span class="s2">&#34;+&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">match</span><span class="p">(</span><span class="s2">&#34;+&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">T</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Right-recursive grammars don&rsquo;t have this issue — <code>α</code> is processed first, consuming tokens and ensuring the recursion terminates.</p>

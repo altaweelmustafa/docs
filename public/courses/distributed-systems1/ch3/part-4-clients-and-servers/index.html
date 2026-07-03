@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 4 – Clients and Servers · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 4 – Clients and Servers</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#client-server-interaction">Client-server interaction</a></li>
+    <li><a href="#networked-user-interfaces">Networked user interfaces</a>
+      <ul>
+        <li><a href="#x-window-system-idea">X Window system idea</a></li>
+        <li><a href="#practical-problems-with-x">Practical problems with X</a></li>
+      </ul>
+    </li>
+    <li><a href="#virtual-desktop-environment">Virtual desktop environment</a></li>
+    <li><a href="#client-side-software-for-transparency">Client-side software for transparency</a></li>
+    <li><a href="#server-general-organization">Server general organization</a></li>
+    <li><a href="#iterative-vs-concurrent-servers">Iterative vs concurrent servers</a></li>
+    <li><a href="#contacting-a-server">Contacting a server</a></li>
+    <li><a href="#out-of-band-communication">Out-of-band communication</a></li>
+    <li><a href="#stateless-servers">Stateless servers</a></li>
+    <li><a href="#stateful-servers">Stateful servers</a></li>
+    <li><a href="#object-servers">Object servers</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="client-server-interaction">Client-server interaction</h2>
+<p>A client requests a service; a server provides it.</p>
+<p>In distributed systems, we distinguish:</p>
+<ul>
+<li>application-level solutions,</li>
+<li>middleware-level solutions.</li>
+</ul>
+<p>Middleware often helps hide distribution by providing stubs, naming, communication, and failure handling.</p>
+<hr>
+<h2 id="networked-user-interfaces">Networked user interfaces</h2>
+<h3 id="x-window-system-idea">X Window system idea</h3>
+<p>The X Window example shows that “client” and “server” can be confusing.</p>
+<ul>
+<li>The application acts as an X client.</li>
+<li>The X kernel/server runs on the user’s machine and controls display/input.</li>
+</ul>
+<p>So the machine in front of the user can run the X server, while the application can run remotely.</p>
+<h3 id="practical-problems-with-x">Practical problems with X</h3>
+<ul>
+<li>application logic and UI commands are often mixed,</li>
+<li>applications may communicate synchronously with the X kernel,</li>
+<li>synchronous interaction over network can be slow.</li>
+</ul>
+<p>Alternatives:</p>
+<ul>
+<li>send low-level pixel updates, such as VNC-style remote desktop,</li>
+<li>provide high-level display operations optimized locally.</li>
+</ul>
+<hr>
+<h2 id="virtual-desktop-environment">Virtual desktop environment</h2>
+<p>With cloud applications, the question becomes: how can users access remote applications seamlessly?</p>
+<p>Common answer:</p>
+<ul>
+<li>use a web browser as the ultimate networked user interface,</li>
+<li>application logic may run in cloud,</li>
+<li>browser provides local rendering and interaction.</li>
+</ul>
+<hr>
+<h2 id="client-side-software-for-transparency">Client-side software for transparency</h2>
+<p>Client-side software often implements distribution transparency.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Transparency</th>
+					<th>Client-side support</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access transparency</td>
+					<td>Client stubs hide RPC/message details.</td>
+			</tr>
+			<tr>
+					<td>Location/migration transparency</td>
+					<td>Client software tracks actual location.</td>
+			</tr>
+			<tr>
+					<td>Replication transparency</td>
+					<td>Client stub invokes multiple replicas or chooses one.</td>
+			</tr>
+			<tr>
+					<td>Failure transparency</td>
+					<td>Client retries, masks server/communication failures when possible.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Important exam point:</p>
+<blockquote>
+<p>Many forms of transparency are implemented partly or fully on the client side.</p>
+</blockquote>
+<hr>
+<h2 id="server-general-organization">Server general organization</h2>
+<p>A server is a process that implements a service for clients.</p>
+<p>Basic cycle:</p>
+<ol>
+<li>wait for request,</li>
+<li>receive request,</li>
+<li>handle request,</li>
+<li>send response,</li>
+<li>wait for next request.</li>
+</ol>
+<hr>
+<h2 id="iterative-vs-concurrent-servers">Iterative vs concurrent servers</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Server type</th>
+					<th>Meaning</th>
+					<th>Problem/advantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Iterative server</td>
+					<td>Handles one request completely before accepting the next.</td>
+					<td>Simple but poor under blocking/long requests.</td>
+			</tr>
+			<tr>
+					<td>Concurrent server</td>
+					<td>Dispatcher accepts requests and passes them to threads/processes.</td>
+					<td>Handles many requests and blocking operations better.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Concurrent servers are the norm because real servers often wait for disk, network, database, or other services.</p>
+<hr>
+<h2 id="contacting-a-server">Contacting a server</h2>
+<p>Many services are tied to well-known ports.</p>
+<p>Examples:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Service</th>
+					<th style="text-align: right">Port</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FTP data</td>
+					<td style="text-align: right">20</td>
+			</tr>
+			<tr>
+					<td>FTP control</td>
+					<td style="text-align: right">21</td>
+			</tr>
+			<tr>
+					<td>Telnet</td>
+					<td style="text-align: right">23</td>
+			</tr>
+			<tr>
+					<td>SMTP</td>
+					<td style="text-align: right">25</td>
+			</tr>
+			<tr>
+					<td>HTTP</td>
+					<td style="text-align: right">80</td>
+			</tr>
+	</tbody>
+</table>
+<p>If a service endpoint is assigned dynamically, clients need a way to discover it, often through a naming or directory service.</p>
+<hr>
+<h2 id="out-of-band-communication">Out-of-band communication</h2>
+<p>Problem:</p>
+<blockquote>
+<p>Can we interrupt a server while it is handling a request?</p>
+</blockquote>
+<p>Solutions:</p>
+<ol>
+<li>Use a separate port for urgent data.
+<ul>
+<li>Server has a separate thread/process for urgent messages.</li>
+<li>Urgent message can pause the current request.</li>
+<li>Needs priority scheduling support.</li>
+</ul>
+</li>
+<li>Use transport-layer urgent-data facilities.
+<ul>
+<li>Example: TCP urgent messages.</li>
+<li>OS signaling can catch urgent messages.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="stateless-servers">Stateless servers</h2>
+<p>A stateless server does not keep accurate client state after handling a request.</p>
+<p>It does not:</p>
+<ul>
+<li>remember whether a client opened a file,</li>
+<li>promise to invalidate client caches,</li>
+<li>keep track of clients.</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>clients and servers are more independent,</li>
+<li>crashes cause fewer state inconsistencies,</li>
+<li>easier recovery.</li>
+</ul>
+<p>Disadvantage:</p>
+<ul>
+<li>lower performance because the server cannot predict client behavior, e.g., cannot prefetch based on open-file state.</li>
+</ul>
+<p>Exam question: does connection-oriented communication fit stateless design?</p>
+<p>Answer: not naturally. A connection usually creates state, but a server can still design application logic to minimize client state.</p>
+<hr>
+<h2 id="stateful-servers">Stateful servers</h2>
+<p>A stateful server keeps track of clients.</p>
+<p>Examples:</p>
+<ul>
+<li>records that a file is open,</li>
+<li>knows what data the client cached,</li>
+<li>allows clients to keep local copies.</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>can improve performance through caching and prefetching,</li>
+<li>can support richer behavior.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>client/server crashes can create inconsistent state,</li>
+<li>recovery is harder,</li>
+<li>server must clean stale state.</li>
+</ul>
+<hr>
+<h2 id="object-servers">Object servers</h2>
+<p>An object server receives invocation requests for objects.</p>
+<p>Important questions:</p>
+<ul>
+<li>Where are code and data of the object?</li>
+<li>Which object should be activated?</li>
+<li>Which threading model should be used?</li>
+<li>Should modified state be kept?</li>
+</ul>
+<p>Object adapter:</p>
+<ul>
+<li>implements activation policy,</li>
+<li>connects incoming invocations to object implementation.</li>
+</ul>
+<p>The Ice runtime example in the slides shows a server registering objects and a client invoking them through proxies.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What is the strange client/server naming in X Window?</li>
+<li>How does client-side software support transparency?</li>
+<li>Compare iterative and concurrent servers.</li>
+<li>Explain out-of-band communication.</li>
+<li>Compare stateless and stateful servers.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch3/part-3-virtualization-containers-cloud/" id="nav-prev"><em>Chapter 3, Part 3 – Virtualization, Containers, and Cloud</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems1/ch3/part-5-server-clusters-code-migration/" id="nav-next"><em>Chapter 3, Part 5 – Server Clusters and Code Migration</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

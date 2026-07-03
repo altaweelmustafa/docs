@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Coordinator on Docs</title>
-    <link>http://localhost:1313/docs/tags/coordinator/</link>
-    <description>Recent content in Coordinator on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/coordinator/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 11 – IoT Level-5</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-5&#34;&gt;What Is IoT Level-5?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-5 IoT system has &lt;strong&gt;multiple end nodes&lt;/strong&gt; and &lt;strong&gt;one coordinator node&lt;/strong&gt;.&#xA;End nodes perform sensing and/or actuation. The coordinator node collects data&#xA;from the end nodes and forwards it to the cloud. Data is stored and analyzed in&#xA;the cloud, and the application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-5 is the standard &lt;strong&gt;Wireless Sensor Network (WSN)&lt;/strong&gt; deployment template.&#xA;Rather than each node communicating independently with the cloud, all end nodes&#xA;report to a single coordinator that handles the upward data transmission.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Coordinator on Docs</title>
+		<link>http://localhost:1313/docs/tags/coordinator/</link>
+		<description>Recent content in Coordinator on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/coordinator/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 11 – IoT Level-5</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part11-iot-level5/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-5&#34;&gt;What Is IoT Level-5?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-5 IoT system has &lt;strong&gt;multiple end nodes&lt;/strong&gt; and &lt;strong&gt;one coordinator node&lt;/strong&gt;.&#xA;End nodes perform sensing and/or actuation. The coordinator node collects data&#xA;from the end nodes and forwards it to the cloud. Data is stored and analyzed in&#xA;the cloud, and the application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Level-5 is the standard &lt;strong&gt;Wireless Sensor Network (WSN)&lt;/strong&gt; deployment template.&#xA;Rather than each node communicating independently with the cloud, all end nodes&#xA;report to a single coordinator that handles the upward data transmission.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – Threads and Context Switching · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – Threads and Context Switching</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-idea">Basic idea</a></li>
+    <li><a href="#processor-thread-and-process">Processor, thread, and process</a></li>
+    <li><a href="#contexts">Contexts</a>
+      <ul>
+        <li><a href="#why-process-switching-is-more-expensive">Why process switching is more expensive</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-use-threads">Why use threads?</a></li>
+    <li><a href="#tradeoffs-of-threads">Tradeoffs of threads</a></li>
+    <li><a href="#cost-of-a-context-switch">Cost of a context switch</a></li>
+    <li><a href="#processes-vs-threads-in-the-python-example">Processes vs threads in the Python example</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="basic-idea">Basic idea</h2>
+<p>Distributed systems run many activities at the same time. To organize those activities, we use processes and threads.</p>
+<p>The slides describe threads as <strong>virtual processors in software</strong> built on top of physical processors.</p>
+<hr>
+<h2 id="processor-thread-and-process">Processor, thread, and process</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Processor</td>
+					<td>Physical execution unit that provides instructions and executes instruction sequences.</td>
+			</tr>
+			<tr>
+					<td>Thread</td>
+					<td>Minimal software processor/execution context in which instructions can execute.</td>
+			</tr>
+			<tr>
+					<td>Process</td>
+					<td>Software processor/context in which one or more threads can execute.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Simple way:</p>
+<ul>
+<li>processor = real hardware worker,</li>
+<li>thread = one line of execution,</li>
+<li>process = container for one or more threads plus resources/address space.</li>
+</ul>
+<hr>
+<h2 id="contexts">Contexts</h2>
+<p>A context is the information needed to stop execution and continue later.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Context type</th>
+					<th>Contains</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Processor context</td>
+					<td>Minimal CPU register values such as program counter, stack pointer, addressing registers.</td>
+			</tr>
+			<tr>
+					<td>Thread context</td>
+					<td>Processor context plus thread state stored in registers and memory.</td>
+			</tr>
+			<tr>
+					<td>Process context</td>
+					<td>Thread context plus process-specific memory-management data, such as MMU registers.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="why-process-switching-is-more-expensive">Why process switching is more expensive</h3>
+<p>Thread switching can often stay inside the same address space. Process switching usually involves OS/kernel work and memory-management changes.</p>
+<p>Important observations:</p>
+<ol>
+<li>Threads share the same address space.</li>
+<li>Thread context switching may be independent of the OS in user-level implementations.</li>
+<li>Process switching is usually more expensive because it involves the kernel.</li>
+<li>Creating and destroying threads is cheaper than creating/destroying processes.</li>
+</ol>
+<hr>
+<h2 id="why-use-threads">Why use threads?</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Reason</th>
+					<th>Explanation</th>
+					<th>Distributed-system example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Avoid needless blocking</td>
+					<td>If one thread blocks on I/O, another thread can run.</td>
+					<td>Web server handles another request while one request waits for disk/network.</td>
+			</tr>
+			<tr>
+					<td>Exploit parallelism</td>
+					<td>Multiple threads can run on multicore processors.</td>
+					<td>Server uses several cores for requests.</td>
+			</tr>
+			<tr>
+					<td>Avoid process switching</td>
+					<td>Threads are cheaper than processes.</td>
+					<td>Large application uses worker threads instead of separate processes.</td>
+			</tr>
+			<tr>
+					<td>Better structure</td>
+					<td>Blocking calls make code easier to write than complex nonblocking state machines.</td>
+					<td>Thread per request or worker pool.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="tradeoffs-of-threads">Tradeoffs of threads</h2>
+<p>Threads are useful but risky.</p>
+<p>Advantages:</p>
+<ul>
+<li>cheaper than processes,</li>
+<li>good for blocking I/O,</li>
+<li>can exploit multiple cores,</li>
+<li>simplify server/client organization.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>share the same address space,</li>
+<li>bugs in one thread can corrupt memory used by another thread,</li>
+<li>synchronization is needed to protect shared data,</li>
+<li>race conditions and deadlocks become possible.</li>
+</ul>
+<hr>
+<h2 id="cost-of-a-context-switch">Cost of a context switch</h2>
+<p>Context switching has two cost types:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Cost type</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Direct cost</td>
+					<td>Time to save/restore context and run scheduler/interrupt handler.</td>
+			</tr>
+			<tr>
+					<td>Indirect cost</td>
+					<td>Performance loss caused by cache/TLB disruption.</td>
+			</tr>
+	</tbody>
+</table>
+<p>The slide diagram shows that after a context switch, useful cached blocks may be replaced. Later, when the old thread resumes, it may need to reload data. This hidden cache cost can be larger than the visible switch cost.</p>
+<hr>
+<h2 id="processes-vs-threads-in-the-python-example">Processes vs threads in the Python example</h2>
+<p>The slides show a Python example using <code>multiprocessing.Process</code> and <code>threading.Thread</code>.</p>
+<p>Main lesson:</p>
+<ul>
+<li>separate processes do not share the same memory by default,</li>
+<li>threads inside the same process share variables,</li>
+<li>when multiple threads update shared variables, the order of updates depends on scheduling.</li>
+</ul>
+<p>Exam point:</p>
+<blockquote>
+<p>Shared address space is both the advantage and danger of threads.</p>
+</blockquote>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Define processor, thread, and process.</li>
+<li>What information is stored in a process context but not necessarily in a thread context?</li>
+<li>Why is process switching usually more expensive than thread switching?</li>
+<li>What are direct and indirect context-switch costs?</li>
+<li>Why can shared address space be dangerous?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-3/part-2-thread-implementations-and-usage/" id="nav-next"><em>Chapter 3, Part 2 – Thread Implementations and Distributed Use</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4, Part 4 – Epidemic Protocols and Deletion · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 4, Part 4 – Epidemic Protocols and Deletion</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#epidemic-protocols">Epidemic protocols</a></li>
+    <li><a href="#two-forms-of-epidemics">Two forms of epidemics</a></li>
+    <li><a href="#anti-entropy-operations">Anti-entropy operations</a></li>
+    <li><a href="#anti-entropy-analysis">Anti-entropy analysis</a>
+      <ul>
+        <li><a href="#pull">Pull</a></li>
+        <li><a href="#push">Push</a></li>
+        <li><a href="#push-pull">Push-pull</a></li>
+      </ul>
+    </li>
+    <li><a href="#rumor-spreading">Rumor spreading</a></li>
+    <li><a href="#effect-of-stopping">Effect of stopping</a></li>
+    <li><a href="#deleting-values">Deleting values</a></li>
+    <li><a href="#when-to-remove-death-certificates">When to remove death certificates</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="epidemic-protocols">Epidemic protocols</h2>
+<p>Epidemic protocols spread updates like infections.</p>
+<p>Assumptions in slides:</p>
+<ul>
+<li>no write-write conflicts,</li>
+<li>updates occur at one server,</li>
+<li>replicas pass updated state to only a few neighbors,</li>
+<li>propagation is lazy, not immediate,</li>
+<li>eventually every replica should receive updates.</li>
+</ul>
+<hr>
+<h2 id="two-forms-of-epidemics">Two forms of epidemics</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Form</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Anti-entropy</td>
+					<td>Replicas regularly choose another replica and exchange differences until both become consistent.</td>
+			</tr>
+			<tr>
+					<td>Rumor spreading</td>
+					<td>A newly updated replica tells other replicas; replicas may eventually stop spreading.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="anti-entropy-operations">Anti-entropy operations</h2>
+<p>A node <code>P</code> selects another node <code>Q</code> at random.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Mode</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Pull</td>
+					<td><code>P</code> pulls missing updates from <code>Q</code>.</td>
+			</tr>
+			<tr>
+					<td>Push</td>
+					<td><code>P</code> pushes its updates to <code>Q</code>.</td>
+			</tr>
+			<tr>
+					<td>Push-pull</td>
+					<td>Both exchange updates.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Observation:</p>
+<p>Push-pull takes about <code>O(log N)</code> rounds to disseminate updates to all <code>N</code> nodes.</p>
+<hr>
+<h2 id="anti-entropy-analysis">Anti-entropy analysis</h2>
+<p>Let <code>pi</code> be the probability that a node has not received the update after round <code>i</code>.</p>
+<h3 id="pull">Pull</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p(i+1) = p(i)^2
+</span></span></code></pre></div><p>Reason: a node stays ignorant only if it was ignorant and contacts another ignorant node.</p>
+<h3 id="push">Push</h3>
+<p>For small <code>pi</code> and large <code>N</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">p(i+1) ≈ p(i)e^-1
+</span></span></code></pre></div><p>Push is initially fast when many infected nodes spread the update, but becomes slower near the end because remaining ignorant nodes must be selected.</p>
+<h3 id="push-pull">Push-pull</h3>
+<p>Push-pull combines both advantages and spreads quickly.</p>
+<hr>
+<h2 id="rumor-spreading">Rumor spreading</h2>
+<p>Model:</p>
+<ul>
+<li>server <code>S</code> has an update,</li>
+<li>it contacts other servers,</li>
+<li>if it contacts a server that already knows the update, <code>S</code> stops spreading with probability <code>pstop</code>.</li>
+</ul>
+<p>Important formula from the slides:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">s = e^(-(1/pstop + 1)(1-s))
+</span></span></code></pre></div><p>where <code>s</code> is the final fraction of ignorant servers.</p>
+<hr>
+<h2 id="effect-of-stopping">Effect of stopping</h2>
+<p>The slides show that with 10,000 nodes, larger <code>1/pstop</code> means fewer ignorant nodes.</p>
+<p>Important conclusion:</p>
+<blockquote>
+<p>If every server must eventually receive the update, rumor spreading alone is not enough.</p>
+</blockquote>
+<p>Reason: some nodes may never hear the rumor after spreaders stop.</p>
+<hr>
+<h2 id="deleting-values">Deleting values</h2>
+<p>Deleting values is tricky with epidemic protocols.</p>
+<p>Problem:</p>
+<p>If a server simply removes an old value, another replica that still has the value may later spread it back.</p>
+<p>Solution:</p>
+<p>Use a <strong>death certificate</strong>.</p>
+<p>A death certificate is a special update that says:</p>
+<blockquote>
+<p>This value was deleted; do not reintroduce it.</p>
+</blockquote>
+<hr>
+<h2 id="when-to-remove-death-certificates">When to remove death certificates</h2>
+<p>Death certificates cannot stay forever, but removing them too early is dangerous.</p>
+<p>Options:</p>
+<ol>
+<li>Run a global algorithm to detect that every server knows the deletion, then collect death certificates.</li>
+<li>Give certificates a maximum lifetime, assuming they propagate within finite time.</li>
+</ol>
+<p>Risk:</p>
+<p>If a death certificate expires before reaching all servers, the deleted value may come back.</p>
+<p>Exam sentence:</p>
+<blockquote>
+<p>In epidemic replication, deletion must be propagated as an update; otherwise old values can reappear.</p>
+</blockquote>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Compare anti-entropy and rumor spreading.</li>
+<li>Explain push, pull, and push-pull.</li>
+<li>Why is push-pull <code>O(log N)</code>?</li>
+<li>Why is rumor spreading alone not enough for guaranteed delivery?</li>
+<li>What is a death certificate and why is it needed?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch4/part-3-multicast-communication/" id="nav-prev"><em>Chapter 4, Part 3 – Multicast Communication</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

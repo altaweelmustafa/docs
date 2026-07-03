@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 5 – Pervasive Systems and Pitfalls · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 5 – Pervasive Systems and Pitfalls</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#distributed-pervasive-systems">Distributed pervasive systems</a></li>
+    <li><a href="#ubiquitous-systems">Ubiquitous systems</a></li>
+    <li><a href="#mobile-computing">Mobile computing</a></li>
+    <li><a href="#mobile-cloud-and-mobile-edge-computing">Mobile cloud and mobile edge computing</a></li>
+    <li><a href="#sensor-networks">Sensor networks</a></li>
+    <li><a href="#sensor-networks-as-distributed-databases">Sensor networks as distributed databases</a></li>
+    <li><a href="#cloud-edge-continuum">Cloud-edge continuum</a></li>
+    <li><a href="#pitfalls-in-distributed-system-design">Pitfalls in distributed-system design</a>
+      <ul>
+        <li><a href="#why-these-assumptions-are-false">Why these assumptions are false</a></li>
+      </ul>
+    </li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="distributed-pervasive-systems">Distributed pervasive systems</h2>
+<p>Pervasive systems are distributed systems where nodes are small, mobile, embedded, and naturally blended into the user environment.</p>
+<p>They are often not obvious to the user. Instead of using one visible computer, users interact with many embedded or mobile devices.</p>
+<p>Three overlapping subtypes:</p>
+<ol>
+<li>Ubiquitous systems.</li>
+<li>Mobile computing systems.</li>
+<li>Sensor networks.</li>
+</ol>
+<hr>
+<h2 id="ubiquitous-systems">Ubiquitous systems</h2>
+<p>A ubiquitous system surrounds the user and provides services without being intrusive.</p>
+<p>Core elements:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Element</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Distribution</td>
+					<td>Devices are networked, distributed, and transparently accessible.</td>
+			</tr>
+			<tr>
+					<td>Interaction</td>
+					<td>User interaction is unobtrusive.</td>
+			</tr>
+			<tr>
+					<td>Context awareness</td>
+					<td>System understands context and adapts.</td>
+			</tr>
+			<tr>
+					<td>Autonomy</td>
+					<td>Devices operate without constant human control.</td>
+			</tr>
+			<tr>
+					<td>Intelligence</td>
+					<td>System handles dynamic actions and interactions.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Example: smart-home system that reacts to location, time, user habits, and device state.</p>
+<hr>
+<h2 id="mobile-computing">Mobile computing</h2>
+<p>Mobile computing involves devices whose location changes over time.</p>
+<p>Distinctive features:</p>
+<ul>
+<li>many types of mobile devices,</li>
+<li>changing location,</li>
+<li>changing local services,</li>
+<li>changing reachability,</li>
+<li>discovery of nearby services,</li>
+<li>unstable communication.</li>
+</ul>
+<p>Exam keyword: <strong>discovery</strong>. Mobile devices need to discover services/resources as they move.</p>
+<hr>
+<h2 id="mobile-cloud-and-mobile-edge-computing">Mobile cloud and mobile edge computing</h2>
+<p>Mobile devices often cannot do all computation locally because of limited battery, CPU, storage, or network capacity.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Mobile cloud computing</td>
+					<td>Offload computation/storage to cloud data centers.</td>
+			</tr>
+			<tr>
+					<td>Mobile edge computing</td>
+					<td>Move computation closer to the user/device at the network edge.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Why edge helps:</p>
+<ul>
+<li>lower latency,</li>
+<li>less backbone traffic,</li>
+<li>better support for location-aware services.</li>
+</ul>
+<hr>
+<h2 id="sensor-networks">Sensor networks</h2>
+<p>Sensor networks contain many simple nodes with sensors.</p>
+<p>Characteristics:</p>
+<ul>
+<li>many nodes, from tens to thousands,</li>
+<li>limited memory and computation,</li>
+<li>limited communication,</li>
+<li>often battery-powered or battery-less,</li>
+<li>usually deployed to measure an environment.</li>
+</ul>
+<hr>
+<h2 id="sensor-networks-as-distributed-databases">Sensor networks as distributed databases</h2>
+<p>A sensor network can be viewed as a distributed database:</p>
+<ul>
+<li>sensors produce data,</li>
+<li>queries ask for readings/events,</li>
+<li>system aggregates or forwards data.</li>
+</ul>
+<p>Two extremes:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Approach</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Store everything centrally</td>
+					<td>Send data to a sink/database. Easier queries but more communication.</td>
+			</tr>
+			<tr>
+					<td>Query inside the network</td>
+					<td>Process/aggregate near sensors. Saves communication but harder coordination.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="cloud-edge-continuum">Cloud-edge continuum</h2>
+<p>The cloud-edge continuum means computation/storage can happen at many levels:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">cloud data center  →  regional cloud  →  edge server  →  gateway  →  device/sensor
+</span></span></code></pre></div><p>Tradeoff:</p>
+<ul>
+<li>Cloud: powerful, centralized, easier management, but higher latency.</li>
+<li>Edge: closer, faster response, context-aware, but more distributed and harder to manage.</li>
+<li>Device: immediate and private, but resource-constrained.</li>
+</ul>
+<hr>
+<h2 id="pitfalls-in-distributed-system-design">Pitfalls in distributed-system design</h2>
+<p>Many distributed systems become complex because designers make false assumptions.</p>
+<p>The famous false assumptions:</p>
+<ol>
+<li>The network is reliable.</li>
+<li>The network is secure.</li>
+<li>The network is homogeneous.</li>
+<li>The topology does not change.</li>
+<li>Latency is zero.</li>
+<li>Bandwidth is infinite.</li>
+<li>Transport cost is zero.</li>
+<li>There is one administrator.</li>
+</ol>
+<h3 id="why-these-assumptions-are-false">Why these assumptions are false</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Assumption</th>
+					<th>Reality</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Network is reliable</td>
+					<td>Links fail, packets drop, machines crash.</td>
+			</tr>
+			<tr>
+					<td>Network is secure</td>
+					<td>Attackers may listen, modify, replay, or impersonate.</td>
+			</tr>
+			<tr>
+					<td>Network is homogeneous</td>
+					<td>Different OSs, hardware, protocols, data formats.</td>
+			</tr>
+			<tr>
+					<td>Topology does not change</td>
+					<td>Devices move, nodes join/leave, failures happen.</td>
+			</tr>
+			<tr>
+					<td>Latency is zero</td>
+					<td>Remote calls are slower than local calls.</td>
+			</tr>
+			<tr>
+					<td>Bandwidth is infinite</td>
+					<td>Large data transfer is costly and slow.</td>
+			</tr>
+			<tr>
+					<td>Transport cost is zero</td>
+					<td>Communication consumes money, energy, CPU, and time.</td>
+			</tr>
+			<tr>
+					<td>One administrator</td>
+					<td>Different organizations have different policies.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What are the core elements of ubiquitous systems?</li>
+<li>Why is mobile computing hard?</li>
+<li>What is the difference between cloud and edge computing?</li>
+<li>Why can sensor networks be seen as distributed databases?</li>
+<li>List the eight false assumptions of distributed systems.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/chapter-1/part-4-classification-of-distributed-systems/" id="nav-prev"><em>Chapter 1, Part 4 – Classification of Distributed Systems</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

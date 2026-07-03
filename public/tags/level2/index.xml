@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Level2 on Docs</title>
-    <link>http://localhost:1313/docs/tags/level2/</link>
-    <description>Recent content in Level2 on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/level2/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 8 – IoT Level-2</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-2&#34;&gt;What Is IoT Level-2?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-2 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation and &lt;strong&gt;local analysis&lt;/strong&gt;. Data is stored in the cloud and the&#xA;application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The key difference from Level-1: analysis still happens locally on the device, but&#xA;storage moves to the cloud. The application is also cloud-hosted rather than&#xA;running on the device.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions where data volumes are large enough to require cloud&#xA;storage, but the primary analysis logic is simple enough to run on the local node.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Level2 on Docs</title>
+		<link>http://localhost:1313/docs/tags/level2/</link>
+		<description>Recent content in Level2 on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/level2/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 8 – IoT Level-2</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part8-iot-level2/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-2&#34;&gt;What Is IoT Level-2?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-2 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation and &lt;strong&gt;local analysis&lt;/strong&gt;. Data is stored in the cloud and the&#xA;application is cloud-based.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The key difference from Level-1: analysis still happens locally on the device, but&#xA;storage moves to the cloud. The application is also cloud-hosted rather than&#xA;running on the device.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Solutions where data volumes are large enough to require cloud&#xA;storage, but the primary analysis logic is simple enough to run on the local node.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

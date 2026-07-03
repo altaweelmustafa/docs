@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 4 – Gossip Coordination and Event Matching · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 4 – Gossip Coordination and Event Matching</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gossip-based-coordination">Gossip-based coordination</a></li>
+    <li><a href="#gossip-aggregation">Gossip aggregation</a></li>
+    <li><a href="#peer-sampling">Peer sampling</a></li>
+    <li><a href="#gossip-based-overlay-construction">Gossip-based overlay construction</a>
+      <ul>
+        <li><a href="#2d-torus-example">2D torus example</a></li>
+      </ul>
+    </li>
+    <li><a href="#secure-gossiping-and-hub-attack">Secure gossiping and hub attack</a></li>
+    <li><a href="#defense-gathering-statistics">Defense: gathering statistics</a></li>
+    <li><a href="#distributed-event-matching">Distributed event matching</a></li>
+    <li><a href="#selective-routing">Selective routing</a></li>
+    <li><a href="#sub-2-sub-gossiping">Sub-2-Sub gossiping</a></li>
+    <li><a href="#secure-publish-subscribe-dilemma">Secure publish-subscribe dilemma</a></li>
+    <li><a href="#peks-public-key-encryption-with-keyword-search">PEKS: Public-Key Encryption with Keyword Search</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="gossip-based-coordination">Gossip-based coordination</h2>
+<p>Gossip protocols let nodes coordinate through repeated random exchanges.</p>
+<p>Typical applications:</p>
+<ul>
+<li>data dissemination,</li>
+<li>aggregation,</li>
+<li>peer sampling,</li>
+<li>overlay construction.</li>
+</ul>
+<hr>
+<h2 id="gossip-aggregation">Gossip aggregation</h2>
+<p>Each node <code>Pi</code> has value <code>vi</code>.</p>
+<p>When two nodes gossip, both replace their values with the average:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">vi, vj ← (vi + vj) / 2
+</span></span></code></pre></div><p>Eventually, all nodes converge to global average:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">v̄ = Σ vi / N
+</span></span></code></pre></div><p>Example idea:</p>
+<p>If one node starts with <code>1</code> and all others start with <code>0</code>, the final value at every node tends to <code>1/N</code>.</p>
+<hr>
+<h2 id="peer-sampling">Peer sampling</h2>
+<p>Problem:</p>
+<p>Many gossip applications need to select a random peer from the whole network, but no node can know everyone in a huge system.</p>
+<p>Solution:</p>
+<ul>
+<li>each node maintains a local list of <code>c</code> peer references,</li>
+<li>regularly chooses a peer from the list,</li>
+<li>exchanges about <code>c/2</code> references,</li>
+<li>when application needs a random peer, choose randomly from local list.</li>
+</ul>
+<p>Observation from slides:</p>
+<p>Statistically, choosing from the local list can become indistinguishable from choosing uniformly from the whole network.</p>
+<hr>
+<h2 id="gossip-based-overlay-construction">Gossip-based overlay construction</h2>
+<p>Goal: build a useful overlay using gossip.</p>
+<p>Essence:</p>
+<ul>
+<li>maintain two local neighbor lists:
+<ul>
+<li>low-level list for peer sampling,</li>
+<li>high-level list for application-specific neighbors.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2d-torus-example">2D torus example</h3>
+<p>Assume logical <code>N × N</code> grid.</p>
+<p>Each node maintains list of <code>c</code> nearest neighbors.</p>
+<p>Distance between <code>(a1,a2)</code> and <code>(b1,b2)</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">d = d1 + d2
+</span></span><span class="line"><span class="cl">where di = min(N - |ai - bi|, |ai - bi|)
+</span></span></code></pre></div><p>This wraps around like a torus.</p>
+<p>Protocol idea:</p>
+<ol>
+<li>Node picks random peer from low-level list.</li>
+<li>It keeps closest nodes in high-level list.</li>
+<li>Repeat rounds.</li>
+<li>Overlay gradually becomes structured.</li>
+</ol>
+<hr>
+<h2 id="secure-gossiping-and-hub-attack">Secure gossiping and hub attack</h2>
+<p>Attack:</p>
+<p>Colluding nodes return only links to each other during reference exchanges.</p>
+<p>Result:</p>
+<p>Benign nodes may gradually receive more attacker links, causing attackers to become hubs.</p>
+<p>In the slide scenario:</p>
+<ul>
+<li>100,000 nodes,</li>
+<li>local list size <code>c = 30</code>,</li>
+<li>only 30 attackers,</li>
+<li>attackers can gain full control in less than 300 rounds.</li>
+</ul>
+<hr>
+<h2 id="defense-gathering-statistics">Defense: gathering statistics</h2>
+<p>Idea:</p>
+<p>A benign node may use an exchange either to:</p>
+<ul>
+<li>update its local list, or</li>
+<li>gather statistics.</li>
+</ul>
+<p>Attackers do not know which purpose is being used, so if statistical checking may reveal collusion, attackers are pressured to behave correctly.</p>
+<p>One useful statistic:</p>
+<ul>
+<li>indegree distribution: how many nodes point to each node.</li>
+</ul>
+<p>Unusually high indegree patterns may reveal hubs/colluders.</p>
+<hr>
+<h2 id="distributed-event-matching">Distributed event matching</h2>
+<p>Publish-subscribe idea:</p>
+<ul>
+<li>a process specifies subscriptions <code>S</code>,</li>
+<li>another process publishes notification <code>N</code>,</li>
+<li>system checks whether <code>S</code> matches <code>N</code>.</li>
+</ul>
+<p>Hard part:</p>
+<blockquote>
+<p>Implement matching in a scalable way.</p>
+</blockquote>
+<hr>
+<h2 id="selective-routing">Selective routing</h2>
+<p>Approach:</p>
+<ol>
+<li>First broadcast subscriptions through the network.</li>
+<li>Routers store filters in routing tables.</li>
+<li>Notifications are forwarded only toward relevant subscribers/rendezvous nodes.</li>
+</ol>
+<p>Example routing table idea:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Interface</th>
+					<th>Filter</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>To node 3</td>
+					<td><code>a ∈ [0,3]</code></td>
+			</tr>
+			<tr>
+					<td>To node 4</td>
+					<td><code>a ∈ [2,5]</code></td>
+			</tr>
+			<tr>
+					<td>Toward router R1</td>
+					<td>unspecified/general route</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="sub-2-sub-gossiping">Sub-2-Sub gossiping</h2>
+<p>Goal:</p>
+<p>Subscribers with similar interests should form one group, improving scalability.</p>
+<p>Model:</p>
+<ul>
+<li>there are <code>N</code> attributes <code>a1, ..., aN</code>,</li>
+<li>attribute values map to floating-point numbers,</li>
+<li>subscription defines a region in N-dimensional space.</li>
+</ul>
+<p>Example subscription:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">S = &lt;a1 → 3.0, a4 → [0.0, 0.5)&gt;
+</span></span></code></pre></div><p>Meaning:</p>
+<ul>
+<li><code>a1</code> must equal <code>3.0</code>,</li>
+<li><code>a4</code> must be between <code>0.0</code> and <code>0.5</code>,</li>
+<li>other attributes do not matter.</li>
+</ul>
+<p>A notification matches if it falls in the subscription region.</p>
+<hr>
+<h2 id="secure-publish-subscribe-dilemma">Secure publish-subscribe dilemma</h2>
+<p>Publish-subscribe wants decoupling:</p>
+<ul>
+<li>publishers and subscribers may not know each other,</li>
+<li>anonymity may be needed,</li>
+<li>but security normally uses secure channels between known parties.</li>
+</ul>
+<p>Problems:</p>
+<ul>
+<li>referential decoupling prevents simple secure channels,</li>
+<li>unknown source creates integrity problems,</li>
+<li>trusted broker may be impossible for sensitive data.</li>
+</ul>
+<hr>
+<h2 id="peks-public-key-encryption-with-keyword-search">PEKS: Public-Key Encryption with Keyword Search</h2>
+<p>Goal:</p>
+<p>Search/match encrypted data without decrypting full messages at the server.</p>
+<p>A message <code>m</code> with keywords <code>KW1 ... KWn</code> is stored as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">m* = [PK(m) | PEKS(PK, KW1) | PEKS(PK, KW2) | ... | PEKS(PK, KWn)]
+</span></span></code></pre></div><p>A subscriber gets a secret key and can generate a trapdoor for a keyword.</p>
+<p>The server can test whether encrypted keywords match the trapdoor without learning the plaintext keyword/message.</p>
+<p>Exam summary:</p>
+<blockquote>
+<p>PEKS lets a system route/search encrypted messages using encrypted keywords.</p>
+</blockquote>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>How does gossip aggregation compute an average?</li>
+<li>What is peer sampling and why is it useful?</li>
+<li>How does the 2D torus overlay use distance?</li>
+<li>What is a hub attack in gossip?</li>
+<li>What is distributed event matching?</li>
+<li>Why is secure publish-subscribe difficult?</li>
+<li>What does PEKS solve?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch5/part-3-election-algorithms/" id="nav-prev"><em>Chapter 5, Part 3 – Election Algorithms</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch5/part-5-location-systems/" id="nav-next"><em>Chapter 5, Part 5 – Location Systems</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

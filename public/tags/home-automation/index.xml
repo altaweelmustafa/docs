@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Home-Automation on Docs</title>
-    <link>http://localhost:1313/docs/tags/home-automation/</link>
-    <description>Recent content in Home-Automation on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/home-automation/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 7 – IoT Level-1</title>
-      <link>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</link>
-      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</guid>
-      <description>&lt;h2 id=&#34;what-is-iot-level-1&#34;&gt;What Is IoT Level-1?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-1 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation, stores data locally, performs analysis locally, and hosts the&#xA;application — all on the same device.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;No cloud is involved. Everything runs on one controller.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Low-cost, low-complexity solutions where data volumes are small and&#xA;analysis is not computationally intensive.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Local]                          [Cloud]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  App&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▲&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Communication&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Services ◄──── Controller Service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ▲                            ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Database                     Resource&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                     ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  Device&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;● Monitoring Node — performs analysis and stores data locally&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;All components reside on the local node. The cloud side is unused at this level.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Home-Automation on Docs</title>
+		<link>http://localhost:1313/docs/tags/home-automation/</link>
+		<description>Recent content in Home-Automation on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/home-automation/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 7 – IoT Level-1</title>
+				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</link>
+				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part7-iot-level1/</guid>
+				<description>&lt;h2 id=&#34;what-is-iot-level-1&#34;&gt;What Is IoT Level-1?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A Level-1 IoT system has a &lt;strong&gt;single node&lt;/strong&gt; that performs sensing and/or&#xA;actuation, stores data locally, performs analysis locally, and hosts the&#xA;application — all on the same device.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;No cloud is involved. Everything runs on one controller.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; Low-cost, low-complexity solutions where data volumes are small and&#xA;analysis is not computationally intensive.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[Local]                          [Cloud]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  App&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▲&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Communication&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REST/WebSocket Services ◄──── Controller Service&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ▲                            ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Database                     Resource&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                     ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                  Device&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;● Monitoring Node — performs analysis and stores data locally&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;All components reside on the local node. The cloud side is unused at this level.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

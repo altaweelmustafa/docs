@@ -1,7 +1,7 @@
 ---
 title: "Half Duplex / Full Duplex"
 date: 2026-05-31
-_build:
+build:
   list: never
   render: always
 ---

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 2 – Thread Implementations and Distributed Use · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 2 – Thread Implementations and Distributed Use</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#main-issue">Main issue</a></li>
+    <li><a href="#user-level-threads">User-level threads</a></li>
+    <li><a href="#kernel-level-threads">Kernel-level threads</a></li>
+    <li><a href="#two-level-threading">Two-level threading</a></li>
+    <li><a href="#threads-on-the-client-side">Threads on the client side</a>
+      <ul>
+        <li><a href="#multithreaded-web-client">Multithreaded web client</a></li>
+        <li><a href="#multiple-rpcs">Multiple RPCs</a></li>
+      </ul>
+    </li>
+    <li><a href="#thread-level-parallelism-tlp">Thread-level parallelism (TLP)</a></li>
+    <li><a href="#threads-on-the-server-side">Threads on the server side</a></li>
+    <li><a href="#dispatcherworker-model">Dispatcher/worker model</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="main-issue">Main issue</h2>
+<p>Should threads be implemented:</p>
+<ol>
+<li>in user space, by a user-level thread library, or</li>
+<li>inside the OS kernel?</li>
+</ol>
+<p>Each choice has advantages and problems.</p>
+<hr>
+<h2 id="user-level-threads">User-level threads</h2>
+<p>User-level threads are managed by a library inside one process.</p>
+<p>Advantages:</p>
+<ul>
+<li>thread operations are very fast,</li>
+<li>no kernel trap is needed for every thread operation,</li>
+<li>scheduling can be customized by the application.</li>
+</ul>
+<p>Problems:</p>
+<ul>
+<li>the kernel may see only one process, not individual threads,</li>
+<li>if one user thread makes a blocking system call, the whole process may block,</li>
+<li>external events/signals are harder because the kernel cannot easily target a specific user thread.</li>
+</ul>
+<p>Exam sentence:</p>
+<blockquote>
+<p>User-level threads are efficient, but blocking system calls can block the entire process.</p>
+</blockquote>
+<hr>
+<h2 id="kernel-level-threads">Kernel-level threads</h2>
+<p>Kernel-level threads are managed by the OS kernel.</p>
+<p>Advantages:</p>
+<ul>
+<li>if one thread blocks, the kernel can schedule another thread in the same process,</li>
+<li>external events are easier to handle,</li>
+<li>good support for multiprocessor scheduling.</li>
+</ul>
+<p>Problems:</p>
+<ul>
+<li>thread operations require system calls/traps to the kernel,</li>
+<li>historically less efficient than user-level thread operations.</li>
+</ul>
+<p>Exam sentence:</p>
+<blockquote>
+<p>Kernel threads handle blocking better, but thread operations are more expensive.</p>
+</blockquote>
+<hr>
+<h2 id="two-level-threading">Two-level threading</h2>
+<p>Two-level threading combines user-level and kernel-level threads.</p>
+<p>Basic idea:</p>
+<ul>
+<li>kernel threads execute user-level threads,</li>
+<li>if a user thread blocks in the kernel, the kernel can schedule another kernel thread,</li>
+<li>if a user thread blocks only at user level, the user-level package switches to another runnable user thread.</li>
+</ul>
+<p>Principle:</p>
+<ol>
+<li>A user thread does a system call.</li>
+<li>The kernel thread executing it blocks.</li>
+<li>The kernel may schedule another kernel thread that has a runnable user thread.</li>
+<li>If no user thread is runnable, a kernel thread can remain idle or be destroyed.</li>
+</ol>
+<hr>
+<h2 id="threads-on-the-client-side">Threads on the client side</h2>
+<h3 id="multithreaded-web-client">Multithreaded web client</h3>
+<p>A browser uses threads to hide network latency.</p>
+<p>Example:</p>
+<ol>
+<li>Browser receives HTML.</li>
+<li>Browser discovers images, CSS, scripts, and other files.</li>
+<li>Each file can be fetched by a separate thread.</li>
+<li>Browser displays files as they arrive.</li>
+</ol>
+<h3 id="multiple-rpcs">Multiple RPCs</h3>
+<p>A client may need results from several servers.</p>
+<p>Instead of doing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">call server A → wait
+</span></span><span class="line"><span class="cl">call server B → wait
+</span></span><span class="line"><span class="cl">call server C → wait
+</span></span></code></pre></div><p>it can do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">start thread for A
+</span></span><span class="line"><span class="cl">start thread for B
+</span></span><span class="line"><span class="cl">start thread for C
+</span></span><span class="line"><span class="cl">wait for all results
+</span></span></code></pre></div><p>If calls go to different servers, the speedup can be close to linear.</p>
+<hr>
+<h2 id="thread-level-parallelism-tlp">Thread-level parallelism (TLP)</h2>
+<p>Let <code>ci</code> be the fraction of time that exactly <code>i</code> threads are executing simultaneously.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">TLP = (Σ i·ci) / (1 - c0)
+</span></span></code></pre></div><p>where <code>N</code> is the maximum number of threads that can execute at the same time.</p>
+<p>Important slide observation:</p>
+<p>Typical browsers have TLP around <code>1.5</code> to <code>2.5</code>, so threads in browsers are often more about organization and latency hiding than perfect parallelism.</p>
+<hr>
+<h2 id="threads-on-the-server-side">Threads on the server side</h2>
+<p>Servers use threads to improve performance and simplify structure.</p>
+<p>Reasons:</p>
+<ul>
+<li>starting a thread is cheaper than starting a process,</li>
+<li>a single-threaded server cannot easily use multiple processors,</li>
+<li>one request can block while another request is handled,</li>
+<li>blocking I/O is easier to program than complex nonblocking logic.</li>
+</ul>
+<hr>
+<h2 id="dispatcherworker-model">Dispatcher/worker model</h2>
+<p>Common server model:</p>
+<ol>
+<li>Dispatcher receives incoming requests.</li>
+<li>Dispatcher gives each request to a worker thread/process.</li>
+<li>Worker handles the request.</li>
+<li>Worker returns response or becomes available again.</li>
+</ol>
+<p>Comparison:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th>Parallelism</th>
+					<th>Blocking calls</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Multithreading</td>
+					<td>Yes</td>
+					<td>Yes, simple to use.</td>
+			</tr>
+			<tr>
+					<td>Single-threaded process</td>
+					<td>No</td>
+					<td>Yes, but blocks the whole server.</td>
+			</tr>
+			<tr>
+					<td>Finite-state machine</td>
+					<td>Yes</td>
+					<td>Uses nonblocking calls; harder to program.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Compare user-level and kernel-level threads.</li>
+<li>Why are kernel threads better for blocking system calls?</li>
+<li>Explain two-level threading.</li>
+<li>How do threads hide latency in a browser?</li>
+<li>What is the dispatcher/worker model?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-3/part-1-threads-context-switching/" id="nav-prev"><em>Chapter 3, Part 1 – Threads and Context Switching</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems-full/chapter-3/part-3-virtualization-containers-cloud/" id="nav-next"><em>Chapter 3, Part 3 – Virtualization, Containers, and Cloud</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

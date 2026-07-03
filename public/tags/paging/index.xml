@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Paging on Docs</title>
-    <link>http://localhost:1313/docs/tags/paging/</link>
-    <description>Recent content in Paging on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/paging/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</title>
-      <link>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</link>
-      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</guid>
-      <description>&lt;h2 id=&#34;2-non-contiguous-allocation--paging&#34;&gt;[2] Non-Contiguous Allocation — Paging&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The logical program is divided into equal-size chunks called &lt;strong&gt;pages&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Physical memory is divided into equal-size chunks called &lt;strong&gt;frames&lt;/strong&gt; (same size as pages).&lt;/li&gt;&#xA;&lt;li&gt;Pages can be placed into any free frames — no need for contiguous memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;address-translation&#34;&gt;Address Translation&lt;/h2&gt;&#xA;&lt;p&gt;The OS uses a &lt;strong&gt;page table&lt;/strong&gt;: a table that maps each page number (P) to its frame number (F).&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Logical Address layout:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LA → [ P | d ]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      page#  offset&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Translation formulas:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Paging on Docs</title>
+		<link>http://localhost:1313/docs/tags/paging/</link>
+		<description>Recent content in Paging on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/paging/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</title>
+				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part2/</guid>
+				<description>&lt;h2 id=&#34;2-non-contiguous-allocation--paging&#34;&gt;[2] Non-Contiguous Allocation — Paging&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The logical program is divided into equal-size chunks called &lt;strong&gt;pages&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Physical memory is divided into equal-size chunks called &lt;strong&gt;frames&lt;/strong&gt; (same size as pages).&lt;/li&gt;&#xA;&lt;li&gt;Pages can be placed into any free frames — no need for contiguous memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;address-translation&#34;&gt;Address Translation&lt;/h2&gt;&#xA;&lt;p&gt;The OS uses a &lt;strong&gt;page table&lt;/strong&gt;: a table that maps each page number (P) to its frame number (F).&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Logical Address layout:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LA → [ P | d ]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      page#  offset&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Translation formulas:&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 8, Part 3 – Segmentation &amp; Segmentation with Paging</title>
+				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part3/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part3/</guid>
+				<description>&lt;h2 id=&#34;segmentation&#34;&gt;Segmentation&lt;/h2&gt;&#xA;&lt;p&gt;Paging separates the user&amp;rsquo;s view of memory from actual memory. &lt;strong&gt;Segmentation&lt;/strong&gt; preserves the user&amp;rsquo;s logical view: a program is a collection of named segments (main program, stack, data structures, functions/procedures).&lt;/p&gt;&#xA;&lt;p&gt;Each segment has a &lt;strong&gt;segment number (S)&lt;/strong&gt; and a &lt;strong&gt;displacement/offset (d)&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Segment Table&lt;/strong&gt; stores &lt;code&gt;(Base, Limit)&lt;/code&gt; per segment:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LA → [ S | d ]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PA  = Base[S] + d        (if d &amp;lt; Limit[S], else → fault)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Seg#&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Base&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Limit&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;0&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;27,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;7,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;5,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;18,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;3,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;3&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;21,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2,000&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Given LA with &lt;code&gt;S = 2, d = 350&lt;/code&gt;:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

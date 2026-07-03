@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Programming-Languages on Docs</title>
-    <link>http://localhost:1313/docs/tags/programming-languages/</link>
-    <description>Recent content in Programming-Languages on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</guid>
-      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-1-nature-of-the-course--what-is-a-programming-language&#34;&gt;Part 1: Nature of the Course &amp;amp; What is a Programming Language&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;nature-of-the-course&#34;&gt;Nature of the Course&lt;/h2&gt;&#xA;&lt;p&gt;There are 4 ways to teach a programming languages course:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How to program in several languages&lt;/li&gt;&#xA;&lt;li&gt;Survey of the history and nature of several languages&lt;/li&gt;&#xA;&lt;li&gt;How to implement programming languages&lt;/li&gt;&#xA;&lt;li&gt;The conceptual issues of programming languages (concepts and paradigms)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This course focuses on the 4th approach. We study the structural issues of programming languages, summed up in two words: &lt;strong&gt;Concepts and Paradigms&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 2 – Syntax &amp; Semantics</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/part2/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/part2/</guid>
-      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-2-syntax--semantics&#34;&gt;Part 2: Syntax &amp;amp; Semantics&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;&#xA;&lt;p&gt;Syntax is the grammar of the programming language. It describes structures like expressions, statements, and blocks.&lt;/p&gt;&#xA;&lt;p&gt;Syntax is formally described using a &lt;strong&gt;Context Free Grammar (CFG)&lt;/strong&gt;, a set of static algorithms and frameworks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;semantics&#34;&gt;Semantics&lt;/h2&gt;&#xA;&lt;p&gt;Semantics gives meaning to the syntax structures. It&amp;rsquo;s much harder to pin down precisely than syntax. For example, the meaning of an if/else statement has to be implemented correctly so the compiler generates the right code.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
-      <description>&lt;h1 id=&#34;chapter-1---introduction-and-background&#34;&gt;Chapter 1 - Introduction and Background&lt;/h1&gt;&#xA;&lt;h2 id=&#34;part-3-paradigms-of-programming-languages&#34;&gt;Part 3: Paradigms of Programming Languages&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;There are 4 paradigms of programming languages.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Programming-Languages on Docs</title>
+		<link>http://localhost:1313/docs/tags/programming-languages/</link>
+		<description>Recent content in Programming-Languages on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</guid>
+				<description>&lt;h2 id=&#34;nature-of-the-course&#34;&gt;Nature of the Course&lt;/h2&gt;&#xA;&lt;p&gt;There are 4 ways to teach a programming languages course:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How to program in several languages&lt;/li&gt;&#xA;&lt;li&gt;Survey of the history and nature of several languages&lt;/li&gt;&#xA;&lt;li&gt;How to implement programming languages&lt;/li&gt;&#xA;&lt;li&gt;The conceptual issues of programming languages (concepts and paradigms)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This course focuses on the 4th approach. We study the structural issues of programming languages, summed up in two words: &lt;strong&gt;Concepts and Paradigms&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Concepts&lt;/strong&gt;: the basic structure of a PL, like syntax, semantics, data types, control structures&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Paradigms&lt;/strong&gt;: the model or approach used to reason about and solve a problem&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-views-of-a-programming-language&#34;&gt;Three Views of a Programming Language&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;View&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Who&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Designer&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The inventor of the language&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Implementer&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The one who builds the compiler or interpreter&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;User&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The one who writes programs in the language&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The course covers all three, with a bit more focus on the implementer side.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 2 – Syntax &amp; Semantics</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/part2/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/part2/</guid>
+				<description>&lt;h2 id=&#34;syntax&#34;&gt;Syntax&lt;/h2&gt;&#xA;&lt;p&gt;Syntax is the grammar of the programming language. It describes structures like expressions, statements, and blocks.&lt;/p&gt;&#xA;&lt;p&gt;Syntax is formally described using a &lt;strong&gt;Context Free Grammar (CFG)&lt;/strong&gt;, a set of static algorithms and frameworks.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;semantics&#34;&gt;Semantics&lt;/h2&gt;&#xA;&lt;p&gt;Semantics gives meaning to the syntax structures. It&amp;rsquo;s much harder to pin down precisely than syntax. For example, the meaning of an if/else statement has to be implemented correctly so the compiler generates the right code.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
+				<description>&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example: GCD in Pascal&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;function gcd(x,y:integer):integer;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Begin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If (x = y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    gcd:=x&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (x &amp;gt; y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x-y,y)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x,y-x);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Same program in C&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

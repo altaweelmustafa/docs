@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Deadlock on Docs</title>
-    <link>http://localhost:1313/docs/tags/deadlock/</link>
-    <description>Recent content in Deadlock on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/deadlock/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 6 – Concurrent Processes &amp; Process Synchronization</title>
-      <link>http://localhost:1313/docs/courses/os/ch6/ch6-part1/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch6/ch6-part1/</guid>
-      <description>&lt;h2 id=&#34;concurrent-processes&#34;&gt;Concurrent Processes&lt;/h2&gt;&#xA;&lt;p&gt;Concurrent processes are either:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Independent&lt;/strong&gt;: cannot affect or be affected by the execution of another process.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Cooperating&lt;/strong&gt;: can affect or be affected by another process (share data).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;precedence-graph&#34;&gt;Precedence Graph&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;precedence graph&lt;/strong&gt; is a directed graph whose nodes correspond to statements. An edge from node Sᵢ to node Sⱼ means that Sⱼ is only executed &lt;strong&gt;after&lt;/strong&gt; Sᵢ completes.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt; Given statements:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(1) a = x + y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(2) b = z + 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(3) c = a - b&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(4) w = c + 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;(1) and (2) &lt;strong&gt;can&lt;/strong&gt; be executed concurrently (no dependency).&lt;/li&gt;&#xA;&lt;li&gt;(3) depends on both (1) and (2) → cannot run concurrently with either.&lt;/li&gt;&#xA;&lt;li&gt;(4) depends on (3) → cannot run concurrently with (3).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;concurrency-condition--bernsteins-conditions&#34;&gt;Concurrency Condition — Bernstein&amp;rsquo;s Conditions&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Define:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Deadlock on Docs</title>
+		<link>http://localhost:1313/docs/tags/deadlock/</link>
+		<description>Recent content in Deadlock on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/deadlock/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 6 – Concurrent Processes &amp; Process Synchronization</title>
+				<link>http://localhost:1313/docs/courses/os/ch6/ch6-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch6/ch6-part1/</guid>
+				<description>&lt;h2 id=&#34;concurrent-processes&#34;&gt;Concurrent Processes&lt;/h2&gt;&#xA;&lt;p&gt;Concurrent processes are either:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Independent&lt;/strong&gt;: cannot affect or be affected by the execution of another process.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Cooperating&lt;/strong&gt;: can affect or be affected by another process (share data).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;precedence-graph&#34;&gt;Precedence Graph&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;precedence graph&lt;/strong&gt; is a directed graph whose nodes correspond to statements. An edge from node Sᵢ to node Sⱼ means that Sⱼ is only executed &lt;strong&gt;after&lt;/strong&gt; Sᵢ completes.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt; Given statements:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(1) a = x + y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(2) b = z + 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(3) c = a - b&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(4) w = c + 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;(1) and (2) &lt;strong&gt;can&lt;/strong&gt; be executed concurrently (no dependency).&lt;/li&gt;&#xA;&lt;li&gt;(3) depends on both (1) and (2) → cannot run concurrently with either.&lt;/li&gt;&#xA;&lt;li&gt;(4) depends on (3) → cannot run concurrently with (3).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;concurrency-condition--bernsteins-conditions&#34;&gt;Concurrency Condition — Bernstein&amp;rsquo;s Conditions&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Define:&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 7 – Deadlocks</title>
+				<link>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</guid>
+				<description>&lt;h2 id=&#34;deadlock--definition&#34;&gt;Deadlock — Definition&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Deadlock&lt;/strong&gt;: a set of waiting (blocked) processes where each process is holding a resource and waiting for other processes to release their resources.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Simple example:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        PR-1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      ↗       ↖&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   P₁   (cycle)  P₂&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      ↘       ↗&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        PR-2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;P₁ holds PR-1 and waits for PR-2. P₂ holds PR-2 and waits for PR-1 → neither can proceed.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;system-model&#34;&gt;System Model&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;We have resource types: R₀, R₁, &amp;hellip;, Rₙ₋₁ (e.g. HD, tapes, printers).&lt;/li&gt;&#xA;&lt;li&gt;We have Wⱼ instances of each resource type Rⱼ.&lt;/li&gt;&#xA;&lt;li&gt;Each process uses resources in the following order:&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Use&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Release&lt;/strong&gt; the resource.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;deadlock-handling&#34;&gt;Deadlock Handling&lt;/h3&gt;&#xA;&lt;p&gt;The OS handles deadlocks in one of two ways:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

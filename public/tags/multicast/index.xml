@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Multicast on Docs</title>
+		<link>http://localhost:1313/docs/tags/multicast/</link>
+		<description>Recent content in Multicast on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/multicast/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4 – Communication</title>
+				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-4-communication/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-4-communication/</guid>
+				<description>&lt;h2 id=&#34;communication-in-distributed-systems&#34;&gt;Communication in Distributed Systems&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Distributed systems are built from components that run on different machines.&#xA;Communication is the way those components exchange requests, replies, events,&#xA;updates, and coordination messages.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Communication can happen at a low level through sockets, or at a higher level&#xA;through middleware, RPC, queues, publish-subscribe systems, or multicast.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;layered-protocols&#34;&gt;Layered Protocols&lt;/h2&gt;&#xA;&lt;p&gt;Traditional networking uses layers such as physical, data link, network,&#xA;transport, and application layers.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Layer&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Main Role&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Physical&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transmits bits between sender and receiver&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data link&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Groups bits into frames and handles local error or flow control&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Network&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Routes packets through a network&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transport&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Provides communication facilities such as TCP or UDP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Application&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Implements application-specific protocols&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;For many distributed systems, the transport layer is where practical&#xA;communication begins.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

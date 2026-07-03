@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5, Part 3 – Election Algorithms · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 5, Part 3 – Election Algorithms</h2>
+  <p class="post-date"><em>posted on 2026 Jul 03</em></p>
+  
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-election-algorithms">Why election algorithms?</a></li>
+    <li><a href="#basic-assumptions">Basic assumptions</a></li>
+    <li><a href="#bully-algorithm">Bully algorithm</a></li>
+    <li><a href="#ring-election-algorithm">Ring election algorithm</a></li>
+    <li><a href="#zookeeper-leader-election">ZooKeeper leader election</a>
+      <ul>
+        <li><a href="#receiving-a-vote">Receiving a vote</a></li>
+      </ul>
+    </li>
+    <li><a href="#raft-leader-election">Raft leader election</a></li>
+    <li><a href="#selecting-a-new-raft-leader">Selecting a new Raft leader</a></li>
+    <li><a href="#proof-of-stake-election">Proof-of-stake election</a></li>
+    <li><a href="#wireless-network-leader-election">Wireless network leader election</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-election-algorithms">Why election algorithms?</h2>
+<p>Some distributed algorithms need one process to act as coordinator.</p>
+<p>Problem:</p>
+<blockquote>
+<p>If the coordinator fails, how do we dynamically choose a new one?</p>
+</blockquote>
+<p>Manual selection creates a single point of failure. Election algorithms let processes agree on a new coordinator.</p>
+<hr>
+<h2 id="basic-assumptions">Basic assumptions</h2>
+<p>Traditional election algorithms often assume:</p>
+<ol>
+<li>All processes have unique IDs.</li>
+<li>All processes know all process IDs.</li>
+<li>A process may not know which processes are currently up.</li>
+<li>Election means selecting the highest-ID process that is alive.</li>
+</ol>
+<hr>
+<h2 id="bully-algorithm">Bully algorithm</h2>
+<p>Assume processes are <code>P0, P1, ..., PN-1</code> and ID of <code>Pk</code> is <code>k</code>.</p>
+<p>When <code>Pk</code> notices the coordinator is not responding:</p>
+<ol>
+<li><code>Pk</code> sends <code>ELECTION</code> messages to all higher-ID processes.</li>
+<li>If nobody responds, <code>Pk</code> wins and becomes coordinator.</li>
+<li>If a higher-ID process responds, that higher process takes over the election.</li>
+</ol>
+<p>Why “bully”?</p>
+<p>The highest-ID alive process always wins, pushing lower processes out.</p>
+<p>Advantages:</p>
+<ul>
+<li>simple,</li>
+<li>elects highest-ID alive process.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>assumes known membership,</li>
+<li>many messages in worst case,</li>
+<li>not ideal for very large or dynamic systems.</li>
+</ul>
+<hr>
+<h2 id="ring-election-algorithm">Ring election algorithm</h2>
+<p>Processes are organized in a logical ring.</p>
+<p>Principle:</p>
+<ul>
+<li>priority is based on process ID/priority,</li>
+<li>highest priority alive process becomes coordinator.</li>
+</ul>
+<p>Steps:</p>
+<ol>
+<li>Any process starts election by sending election message to successor.</li>
+<li>If successor is down, pass message to next successor.</li>
+<li>Each process that forwards message adds itself to the list.</li>
+<li>When message returns to initiator, all alive processes are known.</li>
+<li>Initiator sends coordinator message around ring with list/living winner.</li>
+<li>Highest-priority process becomes coordinator.</li>
+</ol>
+<p>Advantages:</p>
+<ul>
+<li>does not need to contact all processes directly at once,</li>
+<li>works naturally with logical ring.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>ring maintenance is needed,</li>
+<li>failures complicate successor selection,</li>
+<li>can take time to circulate.</li>
+</ul>
+<hr>
+<h2 id="zookeeper-leader-election">ZooKeeper leader election</h2>
+<p>Each server <code>s</code> has:</p>
+<ul>
+<li>unique identifier <code>id(s)</code>,</li>
+<li>transaction counter <code>tx(s)</code>: latest transaction handled.</li>
+</ul>
+<p>When follower suspects leader crashed, it broadcasts:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">(voteID, voteTX)
+</span></span></code></pre></div><p>Initially:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">voteID = id(s)
+</span></span><span class="line"><span class="cl">voteTX = tx(s)
+</span></span></code></pre></div><p>Each server keeps:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Variable</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>leader(s)</code></td>
+					<td>server believed to be final leader.</td>
+			</tr>
+			<tr>
+					<td><code>lastTX(s)</code></td>
+					<td>most recent transaction known to <code>s</code>.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="receiving-a-vote">Receiving a vote</h3>
+<p>When <code>s*</code> receives <code>(voteID, voteTX)</code>:</p>
+<ol>
+<li>If <code>lastTX(s*) &lt; voteTX</code>, the received vote has more up-to-date transaction info:
+<ul>
+<li>set <code>leader(s*) = voteID</code>,</li>
+<li>set <code>lastTX(s*) = voteTX</code>.</li>
+</ul>
+</li>
+<li>If <code>lastTX(s*) = voteTX</code> and <code>leader(s*) &lt; voteID</code>, transaction freshness ties, so higher ID wins:
+<ul>
+<li>set <code>leader(s*) = voteID</code>.</li>
+</ul>
+</li>
+</ol>
+<p>If a server believes it should lead, it broadcasts its own <code>(id, tx)</code>.</p>
+<p>Exam summary:</p>
+<blockquote>
+<p>ZooKeeper election prefers the server with the most recent transaction; if tied, it prefers the higher ID.</p>
+</blockquote>
+<hr>
+<h2 id="raft-leader-election">Raft leader election</h2>
+<p>Raft uses a small group of servers. Each server is in one of three states:</p>
+<table>
+	<thead>
+			<tr>
+					<th>State</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Follower</td>
+					<td>Passive; listens to leader/candidates.</td>
+			</tr>
+			<tr>
+					<td>Candidate</td>
+					<td>Wants to become leader.</td>
+			</tr>
+			<tr>
+					<td>Leader</td>
+					<td>Sends heartbeats and coordinates.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Raft works in <strong>terms</strong>, starting at term <code>0</code>.</p>
+<p>All servers start as followers.</p>
+<p>Leader regularly sends heartbeat messages.</p>
+<hr>
+<h2 id="selecting-a-new-raft-leader">Selecting a new Raft leader</h2>
+<p>If a follower does not hear from the leader for some time:</p>
+<ol>
+<li>It increments term.</li>
+<li>It becomes candidate.</li>
+<li>It broadcasts a vote request.</li>
+</ol>
+<p>Responses:</p>
+<ul>
+<li>If old leader is still alive and receives message, it says it is still leader; candidate returns to follower.</li>
+<li>If another follower receives the first election message in current term, it votes for candidate.</li>
+<li>Otherwise it ignores duplicate election messages.</li>
+<li>Candidate wins when it receives majority votes.</li>
+</ul>
+<p>Important observation:</p>
+<p>Randomized/different timeouts reduce concurrent elections and help convergence.</p>
+<hr>
+<h2 id="proof-of-stake-election">Proof-of-stake election</h2>
+<p>Assume a blockchain system with <code>N</code> secure tokens.</p>
+<p>Properties:</p>
+<ul>
+<li>each token has unique owner,</li>
+<li>each token has unique index <code>1 ≤ k ≤ N</code>,</li>
+<li>token cannot be copied/modified unnoticed.</li>
+</ul>
+<p>Leader selection:</p>
+<ol>
+<li>draw random number <code>k</code> from <code>{1, ..., N}</code>,</li>
+<li>find process owning token <code>k</code>,</li>
+<li>that process becomes next leader.</li>
+</ol>
+<p>Observation:</p>
+<blockquote>
+<p>More tokens means higher probability of being selected.</p>
+</blockquote>
+<hr>
+<h2 id="wireless-network-leader-election">Wireless network leader election</h2>
+<p>In wireless environments, a leader may be selected based on capacity.</p>
+<p>Idea:</p>
+<ul>
+<li>find the node with highest capacity,</li>
+<li>nodes report back only the highest-capacity node they found.</li>
+</ul>
+<p>This reduces communication and picks a strong coordinator for the environment.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Why do we need election algorithms?</li>
+<li>Explain bully algorithm step by step.</li>
+<li>Explain ring election step by step.</li>
+<li>In ZooKeeper, what wins first: higher transaction or higher ID?</li>
+<li>What are Raft follower/candidate/leader states?</li>
+<li>Why do different timeouts help Raft elections?</li>
+<li>How does proof-of-stake select a leader?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch5/part-2-ordered-multicast-mutual-exclusion/" id="nav-prev"><em>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/distributed-systems/ch5/part-4-gossip-event-matching/" id="nav-next"><em>Chapter 5, Part 4 – Gossip Coordination and Event Matching</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
