@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Transparency on Docs</title>
-		<link>http://localhost:1313/docs/tags/transparency/</link>
-		<description>Recent content in Transparency on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/transparency/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 1 – Introduction to Distributed Systems</title>
-				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-1-introduction/</link>
-				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-1-introduction/</guid>
-				<description>&lt;h2 id=&#34;what-is-a-distributed-system&#34;&gt;What Is a Distributed System?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A distributed system is a networked computer system where processes and&#xA;resources are spread across multiple computers, but they cooperate to provide a&#xA;service.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A useful distinction is between &lt;strong&gt;decentralized&lt;/strong&gt; and &lt;strong&gt;distributed&lt;/strong&gt; systems.&#xA;In a decentralized system, processes and resources are necessarily spread across&#xA;multiple computers. In a distributed system, they are spread enough that the&#xA;system must handle communication, coordination, failures, and distance as part&#xA;of its design.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Transparency on Docs</title>
+    <link>http://localhost:1313/docs/tags/transparency/</link>
+    <description>Recent content in Transparency on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/transparency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 2 – Design Goals, Transparency, and Openness</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch1/part-2-design-goals-transparency-openness/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch1/part-2-design-goals-transparency-openness/</guid>
+      <description>&lt;h2 id=&#34;overall-design-goals&#34;&gt;Overall design goals&lt;/h2&gt;&#xA;&lt;p&gt;Distributed systems are usually designed to achieve four main goals:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Goal&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Resource sharing&lt;/td&gt;&#xA;          &lt;td&gt;Allow users/applications to share files, storage, printers, services, data, computation, etc.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Distribution transparency&lt;/td&gt;&#xA;          &lt;td&gt;Hide the fact that components are distributed.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Openness&lt;/td&gt;&#xA;          &lt;td&gt;Make the system easy to extend, integrate, and reuse.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Scalability&lt;/td&gt;&#xA;          &lt;td&gt;Keep working when size, distance, or administration grows.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;resource-sharing&#34;&gt;Resource sharing&lt;/h2&gt;&#xA;&lt;p&gt;Resource sharing means making resources available to users and applications across the network.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

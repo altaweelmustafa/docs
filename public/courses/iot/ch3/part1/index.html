@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 3, Part 1 – IoT System Phases · Docs</title>
+  <title>Chapter 3, Part 1 – Phases of an IoT System · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,97 +19,58 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 3, Part 1 – IoT System Phases</h2>
-  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
-   <p>IoT security becomes easier to understand when the system is divided into phases. Each phase has its own role, and each role introduces possible security risks.</p>
-<h2 id="1-data-collection--acquisition--perception">1. Data collection / acquisition / perception</h2>
-<p>This phase collects data from IoT devices or things.</p>
-<p>Examples include:</p>
+  <h2 class="post-title">Chapter 3, Part 1 – Phases of an IoT System</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="phases-of-an-iot-system">Phases of an IoT System</h2>
+<p>The IoT requires <strong>five phases</strong>, from data collection to data delivery to end users on or off demand.</p>
+<hr>
+<h2 id="phase-i-data-collection--acquisition--perception">Phase I: Data Collection / Acquisition / Perception</h2>
 <ul>
-<li>Sensors that collect dynamic data</li>
-<li>RFID tags that identify static objects</li>
-<li>Chips inside vehicles or moving devices</li>
-<li>Body sensors in healthcare systems</li>
+<li>Collect or acquire data from devices or things.</li>
+<li>Based on the characteristics of the thing, different types of data collectors are used.</li>
+<li>The thing may be a <strong>static body</strong> (body sensors or RFID tags) or a <strong>dynamic vehicle</strong> (sensors and chips).</li>
 </ul>
-<p>The main security idea is that the system must trust the source of the collected data. If the device is fake, compromised, or misconfigured, the whole system may make decisions based on wrong data.</p>
-<h2 id="2-storage">2. Storage</h2>
-<p>After data is collected, it needs to be stored.</p>
-<p>Storage may happen in:</p>
+<h2 id="phase-ii-storage">Phase II: Storage</h2>
 <ul>
-<li>Local memory on the IoT device</li>
-<li>A local gateway</li>
-<li>A cloud data center</li>
+<li>Data collected in Phase I must be stored.</li>
+<li>If the thing has its own local memory, data can be stored locally.</li>
+<li>Generally, IoT components have <strong>low memory and low processing capabilities</strong>.</li>
+<li>The <strong>cloud</strong> takes over storage responsibility in the case of stateless devices.</li>
 </ul>
-<p>Many IoT devices have limited memory and processing power, so cloud storage is often used. This makes storage easier, but it also introduces cloud-related risks such as leakage, unauthorized access, and data sovereignty concerns.</p>
-<h2 id="3-intelligent-processing">3. Intelligent processing</h2>
-<p>In this phase, the system analyzes data and provides smart services.</p>
-<p>The processing unit may:</p>
+<h2 id="phase-iii-intelligent-processing">Phase III: Intelligent Processing</h2>
 <ul>
-<li>Answer user queries</li>
-<li>Detect events</li>
-<li>Control connected devices</li>
-<li>Trigger automatic actions</li>
+<li>The IoT analyses data stored in cloud Data Centers (DCs) and provides intelligent services in hard real time.</li>
+<li>As well as analysing and responding to queries, the IoT also <strong>controls things</strong>.</li>
+<li>There is no discrimination between a boot and a bot — the IoT offers intelligent processing and control services to all things equally.</li>
 </ul>
-<p>The security risk here is that wrong or manipulated data can lead to wrong decisions. In critical systems such as healthcare, traffic, or factories, that can cause serious damage.</p>
-<h2 id="4-data-transmission">4. Data transmission</h2>
-<p>Data transmission happens between different parts of the IoT system:</p>
+<h2 id="phase-iv-data-transmission">Phase IV: Data Transmission</h2>
+<p>Data transmission occurs in <strong>all phases</strong>:</p>
 <ul>
-<li>From sensors or RFID tags to data centers</li>
-<li>From storage to processing units</li>
-<li>From processors to controllers, devices, or end users</li>
+<li>From sensors, RFID tags, or chips → to DCs</li>
+<li>From DCs → to processing units</li>
+<li>From processors → to controllers, devices, or end users</li>
 </ul>
-<p>This phase needs confidentiality, integrity, and authentication. Attackers may try to listen to data, modify it, replay old messages, or pretend to be a legitimate device.</p>
-<h2 id="5-delivery">5. Delivery</h2>
-<p>Delivery means sending processed data or commands to the correct destination on time.</p>
-<p>A secure delivery process should make sure that:</p>
+<h2 id="phase-v-delivery">Phase V: Delivery</h2>
 <ul>
-<li>Data reaches the intended receiver</li>
-<li>Data is not changed during delivery</li>
-<li>Commands are delivered on time</li>
-<li>Legitimate users and devices can still access the service</li>
+<li>Delivery of processed data to things <strong>on time, without errors or alteration</strong> is a sensitive task that must always be carried out.</li>
 </ul>
-<h2 id="quick-summary">Quick summary</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Phase</th>
-          <th>Main purpose</th>
-          <th>Main security concern</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Data collection</td>
-          <td>Gather data from devices</td>
-          <td>Fake or compromised data source</td>
-      </tr>
-      <tr>
-          <td>Storage</td>
-          <td>Keep data locally or in the cloud</td>
-          <td>Leakage, access control, data loss</td>
-      </tr>
-      <tr>
-          <td>Processing</td>
-          <td>Analyze data and control devices</td>
-          <td>Wrong decisions from manipulated data</td>
-      </tr>
-      <tr>
-          <td>Transmission</td>
-          <td>Move data between components</td>
-          <td>Eavesdropping, modification, replay</td>
-      </tr>
-      <tr>
-          <td>Delivery</td>
-          <td>Send final result or command</td>
-          <td>Delay, alteration, or wrong receiver</td>
-      </tr>
-  </tbody>
-</table>
+<hr>
+<h2 id="phase-attacks">Phase Attacks</h2>
+<p>Each phase is exposed to different attacks. The major concerns in the <strong>data perception phase</strong> are:</p>
+<ul>
+<li>Data leakage</li>
+<li>Data sovereignty</li>
+<li>Data breach</li>
+<li>Authentication failures</li>
+</ul>
+<blockquote>
+<p>Attacks exist across all five phases — from the moment data is sensed to the moment it reaches the end user.</p>
+</blockquote>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
        
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part2/" id="nav-next"><em>Chapter 3, Part 2 – Phase Attacks and Data Protection</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part2/" id="nav-next"><em>Chapter 3, Part 2 – Data Leakage, Sovereignty, Loss &amp; Authentication</em></a>
       
     </div>
   </nav>

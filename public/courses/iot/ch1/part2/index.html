@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 2 – IoT Protocols · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 2 – IoT Protocols</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="why-protocols-matter-in-iot">Why Protocols Matter in IoT</h2>
+<p>IoT protocols are chosen to:</p>
+<ul>
+<li><strong>Minimize bandwidth</strong> usage</li>
+<li><strong>Reduce latency</strong></li>
+<li><strong>Conserve energy</strong></li>
+<li><strong>Provide security</strong> (encryption, authentication, integrity)</li>
+</ul>
+<hr>
+<h2 id="link-layer">Link Layer</h2>
+<p>Determines how data is physically sent over the medium (copper wire, radio wave).</p>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol</th>
+          <th>Use Case</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Wi-Fi (802.11)</strong></td>
+          <td>Home automation, smart buildings</td>
+          <td>High speed, higher power consumption</td>
+      </tr>
+      <tr>
+          <td><strong>Zigbee / Thread (802.15.4)</strong></td>
+          <td>Smart energy, industrial, lighting</td>
+          <td>Low power, mesh network, 2.4GHz</td>
+      </tr>
+      <tr>
+          <td><strong>BLE</strong></td>
+          <td>Wearables, health monitoring</td>
+          <td>Low power, short range, pairs with phones</td>
+      </tr>
+      <tr>
+          <td><strong>LoRaWAN</strong></td>
+          <td>Smart agriculture, smart cities</td>
+          <td>Long range (km), low power, high latency</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Why not just use Wi-Fi everywhere?</strong></p>
+<ul>
+<li>Range: LoRaWAN covers kilometers, Wi-Fi doesn&rsquo;t</li>
+<li>Power: Wi-Fi consumes far more energy</li>
+<li>Scalability: Wi-Fi struggles with thousands of devices</li>
+<li>Cost: Wi-Fi modules are more expensive</li>
+<li>Interference: Wi-Fi shares crowded 2.4/5 GHz bands</li>
+</ul>
+<hr>
+<h2 id="network-layer">Network Layer</h2>
+<p>Responsible for routing IP datagrams from source to destination.</p>
+<h3 id="6lowpan">6LoWPAN</h3>
+<p>IPv6 over Low-Power Wireless Personal Area Networks — adapts IPv6 for constrained IoT devices.</p>
+<ul>
+<li><strong>Header Compression</strong> — IPv6 headers are ~40 bytes; 6LoWPAN compresses them significantly using LOWPAN_IPHC.</li>
+<li><strong>Fragmentation</strong> — IEEE 802.15.4 max packet = 127 bytes; IPv6 needs 1280 bytes minimum → 6LoWPAN fragments and reassembles.</li>
+<li><strong>Mesh Routing</strong> — uses RPL (Routing Protocol for Low-power and Lossy Networks) for multi-hop communication.</li>
+<li><strong>Built-in security</strong> — encryption and authentication mechanisms included.</li>
+</ul>
+<hr>
+<h2 id="transport-layer">Transport Layer</h2>
+<p>Provides end-to-end message transfer with error control, segmentation, flow control, and congestion control.</p>
+<h3 id="tcp-and-its-iot-variants">TCP and Its IoT Variants</h3>
+<p>Standard TCP is connection-oriented and reliable but <strong>heavyweight</strong> for IoT.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Variant</th>
+          <th>Benefit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>TCP-LP</strong></td>
+          <td>Lower latency</td>
+      </tr>
+      <tr>
+          <td><strong>TCP Fast Open (TFO)</strong></td>
+          <td>Embeds data in the initial SYN packet — reduces handshake round trips. Useful for devices that wake, send small data, then sleep. Also reduces exposure to SYN flood attacks.</td>
+      </tr>
+      <tr>
+          <td><strong>MPTCP (Multi-Path TCP)</strong></td>
+          <td>Uses multiple network interfaces simultaneously</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="mptcp-modes">MPTCP Modes</h4>
+<ul>
+<li><strong>Failover mode</strong> — sends on one path (e.g. Wi-Fi); if it fails, switches to another (e.g. Zigbee). Improves reliability and availability.</li>
+<li><strong>Parallel mode</strong> — splits the message across multiple interfaces simultaneously. Faster throughput.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> MPTCP requires multiple network interfaces (Wi-Fi + cellular + Ethernet). Useful in gateways and smartphones, not small sensors.</p>
+</blockquote>
+<p><strong>MPTCP Security Benefits:</strong></p>
+<ul>
+<li>Traffic splitting makes eavesdropping harder (attacker must intercept all paths)</li>
+<li>If one network is blocked/compromised, others continue</li>
+<li>Harder traffic analysis across split paths</li>
+</ul>
+<hr>
+<h2 id="application-layer">Application Layer</h2>
+<h3 id="mqtt-message-queuing-telemetry-transport">MQTT (Message Queuing Telemetry Transport)</h3>
+<p>Lightweight <strong>publish-subscribe</strong> protocol. Designed for bandwidth-limited, power-constrained devices.</p>
+<ul>
+<li>Device <strong>publishes</strong> data to a <strong>broker</strong> on a specific topic</li>
+<li><strong>Subscribers</strong> receive only the topics they subscribed to</li>
+<li>Broker filters — subscribers only get relevant data</li>
+</ul>
+<p><strong>Why MQTT over HTTP/TCP?</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>HTTP</th>
+          <th>TCP Socket</th>
+          <th>MQTT</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Model</td>
+          <td>Request-reply</td>
+          <td>Direct connection</td>
+          <td>Pub-Sub via broker</td>
+      </tr>
+      <tr>
+          <td>Overhead</td>
+          <td>High (text headers)</td>
+          <td>Medium</td>
+          <td>Very low (binary)</td>
+      </tr>
+      <tr>
+          <td>Scalability</td>
+          <td>Poor</td>
+          <td>Poor</td>
+          <td>High</td>
+      </tr>
+      <tr>
+          <td>Power</td>
+          <td>High</td>
+          <td>High</td>
+          <td>Low</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>MQTT power savings:</strong> event-driven (no polling), sleep mode support, smart broker filtering, configurable QoS.</p>
+<hr>
+<h3 id="coap-constrained-application-protocol">CoAP (Constrained Application Protocol)</h3>
+<p>Lightweight alternative to HTTP for constrained devices.</p>
+<ul>
+<li>Uses <strong>UDP</strong> instead of TCP → less overhead</li>
+<li><strong>Binary</strong> message format → smaller packets</li>
+<li>Supports <strong>asynchronous</strong> communication via CoAP-observe (device subscribes to updates, server pushes on change)</li>
+<li>Secured with <strong>DTLS</strong></li>
+</ul>
+<p><strong>HTTP vs CoAP:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>HTTP</th>
+          <th>CoAP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Transport</td>
+          <td>TCP</td>
+          <td>UDP</td>
+      </tr>
+      <tr>
+          <td>Format</td>
+          <td>Text (JSON/XML)</td>
+          <td>Binary</td>
+      </tr>
+      <tr>
+          <td>Overhead</td>
+          <td>High</td>
+          <td>Low</td>
+      </tr>
+      <tr>
+          <td>Security</td>
+          <td>TLS</td>
+          <td>DTLS</td>
+      </tr>
+      <tr>
+          <td>Target</td>
+          <td>Web</td>
+          <td>Constrained IoT</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="tls-vs-dtls">TLS vs DTLS</h2>
+<p><strong>TLS</strong> (Transport Layer Security) — works over TCP, standard secure web communication.</p>
+<p>How TLS works (simplified):</p>
+<ol>
+<li>Client sends supported encryption methods</li>
+<li>Server responds with its public key + certificate</li>
+<li>Client verifies certificate</li>
+<li>Client encrypts a session key using server&rsquo;s public key</li>
+<li>Both sides now share the session key → encrypted communication begins</li>
+</ol>
+<p><strong>DTLS</strong> (Datagram TLS) — TLS adapted for UDP (used by CoAP).</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>TLS</th>
+          <th>DTLS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Transport</td>
+          <td>TCP</td>
+          <td>UDP</td>
+      </tr>
+      <tr>
+          <td>Latency</td>
+          <td>Higher</td>
+          <td>Lower</td>
+      </tr>
+      <tr>
+          <td>Overhead</td>
+          <td>Higher</td>
+          <td>Lower</td>
+      </tr>
+      <tr>
+          <td>Connection</td>
+          <td>Persistent</td>
+          <td>Connectionless</td>
+      </tr>
+      <tr>
+          <td>Use in IoT</td>
+          <td>HTTP-based devices</td>
+          <td>CoAP devices</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>Both TLS and DTLS now use <strong>ECDHE</strong> (Elliptic Curve Diffie-Hellman Ephemeral) for key exchange — faster and less computation than RSA.</p>
+</blockquote>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/iot/ch1/part1/" id="nav-prev"><em>Chapter 1, Part 1 – IoT Definition, Characteristics &amp; Structure</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/iot/ch1/part3/" id="nav-next"><em>Chapter 1, Part 3 – Communication Models &amp; APIs</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

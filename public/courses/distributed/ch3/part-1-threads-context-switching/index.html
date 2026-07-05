@@ -48,26 +48,26 @@
 <hr>
 <h2 id="processor-thread-and-process">Processor, thread, and process</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Processor</td>
-					<td>Physical execution unit that provides instructions and executes instruction sequences.</td>
-			</tr>
-			<tr>
-					<td>Thread</td>
-					<td>Minimal software processor/execution context in which instructions can execute.</td>
-			</tr>
-			<tr>
-					<td>Process</td>
-					<td>Software processor/context in which one or more threads can execute.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Processor</td>
+          <td>Physical execution unit that provides instructions and executes instruction sequences.</td>
+      </tr>
+      <tr>
+          <td>Thread</td>
+          <td>Minimal software processor/execution context in which instructions can execute.</td>
+      </tr>
+      <tr>
+          <td>Process</td>
+          <td>Software processor/context in which one or more threads can execute.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Simple way:</p>
 <ul>
@@ -79,26 +79,26 @@
 <h2 id="contexts">Contexts</h2>
 <p>A context is the information needed to stop execution and continue later.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Context type</th>
-					<th>Contains</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Processor context</td>
-					<td>Minimal CPU register values such as program counter, stack pointer, addressing registers.</td>
-			</tr>
-			<tr>
-					<td>Thread context</td>
-					<td>Processor context plus thread state stored in registers and memory.</td>
-			</tr>
-			<tr>
-					<td>Process context</td>
-					<td>Thread context plus process-specific memory-management data, such as MMU registers.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Context type</th>
+          <th>Contains</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Processor context</td>
+          <td>Minimal CPU register values such as program counter, stack pointer, addressing registers.</td>
+      </tr>
+      <tr>
+          <td>Thread context</td>
+          <td>Processor context plus thread state stored in registers and memory.</td>
+      </tr>
+      <tr>
+          <td>Process context</td>
+          <td>Thread context plus process-specific memory-management data, such as MMU registers.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="why-process-switching-is-more-expensive">Why process switching is more expensive</h3>
 <p>Thread switching can often stay inside the same address space. Process switching usually involves OS/kernel work and memory-management changes.</p>
@@ -112,35 +112,35 @@
 <hr>
 <h2 id="why-use-threads">Why use threads?</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Reason</th>
-					<th>Explanation</th>
-					<th>Distributed-system example</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Avoid needless blocking</td>
-					<td>If one thread blocks on I/O, another thread can run.</td>
-					<td>Web server handles another request while one request waits for disk/network.</td>
-			</tr>
-			<tr>
-					<td>Exploit parallelism</td>
-					<td>Multiple threads can run on multicore processors.</td>
-					<td>Server uses several cores for requests.</td>
-			</tr>
-			<tr>
-					<td>Avoid process switching</td>
-					<td>Threads are cheaper than processes.</td>
-					<td>Large application uses worker threads instead of separate processes.</td>
-			</tr>
-			<tr>
-					<td>Better structure</td>
-					<td>Blocking calls make code easier to write than complex nonblocking state machines.</td>
-					<td>Thread per request or worker pool.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Reason</th>
+          <th>Explanation</th>
+          <th>Distributed-system example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Avoid needless blocking</td>
+          <td>If one thread blocks on I/O, another thread can run.</td>
+          <td>Web server handles another request while one request waits for disk/network.</td>
+      </tr>
+      <tr>
+          <td>Exploit parallelism</td>
+          <td>Multiple threads can run on multicore processors.</td>
+          <td>Server uses several cores for requests.</td>
+      </tr>
+      <tr>
+          <td>Avoid process switching</td>
+          <td>Threads are cheaper than processes.</td>
+          <td>Large application uses worker threads instead of separate processes.</td>
+      </tr>
+      <tr>
+          <td>Better structure</td>
+          <td>Blocking calls make code easier to write than complex nonblocking state machines.</td>
+          <td>Thread per request or worker pool.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="tradeoffs-of-threads">Tradeoffs of threads</h2>
@@ -163,22 +163,22 @@
 <h2 id="cost-of-a-context-switch">Cost of a context switch</h2>
 <p>Context switching has two cost types:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Cost type</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Direct cost</td>
-					<td>Time to save/restore context and run scheduler/interrupt handler.</td>
-			</tr>
-			<tr>
-					<td>Indirect cost</td>
-					<td>Performance loss caused by cache/TLB disruption.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Cost type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Direct cost</td>
+          <td>Time to save/restore context and run scheduler/interrupt handler.</td>
+      </tr>
+      <tr>
+          <td>Indirect cost</td>
+          <td>Performance loss caused by cache/TLB disruption.</td>
+      </tr>
+  </tbody>
 </table>
 <p>The slide diagram shows that after a context switch, useful cached blocks may be replaced. Later, when the old thread resumes, it may need to reload data. This hidden cache cost can be larger than the visible switch cost.</p>
 <hr>

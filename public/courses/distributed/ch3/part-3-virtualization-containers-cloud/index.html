@@ -56,26 +56,26 @@
 <h2 id="interfaces-that-can-be-virtualized">Interfaces that can be virtualized</h2>
 <p>The slides mention interfaces at different levels.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Interface</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Instruction Set Architecture (ISA)</td>
-					<td>Machine instructions available to software.</td>
-			</tr>
-			<tr>
-					<td>System calls</td>
-					<td>Operations offered by the OS to programs.</td>
-			</tr>
-			<tr>
-					<td>Library/API calls</td>
-					<td>Higher-level programming interface.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Interface</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Instruction Set Architecture (ISA)</td>
+          <td>Machine instructions available to software.</td>
+      </tr>
+      <tr>
+          <td>System calls</td>
+          <td>Operations offered by the OS to programs.</td>
+      </tr>
+      <tr>
+          <td>Library/API calls</td>
+          <td>Higher-level programming interface.</td>
+      </tr>
+  </tbody>
 </table>
 <p>ISA contains:</p>
 <ul>
@@ -85,63 +85,63 @@
 <hr>
 <h2 id="ways-of-virtualization">Ways of virtualization</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>How it works</th>
-					<th>Example idea</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Process VM</td>
-					<td>Interpreter/emulator runs a separate instruction set on top of an OS.</td>
-					<td>Java Virtual Machine style.</td>
-			</tr>
-			<tr>
-					<td>Native VMM</td>
-					<td>Virtual machine monitor runs close to hardware with minimal OS support.</td>
-					<td>Bare-metal hypervisor.</td>
-			</tr>
-			<tr>
-					<td>Hosted VMM</td>
-					<td>VMM runs on top of a full OS and delegates work to it.</td>
-					<td>VirtualBox/VMware Workstation style.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>How it works</th>
+          <th>Example idea</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Process VM</td>
+          <td>Interpreter/emulator runs a separate instruction set on top of an OS.</td>
+          <td>Java Virtual Machine style.</td>
+      </tr>
+      <tr>
+          <td>Native VMM</td>
+          <td>Virtual machine monitor runs close to hardware with minimal OS support.</td>
+          <td>Bare-metal hypervisor.</td>
+      </tr>
+      <tr>
+          <td>Hosted VMM</td>
+          <td>VMM runs on top of a full OS and delegates work to it.</td>
+          <td>VirtualBox/VMware Workstation style.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="sensitive-and-privileged-instructions">Sensitive and privileged instructions</h2>
 <p>Important definitions:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Instruction type</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Privileged instruction</td>
-					<td>Causes a trap if executed in user mode.</td>
-			</tr>
-			<tr>
-					<td>Nonprivileged instruction</td>
-					<td>Does not trap in user mode.</td>
-			</tr>
-			<tr>
-					<td>Control-sensitive instruction</td>
-					<td>Can change machine configuration.</td>
-			</tr>
-			<tr>
-					<td>Behavior-sensitive instruction</td>
-					<td>Its behavior depends on execution context.</td>
-			</tr>
-			<tr>
-					<td>Sensitive instruction</td>
-					<td>Control-sensitive or behavior-sensitive.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Instruction type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Privileged instruction</td>
+          <td>Causes a trap if executed in user mode.</td>
+      </tr>
+      <tr>
+          <td>Nonprivileged instruction</td>
+          <td>Does not trap in user mode.</td>
+      </tr>
+      <tr>
+          <td>Control-sensitive instruction</td>
+          <td>Can change machine configuration.</td>
+      </tr>
+      <tr>
+          <td>Behavior-sensitive instruction</td>
+          <td>Its behavior depends on execution context.</td>
+      </tr>
+      <tr>
+          <td>Sensitive instruction</td>
+          <td>Control-sensitive or behavior-sensitive.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="condition-for-virtualization">Condition for virtualization</h2>
@@ -155,75 +155,75 @@
 <p>Some architectures have sensitive instructions that do not trap in user mode. Then the VMM cannot safely intercept them.</p>
 <p>Solutions:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Solution</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Emulate all instructions</td>
-					<td>Interpret every instruction. Correct but slow.</td>
-			</tr>
-			<tr>
-					<td>Binary translation/wrapping</td>
-					<td>Replace problematic instructions with safe VMM calls.</td>
-			</tr>
-			<tr>
-					<td>Paravirtualization</td>
-					<td>Modify guest OS so it avoids problematic instructions or uses hypercalls.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Solution</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Emulate all instructions</td>
+          <td>Interpret every instruction. Correct but slow.</td>
+      </tr>
+      <tr>
+          <td>Binary translation/wrapping</td>
+          <td>Replace problematic instructions with safe VMM calls.</td>
+      </tr>
+      <tr>
+          <td>Paravirtualization</td>
+          <td>Modify guest OS so it avoids problematic instructions or uses hypercalls.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="containers">Containers</h2>
 <p>Containers are lighter than full VMs because they share the host kernel but isolate processes.</p>
 <p>Main mechanisms:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Mechanism</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Namespaces</td>
-					<td>Give processes their own view of identifiers such as process IDs, network, filesystem.</td>
-			</tr>
-			<tr>
-					<td>Union file system</td>
-					<td>Combine file-system layers; only top layer is writable.</td>
-			</tr>
-			<tr>
-					<td>Control groups</td>
-					<td>Limit resources such as CPU, memory, and I/O.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Mechanism</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Namespaces</td>
+          <td>Give processes their own view of identifiers such as process IDs, network, filesystem.</td>
+      </tr>
+      <tr>
+          <td>Union file system</td>
+          <td>Combine file-system layers; only top layer is writable.</td>
+      </tr>
+      <tr>
+          <td>Control groups</td>
+          <td>Limit resources such as CPU, memory, and I/O.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Exam contrast:</p>
 <table>
-	<thead>
-			<tr>
-					<th>VM</th>
-					<th>Container</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Virtualizes hardware/OS environment.</td>
-					<td>Isolates processes using same kernel.</td>
-			</tr>
-			<tr>
-					<td>Heavier, stronger isolation.</td>
-					<td>Lighter, faster startup.</td>
-			</tr>
-			<tr>
-					<td>Easier to run different OS kernels.</td>
-					<td>Harder/impossible to run different kernel.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>VM</th>
+          <th>Container</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Virtualizes hardware/OS environment.</td>
+          <td>Isolates processes using same kernel.</td>
+      </tr>
+      <tr>
+          <td>Heavier, stronger isolation.</td>
+          <td>Lighter, faster startup.</td>
+      </tr>
+      <tr>
+          <td>Easier to run different OS kernels.</td>
+          <td>Harder/impossible to run different kernel.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="planetlab-example">PlanetLab example</h2>
@@ -248,30 +248,30 @@
 <h2 id="vms-and-cloud-computing">VMs and cloud computing</h2>
 <p>Three common cloud service models:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Model</th>
-					<th>Provides</th>
-					<th>User manages</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>IaaS</td>
-					<td>Infrastructure such as VMs, storage, networks.</td>
-					<td>OS, runtime, apps.</td>
-			</tr>
-			<tr>
-					<td>PaaS</td>
-					<td>Platform services such as runtime, databases, frameworks.</td>
-					<td>Application code/data.</td>
-			</tr>
-			<tr>
-					<td>SaaS</td>
-					<td>Complete applications.</td>
-					<td>Mostly configuration/use.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Model</th>
+          <th>Provides</th>
+          <th>User manages</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IaaS</td>
+          <td>Infrastructure such as VMs, storage, networks.</td>
+          <td>OS, runtime, apps.</td>
+      </tr>
+      <tr>
+          <td>PaaS</td>
+          <td>Platform services such as runtime, databases, frameworks.</td>
+          <td>Application code/data.</td>
+      </tr>
+      <tr>
+          <td>SaaS</td>
+          <td>Complete applications.</td>
+          <td>Mostly configuration/use.</td>
+      </tr>
+  </tbody>
 </table>
 <p>In IaaS, the provider rents a VM instead of a physical machine. Multiple customers may share the same physical machine, while the VM provides isolation.</p>
 <p>Important limitation:</p>

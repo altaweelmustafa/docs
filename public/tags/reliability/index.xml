@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Reliability on Docs</title>
-		<link>http://localhost:1313/docs/tags/reliability/</link>
-		<description>Recent content in Reliability on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/reliability/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 3, Part 4 – Language Evaluation Criteria</title>
-				<link>http://localhost:1313/docs/courses/compiler/ch3/p4/</link>
-				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/compiler/ch3/p4/</guid>
-				<description>&lt;h2 id=&#34;which-language-is-the-best&#34;&gt;Which Language is the Best?&lt;/h2&gt;&#xA;&lt;p&gt;There&amp;rsquo;s no single &amp;ldquo;best&amp;rdquo; programming language. We can only say a language is &lt;strong&gt;more suitable for a certain application&lt;/strong&gt;. Comparisons only really make sense within similar languages or similar domains, on benchmarks like speed, space usage, ease of use, available libraries, and so on.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;readability&#34;&gt;Readability&lt;/h2&gt;&#xA;&lt;p&gt;The most important criteria of a programming language (we made these languages to be understood, after all). It&amp;rsquo;s about how easy a piece of code is to read and understand.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Reliability on Docs</title>
+    <link>http://localhost:1313/docs/tags/reliability/</link>
+    <description>Recent content in Reliability on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/reliability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3, Part 4 – Language Evaluation Criteria</title>
+      <link>http://localhost:1313/docs/courses/compiler/ch3/p4/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/compiler/ch3/p4/</guid>
+      <description>&lt;h2 id=&#34;which-language-is-the-best&#34;&gt;Which Language is the Best?&lt;/h2&gt;&#xA;&lt;p&gt;There&amp;rsquo;s no single &amp;ldquo;best&amp;rdquo; programming language. We can only say a language is &lt;strong&gt;more suitable for a certain application&lt;/strong&gt;. Comparisons only really make sense within similar languages or similar domains, on benchmarks like speed, space usage, ease of use, available libraries, and so on.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;readability&#34;&gt;Readability&lt;/h2&gt;&#xA;&lt;p&gt;The most important criteria of a programming language (we made these languages to be understood, after all). It&amp;rsquo;s about how easy a piece of code is to read and understand.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -59,48 +59,48 @@
 <hr>
 <h2 id="low-level-layers-recap">Low-level layers recap</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Layer</th>
-					<th>Role</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Physical</td>
-					<td>Specification and transmission of bits.</td>
-			</tr>
-			<tr>
-					<td>Data link</td>
-					<td>Groups bits into frames; handles error/flow control.</td>
-			</tr>
-			<tr>
-					<td>Network</td>
-					<td>Routes packets through a network.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Physical</td>
+          <td>Specification and transmission of bits.</td>
+      </tr>
+      <tr>
+          <td>Data link</td>
+          <td>Groups bits into frames; handles error/flow control.</td>
+      </tr>
+      <tr>
+          <td>Network</td>
+          <td>Routes packets through a network.</td>
+      </tr>
+  </tbody>
 </table>
 <p>For many distributed systems, the lowest-level useful interface is the network layer.</p>
 <hr>
 <h2 id="transport-layer">Transport layer</h2>
 <p>The transport layer provides actual communication facilities for most distributed systems.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Protocol</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>TCP</td>
-					<td>Connection-oriented, reliable, stream-oriented communication.</td>
-			</tr>
-			<tr>
-					<td>UDP</td>
-					<td>Unreliable best-effort datagram communication.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Protocol</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TCP</td>
+          <td>Connection-oriented, reliable, stream-oriented communication.</td>
+      </tr>
+      <tr>
+          <td>UDP</td>
+          <td>Unreliable best-effort datagram communication.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="middleware-layer">Middleware layer</h2>
@@ -118,35 +118,35 @@
 <h2 id="types-of-communication">Types of communication</h2>
 <p>Two important dimensions:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Dimension</th>
-					<th>Type</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Durability</td>
-					<td>Transient</td>
-					<td>Message is discarded if it cannot be delivered immediately.</td>
-			</tr>
-			<tr>
-					<td>Durability</td>
-					<td>Persistent</td>
-					<td>Message is stored until it can be delivered.</td>
-			</tr>
-			<tr>
-					<td>Synchronization</td>
-					<td>Asynchronous</td>
-					<td>Sender continues without waiting.</td>
-			</tr>
-			<tr>
-					<td>Synchronization</td>
-					<td>Synchronous</td>
-					<td>Sender waits at some point.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Dimension</th>
+          <th>Type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Durability</td>
+          <td>Transient</td>
+          <td>Message is discarded if it cannot be delivered immediately.</td>
+      </tr>
+      <tr>
+          <td>Durability</td>
+          <td>Persistent</td>
+          <td>Message is stored until it can be delivered.</td>
+      </tr>
+      <tr>
+          <td>Synchronization</td>
+          <td>Asynchronous</td>
+          <td>Sender continues without waiting.</td>
+      </tr>
+      <tr>
+          <td>Synchronization</td>
+          <td>Synchronous</td>
+          <td>Sender waits at some point.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="places-for-synchronization">Places for synchronization</h2>
@@ -228,22 +228,22 @@
 </ul>
 <h3 id="marshaling-and-unmarshaling">Marshaling and unmarshaling</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Term</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Marshaling</td>
-					<td>Convert parameters/results into byte sequence for transmission.</td>
-			</tr>
-			<tr>
-					<td>Unmarshaling</td>
-					<td>Convert byte sequence back into machine-specific representation.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Marshaling</td>
+          <td>Convert parameters/results into byte sequence for transmission.</td>
+      </tr>
+      <tr>
+          <td>Unmarshaling</td>
+          <td>Convert byte sequence back into machine-specific representation.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="copy-incopy-out-semantics">Copy in/copy out semantics</h2>

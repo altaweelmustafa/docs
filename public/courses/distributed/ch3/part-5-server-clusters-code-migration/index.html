@@ -97,79 +97,79 @@
 <p>Code migration means moving code from one machine to another.</p>
 <p>Reasons:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Reason</th>
-					<th>Explanation</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Load distribution</td>
-					<td>Move work so servers are sufficiently loaded and energy is not wasted.</td>
-			</tr>
-			<tr>
-					<td>Move computation near data</td>
-					<td>Avoid sending huge data across network.</td>
-			</tr>
-			<tr>
-					<td>Flexibility</td>
-					<td>Move code to client when needed instead of pre-installing everything.</td>
-			</tr>
-			<tr>
-					<td>Privacy/security/legal limits</td>
-					<td>If data cannot move, move code to the data.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Reason</th>
+          <th>Explanation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Load distribution</td>
+          <td>Move work so servers are sufficiently loaded and energy is not wasted.</td>
+      </tr>
+      <tr>
+          <td>Move computation near data</td>
+          <td>Avoid sending huge data across network.</td>
+      </tr>
+      <tr>
+          <td>Flexibility</td>
+          <td>Move code to client when needed instead of pre-installing everything.</td>
+      </tr>
+      <tr>
+          <td>Privacy/security/legal limits</td>
+          <td>If data cannot move, move code to the data.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Example: federated machine learning moves computation/model updates near data instead of collecting raw private data centrally.</p>
 <hr>
 <h2 id="code-mobility-components">Code mobility components</h2>
 <p>An object or process can be seen as having:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Component</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Code segment</td>
-					<td>Actual program instructions.</td>
-			</tr>
-			<tr>
-					<td>Data segment</td>
-					<td>State/data used by code.</td>
-			</tr>
-			<tr>
-					<td>Execution state</td>
-					<td>Current execution context of thread/process.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Component</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Code segment</td>
+          <td>Actual program instructions.</td>
+      </tr>
+      <tr>
+          <td>Data segment</td>
+          <td>State/data used by code.</td>
+      </tr>
+      <tr>
+          <td>Execution state</td>
+          <td>Current execution context of thread/process.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="weak-vs-strong-mobility">Weak vs strong mobility</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>What moves?</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Weak mobility</td>
-					<td>Code + data.</td>
-					<td>Execution restarts at destination.</td>
-			</tr>
-			<tr>
-					<td>Strong mobility</td>
-					<td>Code + data + execution state.</td>
-					<td>Execution continues from where it stopped.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>What moves?</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Weak mobility</td>
+          <td>Code + data.</td>
+          <td>Execution restarts at destination.</td>
+      </tr>
+      <tr>
+          <td>Strong mobility</td>
+          <td>Code + data + execution state.</td>
+          <td>Execution continues from where it stopped.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Weak mobility forms:</p>
 <ul>
@@ -203,30 +203,30 @@
 </ol>
 <p>Tradeoff:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Method</th>
-					<th>Advantage</th>
-					<th>Disadvantage</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Pre-copy</td>
-					<td>Less downtime.</td>
-					<td>May resend dirty pages many times.</td>
-			</tr>
-			<tr>
-					<td>Stop-and-copy</td>
-					<td>Simple and consistent.</td>
-					<td>High downtime.</td>
-			</tr>
-			<tr>
-					<td>Pull-on-demand</td>
-					<td>Starts quickly at destination.</td>
-					<td>Page faults/network delay after start.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Advantage</th>
+          <th>Disadvantage</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Pre-copy</td>
+          <td>Less downtime.</td>
+          <td>May resend dirty pages many times.</td>
+      </tr>
+      <tr>
+          <td>Stop-and-copy</td>
+          <td>Simple and consistent.</td>
+          <td>High downtime.</td>
+      </tr>
+      <tr>
+          <td>Pull-on-demand</td>
+          <td>Starts quickly at destination.</td>
+          <td>Page faults/network delay after start.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Important warning:</p>
 <p>A complete VM migration can take tens of seconds, and the service may be unavailable for multiple seconds.</p>

@@ -124,22 +124,22 @@
 </span></span><span class="line"><span class="cl">voteTX = tx(s)
 </span></span></code></pre></div><p>Each server keeps:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Variable</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>leader(s)</code></td>
-					<td>server believed to be final leader.</td>
-			</tr>
-			<tr>
-					<td><code>lastTX(s)</code></td>
-					<td>most recent transaction known to <code>s</code>.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Variable</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>leader(s)</code></td>
+          <td>server believed to be final leader.</td>
+      </tr>
+      <tr>
+          <td><code>lastTX(s)</code></td>
+          <td>most recent transaction known to <code>s</code>.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="receiving-a-vote">Receiving a vote</h3>
 <p>When <code>s*</code> receives <code>(voteID, voteTX)</code>:</p>
@@ -165,26 +165,26 @@
 <h2 id="raft-leader-election">Raft leader election</h2>
 <p>Raft uses a small group of servers. Each server is in one of three states:</p>
 <table>
-	<thead>
-			<tr>
-					<th>State</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Follower</td>
-					<td>Passive; listens to leader/candidates.</td>
-			</tr>
-			<tr>
-					<td>Candidate</td>
-					<td>Wants to become leader.</td>
-			</tr>
-			<tr>
-					<td>Leader</td>
-					<td>Sends heartbeats and coordinates.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>State</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Follower</td>
+          <td>Passive; listens to leader/candidates.</td>
+      </tr>
+      <tr>
+          <td>Candidate</td>
+          <td>Wants to become leader.</td>
+      </tr>
+      <tr>
+          <td>Leader</td>
+          <td>Sends heartbeats and coordinates.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Raft works in <strong>terms</strong>, starting at term <code>0</code>.</p>
 <p>All servers start as followers.</p>

@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Classification on Docs</title>
-		<link>http://localhost:1313/docs/tags/classification/</link>
-		<description>Recent content in Classification on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/classification/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 1, Part 4 – Classification of Distributed Systems</title>
-				<link>http://localhost:1313/docs/courses/distributed-systems-full/chapter-1/part-4-classification-of-distributed-systems/</link>
-				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/distributed-systems-full/chapter-1/part-4-classification-of-distributed-systems/</guid>
-				<description>&lt;h2 id=&#34;why-classify-distributed-systems&#34;&gt;Why classify distributed systems?&lt;/h2&gt;&#xA;&lt;p&gt;Distributed systems come in many forms. The chapter groups them into broad categories so you know what problem each type solves.&lt;/p&gt;&#xA;&lt;p&gt;Main categories:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;High-performance distributed computing.&lt;/li&gt;&#xA;&lt;li&gt;Distributed information systems.&lt;/li&gt;&#xA;&lt;li&gt;Distributed pervasive systems.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;high-performance-distributed-computing&#34;&gt;High-performance distributed computing&lt;/h2&gt;&#xA;&lt;p&gt;This category focuses on using many machines/processors to compute faster or handle large workloads.&lt;/p&gt;&#xA;&lt;h3 id=&#34;parallel-computing&#34;&gt;Parallel computing&lt;/h3&gt;&#xA;&lt;p&gt;Parallel computing started as the high-performance direction of distributed computing.&lt;/p&gt;&#xA;&lt;p&gt;Important distinction:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Term&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Multiprocessor / multicore&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Multiple processors/cores share memory tightly.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Multicomputer&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Multiple computers connected by a network.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Multiprocessors are easier to program because memory sharing is natural. Multicomputers scale better physically but are harder to program.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Classification on Docs</title>
+    <link>http://localhost:1313/docs/tags/classification/</link>
+    <description>Recent content in Classification on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/classification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1, Part 4 – Classification of Distributed Systems</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch1/part-4-classification-of-distributed-systems/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch1/part-4-classification-of-distributed-systems/</guid>
+      <description>&lt;h2 id=&#34;why-classify-distributed-systems&#34;&gt;Why classify distributed systems?&lt;/h2&gt;&#xA;&lt;p&gt;Distributed systems come in many forms. The chapter groups them into broad categories so you know what problem each type solves.&lt;/p&gt;&#xA;&lt;p&gt;Main categories:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;High-performance distributed computing.&lt;/li&gt;&#xA;&lt;li&gt;Distributed information systems.&lt;/li&gt;&#xA;&lt;li&gt;Distributed pervasive systems.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;high-performance-distributed-computing&#34;&gt;High-performance distributed computing&lt;/h2&gt;&#xA;&lt;p&gt;This category focuses on using many machines/processors to compute faster or handle large workloads.&lt;/p&gt;&#xA;&lt;h3 id=&#34;parallel-computing&#34;&gt;Parallel computing&lt;/h3&gt;&#xA;&lt;p&gt;Parallel computing started as the high-performance direction of distributed computing.&lt;/p&gt;&#xA;&lt;p&gt;Important distinction:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Term&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Multiprocessor / multicore&lt;/td&gt;&#xA;          &lt;td&gt;Multiple processors/cores share memory tightly.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Multicomputer&lt;/td&gt;&#xA;          &lt;td&gt;Multiple computers connected by a network.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Multiprocessors are easier to program because memory sharing is natural. Multicomputers scale better physically but are harder to program.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

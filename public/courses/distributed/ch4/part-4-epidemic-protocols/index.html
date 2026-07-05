@@ -58,47 +58,47 @@
 <hr>
 <h2 id="two-forms-of-epidemics">Two forms of epidemics</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Form</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Anti-entropy</td>
-					<td>Replicas regularly choose another replica and exchange differences until both become consistent.</td>
-			</tr>
-			<tr>
-					<td>Rumor spreading</td>
-					<td>A newly updated replica tells other replicas; replicas may eventually stop spreading.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Form</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Anti-entropy</td>
+          <td>Replicas regularly choose another replica and exchange differences until both become consistent.</td>
+      </tr>
+      <tr>
+          <td>Rumor spreading</td>
+          <td>A newly updated replica tells other replicas; replicas may eventually stop spreading.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="anti-entropy-operations">Anti-entropy operations</h2>
 <p>A node <code>P</code> selects another node <code>Q</code> at random.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Mode</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Pull</td>
-					<td><code>P</code> pulls missing updates from <code>Q</code>.</td>
-			</tr>
-			<tr>
-					<td>Push</td>
-					<td><code>P</code> pushes its updates to <code>Q</code>.</td>
-			</tr>
-			<tr>
-					<td>Push-pull</td>
-					<td>Both exchange updates.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Mode</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Pull</td>
+          <td><code>P</code> pulls missing updates from <code>Q</code>.</td>
+      </tr>
+      <tr>
+          <td>Push</td>
+          <td><code>P</code> pushes its updates to <code>Q</code>.</td>
+      </tr>
+      <tr>
+          <td>Push-pull</td>
+          <td>Both exchange updates.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Observation:</p>
 <p>Push-pull takes about <code>O(log N)</code> rounds to disseminate updates to all <code>N</code> nodes.</p>

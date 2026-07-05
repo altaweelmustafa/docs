@@ -64,7 +64,7 @@
 <p>During analysis, the compiler builds the <strong>Symbol Table</strong> — constructed at declaration time. It contains user-defined names (mostly variables), their type, and their values.</p>
 <p><strong>Example code:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span> <span class="c1">// assume it does addition
-</span></span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span>
@@ -72,89 +72,89 @@
 </span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="nf">compute</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
 </span></span></code></pre></div><p><strong>Initial Symbol Table:</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Data type</th>
-					<th>Value</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>compute</td>
-					<td>function-name</td>
-					<td>integer</td>
-					<td>0</td>
-			</tr>
-			<tr>
-					<td>n</td>
-					<td>variable</td>
-					<td>integer</td>
-					<td>0</td>
-			</tr>
-			<tr>
-					<td>x</td>
-					<td>variable</td>
-					<td>float</td>
-					<td>3.5</td>
-			</tr>
-			<tr>
-					<td>y</td>
-					<td>variable</td>
-					<td>float</td>
-					<td>0</td>
-			</tr>
-			<tr>
-					<td>m</td>
-					<td>constant</td>
-					<td>integer</td>
-					<td>10</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Data type</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>compute</td>
+          <td>function-name</td>
+          <td>integer</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>n</td>
+          <td>variable</td>
+          <td>integer</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>x</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>3.5</td>
+      </tr>
+      <tr>
+          <td>y</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>m</td>
+          <td>constant</td>
+          <td>integer</td>
+          <td>10</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Final Symbol Table (after execution):</strong></p>
 <table>
-	<thead>
-			<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Data type</th>
-					<th>Value</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>compute</td>
-					<td>function-name</td>
-					<td>integer</td>
-					<td>20</td>
-			</tr>
-			<tr>
-					<td>n</td>
-					<td>variable</td>
-					<td>integer</td>
-					<td>30</td>
-			</tr>
-			<tr>
-					<td>x</td>
-					<td>variable</td>
-					<td>float</td>
-					<td>3.5</td>
-			</tr>
-			<tr>
-					<td>y</td>
-					<td>variable</td>
-					<td>float</td>
-					<td>7</td>
-			</tr>
-			<tr>
-					<td>m</td>
-					<td>constant</td>
-					<td>integer</td>
-					<td>10</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Data type</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>compute</td>
+          <td>function-name</td>
+          <td>integer</td>
+          <td>20</td>
+      </tr>
+      <tr>
+          <td>n</td>
+          <td>variable</td>
+          <td>integer</td>
+          <td>30</td>
+      </tr>
+      <tr>
+          <td>x</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>3.5</td>
+      </tr>
+      <tr>
+          <td>y</td>
+          <td>variable</td>
+          <td>float</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>m</td>
+          <td>constant</td>
+          <td>integer</td>
+          <td>10</td>
+      </tr>
+  </tbody>
 </table>
 <p>To perform type checking, the compiler takes the name and checks the keywords table. If not found there, it checks the symbol table. If the variable is not in the symbol table, it throws an <strong>unknown symbol error</strong>. If found but the operation is incompatible with the variable&rsquo;s type, it throws a <strong>type mismatch error</strong>.</p>
 <p>At this stage the compiler maintains two main tables:</p>

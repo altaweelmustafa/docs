@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Zookeeper on Docs</title>
-		<link>http://localhost:1313/docs/tags/zookeeper/</link>
-		<description>Recent content in Zookeeper on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/zookeeper/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 5 – Coordination</title>
-				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-5-coordination/</link>
-				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-5-coordination/</guid>
-				<description>&lt;h2 id=&#34;coordination-in-distributed-systems&#34;&gt;Coordination in Distributed Systems&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Coordination is about getting independent machines to agree on time, ordering,&#xA;access to shared resources, leadership, membership, and shared state.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Coordination is hard because distributed systems usually do not have a perfect&#xA;global clock, communication can be delayed, and processes can fail independently.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;physical-clocks&#34;&gt;Physical Clocks&lt;/h2&gt;&#xA;&lt;p&gt;Sometimes a system needs real time, not only event ordering. Physical clock&#xA;synchronization tries to keep machine clocks close to each other or close to UTC.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Zookeeper on Docs</title>
+    <link>http://localhost:1313/docs/tags/zookeeper/</link>
+    <description>Recent content in Zookeeper on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/zookeeper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</guid>
+      <description>&lt;h2 id=&#34;totally-ordered-multicast&#34;&gt;Totally ordered multicast&lt;/h2&gt;&#xA;&lt;p&gt;Problem:&lt;/p&gt;&#xA;&lt;p&gt;Concurrent updates on replicated data must be seen in the same order everywhere.&lt;/p&gt;&#xA;&lt;p&gt;Example from slides:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Initial account: &lt;code&gt;$1000&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P1&lt;/code&gt; adds &lt;code&gt;$100&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P2&lt;/code&gt; increments by &lt;code&gt;1%&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If replicas apply updates in different orders:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;add then 1% → &lt;code&gt;$1111&lt;/code&gt;,&lt;/li&gt;&#xA;&lt;li&gt;1% then add → &lt;code&gt;$1110&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So all replicas must apply updates in the same order.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;totally-ordered-multicast-solution&#34;&gt;Totally ordered multicast solution&lt;/h2&gt;&#xA;&lt;p&gt;Each process keeps a local queue ordered by timestamp.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chapter 5, Part 3 – Election Algorithms</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch5/part-3-election-algorithms/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-3-election-algorithms/</guid>
+      <description>&lt;h2 id=&#34;why-election-algorithms&#34;&gt;Why election algorithms?&lt;/h2&gt;&#xA;&lt;p&gt;Some distributed algorithms need one process to act as coordinator.&lt;/p&gt;&#xA;&lt;p&gt;Problem:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;If the coordinator fails, how do we dynamically choose a new one?&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Manual selection creates a single point of failure. Election algorithms let processes agree on a new coordinator.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;basic-assumptions&#34;&gt;Basic assumptions&lt;/h2&gt;&#xA;&lt;p&gt;Traditional election algorithms often assume:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;All processes have unique IDs.&lt;/li&gt;&#xA;&lt;li&gt;All processes know all process IDs.&lt;/li&gt;&#xA;&lt;li&gt;A process may not know which processes are currently up.&lt;/li&gt;&#xA;&lt;li&gt;Election means selecting the highest-ID process that is alive.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;bully-algorithm&#34;&gt;Bully algorithm&lt;/h2&gt;&#xA;&lt;p&gt;Assume processes are &lt;code&gt;P0, P1, ..., PN-1&lt;/code&gt; and ID of &lt;code&gt;Pk&lt;/code&gt; is &lt;code&gt;k&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

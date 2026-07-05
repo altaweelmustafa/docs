@@ -65,35 +65,35 @@
 <p>There&rsquo;s always a trade-off between speed and robustness in error handling. Faster error handling tends to be less robust, while more complex error handling makes debugging easier at the cost of processing power and time.</p>
 <h3 id="4-types-of-errors">4 Types of Errors</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Description</th>
-					<th>When Detected</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Lexical</strong></td>
-					<td>Illegal character detected (e.g. <code>#</code> in C)</td>
-					<td>During Lexical Analysis. Easiest to find and fix.</td>
-			</tr>
-			<tr>
-					<td><strong>Syntax</strong></td>
-					<td>Grammar/production rule violation (e.g. missing semicolon)</td>
-					<td>During Syntax Analysis. A bit harder, still manageable.</td>
-			</tr>
-			<tr>
-					<td><strong>Semantic</strong></td>
-					<td>Split into static and dynamic</td>
-					<td>See below</td>
-			</tr>
-			<tr>
-					<td><strong>Logical</strong></td>
-					<td>Mismatch between what the programmer meant and what the code actually does</td>
-					<td>Hardest to fix, purely human error</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+          <th>When Detected</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Lexical</strong></td>
+          <td>Illegal character detected (e.g. <code>#</code> in C)</td>
+          <td>During Lexical Analysis. Easiest to find and fix.</td>
+      </tr>
+      <tr>
+          <td><strong>Syntax</strong></td>
+          <td>Grammar/production rule violation (e.g. missing semicolon)</td>
+          <td>During Syntax Analysis. A bit harder, still manageable.</td>
+      </tr>
+      <tr>
+          <td><strong>Semantic</strong></td>
+          <td>Split into static and dynamic</td>
+          <td>See below</td>
+      </tr>
+      <tr>
+          <td><strong>Logical</strong></td>
+          <td>Mismatch between what the programmer meant and what the code actually does</td>
+          <td>Hardest to fix, purely human error</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Semantic errors break down further:</strong></p>
 <ul>

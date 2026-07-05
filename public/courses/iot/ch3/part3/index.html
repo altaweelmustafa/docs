@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding · Docs</title>
+  <title>Chapter 3, Part 3 – Attacks on Availability, Data Modification &amp; Common IoT Attacks · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,92 +19,73 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 3, Part 3 – Availability, Spoofing, and Flooding</h2>
-  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
-   <p>Availability means legitimate users can access the system when needed. In IoT, availability is critical because many systems control real-world services such as health monitoring, industrial equipment, transportation, and smart homes.</p>
-<h2 id="attacks-on-availability">Attacks on availability</h2>
-<p>A major threat to availability is denial of service. In a denial-of-service attack, the target is overloaded so that normal users cannot access it.</p>
-<p>When the overload comes from many distributed devices, it becomes a distributed denial-of-service attack.</p>
-<p>Availability may be affected by:</p>
+  <h2 class="post-title">Chapter 3, Part 3 – Attacks on Availability, Data Modification &amp; Common IoT Attacks</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="attacks-on-availability">Attacks on Availability</h2>
+<p><strong>Availability</strong> is one of the primary security goals — intended clients must be able to access services.</p>
+<p><strong>DDoS (Distributed Denial of Service)</strong> is an overload condition caused by a huge number of distributed attackers overwhelming a target.</p>
+<p>Types of flooding that cause Data Centers to become unavailable:</p>
 <ul>
-<li>Flooding by attackers</li>
-<li>Flooding by legitimate users during sudden demand, also called a flash crowd</li>
-<li>Flooding using spoofed identities</li>
-<li>Flooding by aggressive legitimate clients</li>
+<li><strong>Flooding by attackers</strong> — malicious traffic overload.</li>
+<li><strong>Flooding by legitimates (flash crowd)</strong> — too many real users at once.</li>
+<li><strong>Flooding by spoofing</strong> — forged source addresses used to amplify traffic.</li>
+<li><strong>Flooding by aggressive legitimates</strong> — legitimate but poorly behaved clients.</li>
 </ul>
-<h2 id="spoofing-idea">Spoofing idea</h2>
-<p>Spoofing means pretending to be another device, address, or identity.</p>
-<p>In IoT, spoofing is dangerous because many devices automatically trust messages that appear to come from legitimate sources.</p>
-<p>Examples include:</p>
+<h3 id="icmp-spoofing-attack-ping-flood">ICMP Spoofing Attack (Ping Flood)</h3>
+<p>A ping flood is a DoS attack where the attacker overwhelms a target with <strong>ICMP echo-request packets</strong>, making it inaccessible to normal traffic. When the attack comes from multiple devices it becomes a <strong>DDoS</strong>. This type of attack can consume both outgoing and incoming bandwidth.</p>
+<hr>
+<h2 id="modification-of-sensitive-data">Modification of Sensitive Data</h2>
+<p>During transit from sensors, data can be <strong>captured, modified, and forwarded</strong> to the intended node. Complete modification isn&rsquo;t necessary — altering part of the message is enough.</p>
+<p>Modification occurs in three ways:</p>
 <ul>
-<li>IP-based spoofing</li>
-<li>MAC address spoofing</li>
-<li>Fake device identity</li>
-<li>Fake access point identity</li>
+<li><strong>Content modification</strong> — part of the information has been altered.</li>
+<li><strong>Sequence modification</strong> — data delivery order is disrupted, making the message meaningless.</li>
+<li><strong>Time modification</strong> — could result in a <strong>replay attack</strong>.</li>
 </ul>
-<h2 id="icmp-spoofing--ping-flood-concept">ICMP spoofing / ping flood concept</h2>
-<p>A ping flood is a denial-of-service concept where a target receives too many ICMP echo-request packets. If the target spends too many resources responding, legitimate traffic may be delayed or blocked.</p>
-<p>When many devices are involved, the attack becomes distributed.</p>
-<h2 id="udp-flood-concept">UDP flood concept</h2>
-<p>A UDP flood overloads a target by sending many UDP packets. The victim may waste resources checking ports or generating error responses.</p>
-<p>The important idea is not the protocol itself, but the resource exhaustion: bandwidth, CPU, and memory can be consumed by useless traffic.</p>
-<h2 id="syn-flood-concept">SYN flood concept</h2>
-<p>A SYN flood targets the connection setup process. The server keeps many half-open connection states, so the connection table may fill up and real users may not be able to connect.</p>
-<h2 id="types-of-flooding">Types of flooding</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Main difference</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Flooding by attackers</td>
-          <td>Malicious traffic overloads the server or data center</td>
-          <td>Traffic is intentionally harmful</td>
-      </tr>
-      <tr>
-          <td>Flooding by legitimates / flash crowd</td>
-          <td>Many real users access the system at the same time</td>
-          <td>Users are real, but volume is too high</td>
-      </tr>
-      <tr>
-          <td>Flooding by spoofing</td>
-          <td>Requests appear to come from fake or forged sources</td>
-          <td>Source identity is unreliable</td>
-      </tr>
-      <tr>
-          <td>Aggressive legitimate flooding</td>
-          <td>Real clients send too many requests</td>
-          <td>Clients may be valid but behavior is excessive</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="reflection-and-amplification-concepts">Reflection and amplification concepts</h2>
-<p>Reflection-based attacks abuse third-party systems to send responses toward a victim. Amplification happens when small requests cause larger responses.</p>
-<p>The defensive lesson is that systems should avoid becoming reflectors and should monitor abnormal traffic patterns.</p>
-<h2 id="defensive-countermeasures">Defensive countermeasures</h2>
-<p>High-level defenses include:</p>
+<blockquote>
+<p>Example: If an ECG report is altered during a telemedicine diagnosis, the patient may lose their life. Similarly, in road traffic, if a congestion or accident alert is not delivered correctly, it could cause another disaster.</p>
+</blockquote>
+<hr>
+<h2 id="three-common-types-of-attack-in-iot">Three Common Types of Attack in IoT</h2>
+<h3 id="1-privilege-escalation-attack">1. Privilege Escalation Attack</h3>
+<p>Involves obtaining <strong>unauthorized access or elevated rights</strong> by a malicious insider or external attacker.</p>
+<p>Attackers exploit:</p>
 <ul>
-<li>Ingress and egress filtering</li>
-<li>Rate limiting</li>
-<li>Anti-spoofing rules</li>
-<li>Network monitoring</li>
-<li>Anomaly detection</li>
-<li>Keeping devices updated</li>
-<li>Disabling unnecessary services</li>
-<li>Using authentication and access control</li>
+<li>Unpatched bugs in the system</li>
+<li>Misconfiguration</li>
+<li>Inadequate access controls</li>
 </ul>
-<p>These defenses help reduce overload and make fake or abnormal traffic easier to detect.</p>
+<h3 id="2-brute-force-attack">2. Brute-Force Attack</h3>
+<p>Most IoT device users keep <strong>default or easy-to-remember passwords</strong>, making them easy targets.</p>
+<p>Attackers guess passwords using:</p>
+<ul>
+<li>Dictionaries</li>
+<li>Common word combinations</li>
+</ul>
+<p><strong>Mitigation:</strong> Enable robust authentication such as <strong>2FA</strong>, <strong>MFA</strong>, and <strong>zero-trust models</strong>.</p>
+<h3 id="3-architecture-based-attacks">3. Architecture-Based Attacks</h3>
+<p>The IoT has not been confined to a single architecture — different vendors and applications adopt their own layers. In general, IoT is assumed to have <strong>four layers</strong>:</p>
+<ul>
+<li><strong>Perception layer</strong> (sensing layer) — lowest level</li>
+<li><strong>Network layer</strong></li>
+<li><strong>Transmission layer</strong></li>
+<li><strong>Application layer</strong></li>
+</ul>
+<p>Each layer has its own set of vulnerabilities and attack surfaces.</p>
+<hr>
+<h2 id="external-attacks">External Attacks</h2>
+<ul>
+<li>Trustworthiness of the <strong>cloud service provider</strong> is a key concern.</li>
+<li>Organizations offload both sensitive and insensitive data to obtain services, often unaware of where their data will be processed or stored.</li>
+<li>The provider may share data with others, or use it for malicious actions.</li>
+</ul>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
       
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part2/" id="nav-prev"><em>Chapter 3, Part 2 – Phase Attacks and Data Protection</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part2/" id="nav-prev"><em>Chapter 3, Part 2 – Data Leakage, Sovereignty, Loss &amp; Authentication</em></a>
        
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part4/" id="nav-next"><em>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part4/" id="nav-next"><em>Chapter 3, Part 4 – Ad-Hoc Networks &amp; AODV Routing</em></a>
       
     </div>
   </nav>

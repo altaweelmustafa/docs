@@ -120,22 +120,22 @@
 </blockquote>
 <h3 id="two-kinds-of-jobs">Two Kinds of Jobs</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Description</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>CPU-bound job</strong></td>
-					<td>Contains few, very long CPU bursts. Most of the time the job needs the CPU.</td>
-			</tr>
-			<tr>
-					<td><strong>I/O-bound job</strong></td>
-					<td>Contains many, very short CPU bursts. Most of the time the job needs I/O.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>CPU-bound job</strong></td>
+          <td>Contains few, very long CPU bursts. Most of the time the job needs the CPU.</td>
+      </tr>
+      <tr>
+          <td><strong>I/O-bound job</strong></td>
+          <td>Contains many, very short CPU bursts. Most of the time the job needs I/O.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="context-switch">Context Switch</h3>
 <p>When the CPU switches from Job 1 to Job 2:</p>
@@ -159,25 +159,25 @@
 </ul>
 <h3 id="multiprogramming-vs-time-sharing">Multiprogramming vs. Time Sharing</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Feature</th>
-					<th>Multiprogramming</th>
-					<th>Time Sharing</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>CPU switches when</td>
-					<td>Job needs I/O</td>
-					<td>Quantum Q is finished (or I/O needed)</td>
-			</tr>
-			<tr>
-					<td>Goal</td>
-					<td>CPU utilization</td>
-					<td>Fast response time (interactive)</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Multiprogramming</th>
+          <th>Time Sharing</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CPU switches when</td>
+          <td>Job needs I/O</td>
+          <td>Quantum Q is finished (or I/O needed)</td>
+      </tr>
+      <tr>
+          <td>Goal</td>
+          <td>CPU utilization</td>
+          <td>Fast response time (interactive)</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="f-parallel-systems">[F] Parallel Systems</h2>

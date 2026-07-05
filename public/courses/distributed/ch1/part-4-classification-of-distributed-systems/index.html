@@ -61,22 +61,22 @@
 <p>Parallel computing started as the high-performance direction of distributed computing.</p>
 <p>Important distinction:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Term</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Multiprocessor / multicore</td>
-					<td>Multiple processors/cores share memory tightly.</td>
-			</tr>
-			<tr>
-					<td>Multicomputer</td>
-					<td>Multiple computers connected by a network.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Multiprocessor / multicore</td>
+          <td>Multiple processors/cores share memory tightly.</td>
+      </tr>
+      <tr>
+          <td>Multicomputer</td>
+          <td>Multiple computers connected by a network.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Multiprocessors are easier to program because memory sharing is natural. Multicomputers scale better physically but are harder to program.</p>
 <hr>
@@ -131,34 +131,34 @@
 <hr>
 <h2 id="grid-architecture-layers">Grid architecture layers</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Layer</th>
-					<th>Responsibility</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Fabric</td>
-					<td>Interfaces to local resources: state, capabilities, locking.</td>
-			</tr>
-			<tr>
-					<td>Connectivity</td>
-					<td>Communication, transaction, and authentication protocols.</td>
-			</tr>
-			<tr>
-					<td>Resource</td>
-					<td>Manages one resource: create process, read data, control local access.</td>
-			</tr>
-			<tr>
-					<td>Collective</td>
-					<td>Manages multiple resources: discovery, scheduling, replication.</td>
-			</tr>
-			<tr>
-					<td>Application</td>
-					<td>Actual grid applications.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Responsibility</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Fabric</td>
+          <td>Interfaces to local resources: state, capabilities, locking.</td>
+      </tr>
+      <tr>
+          <td>Connectivity</td>
+          <td>Communication, transaction, and authentication protocols.</td>
+      </tr>
+      <tr>
+          <td>Resource</td>
+          <td>Manages one resource: create process, read data, control local access.</td>
+      </tr>
+      <tr>
+          <td>Collective</td>
+          <td>Manages multiple resources: discovery, scheduling, replication.</td>
+      </tr>
+      <tr>
+          <td>Application</td>
+          <td>Actual grid applications.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="distributed-information-systems">Distributed information systems</h2>
@@ -177,61 +177,61 @@
 <p>A transaction is a sequence of operations that should behave as one unit.</p>
 <p>Common primitives:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Primitive</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><code>BEGIN TRANSACTION</code></td>
-					<td>Start transaction.</td>
-			</tr>
-			<tr>
-					<td><code>END TRANSACTION</code></td>
-					<td>Try to commit transaction.</td>
-			</tr>
-			<tr>
-					<td><code>ABORT TRANSACTION</code></td>
-					<td>Cancel and restore old values.</td>
-			</tr>
-			<tr>
-					<td><code>READ</code></td>
-					<td>Read data.</td>
-			</tr>
-			<tr>
-					<td><code>WRITE</code></td>
-					<td>Write data.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Primitive</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>BEGIN TRANSACTION</code></td>
+          <td>Start transaction.</td>
+      </tr>
+      <tr>
+          <td><code>END TRANSACTION</code></td>
+          <td>Try to commit transaction.</td>
+      </tr>
+      <tr>
+          <td><code>ABORT TRANSACTION</code></td>
+          <td>Cancel and restore old values.</td>
+      </tr>
+      <tr>
+          <td><code>READ</code></td>
+          <td>Read data.</td>
+      </tr>
+      <tr>
+          <td><code>WRITE</code></td>
+          <td>Write data.</td>
+      </tr>
+  </tbody>
 </table>
 <p>ACID properties:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Property</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Atomicity</td>
-					<td>All-or-nothing; transaction appears indivisible.</td>
-			</tr>
-			<tr>
-					<td>Consistency</td>
-					<td>System invariants remain valid.</td>
-			</tr>
-			<tr>
-					<td>Isolation</td>
-					<td>Concurrent transactions do not interfere incorrectly.</td>
-			</tr>
-			<tr>
-					<td>Durability</td>
-					<td>Once committed, changes are permanent.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Property</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Atomicity</td>
+          <td>All-or-nothing; transaction appears indivisible.</td>
+      </tr>
+      <tr>
+          <td>Consistency</td>
+          <td>System invariants remain valid.</td>
+      </tr>
+      <tr>
+          <td>Isolation</td>
+          <td>Concurrent transactions do not interfere incorrectly.</td>
+      </tr>
+      <tr>
+          <td>Durability</td>
+          <td>Once committed, changes are permanent.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="transaction-processing-monitor-tp-monitor">Transaction Processing Monitor (TP Monitor)</h2>
@@ -241,55 +241,55 @@
 <h2 id="middleware-and-eai">Middleware and EAI</h2>
 <p>Middleware supports integration by providing communication facilities.</p>
 <table>
-	<thead>
-			<tr>
-					<th>Middleware style</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>RPC</td>
-					<td>Request is written like a local procedure call, but sent as messages to another machine.</td>
-			</tr>
-			<tr>
-					<td>MOM</td>
-					<td>Message-oriented middleware sends messages to logical contact points/queues and forwards to subscribers.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Middleware style</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RPC</td>
+          <td>Request is written like a local procedure call, but sent as messages to another machine.</td>
+      </tr>
+      <tr>
+          <td>MOM</td>
+          <td>Message-oriented middleware sends messages to logical contact points/queues and forwards to subscribers.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="how-applications-can-be-integrated">How applications can be integrated</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Method</th>
-					<th>Advantage</th>
-					<th>Problem</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>File transfer</td>
-					<td>Simple.</td>
-					<td>Not flexible; must manage file formats, layout, update propagation.</td>
-			</tr>
-			<tr>
-					<td>Shared database</td>
-					<td>More flexible.</td>
-					<td>Needs common schema and can become bottleneck.</td>
-			</tr>
-			<tr>
-					<td>RPC</td>
-					<td>Good when one application needs to execute operations in another.</td>
-					<td>Caller and callee usually must be active at same time.</td>
-			</tr>
-			<tr>
-					<td>Messaging</td>
-					<td>Decouples sender and receiver in time and space.</td>
-					<td>Requires message infrastructure and routing.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Advantage</th>
+          <th>Problem</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>File transfer</td>
+          <td>Simple.</td>
+          <td>Not flexible; must manage file formats, layout, update propagation.</td>
+      </tr>
+      <tr>
+          <td>Shared database</td>
+          <td>More flexible.</td>
+          <td>Needs common schema and can become bottleneck.</td>
+      </tr>
+      <tr>
+          <td>RPC</td>
+          <td>Good when one application needs to execute operations in another.</td>
+          <td>Caller and callee usually must be active at same time.</td>
+      </tr>
+      <tr>
+          <td>Messaging</td>
+          <td>Decouples sender and receiver in time and space.</td>
+          <td>Requires message infrastructure and routing.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="exam-check">Exam check</h2>

@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 3, Part 4 – Data Modification and Common IoT Attacks · Docs</title>
+  <title>Chapter 3, Part 4 – Ad-Hoc Networks &amp; AODV Routing · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,158 +19,82 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 3, Part 4 – Data Modification and Common IoT Attacks</h2>
-  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
-   <p>IoT devices collect and transmit sensitive data. If attackers can read, modify, or misuse that data, the system may make unsafe decisions.</p>
-<h2 id="modification-of-sensitive-data">Modification of sensitive data</h2>
-<p>Data can be captured during transit, changed, and then forwarded to the intended node.</p>
-<p>The entire message does not always need to be changed. Sometimes changing one field is enough to cause harm.</p>
-<h3 id="three-modification-types">Three modification types</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Content modification</td>
-          <td>Part of the information is changed</td>
-      </tr>
-      <tr>
-          <td>Sequence modification</td>
-          <td>Data is delivered in the wrong order</td>
-      </tr>
-      <tr>
-          <td>Time modification</td>
-          <td>Old data is delayed or replayed later</td>
-      </tr>
-  </tbody>
-</table>
-<p>Examples of impact:</p>
+  <h2 class="post-title">Chapter 3, Part 4 – Ad-Hoc Networks &amp; AODV Routing</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="ad-hoc-wireless-networks">Ad-Hoc Wireless Networks</h2>
 <ul>
-<li>A health reading may be changed before reaching the server.</li>
-<li>Traffic information may be delayed or modified.</li>
-<li>A command sent to an actuator may be changed.</li>
+<li>In ad-hoc networks, each node can communicate directly with other nodes — <strong>no access point</strong> is required for access control.</li>
+<li>Nodes themselves take care of <strong>routing</strong> (finding the best path between source and destination).</li>
+<li>Every node maintains a <strong>routing table</strong> containing information about other nodes.</li>
+<li>The network is <strong>dynamic</strong> — routing tables change constantly as nodes move or leave.</li>
+<li>Ad-hoc networks are <strong>asymmetric</strong> — the upload and download paths between two nodes may be different.</li>
 </ul>
-<h3 id="prevention-ideas">Prevention ideas</h3>
+<h3 id="why-routing-is-challenging">Why Routing is Challenging</h3>
 <ul>
-<li>End-to-end encryption</li>
-<li>Message authentication codes</li>
-<li>Digital signatures</li>
-<li>Sequence numbers</li>
-<li>Timestamps</li>
-<li>Replay protection</li>
-<li>Firmware and software updates</li>
+<li>Nodes move frequently</li>
+<li>Connections may break</li>
+<li>New nodes join the network</li>
+<li>Existing nodes leave</li>
+<li>Multiple routes may exist simultaneously</li>
 </ul>
-<h2 id="eavesdropping">Eavesdropping</h2>
-<p>Eavesdropping means secretly listening to communication to steal data.</p>
-<p>In IoT, stolen data may include:</p>
+<hr>
+<h2 id="aodv--ad-hoc-on-demand-distance-vector">AODV — Ad-Hoc On-Demand Distance Vector</h2>
+<p>AODV is a routing protocol for mobile/ad-hoc networks. It discovers routes <strong>only when needed</strong> (on-demand), rather than maintaining full routing tables for all nodes at all times.</p>
+<p>Key properties:</p>
 <ul>
-<li>Sensor readings</li>
-<li>Device identifiers</li>
-<li>Commands</li>
-<li>Credentials</li>
-<li>Location information</li>
-<li>Personal or health data</li>
+<li>Routes are <strong>loop-free</strong> (guaranteed by sequence numbers)</li>
+<li>Finds the <strong>shortest route</strong> possible</li>
+<li>Handles <strong>route changes</strong> and creates new routes on error</li>
+<li>Nodes track neighbours by listening for <strong>HELLO messages</strong> broadcast at set intervals</li>
 </ul>
-<p>The attacker does not need to change data for eavesdropping to be harmful. Reading sensitive data is enough to break confidentiality.</p>
-<p>Common defenses include encryption, secure protocols, disabling unnecessary services, and monitoring traffic for suspicious activity.</p>
-<h2 id="rogue-access-point">Rogue access point</h2>
-<p>A rogue access point is a fake network access point that tricks users or IoT devices into connecting.</p>
-<p>After a victim connects, traffic may pass through the attacker&rsquo;s device. This can expose logins, sensor data, commands, or private information.</p>
-<p>Defenses include:</p>
+<hr>
+<h2 id="aodv-route-discovery">AODV Route Discovery</h2>
+<p>When node A wants to send to node B but B is not a direct neighbour, A broadcasts a <strong>Route Request (RREQ)</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RREQ contains:
+</span></span><span class="line"><span class="cl">  - Source node
+</span></span><span class="line"><span class="cl">  - Destination node
+</span></span><span class="line"><span class="cl">  - Lifespan (TTL)
+</span></span><span class="line"><span class="cl">  - Sequence Number (unique ID)
+</span></span></code></pre></div><p>When a neighbour receives the RREQ, it has two choices:</p>
 <ul>
-<li>Strong Wi-Fi authentication</li>
-<li>Avoiding unknown networks</li>
-<li>Certificate validation</li>
-<li>VPN use where appropriate</li>
-<li>Network segmentation</li>
-<li>Monitoring for duplicate or suspicious network names</li>
+<li>If it <strong>knows a route</strong> to the destination (or IS the destination) → send a <strong>Route Reply (RREP)</strong> back.</li>
+<li>If it <strong>doesn&rsquo;t know</strong> → rebroadcast the RREQ to its own neighbours.</li>
 </ul>
-<h2 id="privilege-escalation">Privilege escalation</h2>
-<p>Privilege escalation means gaining more access rights than allowed.</p>
-<p>Two common forms are:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Horizontal escalation</td>
-          <td>Moving to another device or account with similar privilege level</td>
-      </tr>
-      <tr>
-          <td>Vertical escalation</td>
-          <td>Gaining higher privilege on the same device or system</td>
-      </tr>
-  </tbody>
-</table>
-<p>Common causes include:</p>
+<p>The RREQ keeps propagating until its lifespan expires. If no reply is received in time, the source rebroadcasts with a <strong>longer lifespan and new ID</strong>.</p>
+<p>Nodes use the <strong>Sequence Number</strong> to avoid rebroadcasting the same RREQ twice.</p>
+<hr>
+<h2 id="sequence-numbers">Sequence Numbers</h2>
+<p>Sequence numbers act as <strong>timestamps</strong> — they indicate how &ldquo;fresh&rdquo; a route is.</p>
 <ul>
-<li>Default or shared credentials</li>
-<li>Unpatched vulnerabilities</li>
-<li>Misconfigured permissions</li>
-<li>Insecure update mechanisms</li>
-<li>Weak access control</li>
-<li>Lack of network segmentation</li>
+<li>Every time a node sends any message, it <strong>increments its own sequence number</strong>.</li>
+<li>Each node records the sequence numbers of all nodes it communicates with.</li>
+<li>A <strong>higher sequence number = fresher route</strong>.</li>
+<li>When a node receives a RREP with a better sequence number than what it currently has, it <strong>replaces its old route</strong> with the new one.</li>
 </ul>
-<p>Possible impact includes data theft, malware installation, botnet participation, service disruption, and hiding attacker activity.</p>
-<h2 id="brute-force-attack">Brute-force attack</h2>
-<p>A brute-force attack tries many password guesses until access is obtained.</p>
-<p>IoT devices are often vulnerable because some users keep default or weak passwords.</p>
-<p>Defenses include:</p>
+<hr>
+<h2 id="aodv-advantages">AODV Advantages</h2>
 <ul>
-<li>Changing default credentials immediately</li>
-<li>Strong unique passwords</li>
-<li>Account lockout or throttling</li>
-<li>Multi-factor authentication where possible</li>
-<li>Disabling unnecessary remote access</li>
-<li>Monitoring failed login attempts</li>
-<li>Keeping firmware updated</li>
+<li><strong>On-demand routing</strong> — routes established only when needed, saving resources.</li>
+<li><strong>Low memory usage</strong> — nodes store routes only to active destinations.</li>
+<li><strong>Loop-free routes</strong> — sequence numbers ensure up-to-date, loop-free paths.</li>
+<li><strong>Adaptable to mobility</strong> — suitable for dynamic topologies like MANETs and IoT.</li>
+<li><strong>Scalable</strong> — works efficiently in environments with moderate node counts.</li>
 </ul>
-<h2 id="summary">Summary</h2>
-<table>
-  <thead>
-      <tr>
-          <th>Attack</th>
-          <th>Main security property affected</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Data modification</td>
-          <td>Integrity</td>
-      </tr>
-      <tr>
-          <td>Eavesdropping</td>
-          <td>Confidentiality</td>
-      </tr>
-      <tr>
-          <td>Rogue access point</td>
-          <td>Confidentiality and authentication</td>
-      </tr>
-      <tr>
-          <td>Privilege escalation</td>
-          <td>Authorization and access control</td>
-      </tr>
-      <tr>
-          <td>Brute-force</td>
-          <td>Authentication</td>
-      </tr>
-  </tbody>
-</table>
+<h2 id="aodv-limitations">AODV Limitations</h2>
+<ul>
+<li><strong>High latency in route discovery</strong> — initial delay when no route exists.</li>
+<li><strong>Broadcast overhead</strong> — flooding RREQ messages consumes bandwidth in dense networks.</li>
+<li><strong>No multiple route support</strong> — maintains only one route per destination.</li>
+<li><strong>Reactive route maintenance</strong> — causes packet loss during route breaks.</li>
+<li><strong>Security vulnerabilities</strong> — susceptible to blackhole, wormhole, and RREQ flooding attacks.</li>
+</ul>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
       
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part3/" id="nav-prev"><em>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part3/" id="nav-prev"><em>Chapter 3, Part 3 – Attacks on Availability, Data Modification &amp; Common IoT Attacks</em></a>
        
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part5/" id="nav-next"><em>Chapter 3, Part 5 – Attacks as per Architecture</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part5/" id="nav-next"><em>Chapter 3, Part 5 – Ad-Hoc Network Attacks</em></a>
       
     </div>
   </nav>

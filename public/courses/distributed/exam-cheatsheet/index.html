@@ -47,132 +47,132 @@
   <hr />
    <h2 id="chapter-1-must-know-definitions">Chapter 1: Must-know definitions</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Term</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Distributed system</td>
-					<td>A collection of independent computers that appears to users as one coherent system.</td>
-			</tr>
-			<tr>
-					<td>Centralized</td>
-					<td>One main node controls or stores the service.</td>
-			</tr>
-			<tr>
-					<td>Decentralized</td>
-					<td>Control is spread, but the system may still have weak structure or partial interconnection.</td>
-			</tr>
-			<tr>
-					<td>Distributed</td>
-					<td>Components cooperate through a network and the system is designed around distribution.</td>
-			</tr>
-			<tr>
-					<td>Middleware</td>
-					<td>Software layer that hides distribution and provides common services such as communication, naming, security, replication, caching, and marshaling.</td>
-			</tr>
-			<tr>
-					<td>Transparency</td>
-					<td>Hiding distribution from users/applications.</td>
-			</tr>
-			<tr>
-					<td>Openness</td>
-					<td>Components can be reused, replaced, extended, or integrated with other systems.</td>
-			</tr>
-			<tr>
-					<td>Scalability</td>
-					<td>Ability to handle growth in size, geography, or administration without unacceptable performance or management problems.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Distributed system</td>
+          <td>A collection of independent computers that appears to users as one coherent system.</td>
+      </tr>
+      <tr>
+          <td>Centralized</td>
+          <td>One main node controls or stores the service.</td>
+      </tr>
+      <tr>
+          <td>Decentralized</td>
+          <td>Control is spread, but the system may still have weak structure or partial interconnection.</td>
+      </tr>
+      <tr>
+          <td>Distributed</td>
+          <td>Components cooperate through a network and the system is designed around distribution.</td>
+      </tr>
+      <tr>
+          <td>Middleware</td>
+          <td>Software layer that hides distribution and provides common services such as communication, naming, security, replication, caching, and marshaling.</td>
+      </tr>
+      <tr>
+          <td>Transparency</td>
+          <td>Hiding distribution from users/applications.</td>
+      </tr>
+      <tr>
+          <td>Openness</td>
+          <td>Components can be reused, replaced, extended, or integrated with other systems.</td>
+      </tr>
+      <tr>
+          <td>Scalability</td>
+          <td>Ability to handle growth in size, geography, or administration without unacceptable performance or management problems.</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="transparency-types">Transparency types</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Hides what?</th>
-					<th>Example</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Access</td>
-					<td>Differences in data representation and access method</td>
-					<td>Local file vs remote file looks similar</td>
-			</tr>
-			<tr>
-					<td>Location</td>
-					<td>Where a resource is located</td>
-					<td>Use a name, not an IP address</td>
-			</tr>
-			<tr>
-					<td>Relocation</td>
-					<td>Resource can move while in use</td>
-					<td>Mobile object/server changes location</td>
-			</tr>
-			<tr>
-					<td>Migration</td>
-					<td>Resource may move to another location</td>
-					<td>VM moves to another host</td>
-			</tr>
-			<tr>
-					<td>Replication</td>
-					<td>Multiple copies exist</td>
-					<td>User sees one service, not many replicas</td>
-			</tr>
-			<tr>
-					<td>Concurrency</td>
-					<td>Many users share the same resource</td>
-					<td>Bank account updates are coordinated</td>
-			</tr>
-			<tr>
-					<td>Failure</td>
-					<td>Failure and recovery</td>
-					<td>System retries or switches replica</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Hides what?</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Access</td>
+          <td>Differences in data representation and access method</td>
+          <td>Local file vs remote file looks similar</td>
+      </tr>
+      <tr>
+          <td>Location</td>
+          <td>Where a resource is located</td>
+          <td>Use a name, not an IP address</td>
+      </tr>
+      <tr>
+          <td>Relocation</td>
+          <td>Resource can move while in use</td>
+          <td>Mobile object/server changes location</td>
+      </tr>
+      <tr>
+          <td>Migration</td>
+          <td>Resource may move to another location</td>
+          <td>VM moves to another host</td>
+      </tr>
+      <tr>
+          <td>Replication</td>
+          <td>Multiple copies exist</td>
+          <td>User sees one service, not many replicas</td>
+      </tr>
+      <tr>
+          <td>Concurrency</td>
+          <td>Many users share the same resource</td>
+          <td>Bank account updates are coordinated</td>
+      </tr>
+      <tr>
+          <td>Failure</td>
+          <td>Failure and recovery</td>
+          <td>System retries or switches replica</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="dependability">Dependability</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Availability</td>
-					<td>Ready for use now.</td>
-			</tr>
-			<tr>
-					<td>Reliability</td>
-					<td>Continuous correct service over time.</td>
-			</tr>
-			<tr>
-					<td>Safety</td>
-					<td>Very low chance of catastrophic failure.</td>
-			</tr>
-			<tr>
-					<td>Maintainability</td>
-					<td>Easy to repair after failure.</td>
-			</tr>
-			<tr>
-					<td>Failure</td>
-					<td>Component does not meet its specification.</td>
-			</tr>
-			<tr>
-					<td>Error</td>
-					<td>Incorrect internal state that may cause failure.</td>
-			</tr>
-			<tr>
-					<td>Fault</td>
-					<td>Root cause of the error.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Availability</td>
+          <td>Ready for use now.</td>
+      </tr>
+      <tr>
+          <td>Reliability</td>
+          <td>Continuous correct service over time.</td>
+      </tr>
+      <tr>
+          <td>Safety</td>
+          <td>Very low chance of catastrophic failure.</td>
+      </tr>
+      <tr>
+          <td>Maintainability</td>
+          <td>Easy to repair after failure.</td>
+      </tr>
+      <tr>
+          <td>Failure</td>
+          <td>Component does not meet its specification.</td>
+      </tr>
+      <tr>
+          <td>Error</td>
+          <td>Incorrect internal state that may cause failure.</td>
+      </tr>
+      <tr>
+          <td>Fault</td>
+          <td>Root cause of the error.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Metrics:</strong></p>
 <ul>
@@ -182,26 +182,26 @@
 </ul>
 <h2 id="security-triad">Security triad</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Requirement</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Confidentiality</td>
-					<td>Only authorized parties can read data.</td>
-			</tr>
-			<tr>
-					<td>Integrity</td>
-					<td>Only authorized changes are allowed; tampering is detected/prevented.</td>
-			</tr>
-			<tr>
-					<td>Availability</td>
-					<td>Authorized users can access the system when needed.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Requirement</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Confidentiality</td>
+          <td>Only authorized parties can read data.</td>
+      </tr>
+      <tr>
+          <td>Integrity</td>
+          <td>Only authorized changes are allowed; tampering is detected/prevented.</td>
+      </tr>
+      <tr>
+          <td>Availability</td>
+          <td>Authorized users can access the system when needed.</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="scalability-formulas">Scalability formulas</h2>
 <p>For a centralized service modeled as a queue:</p>
@@ -218,38 +218,38 @@
 <p><strong>Important exam conclusion:</strong> when <code>U → 1</code>, response time grows very fast. A service near 100% utilization becomes unusable.</p>
 <h2 id="chapter-3-process-and-thread-essentials">Chapter 3: Process and thread essentials</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Processor</td>
-					<td>Physical execution engine for instructions.</td>
-			</tr>
-			<tr>
-					<td>Thread</td>
-					<td>Minimal software processor/execution context.</td>
-			</tr>
-			<tr>
-					<td>Process</td>
-					<td>Software processor containing one or more threads plus address space/resources.</td>
-			</tr>
-			<tr>
-					<td>Processor context</td>
-					<td>CPU registers such as PC, SP, addressing registers.</td>
-			</tr>
-			<tr>
-					<td>Thread context</td>
-					<td>Processor context plus thread state.</td>
-			</tr>
-			<tr>
-					<td>Process context</td>
-					<td>Thread context plus memory-management information such as MMU registers.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Processor</td>
+          <td>Physical execution engine for instructions.</td>
+      </tr>
+      <tr>
+          <td>Thread</td>
+          <td>Minimal software processor/execution context.</td>
+      </tr>
+      <tr>
+          <td>Process</td>
+          <td>Software processor containing one or more threads plus address space/resources.</td>
+      </tr>
+      <tr>
+          <td>Processor context</td>
+          <td>CPU registers such as PC, SP, addressing registers.</td>
+      </tr>
+      <tr>
+          <td>Thread context</td>
+          <td>Processor context plus thread state.</td>
+      </tr>
+      <tr>
+          <td>Process context</td>
+          <td>Thread context plus memory-management information such as MMU registers.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Why threads?</strong> avoid blocking, exploit multicore parallelism, reduce process-switching overhead, and structure servers/clients more cleanly.</p>
 <p><strong>Thread-level parallelism:</strong></p>
@@ -257,38 +257,38 @@
 <p>where <code>ci</code> is the fraction of time exactly <code>i</code> threads execute simultaneously.</p>
 <h2 id="chapter-4-communication-essentials">Chapter 4: Communication essentials</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Type</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Transient communication</td>
-					<td>Message is discarded if it cannot be delivered immediately.</td>
-			</tr>
-			<tr>
-					<td>Persistent communication</td>
-					<td>Message is stored until it can be delivered.</td>
-			</tr>
-			<tr>
-					<td>Synchronous communication</td>
-					<td>Sender/client waits.</td>
-			</tr>
-			<tr>
-					<td>Asynchronous communication</td>
-					<td>Sender/client continues without waiting.</td>
-			</tr>
-			<tr>
-					<td>RPC</td>
-					<td>Remote Procedure Call hides message passing behind a procedure call.</td>
-			</tr>
-			<tr>
-					<td>MOM</td>
-					<td>Message-oriented middleware uses queues for persistent asynchronous messaging.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Transient communication</td>
+          <td>Message is discarded if it cannot be delivered immediately.</td>
+      </tr>
+      <tr>
+          <td>Persistent communication</td>
+          <td>Message is stored until it can be delivered.</td>
+      </tr>
+      <tr>
+          <td>Synchronous communication</td>
+          <td>Sender/client waits.</td>
+      </tr>
+      <tr>
+          <td>Asynchronous communication</td>
+          <td>Sender/client continues without waiting.</td>
+      </tr>
+      <tr>
+          <td>RPC</td>
+          <td>Remote Procedure Call hides message passing behind a procedure call.</td>
+      </tr>
+      <tr>
+          <td>MOM</td>
+          <td>Message-oriented middleware uses queues for persistent asynchronous messaging.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>RPC steps:</strong> client calls stub → stub marshals parameters → OS/network sends → server stub unmarshals → server executes → reply goes back through the reverse path.</p>
 <p><strong>Why full access transparency is hard in RPC:</strong> remote calls cannot behave exactly like local calls because parameters need marshaling, references are hard, failures are different, and communication takes time.</p>
@@ -304,34 +304,34 @@
 <p>Important: rumor spreading alone may leave some nodes ignorant; use anti-entropy or death certificates when correctness matters.</p>
 <h2 id="chapter-5-clock-essentials">Chapter 5: Clock essentials</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Precision</td>
-					<td>Clocks of machines are close to each other.</td>
-			</tr>
-			<tr>
-					<td>Accuracy</td>
-					<td>A clock is close to real UTC time.</td>
-			</tr>
-			<tr>
-					<td>Internal synchronization</td>
-					<td>Keep clocks mutually precise.</td>
-			</tr>
-			<tr>
-					<td>External synchronization</td>
-					<td>Keep clocks accurate with respect to UTC.</td>
-			</tr>
-			<tr>
-					<td>Clock drift</td>
-					<td>Hardware clocks run slightly fast/slow.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Precision</td>
+          <td>Clocks of machines are close to each other.</td>
+      </tr>
+      <tr>
+          <td>Accuracy</td>
+          <td>A clock is close to real UTC time.</td>
+      </tr>
+      <tr>
+          <td>Internal synchronization</td>
+          <td>Keep clocks mutually precise.</td>
+      </tr>
+      <tr>
+          <td>External synchronization</td>
+          <td>Keep clocks accurate with respect to UTC.</td>
+      </tr>
+      <tr>
+          <td>Clock drift</td>
+          <td>Hardware clocks run slightly fast/slow.</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Precision formula:</strong> <code>∀t, ∀p,q: |Cp(t) - Cq(t)| ≤ π</code><br>
 <strong>Accuracy formula:</strong> <code>∀t, ∀p: |Cp(t) - t| ≤ α</code></p>
@@ -363,77 +363,77 @@
 </ol>
 <h2 id="mutual-exclusion-comparison">Mutual exclusion comparison</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Algorithm</th>
-					<th>Idea</th>
-					<th style="text-align: right">Messages per entry/exit</th>
-					<th style="text-align: right">Delay</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Centralized</td>
-					<td>Ask coordinator</td>
-					<td style="text-align: right">3</td>
-					<td style="text-align: right">2 message times</td>
-			</tr>
-			<tr>
-					<td>Ricart &amp; Agrawala / distributed</td>
-					<td>Ask all other processes</td>
-					<td style="text-align: right"><code>2(N-1)</code></td>
-					<td style="text-align: right"><code>2(N-1)</code></td>
-			</tr>
-			<tr>
-					<td>Token ring</td>
-					<td>Token grants access</td>
-					<td style="text-align: right"><code>1 ... ∞</code></td>
-					<td style="text-align: right"><code>0 ... N-1</code></td>
-			</tr>
-			<tr>
-					<td>Decentralized voting</td>
-					<td>Need majority of replica coordinators</td>
-					<td style="text-align: right">Larger, depends on attempts</td>
-					<td style="text-align: right">Depends on attempts</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Algorithm</th>
+          <th>Idea</th>
+          <th style="text-align: right">Messages per entry/exit</th>
+          <th style="text-align: right">Delay</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Centralized</td>
+          <td>Ask coordinator</td>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">2 message times</td>
+      </tr>
+      <tr>
+          <td>Ricart &amp; Agrawala / distributed</td>
+          <td>Ask all other processes</td>
+          <td style="text-align: right"><code>2(N-1)</code></td>
+          <td style="text-align: right"><code>2(N-1)</code></td>
+      </tr>
+      <tr>
+          <td>Token ring</td>
+          <td>Token grants access</td>
+          <td style="text-align: right"><code>1 ... ∞</code></td>
+          <td style="text-align: right"><code>0 ... N-1</code></td>
+      </tr>
+      <tr>
+          <td>Decentralized voting</td>
+          <td>Need majority of replica coordinators</td>
+          <td style="text-align: right">Larger, depends on attempts</td>
+          <td style="text-align: right">Depends on attempts</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="election-algorithms">Election algorithms</h2>
 <table>
-	<thead>
-			<tr>
-					<th>Algorithm</th>
-					<th>Main idea</th>
-					<th>Best for</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Bully</td>
-					<td>Higher-ID alive process wins.</td>
-					<td>Small/known groups.</td>
-			</tr>
-			<tr>
-					<td>Ring election</td>
-					<td>Election message circulates ring; highest priority wins.</td>
-					<td>Logical ring organization.</td>
-			</tr>
-			<tr>
-					<td>ZooKeeper leader election</td>
-					<td>Prefer server with most recent transaction, then higher ID.</td>
-					<td>Replicated coordination service.</td>
-			</tr>
-			<tr>
-					<td>Raft</td>
-					<td>Followers become candidates after timeout; majority vote elects leader.</td>
-					<td>Replicated logs/consensus.</td>
-			</tr>
-			<tr>
-					<td>Proof of stake</td>
-					<td>Random token owner becomes leader; more tokens means higher chance.</td>
-					<td>Blockchain-style systems.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Algorithm</th>
+          <th>Main idea</th>
+          <th>Best for</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bully</td>
+          <td>Higher-ID alive process wins.</td>
+          <td>Small/known groups.</td>
+      </tr>
+      <tr>
+          <td>Ring election</td>
+          <td>Election message circulates ring; highest priority wins.</td>
+          <td>Logical ring organization.</td>
+      </tr>
+      <tr>
+          <td>ZooKeeper leader election</td>
+          <td>Prefer server with most recent transaction, then higher ID.</td>
+          <td>Replicated coordination service.</td>
+      </tr>
+      <tr>
+          <td>Raft</td>
+          <td>Followers become candidates after timeout; majority vote elects leader.</td>
+          <td>Replicated logs/consensus.</td>
+      </tr>
+      <tr>
+          <td>Proof of stake</td>
+          <td>Random token owner becomes leader; more tokens means higher chance.</td>
+          <td>Blockchain-style systems.</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="last-night-exam-checklist">Last-night exam checklist</h2>
 <ul>

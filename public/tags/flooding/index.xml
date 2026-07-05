@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Flooding on Docs</title>
-		<link>http://localhost:1313/docs/tags/flooding/</link>
-		<description>Recent content in Flooding on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/flooding/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</title>
-				<link>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</link>
-				<pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/iot/ch3/ch3-part3-availability-spoofing-flooding/</guid>
-				<description>&lt;h2 id=&#34;attacks-on-availability&#34;&gt;Attacks on Availability&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Availability means legitimate users can access the system when needed.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In IoT, availability is critical because many systems control real-world services&#xA;such as health monitoring, industrial equipment, transportation, and smart homes.&lt;/p&gt;&#xA;&lt;p&gt;A major threat to availability is denial of service. In a denial-of-service attack,&#xA;the target is overloaded so that normal users cannot access it. When the overload&#xA;comes from many distributed devices, it becomes a distributed denial-of-service&#xA;attack.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Flooding on Docs</title>
+    <link>http://localhost:1313/docs/tags/flooding/</link>
+    <description>Recent content in Flooding on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/flooding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 4, Part 3 – Multicast Communication</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch4/part-3-multicast-communication/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch4/part-3-multicast-communication/</guid>
+      <description>&lt;h2 id=&#34;application-level-multicasting&#34;&gt;Application-level multicasting&lt;/h2&gt;&#xA;&lt;p&gt;Multicasting means sending data to a group.&lt;/p&gt;&#xA;&lt;p&gt;In application-level multicast, nodes organize themselves into an overlay network and use that overlay to disseminate data.&lt;/p&gt;&#xA;&lt;p&gt;Common overlay structures:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Structure&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Tree&lt;/td&gt;&#xA;          &lt;td&gt;Unique paths from root to members. Simple and efficient but vulnerable to tree failures.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Mesh&lt;/td&gt;&#xA;          &lt;td&gt;Multiple paths, more robust, but needs routing and duplicate control.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;chord-based-application-level-multicast&#34;&gt;Chord-based application-level multicast&lt;/h2&gt;&#xA;&lt;p&gt;Basic approach from slides:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Initiator generates multicast identifier &lt;code&gt;mid&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Lookup &lt;code&gt;succ(mid)&lt;/code&gt;, the node responsible for &lt;code&gt;mid&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Request routes to &lt;code&gt;succ(mid)&lt;/code&gt;, which becomes tree root.&lt;/li&gt;&#xA;&lt;li&gt;If process &lt;code&gt;P&lt;/code&gt; wants to join, it sends join request to root.&lt;/li&gt;&#xA;&lt;li&gt;When request arrives at &lt;code&gt;Q&lt;/code&gt;:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;if &lt;code&gt;Q&lt;/code&gt; has not seen a join request before, it becomes a forwarder and &lt;code&gt;P&lt;/code&gt; becomes child of &lt;code&gt;Q&lt;/code&gt;,&lt;/li&gt;&#xA;&lt;li&gt;if &lt;code&gt;Q&lt;/code&gt; already knows about the tree, &lt;code&gt;P&lt;/code&gt; becomes child of &lt;code&gt;Q&lt;/code&gt; and request stops.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Main idea:&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

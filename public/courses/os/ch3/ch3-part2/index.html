@@ -158,12 +158,12 @@
 </ul>
 <h3 id="data-structures-required">Data Structures Required</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>          <span class="c1">// size of buffer
-</span></span></span><span class="line"><span class="cl"><span class="n">type</span> <span class="n">item</span><span class="p">;</span>            <span class="c1">// item = char, bit, word
-</span></span></span><span class="line"><span class="cl"><span class="n">var</span> <span class="kt">int</span> <span class="n">buffer</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="n">item</span><span class="p">;</span>            <span class="c1">// item = char, bit, word
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">var</span> <span class="kt">int</span> <span class="n">buffer</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">in</span><span class="p">;</span>               <span class="c1">// index where we add items to the buffer
-</span></span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">out</span><span class="p">;</span>              <span class="c1">// index where we take items from the buffer
-</span></span></span><span class="line"><span class="cl"><span class="n">item</span> <span class="n">nextP</span><span class="p">;</span>           <span class="c1">// next produced item
-</span></span></span><span class="line"><span class="cl"><span class="n">item</span> <span class="n">nextC</span><span class="p">;</span>           <span class="c1">// next consumed item
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">out</span><span class="p">;</span>              <span class="c1">// index where we take items from the buffer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">item</span> <span class="n">nextP</span><span class="p">;</span>           <span class="c1">// next produced item
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">item</span> <span class="n">nextC</span><span class="p">;</span>           <span class="c1">// next consumed item
 </span></span></span></code></pre></div><p>A <strong>circular buffer</strong> is used in the implementation.</p>
 <h3 id="circular-buffer-conditions">Circular Buffer Conditions</h3>
 <ul>

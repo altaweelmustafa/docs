@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Clocks on Docs</title>
-		<link>http://localhost:1313/docs/tags/clocks/</link>
-		<description>Recent content in Clocks on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/clocks/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 5 – Coordination</title>
-				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-5-coordination/</link>
-				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-5-coordination/</guid>
-				<description>&lt;h2 id=&#34;coordination-in-distributed-systems&#34;&gt;Coordination in Distributed Systems&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Coordination is about getting independent machines to agree on time, ordering,&#xA;access to shared resources, leadership, membership, and shared state.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Coordination is hard because distributed systems usually do not have a perfect&#xA;global clock, communication can be delayed, and processes can fail independently.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;physical-clocks&#34;&gt;Physical Clocks&lt;/h2&gt;&#xA;&lt;p&gt;Sometimes a system needs real time, not only event ordering. Physical clock&#xA;synchronization tries to keep machine clocks close to each other or close to UTC.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Clocks on Docs</title>
+    <link>http://localhost:1313/docs/tags/clocks/</link>
+    <description>Recent content in Clocks on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/clocks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 5, Part 1 – Physical, Logical, and Vector Clocks</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch5/part-1-clocks-logical-vector/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-1-clocks-logical-vector/</guid>
+      <description>&lt;h2 id=&#34;physical-clocks&#34;&gt;Physical clocks&lt;/h2&gt;&#xA;&lt;p&gt;Sometimes we need exact real time, not just event order.&lt;/p&gt;&#xA;&lt;p&gt;The real-world reference is UTC: Universal Coordinated Time.&lt;/p&gt;&#xA;&lt;p&gt;UTC is based on atomic clocks and is broadcast through radio/satellite systems.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;precision-vs-accuracy&#34;&gt;Precision vs accuracy&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Concept&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;          &lt;th&gt;Formula&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Precision&lt;/td&gt;&#xA;          &lt;td&gt;Clocks of different machines are close to each other.&lt;/td&gt;&#xA;          &lt;td&gt;`∀t, ∀p,q:&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Accuracy&lt;/td&gt;&#xA;          &lt;td&gt;A machine clock is close to real UTC time.&lt;/td&gt;&#xA;          &lt;td&gt;`∀t, ∀p:&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Synchronization type&lt;/th&gt;&#xA;          &lt;th&gt;Goal&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Internal synchronization&lt;/td&gt;&#xA;          &lt;td&gt;Keep clocks precise relative to each other.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;External synchronization&lt;/td&gt;&#xA;          &lt;td&gt;Keep clocks accurate relative to UTC.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;clock-drift&#34;&gt;Clock drift&lt;/h2&gt;&#xA;&lt;p&gt;Hardware clocks are not perfect. They can run fast or slow.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 3, Part 2 – Phase Attacks and Data Protection · Docs</title>
+  <title>Chapter 3, Part 2 – Data Leakage, Sovereignty, Loss &amp; Authentication · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,126 +19,84 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 3, Part 2 – Phase Attacks and Data Protection</h2>
-  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
-   <p>The IoT system phases introduce different attacks. The early slides focus especially on the data perception and storage phases, where sensitive data can be exposed, lost, or modified.</p>
-<h2 id="phase-attacks-overview">Phase attacks overview</h2>
-<p>The main phase-based attack concerns are:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Phase</th>
-          <th>Example threats</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Data perception</td>
-          <td>Data leakage, data sovereignty, data breach, authentication problems</td>
-      </tr>
-      <tr>
-          <td>Storage</td>
-          <td>Availability attacks, access control issues, integrity attacks</td>
-      </tr>
-      <tr>
-          <td>Processing</td>
-          <td>Authentication attacks</td>
-      </tr>
-      <tr>
-          <td>Transmission</td>
-          <td>Channel security attacks, session hijacking, routing attacks, flooding</td>
-      </tr>
-      <tr>
-          <td>Delivery</td>
-          <td>Human or machine misuse, attacker-controlled delivery</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="data-leakage-or-data-breach">Data leakage or data breach</h2>
-<p>Data leakage means unauthorized data is exposed to an unintended destination.</p>
-<p>It can be:</p>
+  <h2 class="post-title">Chapter 3, Part 2 – Data Leakage, Sovereignty, Loss &amp; Authentication</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="data-leakage--breach">Data Leakage / Breach</h2>
+<p>Export of unauthorized data or information to an unintended destination is <strong>data leakage</strong>.</p>
 <ul>
-<li>Internal or external</li>
-<li>Intentional or accidental</li>
-<li>Caused by hardware or software</li>
-<li>Caused by weak security, misconfiguration, or malicious behavior</li>
+<li>Can be internal or external, intentional or unintentional, authorized or malicious, involving hardware or software.</li>
+<li>Generally done by a dishonest or dissatisfied employee.</li>
+<li>As cloud data moves from one tenant to several others, there is serious risk of leakage.</li>
+<li>Data leakage is a serious threat to <strong>reliability</strong>.</li>
+<li>Severity can be reduced by <strong>DLP (Data Leakage Prevention)</strong>.</li>
 </ul>
-<p>In IoT, leakage is dangerous because devices may collect private information such as home activity, health readings, or industrial production data.</p>
-<h3 id="how-leakage-can-happen">How leakage can happen</h3>
-<p>Common causes include:</p>
+<hr>
+<h2 id="how-data-leakage-happens">How Data Leakage Happens</h2>
 <ul>
-<li>Weak encryption</li>
-<li>Default passwords</li>
-<li>Default configurations</li>
-<li>Vulnerable network protocols</li>
-<li>Human mistakes</li>
-<li>Accidental sharing</li>
-<li>Misconfigured devices or cloud services</li>
+<li><strong>Weak security practices</strong> — many IoT devices prioritize convenience over security (weak encryption, default configurations, default passwords).</li>
+<li><strong>Exploited vulnerabilities</strong> — attackers exploit weaknesses in network protocols for malicious activities.</li>
+<li><strong>Accidental actions</strong> — human errors, device misconfiguration, or accidental sharing of information.</li>
+<li><strong>Privacy breaches</strong> — personal information such as home habits in smart home systems, or health data in smart health systems, can be exposed.</li>
 </ul>
-<h3 id="consequences">Consequences</h3>
-<p>Possible consequences include:</p>
+<hr>
+<h2 id="consequences-of-data-leakage">Consequences of Data Leakage</h2>
 <ul>
-<li>Privacy breaches</li>
-<li>Exposure of health or personal data</li>
-<li>Disrupted industrial operations</li>
-<li>Loss of reliability and trust</li>
-<li>Business or safety impact</li>
+<li><strong>Privacy breaches</strong> — sensitive personal data exposed.</li>
+<li><strong>Disrupted operations</strong> — data breaches in industrial IoT systems can disrupt production lines in factories and cause physical harm.</li>
 </ul>
-<h3 id="countermeasures">Countermeasures</h3>
-<p>Useful countermeasures include:</p>
+<hr>
+<h2 id="countermeasures-for-data-leakage">Countermeasures for Data Leakage</h2>
 <ul>
-<li>Encrypting data at rest</li>
-<li>Regular security updates</li>
-<li>Strong authentication, such as MFA</li>
-<li>Network segmentation</li>
-<li>Data minimization</li>
-<li>User and employee awareness</li>
+<li><strong>Strong encryption</strong> — implement strong encryption algorithms for data at rest to make it unreadable to unauthorized users.</li>
+<li><strong>Regular security updates</strong> — system administrators deal with discovered vulnerabilities through timely patching.</li>
+<li><strong>Strong authentication</strong> — techniques such as challenge-response or MFA (Multi-Factor Authentication).</li>
+<li><strong>Network segmentation</strong> — isolate IoT devices on separate networks to minimize the blast radius of a breach.</li>
+<li><strong>Data minimization</strong> — only collect and deal with necessary data.</li>
+<li><strong>Awareness</strong> — educate employees and users on how to handle IoT devices properly.</li>
 </ul>
-<h2 id="data-sovereignty">Data sovereignty</h2>
-<p>Data sovereignty means that digitally stored information is subject to the laws of the country where it is stored or processed.</p>
-<p>This matters in IoT because cloud services may store data across different countries. Organizations may not always know where their data is physically stored, which can create legal and privacy concerns.</p>
-<h2 id="data-loss">Data loss</h2>
-<p>Data loss is different from data leakage.</p>
+<hr>
+<h2 id="data-sovereignty">Data Sovereignty</h2>
 <ul>
-<li>Data leakage means data is exposed to unauthorized parties.</li>
-<li>Data loss means data disappears, becomes corrupted, or becomes unavailable.</li>
+<li><strong>Data sovereignty</strong> means that information stored in digital form is subject to the <strong>laws of the country</strong> where it is stored.</li>
+<li>The IoT encompasses all things across the globe and is hence liable to sovereignty issues — data stored in a foreign country may be subject to that country&rsquo;s laws.</li>
 </ul>
-<p>Data loss may happen because of:</p>
+<hr>
+<h2 id="data-loss">Data Loss</h2>
+<p>Data loss differs from data leakage:</p>
 <ul>
-<li>Hardware failure</li>
-<li>Software failure</li>
-<li>Accidental deletion</li>
-<li>Natural disasters</li>
-<li>Corruption or unavailable storage</li>
+<li><strong>Data leakage</strong> — often intentional, a sort of revenge-taking by an employee or insider.</li>
+<li><strong>Data loss</strong> — losing work <strong>accidentally</strong> due to hardware or software failure, or natural disasters.</li>
 </ul>
-<p>The focus for data loss is backup, recovery, and availability.</p>
-<h2 id="data-authentication">Data authentication</h2>
-<p>Data authentication checks that received data really came from the expected source and was not changed during transit.</p>
-<p>It supports:</p>
+<hr>
+<h2 id="data-authentication">Data Authentication</h2>
 <ul>
-<li>Integrity: the data was not altered</li>
-<li>Originality: the data came from a legitimate device or user</li>
+<li>Data can be perceived from any device at any time — devices can be <strong>forged by intruders</strong>.</li>
+<li>It must be ensured that perceived data are received from <strong>intended or legitimate users only</strong>.</li>
+<li>It is mandatory to verify that data have <strong>not been altered during transit</strong>.</li>
+<li>Data authentication provides <strong>integrity</strong> and <strong>originality</strong>.</li>
 </ul>
-<p>This is important because IoT data may be used to control real-world actions. For example, a sensor reading may cause a machine, alarm, or actuator to respond.</p>
-<p>Authentication can use methods such as message authentication codes, challenge-response techniques, asymmetric cryptography, and multi-factor authentication, depending on device capabilities.</p>
-<h2 id="iot-authentication-challenges">IoT authentication challenges</h2>
-<p>IoT authentication is difficult because of:</p>
+<h3 id="why-data-authentication-matters">Why Data Authentication Matters</h3>
 <ul>
-<li>Lack of one universal standard</li>
-<li>Large numbers of devices</li>
-<li>Limited processing power</li>
-<li>Limited memory</li>
-<li>Need for low energy consumption</li>
-<li>Different vendors and protocols</li>
+<li><strong>Sensor data</strong> — sensing data from industrial equipment must be accurate to build correct decisions.</li>
+<li><strong>Control commands</strong> — commands sent to actuators or IoT devices (e.g. adjusting a thermostat) must not be modified or tampered with during transmission.</li>
+<li><strong>Originality</strong> — detecting spoofing attacks by verifying that traffic comes from a legitimate source.</li>
 </ul>
-<p>A good IoT authentication solution must be scalable, lightweight, and strong enough to prevent spoofing or tampering.</p>
+<h3 id="how-to-achieve-it">How to Achieve It</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MAC = H(Message + Shared Key)
+</span></span></code></pre></div><p>Or using <strong>Asymmetric Encryption</strong> for stronger guarantees.</p>
+<h3 id="considerations">Considerations</h3>
+<ul>
+<li><strong>Standardization</strong> — IoT lacks a single universal authentication standard, making securing devices complex.</li>
+<li><strong>Scalability</strong> — the authentication solution must scale to handle a potentially vast number of devices.</li>
+<li><strong>Resource constraints</strong> — many IoT devices have limited processing power and memory; authentication must be efficient to avoid impacting device performance.</li>
+</ul>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
       
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part1/" id="nav-prev"><em>Chapter 3, Part 1 – IoT System Phases</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part1/" id="nav-prev"><em>Chapter 3, Part 1 – Phases of an IoT System</em></a>
        
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part3/" id="nav-next"><em>Chapter 3, Part 3 – Availability, Spoofing, and Flooding</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part3/" id="nav-next"><em>Chapter 3, Part 3 – Attacks on Availability, Data Modification &amp; Common IoT Attacks</em></a>
       
     </div>
   </nav>

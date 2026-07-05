@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Contiguous-Allocation on Docs</title>
-		<link>http://localhost:1313/docs/tags/contiguous-allocation/</link>
-		<description>Recent content in Contiguous-Allocation on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/contiguous-allocation/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation</title>
-				<link>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</link>
-				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</guid>
-				<description>&lt;h2 id=&#34;what-is-memory-management&#34;&gt;What is Memory Management?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ordinary Memory Management&lt;/strong&gt; means all programs must be admitted (allocated) into memory &lt;strong&gt;before&lt;/strong&gt; execution starts.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;logical-address-vs-physical-address&#34;&gt;Logical Address vs. Physical Address&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Logical Address (LA):&lt;/strong&gt; The address seen in your program — it&amp;rsquo;s the offset of the address within the program.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Physical Address (PA):&lt;/strong&gt; The actual address in memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The OS maps logical addresses to physical ones at runtime:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PA = LA + Base Register&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Example: PA = 172 + 21568 = 21740&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;binding-times&#34;&gt;Binding Times&lt;/h2&gt;&#xA;&lt;p&gt;When does the OS determine physical addresses?&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Contiguous-Allocation on Docs</title>
+    <link>http://localhost:1313/docs/tags/contiguous-allocation/</link>
+    <description>Recent content in Contiguous-Allocation on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/contiguous-allocation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 8, Part 1 – Memory Management: Basics &amp; Contiguous Allocation</title>
+      <link>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch8/ch8-part1/</guid>
+      <description>&lt;h2 id=&#34;what-is-memory-management&#34;&gt;What is Memory Management?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Ordinary Memory Management&lt;/strong&gt; means all programs must be admitted (allocated) into memory &lt;strong&gt;before&lt;/strong&gt; execution starts.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;logical-address-vs-physical-address&#34;&gt;Logical Address vs. Physical Address&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Logical Address (LA):&lt;/strong&gt; The address seen in your program — it&amp;rsquo;s the offset of the address within the program.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Physical Address (PA):&lt;/strong&gt; The actual address in memory.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The OS maps logical addresses to physical ones at runtime:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PA = LA + Base Register&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Example: PA = 172 + 21568 = 21740&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;binding-times&#34;&gt;Binding Times&lt;/h2&gt;&#xA;&lt;p&gt;When does the OS determine physical addresses?&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

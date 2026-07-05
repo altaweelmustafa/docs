@@ -4,7 +4,7 @@
 <head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 3, Part 5 – Attacks as per Architecture · Docs</title>
+  <title>Chapter 3, Part 5 – Ad-Hoc Network Attacks · Docs</title>
   <link rel="stylesheet" href="/docs/css/style.css">
 </head>
 
@@ -19,99 +19,55 @@
   <main>
     
 <article>
-  <h2 class="post-title">Chapter 3, Part 5 – Attacks as per Architecture</h2>
-  <p class="post-date"><em>posted on 2026 Jun 15</em></p>
-   <p>IoT does not have only one fixed architecture. Different vendors and applications may use different designs.</p>
-<p>A common view divides IoT into four layers:</p>
-<ol>
-<li>Sensing / perception layer</li>
-<li>Network layer</li>
-<li>Transport layer</li>
-<li>Application layer</li>
-</ol>
-<p>Each layer has different responsibilities and different security risks.</p>
-<h2 id="1-sensing--perception-layer">1. Sensing / perception layer</h2>
-<p>This is the lowest layer. It includes sensors, RFID tags, actuators, and physical devices that collect data from the environment.</p>
-<p>Possible attacks include:</p>
+  <h2 class="post-title">Chapter 3, Part 5 – Ad-Hoc Network Attacks</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="wormhole-attack">Wormhole Attack</h2>
+<p>One of the most popular attacks in ad-hoc networks.</p>
 <ul>
-<li>External attacks on devices</li>
-<li>Witch attack</li>
-<li>Wormhole and sewage pool attacks</li>
-<li>Broadcast authentication and flooding attacks</li>
-<li>Link layer attacks</li>
-<li>HELLO flooding</li>
+<li>The intruder <strong>does not need to compromise any host</strong> in the network.</li>
+<li>The attacker captures packets at one location, tunnels them to another node (via a private &ldquo;wormhole&rdquo; link), and retransmits them from there.</li>
+<li>This makes the attacker appear as a close, high-quality neighbour to distant nodes — <strong>distorting the network topology</strong>.</li>
+<li>Wormhole attacks are <strong>very strange and difficult to identify</strong>.</li>
+</ul>
+<h3 id="how-to-detect-a-wormhole-attack">How to Detect a Wormhole Attack</h3>
+<ul>
+<li><strong>Hop Count vs Physical Distance</strong> — check whether the reported hop count matches the actual physical distance. A suspiciously short hop count for a long distance is a red flag.</li>
+<li><strong>Packet Travel Time (RTT)</strong> — measure how long packets take to travel. Wormholes may show abnormally fast delivery.</li>
+<li><strong>Neighbour Verification</strong> — check whether claimed neighbours are actually within normal radio range.</li>
+</ul>
+<hr>
+<h2 id="black-hole-attack">Black-Hole Attack</h2>
+<ul>
+<li>The malicious node <strong>falsely advertises a good (short) path</strong> to the destination during route discovery.</li>
+<li>It sends fake hop counts to attract traffic toward itself.</li>
+<li>Once selected as a relay, the malicious node simply <strong>drops all received packets</strong>.</li>
+</ul>
+<p>Result: packets are silently lost, disrupting communication without any visible error.</p>
+<hr>
+<h2 id="selective-forwarding-attack">Selective Forwarding Attack</h2>
+<ul>
+<li>Similar to black-hole, but instead of dropping everything, the malicious node <strong>selectively drops certain packets</strong> and forwards the rest.</li>
+<li>This makes detection much harder — the node appears to be functioning normally most of the time.</li>
+<li>Dropped packets may carry <strong>sensitive or critical data</strong> needed for further processing.</li>
+</ul>
+<hr>
+<h2 id="sinkhole-attack">Sinkhole Attack</h2>
+<ul>
+<li>Sensors left unattended in a network for long periods are especially vulnerable.</li>
+<li>The <strong>compromised node attracts traffic from all surrounding nodes</strong> by advertising itself as the best route.</li>
+<li>Once it controls the flow of data, the attacker can launch further attacks such as:
+<ul>
 <li>Selective forwarding</li>
-<li>Access control attacks</li>
+<li>Fabrication</li>
+<li>Modification</li>
 </ul>
-<p>The main concern is that physical and low-level devices may be exposed, resource-limited, and easier to compromise.</p>
-<h2 id="2-network-layer">2. Network layer</h2>
-<p>The network layer connects devices and routes data.</p>
-<p>Possible attacks include:</p>
-<ul>
-<li>Routing protocol attacks</li>
-<li>Address compromise</li>
+</li>
 </ul>
-<p>If routing is manipulated, data can be delayed, dropped, redirected, or sent through an attacker-controlled path.</p>
-<h2 id="3-transport-layer">3. Transport layer</h2>
-<p>The transport layer handles end-to-end data transfer between communicating entities.</p>
-<p>Possible attacks include:</p>
-<ul>
-<li>Denial of service</li>
-<li>Distributed denial of service</li>
-<li>Masquerade attacks</li>
-<li>Man-in-the-middle attacks</li>
-<li>Cross-heterogeneity issues</li>
-</ul>
-<p>The main concern is keeping communication reliable, authenticated, and available.</p>
-<h2 id="4-application-layer">4. Application layer</h2>
-<p>The application layer provides services to users and organizations.</p>
-<p>Possible attacks include:</p>
-<ul>
-<li>Revealing sensitive data</li>
-<li>Data destruction</li>
-<li>User authentication attacks</li>
-<li>Intellectual property attacks</li>
-</ul>
-<p>The main concern is protecting user data, application logic, access control, and service trust.</p>
-<h2 id="layer-summary">Layer summary</h2>
-<table>
-  <thead>
-      <tr>
-          <th>IoT layer</th>
-          <th>Main role</th>
-          <th>Example security risks</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Sensing / perception</td>
-          <td>Collect physical-world data</td>
-          <td>Device compromise, flooding, selective forwarding</td>
-      </tr>
-      <tr>
-          <td>Network</td>
-          <td>Route and address communication</td>
-          <td>Routing attacks, address compromise</td>
-      </tr>
-      <tr>
-          <td>Transport</td>
-          <td>Transfer data between endpoints</td>
-          <td>DoS, DDoS, masquerade, man-in-the-middle</td>
-      </tr>
-      <tr>
-          <td>Application</td>
-          <td>Provide user services</td>
-          <td>Data exposure, authentication attacks, data destruction</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="main-idea">Main idea</h2>
-<p>Attacks as per architecture help us classify threats by where they happen. This makes it easier to choose the right protection method for each layer instead of treating IoT security as one general problem.</p>
 
   <nav class="post-nav">
     <div class="post-nav-arrows">
       
-      <a href="http://localhost:1313/docs/courses/iot/ch3/part4/" id="nav-prev"><em>Chapter 3, Part 4 – Data Modification and Common IoT Attacks</em></a>
+      <a href="http://localhost:1313/docs/courses/iot/ch3/part4/" id="nav-prev"><em>Chapter 3, Part 4 – Ad-Hoc Networks &amp; AODV Routing</em></a>
        
     </div>
   </nav>

@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Context-Switch on Docs</title>
-		<link>http://localhost:1313/docs/tags/context-switch/</link>
-		<description>Recent content in Context-Switch on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/context-switch/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling</title>
-				<link>http://localhost:1313/docs/courses/os/ch3/ch3-part1/</link>
-				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/os/ch3/ch3-part1/</guid>
-				<description>&lt;h2 id=&#34;process-concept&#34;&gt;Process Concept&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: A &lt;strong&gt;process&lt;/strong&gt; is a program in execution.&#xA;&lt;code&gt;process ≡ program ≡ job&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A &lt;strong&gt;program&lt;/strong&gt; is a passive entity (a file on disk). A &lt;strong&gt;process&lt;/strong&gt; is an active entity — a program loaded into memory and executing.&lt;/p&gt;&#xA;&lt;h3 id=&#34;types-of-processes-in-the-system&#34;&gt;Types of Processes in the System&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Batch Process&lt;/strong&gt; — generally has low priority.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Time Sharing Process&lt;/strong&gt; — interactive; includes users, program development, data entry, gaming.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;System Tasks&lt;/strong&gt; — e.g. interrupt handling.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;process-contents-memory-layout&#34;&gt;Process Contents (Memory Layout)&lt;/h2&gt;&#xA;&lt;p&gt;A process in memory contains three sections:&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Context-Switch on Docs</title>
+    <link>http://localhost:1313/docs/tags/context-switch/</link>
+    <description>Recent content in Context-Switch on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/context-switch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling</title>
+      <link>http://localhost:1313/docs/courses/os/ch3/ch3-part1/</link>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/os/ch3/ch3-part1/</guid>
+      <description>&lt;h2 id=&#34;process-concept&#34;&gt;Process Concept&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: A &lt;strong&gt;process&lt;/strong&gt; is a program in execution.&#xA;&lt;code&gt;process ≡ program ≡ job&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;A &lt;strong&gt;program&lt;/strong&gt; is a passive entity (a file on disk). A &lt;strong&gt;process&lt;/strong&gt; is an active entity — a program loaded into memory and executing.&lt;/p&gt;&#xA;&lt;h3 id=&#34;types-of-processes-in-the-system&#34;&gt;Types of Processes in the System&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Batch Process&lt;/strong&gt; — generally has low priority.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Time Sharing Process&lt;/strong&gt; — interactive; includes users, program development, data entry, gaming.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;System Tasks&lt;/strong&gt; — e.g. interrupt handling.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;process-contents-memory-layout&#34;&gt;Process Contents (Memory Layout)&lt;/h2&gt;&#xA;&lt;p&gt;A process in memory contains three sections:&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Rpc on Docs</title>
-		<link>http://localhost:1313/docs/tags/rpc/</link>
-		<description>Recent content in Rpc on Docs</description>
-		<generator>Hugo</generator>
-		<language>en-us</language>
-		
-		
-		
-		
-			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-		
-			<atom:link href="http://localhost:1313/docs/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 4 – Communication</title>
-				<link>http://localhost:1313/docs/courses/distributed-systems-course/chapter-4-communication/</link>
-				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/distributed-systems-course/chapter-4-communication/</guid>
-				<description>&lt;h2 id=&#34;communication-in-distributed-systems&#34;&gt;Communication in Distributed Systems&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Distributed systems are built from components that run on different machines.&#xA;Communication is the way those components exchange requests, replies, events,&#xA;updates, and coordination messages.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Communication can happen at a low level through sockets, or at a higher level&#xA;through middleware, RPC, queues, publish-subscribe systems, or multicast.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;layered-protocols&#34;&gt;Layered Protocols&lt;/h2&gt;&#xA;&lt;p&gt;Traditional networking uses layers such as physical, data link, network,&#xA;transport, and application layers.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Layer&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Main Role&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Physical&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transmits bits between sender and receiver&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Data link&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Groups bits into frames and handles local error or flow control&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Network&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Routes packets through a network&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Transport&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Provides communication facilities such as TCP or UDP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Application&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Implements application-specific protocols&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;For many distributed systems, the transport layer is where practical&#xA;communication begins.&lt;/p&gt;</description>
-			</item>
-	</channel>
+  <channel>
+    <title>Rpc on Docs</title>
+    <link>http://localhost:1313/docs/tags/rpc/</link>
+    <description>Recent content in Rpc on Docs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/tags/rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 4, Part 1 – Foundations and RPC</title>
+      <link>http://localhost:1313/docs/courses/distributed/ch4/part-1-foundations-and-rpc/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/courses/distributed/ch4/part-1-foundations-and-rpc/</guid>
+      <description>&lt;h2 id=&#34;basic-networking-model&#34;&gt;Basic networking model&lt;/h2&gt;&#xA;&lt;p&gt;Traditional networking is layered. The slides mention that this model has drawbacks for distributed systems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;focuses mainly on message passing,&lt;/li&gt;&#xA;&lt;li&gt;includes functionality that may be unnecessary,&lt;/li&gt;&#xA;&lt;li&gt;can violate access transparency.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;low-level-layers-recap&#34;&gt;Low-level layers recap&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Layer&lt;/th&gt;&#xA;          &lt;th&gt;Role&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Physical&lt;/td&gt;&#xA;          &lt;td&gt;Specification and transmission of bits.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Data link&lt;/td&gt;&#xA;          &lt;td&gt;Groups bits into frames; handles error/flow control.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Network&lt;/td&gt;&#xA;          &lt;td&gt;Routes packets through a network.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;For many distributed systems, the lowest-level useful interface is the network layer.&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

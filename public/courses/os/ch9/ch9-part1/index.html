@@ -131,35 +131,35 @@
 <h4 id="enhanced-second-chance">Enhanced Second Chance</h4>
 <p>Uses both (reference bit, dirty bit):</p>
 <table>
-	<thead>
-			<tr>
-					<th>(ref, dirty)</th>
-					<th>Meaning</th>
-					<th>Priority to replace</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>(0, 0)</td>
-					<td>Not referenced, not modified</td>
-					<td><strong>Best</strong> ①</td>
-			</tr>
-			<tr>
-					<td>(1, 0)</td>
-					<td>Referenced, not modified</td>
-					<td>②</td>
-			</tr>
-			<tr>
-					<td>(0, 1)</td>
-					<td>Not referenced, but modified</td>
-					<td>③</td>
-			</tr>
-			<tr>
-					<td>(1, 1)</td>
-					<td>Referenced and modified</td>
-					<td><strong>Worst</strong> ④</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>(ref, dirty)</th>
+          <th>Meaning</th>
+          <th>Priority to replace</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>(0, 0)</td>
+          <td>Not referenced, not modified</td>
+          <td><strong>Best</strong> ①</td>
+      </tr>
+      <tr>
+          <td>(1, 0)</td>
+          <td>Referenced, not modified</td>
+          <td>②</td>
+      </tr>
+      <tr>
+          <td>(0, 1)</td>
+          <td>Not referenced, but modified</td>
+          <td>③</td>
+      </tr>
+      <tr>
+          <td>(1, 1)</td>
+          <td>Referenced and modified</td>
+          <td><strong>Worst</strong> ④</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h3 id="counting-algorithms">Counting Algorithms</h3>

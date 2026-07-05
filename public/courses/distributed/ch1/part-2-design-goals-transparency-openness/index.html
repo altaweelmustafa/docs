@@ -49,30 +49,30 @@
    <h2 id="overall-design-goals">Overall design goals</h2>
 <p>Distributed systems are usually designed to achieve four main goals:</p>
 <table>
-	<thead>
-			<tr>
-					<th>Goal</th>
-					<th>Meaning</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Resource sharing</td>
-					<td>Allow users/applications to share files, storage, printers, services, data, computation, etc.</td>
-			</tr>
-			<tr>
-					<td>Distribution transparency</td>
-					<td>Hide the fact that components are distributed.</td>
-			</tr>
-			<tr>
-					<td>Openness</td>
-					<td>Make the system easy to extend, integrate, and reuse.</td>
-			</tr>
-			<tr>
-					<td>Scalability</td>
-					<td>Keep working when size, distance, or administration grows.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Goal</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Resource sharing</td>
+          <td>Allow users/applications to share files, storage, printers, services, data, computation, etc.</td>
+      </tr>
+      <tr>
+          <td>Distribution transparency</td>
+          <td>Hide the fact that components are distributed.</td>
+      </tr>
+      <tr>
+          <td>Openness</td>
+          <td>Make the system easy to extend, integrate, and reuse.</td>
+      </tr>
+      <tr>
+          <td>Scalability</td>
+          <td>Keep working when size, distance, or administration grows.</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <h2 id="resource-sharing">Resource sharing</h2>
@@ -97,50 +97,50 @@
 </ul>
 <h3 id="types-of-transparency">Types of transparency</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Transparency type</th>
-					<th>What it hides</th>
-					<th>Example</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Access</td>
-					<td>Differences in data representation and access method.</td>
-					<td>Remote file access looks like local file access.</td>
-			</tr>
-			<tr>
-					<td>Location</td>
-					<td>Where an object/resource is located.</td>
-					<td>Use <code>www.example.com</code> instead of knowing the server IP.</td>
-			</tr>
-			<tr>
-					<td>Relocation</td>
-					<td>Object can move while in use.</td>
-					<td>A service moves to another server during execution.</td>
-			</tr>
-			<tr>
-					<td>Migration</td>
-					<td>Object can move to another location.</td>
-					<td>VM or mobile code moves to a new host.</td>
-			</tr>
-			<tr>
-					<td>Replication</td>
-					<td>Multiple copies exist.</td>
-					<td>User sees one database, even if many replicas exist.</td>
-			</tr>
-			<tr>
-					<td>Concurrency</td>
-					<td>Resource is shared by independent users.</td>
-					<td>Two users update shared data safely.</td>
-			</tr>
-			<tr>
-					<td>Failure</td>
-					<td>Failure and recovery of an object.</td>
-					<td>Request is retried on another server.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Transparency type</th>
+          <th>What it hides</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Access</td>
+          <td>Differences in data representation and access method.</td>
+          <td>Remote file access looks like local file access.</td>
+      </tr>
+      <tr>
+          <td>Location</td>
+          <td>Where an object/resource is located.</td>
+          <td>Use <code>www.example.com</code> instead of knowing the server IP.</td>
+      </tr>
+      <tr>
+          <td>Relocation</td>
+          <td>Object can move while in use.</td>
+          <td>A service moves to another server during execution.</td>
+      </tr>
+      <tr>
+          <td>Migration</td>
+          <td>Object can move to another location.</td>
+          <td>VM or mobile code moves to a new host.</td>
+      </tr>
+      <tr>
+          <td>Replication</td>
+          <td>Multiple copies exist.</td>
+          <td>User sees one database, even if many replicas exist.</td>
+      </tr>
+      <tr>
+          <td>Concurrency</td>
+          <td>Resource is shared by independent users.</td>
+          <td>Two users update shared data safely.</td>
+      </tr>
+      <tr>
+          <td>Failure</td>
+          <td>Failure and recovery of an object.</td>
+          <td>Request is retried on another server.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="important-difference-relocation-vs-migration">Important difference: relocation vs migration</h3>
 <ul>
@@ -173,25 +173,25 @@
 </ul>
 <h3 id="policies-vs-mechanisms">Policies vs mechanisms</h3>
 <table>
-	<thead>
-			<tr>
-					<th>Concept</th>
-					<th>Meaning</th>
-					<th>Example</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td>Policy</td>
-					<td>What decision should be made?</td>
-					<td>What consistency level do we require?</td>
-			</tr>
-			<tr>
-					<td>Mechanism</td>
-					<td>How do we make that decision possible?</td>
-					<td>Replication protocol or cache invalidation mechanism.</td>
-			</tr>
-	</tbody>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Meaning</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Policy</td>
+          <td>What decision should be made?</td>
+          <td>What consistency level do we require?</td>
+      </tr>
+      <tr>
+          <td>Mechanism</td>
+          <td>How do we make that decision possible?</td>
+          <td>Replication protocol or cache invalidation mechanism.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Examples of policies:</p>
 <ul>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 3 – Communication Models &amp; APIs · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 3 – Communication Models &amp; APIs</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="communication-models">Communication Models</h2>
+<h3 id="1-request-response">1. Request-Response</h3>
+<p>Client sends a request → server responds.</p>
+<ul>
+<li>Simple and widely used</li>
+<li>Used by: <strong>REST APIs</strong>, HTTP</li>
+<li>Example: mobile app requests current temperature → device responds with reading</li>
+</ul>
+<hr>
+<h3 id="2-publish-subscribe">2. Publish-Subscribe</h3>
+<p>Publishers send data to <strong>topics</strong> managed by a <strong>broker</strong>. Subscribers receive only topics they care about. Publishers and subscribers don&rsquo;t know each other.</p>
+<ul>
+<li>Reduces network traffic (data sent once, broker distributes)</li>
+<li>Used by: <strong>MQTT</strong></li>
+<li>Example: temperature sensor publishes to <code>home/temp</code> → dashboard subscribes and receives updates</li>
+</ul>
+<hr>
+<h3 id="3-push-pull">3. Push-Pull</h3>
+<p>Producers <strong>push</strong> data into a <strong>queue</strong>. Consumers <strong>pull</strong> from the queue when ready.</p>
+<ul>
+<li>Queue acts as a <strong>buffer</strong> — decouples producers and consumers</li>
+<li>Handles mismatch between production rate and consumption rate</li>
+<li>Buffer size matters: too small → producer waits; too large → more memory used</li>
+<li>Example: weather station pushes updates to a queue; clients pull historical data on demand</li>
+</ul>
+<hr>
+<h3 id="4-exclusive-pair">4. Exclusive Pair</h3>
+<p>Bidirectional, <strong>full-duplex</strong>, persistent connection between client and server.</p>
+<ul>
+<li>Connection stays open until client closes it</li>
+<li>Both sides can send messages freely after connection setup</li>
+<li>Used by: <strong>WebSocket</strong></li>
+<li>Advantages: reduces congestion, predictable performance, enhanced security</li>
+<li>Disadvantages: limited scalability, single point of failure, higher complexity</li>
+<li>Example: smart thermostat and AC maintaining a persistent link to coordinate temperature</li>
+</ul>
+<hr>
+<h2 id="edge-computing">Edge Computing</h2>
+<p>Processing data <strong>closer to the device</strong> rather than sending everything to the cloud.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Lower latency — real-time responses</li>
+<li>Reduces bandwidth to cloud</li>
+<li>Better privacy — sensitive data stays local</li>
+<li>More reliable — works even if cloud connection drops</li>
+<li>Scalable — distributes load across edge nodes</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Limited processing power at edge</li>
+<li>Limited memory and storage</li>
+<li>Harder to manage (distributed system)</li>
+<li>Increased attack surface — more physical devices to secure</li>
+<li>Dependency on third-party edge providers</li>
+</ul>
+<hr>
+<h2 id="apis-in-iot">APIs in IoT</h2>
+<p>An <strong>API</strong> is a set of protocols that defines how things in an IoT network communicate and interact with each other.</p>
+<p><strong>What APIs allow:</strong></p>
+<ul>
+<li><strong>Device Control</strong> — turn lights on/off, adjust thermostat</li>
+<li><strong>Data Retrieval</strong> — read sensor values or device status</li>
+<li><strong>Event Handling</strong> — subscribe to alerts (motion detected, door opened)</li>
+<li><strong>Configuration Management</strong> — update schedules, thresholds, parameters</li>
+</ul>
+<hr>
+<h3 id="api-types">API Types</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Access</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Open / Public</strong></td>
+          <td>Anyone</td>
+          <td>Free, publicly documented, no approval needed. Example: Samsung SmartThings API</td>
+      </tr>
+      <tr>
+          <td><strong>Partner</strong></td>
+          <td>Approved partners only</td>
+          <td>Requires license/agreement. Access controlled via API keys. Example: AWS IoT API</td>
+      </tr>
+      <tr>
+          <td><strong>Internal / Private</strong></td>
+          <td>Organization only</td>
+          <td>Used internally, not exposed externally. Docs restricted to internal teams</td>
+      </tr>
+      <tr>
+          <td><strong>Composite</strong></td>
+          <td>Mixed</td>
+          <td>Combines multiple API types. Synchronous, aimed at speed and efficiency</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="rest-api">REST API</h3>
+<p>Follows <strong>Request-Response</strong> model. Uses standard HTTP methods (GET, POST, PUT, DELETE).</p>
+<ul>
+<li><strong>Stateless</strong> — each request carries all needed info</li>
+<li><strong>Cacheable</strong> — responses can be cached (client-side or server-side) to reduce load</li>
+<li><strong>Flexible</strong> — works across any platform that supports HTTP</li>
+<li><strong>Secure</strong> — leverages HTTPS, OAuth, JWT</li>
+</ul>
+<blockquote>
+<p>Example: temperature sensor periodically sends readings via HTTP POST to a RESTful cloud endpoint.</p>
+</blockquote>
+<p><strong>Caching:</strong> client checks local cache before making a new request. Server sets cache rules via <code>Cache-Control</code> and <code>Expires</code> headers. Reduces repeated requests and server load.</p>
+<p><strong>Proxy server</strong> sits between client and server — handles caching, content filtering, anonymity, and security inspection.</p>
+<hr>
+<h3 id="websocket-api">WebSocket API</h3>
+<p>Follows <strong>Exclusive Pair</strong> model. Full-duplex, persistent connection.</p>
+<ul>
+<li>Single handshake → connection stays open</li>
+<li>No repeated TCP handshakes per message → low overhead</li>
+<li>Used for real-time applications: remote monitoring, live dashboards, streaming sensor data</li>
+<li>Example: fleet management system streams GPS data from vehicles to central server continuously</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/iot/ch1/part2/" id="nav-prev"><em>Chapter 1, Part 2 – IoT Protocols</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/iot/ch1/part4/" id="nav-next"><em>Chapter 1, Part 4 – IoT Deployment Levels (1–6)</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

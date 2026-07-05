@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 1 – IoT Definition, Characteristics &amp; Structure · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/books">Books</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 1 – IoT Definition, Characteristics &amp; Structure</h2>
+  <p class="post-date"><em>posted on 0001 Jan 01</em></p>
+   <h2 id="definition">Definition</h2>
+<p><strong>IoT</strong> = physical objects embedded with sensors, processing ability, and software that connect and exchange data over the Internet — without human intervention.</p>
+<p>&ldquo;Things&rdquo; include: heart monitoring implants, RFID tags on animals, environmental sensors, vehicles, and more.</p>
+<hr>
+<h2 id="how-iot-works">How IoT Works</h2>
+<p>IoT is not one single technology — it&rsquo;s a combination of:</p>
+<ul>
+<li><strong>Sensing</strong> — collecting data from the environment</li>
+<li><strong>Actuation</strong> — acting on the environment based on decisions</li>
+<li><strong>Communication &amp; Cooperation</strong> — devices talking to each other</li>
+<li><strong>Embedded processing</strong> — local decision-making on the device</li>
+<li><strong>Addressability &amp; Identification</strong> — every device has a unique ID (IP, URI)</li>
+<li><strong>Localization</strong> — knowing where a device is</li>
+</ul>
+<hr>
+<h2 id="dikw-model-knowledge-management">DIKW Model (Knowledge Management)</h2>
+<p>Data alone is not enough. It must be processed through:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Data → Information → Knowledge → Wisdom
+</span></span></code></pre></div><p>AI + IoT use this hierarchy to make sense of massive data streams and generate meaningful decisions (used in cybersecurity, healthcare, business).</p>
+<hr>
+<h2 id="key-characteristics-of-iot">Key Characteristics of IoT</h2>
+<ul>
+<li><strong>Dynamic &amp; Self-Adapting</strong> — devices adapt based on context (e.g. a camera switching between day/night mode).</li>
+<li><strong>Self-Configuring</strong> — large numbers of devices can work together automatically.</li>
+<li><strong>Interoperable</strong> — devices from different manufacturers can communicate.</li>
+<li><strong>Unique Identity</strong> — every device has a unique ID (IP address, URI).</li>
+<li><strong>Integrated into Information Networks</strong> — devices share data with other systems (e.g. smart home sensors working together).</li>
+</ul>
+<hr>
+<h2 id="structure-of-iot">Structure of IoT</h2>
+<p>IoT can be thought of as:</p>
+<blockquote>
+<p>&ldquo;An anytime, anywhere, anything network of internet-connected physical devices capable of sensing and intelligently affecting their environment.&rdquo;</p>
+</blockquote>
+<p>Key structural features:</p>
+<ul>
+<li>Massive number of constrained devices (low power, low memory)</li>
+<li>Intermittent and often unstable connectivity</li>
+<li>Uses RFIDs, wireless connections as enablers</li>
+</ul>
+<p><strong>Four structural concepts:</strong></p>
+<ul>
+<li><strong>Tagging</strong> — real-time traceability via RFID</li>
+<li><strong>Feeling</strong> — sensors collecting environmental data</li>
+<li><strong>Shrinking</strong> — miniaturization enabling tiny smart devices</li>
+<li><strong>Thinking</strong> — embedded intelligence allowing simple automatic decisions</li>
+</ul>
+<hr>
+<h2 id="iot-main-layers">IoT Main Layers</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Role</th>
+          <th>Example Protocols</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Perception Layer</strong></td>
+          <td>Hardware — sensors &amp; devices that collect data</td>
+          <td>Zigbee, BLE, LoRaWAN, MQTT-SN</td>
+      </tr>
+      <tr>
+          <td><strong>Network Layer</strong></td>
+          <td>Transfers data between devices, gateways, cloud</td>
+          <td>IPv6, 6LoWPAN, RPL, IPSec</td>
+      </tr>
+      <tr>
+          <td><strong>Support Layer</strong></td>
+          <td>Cloud computing &amp; processing resources</td>
+          <td>TLS, MQTT, CoAP</td>
+      </tr>
+      <tr>
+          <td><strong>Application Layer</strong></td>
+          <td>User-facing services and control interfaces</td>
+          <td>HTTP, WebSocket, REST, MQTT, XMPP</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="logical-design-blocks">Logical Design Blocks</h2>
+<p>An IoT system is made up of these functional blocks:</p>
+<ul>
+<li><strong>Device Block</strong> — IoT sensors + gateway devices</li>
+<li><strong>Communication Block</strong> — handles data transmission, encoding, flow control</li>
+<li><strong>Services Block</strong> — device monitoring, control, data publishing, discovery</li>
+<li><strong>Management Block</strong> — firmware updates, provisioning, maintenance</li>
+<li><strong>Security Block</strong> — authorization, integrity, encryption, access control</li>
+<li><strong>Application Block</strong> — user interface for monitoring and control</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/iot/ch1/part2/" id="nav-next"><em>Chapter 1, Part 2 – IoT Protocols</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
