@@ -4,7 +4,7 @@ title = "Docs"
 theme = "sollike"
 
 [params]
-  subtitle = "Courses/Books/APIs documentation"
+  subtitle = "Courses/Art/APIs documentation"
   footer = "© 2026 Mustafa and Samaa"
 
 [pagination]
@@ -24,8 +24,8 @@ theme = "sollike"
   weight = 1
 
 [[menu.main]]
-  name = "Books"
-  url = "/books"
+  name = "Art"
+  url = "/art"
   weight = 2
 
 [[menu.main]]
