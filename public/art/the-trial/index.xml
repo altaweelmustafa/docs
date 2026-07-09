@@ -10,8 +10,15 @@
 		
 		
 		
-			<lastBuildDate></lastBuildDate>
+			<lastBuildDate>Thu, 09 Jul 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/docs/art/the-trial/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Guilty but Why?</title>
+				<link>http://localhost:1313/docs/art/the-trial/art1/</link>
+				<pubDate>Thu, 09 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/art/the-trial/art1/</guid>
+				<description>&lt;p&gt;Ever felt trapped in a meaningless maze not knowing what got you in it in the first place? Each step you think you are making forward takes you back to square one? How many times have you tried to do the &amp;ldquo;right thing&amp;rdquo; but then discover that the rules seem to change everyday?&lt;/p&gt;&#xA;&lt;p&gt;Franz Kafka&amp;rsquo;s &lt;strong&gt;The Trial&lt;/strong&gt; is not about crime, it is about a man that wakes up in the morning suddenly discovers that the world no longer makes sense. The unsettling part of it all, is that Kafka did not only illustrate society in the 20th century, but how familiar it feels.. even today.&lt;/p&gt;</description>
+			</item>
 	</channel>
 </rss>
