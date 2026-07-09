@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Publish-Subscribe on Docs</title>
-    <link>http://localhost:1313/docs/tags/publish-subscribe/</link>
-    <description>Recent content in Publish-Subscribe on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/publish-subscribe/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 5, Part 4 – Gossip Coordination and Event Matching</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch5/part-4-gossip-event-matching/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-4-gossip-event-matching/</guid>
-      <description>&lt;h2 id=&#34;gossip-based-coordination&#34;&gt;Gossip-based coordination&lt;/h2&gt;&#xA;&lt;p&gt;Gossip protocols let nodes coordinate through repeated random exchanges.&lt;/p&gt;&#xA;&lt;p&gt;Typical applications:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;data dissemination,&lt;/li&gt;&#xA;&lt;li&gt;aggregation,&lt;/li&gt;&#xA;&lt;li&gt;peer sampling,&lt;/li&gt;&#xA;&lt;li&gt;overlay construction.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;gossip-aggregation&#34;&gt;Gossip aggregation&lt;/h2&gt;&#xA;&lt;p&gt;Each node &lt;code&gt;Pi&lt;/code&gt; has value &lt;code&gt;vi&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;When two nodes gossip, both replace their values with the average:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi, vj ← (vi + vj) / 2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Eventually, all nodes converge to global average:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;v̄ = Σ vi / N&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example idea:&lt;/p&gt;&#xA;&lt;p&gt;If one node starts with &lt;code&gt;1&lt;/code&gt; and all others start with &lt;code&gt;0&lt;/code&gt;, the final value at every node tends to &lt;code&gt;1/N&lt;/code&gt;.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Publish-Subscribe on Docs</title>
+		<link>http://localhost:1313/docs/tags/publish-subscribe/</link>
+		<description>Recent content in Publish-Subscribe on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/publish-subscribe/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 5, Part 4 – Gossip Coordination and Event Matching</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch5/part-4-gossip-event-matching/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch5/part-4-gossip-event-matching/</guid>
+				<description>&lt;h2 id=&#34;gossip-based-coordination&#34;&gt;Gossip-based coordination&lt;/h2&gt;&#xA;&lt;p&gt;Gossip protocols let nodes coordinate through repeated random exchanges.&lt;/p&gt;&#xA;&lt;p&gt;Typical applications:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;data dissemination,&lt;/li&gt;&#xA;&lt;li&gt;aggregation,&lt;/li&gt;&#xA;&lt;li&gt;peer sampling,&lt;/li&gt;&#xA;&lt;li&gt;overlay construction.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;gossip-aggregation&#34;&gt;Gossip aggregation&lt;/h2&gt;&#xA;&lt;p&gt;Each node &lt;code&gt;Pi&lt;/code&gt; has value &lt;code&gt;vi&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;When two nodes gossip, both replace their values with the average:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi, vj ← (vi + vj) / 2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Eventually, all nodes converge to global average:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;v̄ = Σ vi / N&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example idea:&lt;/p&gt;&#xA;&lt;p&gt;If one node starts with &lt;code&gt;1&lt;/code&gt; and all others start with &lt;code&gt;0&lt;/code&gt;, the final value at every node tends to &lt;code&gt;1/N&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

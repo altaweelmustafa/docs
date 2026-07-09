@@ -22,6 +22,8 @@
   <h2 class="post-title">Chapter 5 – CPU Scheduling</h2>
   <p class="post-date"><em>posted on 2026 Jun 28</em></p>
   
+  <p class="post-author"><em>by Mustafa Altaweel</em></p>
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -90,40 +92,40 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <h2 id="scheduling-criteria">Scheduling Criteria</h2>
 <p>Our objective is to evaluate all scheduling algorithms against these criteria:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Criterion</th>
-          <th>Goal</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>CPU Utilization</strong></td>
-          <td>MAX</td>
-          <td>Keep the CPU as busy as possible</td>
-      </tr>
-      <tr>
-          <td><strong>Throughput</strong></td>
-          <td>MAX</td>
-          <td>Number of jobs finishing per unit time</td>
-      </tr>
-      <tr>
-          <td><strong>Turnaround Time</strong></td>
-          <td>MIN</td>
-          <td>Time from submitting a job until it finishes execution</td>
-      </tr>
-      <tr>
-          <td><strong>Waiting Time</strong></td>
-          <td>MIN</td>
-          <td>Time the process spends in the Ready Queue</td>
-      </tr>
-      <tr>
-          <td><strong>Response Time</strong></td>
-          <td>MIN</td>
-          <td>Time from submitting a job until you see the first response from the computer</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Criterion</th>
+					<th>Goal</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>CPU Utilization</strong></td>
+					<td>MAX</td>
+					<td>Keep the CPU as busy as possible</td>
+			</tr>
+			<tr>
+					<td><strong>Throughput</strong></td>
+					<td>MAX</td>
+					<td>Number of jobs finishing per unit time</td>
+			</tr>
+			<tr>
+					<td><strong>Turnaround Time</strong></td>
+					<td>MIN</td>
+					<td>Time from submitting a job until it finishes execution</td>
+			</tr>
+			<tr>
+					<td><strong>Waiting Time</strong></td>
+					<td>MIN</td>
+					<td>Time the process spends in the Ready Queue</td>
+			</tr>
+			<tr>
+					<td><strong>Response Time</strong></td>
+					<td>MIN</td>
+					<td>Time from submitting a job until you see the first response from the computer</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Key formulas:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Turnaround Time  = Finish Time − Arrival Time
@@ -137,40 +139,40 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <p>Processes are served in the order they arrive. <strong>Non-preemptive</strong>.</p>
 <h3 id="example">Example</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Arrival Time</th>
-          <th>Service Time (CPU burst)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>0</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>2</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>4</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>5</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>P₅</td>
-          <td>8</td>
-          <td>1</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Arrival Time</th>
+					<th>Service Time (CPU burst)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>0</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>2</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>4</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>5</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>P₅</td>
+					<td>8</td>
+					<td>1</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Gantt Chart:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">| P₁ | P₂       | P₃ | P₄    | P₅ |
@@ -182,26 +184,26 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <h3 id="fcfs-convoy-problem">FCFS: Convoy Problem</h3>
 <p>A long job at the front makes all shorter jobs wait. Example:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>CPU burst</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>5</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>27</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>CPU burst</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>5</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>27</td>
+			</tr>
+	</tbody>
 </table>
 <p>If order is P₁, P₂, P₃ (shortest first):</p>
 <ul>
@@ -224,26 +226,26 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 </blockquote>
 <h3 id="example-all-arrive-at-time-0">Example (all arrive at time 0)</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>CPU burst</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>24</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>3</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>3</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>CPU burst</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>24</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>3</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Gantt Chart (order: P₂, P₃, P₁):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">| P₂ | P₃ | P₁          |
@@ -254,54 +256,54 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 </ul>
 <h3 id="two-versions-of-sjf">Two Versions of SJF</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Version</th>
-          <th>Behavior</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>(1) Preemptive — SRTF</strong> (Shortest Remaining Time First)</td>
-          <td>If a new job arrives with a CPU burst less than the <strong>remaining</strong> time of the running process, the CPU <strong>switches</strong> to the new process immediately.</td>
-      </tr>
-      <tr>
-          <td><strong>(2) Non-Preemptive</strong></td>
-          <td>If a new job arrives with a shorter burst, the CPU <strong>finishes</strong> the current process first, then switches.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Version</th>
+					<th>Behavior</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>(1) Preemptive — SRTF</strong> (Shortest Remaining Time First)</td>
+					<td>If a new job arrives with a CPU burst less than the <strong>remaining</strong> time of the running process, the CPU <strong>switches</strong> to the new process immediately.</td>
+			</tr>
+			<tr>
+					<td><strong>(2) Non-Preemptive</strong></td>
+					<td>If a new job arrives with a shorter burst, the CPU <strong>finishes</strong> the current process first, then switches.</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="example-preemptive-vs-non-preemptive">Example (Preemptive vs Non-Preemptive)</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Arrival Time</th>
-          <th>CPU Time</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>0</td>
-          <td>7</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>2</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>4</td>
-          <td>1</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>5</td>
-          <td>4</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Arrival Time</th>
+					<th>CPU Time</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>0</td>
+					<td>7</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>2</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>4</td>
+					<td>1</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>5</td>
+					<td>4</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>(a) Preemptive (SRTF):</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">| P₁ | P₂ | P₃ | P₂ | P₄    | P₁          |
@@ -347,40 +349,40 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <p>Two versions: <strong>(a) Preemptive</strong> and <strong>(b) Non-Preemptive</strong>.</p>
 <h3 id="example-high-number--high-priority">Example (high number = high priority)</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>CPU burst</th>
-          <th>Priority</th>
-          <th>Arrival</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>10</td>
-          <td>1</td>
-          <td>10:00</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>52</td>
-          <td>2</td>
-          <td>10:02</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>10</td>
-          <td>5</td>
-          <td>10:05</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>8</td>
-          <td>4</td>
-          <td>10:08</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>CPU burst</th>
+					<th>Priority</th>
+					<th>Arrival</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>10</td>
+					<td>1</td>
+					<td>10:00</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>52</td>
+					<td>2</td>
+					<td>10:02</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>10</td>
+					<td>5</td>
+					<td>10:05</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>8</td>
+					<td>4</td>
+					<td>10:08</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>(a) Preemptive:</strong> P₃ preempts whoever is running when it arrives at 10:05 (highest priority).</p>
 <p><strong>(b) Non-Preemptive:</strong> Finishes current job then picks highest priority next.</p>
@@ -401,30 +403,30 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <strong>If Q = very small</strong> → too many context switches, overhead increases.</p>
 <h3 id="example-q--20">Example (Q = 20)</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>Service Time</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>53</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>17</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>68</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>24</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>Service Time</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>53</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>17</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>68</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>24</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Gantt Chart:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">| P₁ | P₂ | P₃ | P₄ | P₁ | P₃  | P₄ | P₁ | P₂ | P₃  |
@@ -440,30 +442,30 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 </ol>
 <h3 id="classic-3-queue-example">Classic 3-Queue Example</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Time Slice</th>
-          <th>Algorithm</th>
-          <th>Queue</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>400 ms</td>
-          <td>RR, Q=100</td>
-          <td>System Tasks (highest priority)</td>
-      </tr>
-      <tr>
-          <td>100 ms</td>
-          <td>RR, Q=10</td>
-          <td>Interactive Jobs</td>
-      </tr>
-      <tr>
-          <td>20 ms</td>
-          <td>FCFS</td>
-          <td>Batch Jobs (lowest priority)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Time Slice</th>
+					<th>Algorithm</th>
+					<th>Queue</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>400 ms</td>
+					<td>RR, Q=100</td>
+					<td>System Tasks (highest priority)</td>
+			</tr>
+			<tr>
+					<td>100 ms</td>
+					<td>RR, Q=10</td>
+					<td>Interactive Jobs</td>
+			</tr>
+			<tr>
+					<td>20 ms</td>
+					<td>FCFS</td>
+					<td>Batch Jobs (lowest priority)</td>
+			</tr>
+	</tbody>
 </table>
 <blockquote>
 <p><strong>Problem</strong>: Starvation of lower-priority queues.</p>
@@ -483,30 +485,30 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 </span></span><span class="line"><span class="cl">              Q3 (FCFS)
 </span></span></code></pre></div><h3 id="example-q110-q2100-q3fcfs">Example (Q1=10, Q2=100, Q3=FCFS)</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Process</th>
-          <th>CPU burst</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>P₁</td>
-          <td>25</td>
-      </tr>
-      <tr>
-          <td>P₂</td>
-          <td>160</td>
-      </tr>
-      <tr>
-          <td>P₃</td>
-          <td>120</td>
-      </tr>
-      <tr>
-          <td>P₄</td>
-          <td>8</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Process</th>
+					<th>CPU burst</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>P₁</td>
+					<td>25</td>
+			</tr>
+			<tr>
+					<td>P₂</td>
+					<td>160</td>
+			</tr>
+			<tr>
+					<td>P₃</td>
+					<td>120</td>
+			</tr>
+			<tr>
+					<td>P₄</td>
+					<td>8</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Gantt Chart:</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">| P₁ | P₂ | P₃ | P₄ | P₁ | P₂  | P₃  | P₂  |    P₃   |
@@ -515,35 +517,35 @@ Cases <strong>2 &amp; 3</strong> are <strong>Preemptive</strong> — the CPU can
 <hr>
 <h2 id="algorithm-evaluation">Algorithm Evaluation</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Method</th>
-          <th>Quality</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>(1) Deterministic Model</td>
-          <td>Poor</td>
-          <td>Uses a specific predetermined workload</td>
-      </tr>
-      <tr>
-          <td>(2) Queuing Theory</td>
-          <td>Theoretical</td>
-          <td>Mathematical analysis</td>
-      </tr>
-      <tr>
-          <td>(3) Simulation</td>
-          <td>Good</td>
-          <td>Models real workloads</td>
-      </tr>
-      <tr>
-          <td><strong>(4) Implementation</strong></td>
-          <td><strong>Best</strong></td>
-          <td>Actually implement and test the algorithm in a real OS</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Quality</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>(1) Deterministic Model</td>
+					<td>Poor</td>
+					<td>Uses a specific predetermined workload</td>
+			</tr>
+			<tr>
+					<td>(2) Queuing Theory</td>
+					<td>Theoretical</td>
+					<td>Mathematical analysis</td>
+			</tr>
+			<tr>
+					<td>(3) Simulation</td>
+					<td>Good</td>
+					<td>Models real workloads</td>
+			</tr>
+			<tr>
+					<td><strong>(4) Implementation</strong></td>
+					<td><strong>Best</strong></td>
+					<td>Actually implement and test the algorithm in a real OS</td>
+			</tr>
+	</tbody>
 </table>
 
   <nav class="post-nav">

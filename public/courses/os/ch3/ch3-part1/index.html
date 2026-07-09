@@ -22,6 +22,8 @@
   <h2 class="post-title">Chapter 3, Part 1 – Process Concept, States, PCB &amp; Scheduling</h2>
   <p class="post-date"><em>posted on 2026 Jun 28</em></p>
   
+  <p class="post-author"><em>by Mustafa Altaweel</em></p>
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -108,34 +110,34 @@
 <h2 id="process-states">Process States</h2>
 <p>A process passes through <strong>5 states</strong> during its lifetime:</p>
 <table>
-  <thead>
-      <tr>
-          <th>State</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>NEW</strong></td>
-          <td>The process has been newly created. It enters the <strong>Job Queue (Pool)</strong>.</td>
-      </tr>
-      <tr>
-          <td><strong>READY</strong></td>
-          <td>The process is loaded into memory and ready to run; it is in the <strong>Ready Queue</strong> waiting for the CPU.</td>
-      </tr>
-      <tr>
-          <td><strong>RUNNING</strong></td>
-          <td>The process has the CPU and is executing.</td>
-      </tr>
-      <tr>
-          <td><strong>WAITING</strong></td>
-          <td>The process is waiting for some event to happen — typically waiting for I/O completion.</td>
-      </tr>
-      <tr>
-          <td><strong>TERMINATED</strong></td>
-          <td>The process has finished execution.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>State</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>NEW</strong></td>
+					<td>The process has been newly created. It enters the <strong>Job Queue (Pool)</strong>.</td>
+			</tr>
+			<tr>
+					<td><strong>READY</strong></td>
+					<td>The process is loaded into memory and ready to run; it is in the <strong>Ready Queue</strong> waiting for the CPU.</td>
+			</tr>
+			<tr>
+					<td><strong>RUNNING</strong></td>
+					<td>The process has the CPU and is executing.</td>
+			</tr>
+			<tr>
+					<td><strong>WAITING</strong></td>
+					<td>The process is waiting for some event to happen — typically waiting for I/O completion.</td>
+			</tr>
+			<tr>
+					<td><strong>TERMINATED</strong></td>
+					<td>The process has finished execution.</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="state-transition-diagram">State Transition Diagram</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">         CPU Scheduling              Exit
@@ -150,42 +152,42 @@
 <p>→ In the <strong>Process Control Block (PCB)</strong> — a data structure (essentially a table) that the OS maintains for every process.</p>
 <h3 id="pcb-contains">PCB Contains</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Process ID</strong></td>
-          <td>Unique identifier for the process</td>
-      </tr>
-      <tr>
-          <td><strong>Process State</strong></td>
-          <td>Current state (New, Ready, Running, Waiting, Terminated)</td>
-      </tr>
-      <tr>
-          <td><strong>Program Counter (PC)</strong></td>
-          <td>Address of the next instruction to execute</td>
-      </tr>
-      <tr>
-          <td><strong>Registers</strong></td>
-          <td>Snapshot of all CPU registers</td>
-      </tr>
-      <tr>
-          <td><strong>Scheduling Info</strong></td>
-          <td>Priority, scheduling queue pointers</td>
-      </tr>
-      <tr>
-          <td><strong>Memory Info</strong></td>
-          <td>Base and limit registers</td>
-      </tr>
-      <tr>
-          <td><strong>Accounting Info</strong></td>
-          <td>CPU time used, time limits, job IDs</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Field</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Process ID</strong></td>
+					<td>Unique identifier for the process</td>
+			</tr>
+			<tr>
+					<td><strong>Process State</strong></td>
+					<td>Current state (New, Ready, Running, Waiting, Terminated)</td>
+			</tr>
+			<tr>
+					<td><strong>Program Counter (PC)</strong></td>
+					<td>Address of the next instruction to execute</td>
+			</tr>
+			<tr>
+					<td><strong>Registers</strong></td>
+					<td>Snapshot of all CPU registers</td>
+			</tr>
+			<tr>
+					<td><strong>Scheduling Info</strong></td>
+					<td>Priority, scheduling queue pointers</td>
+			</tr>
+			<tr>
+					<td><strong>Memory Info</strong></td>
+					<td>Base and limit registers</td>
+			</tr>
+			<tr>
+					<td><strong>Accounting Info</strong></td>
+					<td>CPU time used, time limits, job IDs</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="scheduling--system-queues">Scheduling &amp; System Queues</h2>

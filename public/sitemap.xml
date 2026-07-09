@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -197,6 +198,21 @@
     <loc>http://localhost:1313/docs/courses/distributed/exam-cheatsheet/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/art/</loc>
+    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/art/cyberpunk2077/</loc>
+    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/</loc>
+    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/art/cyberpunk2077/art1/</loc>
+    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/art/the-trial/</loc>
+    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/tags/amqp/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -258,9 +274,6 @@
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/distributed-systems/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/election/</loc>
@@ -777,8 +790,6 @@
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/apis/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/art/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/categories/</loc>
   </url><url>

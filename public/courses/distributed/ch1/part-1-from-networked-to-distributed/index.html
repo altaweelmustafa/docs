@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 1, Part 1 – From Networked to Distributed Systems</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -40,54 +40,54 @@
 <p>A networked system is not automatically a distributed system. A distributed system is designed so that several independent computers cooperate and appear as one coherent system.</p>
 <p>The chapter starts by comparing three shapes:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Shape</th>
-          <th>Simple meaning</th>
-          <th>Risk</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Centralized</td>
-          <td>One center controls or serves most things.</td>
-          <td>Bottleneck and single point of failure.</td>
-      </tr>
-      <tr>
-          <td>Decentralized</td>
-          <td>Multiple centers or clusters exist.</td>
-          <td>Still may not provide one coherent system.</td>
-      </tr>
-      <tr>
-          <td>Distributed</td>
-          <td>Nodes cooperate through a network as part of one system design.</td>
-          <td>Harder coordination, failure handling, and consistency.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Shape</th>
+					<th>Simple meaning</th>
+					<th>Risk</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Centralized</td>
+					<td>One center controls or serves most things.</td>
+					<td>Bottleneck and single point of failure.</td>
+			</tr>
+			<tr>
+					<td>Decentralized</td>
+					<td>Multiple centers or clusters exist.</td>
+					<td>Still may not provide one coherent system.</td>
+			</tr>
+			<tr>
+					<td>Distributed</td>
+					<td>Nodes cooperate through a network as part of one system design.</td>
+					<td>Harder coordination, failure handling, and consistency.</td>
+			</tr>
+	</tbody>
 </table>
 <p>The slides ask: when does a decentralized system become distributed? The answer is not simply “when we add one more link.” A system becomes distributed because of its <strong>behavior and design goals</strong>, not only because of its graph shape.</p>
 <hr>
 <h2 id="two-views-on-realizing-distributed-systems">Two views on realizing distributed systems</h2>
 <table>
-  <thead>
-      <tr>
-          <th>View</th>
-          <th>Meaning</th>
-          <th>Example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Integrative view</td>
-          <td>Connect existing networked computer systems into a larger system.</td>
-          <td>Integrating old business applications so they cooperate.</td>
-      </tr>
-      <tr>
-          <td>Expansive view</td>
-          <td>Extend an existing networked system with more computers.</td>
-          <td>Adding servers to scale an online service.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>View</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Integrative view</td>
+					<td>Connect existing networked computer systems into a larger system.</td>
+					<td>Integrating old business applications so they cooperate.</td>
+			</tr>
+			<tr>
+					<td>Expansive view</td>
+					<td>Extend an existing networked system with more computers.</td>
+					<td>Adding servers to scale an online service.</td>
+			</tr>
+	</tbody>
 </table>
 <p>The integrative view starts with already-existing systems and tries to make them work together. The expansive view starts with one system and grows it.</p>
 <hr>
@@ -107,30 +107,30 @@
 <h2 id="perspectives-on-distributed-systems">Perspectives on distributed systems</h2>
 <p>Distributed systems are complex, so we study them from several perspectives:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Perspective</th>
-          <th>Main question</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Architecture</td>
-          <td>How are components organized?</td>
-      </tr>
-      <tr>
-          <td>Process</td>
-          <td>What processes exist, and how do they relate?</td>
-      </tr>
-      <tr>
-          <td>Communication</td>
-          <td>How do components exchange data?</td>
-      </tr>
-      <tr>
-          <td>Coordination</td>
-          <td>How do components agree on order, access, time, or leadership?</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Perspective</th>
+					<th>Main question</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Architecture</td>
+					<td>How are components organized?</td>
+			</tr>
+			<tr>
+					<td>Process</td>
+					<td>What processes exist, and how do they relate?</td>
+			</tr>
+			<tr>
+					<td>Communication</td>
+					<td>How do components exchange data?</td>
+			</tr>
+			<tr>
+					<td>Coordination</td>
+					<td>How do components agree on order, access, time, or leadership?</td>
+			</tr>
+	</tbody>
 </table>
 <p>These are exactly the later chapters: processes, communication, and coordination.</p>
 <hr>

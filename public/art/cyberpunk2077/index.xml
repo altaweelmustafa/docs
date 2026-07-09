@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cyberpunk 2077 on Docs</title>
-    <link>http://localhost:1313/docs/art/cyberpunk2077/</link>
-    <description>Recent content in Cyberpunk 2077 on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/art/cyberpunk2077/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
+	<channel>
+		<title>Cyberpunk 2077 on Docs</title>
+		<link>http://localhost:1313/docs/art/cyberpunk2077/</link>
+		<description>Recent content in Cyberpunk 2077 on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 09 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/art/cyberpunk2077/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Immortality and Resurrection: Possibility and How It Affects Religion</title>
+				<link>http://localhost:1313/docs/art/cyberpunk2077/art1/</link>
+				<pubDate>Thu, 09 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/art/cyberpunk2077/art1/</guid>
+				<description>&lt;p&gt;In Cyberpunk 2077, Saburo Arasaka does something that has fascinated humans since the beginning of civilization: he cheats death. &lt;strong&gt;They store his consciousness, copy it, and load into another body&lt;/strong&gt;, his &lt;em&gt;son&amp;rsquo;s&lt;/em&gt; body.&#xA;It is fiction, but it draws from a real and accelerating field: what if we could one day save a person&amp;rsquo;s mind and put it somewhere else? The question sounds like science fiction, but serious researchers are working on exactly that.&#xA;And if it ever becomes possible, it would force &lt;strong&gt;every major religion (Islam included)&lt;/strong&gt; to answer some uncomfortable questions.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

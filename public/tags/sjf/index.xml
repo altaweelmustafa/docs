@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>SJF on Docs</title>
-    <link>http://localhost:1313/docs/tags/sjf/</link>
-    <description>Recent content in SJF on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/sjf/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 5 – CPU Scheduling</title>
-      <link>http://localhost:1313/docs/courses/os/ch5/ch5-part1/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch5/ch5-part1/</guid>
-      <description>&lt;h2 id=&#34;cpu-scheduling&#34;&gt;CPU Scheduling&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;CPU Scheduling&lt;/strong&gt; is the process or decision by which the OS selects a process from the &lt;strong&gt;Ready Queue&lt;/strong&gt; and gives it to the CPU to execute. This is &lt;strong&gt;Short-Term Scheduling&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;cases-that-invoke-cpu-scheduling&#34;&gt;Cases That Invoke CPU Scheduling&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;I/O required&lt;/strong&gt; — process leaves CPU to wait for I/O.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Interrupt&lt;/strong&gt; — another process preempts the running one.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Process I/O is completed&lt;/strong&gt; — (In Synchronous Mode) returns to Ready Queue.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Process terminated&lt;/strong&gt; — CPU becomes free.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Cases &lt;strong&gt;1 &amp;amp; 4&lt;/strong&gt; are &lt;strong&gt;Non-Preemptive&lt;/strong&gt; — the CPU is taken away only when the process voluntarily gives it up.&#xA;Cases &lt;strong&gt;2 &amp;amp; 3&lt;/strong&gt; are &lt;strong&gt;Preemptive&lt;/strong&gt; — the CPU can be forcibly taken away and given to another process.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>SJF on Docs</title>
+		<link>http://localhost:1313/docs/tags/sjf/</link>
+		<description>Recent content in SJF on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/sjf/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 5 – CPU Scheduling</title>
+				<link>http://localhost:1313/docs/courses/os/ch5/ch5-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch5/ch5-part1/</guid>
+				<description>&lt;h2 id=&#34;cpu-scheduling&#34;&gt;CPU Scheduling&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;CPU Scheduling&lt;/strong&gt; is the process or decision by which the OS selects a process from the &lt;strong&gt;Ready Queue&lt;/strong&gt; and gives it to the CPU to execute. This is &lt;strong&gt;Short-Term Scheduling&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;cases-that-invoke-cpu-scheduling&#34;&gt;Cases That Invoke CPU Scheduling&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;I/O required&lt;/strong&gt; — process leaves CPU to wait for I/O.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Interrupt&lt;/strong&gt; — another process preempts the running one.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Process I/O is completed&lt;/strong&gt; — (In Synchronous Mode) returns to Ready Queue.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Process terminated&lt;/strong&gt; — CPU becomes free.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Cases &lt;strong&gt;1 &amp;amp; 4&lt;/strong&gt; are &lt;strong&gt;Non-Preemptive&lt;/strong&gt; — the CPU is taken away only when the process voluntarily gives it up.&#xA;Cases &lt;strong&gt;2 &amp;amp; 3&lt;/strong&gt; are &lt;strong&gt;Preemptive&lt;/strong&gt; — the CPU can be forcibly taken away and given to another process.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

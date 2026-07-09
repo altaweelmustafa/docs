@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Introduction on Docs</title>
-    <link>http://localhost:1313/docs/tags/introduction/</link>
-    <description>Recent content in Introduction on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – From Networked to Distributed Systems</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch1/part-1-from-networked-to-distributed/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch1/part-1-from-networked-to-distributed/</guid>
-      <description>&lt;h2 id=&#34;the-big-idea&#34;&gt;The big idea&lt;/h2&gt;&#xA;&lt;p&gt;A networked system is not automatically a distributed system. A distributed system is designed so that several independent computers cooperate and appear as one coherent system.&lt;/p&gt;&#xA;&lt;p&gt;The chapter starts by comparing three shapes:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Shape&lt;/th&gt;&#xA;          &lt;th&gt;Simple meaning&lt;/th&gt;&#xA;          &lt;th&gt;Risk&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Centralized&lt;/td&gt;&#xA;          &lt;td&gt;One center controls or serves most things.&lt;/td&gt;&#xA;          &lt;td&gt;Bottleneck and single point of failure.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Decentralized&lt;/td&gt;&#xA;          &lt;td&gt;Multiple centers or clusters exist.&lt;/td&gt;&#xA;          &lt;td&gt;Still may not provide one coherent system.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Distributed&lt;/td&gt;&#xA;          &lt;td&gt;Nodes cooperate through a network as part of one system design.&lt;/td&gt;&#xA;          &lt;td&gt;Harder coordination, failure handling, and consistency.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The slides ask: when does a decentralized system become distributed? The answer is not simply “when we add one more link.” A system becomes distributed because of its &lt;strong&gt;behavior and design goals&lt;/strong&gt;, not only because of its graph shape.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Introduction on Docs</title>
+		<link>http://localhost:1313/docs/tags/introduction/</link>
+		<description>Recent content in Introduction on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – From Networked to Distributed Systems</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch1/part-1-from-networked-to-distributed/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch1/part-1-from-networked-to-distributed/</guid>
+				<description>&lt;h2 id=&#34;the-big-idea&#34;&gt;The big idea&lt;/h2&gt;&#xA;&lt;p&gt;A networked system is not automatically a distributed system. A distributed system is designed so that several independent computers cooperate and appear as one coherent system.&lt;/p&gt;&#xA;&lt;p&gt;The chapter starts by comparing three shapes:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Shape&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Simple meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Risk&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Centralized&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;One center controls or serves most things.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Bottleneck and single point of failure.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Decentralized&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Multiple centers or clusters exist.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Still may not provide one coherent system.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Distributed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Nodes cooperate through a network as part of one system design.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Harder coordination, failure handling, and consistency.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The slides ask: when does a decentralized system become distributed? The answer is not simply “when we add one more link.” A system becomes distributed because of its &lt;strong&gt;behavior and design goals&lt;/strong&gt;, not only because of its graph shape.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

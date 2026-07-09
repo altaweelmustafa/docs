@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 4, Part 3 – Multicast Communication</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -41,22 +41,22 @@
 <p>In application-level multicast, nodes organize themselves into an overlay network and use that overlay to disseminate data.</p>
 <p>Common overlay structures:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Structure</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Tree</td>
-          <td>Unique paths from root to members. Simple and efficient but vulnerable to tree failures.</td>
-      </tr>
-      <tr>
-          <td>Mesh</td>
-          <td>Multiple paths, more robust, but needs routing and duplicate control.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Structure</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Tree</td>
+					<td>Unique paths from root to members. Simple and efficient but vulnerable to tree failures.</td>
+			</tr>
+			<tr>
+					<td>Mesh</td>
+					<td>Multiple paths, more robust, but needs routing and duplicate control.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="chord-based-application-level-multicast">Chord-based application-level multicast</h2>
@@ -80,22 +80,22 @@
 <hr>
 <h2 id="cost-metrics-for-alm">Cost metrics for ALM</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Metric</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Link stress</td>
-          <td>How many times the same physical link carries the same multicast message.</td>
-      </tr>
-      <tr>
-          <td>Stretch</td>
-          <td>Ratio between overlay path delay and direct network-level path delay.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Link stress</td>
+					<td>How many times the same physical link carries the same multicast message.</td>
+			</tr>
+			<tr>
+					<td>Stretch</td>
+					<td>Ratio between overlay path delay and direct network-level path delay.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Formula:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">stretch = ALM path length / network-level path length

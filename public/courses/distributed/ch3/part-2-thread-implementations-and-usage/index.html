@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 3, Part 2 – Thread Implementations and Distributed Use</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -155,30 +155,30 @@
 </ol>
 <p>Comparison:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Model</th>
-          <th>Parallelism</th>
-          <th>Blocking calls</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Multithreading</td>
-          <td>Yes</td>
-          <td>Yes, simple to use.</td>
-      </tr>
-      <tr>
-          <td>Single-threaded process</td>
-          <td>No</td>
-          <td>Yes, but blocks the whole server.</td>
-      </tr>
-      <tr>
-          <td>Finite-state machine</td>
-          <td>Yes</td>
-          <td>Uses nonblocking calls; harder to program.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th>Parallelism</th>
+					<th>Blocking calls</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Multithreading</td>
+					<td>Yes</td>
+					<td>Yes, simple to use.</td>
+			</tr>
+			<tr>
+					<td>Single-threaded process</td>
+					<td>No</td>
+					<td>Yes, but blocks the whole server.</td>
+			</tr>
+			<tr>
+					<td>Finite-state machine</td>
+					<td>Yes</td>
+					<td>Uses nonblocking calls; harder to program.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="exam-check">Exam check</h2>

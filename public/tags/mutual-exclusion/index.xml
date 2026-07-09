@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Mutual-Exclusion on Docs</title>
-    <link>http://localhost:1313/docs/tags/mutual-exclusion/</link>
-    <description>Recent content in Mutual-Exclusion on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/mutual-exclusion/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</guid>
-      <description>&lt;h2 id=&#34;totally-ordered-multicast&#34;&gt;Totally ordered multicast&lt;/h2&gt;&#xA;&lt;p&gt;Problem:&lt;/p&gt;&#xA;&lt;p&gt;Concurrent updates on replicated data must be seen in the same order everywhere.&lt;/p&gt;&#xA;&lt;p&gt;Example from slides:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Initial account: &lt;code&gt;$1000&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P1&lt;/code&gt; adds &lt;code&gt;$100&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P2&lt;/code&gt; increments by &lt;code&gt;1%&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If replicas apply updates in different orders:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;add then 1% → &lt;code&gt;$1111&lt;/code&gt;,&lt;/li&gt;&#xA;&lt;li&gt;1% then add → &lt;code&gt;$1110&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So all replicas must apply updates in the same order.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;totally-ordered-multicast-solution&#34;&gt;Totally ordered multicast solution&lt;/h2&gt;&#xA;&lt;p&gt;Each process keeps a local queue ordered by timestamp.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Mutual-Exclusion on Docs</title>
+		<link>http://localhost:1313/docs/tags/mutual-exclusion/</link>
+		<description>Recent content in Mutual-Exclusion on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/mutual-exclusion/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 5, Part 2 – Ordered Multicast and Mutual Exclusion</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch5/part-2-ordered-multicast-mutual-exclusion/</guid>
+				<description>&lt;h2 id=&#34;totally-ordered-multicast&#34;&gt;Totally ordered multicast&lt;/h2&gt;&#xA;&lt;p&gt;Problem:&lt;/p&gt;&#xA;&lt;p&gt;Concurrent updates on replicated data must be seen in the same order everywhere.&lt;/p&gt;&#xA;&lt;p&gt;Example from slides:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Initial account: &lt;code&gt;$1000&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P1&lt;/code&gt; adds &lt;code&gt;$100&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;P2&lt;/code&gt; increments by &lt;code&gt;1%&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If replicas apply updates in different orders:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;add then 1% → &lt;code&gt;$1111&lt;/code&gt;,&lt;/li&gt;&#xA;&lt;li&gt;1% then add → &lt;code&gt;$1110&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So all replicas must apply updates in the same order.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;totally-ordered-multicast-solution&#34;&gt;Totally ordered multicast solution&lt;/h2&gt;&#xA;&lt;p&gt;Each process keeps a local queue ordered by timestamp.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

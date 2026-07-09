@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Process-Creation on Docs</title>
-    <link>http://localhost:1313/docs/tags/process-creation/</link>
-    <description>Recent content in Process-Creation on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/process-creation/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 2 – Process Creation, Termination &amp; Cooperating Processes</title>
-      <link>http://localhost:1313/docs/courses/os/ch3/ch3-part2/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch3/ch3-part2/</guid>
-      <description>&lt;h2 id=&#34;process-creation&#34;&gt;Process Creation&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;parent process&lt;/strong&gt; creates &lt;strong&gt;children processes&lt;/strong&gt;, which in turn can create other processes — forming a &lt;strong&gt;tree of processes&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The root of the tree is the &lt;strong&gt;INIT&lt;/strong&gt; process (in Unix/Linux).&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        INIT&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        Parent&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       /       \&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Child₁    Child₂&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   / | \ \&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  c  c  c  c&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;resource-sharing-options&#34;&gt;Resource Sharing Options&lt;/h3&gt;&#xA;&lt;p&gt;When a parent creates a child, there are three resource-sharing possibilities:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and children share all&lt;/strong&gt; of the parent&amp;rsquo;s resources.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Children share a subset&lt;/strong&gt; of parent&amp;rsquo;s resources.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and child share no resources&lt;/strong&gt; — they compete for all resources.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;execution-options&#34;&gt;Execution Options&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and children execute concurrently.&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent waits&lt;/strong&gt; until children terminate.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;address-space&#34;&gt;Address Space&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Address Space&lt;/strong&gt; = allocation of process in memory.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Process-Creation on Docs</title>
+		<link>http://localhost:1313/docs/tags/process-creation/</link>
+		<description>Recent content in Process-Creation on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/process-creation/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 2 – Process Creation, Termination &amp; Cooperating Processes</title>
+				<link>http://localhost:1313/docs/courses/os/ch3/ch3-part2/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch3/ch3-part2/</guid>
+				<description>&lt;h2 id=&#34;process-creation&#34;&gt;Process Creation&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;parent process&lt;/strong&gt; creates &lt;strong&gt;children processes&lt;/strong&gt;, which in turn can create other processes — forming a &lt;strong&gt;tree of processes&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The root of the tree is the &lt;strong&gt;INIT&lt;/strong&gt; process (in Unix/Linux).&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        INIT&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        Parent&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       /       \&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    Child₁    Child₂&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   / | \ \&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  c  c  c  c&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;resource-sharing-options&#34;&gt;Resource Sharing Options&lt;/h3&gt;&#xA;&lt;p&gt;When a parent creates a child, there are three resource-sharing possibilities:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and children share all&lt;/strong&gt; of the parent&amp;rsquo;s resources.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Children share a subset&lt;/strong&gt; of parent&amp;rsquo;s resources.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and child share no resources&lt;/strong&gt; — they compete for all resources.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;execution-options&#34;&gt;Execution Options&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent and children execute concurrently.&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parent waits&lt;/strong&gt; until children terminate.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;address-space&#34;&gt;Address Space&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Address Space&lt;/strong&gt; = allocation of process in memory.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

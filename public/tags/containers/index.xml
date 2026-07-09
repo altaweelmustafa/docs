@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Containers on Docs</title>
-    <link>http://localhost:1313/docs/tags/containers/</link>
-    <description>Recent content in Containers on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/containers/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 3 – Virtualization, Containers, and Cloud</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch3/part-3-virtualization-containers-cloud/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch3/part-3-virtualization-containers-cloud/</guid>
-      <description>&lt;h2 id=&#34;why-virtualization-matters&#34;&gt;Why virtualization matters&lt;/h2&gt;&#xA;&lt;p&gt;Virtualization is important in distributed systems because it supports:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;portability,&lt;/li&gt;&#xA;&lt;li&gt;code migration,&lt;/li&gt;&#xA;&lt;li&gt;isolation between components,&lt;/li&gt;&#xA;&lt;li&gt;isolation from failing or attacked components,&lt;/li&gt;&#xA;&lt;li&gt;flexibility when hardware changes faster than software.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Basic idea:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Virtualization mimics an interface so software can run as if it had its own machine or environment.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;interfaces-that-can-be-virtualized&#34;&gt;Interfaces that can be virtualized&lt;/h2&gt;&#xA;&lt;p&gt;The slides mention interfaces at different levels.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Interface&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Instruction Set Architecture (ISA)&lt;/td&gt;&#xA;          &lt;td&gt;Machine instructions available to software.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;System calls&lt;/td&gt;&#xA;          &lt;td&gt;Operations offered by the OS to programs.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Library/API calls&lt;/td&gt;&#xA;          &lt;td&gt;Higher-level programming interface.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;ISA contains:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Containers on Docs</title>
+		<link>http://localhost:1313/docs/tags/containers/</link>
+		<description>Recent content in Containers on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 3 – Virtualization, Containers, and Cloud</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch3/part-3-virtualization-containers-cloud/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch3/part-3-virtualization-containers-cloud/</guid>
+				<description>&lt;h2 id=&#34;why-virtualization-matters&#34;&gt;Why virtualization matters&lt;/h2&gt;&#xA;&lt;p&gt;Virtualization is important in distributed systems because it supports:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;portability,&lt;/li&gt;&#xA;&lt;li&gt;code migration,&lt;/li&gt;&#xA;&lt;li&gt;isolation between components,&lt;/li&gt;&#xA;&lt;li&gt;isolation from failing or attacked components,&lt;/li&gt;&#xA;&lt;li&gt;flexibility when hardware changes faster than software.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Basic idea:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Virtualization mimics an interface so software can run as if it had its own machine or environment.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;interfaces-that-can-be-virtualized&#34;&gt;Interfaces that can be virtualized&lt;/h2&gt;&#xA;&lt;p&gt;The slides mention interfaces at different levels.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Interface&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Instruction Set Architecture (ISA)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Machine instructions available to software.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;System calls&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Operations offered by the OS to programs.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Library/API calls&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Higher-level programming interface.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;ISA contains:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

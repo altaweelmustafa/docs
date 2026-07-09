@@ -161,6 +161,13 @@ article h2.post-title {
 p.post-date {
   color: #666;
   font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+p.post-author {
+  color: #16ab97;
+  font-size: 1.05rem;
   margin-bottom: 1.8rem;
   text-align: left;
 }

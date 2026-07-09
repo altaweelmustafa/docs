@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 3, Part 4 – Clients and Servers</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -88,30 +88,30 @@
 <h2 id="client-side-software-for-transparency">Client-side software for transparency</h2>
 <p>Client-side software often implements distribution transparency.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Transparency</th>
-          <th>Client-side support</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Access transparency</td>
-          <td>Client stubs hide RPC/message details.</td>
-      </tr>
-      <tr>
-          <td>Location/migration transparency</td>
-          <td>Client software tracks actual location.</td>
-      </tr>
-      <tr>
-          <td>Replication transparency</td>
-          <td>Client stub invokes multiple replicas or chooses one.</td>
-      </tr>
-      <tr>
-          <td>Failure transparency</td>
-          <td>Client retries, masks server/communication failures when possible.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Transparency</th>
+					<th>Client-side support</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access transparency</td>
+					<td>Client stubs hide RPC/message details.</td>
+			</tr>
+			<tr>
+					<td>Location/migration transparency</td>
+					<td>Client software tracks actual location.</td>
+			</tr>
+			<tr>
+					<td>Replication transparency</td>
+					<td>Client stub invokes multiple replicas or chooses one.</td>
+			</tr>
+			<tr>
+					<td>Failure transparency</td>
+					<td>Client retries, masks server/communication failures when possible.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Important exam point:</p>
 <blockquote>
@@ -131,25 +131,25 @@
 <hr>
 <h2 id="iterative-vs-concurrent-servers">Iterative vs concurrent servers</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Server type</th>
-          <th>Meaning</th>
-          <th>Problem/advantage</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Iterative server</td>
-          <td>Handles one request completely before accepting the next.</td>
-          <td>Simple but poor under blocking/long requests.</td>
-      </tr>
-      <tr>
-          <td>Concurrent server</td>
-          <td>Dispatcher accepts requests and passes them to threads/processes.</td>
-          <td>Handles many requests and blocking operations better.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Server type</th>
+					<th>Meaning</th>
+					<th>Problem/advantage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Iterative server</td>
+					<td>Handles one request completely before accepting the next.</td>
+					<td>Simple but poor under blocking/long requests.</td>
+			</tr>
+			<tr>
+					<td>Concurrent server</td>
+					<td>Dispatcher accepts requests and passes them to threads/processes.</td>
+					<td>Handles many requests and blocking operations better.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Concurrent servers are the norm because real servers often wait for disk, network, database, or other services.</p>
 <hr>
@@ -157,34 +157,34 @@
 <p>Many services are tied to well-known ports.</p>
 <p>Examples:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Service</th>
-          <th style="text-align: right">Port</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>FTP data</td>
-          <td style="text-align: right">20</td>
-      </tr>
-      <tr>
-          <td>FTP control</td>
-          <td style="text-align: right">21</td>
-      </tr>
-      <tr>
-          <td>Telnet</td>
-          <td style="text-align: right">23</td>
-      </tr>
-      <tr>
-          <td>SMTP</td>
-          <td style="text-align: right">25</td>
-      </tr>
-      <tr>
-          <td>HTTP</td>
-          <td style="text-align: right">80</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Service</th>
+					<th style="text-align: right">Port</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FTP data</td>
+					<td style="text-align: right">20</td>
+			</tr>
+			<tr>
+					<td>FTP control</td>
+					<td style="text-align: right">21</td>
+			</tr>
+			<tr>
+					<td>Telnet</td>
+					<td style="text-align: right">23</td>
+			</tr>
+			<tr>
+					<td>SMTP</td>
+					<td style="text-align: right">25</td>
+			</tr>
+			<tr>
+					<td>HTTP</td>
+					<td style="text-align: right">80</td>
+			</tr>
+	</tbody>
 </table>
 <p>If a service endpoint is assigned dynamically, clients need a way to discover it, often through a naming or directory service.</p>
 <hr>

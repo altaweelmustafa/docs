@@ -22,6 +22,8 @@
   <h2 class="post-title">Chapter 4 – Threads</h2>
   <p class="post-date"><em>posted on 2026 Jun 28</em></p>
   
+  <p class="post-author"><em>by Mustafa Altaweel</em></p>
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -155,38 +157,38 @@
 <hr>
 <h2 id="summary-table">Summary Table</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Model</th>
-          <th>User Threads</th>
-          <th>Kernel Threads</th>
-          <th>Concurrent?</th>
-          <th>Notes</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Many-To-One</strong></td>
-          <td>Many</td>
-          <td>1</td>
-          <td>✗ No</td>
-          <td>Simple but blocks all on I/O</td>
-      </tr>
-      <tr>
-          <td><strong>One-To-One</strong></td>
-          <td>N</td>
-          <td>N</td>
-          <td>✓ Yes</td>
-          <td>Needs many kernel threads</td>
-      </tr>
-      <tr>
-          <td><strong>Many-To-Many</strong></td>
-          <td>Many</td>
-          <td>≤ Many</td>
-          <td>✓ Yes</td>
-          <td>Most flexible, most complex</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th>User Threads</th>
+					<th>Kernel Threads</th>
+					<th>Concurrent?</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Many-To-One</strong></td>
+					<td>Many</td>
+					<td>1</td>
+					<td>✗ No</td>
+					<td>Simple but blocks all on I/O</td>
+			</tr>
+			<tr>
+					<td><strong>One-To-One</strong></td>
+					<td>N</td>
+					<td>N</td>
+					<td>✓ Yes</td>
+					<td>Needs many kernel threads</td>
+			</tr>
+			<tr>
+					<td><strong>Many-To-Many</strong></td>
+					<td>Many</td>
+					<td>≤ Many</td>
+					<td>✓ Yes</td>
+					<td>Most flexible, most complex</td>
+			</tr>
+	</tbody>
 </table>
 
   <nav class="post-nav">

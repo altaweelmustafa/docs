@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 4, Part 2 – Message-Oriented Communication</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -47,46 +47,46 @@
 <p>Sockets provide low-level communication endpoints.</p>
 <p>Berkeley socket operations:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Operation</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>socket</code></td>
-          <td>Create communication endpoint.</td>
-      </tr>
-      <tr>
-          <td><code>bind</code></td>
-          <td>Attach local address to socket.</td>
-      </tr>
-      <tr>
-          <td><code>listen</code></td>
-          <td>Set maximum number of pending connection requests.</td>
-      </tr>
-      <tr>
-          <td><code>accept</code></td>
-          <td>Block until connection request arrives.</td>
-      </tr>
-      <tr>
-          <td><code>connect</code></td>
-          <td>Actively establish connection.</td>
-      </tr>
-      <tr>
-          <td><code>send</code></td>
-          <td>Send data.</td>
-      </tr>
-      <tr>
-          <td><code>receive</code></td>
-          <td>Receive data.</td>
-      </tr>
-      <tr>
-          <td><code>close</code></td>
-          <td>Release connection.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>socket</code></td>
+					<td>Create communication endpoint.</td>
+			</tr>
+			<tr>
+					<td><code>bind</code></td>
+					<td>Attach local address to socket.</td>
+			</tr>
+			<tr>
+					<td><code>listen</code></td>
+					<td>Set maximum number of pending connection requests.</td>
+			</tr>
+			<tr>
+					<td><code>accept</code></td>
+					<td>Block until connection request arrives.</td>
+			</tr>
+			<tr>
+					<td><code>connect</code></td>
+					<td>Actively establish connection.</td>
+			</tr>
+			<tr>
+					<td><code>send</code></td>
+					<td>Send data.</td>
+			</tr>
+			<tr>
+					<td><code>receive</code></td>
+					<td>Receive data.</td>
+			</tr>
+			<tr>
+					<td><code>close</code></td>
+					<td>Release connection.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Important: sockets are powerful but low-level, so programming mistakes are common.</p>
 <hr>
@@ -112,30 +112,30 @@
 <p>All communication is asynchronous internally.</p>
 <p>Three patterns in the slides:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Pattern</th>
-          <th>Meaning</th>
-          <th>Example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Request-reply</td>
-          <td>Client sends request, server replies.</td>
-          <td>RPC-like communication.</td>
-      </tr>
-      <tr>
-          <td>Publish-subscribe</td>
-          <td>Publisher sends messages; subscribers receive matching topics.</td>
-          <td>News/time updates.</td>
-      </tr>
-      <tr>
-          <td>Pipeline</td>
-          <td>Producer pushes work; workers pull work.</td>
-          <td>Task distribution.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Pattern</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Request-reply</td>
+					<td>Client sends request, server replies.</td>
+					<td>RPC-like communication.</td>
+			</tr>
+			<tr>
+					<td>Publish-subscribe</td>
+					<td>Publisher sends messages; subscribers receive matching topics.</td>
+					<td>News/time updates.</td>
+			</tr>
+			<tr>
+					<td>Pipeline</td>
+					<td>Producer pushes work; workers pull work.</td>
+					<td>Task distribution.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="request-reply-pattern">Request-reply pattern</h2>
@@ -174,46 +174,46 @@
 <h2 id="mpi-operations">MPI operations</h2>
 <p>MPI gives flexible message-passing operations, often used in parallel/distributed computing.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Operation</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>MPI_BSEND</code></td>
-          <td>Append outgoing message to local send buffer.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_SEND</code></td>
-          <td>Send and wait until copied to local or remote buffer.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_SSEND</code></td>
-          <td>Send and wait until transmission starts.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_SENDRECV</code></td>
-          <td>Send message and wait for reply.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_ISEND</code></td>
-          <td>Start send and continue.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_ISSEND</code></td>
-          <td>Start send and wait until receipt starts.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_RECV</code></td>
-          <td>Receive; block if no message.</td>
-      </tr>
-      <tr>
-          <td><code>MPI_IRECV</code></td>
-          <td>Check/receive without blocking.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>MPI_BSEND</code></td>
+					<td>Append outgoing message to local send buffer.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SEND</code></td>
+					<td>Send and wait until copied to local or remote buffer.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SSEND</code></td>
+					<td>Send and wait until transmission starts.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_SENDRECV</code></td>
+					<td>Send message and wait for reply.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_ISEND</code></td>
+					<td>Start send and continue.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_ISSEND</code></td>
+					<td>Start send and wait until receipt starts.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_RECV</code></td>
+					<td>Receive; block if no message.</td>
+			</tr>
+			<tr>
+					<td><code>MPI_IRECV</code></td>
+					<td>Check/receive without blocking.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="queue-based-messaging">Queue-based messaging</h2>
@@ -221,30 +221,30 @@
 <p>Instead of sender directly contacting receiver, sender puts message in a queue.</p>
 <p>Core operations:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Operation</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>PUT</code></td>
-          <td>Append message to a queue.</td>
-      </tr>
-      <tr>
-          <td><code>GET</code></td>
-          <td>Block until queue has message, then remove first message.</td>
-      </tr>
-      <tr>
-          <td><code>POLL</code></td>
-          <td>Check queue and remove message if available; never block.</td>
-      </tr>
-      <tr>
-          <td><code>NOTIFY</code></td>
-          <td>Install handler called when message arrives.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Operation</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>PUT</code></td>
+					<td>Append message to a queue.</td>
+			</tr>
+			<tr>
+					<td><code>GET</code></td>
+					<td>Block until queue has message, then remove first message.</td>
+			</tr>
+			<tr>
+					<td><code>POLL</code></td>
+					<td>Check queue and remove message if available; never block.</td>
+			</tr>
+			<tr>
+					<td><code>NOTIFY</code></td>
+					<td>Install handler called when message arrives.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="message-oriented-middleware-mom">Message-oriented middleware (MOM)</h2>

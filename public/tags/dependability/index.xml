@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dependability on Docs</title>
-    <link>http://localhost:1313/docs/tags/dependability/</link>
-    <description>Recent content in Dependability on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/dependability/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – Dependability, Security, and Scalability</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch1/part-3-dependability-security-scalability/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch1/part-3-dependability-security-scalability/</guid>
-      <description>&lt;h2 id=&#34;dependability&#34;&gt;Dependability&lt;/h2&gt;&#xA;&lt;p&gt;A distributed system is dependable when users can trust it to provide correct service when needed.&lt;/p&gt;&#xA;&lt;p&gt;A component may depend on other components. This matters because failure can propagate: if one service depends on another failing service, the first service may also fail.&lt;/p&gt;&#xA;&lt;h3 id=&#34;dependability-requirements&#34;&gt;Dependability requirements&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Requirement&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;          &lt;th&gt;Simple example&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Availability&lt;/td&gt;&#xA;          &lt;td&gt;The system is ready for use.&lt;/td&gt;&#xA;          &lt;td&gt;Website responds now.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Reliability&lt;/td&gt;&#xA;          &lt;td&gt;Continuous correct service.&lt;/td&gt;&#xA;          &lt;td&gt;Website works correctly for a long period.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Safety&lt;/td&gt;&#xA;          &lt;td&gt;Very low probability of catastrophic failure.&lt;/td&gt;&#xA;          &lt;td&gt;Medical/traffic system avoids dangerous output.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Maintainability&lt;/td&gt;&#xA;          &lt;td&gt;Failed system can be repaired easily.&lt;/td&gt;&#xA;          &lt;td&gt;Restart or replace component quickly.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;availability-vs-reliability&#34;&gt;Availability vs reliability&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Availability&lt;/strong&gt; is about being usable at a specific moment.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Reliability&lt;/strong&gt; is about continuous correct behavior during an interval.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A system can have high availability but lower reliability if it recovers quickly but fails often.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Dependability on Docs</title>
+		<link>http://localhost:1313/docs/tags/dependability/</link>
+		<description>Recent content in Dependability on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/dependability/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 3 – Dependability, Security, and Scalability</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch1/part-3-dependability-security-scalability/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch1/part-3-dependability-security-scalability/</guid>
+				<description>&lt;h2 id=&#34;dependability&#34;&gt;Dependability&lt;/h2&gt;&#xA;&lt;p&gt;A distributed system is dependable when users can trust it to provide correct service when needed.&lt;/p&gt;&#xA;&lt;p&gt;A component may depend on other components. This matters because failure can propagate: if one service depends on another failing service, the first service may also fail.&lt;/p&gt;&#xA;&lt;h3 id=&#34;dependability-requirements&#34;&gt;Dependability requirements&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Requirement&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Simple example&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Availability&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The system is ready for use.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Website responds now.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Reliability&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Continuous correct service.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Website works correctly for a long period.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Safety&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Very low probability of catastrophic failure.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Medical/traffic system avoids dangerous output.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Maintainability&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Failed system can be repaired easily.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Restart or replace component quickly.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h3 id=&#34;availability-vs-reliability&#34;&gt;Availability vs reliability&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Availability&lt;/strong&gt; is about being usable at a specific moment.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Reliability&lt;/strong&gt; is about continuous correct behavior during an interval.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A system can have high availability but lower reliability if it recovers quickly but fails often.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

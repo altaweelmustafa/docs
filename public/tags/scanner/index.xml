@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Scanner on Docs</title>
-    <link>http://localhost:1313/docs/tags/scanner/</link>
-    <description>Recent content in Scanner on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/scanner/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 4, Part 1 – What is a Lexical Analyzer?</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</link>
-      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</guid>
-      <description>&lt;p&gt;A &lt;strong&gt;Lexical Analyzer&lt;/strong&gt; or &lt;strong&gt;Scanner&lt;/strong&gt; is an algorithm that groups the characters of the source code to form &lt;strong&gt;Tokens&lt;/strong&gt;, and returns the &lt;strong&gt;Internal Representation Number&lt;/strong&gt; of these tokens — a kind of ID assigned to each token.&lt;/p&gt;&#xA;&lt;p&gt;These tokens are divided into 3 kinds:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — any name in a program, divided into 3 types:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Keywords/Reserved&lt;/strong&gt;: words such as &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;else&lt;/code&gt;, &lt;code&gt;while&lt;/code&gt;. These cannot be used as variable names.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;User Defined Names&lt;/strong&gt;: names declared by the user.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Standard Identifiers&lt;/strong&gt;: such as &lt;code&gt;sin&lt;/code&gt;, &lt;code&gt;cos&lt;/code&gt;, &lt;code&gt;sqrt&lt;/code&gt;. Like reserved words, these cannot be used as variable names and are not included in production rules.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Values&lt;/strong&gt; — such as integers (&lt;code&gt;1, 2, 3&lt;/code&gt;) or floating point (&lt;code&gt;1.1, 2.34&lt;/code&gt;) etc.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Scanner on Docs</title>
+		<link>http://localhost:1313/docs/tags/scanner/</link>
+		<description>Recent content in Scanner on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/scanner/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4, Part 1 – What is a Lexical Analyzer?</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</link>
+				<pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part1-lexical-analyzer/</guid>
+				<description>&lt;p&gt;A &lt;strong&gt;Lexical Analyzer&lt;/strong&gt; or &lt;strong&gt;Scanner&lt;/strong&gt; is an algorithm that groups the characters of the source code to form &lt;strong&gt;Tokens&lt;/strong&gt;, and returns the &lt;strong&gt;Internal Representation Number&lt;/strong&gt; of these tokens — a kind of ID assigned to each token.&lt;/p&gt;&#xA;&lt;p&gt;These tokens are divided into 3 kinds:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — any name in a program, divided into 3 types:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Keywords/Reserved&lt;/strong&gt;: words such as &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;else&lt;/code&gt;, &lt;code&gt;while&lt;/code&gt;. These cannot be used as variable names.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;User Defined Names&lt;/strong&gt;: names declared by the user.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Standard Identifiers&lt;/strong&gt;: such as &lt;code&gt;sin&lt;/code&gt;, &lt;code&gt;cos&lt;/code&gt;, &lt;code&gt;sqrt&lt;/code&gt;. Like reserved words, these cannot be used as variable names and are not included in production rules.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Values&lt;/strong&gt; — such as integers (&lt;code&gt;1, 2, 3&lt;/code&gt;) or floating point (&lt;code&gt;1.1, 2.34&lt;/code&gt;) etc.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

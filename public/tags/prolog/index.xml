@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Prolog on Docs</title>
-    <link>http://localhost:1313/docs/tags/prolog/</link>
-    <description>Recent content in Prolog on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/prolog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
-      <description>&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example: GCD in Pascal&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;function gcd(x,y:integer):integer;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Begin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If (x = y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    gcd:=x&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (x &amp;gt; y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x-y,y)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x,y-x);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Same program in C&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Prolog on Docs</title>
+		<link>http://localhost:1313/docs/tags/prolog/</link>
+		<description>Recent content in Prolog on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/prolog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 3 – Paradigms of Programming Languages</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/part3/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/part3/</guid>
+				<description>&lt;h2 id=&#34;imperative--procedural-paradigm&#34;&gt;Imperative / Procedural Paradigm&lt;/h2&gt;&#xA;&lt;p&gt;Also called the &lt;strong&gt;Von Neumann model&lt;/strong&gt;, based on single processor sequential execution of instructions. Languages in this paradigm are characterized by:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Sequential execution of instructions&lt;/li&gt;&#xA;&lt;li&gt;Using variables to represent memory locations&lt;/li&gt;&#xA;&lt;li&gt;Using assignment statements to change a variable&amp;rsquo;s value&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Pascal and C are designed around this paradigm.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example: GCD in Pascal&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;function gcd(x,y:integer):integer;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Begin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  If (x = y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    gcd:=x&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    if (x &amp;gt; y) then&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x-y,y)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    else&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      gcd:=gcd(x,y-x);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Same program in C&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

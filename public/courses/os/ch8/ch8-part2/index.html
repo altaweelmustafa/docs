@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 8, Part 2 – Non-Contiguous Allocation: Paging</h2>
   <p class="post-date"><em>posted on 2026 May 29</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -71,30 +71,30 @@
 <h2 id="page-table-size-problem">Page Table Size Problem</h2>
 <p>For large address spaces the page table itself gets enormous:</p>
 <table>
-  <thead>
-      <tr>
-          <th>LA bits</th>
-          <th>Page Size</th>
-          <th>Page Table Size</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>32 bits</td>
-          <td>4 KB (2¹²)</td>
-          <td>2²⁰ × 4 B = <strong>4 MB</strong></td>
-      </tr>
-      <tr>
-          <td>40 bits</td>
-          <td>4 KB</td>
-          <td>2²⁸ × 4 B = <strong>1 GB</strong></td>
-      </tr>
-      <tr>
-          <td>48 bits</td>
-          <td>4 KB</td>
-          <td>2³⁶ × 4 B = <strong>256 GB</strong></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>LA bits</th>
+					<th>Page Size</th>
+					<th>Page Table Size</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>32 bits</td>
+					<td>4 KB (2¹²)</td>
+					<td>2²⁰ × 4 B = <strong>4 MB</strong></td>
+			</tr>
+			<tr>
+					<td>40 bits</td>
+					<td>4 KB</td>
+					<td>2²⁸ × 4 B = <strong>1 GB</strong></td>
+			</tr>
+			<tr>
+					<td>48 bits</td>
+					<td>4 KB</td>
+					<td>2³⁶ × 4 B = <strong>256 GB</strong></td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="where-is-the-active-page-table-stored">Where Is the Active Page Table Stored?</h2>

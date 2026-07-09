@@ -2,7 +2,9 @@
 <article>
   <h2 class="post-title">{{ .Title }}</h2>
   <p class="post-date"><em>posted on {{ .Date.Format "2006 Jan 02" }}</em></p>
-  {{ if .Params.toc }}
+  {{ if .Params.author }}
+  <p class="post-author"><em>by {{ .Params.author }}</em></p>
+  {{ end }} {{ if .Params.toc }}
   <nav class="toc">
     <strong>Contents</strong>
     {{ .TableOfContents }}

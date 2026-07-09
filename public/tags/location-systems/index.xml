@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Location-Systems on Docs</title>
-    <link>http://localhost:1313/docs/tags/location-systems/</link>
-    <description>Recent content in Location-Systems on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/location-systems/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 5, Part 5 – Location Systems</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch5/part-5-location-systems/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch5/part-5-location-systems/</guid>
-      <description>&lt;h2 id=&#34;why-location-matters&#34;&gt;Why location matters&lt;/h2&gt;&#xA;&lt;p&gt;In large-scale distributed systems, nodes can be spread across wide areas.&lt;/p&gt;&#xA;&lt;p&gt;We often need proximity or distance for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;choosing nearest server,&lt;/li&gt;&#xA;&lt;li&gt;routing efficiently,&lt;/li&gt;&#xA;&lt;li&gt;placing replicas,&lt;/li&gt;&#xA;&lt;li&gt;reducing latency,&lt;/li&gt;&#xA;&lt;li&gt;location-aware services.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Before using proximity, we need to determine node location.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;computing-position-with-landmarks&#34;&gt;Computing position with landmarks&lt;/h2&gt;&#xA;&lt;p&gt;Observation:&lt;/p&gt;&#xA;&lt;p&gt;A node &lt;code&gt;P&lt;/code&gt; needs &lt;code&gt;d + 1&lt;/code&gt; landmarks to compute its position in a &lt;code&gt;d&lt;/code&gt;-dimensional space.&lt;/p&gt;&#xA;&lt;p&gt;Examples:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Space&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: right&#34;&gt;Dimensions&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: right&#34;&gt;Landmarks needed&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Line&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;1D&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;2&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Plane&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;2D&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;3&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;3D space&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;3D&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: right&#34;&gt;4&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;For two-dimensional space, &lt;code&gt;P&lt;/code&gt; solves three equations for unknown &lt;code&gt;(xP, yP)&lt;/code&gt;.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Location-Systems on Docs</title>
+		<link>http://localhost:1313/docs/tags/location-systems/</link>
+		<description>Recent content in Location-Systems on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/location-systems/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 5, Part 5 – Location Systems</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch5/part-5-location-systems/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch5/part-5-location-systems/</guid>
+				<description>&lt;h2 id=&#34;why-location-matters&#34;&gt;Why location matters&lt;/h2&gt;&#xA;&lt;p&gt;In large-scale distributed systems, nodes can be spread across wide areas.&lt;/p&gt;&#xA;&lt;p&gt;We often need proximity or distance for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;choosing nearest server,&lt;/li&gt;&#xA;&lt;li&gt;routing efficiently,&lt;/li&gt;&#xA;&lt;li&gt;placing replicas,&lt;/li&gt;&#xA;&lt;li&gt;reducing latency,&lt;/li&gt;&#xA;&lt;li&gt;location-aware services.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Before using proximity, we need to determine node location.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;computing-position-with-landmarks&#34;&gt;Computing position with landmarks&lt;/h2&gt;&#xA;&lt;p&gt;Observation:&lt;/p&gt;&#xA;&lt;p&gt;A node &lt;code&gt;P&lt;/code&gt; needs &lt;code&gt;d + 1&lt;/code&gt; landmarks to compute its position in a &lt;code&gt;d&lt;/code&gt;-dimensional space.&lt;/p&gt;&#xA;&lt;p&gt;Examples:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Space&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;Dimensions&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;Landmarks needed&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Line&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;1D&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;2&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Plane&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;2D&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;3&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;3D space&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;3D&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;4&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;For two-dimensional space, &lt;code&gt;P&lt;/code&gt; solves three equations for unknown &lt;code&gt;(xP, yP)&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

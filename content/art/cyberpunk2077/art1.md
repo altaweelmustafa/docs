@@ -2,6 +2,7 @@
 title: "Immortality and Resurrection: Possibility and How It Affects Religion"
 date: 2026-07-09
 description: "Can science one day upload human consciousness and grant immortality? And if it could, what would that mean for believers — particularly Muslims whose faith places resurrection firmly in God's hands alone?"
+author: "Mustafa Altaweel"
 ---
 
 In Cyberpunk 2077, Saburo Arasaka does something that has fascinated humans since the beginning of civilization: he cheats death. **They store his consciousness, copy it, and load into another body**, his _son's_ body.

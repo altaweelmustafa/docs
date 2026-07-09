@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>DFSA on Docs</title>
-    <link>http://localhost:1313/docs/tags/dfsa/</link>
-    <description>Recent content in DFSA on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/dfsa/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 4, Part 3 – Finite State Automata (FSA)</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</guid>
-      <description>&lt;p&gt;The algorithm that recognizes strings of regular languages is called the &lt;strong&gt;Finite State Automata (FSA)&lt;/strong&gt;, also known as the Finite State Machine or Finite State System. It contains:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A set of states.&lt;/li&gt;&#xA;&lt;li&gt;Transitions between states.&lt;/li&gt;&#xA;&lt;li&gt;An input string to be examined.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fsa-example&#34;&gt;FSA Example&lt;/h2&gt;&#xA;&lt;p&gt;Consider this FSA for floating point numbers, with states &lt;code&gt;Q = {S, A, B, G, H}&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;S&lt;/strong&gt; — Starting State&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;H&lt;/strong&gt; — Final (Halt) State&lt;/li&gt;&#xA;&lt;li&gt;Transitions: &lt;code&gt;{+, −, d, .}&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Tracking the input &lt;code&gt;&amp;quot;-511.32&amp;quot;&lt;/code&gt; through the states:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 4, Part 4 – Creating a NDFSA from a Regular Expression</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</guid>
-      <description>&lt;h2 id=&#34;fsm-for-basic-tokens&#34;&gt;FSM for Basic Tokens&lt;/h2&gt;&#xA;&lt;p&gt;Simple finite state machines for basic tokens:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — &lt;code&gt;Letter(Letter|digit)* = L(L|d)*&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;S --L--&amp;gt; F&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      L,d (loop)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Integers&lt;/strong&gt; — &lt;code&gt;[+|−]digit(digit)* = [+|−]d+&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;S --+/--&amp;gt; A --d--&amp;gt; F&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             d (loop)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Both machines are deterministic: no λ-transitions, no state has multiple transitions on the same input.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;construction-methodology&#34;&gt;Construction Methodology&lt;/h2&gt;&#xA;&lt;p&gt;To construct a NDFSA from a regular expression:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Decompose the expression into &lt;strong&gt;primitive components&lt;/strong&gt;:&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>DFSA on Docs</title>
+		<link>http://localhost:1313/docs/tags/dfsa/</link>
+		<description>Recent content in DFSA on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 01 Jan 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/dfsa/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 4, Part 3 – Finite State Automata (FSA)</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</guid>
+				<description>&lt;p&gt;The algorithm that recognizes strings of regular languages is called the &lt;strong&gt;Finite State Automata (FSA)&lt;/strong&gt;, also known as the Finite State Machine or Finite State System. It contains:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A set of states.&lt;/li&gt;&#xA;&lt;li&gt;Transitions between states.&lt;/li&gt;&#xA;&lt;li&gt;An input string to be examined.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;fsa-example&#34;&gt;FSA Example&lt;/h2&gt;&#xA;&lt;p&gt;Consider this FSA for floating point numbers, with states &lt;code&gt;Q = {S, A, B, G, H}&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;S&lt;/strong&gt; — Starting State&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;H&lt;/strong&gt; — Final (Halt) State&lt;/li&gt;&#xA;&lt;li&gt;Transitions: &lt;code&gt;{+, −, d, .}&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Tracking the input &lt;code&gt;&amp;quot;-511.32&amp;quot;&lt;/code&gt; through the states:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 4, Part 4 – Creating a NDFSA from a Regular Expression</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</link>
+				<pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</guid>
+				<description>&lt;h2 id=&#34;fsm-for-basic-tokens&#34;&gt;FSM for Basic Tokens&lt;/h2&gt;&#xA;&lt;p&gt;Simple finite state machines for basic tokens:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt; — &lt;code&gt;Letter(Letter|digit)* = L(L|d)*&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;S --L--&amp;gt; F&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      L,d (loop)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Integers&lt;/strong&gt; — &lt;code&gt;[+|−]digit(digit)* = [+|−]d+&lt;/code&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;S --+/--&amp;gt; A --d--&amp;gt; F&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             d (loop)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Both machines are deterministic: no λ-transitions, no state has multiple transitions on the same input.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;construction-methodology&#34;&gt;Construction Methodology&lt;/h2&gt;&#xA;&lt;p&gt;To construct a NDFSA from a regular expression:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Decompose the expression into &lt;strong&gt;primitive components&lt;/strong&gt;:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

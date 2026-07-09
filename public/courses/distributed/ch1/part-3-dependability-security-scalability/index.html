@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 1, Part 3 – Dependability, Security, and Scalability</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -73,35 +73,35 @@
 <p>A component may depend on other components. This matters because failure can propagate: if one service depends on another failing service, the first service may also fail.</p>
 <h3 id="dependability-requirements">Dependability requirements</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Requirement</th>
-          <th>Meaning</th>
-          <th>Simple example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Availability</td>
-          <td>The system is ready for use.</td>
-          <td>Website responds now.</td>
-      </tr>
-      <tr>
-          <td>Reliability</td>
-          <td>Continuous correct service.</td>
-          <td>Website works correctly for a long period.</td>
-      </tr>
-      <tr>
-          <td>Safety</td>
-          <td>Very low probability of catastrophic failure.</td>
-          <td>Medical/traffic system avoids dangerous output.</td>
-      </tr>
-      <tr>
-          <td>Maintainability</td>
-          <td>Failed system can be repaired easily.</td>
-          <td>Restart or replace component quickly.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+					<th>Simple example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Availability</td>
+					<td>The system is ready for use.</td>
+					<td>Website responds now.</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>Continuous correct service.</td>
+					<td>Website works correctly for a long period.</td>
+			</tr>
+			<tr>
+					<td>Safety</td>
+					<td>Very low probability of catastrophic failure.</td>
+					<td>Medical/traffic system avoids dangerous output.</td>
+			</tr>
+			<tr>
+					<td>Maintainability</td>
+					<td>Failed system can be repaired easily.</td>
+					<td>Restart or replace component quickly.</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="availability-vs-reliability">Availability vs reliability</h3>
 <ul>
@@ -112,26 +112,26 @@
 <hr>
 <h2 id="reliability-metrics">Reliability metrics</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Metric</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>MTTF</td>
-          <td>Mean Time To Failure: average time until a component fails.</td>
-      </tr>
-      <tr>
-          <td>MTTR</td>
-          <td>Mean Time To Repair: average repair time.</td>
-      </tr>
-      <tr>
-          <td>MTBF</td>
-          <td>Mean Time Between Failures: <code>MTTF + MTTR</code>.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Metric</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>MTTF</td>
+					<td>Mean Time To Failure: average time until a component fails.</td>
+			</tr>
+			<tr>
+					<td>MTTR</td>
+					<td>Mean Time To Repair: average repair time.</td>
+			</tr>
+			<tr>
+					<td>MTBF</td>
+					<td>Mean Time Between Failures: <code>MTTF + MTTR</code>.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Exam note:</p>
 <ul>
@@ -142,30 +142,30 @@
 <hr>
 <h2 id="failure-error-fault">Failure, error, fault</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Term</th>
-          <th>Meaning</th>
-          <th>Example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Failure</td>
-          <td>Component does not meet specification.</td>
-          <td>Program crashes.</td>
-      </tr>
-      <tr>
-          <td>Error</td>
-          <td>Incorrect internal state that may lead to failure.</td>
-          <td>Wrong variable value.</td>
-      </tr>
-      <tr>
-          <td>Fault</td>
-          <td>Cause of the error.</td>
-          <td>Programming bug, hardware defect, bad design.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Failure</td>
+					<td>Component does not meet specification.</td>
+					<td>Program crashes.</td>
+			</tr>
+			<tr>
+					<td>Error</td>
+					<td>Incorrect internal state that may lead to failure.</td>
+					<td>Wrong variable value.</td>
+			</tr>
+			<tr>
+					<td>Fault</td>
+					<td>Cause of the error.</td>
+					<td>Programming bug, hardware defect, bad design.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Relationship:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">fault  →  error  →  failure
@@ -173,73 +173,73 @@
 </span></span></code></pre></div><hr>
 <h2 id="handling-faults">Handling faults</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Method</th>
-          <th>Meaning</th>
-          <th>Example idea</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Fault prevention</td>
-          <td>Prevent faults from occurring.</td>
-          <td>Better design, careful hiring, code standards.</td>
-      </tr>
-      <tr>
-          <td>Fault tolerance</td>
-          <td>Continue working despite faults.</td>
-          <td>Replication, backup server, retry.</td>
-      </tr>
-      <tr>
-          <td>Fault removal</td>
-          <td>Reduce or eliminate existing faults.</td>
-          <td>Testing, debugging, patching.</td>
-      </tr>
-      <tr>
-          <td>Fault forecasting</td>
-          <td>Estimate present/future faults and their effects.</td>
-          <td>Reliability analysis.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Meaning</th>
+					<th>Example idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Fault prevention</td>
+					<td>Prevent faults from occurring.</td>
+					<td>Better design, careful hiring, code standards.</td>
+			</tr>
+			<tr>
+					<td>Fault tolerance</td>
+					<td>Continue working despite faults.</td>
+					<td>Replication, backup server, retry.</td>
+			</tr>
+			<tr>
+					<td>Fault removal</td>
+					<td>Reduce or eliminate existing faults.</td>
+					<td>Testing, debugging, patching.</td>
+			</tr>
+			<tr>
+					<td>Fault forecasting</td>
+					<td>Estimate present/future faults and their effects.</td>
+					<td>Reliability analysis.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="security-is-part-of-dependability">Security is part of dependability</h2>
 <p>A distributed system that is not secure is not dependable.</p>
 <p>Main security requirements:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Requirement</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Confidentiality</td>
-          <td>Information is disclosed only to authorized parties.</td>
-      </tr>
-      <tr>
-          <td>Integrity</td>
-          <td>Alterations can be made only in authorized ways.</td>
-      </tr>
-      <tr>
-          <td>Availability</td>
-          <td>Authorized users can access the system.</td>
-      </tr>
-      <tr>
-          <td>Authentication</td>
-          <td>Verify identity of users/services.</td>
-      </tr>
-      <tr>
-          <td>Authorization</td>
-          <td>Decide what verified users may do.</td>
-      </tr>
-      <tr>
-          <td>Non-repudiation</td>
-          <td>A party cannot deny an action later.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Confidentiality</td>
+					<td>Information is disclosed only to authorized parties.</td>
+			</tr>
+			<tr>
+					<td>Integrity</td>
+					<td>Alterations can be made only in authorized ways.</td>
+			</tr>
+			<tr>
+					<td>Availability</td>
+					<td>Authorized users can access the system.</td>
+			</tr>
+			<tr>
+					<td>Authentication</td>
+					<td>Verify identity of users/services.</td>
+			</tr>
+			<tr>
+					<td>Authorization</td>
+					<td>Decide what verified users may do.</td>
+			</tr>
+			<tr>
+					<td>Non-repudiation</td>
+					<td>A party cannot deny an action later.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="security-mechanisms">Security mechanisms</h2>
@@ -272,30 +272,30 @@
 <p>A scalable system can handle growth without unacceptable performance loss or management complexity.</p>
 <h3 id="three-types-of-scalability">Three types of scalability</h3>
 <table>
-  <thead>
-      <tr>
-          <th>Type</th>
-          <th>Growth dimension</th>
-          <th>Example problem</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Size scalability</td>
-          <td>More users, processes, or data.</td>
-          <td>One server cannot handle all requests.</td>
-      </tr>
-      <tr>
-          <td>Geographical scalability</td>
-          <td>Larger physical distance.</td>
-          <td>WAN latency makes synchronous calls slow.</td>
-      </tr>
-      <tr>
-          <td>Administrative scalability</td>
-          <td>More organizations/domains.</td>
-          <td>Different policies, security rules, payment rules.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Growth dimension</th>
+					<th>Example problem</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Size scalability</td>
+					<td>More users, processes, or data.</td>
+					<td>One server cannot handle all requests.</td>
+			</tr>
+			<tr>
+					<td>Geographical scalability</td>
+					<td>Larger physical distance.</td>
+					<td>WAN latency makes synchronous calls slow.</td>
+			</tr>
+			<tr>
+					<td>Administrative scalability</td>
+					<td>More organizations/domains.</td>
+					<td>Different policies, security rules, payment rules.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="size-scalability-bottlenecks">Size scalability bottlenecks</h2>
@@ -354,40 +354,40 @@
 <hr>
 <h2 id="techniques-for-scaling">Techniques for scaling</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Technique</th>
-          <th>Main idea</th>
-          <th>Example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Hide communication latency</td>
-          <td>Use asynchronous communication.</td>
-          <td>Send request and handle reply later.</td>
-      </tr>
-      <tr>
-          <td>Move computation to client</td>
-          <td>Let clients do work.</td>
-          <td>Browser scripts, Java applets historically.</td>
-      </tr>
-      <tr>
-          <td>Partition data/computation</td>
-          <td>Split work across machines.</td>
-          <td>DNS, WWW, sharded databases.</td>
-      </tr>
-      <tr>
-          <td>Replication</td>
-          <td>Store multiple copies.</td>
-          <td>Replicated file servers, replicated databases.</td>
-      </tr>
-      <tr>
-          <td>Caching</td>
-          <td>Keep temporary copies close to user.</td>
-          <td>Browser cache, proxy cache, CDN.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Main idea</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hide communication latency</td>
+					<td>Use asynchronous communication.</td>
+					<td>Send request and handle reply later.</td>
+			</tr>
+			<tr>
+					<td>Move computation to client</td>
+					<td>Let clients do work.</td>
+					<td>Browser scripts, Java applets historically.</td>
+			</tr>
+			<tr>
+					<td>Partition data/computation</td>
+					<td>Split work across machines.</td>
+					<td>DNS, WWW, sharded databases.</td>
+			</tr>
+			<tr>
+					<td>Replication</td>
+					<td>Store multiple copies.</td>
+					<td>Replicated file servers, replicated databases.</td>
+			</tr>
+			<tr>
+					<td>Caching</td>
+					<td>Keep temporary copies close to user.</td>
+					<td>Browser cache, proxy cache, CDN.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="the-replication-problem">The replication problem</h2>

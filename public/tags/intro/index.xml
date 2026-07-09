@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Intro on Docs</title>
-    <link>http://localhost:1313/docs/tags/intro/</link>
-    <description>Recent content in Intro on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/intro/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</title>
-      <link>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</link>
-      <pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</guid>
-      <description>&lt;h2 id=&#34;nature-of-the-course&#34;&gt;Nature of the Course&lt;/h2&gt;&#xA;&lt;p&gt;There are 4 ways to teach a programming languages course:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How to program in several languages&lt;/li&gt;&#xA;&lt;li&gt;Survey of the history and nature of several languages&lt;/li&gt;&#xA;&lt;li&gt;How to implement programming languages&lt;/li&gt;&#xA;&lt;li&gt;The conceptual issues of programming languages (concepts and paradigms)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This course focuses on the 4th approach. We study the structural issues of programming languages, summed up in two words: &lt;strong&gt;Concepts and Paradigms&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Concepts&lt;/strong&gt;: the basic structure of a PL, like syntax, semantics, data types, control structures&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Paradigms&lt;/strong&gt;: the model or approach used to reason about and solve a problem&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-views-of-a-programming-language&#34;&gt;Three Views of a Programming Language&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;View&lt;/th&gt;&#xA;          &lt;th&gt;Who&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Designer&lt;/td&gt;&#xA;          &lt;td&gt;The inventor of the language&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Implementer&lt;/td&gt;&#xA;          &lt;td&gt;The one who builds the compiler or interpreter&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;User&lt;/td&gt;&#xA;          &lt;td&gt;The one who writes programs in the language&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The course covers all three, with a bit more focus on the implementer side.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Intro on Docs</title>
+		<link>http://localhost:1313/docs/tags/intro/</link>
+		<description>Recent content in Intro on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/intro/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</title>
+				<link>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</link>
+				<pubDate>Fri, 19 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</guid>
+				<description>&lt;h2 id=&#34;nature-of-the-course&#34;&gt;Nature of the Course&lt;/h2&gt;&#xA;&lt;p&gt;There are 4 ways to teach a programming languages course:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How to program in several languages&lt;/li&gt;&#xA;&lt;li&gt;Survey of the history and nature of several languages&lt;/li&gt;&#xA;&lt;li&gt;How to implement programming languages&lt;/li&gt;&#xA;&lt;li&gt;The conceptual issues of programming languages (concepts and paradigms)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This course focuses on the 4th approach. We study the structural issues of programming languages, summed up in two words: &lt;strong&gt;Concepts and Paradigms&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Concepts&lt;/strong&gt;: the basic structure of a PL, like syntax, semantics, data types, control structures&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Paradigms&lt;/strong&gt;: the model or approach used to reason about and solve a problem&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;three-views-of-a-programming-language&#34;&gt;Three Views of a Programming Language&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;View&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Who&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Designer&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The inventor of the language&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Implementer&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The one who builds the compiler or interpreter&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;User&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The one who writes programs in the language&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The course covers all three, with a bit more focus on the implementer side.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

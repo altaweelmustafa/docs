@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Chapter 1: Introduction to Operating Systems on Docs</title>
-    <link>http://localhost:1313/docs/courses/os/ch1/</link>
-    <description>Recent content in Chapter 1: Introduction to Operating Systems on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/courses/os/ch1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 1 – OS Goals, Computer Structure &amp; History</title>
-      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part1/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part1/</guid>
-      <description>&lt;h2 id=&#34;operating-system-goals&#34;&gt;Operating System Goals&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;Operating System (OS)&lt;/strong&gt; is a set of algorithms that run the computer machine. It manages the computer resources and must do so &lt;strong&gt;efficiently&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The OS has three goals:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Overall goal&lt;/strong&gt; — Execute user programs.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Primary goal&lt;/strong&gt; — Conveniency: it&amp;rsquo;s easier for the user to interact with the OS than to deal directly with machine/assembly language.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Secondary goal&lt;/strong&gt; — Efficiency: make the best use of available hardware resources.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;other-goals-utilization-of-computer-resources&#34;&gt;Other Goals: Utilization of Computer Resources&lt;/h3&gt;&#xA;&lt;p&gt;The OS must maximize the utilization of all computer resources:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 1, Part 2 – Offline Operation, Buffering, Spooling &amp; System Types</title>
-      <link>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</guid>
-      <description>&lt;h2 id=&#34;improving-cpu-utilization&#34;&gt;Improving CPU Utilization&lt;/h2&gt;&#xA;&lt;p&gt;The key problem was: &lt;strong&gt;CPU is fast, I/O is slow&lt;/strong&gt;. The CPU executes until it reaches an I/O instruction (e.g. printing or reading input), then sits idle. Several techniques were developed to fix this.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;a-offline-operation&#34;&gt;[A] Offline Operation&lt;/h2&gt;&#xA;&lt;h3 id=&#34;before-online&#34;&gt;Before (Online):&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Card Reader → Input → CPU → Output → Printer&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The card reader fed data directly to the CPU.&lt;/p&gt;&#xA;&lt;h3 id=&#34;after-offline&#34;&gt;After (Offline):&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Card Reader → [Tape] → CPU → [Tape] → Printer&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             offline prep           offline prep&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Data was first written to &lt;strong&gt;tape&lt;/strong&gt; offline (preparation step), then the CPU read from tape instead of the card reader directly.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Chapter 1: Introduction to Operating Systems on Docs</title>
+		<link>http://localhost:1313/docs/courses/os/ch1/</link>
+		<description>Recent content in Chapter 1: Introduction to Operating Systems on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/courses/os/ch1/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – OS Goals, Computer Structure &amp; History</title>
+				<link>http://localhost:1313/docs/courses/os/ch1/ch1-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch1/ch1-part1/</guid>
+				<description>&lt;h2 id=&#34;operating-system-goals&#34;&gt;Operating System Goals&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;Operating System (OS)&lt;/strong&gt; is a set of algorithms that run the computer machine. It manages the computer resources and must do so &lt;strong&gt;efficiently&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The OS has three goals:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Overall goal&lt;/strong&gt; — Execute user programs.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Primary goal&lt;/strong&gt; — Conveniency: it&amp;rsquo;s easier for the user to interact with the OS than to deal directly with machine/assembly language.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Secondary goal&lt;/strong&gt; — Efficiency: make the best use of available hardware resources.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;other-goals-utilization-of-computer-resources&#34;&gt;Other Goals: Utilization of Computer Resources&lt;/h3&gt;&#xA;&lt;p&gt;The OS must maximize the utilization of all computer resources:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 1, Part 2 – Offline Operation, Buffering, Spooling &amp; System Types</title>
+				<link>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch1/ch1-part2/</guid>
+				<description>&lt;h2 id=&#34;improving-cpu-utilization&#34;&gt;Improving CPU Utilization&lt;/h2&gt;&#xA;&lt;p&gt;The key problem was: &lt;strong&gt;CPU is fast, I/O is slow&lt;/strong&gt;. The CPU executes until it reaches an I/O instruction (e.g. printing or reading input), then sits idle. Several techniques were developed to fix this.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;a-offline-operation&#34;&gt;[A] Offline Operation&lt;/h2&gt;&#xA;&lt;h3 id=&#34;before-online&#34;&gt;Before (Online):&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Card Reader → Input → CPU → Output → Printer&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The card reader fed data directly to the CPU.&lt;/p&gt;&#xA;&lt;h3 id=&#34;after-offline&#34;&gt;After (Offline):&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Card Reader → [Tape] → CPU → [Tape] → Printer&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             offline prep           offline prep&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Data was first written to &lt;strong&gt;tape&lt;/strong&gt; offline (preparation step), then the CPU read from tape instead of the card reader directly.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

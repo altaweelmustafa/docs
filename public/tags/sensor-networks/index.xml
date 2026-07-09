@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sensor-Networks on Docs</title>
-    <link>http://localhost:1313/docs/tags/sensor-networks/</link>
-    <description>Recent content in Sensor-Networks on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/sensor-networks/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 1, Part 5 – Pervasive Systems and Pitfalls</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch1/part-5-pervasive-systems-and-pitfalls/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch1/part-5-pervasive-systems-and-pitfalls/</guid>
-      <description>&lt;h2 id=&#34;distributed-pervasive-systems&#34;&gt;Distributed pervasive systems&lt;/h2&gt;&#xA;&lt;p&gt;Pervasive systems are distributed systems where nodes are small, mobile, embedded, and naturally blended into the user environment.&lt;/p&gt;&#xA;&lt;p&gt;They are often not obvious to the user. Instead of using one visible computer, users interact with many embedded or mobile devices.&lt;/p&gt;&#xA;&lt;p&gt;Three overlapping subtypes:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Ubiquitous systems.&lt;/li&gt;&#xA;&lt;li&gt;Mobile computing systems.&lt;/li&gt;&#xA;&lt;li&gt;Sensor networks.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;ubiquitous-systems&#34;&gt;Ubiquitous systems&lt;/h2&gt;&#xA;&lt;p&gt;A ubiquitous system surrounds the user and provides services without being intrusive.&lt;/p&gt;&#xA;&lt;p&gt;Core elements:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Element&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Distribution&lt;/td&gt;&#xA;          &lt;td&gt;Devices are networked, distributed, and transparently accessible.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Interaction&lt;/td&gt;&#xA;          &lt;td&gt;User interaction is unobtrusive.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Context awareness&lt;/td&gt;&#xA;          &lt;td&gt;System understands context and adapts.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Autonomy&lt;/td&gt;&#xA;          &lt;td&gt;Devices operate without constant human control.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Intelligence&lt;/td&gt;&#xA;          &lt;td&gt;System handles dynamic actions and interactions.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Example: smart-home system that reacts to location, time, user habits, and device state.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Sensor-Networks on Docs</title>
+		<link>http://localhost:1313/docs/tags/sensor-networks/</link>
+		<description>Recent content in Sensor-Networks on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/sensor-networks/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 5 – Pervasive Systems and Pitfalls</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch1/part-5-pervasive-systems-and-pitfalls/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch1/part-5-pervasive-systems-and-pitfalls/</guid>
+				<description>&lt;h2 id=&#34;distributed-pervasive-systems&#34;&gt;Distributed pervasive systems&lt;/h2&gt;&#xA;&lt;p&gt;Pervasive systems are distributed systems where nodes are small, mobile, embedded, and naturally blended into the user environment.&lt;/p&gt;&#xA;&lt;p&gt;They are often not obvious to the user. Instead of using one visible computer, users interact with many embedded or mobile devices.&lt;/p&gt;&#xA;&lt;p&gt;Three overlapping subtypes:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Ubiquitous systems.&lt;/li&gt;&#xA;&lt;li&gt;Mobile computing systems.&lt;/li&gt;&#xA;&lt;li&gt;Sensor networks.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;ubiquitous-systems&#34;&gt;Ubiquitous systems&lt;/h2&gt;&#xA;&lt;p&gt;A ubiquitous system surrounds the user and provides services without being intrusive.&lt;/p&gt;&#xA;&lt;p&gt;Core elements:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Element&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Distribution&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Devices are networked, distributed, and transparently accessible.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Interaction&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;User interaction is unobtrusive.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Context awareness&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;System understands context and adapts.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Autonomy&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Devices operate without constant human control.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Intelligence&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;System handles dynamic actions and interactions.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Example: smart-home system that reacts to location, time, user habits, and device state.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

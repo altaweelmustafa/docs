@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Threads on Docs</title>
-    <link>http://localhost:1313/docs/tags/threads/</link>
-    <description>Recent content in Threads on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/threads/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 1 – Threads and Context Switching</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch3/part-1-threads-context-switching/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch3/part-1-threads-context-switching/</guid>
-      <description>&lt;h2 id=&#34;basic-idea&#34;&gt;Basic idea&lt;/h2&gt;&#xA;&lt;p&gt;Distributed systems run many activities at the same time. To organize those activities, we use processes and threads.&lt;/p&gt;&#xA;&lt;p&gt;The slides describe threads as &lt;strong&gt;virtual processors in software&lt;/strong&gt; built on top of physical processors.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;processor-thread-and-process&#34;&gt;Processor, thread, and process&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Concept&lt;/th&gt;&#xA;          &lt;th&gt;Meaning&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Processor&lt;/td&gt;&#xA;          &lt;td&gt;Physical execution unit that provides instructions and executes instruction sequences.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Thread&lt;/td&gt;&#xA;          &lt;td&gt;Minimal software processor/execution context in which instructions can execute.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Process&lt;/td&gt;&#xA;          &lt;td&gt;Software processor/context in which one or more threads can execute.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Simple way:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 2 – Thread Implementations and Distributed Use</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</guid>
-      <description>&lt;h2 id=&#34;main-issue&#34;&gt;Main issue&lt;/h2&gt;&#xA;&lt;p&gt;Should threads be implemented:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;in user space, by a user-level thread library, or&lt;/li&gt;&#xA;&lt;li&gt;inside the OS kernel?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each choice has advantages and problems.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;user-level-threads&#34;&gt;User-level threads&lt;/h2&gt;&#xA;&lt;p&gt;User-level threads are managed by a library inside one process.&lt;/p&gt;&#xA;&lt;p&gt;Advantages:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;thread operations are very fast,&lt;/li&gt;&#xA;&lt;li&gt;no kernel trap is needed for every thread operation,&lt;/li&gt;&#xA;&lt;li&gt;scheduling can be customized by the application.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the kernel may see only one process, not individual threads,&lt;/li&gt;&#xA;&lt;li&gt;if one user thread makes a blocking system call, the whole process may block,&lt;/li&gt;&#xA;&lt;li&gt;external events/signals are harder because the kernel cannot easily target a specific user thread.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Exam sentence:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 4 – Threads</title>
-      <link>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</link>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</guid>
-      <description>&lt;h2 id=&#34;threads&#34;&gt;Threads&lt;/h2&gt;&#xA;&lt;h3 id=&#34;process-heavyweight-process&#34;&gt;Process (Heavyweight Process)&lt;/h3&gt;&#xA;&lt;p&gt;A traditional &lt;strong&gt;process&lt;/strong&gt; (also called a heavyweight process) contains:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Shared among all threads in the process:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Code Section&lt;/li&gt;&#xA;&lt;li&gt;Data Section&lt;/li&gt;&#xA;&lt;li&gt;Opened Files&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private to the process instance (PCB):&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Process ID&lt;/li&gt;&#xA;&lt;li&gt;Register Set&lt;/li&gt;&#xA;&lt;li&gt;Program Counter (PC)&lt;/li&gt;&#xA;&lt;li&gt;Stack Section&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────────────────────────┐&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  Code Section │ Data Section │ Open Files  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├──────────────────────────────┤&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  PID │ Register Set │ Stack  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│            PC →  ~~~~~       │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──────────────────────────────┘&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             Single-threaded Process&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;thread-lightweight-process&#34;&gt;Thread (Lightweight Process)&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;thread&lt;/strong&gt; is a lightweight process. It is the basic unit of CPU utilization.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Threads on Docs</title>
+		<link>http://localhost:1313/docs/tags/threads/</link>
+		<description>Recent content in Threads on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/threads/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 1 – Threads and Context Switching</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch3/part-1-threads-context-switching/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch3/part-1-threads-context-switching/</guid>
+				<description>&lt;h2 id=&#34;basic-idea&#34;&gt;Basic idea&lt;/h2&gt;&#xA;&lt;p&gt;Distributed systems run many activities at the same time. To organize those activities, we use processes and threads.&lt;/p&gt;&#xA;&lt;p&gt;The slides describe threads as &lt;strong&gt;virtual processors in software&lt;/strong&gt; built on top of physical processors.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;processor-thread-and-process&#34;&gt;Processor, thread, and process&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Concept&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Processor&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Physical execution unit that provides instructions and executes instruction sequences.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Thread&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Minimal software processor/execution context in which instructions can execute.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Process&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Software processor/context in which one or more threads can execute.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Simple way:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 2 – Thread Implementations and Distributed Use</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</guid>
+				<description>&lt;h2 id=&#34;main-issue&#34;&gt;Main issue&lt;/h2&gt;&#xA;&lt;p&gt;Should threads be implemented:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;in user space, by a user-level thread library, or&lt;/li&gt;&#xA;&lt;li&gt;inside the OS kernel?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each choice has advantages and problems.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;user-level-threads&#34;&gt;User-level threads&lt;/h2&gt;&#xA;&lt;p&gt;User-level threads are managed by a library inside one process.&lt;/p&gt;&#xA;&lt;p&gt;Advantages:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;thread operations are very fast,&lt;/li&gt;&#xA;&lt;li&gt;no kernel trap is needed for every thread operation,&lt;/li&gt;&#xA;&lt;li&gt;scheduling can be customized by the application.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the kernel may see only one process, not individual threads,&lt;/li&gt;&#xA;&lt;li&gt;if one user thread makes a blocking system call, the whole process may block,&lt;/li&gt;&#xA;&lt;li&gt;external events/signals are harder because the kernel cannot easily target a specific user thread.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Exam sentence:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 4 – Threads</title>
+				<link>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</guid>
+				<description>&lt;h2 id=&#34;threads&#34;&gt;Threads&lt;/h2&gt;&#xA;&lt;h3 id=&#34;process-heavyweight-process&#34;&gt;Process (Heavyweight Process)&lt;/h3&gt;&#xA;&lt;p&gt;A traditional &lt;strong&gt;process&lt;/strong&gt; (also called a heavyweight process) contains:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Shared among all threads in the process:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Code Section&lt;/li&gt;&#xA;&lt;li&gt;Data Section&lt;/li&gt;&#xA;&lt;li&gt;Opened Files&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private to the process instance (PCB):&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Process ID&lt;/li&gt;&#xA;&lt;li&gt;Register Set&lt;/li&gt;&#xA;&lt;li&gt;Program Counter (PC)&lt;/li&gt;&#xA;&lt;li&gt;Stack Section&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌──────────────────────────────┐&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  Code Section │ Data Section │ Open Files  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├──────────────────────────────┤&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  PID │ Register Set │ Stack  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│            PC →  ~~~~~       │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──────────────────────────────┘&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             Single-threaded Process&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;thread-lightweight-process&#34;&gt;Thread (Lightweight Process)&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;thread&lt;/strong&gt; is a lightweight process. It is the basic unit of CPU utilization.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -21,7 +21,7 @@
 <article>
   <h2 class="post-title">Chapter 5, Part 1 – Physical, Logical, and Vector Clocks</h2>
   <p class="post-date"><em>posted on 2026 Jul 03</em></p>
-  
+   
   <nav class="toc">
     <strong>Contents</strong>
     <nav id="TableOfContents">
@@ -58,43 +58,43 @@
 <hr>
 <h2 id="precision-vs-accuracy">Precision vs accuracy</h2>
 <table>
-  <thead>
-      <tr>
-          <th>Concept</th>
-          <th>Meaning</th>
-          <th>Formula</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Precision</td>
-          <td>Clocks of different machines are close to each other.</td>
-          <td>`∀t, ∀p,q:</td>
-      </tr>
-      <tr>
-          <td>Accuracy</td>
-          <td>A machine clock is close to real UTC time.</td>
-          <td>`∀t, ∀p:</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Meaning</th>
+					<th>Formula</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Precision</td>
+					<td>Clocks of different machines are close to each other.</td>
+					<td>`∀t, ∀p,q:</td>
+			</tr>
+			<tr>
+					<td>Accuracy</td>
+					<td>A machine clock is close to real UTC time.</td>
+					<td>`∀t, ∀p:</td>
+			</tr>
+	</tbody>
 </table>
 <table>
-  <thead>
-      <tr>
-          <th>Synchronization type</th>
-          <th>Goal</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Internal synchronization</td>
-          <td>Keep clocks precise relative to each other.</td>
-      </tr>
-      <tr>
-          <td>External synchronization</td>
-          <td>Keep clocks accurate relative to UTC.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Synchronization type</th>
+					<th>Goal</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Internal synchronization</td>
+					<td>Keep clocks precise relative to each other.</td>
+			</tr>
+			<tr>
+					<td>External synchronization</td>
+					<td>Keep clocks accurate relative to UTC.</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="clock-drift">Clock drift</h2>
@@ -183,26 +183,26 @@
 </span></span><span class="line"><span class="cl">and for at least one k: ts(a)[k] &lt; ts(b)[k]
 </span></span></code></pre></div><p>Cases:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Comparison</th>
-          <th>Meaning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>ts(a) &lt; ts(b)</code></td>
-          <td><code>a</code> may causally precede <code>b</code>.</td>
-      </tr>
-      <tr>
-          <td><code>ts(a) &gt; ts(b)</code></td>
-          <td><code>b</code> may causally precede <code>a</code>.</td>
-      </tr>
-      <tr>
-          <td>neither <code>&lt;</code> nor <code>&gt;</code></td>
-          <td>events are concurrent / may conflict.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Comparison</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>ts(a) &lt; ts(b)</code></td>
+					<td><code>a</code> may causally precede <code>b</code>.</td>
+			</tr>
+			<tr>
+					<td><code>ts(a) &gt; ts(b)</code></td>
+					<td><code>b</code> may causally precede <code>a</code>.</td>
+			</tr>
+			<tr>
+					<td>neither <code>&lt;</code> nor <code>&gt;</code></td>
+					<td>events are concurrent / may conflict.</td>
+			</tr>
+	</tbody>
 </table>
 <p>Example:</p>
 <ul>

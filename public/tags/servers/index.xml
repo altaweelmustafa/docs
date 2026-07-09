@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Servers on Docs</title>
-    <link>http://localhost:1313/docs/tags/servers/</link>
-    <description>Recent content in Servers on Docs</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/docs/tags/servers/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chapter 3, Part 2 – Thread Implementations and Distributed Use</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</guid>
-      <description>&lt;h2 id=&#34;main-issue&#34;&gt;Main issue&lt;/h2&gt;&#xA;&lt;p&gt;Should threads be implemented:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;in user space, by a user-level thread library, or&lt;/li&gt;&#xA;&lt;li&gt;inside the OS kernel?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each choice has advantages and problems.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;user-level-threads&#34;&gt;User-level threads&lt;/h2&gt;&#xA;&lt;p&gt;User-level threads are managed by a library inside one process.&lt;/p&gt;&#xA;&lt;p&gt;Advantages:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;thread operations are very fast,&lt;/li&gt;&#xA;&lt;li&gt;no kernel trap is needed for every thread operation,&lt;/li&gt;&#xA;&lt;li&gt;scheduling can be customized by the application.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the kernel may see only one process, not individual threads,&lt;/li&gt;&#xA;&lt;li&gt;if one user thread makes a blocking system call, the whole process may block,&lt;/li&gt;&#xA;&lt;li&gt;external events/signals are harder because the kernel cannot easily target a specific user thread.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Exam sentence:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Chapter 3, Part 4 – Clients and Servers</title>
-      <link>http://localhost:1313/docs/courses/distributed/ch3/part-4-clients-and-servers/</link>
-      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/courses/distributed/ch3/part-4-clients-and-servers/</guid>
-      <description>&lt;h2 id=&#34;client-server-interaction&#34;&gt;Client-server interaction&lt;/h2&gt;&#xA;&lt;p&gt;A client requests a service; a server provides it.&lt;/p&gt;&#xA;&lt;p&gt;In distributed systems, we distinguish:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;application-level solutions,&lt;/li&gt;&#xA;&lt;li&gt;middleware-level solutions.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Middleware often helps hide distribution by providing stubs, naming, communication, and failure handling.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;networked-user-interfaces&#34;&gt;Networked user interfaces&lt;/h2&gt;&#xA;&lt;h3 id=&#34;x-window-system-idea&#34;&gt;X Window system idea&lt;/h3&gt;&#xA;&lt;p&gt;The X Window example shows that “client” and “server” can be confusing.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The application acts as an X client.&lt;/li&gt;&#xA;&lt;li&gt;The X kernel/server runs on the user’s machine and controls display/input.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So the machine in front of the user can run the X server, while the application can run remotely.&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Servers on Docs</title>
+		<link>http://localhost:1313/docs/tags/servers/</link>
+		<description>Recent content in Servers on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/servers/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 2 – Thread Implementations and Distributed Use</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch3/part-2-thread-implementations-and-usage/</guid>
+				<description>&lt;h2 id=&#34;main-issue&#34;&gt;Main issue&lt;/h2&gt;&#xA;&lt;p&gt;Should threads be implemented:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;in user space, by a user-level thread library, or&lt;/li&gt;&#xA;&lt;li&gt;inside the OS kernel?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Each choice has advantages and problems.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;user-level-threads&#34;&gt;User-level threads&lt;/h2&gt;&#xA;&lt;p&gt;User-level threads are managed by a library inside one process.&lt;/p&gt;&#xA;&lt;p&gt;Advantages:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;thread operations are very fast,&lt;/li&gt;&#xA;&lt;li&gt;no kernel trap is needed for every thread operation,&lt;/li&gt;&#xA;&lt;li&gt;scheduling can be customized by the application.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Problems:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the kernel may see only one process, not individual threads,&lt;/li&gt;&#xA;&lt;li&gt;if one user thread makes a blocking system call, the whole process may block,&lt;/li&gt;&#xA;&lt;li&gt;external events/signals are harder because the kernel cannot easily target a specific user thread.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Exam sentence:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 4 – Clients and Servers</title>
+				<link>http://localhost:1313/docs/courses/distributed/ch3/part-4-clients-and-servers/</link>
+				<pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/distributed/ch3/part-4-clients-and-servers/</guid>
+				<description>&lt;h2 id=&#34;client-server-interaction&#34;&gt;Client-server interaction&lt;/h2&gt;&#xA;&lt;p&gt;A client requests a service; a server provides it.&lt;/p&gt;&#xA;&lt;p&gt;In distributed systems, we distinguish:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;application-level solutions,&lt;/li&gt;&#xA;&lt;li&gt;middleware-level solutions.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Middleware often helps hide distribution by providing stubs, naming, communication, and failure handling.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;networked-user-interfaces&#34;&gt;Networked user interfaces&lt;/h2&gt;&#xA;&lt;h3 id=&#34;x-window-system-idea&#34;&gt;X Window system idea&lt;/h3&gt;&#xA;&lt;p&gt;The X Window example shows that “client” and “server” can be confusing.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The application acts as an X client.&lt;/li&gt;&#xA;&lt;li&gt;The X kernel/server runs on the user’s machine and controls display/input.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So the machine in front of the user can run the X server, while the application can run remotely.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
