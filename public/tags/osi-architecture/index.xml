@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Attacks on Docs</title>
-		<link>http://localhost:1313/docs/tags/attacks/</link>
-		<description>Recent content in Attacks on Docs</description>
+		<title>Osi-Architecture on Docs</title>
+		<link>http://localhost:1313/docs/tags/osi-architecture/</link>
+		<description>Recent content in Osi-Architecture on Docs</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
@@ -12,7 +12,7 @@
 		
 			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
-			<atom:link href="http://localhost:1313/docs/tags/attacks/index.xml" rel="self" type="application/rss+xml" />
+			<atom:link href="http://localhost:1313/docs/tags/osi-architecture/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Chapter 1, Part 2 – The OSI Security Architecture &amp; Security Attacks</title>
 				<link>http://localhost:1313/docs/courses/crypto/ch1/part2-osi-architecture-attacks/</link>

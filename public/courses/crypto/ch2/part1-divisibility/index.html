@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 1 – Divisibility &amp; the Division Algorithm · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 1 – Divisibility &amp; the Division Algorithm</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#divisibility">Divisibility</a>
+      <ul>
+        <li><a href="#why-the-last-property-holds">Why the last property holds</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-division-algorithm">The division algorithm</a></li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="divisibility">Divisibility</h2>
+<p>We say a non-zero integer <strong>b divides a</strong> (written <code>b | a</code>) if <code>a = mb</code> for some integer <code>m</code> — i.e. there&rsquo;s no remainder.</p>
+<p>Useful properties to know cold:</p>
+<ul>
+<li>If <code>a | 1</code>, then <code>a = ±1</code>.</li>
+<li>If <code>a | b</code> and <code>b | a</code>, then <code>a = ±b</code>.</li>
+<li>Any non-zero <code>b</code> divides 0.</li>
+<li>If <code>a | b</code> and <code>b | c</code>, then <code>a | c</code> (divisibility is transitive). Example: <code>11 | 66</code> and <code>66 | 198</code>, so <code>11 | 198</code>.</li>
+<li>If <code>b | g</code> and <code>b | h</code>, then <code>b | (mg + nh)</code> for <strong>any</strong> integers <code>m, n</code>.</li>
+</ul>
+<h3 id="why-the-last-property-holds">Why the last property holds</h3>
+<p>If <code>b | g</code>, then <code>g = b·g₁</code> for some integer <code>g₁</code>. If <code>b | h</code>, then <code>h = b·h₁</code> for some integer <code>h₁</code>. So:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mg + nh = m(bg₁) + n(bh₁) = b(mg₁ + nh₁)
+</span></span></code></pre></div><p>which is clearly divisible by <code>b</code>.</p>
+<p><strong>Worked example:</strong> <code>b = 7, g = 14, h = 63, m = 3, n = 2</code>. Since <code>7 | 14</code> and <code>7 | 63</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">3·14 + 2·63 = 42 + 126 = 168 = 7 × 24
+</span></span></code></pre></div><p>so <code>7 | (3·14 + 2·63)</code>, confirming the property.</p>
+<hr>
+<h2 id="the-division-algorithm">The division algorithm</h2>
+<p>For any positive integer <code>n</code> and non-negative integer <code>a</code>, dividing <code>a</code> by <code>n</code> gives a unique quotient <code>q</code> and remainder <code>r</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a = qn + r        0 ≤ r &lt; n,   q = ⌊a/n⌋
+</span></span></code></pre></div><p><code>r</code> is often called the <strong>residue</strong>. Visually (Figure 2.1), mark 0, n, 2n, 3n, … on a number line; <code>a</code> falls somewhere past <code>qn</code> and before <code>(q+1)n</code>, and the distance from <code>qn</code> to <code>a</code> is <code>r</code>.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>a = 11, n = 7</code> → <code>11 = 1×7 + 4</code> → <code>q = 1, r = 4</code></li>
+<li><code>a = -11, n = 7</code> → <code>-11 = (-2)×7 + 3</code> → <code>q = -2, r = 3</code> (note <code>r</code> is always non-negative, even for negative <code>a</code>)</li>
+</ul>
+<blockquote>
+<p>Exam sentence: the division algorithm always produces a <em>non-negative</em> remainder strictly less than <code>n</code>, regardless of the sign of <code>a</code> — this is what makes modular arithmetic well-defined later in the chapter.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Divisibility properties (especially the linear-combination property) are the toolwork behind the Euclidean algorithm in Part 2. The division algorithm&rsquo;s remainder is always in <code>[0, n)</code>.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>State and prove that if <code>b | g</code> and <code>b | h</code>, then <code>b</code> divides any integer linear combination <code>mg + nh</code>.</li>
+<li>Compute <code>q</code> and <code>r</code> for <code>a = -23, n = 5</code> using the division algorithm.</li>
+<li>Why must <code>r</code> satisfy <code>0 ≤ r &lt; n</code> rather than <code>-n &lt; r &lt; n</code>?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/" id="nav-next"><em>Chapter 2, Part 2 – The Euclidean Algorithm &amp; GCD</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

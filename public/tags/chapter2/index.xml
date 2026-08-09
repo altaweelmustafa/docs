@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Chapter2 on Docs</title>
+		<link>http://localhost:1313/docs/tags/chapter2/</link>
+		<description>Recent content in Chapter2 on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/chapter2/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2, Part 1 – Divisibility &amp; the Division Algorithm</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part1-divisibility/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part1-divisibility/</guid>
+				<description>&lt;h2 id=&#34;divisibility&#34;&gt;Divisibility&lt;/h2&gt;&#xA;&lt;p&gt;We say a non-zero integer &lt;strong&gt;b divides a&lt;/strong&gt; (written &lt;code&gt;b | a&lt;/code&gt;) if &lt;code&gt;a = mb&lt;/code&gt; for some integer &lt;code&gt;m&lt;/code&gt; — i.e. there&amp;rsquo;s no remainder.&lt;/p&gt;&#xA;&lt;p&gt;Useful properties to know cold:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | 1&lt;/code&gt;, then &lt;code&gt;a = ±1&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | b&lt;/code&gt; and &lt;code&gt;b | a&lt;/code&gt;, then &lt;code&gt;a = ±b&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Any non-zero &lt;code&gt;b&lt;/code&gt; divides 0.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | b&lt;/code&gt; and &lt;code&gt;b | c&lt;/code&gt;, then &lt;code&gt;a | c&lt;/code&gt; (divisibility is transitive). Example: &lt;code&gt;11 | 66&lt;/code&gt; and &lt;code&gt;66 | 198&lt;/code&gt;, so &lt;code&gt;11 | 198&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;b | g&lt;/code&gt; and &lt;code&gt;b | h&lt;/code&gt;, then &lt;code&gt;b | (mg + nh)&lt;/code&gt; for &lt;strong&gt;any&lt;/strong&gt; integers &lt;code&gt;m, n&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;why-the-last-property-holds&#34;&gt;Why the last property holds&lt;/h3&gt;&#xA;&lt;p&gt;If &lt;code&gt;b | g&lt;/code&gt;, then &lt;code&gt;g = b·g₁&lt;/code&gt; for some integer &lt;code&gt;g₁&lt;/code&gt;. If &lt;code&gt;b | h&lt;/code&gt;, then &lt;code&gt;h = b·h₁&lt;/code&gt; for some integer &lt;code&gt;h₁&lt;/code&gt;. So:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 2 – The Euclidean Algorithm &amp; GCD</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/</guid>
+				<description>&lt;h2 id=&#34;greatest-common-divisor-gcd&#34;&gt;Greatest common divisor (GCD)&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;gcd(a, b)&lt;/code&gt; is the largest integer that divides both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;. Formally, positive integer &lt;code&gt;c = gcd(a, b)&lt;/code&gt; if:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;c&lt;/code&gt; divides both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;, and&lt;/li&gt;&#xA;&lt;li&gt;any divisor of both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; also divides &lt;code&gt;c&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Equivalently: &lt;code&gt;gcd(a, b) = max{k : k | a and k | b}&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Special cases and identities:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;gcd(0, 0) = 0&lt;/code&gt; (defined by convention).&lt;/li&gt;&#xA;&lt;li&gt;Because GCD must be positive: &lt;code&gt;gcd(a, b) = gcd(a, -b) = gcd(-a, b) = gcd(-a, -b) = gcd(|a|, |b|)&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;gcd(60, 24) = gcd(60, -24) = 12&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Since every non-zero integer divides 0: &lt;code&gt;gcd(a, 0) = |a|&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;relatively-prime&#34;&gt;Relatively prime&lt;/h3&gt;&#xA;&lt;p&gt;Two integers &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are &lt;strong&gt;relatively prime&lt;/strong&gt; if their only common positive divisor is 1 — equivalently, &lt;code&gt;gcd(a, b) = 1&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 3 – Modular Arithmetic</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/</guid>
+				<description>&lt;h2 id=&#34;the-modulus&#34;&gt;The modulus&lt;/h2&gt;&#xA;&lt;p&gt;For integer &lt;code&gt;a&lt;/code&gt; and positive integer &lt;code&gt;n&lt;/code&gt;, &lt;code&gt;a mod n&lt;/code&gt; is defined as the remainder when &lt;code&gt;a&lt;/code&gt; is divided by &lt;code&gt;n&lt;/code&gt;. &lt;code&gt;n&lt;/code&gt; is called the &lt;strong&gt;modulus&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = qn + r        0 ≤ r &amp;lt; n,   q = ⌊a/n⌋&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = ⌊a/n⌋·n + (a mod n)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Examples:&lt;/strong&gt; &lt;code&gt;11 mod 7 = 4&lt;/code&gt;; &lt;code&gt;-11 mod 7 = 3&lt;/code&gt; (remember: the result of &lt;code&gt;mod&lt;/code&gt; is always non-negative).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;congruence&#34;&gt;Congruence&lt;/h2&gt;&#xA;&lt;p&gt;Two integers &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are &lt;strong&gt;congruent modulo n&lt;/strong&gt; if &lt;code&gt;(a mod n) = (b mod n)&lt;/code&gt;, written &lt;code&gt;a ≡ b (mod n)&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 2, Part 4 – Prime Numbers, Fermat&#39;s &amp; Euler&#39;s Theorems</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/</guid>
+				<description>&lt;h2 id=&#34;prime-numbers&#34;&gt;Prime numbers&lt;/h2&gt;&#xA;&lt;p&gt;An integer &lt;code&gt;p &amp;gt; 1&lt;/code&gt; is &lt;strong&gt;prime&lt;/strong&gt; if and only if its only divisors are &lt;code&gt;±1&lt;/code&gt; and &lt;code&gt;±p&lt;/code&gt;. Primes are central to number theory and to everything that follows in public-key cryptography.&lt;/p&gt;&#xA;&lt;h3 id=&#34;fundamental-theorem-of-arithmetic&#34;&gt;Fundamental theorem of arithmetic&lt;/h3&gt;&#xA;&lt;p&gt;Every integer &lt;code&gt;a &amp;gt; 1&lt;/code&gt; factors &lt;strong&gt;uniquely&lt;/strong&gt; as:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = p1^a1 × p2^a2 × ... × pt^at&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;where &lt;code&gt;p1 &amp;lt; p2 &amp;lt; ... &amp;lt; pt&lt;/code&gt; are primes and each &lt;code&gt;ai&lt;/code&gt; is a positive integer. In other words, every integer greater than 1 has one and only one prime factorization (up to ordering).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

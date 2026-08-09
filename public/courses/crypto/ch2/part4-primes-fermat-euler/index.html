@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 4 – Prime Numbers, Fermat&#39;s &amp; Euler&#39;s Theorems · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 4 – Prime Numbers, Fermat&#39;s &amp; Euler&#39;s Theorems</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prime-numbers">Prime numbers</a>
+      <ul>
+        <li><a href="#fundamental-theorem-of-arithmetic">Fundamental theorem of arithmetic</a></li>
+      </ul>
+    </li>
+    <li><a href="#fermats-little-theorem">Fermat&rsquo;s little theorem</a></li>
+    <li><a href="#eulers-theorem">Euler&rsquo;s theorem</a></li>
+    <li><a href="#why-this-matters">Why this matters</a></li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="prime-numbers">Prime numbers</h2>
+<p>An integer <code>p &gt; 1</code> is <strong>prime</strong> if and only if its only divisors are <code>±1</code> and <code>±p</code>. Primes are central to number theory and to everything that follows in public-key cryptography.</p>
+<h3 id="fundamental-theorem-of-arithmetic">Fundamental theorem of arithmetic</h3>
+<p>Every integer <code>a &gt; 1</code> factors <strong>uniquely</strong> as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a = p1^a1 × p2^a2 × ... × pt^at
+</span></span></code></pre></div><p>where <code>p1 &lt; p2 &lt; ... &lt; pt</code> are primes and each <code>ai</code> is a positive integer. In other words, every integer greater than 1 has one and only one prime factorization (up to ordering).</p>
+<hr>
+<h2 id="fermats-little-theorem">Fermat&rsquo;s little theorem</h2>
+<p>If <code>p</code> is prime and <code>a</code> is a positive integer <strong>not divisible by <code>p</code></strong>, then:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a^(p-1) ≡ 1 (mod p)
+</span></span></code></pre></div><p><strong>Alternative form</strong> (holds for <em>any</em> positive integer <code>a</code>, divisible by <code>p</code> or not):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a^p ≡ a (mod p)
+</span></span></code></pre></div><p>This theorem plays a critical role in public-key algorithms and primality testing.</p>
+<hr>
+<h2 id="eulers-theorem">Euler&rsquo;s theorem</h2>
+<p>For every <code>a</code> and <code>n</code> that are <strong>relatively prime</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a^φ(n) ≡ 1 (mod n)
+</span></span></code></pre></div><p>where <code>φ(n)</code> is <strong>Euler&rsquo;s totient function</strong> — the count of positive integers less than <code>n</code> that are relatively prime to <code>n</code>.</p>
+<p><strong>Alternative form:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a^(φ(n)+1) ≡ a (mod n)
+</span></span></code></pre></div><p>Euler&rsquo;s theorem is a generalization of Fermat&rsquo;s: when <code>n = p</code> is prime, <code>φ(p) = p - 1</code>, and Euler&rsquo;s theorem reduces exactly to Fermat&rsquo;s little theorem.</p>
+<blockquote>
+<p>Exam sentence: Fermat&rsquo;s theorem is a special case of Euler&rsquo;s theorem for prime moduli — Fermat needs <code>p</code> prime, Euler only needs <code>gcd(a, n) = 1</code>.</p>
+</blockquote>
+<hr>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>These two theorems are the mathematical backbone of asymmetric cryptography covered later in the course — most directly, RSA&rsquo;s correctness proof relies on Euler&rsquo;s theorem (with <code>n</code> a product of two primes, so <code>φ(n) = (p-1)(q-1)</code>).</p>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Fundamental theorem of arithmetic: unique prime factorization. Fermat&rsquo;s little theorem needs a prime modulus; Euler&rsquo;s theorem generalizes it to any modulus, as long as the base is relatively prime to the modulus.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>State Fermat&rsquo;s little theorem and its alternate form.</li>
+<li>State Euler&rsquo;s theorem, and explain why it generalizes Fermat&rsquo;s.</li>
+<li>Why must <code>a</code> and <code>n</code> be relatively prime for Euler&rsquo;s theorem to apply?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/" id="nav-prev"><em>Chapter 2, Part 3 – Modular Arithmetic</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

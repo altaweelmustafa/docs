@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2, Part 3 – Modular Arithmetic · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 2, Part 3 – Modular Arithmetic</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-modulus">The modulus</a></li>
+    <li><a href="#congruence">Congruence</a>
+      <ul>
+        <li><a href="#properties-of-congruence">Properties of congruence</a></li>
+      </ul>
+    </li>
+    <li><a href="#modular-arithmetic-exhibits-familiar-structure">Modular arithmetic exhibits familiar structure</a>
+      <ul>
+        <li><a href="#zn-as-a-commutative-ring">Zn as a commutative ring</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="the-modulus">The modulus</h2>
+<p>For integer <code>a</code> and positive integer <code>n</code>, <code>a mod n</code> is defined as the remainder when <code>a</code> is divided by <code>n</code>. <code>n</code> is called the <strong>modulus</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"><span class="err">a</span> = qn + r        0 ≤ r &lt; n,   q = ⌊a/n⌋
+</span></span><span class="line"><span class="cl">a = ⌊a/n⌋·n + (a mod n)
+</span></span></code></pre></div><p><strong>Examples:</strong> <code>11 mod 7 = 4</code>; <code>-11 mod 7 = 3</code> (remember: the result of <code>mod</code> is always non-negative).</p>
+<hr>
+<h2 id="congruence">Congruence</h2>
+<p>Two integers <code>a</code> and <code>b</code> are <strong>congruent modulo n</strong> if <code>(a mod n) = (b mod n)</code>, written <code>a ≡ b (mod n)</code>.</p>
+<p>If <code>a ≡ 0 (mod n)</code>, then <code>n | a</code>.</p>
+<p><strong>Examples:</strong> <code>73 ≡ 4 (mod 23)</code>; <code>21 ≡ -9 (mod 10)</code>.</p>
+<h3 id="properties-of-congruence">Properties of congruence</h3>
+<ol>
+<li><code>a ≡ b (mod n)</code> if <code>n | (a − b)</code>.</li>
+<li><code>a ≡ b (mod n)</code> implies <code>b ≡ a (mod n)</code> (symmetric).</li>
+<li><code>a ≡ b (mod n)</code> and <code>b ≡ c (mod n)</code> implies <code>a ≡ c (mod n)</code> (transitive).</li>
+</ol>
+<p><strong>Worked examples:</strong></p>
+<ul>
+<li><code>23 ≡ 8 (mod 5)</code> because <code>23 − 8 = 15 = 5 × 3</code>.</li>
+<li><code>-11 ≡ 5 (mod 8)</code> because <code>-11 − 5 = -16 = 8 × (-2)</code>.</li>
+<li><code>81 ≡ 0 (mod 27)</code> because <code>81 − 0 = 81 = 27 × 3</code>.</li>
+</ul>
+<hr>
+<h2 id="modular-arithmetic-exhibits-familiar-structure">Modular arithmetic exhibits familiar structure</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[(a mod n) + (b mod n)] mod n = (a + b) mod n
+</span></span><span class="line"><span class="cl">[(a mod n) − (b mod n)] mod n = (a − b) mod n
+</span></span><span class="line"><span class="cl">[(a mod n) × (b mod n)] mod n = (a × b) mod n
+</span></span></code></pre></div><p><strong>Worked example</strong> (<code>a = 11, b = 15, n = 8</code>):</p>
+<table>
+	<thead>
+			<tr>
+					<th>Expression</th>
+					<th>Value</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>11 mod 8</code>, <code>15 mod 8</code></td>
+					<td><code>3</code>, <code>7</code></td>
+			</tr>
+			<tr>
+					<td><code>[(11 mod 8) + (15 mod 8)] mod 8</code></td>
+					<td><code>10 mod 8 = 2</code></td>
+			</tr>
+			<tr>
+					<td><code>(11 + 15) mod 8</code></td>
+					<td><code>26 mod 8 = 2</code> ✓</td>
+			</tr>
+			<tr>
+					<td><code>[(11 mod 8) − (15 mod 8)] mod 8</code></td>
+					<td><code>-4 mod 8 = 4</code></td>
+			</tr>
+			<tr>
+					<td><code>(11 − 15) mod 8</code></td>
+					<td><code>-4 mod 8 = 4</code> ✓</td>
+			</tr>
+			<tr>
+					<td><code>[(11 mod 8) × (15 mod 8)] mod 8</code></td>
+					<td><code>21 mod 8 = 5</code></td>
+			</tr>
+			<tr>
+					<td><code>(11 × 15) mod 8</code></td>
+					<td><code>165 mod 8 = 5</code> ✓</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="zn-as-a-commutative-ring">Zn as a commutative ring</h3>
+<p>Working within <code>Zn = {0, 1, ..., n-1}</code>, arithmetic obeys:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Property</th>
+					<th>Expression</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Commutative</td>
+					<td><code>(w + x) mod n = (x + w) mod n</code>, same for <code>×</code></td>
+			</tr>
+			<tr>
+					<td>Associative</td>
+					<td><code>[(w + x) + y] mod n = [w + (x + y)] mod n</code>, same for <code>×</code></td>
+			</tr>
+			<tr>
+					<td>Distributive</td>
+					<td><code>[w × (x + y)] mod n = [(w×x) + (w×y)] mod n</code></td>
+			</tr>
+			<tr>
+					<td>Identities</td>
+					<td><code>(0 + w) mod n = w mod n</code>, <code>(1 × w) mod n = w mod n</code></td>
+			</tr>
+			<tr>
+					<td>Additive inverse</td>
+					<td>for every <code>w ∈ Zn</code>, some <code>z</code> exists with <code>w + z ≡ 0 (mod n)</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>This makes <code>Zn</code> a <strong>commutative ring with a multiplicative identity</strong>.</p>
+<p><strong>Multiplicative inverses are special:</strong> an integer has a multiplicative inverse in <code>Zn</code> only if it&rsquo;s relatively prime to <code>n</code>. In <code>Z8</code>: 1, 3, 5, 7 have inverses; 2, 4, 6 do not (they share a factor with 8).</p>
+<blockquote>
+<p>Exam sentence: additive inverses always exist in <code>Zn</code>; multiplicative inverses exist only for elements relatively prime to <code>n</code>.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p><code>a mod n</code> is always in <code>[0, n)</code>. Congruence is an equivalence relation (reflexive via property 2+3, symmetric, transitive). Addition, subtraction, and multiplication all &ldquo;commute&rdquo; with mod. Multiplicative inverses in <code>Zn</code> exist only for values coprime to <code>n</code>.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Show that <code>[(a mod n) × (b mod n)] mod n = (a × b) mod n</code> using the definitions <code>a mod n = ra</code>, <code>b mod n = rb</code>.</li>
+<li>Which elements of <code>Z12</code> have a multiplicative inverse?</li>
+<li>Is <code>40 ≡ 4 (mod 9)</code>? Show your work.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/" id="nav-prev"><em>Chapter 2, Part 2 – The Euclidean Algorithm &amp; GCD</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/" id="nav-next"><em>Chapter 2, Part 4 – Prime Numbers, Fermat&#39;s &amp; Euler&#39;s Theorems</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

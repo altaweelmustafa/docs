@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Modular-Arithmetic on Docs</title>
+		<link>http://localhost:1313/docs/tags/modular-arithmetic/</link>
+		<description>Recent content in Modular-Arithmetic on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/modular-arithmetic/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2, Part 3 – Modular Arithmetic</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/</guid>
+				<description>&lt;h2 id=&#34;the-modulus&#34;&gt;The modulus&lt;/h2&gt;&#xA;&lt;p&gt;For integer &lt;code&gt;a&lt;/code&gt; and positive integer &lt;code&gt;n&lt;/code&gt;, &lt;code&gt;a mod n&lt;/code&gt; is defined as the remainder when &lt;code&gt;a&lt;/code&gt; is divided by &lt;code&gt;n&lt;/code&gt;. &lt;code&gt;n&lt;/code&gt; is called the &lt;strong&gt;modulus&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = qn + r        0 ≤ r &amp;lt; n,   q = ⌊a/n⌋&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = ⌊a/n⌋·n + (a mod n)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Examples:&lt;/strong&gt; &lt;code&gt;11 mod 7 = 4&lt;/code&gt;; &lt;code&gt;-11 mod 7 = 3&lt;/code&gt; (remember: the result of &lt;code&gt;mod&lt;/code&gt; is always non-negative).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;congruence&#34;&gt;Congruence&lt;/h2&gt;&#xA;&lt;p&gt;Two integers &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are &lt;strong&gt;congruent modulo n&lt;/strong&gt; if &lt;code&gt;(a mod n) = (b mod n)&lt;/code&gt;, written &lt;code&gt;a ≡ b (mod n)&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 4 – Transposition Techniques · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 4 – Transposition Techniques</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#transposition-vs-substitution">Transposition vs. substitution</a></li>
+    <li><a href="#rail-fence-cipher">Rail fence cipher</a></li>
+    <li><a href="#row-columnar-transposition-cipher">Row (columnar) transposition cipher</a>
+      <ul>
+        <li><a href="#cryptanalysis">Cryptanalysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="transposition-vs-substitution">Transposition vs. substitution</h2>
+<p>Every technique so far substituted one symbol for another. A <strong>transposition cipher</strong> instead <strong>permutes</strong> (rearranges) the plaintext letters — no letter is replaced, just moved.</p>
+<hr>
+<h2 id="rail-fence-cipher">Rail fence cipher</h2>
+<p>The simplest transposition technique. Write the plaintext diagonally across a set number of &ldquo;rails,&rdquo; then read off row by row.</p>
+<p><strong>Example</strong> — <code>&quot;meet me after the toga party&quot;</code>, depth 2:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">m e m a t r h t g p r y
+</span></span><span class="line"><span class="cl"> e t e f e t e o a a t
+</span></span></code></pre></div><p>Reading row by row gives the ciphertext:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MEMATRHTGPRYETEFETEOAAT
+</span></span></code></pre></div><hr>
+<h2 id="row-columnar-transposition-cipher">Row (columnar) transposition cipher</h2>
+<p>A more complex scheme: write the plaintext into a rectangle <strong>row by row</strong>, then read it off <strong>column by column</strong> — but visit the columns in an order given by a key. That column order <em>is</em> the key.</p>
+<p><strong>Example</strong> — key (column order): <code>4 3 1 2 5 6 7</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Plaintext, written row by row:
+</span></span><span class="line"><span class="cl">a t t a c k p
+</span></span><span class="line"><span class="cl">o s t p o n e
+</span></span><span class="line"><span class="cl">d u n t i l t
+</span></span><span class="line"><span class="cl">w o a m x y z
+</span></span></code></pre></div><p>Encrypt by reading columns in the order the key specifies: start with the column labeled <code>1</code> (column 3), then column labeled <code>2</code> (column 4), then column 2, then column 1, then columns 5, 6, 7.</p>
+<p><strong>Ciphertext:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TTNAAPTMTSUOAODWCOIXKNLYPETZ
+</span></span></code></pre></div><h3 id="cryptanalysis">Cryptanalysis</h3>
+<p>A pure transposition cipher keeps the <strong>same letter frequencies</strong> as the plaintext — that&rsquo;s the giveaway that identifies it as transposition rather than substitution. Breaking it involves laying the ciphertext into a matrix and experimenting with column orders, often guided by digram/trigram frequency tables.</p>
+<p><strong>Strengthening it:</strong> apply transposition in <strong>multiple stages</strong> — the result is a more complex permutation that&rsquo;s much harder to reconstruct than a single pass.</p>
+<blockquote>
+<p>Exam sentence: substitution ciphers change letter <em>identity</em> but preserve <em>position</em>; transposition ciphers change letter <em>position</em> but preserve <em>identity</em> (and therefore preserve the plaintext&rsquo;s letter-frequency profile).</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Rail fence: write diagonally across N rails, read by row. Row transposition: write in a grid row by row, read by column in key-defined order. Transposition ciphers are detectable because letter frequency matches the plaintext language; multiple rounds of transposition increase security.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Encrypt <code>&quot;COMPUTER SCIENCE&quot;</code> with a rail fence cipher of depth 3.</li>
+<li>Why does a pure transposition cipher preserve letter frequency, and why is that a weakness?</li>
+<li>How does applying transposition twice in a row improve security over a single pass?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/" id="nav-prev"><em>Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/" id="nav-next"><em>Chapter 3, Part 5 – Steganography &amp; Digital Watermarking</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

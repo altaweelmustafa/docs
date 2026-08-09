@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 1 – Basic Concepts &amp; the Symmetric Cipher Model · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 1 – Basic Concepts &amp; the Symmetric Cipher Model</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#core-terminology">Core terminology</a></li>
+    <li><a href="#the-symmetric-cipher-model">The symmetric cipher model</a></li>
+    <li><a href="#three-dimensions-that-characterize-a-cryptosystem">Three dimensions that characterize a cryptosystem</a></li>
+    <li><a href="#cryptanalysis-vs-brute-force-attack">Cryptanalysis vs. brute-force attack</a>
+      <ul>
+        <li><a href="#types-of-cryptanalytic-attack-by-what-the-analyst-knows">Types of cryptanalytic attack (by what the analyst knows)</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="core-terminology">Core terminology</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Plaintext</strong></td>
+					<td>The original, intelligible message.</td>
+			</tr>
+			<tr>
+					<td><strong>Ciphertext</strong></td>
+					<td>The coded (unintelligible) message.</td>
+			</tr>
+			<tr>
+					<td><strong>Encryption / enciphering</strong></td>
+					<td>Converting plaintext → ciphertext.</td>
+			</tr>
+			<tr>
+					<td><strong>Decryption / deciphering</strong></td>
+					<td>Restoring plaintext from ciphertext.</td>
+			</tr>
+			<tr>
+					<td><strong>Cryptography</strong></td>
+					<td>The study of schemes used for encryption.</td>
+			</tr>
+			<tr>
+					<td><strong>Cryptographic system / cipher</strong></td>
+					<td>A particular such scheme.</td>
+			</tr>
+			<tr>
+					<td><strong>Cryptanalysis</strong></td>
+					<td>Techniques for deciphering a message <em>without</em> knowing the enciphering details — &ldquo;breaking the code.&rdquo;</td>
+			</tr>
+			<tr>
+					<td><strong>Cryptology</strong></td>
+					<td>Cryptography + cryptanalysis together.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="the-symmetric-cipher-model">The symmetric cipher model</h2>
+<p>A symmetric encryption scheme has five ingredients (Figure 3.1):</p>
+<ol>
+<li><strong>Plaintext</strong> — the original data fed into the algorithm.</li>
+<li><strong>Encryption algorithm</strong> — performs substitutions/transformations on the plaintext.</li>
+<li><strong>Secret key</strong> — independent of both plaintext and algorithm; the exact transformation depends on this value.</li>
+<li><strong>Ciphertext</strong> — the scrambled output; different keys on the same plaintext give different ciphertexts.</li>
+<li><strong>Decryption algorithm</strong> — essentially the encryption algorithm run in reverse, taking ciphertext + key back to plaintext.</li>
+</ol>
+<p><strong>Two requirements</strong> for secure use of symmetric encryption:</p>
+<ol>
+<li>A <strong>strong algorithm</strong> — an opponent who knows the algorithm and has ciphertexts (even ciphertext/plaintext pairs) shouldn&rsquo;t be able to recover the key or decrypt other ciphertexts.</li>
+<li>Sender and receiver must <strong>share the secret key securely</strong> and keep it protected.</li>
+</ol>
+<p>Crucially, the algorithm itself does <strong>not</strong> need to be secret — only the key does. This is what allows cheap, mass-produced hardware/software implementations of standard algorithms.</p>
+<hr>
+<h2 id="three-dimensions-that-characterize-a-cryptosystem">Three dimensions that characterize a cryptosystem</h2>
+<ol>
+<li><strong>Type of operation</strong>: substitution (elements are replaced by other elements) or transposition (elements are rearranged).</li>
+<li><strong>Number of keys</strong>: symmetric/single-key/secret-key/conventional (one shared key) vs. asymmetric/two-key/public-key (sender and receiver use different keys).</li>
+<li><strong>How plaintext is processed</strong>: block cipher (fixed-size blocks at a time) vs. stream cipher (continuous element-by-element processing).</li>
+</ol>
+<hr>
+<h2 id="cryptanalysis-vs-brute-force-attack">Cryptanalysis vs. brute-force attack</h2>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Cryptanalysis</th>
+					<th>Brute-force</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Approach</td>
+					<td>Exploits weaknesses in the algorithm&rsquo;s structure, plus knowledge of the plaintext&rsquo;s likely characteristics</td>
+					<td>Tries every possible key until an intelligible plaintext appears</td>
+			</tr>
+			<tr>
+					<td>Cost</td>
+					<td>Depends on algorithm weaknesses</td>
+					<td>On average, half the key space must be tried</td>
+			</tr>
+	</tbody>
+</table>
+<p>If either succeeds in recovering the key, <strong>all</strong> past and future messages under that key are compromised.</p>
+<h3 id="types-of-cryptanalytic-attack-by-what-the-analyst-knows">Types of cryptanalytic attack (by what the analyst knows)</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Attack type</th>
+					<th>Known to the cryptanalyst</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Ciphertext only</strong></td>
+					<td>Algorithm + ciphertext. (Hardest attack — least information.)</td>
+			</tr>
+			<tr>
+					<td><strong>Known plaintext</strong></td>
+					<td>Algorithm + ciphertext + one or more plaintext/ciphertext pairs.</td>
+			</tr>
+			<tr>
+					<td><strong>Chosen plaintext</strong></td>
+					<td>Algorithm + ciphertext + a plaintext of the analyst&rsquo;s choosing, along with its ciphertext.</td>
+			</tr>
+			<tr>
+					<td><strong>Chosen ciphertext</strong></td>
+					<td>Algorithm + ciphertext + a ciphertext of the analyst&rsquo;s choosing, along with its decrypted plaintext.</td>
+			</tr>
+			<tr>
+					<td><strong>Chosen text</strong></td>
+					<td>A combination of chosen plaintext and chosen ciphertext.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Ciphertext-only is easiest to defend against (least analyst information); as the analyst gains more chosen material, attacks become progressively more powerful.</p>
+<blockquote>
+<p>Exam sentence: the key never needs to stay secret in terms of the <em>algorithm</em> — Kerckhoffs&rsquo;s principle (implicit here) says security should rest entirely on the secrecy of the key, not the algorithm.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Five ingredients of a symmetric scheme: plaintext, algorithm, key, ciphertext, decryption algorithm. Three characterizing dimensions: operation type, key count, processing style. Five attack types ranked by how much the analyst knows, from ciphertext-only (weakest) to chosen-text (strongest).</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>List and explain the five ingredients of a symmetric encryption scheme.</li>
+<li>Why doesn&rsquo;t the encryption <em>algorithm</em> need to be kept secret?</li>
+<li>Rank the five cryptanalytic attack types from least to most information available to the attacker.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/" id="nav-next"><em>Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

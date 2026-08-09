@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Euclidean-Algorithm on Docs</title>
+		<link>http://localhost:1313/docs/tags/euclidean-algorithm/</link>
+		<description>Recent content in Euclidean-Algorithm on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/euclidean-algorithm/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2, Part 2 – The Euclidean Algorithm &amp; GCD</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/</guid>
+				<description>&lt;h2 id=&#34;greatest-common-divisor-gcd&#34;&gt;Greatest common divisor (GCD)&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;gcd(a, b)&lt;/code&gt; is the largest integer that divides both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;. Formally, positive integer &lt;code&gt;c = gcd(a, b)&lt;/code&gt; if:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;c&lt;/code&gt; divides both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;, and&lt;/li&gt;&#xA;&lt;li&gt;any divisor of both &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; also divides &lt;code&gt;c&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Equivalently: &lt;code&gt;gcd(a, b) = max{k : k | a and k | b}&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Special cases and identities:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;gcd(0, 0) = 0&lt;/code&gt; (defined by convention).&lt;/li&gt;&#xA;&lt;li&gt;Because GCD must be positive: &lt;code&gt;gcd(a, b) = gcd(a, -b) = gcd(-a, b) = gcd(-a, -b) = gcd(|a|, |b|)&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;gcd(60, 24) = gcd(60, -24) = 12&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Since every non-zero integer divides 0: &lt;code&gt;gcd(a, 0) = |a|&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;relatively-prime&#34;&gt;Relatively prime&lt;/h3&gt;&#xA;&lt;p&gt;Two integers &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are &lt;strong&gt;relatively prime&lt;/strong&gt; if their only common positive divisor is 1 — equivalently, &lt;code&gt;gcd(a, b) = 1&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

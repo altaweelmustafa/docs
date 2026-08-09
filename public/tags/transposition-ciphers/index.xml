@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Transposition-Ciphers on Docs</title>
+		<link>http://localhost:1313/docs/tags/transposition-ciphers/</link>
+		<description>Recent content in Transposition-Ciphers on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/transposition-ciphers/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 4 – Transposition Techniques</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/</guid>
+				<description>&lt;h2 id=&#34;transposition-vs-substitution&#34;&gt;Transposition vs. substitution&lt;/h2&gt;&#xA;&lt;p&gt;Every technique so far substituted one symbol for another. A &lt;strong&gt;transposition cipher&lt;/strong&gt; instead &lt;strong&gt;permutes&lt;/strong&gt; (rearranges) the plaintext letters — no letter is replaced, just moved.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;rail-fence-cipher&#34;&gt;Rail fence cipher&lt;/h2&gt;&#xA;&lt;p&gt;The simplest transposition technique. Write the plaintext diagonally across a set number of &amp;ldquo;rails,&amp;rdquo; then read off row by row.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt; — &lt;code&gt;&amp;quot;meet me after the toga party&amp;quot;&lt;/code&gt;, depth 2:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;m e m a t r h t g p r y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; e t e f e t e o a a t&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reading row by row gives the ciphertext:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

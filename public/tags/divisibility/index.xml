@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Divisibility on Docs</title>
+		<link>http://localhost:1313/docs/tags/divisibility/</link>
+		<description>Recent content in Divisibility on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/divisibility/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2, Part 1 – Divisibility &amp; the Division Algorithm</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part1-divisibility/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part1-divisibility/</guid>
+				<description>&lt;h2 id=&#34;divisibility&#34;&gt;Divisibility&lt;/h2&gt;&#xA;&lt;p&gt;We say a non-zero integer &lt;strong&gt;b divides a&lt;/strong&gt; (written &lt;code&gt;b | a&lt;/code&gt;) if &lt;code&gt;a = mb&lt;/code&gt; for some integer &lt;code&gt;m&lt;/code&gt; — i.e. there&amp;rsquo;s no remainder.&lt;/p&gt;&#xA;&lt;p&gt;Useful properties to know cold:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | 1&lt;/code&gt;, then &lt;code&gt;a = ±1&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | b&lt;/code&gt; and &lt;code&gt;b | a&lt;/code&gt;, then &lt;code&gt;a = ±b&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Any non-zero &lt;code&gt;b&lt;/code&gt; divides 0.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;a | b&lt;/code&gt; and &lt;code&gt;b | c&lt;/code&gt;, then &lt;code&gt;a | c&lt;/code&gt; (divisibility is transitive). Example: &lt;code&gt;11 | 66&lt;/code&gt; and &lt;code&gt;66 | 198&lt;/code&gt;, so &lt;code&gt;11 | 198&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;If &lt;code&gt;b | g&lt;/code&gt; and &lt;code&gt;b | h&lt;/code&gt;, then &lt;code&gt;b | (mg + nh)&lt;/code&gt; for &lt;strong&gt;any&lt;/strong&gt; integers &lt;code&gt;m, n&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;why-the-last-property-holds&#34;&gt;Why the last property holds&lt;/h3&gt;&#xA;&lt;p&gt;If &lt;code&gt;b | g&lt;/code&gt;, then &lt;code&gt;g = b·g₁&lt;/code&gt; for some integer &lt;code&gt;g₁&lt;/code&gt;. If &lt;code&gt;b | h&lt;/code&gt;, then &lt;code&gt;h = b·h₁&lt;/code&gt; for some integer &lt;code&gt;h₁&lt;/code&gt;. So:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

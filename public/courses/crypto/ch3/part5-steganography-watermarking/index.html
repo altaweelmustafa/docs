@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 5 – Steganography &amp; Digital Watermarking · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 5 – Steganography &amp; Digital Watermarking</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#steganography">Steganography</a>
+      <ul>
+        <li><a href="#classical-methods">Classical methods</a></li>
+        <li><a href="#modern-digital-methods">Modern digital methods</a></li>
+        <li><a href="#embedding-and-extraction-flow">Embedding and extraction flow</a></li>
+        <li><a href="#steganography-techniques">Steganography techniques</a></li>
+        <li><a href="#steganography-vs-encryption">Steganography vs. encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#digital-watermarking">Digital watermarking</a>
+      <ul>
+        <li><a href="#watermarking-requirements">Watermarking requirements</a></li>
+        <li><a href="#watermarking-techniques">Watermarking techniques</a></li>
+        <li><a href="#embedding-and-detection-flow">Embedding and detection flow</a></li>
+        <li><a href="#applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="steganography">Steganography</h2>
+<p>Where encryption hides the <strong>meaning</strong> of a message, steganography hides the <strong>existence</strong> of a message altogether — an observer shouldn&rsquo;t even suspect communication is happening.</p>
+<h3 id="classical-methods">Classical methods</h3>
+<p>Character marking, invisible ink, pin punctures, typewriter correction-ribbon tricks — all pre-digital ways of embedding a hidden channel in an innocuous-looking cover.</p>
+<h3 id="modern-digital-methods">Modern digital methods</h3>
+<p>Embedding data in the <strong>least-significant bits (LSB)</strong> of image, audio, or video files — changes imperceptible to human senses but recoverable by anyone who knows the embedding scheme.</p>
+<h3 id="embedding-and-extraction-flow">Embedding and extraction flow</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cover Object (image/audio/video)
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        ▼  Embedding (algorithm + key)
+</span></span><span class="line"><span class="cl">Stego Object (looks unchanged)
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        ▼  Extraction (algorithm + key)
+</span></span><span class="line"><span class="cl">Recovered Secret Message
+</span></span></code></pre></div><p>The secret message is embedded imperceptibly into the cover object; only someone with the extraction key can recover it.</p>
+<h3 id="steganography-techniques">Steganography techniques</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Idea</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>LSB insertion</strong></td>
+					<td>Replace low-order bits of image/audio samples with message bits.</td>
+			</tr>
+			<tr>
+					<td><strong>Transform-domain hiding</strong></td>
+					<td>Embed data in frequency-domain coefficients — more resistant to compression than raw LSB.</td>
+			</tr>
+			<tr>
+					<td><strong>Text/formatting-based</strong></td>
+					<td>Hide data in whitespace, font choices, or word spacing.</td>
+			</tr>
+			<tr>
+					<td><strong>Network steganography</strong></td>
+					<td>Hide data in unused fields of network protocol headers.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="steganography-vs-encryption">Steganography vs. encryption</h3>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Encryption</th>
+					<th>Steganography</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hides</td>
+					<td>The <strong>meaning</strong> of a message</td>
+					<td>The <strong>existence</strong> of a message</td>
+			</tr>
+			<tr>
+					<td>Observable</td>
+					<td>Anyone can see a message exists (just can&rsquo;t read it)</td>
+					<td>An observer shouldn&rsquo;t suspect any communication took place</td>
+			</tr>
+	</tbody>
+</table>
+<p>They&rsquo;re <strong>complementary</strong>, and often combined: encrypt the message first, then hide the resulting ciphertext inside a cover object. Steganography alone offers weak security once the embedding method is known or suspected — it relies on the method staying secret, not on cryptographic hardness.</p>
+<hr>
+<h2 id="digital-watermarking">Digital watermarking</h2>
+<p>A related but distinct idea: embed <strong>ownership, copyright, or authenticity</strong> information imperceptibly into digital media. Unlike steganography, the goal isn&rsquo;t secrecy of communication — it&rsquo;s <strong>robustness</strong> and persistent proof of ownership.</p>
+<ul>
+<li><strong>Visible watermarks</strong> (e.g. a logo overlay) deter casual copying.</li>
+<li><strong>Invisible watermarks</strong> allow ownership verification without altering perceived quality.</li>
+</ul>
+<h3 id="watermarking-requirements">Watermarking requirements</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Imperceptibility</strong></td>
+					<td>The watermark must not noticeably degrade media quality.</td>
+			</tr>
+			<tr>
+					<td><strong>Robustness</strong></td>
+					<td>Must survive common processing — compression, cropping, filtering, resizing.</td>
+			</tr>
+			<tr>
+					<td><strong>Capacity</strong></td>
+					<td>Amount of information embeddable without visible artifacts.</td>
+			</tr>
+			<tr>
+					<td><strong>Security</strong></td>
+					<td>Must resist removal or forgery even if the embedding method is publicly known.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Notice how this last requirement is the <strong>opposite</strong> of steganography&rsquo;s assumption — a good watermark stays effective even when everyone knows how it works, because it&rsquo;s protected by robustness and detection difficulty, not secrecy of method.</p>
+<h3 id="watermarking-techniques">Watermarking techniques</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Spatial-domain</strong></td>
+					<td>Modify pixel values directly (e.g. LSB embedding) — simple but fragile.</td>
+			</tr>
+			<tr>
+					<td><strong>Transform-domain</strong></td>
+					<td>Embed in frequency-domain coefficients (DCT, DWT) — much more robust to compression/filtering.</td>
+			</tr>
+			<tr>
+					<td><strong>Fragile watermarks</strong></td>
+					<td>Designed to <em>break</em> under any modification — used for tamper/content authentication.</td>
+			</tr>
+			<tr>
+					<td><strong>Robust watermarks</strong></td>
+					<td>Designed to <em>survive</em> processing — used for copyright and ownership proof.</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="embedding-and-detection-flow">Embedding and detection flow</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Original Media + Watermark
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        ▼  Embedding (spatial or transform domain)
+</span></span><span class="line"><span class="cl">Watermarked Media
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        ▼  Processing/Attacks (compression, cropping, ...)
+</span></span><span class="line"><span class="cl">        │
+</span></span><span class="line"><span class="cl">        ▼  Detection: Watermark present?
+</span></span></code></pre></div><p>A robust watermark should remain detectable even after the media undergoes common processing or deliberate removal attempts.</p>
+<h3 id="applications">Applications</h3>
+<ul>
+<li><strong>Copyright protection</strong> — proving ownership of images, audio, and video distributed online.</li>
+<li><strong>Broadcast monitoring</strong> — automatically verifying that ads/licensed content aired as contracted.</li>
+<li><strong>Content authentication</strong> — detecting tampering via fragile watermarks.</li>
+<li><strong>Fingerprinting</strong> — embedding a unique buyer-specific watermark per copy, to trace the source of illegal redistribution.</li>
+</ul>
+<blockquote>
+<p>Exam sentence: steganography&rsquo;s security depends on the embedding method staying <em>secret</em>; watermarking&rsquo;s security must hold even when the embedding method is <em>publicly known</em> — that&rsquo;s the key conceptual distinction the exam likes to test.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Steganography hides that a message exists; watermarking proves ownership and must survive processing even when the method is public. Fragile watermarks = tamper detection; robust watermarks = ownership proof. LSB is the simplest (and weakest) technique in both domains; transform-domain methods are stronger.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Contrast the goals of steganography and encryption.</li>
+<li>Why must a watermarking scheme remain secure even when its embedding algorithm is publicly known, unlike steganography?</li>
+<li>When would you use a fragile watermark instead of a robust one?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/" id="nav-prev"><em>Chapter 3, Part 4 – Transposition Techniques</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

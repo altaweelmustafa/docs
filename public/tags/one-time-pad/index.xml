@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>One-Time-Pad on Docs</title>
+		<link>http://localhost:1313/docs/tags/one-time-pad/</link>
+		<description>Recent content in One-Time-Pad on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/one-time-pad/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/</guid>
+				<description>&lt;h2 id=&#34;polyalphabetic-substitution-ciphers&#34;&gt;Polyalphabetic substitution ciphers&lt;/h2&gt;&#xA;&lt;p&gt;Instead of one fixed substitution rule (monoalphabetic), use &lt;strong&gt;different&lt;/strong&gt; monoalphabetic substitutions as you move through the message. Common features:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A &lt;strong&gt;set of related&lt;/strong&gt; monoalphabetic substitution rules.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;strong&gt;key&lt;/strong&gt; determines which rule applies at each position.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This smooths out single-letter frequency statistics, since the same plaintext letter can map to different ciphertext letters depending on position.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;vigenère-cipher&#34;&gt;Vigenère cipher&lt;/h2&gt;&#xA;&lt;p&gt;The best-known, simplest polyalphabetic cipher. The &amp;ldquo;rule set&amp;rdquo; is the 26 Caesar shifts (0–25); each is identified by a &lt;strong&gt;key letter&lt;/strong&gt; (the ciphertext letter that &lt;code&gt;a&lt;/code&gt; maps to under that shift).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
