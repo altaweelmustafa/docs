@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Glbp on Docs</title>
+		<link>http://localhost:1313/docs/tags/glbp/</link>
+		<description>Recent content in Glbp on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/glbp/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Ch3, Part 3 - First Hop Redundancy Protocols</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-3-fhrp/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-3-fhrp/</guid>
+				<description>&lt;h2 id=&#34;why-fhrp-exists&#34;&gt;Why FHRP exists&lt;/h2&gt;&#xA;&lt;p&gt;Gives hosts a single default gateway IP that stays reachable even if the physical router providing it fails. Two or more routers share a virtual IP/MAC; one is active, the failover is transparent to hosts.&lt;/p&gt;&#xA;&lt;h2 id=&#34;comparison&#34;&gt;Comparison&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Protocol&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Owner&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Roles&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Load balancing&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;HSRP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Cisco proprietary&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Active / Standby&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;No (per group, need multiple groups)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;VRRP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Open standard&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Master / Backup&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;No (same idea, standard-based)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;GLBP&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Cisco proprietary&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;AVG (Active Virtual Gateway) / AVF (Active Virtual Forwarder)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Yes, built in&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;hsrp-details-the-one-the-exam-favors&#34;&gt;HSRP details (the one the exam favors)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Virtual MAC: &lt;code&gt;0000.0c07.acXX&lt;/code&gt; where XX is the HSRP group number in hex.&lt;/li&gt;&#xA;&lt;li&gt;Default hello timer: 3 sec. Default hold timer: 10 sec.&lt;/li&gt;&#xA;&lt;li&gt;Default priority: 100. Higher priority wins active role.&lt;/li&gt;&#xA;&lt;li&gt;Preemption is off by default, if enabled, a router with higher priority reclaims active role when it comes back up.&lt;/li&gt;&#xA;&lt;li&gt;States: Initial, Learn, Listen, Speak, Standby, Active.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;glbp-details&#34;&gt;GLBP details&lt;/h2&gt;&#xA;&lt;p&gt;Achieves load balancing by having the AVG hand out different virtual MACs (up to 4 AVFs) to different clients in round-robin, so multiple routers actively forward traffic instead of one sitting idle.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

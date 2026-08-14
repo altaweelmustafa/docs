@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch1, Part 1 - OSI/TCP-IP, TCP vs UDP, Devices, Cabling · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch1, Part 1 - OSI/TCP-IP, TCP vs UDP, Devices, Cabling</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#osi-to-tcpip-mapping">OSI to TCP/IP mapping</a></li>
+    <li><a href="#tcp-vs-udp">TCP vs UDP</a></li>
+    <li><a href="#device-roles-which-layer-they-act-on">Device roles (which layer they act on)</a></li>
+    <li><a href="#cabling">Cabling</a></li>
+    <li><a href="#common-interface-issues">Common interface issues</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="osi-to-tcpip-mapping">OSI to TCP/IP mapping</h2>
+<table>
+	<thead>
+			<tr>
+					<th>OSI layer</th>
+					<th>PDU</th>
+					<th>TCP/IP layer</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>7 Application</td>
+					<td>Data</td>
+					<td>Application</td>
+					<td>HTTP, DNS, DHCP</td>
+			</tr>
+			<tr>
+					<td>6 Presentation</td>
+					<td>Data</td>
+					<td>Application</td>
+					<td>encryption, encoding</td>
+			</tr>
+			<tr>
+					<td>5 Session</td>
+					<td>Data</td>
+					<td>Application</td>
+					<td>session control</td>
+			</tr>
+			<tr>
+					<td>4 Transport</td>
+					<td>Segment/Datagram</td>
+					<td>Transport</td>
+					<td>TCP, UDP</td>
+			</tr>
+			<tr>
+					<td>3 Network</td>
+					<td>Packet</td>
+					<td>Internet</td>
+					<td>IP, ICMP</td>
+			</tr>
+			<tr>
+					<td>2 Data Link</td>
+					<td>Frame</td>
+					<td>Network Access</td>
+					<td>Ethernet, ARP</td>
+			</tr>
+			<tr>
+					<td>1 Physical</td>
+					<td>Bit</td>
+					<td>Network Access</td>
+					<td>cabling, signaling</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam trap: know the PDU name per layer (segment/packet/frame/bit) cold, they ask it directly.</p>
+<h2 id="tcp-vs-udp">TCP vs UDP</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th>TCP</th>
+					<th>UDP</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Connection</td>
+					<td>Connection-oriented (3-way handshake)</td>
+					<td>Connectionless</td>
+			</tr>
+			<tr>
+					<td>Reliability</td>
+					<td>Acknowledged, retransmits</td>
+					<td>Best-effort</td>
+			</tr>
+			<tr>
+					<td>Ordering</td>
+					<td>Guaranteed</td>
+					<td>Not guaranteed</td>
+			</tr>
+			<tr>
+					<td>Flow control</td>
+					<td>Yes (windowing)</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>Header size</td>
+					<td>20 bytes</td>
+					<td>8 bytes</td>
+			</tr>
+			<tr>
+					<td>Use case</td>
+					<td>HTTP, FTP, SSH</td>
+					<td>DNS, DHCP, SNMP, VoIP, video</td>
+			</tr>
+	</tbody>
+</table>
+<p>3-way handshake: SYN, SYN-ACK, ACK. Teardown: FIN, ACK, FIN, ACK.</p>
+<h2 id="device-roles-which-layer-they-act-on">Device roles (which layer they act on)</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Device</th>
+					<th>Layer</th>
+					<th>Job</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hub</td>
+					<td>1</td>
+					<td>Repeats bits, one collision domain</td>
+			</tr>
+			<tr>
+					<td>Switch</td>
+					<td>2 (some L3)</td>
+					<td>Forwards frames by MAC, one broadcast domain per VLAN</td>
+			</tr>
+			<tr>
+					<td>Router</td>
+					<td>3</td>
+					<td>Forwards packets by IP, separates broadcast domains</td>
+			</tr>
+			<tr>
+					<td>Firewall</td>
+					<td>3-7</td>
+					<td>Policy-based filtering</td>
+			</tr>
+			<tr>
+					<td>AP</td>
+					<td>1-2</td>
+					<td>Bridges wireless clients to wired LAN</td>
+			</tr>
+			<tr>
+					<td>WLC</td>
+					<td>2-3</td>
+					<td>Centralizes control of lightweight APs</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="cabling">Cabling</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Max speed</th>
+					<th>Max distance</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Cat5e</td>
+					<td>1 Gbps</td>
+					<td>100 m</td>
+			</tr>
+			<tr>
+					<td>Cat6</td>
+					<td>10 Gbps</td>
+					<td>55 m (100m at 1Gbps)</td>
+			</tr>
+			<tr>
+					<td>Cat6a</td>
+					<td>10 Gbps</td>
+					<td>100 m</td>
+			</tr>
+			<tr>
+					<td>Single-mode fiber</td>
+					<td>very high, long haul</td>
+					<td>km range</td>
+			</tr>
+			<tr>
+					<td>Multimode fiber</td>
+					<td>high, short haul</td>
+					<td>up to ~550 m</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>Straight-through: unlike devices (PC to switch).</li>
+<li>Crossover: like devices (switch to switch, PC to PC). Auto-MDIX on modern switches makes this mostly irrelevant now.</li>
+<li>Fiber connectors: LC, SC, ST. Copper: RJ45.</li>
+</ul>
+<h2 id="common-interface-issues">Common interface issues</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Symptom</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CRC errors</td>
+					<td>Bad cable, EMI, duplex mismatch</td>
+			</tr>
+			<tr>
+					<td>Runts</td>
+					<td>Frames smaller than 64 bytes, collisions/bad NIC</td>
+			</tr>
+			<tr>
+					<td>Giants</td>
+					<td>Frames larger than 1518 bytes</td>
+			</tr>
+			<tr>
+					<td>Late collisions</td>
+					<td>Duplex mismatch, cable too long</td>
+			</tr>
+			<tr>
+					<td>Input/output errors climbing</td>
+					<td>Physical layer problem, check <code>show interfaces</code></td>
+			</tr>
+	</tbody>
+</table>
+<p><code>show interfaces</code> and reading counters is a guaranteed exam topic.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-2-ipv4-subnetting/" id="nav-next"><em>Ch1, Part 2 - IPv4 Addressing and Subnetting</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

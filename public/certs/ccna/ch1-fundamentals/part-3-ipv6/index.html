@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch1, Part 3 - IPv6 Addressing · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch1, Part 3 - IPv6 Addressing</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#address-types">Address types</a></li>
+    <li><a href="#compression-rules">Compression rules</a></li>
+    <li><a href="#eui-64">EUI-64</a></li>
+    <li><a href="#address-assignment-methods">Address assignment methods</a></li>
+    <li><a href="#common-prefix-lengths">Common prefix lengths</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="address-types">Address types</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Range/prefix</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Global unicast</td>
+					<td>2000::/3</td>
+					<td>routable on the internet, like public IPv4</td>
+			</tr>
+			<tr>
+					<td>Link-local</td>
+					<td>FE80::/10</td>
+					<td>auto-assigned, required on every interface, not routed</td>
+			</tr>
+			<tr>
+					<td>Unique local</td>
+					<td>FC00::/7 (FD00::/8 in practice)</td>
+					<td>like RFC 1918, private, routable inside org</td>
+			</tr>
+			<tr>
+					<td>Multicast</td>
+					<td>FF00::/8</td>
+					<td>replaces broadcast</td>
+			</tr>
+			<tr>
+					<td>Anycast</td>
+					<td>comes from unicast space</td>
+					<td>nearest of several identical addresses answers</td>
+			</tr>
+	</tbody>
+</table>
+<p>There is <strong>no broadcast</strong> in IPv6. Multicast (and anycast) replace it.</p>
+<h2 id="compression-rules">Compression rules</h2>
+<ol>
+<li>Omit leading zeros in each group: <code>0db8</code> becomes <code>db8</code>.</li>
+<li>Replace one contiguous run of all-zero groups with <code>::</code>. Only once per address.</li>
+</ol>
+<p><code>2001:0db8:0000:0000:0000:0000:0000:0001</code> becomes <code>2001:db8::1</code>.</p>
+<h2 id="eui-64">EUI-64</h2>
+<p>Turns a 48-bit MAC into a 64-bit interface ID: split the MAC in half, insert <code>FFFE</code> in the middle, flip the 7th bit of the first byte (U/L bit). Used for SLAAC-derived interface IDs.</p>
+<h2 id="address-assignment-methods">Address assignment methods</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>How it works</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>SLAAC</td>
+					<td>Router advertisement (RA) gives prefix, host builds its own interface ID (EUI-64 or random)</td>
+			</tr>
+			<tr>
+					<td>Stateless DHCPv6</td>
+					<td>SLAAC for the address, DHCPv6 only for extra options (DNS, etc.)</td>
+			</tr>
+			<tr>
+					<td>Stateful DHCPv6</td>
+					<td>DHCPv6 assigns the full address, like DHCPv4</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="common-prefix-lengths">Common prefix lengths</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Prefix</th>
+					<th>Use</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>/64</td>
+					<td>standard LAN subnet, always for SLAAC</td>
+			</tr>
+			<tr>
+					<td>/127</td>
+					<td>point-to-point link (RFC 6164)</td>
+			</tr>
+			<tr>
+					<td>/48</td>
+					<td>typical site allocation from an ISP</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-2-ipv4-subnetting/" id="nav-prev"><em>Ch1, Part 2 - IPv4 Addressing and Subnetting</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-4-switching-virtualization/" id="nav-next"><em>Ch1, Part 4 - Switching Concepts and Virtualization</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

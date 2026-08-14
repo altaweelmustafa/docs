@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch1, Part 4 - Switching Concepts and Virtualization · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch1, Part 4 - Switching Concepts and Virtualization</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mac-address-table-cam-table">MAC address table (CAM table)</a></li>
+    <li><a href="#switching-methods">Switching methods</a></li>
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#virtualization-basics">Virtualization basics</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="mac-address-table-cam-table">MAC address table (CAM table)</h2>
+<ul>
+<li>Switch learns source MAC + port on every incoming frame.</li>
+<li>Unknown destination MAC: flood out all ports except the one it came in on.</li>
+<li>Known destination MAC: forward only to that port.</li>
+<li>Broadcast/multicast: always flooded (within the VLAN).</li>
+<li>Aging timer default: 300 seconds.</li>
+</ul>
+<h2 id="switching-methods">Switching methods</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Behavior</th>
+					<th>Latency</th>
+					<th>Error checking</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Store-and-forward</td>
+					<td>Buffers entire frame, checks CRC</td>
+					<td>Highest</td>
+					<td>Yes, drops bad frames</td>
+			</tr>
+			<tr>
+					<td>Cut-through</td>
+					<td>Forwards after reading destination MAC</td>
+					<td>Lowest</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>Fragment-free</td>
+					<td>Reads first 64 bytes (past collision window)</td>
+					<td>Middle</td>
+					<td>Partial</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="domains">Domains</h2>
+<ul>
+<li>Collision domain: a segment where frames can collide. Every switch port is its own collision domain (full duplex effectively eliminates collisions).</li>
+<li>Broadcast domain: a segment where broadcasts propagate. Bounded by routers, or by VLAN boundaries on switches.</li>
+</ul>
+<h2 id="virtualization-basics">Virtualization basics</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Type 1 hypervisor</td>
+					<td>Runs directly on hardware (ESXi, Hyper-V). Bare metal.</td>
+			</tr>
+			<tr>
+					<td>Type 2 hypervisor</td>
+					<td>Runs on top of a host OS (VirtualBox, VMware Workstation).</td>
+			</tr>
+			<tr>
+					<td>VM</td>
+					<td>Full guest OS, isolated via hypervisor. Heavier.</td>
+			</tr>
+			<tr>
+					<td>Container</td>
+					<td>Shares host OS kernel, isolated via namespaces. Lighter, faster startup.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam framing: containers are more efficient/portable than VMs because they don&rsquo;t each carry a full OS.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-3-ipv6/" id="nav-prev"><em>Ch1, Part 3 - IPv6 Addressing</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-5-hands-on-drills/" id="nav-next"><em>Ch1, Part 5 - Hands-On Drills</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

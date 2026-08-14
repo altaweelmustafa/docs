@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch2, Part 5 - Hands-On Drills · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch2, Part 5 - Hands-On Drills</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <li><a href="#hard">Hard</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="easy">Easy</h2>
+<p><strong>1. Two VLANs, one switch.</strong> 1 switch, 4 PCs. Create VLAN 10 and VLAN 20, assign 2 ports to each. Verify: PCs in the same VLAN ping each other, PCs in different VLANs cannot (no router yet).</p>
+<p><strong>2. CDP and LLDP discovery.</strong> 2 switches + 1 router, all connected. Use <code>show cdp neighbors detail</code> to find each neighbor&rsquo;s IP and platform. Then run <code>lldp run</code> on all devices and repeat with <code>show lldp neighbors detail</code>. Verify: you can list every neighbor&rsquo;s IP and device type from both protocols.</p>
+<p><strong>3. EtherChannel with LACP.</strong> 2 switches, 2 physical links between them. Bundle both links into a single LACP EtherChannel (active/active). Verify: <code>show etherchannel summary</code> shows the bundle up, and STP shows only the port-channel interface, not the individual members, in the topology.</p>
+<h2 id="hard">Hard</h2>
+<p><strong>1. Multi-switch VLANs + trunk + STP reconvergence.</strong> 3 switches in a triangle, 2 VLANs spanning all three via trunks. Verify the elected root bridge and find the blocked port with <code>show spanning-tree</code>. Then lower the priority on a non-root switch to force a new root bridge election. Verify: the blocked port moves to a different switch, and you can explain why using the bridge ID.</p>
+<p><strong>2. Native VLAN mismatch + EtherChannel mode mismatch fault-find.</strong> Build a topology with a trunk between two switches with mismatched native VLANs, and a separate EtherChannel elsewhere with mismatched negotiation modes (e.g. LACP active on one side, PAgP desirable on the other, so it silently fails to bundle). Find and fix both using log messages, <code>show interfaces trunk</code>, and <code>show etherchannel summary</code>, without being told what&rsquo;s wrong going in.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch2-network-access/part-4-wireless/" id="nav-prev"><em>Ch2, Part 4 - Wireless Fundamentals</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

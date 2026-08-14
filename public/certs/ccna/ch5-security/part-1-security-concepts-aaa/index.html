@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch5, Part 1 - Security Concepts and AAA · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch5, Part 1 - Security Concepts and AAA</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#cia-triad">CIA triad</a></li>
+    <li><a href="#threat-terminology">Threat terminology</a></li>
+    <li><a href="#aaa">AAA</a></li>
+    <li><a href="#tacacs-vs-radius">TACACS+ vs RADIUS</a></li>
+    <li><a href="#local-vs-aaa">Local vs AAA</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="cia-triad">CIA triad</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Principle</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Confidentiality</td>
+					<td>Only authorized parties can read data (encryption).</td>
+			</tr>
+			<tr>
+					<td>Integrity</td>
+					<td>Data isn&rsquo;t tampered with (hashing, checksums).</td>
+			</tr>
+			<tr>
+					<td>Availability</td>
+					<td>Systems stay accessible (redundancy, DoS mitigation).</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="threat-terminology">Threat terminology</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Vulnerability</td>
+					<td>a weakness in a system</td>
+			</tr>
+			<tr>
+					<td>Exploit</td>
+					<td>the mechanism used to take advantage of a vulnerability</td>
+			</tr>
+			<tr>
+					<td>Threat</td>
+					<td>anything that could exploit a vulnerability</td>
+			</tr>
+			<tr>
+					<td>Mitigation</td>
+					<td>the action taken to reduce risk</td>
+			</tr>
+	</tbody>
+</table>
+<p>Common attack types to recognize by name: spoofing (fake source), reflection/amplification (DDoS via third party), man-in-the-middle, social engineering (phishing).</p>
+<h2 id="aaa">AAA</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Component</th>
+					<th>Question it answers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Authentication</td>
+					<td>Who are you?</td>
+			</tr>
+			<tr>
+					<td>Authorization</td>
+					<td>What are you allowed to do?</td>
+			</tr>
+			<tr>
+					<td>Accounting</td>
+					<td>What did you actually do? (logging)</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="tacacs-vs-radius">TACACS+ vs RADIUS</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th>TACACS+</th>
+					<th>RADIUS</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Owner</td>
+					<td>Cisco proprietary</td>
+					<td>Open standard</td>
+			</tr>
+			<tr>
+					<td>Transport</td>
+					<td>TCP, port 49</td>
+					<td>UDP, ports 1812/1813</td>
+			</tr>
+			<tr>
+					<td>Encryption</td>
+					<td>Encrypts entire packet</td>
+					<td>Encrypts only the password</td>
+			</tr>
+			<tr>
+					<td>AAA</td>
+					<td>Separates authentication, authorization, accounting</td>
+					<td>Combines authentication + authorization</td>
+			</tr>
+			<tr>
+					<td>Typical use</td>
+					<td>Device administration (CLI access)</td>
+					<td>Network access (802.1X, VPN)</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam shortcut: &ldquo;device admin&rdquo; leans TACACS+, &ldquo;network/user access&rdquo; leans RADIUS.</p>
+<h2 id="local-vs-aaa">Local vs AAA</h2>
+<p>Local: <code>username admin secret cisco123</code>, <code>line vty 0 4</code> / <code>login local</code>. Simple but doesn&rsquo;t scale, no centralized accounting.</p>
+<p>AAA server-based: centralizes auth for many devices, config uses <code>aaa new-model</code> plus a defined method list pointing to TACACS+/RADIUS server group, with local as fallback.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-2-acls/" id="nav-next"><em>Ch5, Part 2 - Access Control Lists</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

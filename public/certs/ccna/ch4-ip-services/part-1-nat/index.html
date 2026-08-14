@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch4, Part 1 - NAT · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch4, Part 1 - NAT</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#types">Types</a></li>
+    <li><a href="#the-four-address-terms-the-exam-loves-testing-these">The four address terms (the exam loves testing these)</a></li>
+    <li><a href="#config-essentials">Config essentials</a></li>
+    <li><a href="#verification">Verification</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="types">Types</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Mapping</th>
+					<th>Use case</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Static NAT</td>
+					<td>1:1, fixed</td>
+					<td>server that needs a consistent public IP</td>
+			</tr>
+			<tr>
+					<td>Dynamic NAT</td>
+					<td>many-to-many, from a pool</td>
+					<td>pool of public IPs shared among more private hosts</td>
+			</tr>
+			<tr>
+					<td>PAT (NAT overload)</td>
+					<td>many-to-1, differentiated by port</td>
+					<td>typical home/office internet edge</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="the-four-address-terms-the-exam-loves-testing-these">The four address terms (the exam loves testing these)</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Inside local</td>
+					<td>private IP of an inside host, as seen inside</td>
+			</tr>
+			<tr>
+					<td>Inside global</td>
+					<td>translated (public) IP of an inside host, as seen outside</td>
+			</tr>
+			<tr>
+					<td>Outside local</td>
+					<td>how an outside host&rsquo;s IP appears from inside (usually unchanged)</td>
+			</tr>
+			<tr>
+					<td>Outside global</td>
+					<td>actual public IP of the outside host</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="config-essentials">Config essentials</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">interface</span> <span class="n">g0</span><span class="o">/</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">nat</span> <span class="n">inside</span>
+</span></span><span class="line"><span class="cl"><span class="n">interface</span> <span class="n">g0</span><span class="o">/</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"> <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">access</span><span class="o">-</span><span class="n">list</span> <span class="mi">1</span> <span class="n">permit</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="o">.</span><span class="mf">255.255</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="n">nat</span> <span class="n">pool</span> <span class="n">MYPOOL</span> <span class="mf">203.0</span><span class="o">.</span><span class="mf">113.1</span> <span class="mf">203.0</span><span class="o">.</span><span class="mf">113.10</span> <span class="n">netmask</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+</span></span><span class="line"><span class="cl"><span class="n">ip</span> <span class="n">nat</span> <span class="n">inside</span> <span class="n">source</span> <span class="n">list</span> <span class="mi">1</span> <span class="n">pool</span> <span class="n">MYPOOL</span> <span class="n">overload</span>
+</span></span></code></pre></div><p><code>overload</code> is what makes it PAT. Drop it and it&rsquo;s plain dynamic NAT (pool-based, no port translation).</p>
+<p>Static NAT: <code>ip nat inside source static 10.0.0.5 203.0.113.5</code></p>
+<h2 id="verification">Verification</h2>
+<p><code>show ip nat translations</code>, <code>show ip nat statistics</code>.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-2-dhcp-dns-ntp-snmp-syslog/" id="nav-next"><em>Ch4, Part 2 - DHCP, DNS, NTP, SNMP, Syslog</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

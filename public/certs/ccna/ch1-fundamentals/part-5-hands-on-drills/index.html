@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch1, Part 5 - Hands-On Drills · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch1, Part 5 - Hands-On Drills</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <li><a href="#hard">Hard</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <p>Use Packet Tracer (or real gear) for all of these. Don&rsquo;t just read the steps, build the topology.</p>
+<h2 id="easy">Easy</h2>
+<p><strong>1. Subnet a /24 into 4 equal subnets.</strong> 1 router, 2 switches, 4 PCs (2 per switch). Split 192.168.1.0/24 into four /26 subnets, use two of them, configure router interfaces as gateways, assign static PC IPs. Verify: same-subnet PCs ping directly, cross-subnet pings work once router interfaces are up (<code>show ip interface brief</code>).</p>
+<p><strong>2. Duplex/speed mismatch symptoms.</strong> 2 switches connected by one link. Hardcode one side full-duplex/100Mbps and leave the other on auto. Generate traffic between PCs across the link. Verify: find late collisions or CRC errors in <code>show interfaces</code> on the mismatched port, then fix by matching both sides.</p>
+<p><strong>3. IPv6 SLAAC vs manual EUI-64.</strong> 1 router, 1 switch, 2 PCs. Enable IPv6 on the router LAN interface, turn on router advertisements. Let one PC get an address via SLAAC. On the other PC, manually calculate and assign the EUI-64 address it should have gotten. Verify: the SLAAC-assigned address matches your manual calculation.</p>
+<h2 id="hard">Hard</h2>
+<p><strong>1. VLSM design for uneven host counts.</strong> 3 routers in a line (R1-R2-R3). LAN segments need 50, 20, and 10 hosts. Two point-to-point links between routers. From a single 192.168.0.0/24: write the full VLSM plan on paper first (largest requirement first, down to /30 or /31 links), then configure every interface to match. Verify: every interface IP matches your plan exactly, no subnet is bigger than it needs to be (<code>show ip interface brief</code> on all three routers).</p>
+<p><strong>2. Blind duplex/cabling fault-find.</strong> Build a 3-switch chain with several PCs. Have someone else (or yourself, a day later) inject one fault: a duplex mismatch, a bad &ldquo;cable&rdquo; (simulate via mismatched speed), or a wrong VLAN assumption. Using only <code>show interfaces</code>, <code>show interfaces status</code>, and counters, locate the fault without being told which link it&rsquo;s on. Verify: you can name the exact interface and the exact counter that gave it away.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-4-switching-virtualization/" id="nav-prev"><em>Ch1, Part 4 - Switching Concepts and Virtualization</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

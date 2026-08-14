@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCNA Exam Cheatsheet · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">CCNA Exam Cheatsheet</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#port-numbers">Port numbers</a></li>
+    <li><a href="#administrative-distance">Administrative distance</a></li>
+    <li><a href="#subnetting-quick-chart">Subnetting quick chart</a></li>
+    <li><a href="#stp-timers-and-states">STP timers and states</a></li>
+    <li><a href="#ospf">OSPF</a></li>
+    <li><a href="#fhrp">FHRP</a></li>
+    <li><a href="#aaa">AAA</a></li>
+    <li><a href="#acls">ACLs</a></li>
+    <li><a href="#nat">NAT</a></li>
+    <li><a href="#syslog-severity-0-worst-7-best">Syslog severity (0 worst, 7 best)</a></li>
+    <li><a href="#wireless-security">Wireless security</a></li>
+    <li><a href="#frequent-exam-traps">Frequent exam traps</a></li>
+    <li><a href="#last-night-checklist">Last-night checklist</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="port-numbers">Port numbers</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th style="text-align: right">Port</th>
+					<th>Transport</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FTP</td>
+					<td style="text-align: right">20/21</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>SSH</td>
+					<td style="text-align: right">22</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>Telnet</td>
+					<td style="text-align: right">23</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>DNS</td>
+					<td style="text-align: right">53</td>
+					<td>TCP/UDP</td>
+			</tr>
+			<tr>
+					<td>DHCP</td>
+					<td style="text-align: right">67/68</td>
+					<td>UDP</td>
+			</tr>
+			<tr>
+					<td>TFTP</td>
+					<td style="text-align: right">69</td>
+					<td>UDP</td>
+			</tr>
+			<tr>
+					<td>HTTP</td>
+					<td style="text-align: right">80</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>NTP</td>
+					<td style="text-align: right">123</td>
+					<td>UDP</td>
+			</tr>
+			<tr>
+					<td>SNMP</td>
+					<td style="text-align: right">161/162</td>
+					<td>UDP</td>
+			</tr>
+			<tr>
+					<td>Syslog</td>
+					<td style="text-align: right">514</td>
+					<td>UDP</td>
+			</tr>
+			<tr>
+					<td>HTTPS</td>
+					<td style="text-align: right">443</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>TACACS+</td>
+					<td style="text-align: right">49</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>RADIUS</td>
+					<td style="text-align: right">1812/1813</td>
+					<td>UDP</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="administrative-distance">Administrative distance</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Source</th>
+					<th style="text-align: right">AD</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Connected</td>
+					<td style="text-align: right">0</td>
+			</tr>
+			<tr>
+					<td>Static</td>
+					<td style="text-align: right">1</td>
+			</tr>
+			<tr>
+					<td>EIGRP internal</td>
+					<td style="text-align: right">90</td>
+			</tr>
+			<tr>
+					<td>OSPF</td>
+					<td style="text-align: right">110</td>
+			</tr>
+			<tr>
+					<td>IS-IS</td>
+					<td style="text-align: right">115</td>
+			</tr>
+			<tr>
+					<td>RIP</td>
+					<td style="text-align: right">120</td>
+			</tr>
+			<tr>
+					<td>EIGRP external</td>
+					<td style="text-align: right">170</td>
+			</tr>
+			<tr>
+					<td>Unreachable</td>
+					<td style="text-align: right">255</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="subnetting-quick-chart">Subnetting quick chart</h2>
+<table>
+	<thead>
+			<tr>
+					<th>CIDR</th>
+					<th>Mask</th>
+					<th style="text-align: right">Block</th>
+					<th style="text-align: right">Usable hosts</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>/25</td>
+					<td>.128</td>
+					<td style="text-align: right">128</td>
+					<td style="text-align: right">126</td>
+			</tr>
+			<tr>
+					<td>/26</td>
+					<td>.192</td>
+					<td style="text-align: right">64</td>
+					<td style="text-align: right">62</td>
+			</tr>
+			<tr>
+					<td>/27</td>
+					<td>.224</td>
+					<td style="text-align: right">32</td>
+					<td style="text-align: right">30</td>
+			</tr>
+			<tr>
+					<td>/28</td>
+					<td>.240</td>
+					<td style="text-align: right">16</td>
+					<td style="text-align: right">14</td>
+			</tr>
+			<tr>
+					<td>/29</td>
+					<td>.248</td>
+					<td style="text-align: right">8</td>
+					<td style="text-align: right">6</td>
+			</tr>
+			<tr>
+					<td>/30</td>
+					<td>.252</td>
+					<td style="text-align: right">4</td>
+					<td style="text-align: right">2</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="stp-timers-and-states">STP timers and states</h2>
+<ul>
+<li>Hello 2s, forward delay 15s, max age 20s (classic 802.1D).</li>
+<li>States: Blocking → Listening → Learning → Forwarding.</li>
+<li>Rapid PVST+ uses Discarding/Learning/Forwarding and converges in seconds.</li>
+</ul>
+<h2 id="ospf">OSPF</h2>
+<ul>
+<li>Neighbor states: Down → Init → 2-Way → ExStart → Exchange → Loading → Full.</li>
+<li>Hello 10s / Dead 40s on broadcast networks.</li>
+<li>Cost = 100 Mbps / interface bandwidth.</li>
+<li>Router ID: manual &gt; highest loopback &gt; highest active interface.</li>
+</ul>
+<h2 id="fhrp">FHRP</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Owner</th>
+					<th>Roles</th>
+					<th>Load balances?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>HSRP</td>
+					<td>Cisco</td>
+					<td>Active/Standby</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>VRRP</td>
+					<td>Standard</td>
+					<td>Master/Backup</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>GLBP</td>
+					<td>Cisco</td>
+					<td>AVG/AVF</td>
+					<td>Yes</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="aaa">AAA</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Transport</th>
+					<th>Encrypts</th>
+					<th>Combines authn+authz?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>TACACS+</td>
+					<td>TCP 49</td>
+					<td>full packet</td>
+					<td>No, separates all three</td>
+			</tr>
+			<tr>
+					<td>RADIUS</td>
+					<td>UDP 1812/1813</td>
+					<td>password only</td>
+					<td>Yes</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="acls">ACLs</h2>
+<ul>
+<li>Standard: 1-99, 1300-1999, source only, place near destination.</li>
+<li>Extended: 100-199, 2000-2699, source+dest+port, place near source.</li>
+<li>Implicit deny at the end, always. Top-down, first match wins.</li>
+<li>Wildcard = inverse of subnet mask, 0 = match, 1 = don&rsquo;t care.</li>
+</ul>
+<h2 id="nat">NAT</h2>
+<ul>
+<li>Static: 1:1. Dynamic: pool, many-to-many. PAT: many-to-1, <code>overload</code> keyword.</li>
+<li>Inside local = private, inside global = translated public.</li>
+</ul>
+<h2 id="syslog-severity-0-worst-7-best">Syslog severity (0 worst, 7 best)</h2>
+<p>Emergency, Alert, Critical, Error, Warning, Notice, Informational, Debug.</p>
+<h2 id="wireless-security">Wireless security</h2>
+<p>WEP (broken) → WPA (TKIP) → WPA2 (AES-CCMP) → WPA3 (AES-GCMP, SAE). PSK = shared passphrase, Enterprise = 802.1X/RADIUS per-user.</p>
+<h2 id="frequent-exam-traps">Frequent exam traps</h2>
+<ul>
+<li>Wildcard mask in ACLs/OSPF <code>network</code> statements, not a subnet mask.</li>
+<li>Native VLAN mismatch does not break the trunk, it leaks traffic and triggers a CDP warning.</li>
+<li><code>/31</code> is valid for point-to-point links (RFC 3021), only 2 addresses, both usable.</li>
+<li>DAI requires DHCP snooping to already be enabled.</li>
+<li>LLDP is the vendor-neutral CDP equivalent, not enabled by default.</li>
+<li>Longest prefix match always wins before administrative distance is even considered.</li>
+<li>PortFast + BPDU Guard go together, PortFast alone is a loop risk on the wrong port.</li>
+<li>IPv6 has no broadcast, multicast/anycast cover that role.</li>
+<li>Ansible is agentless (SSH, push), Puppet/Chef are agent-based (pull).</li>
+</ul>
+<h2 id="last-night-checklist">Last-night checklist</h2>
+<ul>
+<li>Subnet a /24 into any prefix length in under 10 seconds, no paper.</li>
+<li>Recite the AD table and OSPF neighbor states from memory.</li>
+<li>Draw the DORA process and NAT term table (inside/outside local/global).</li>
+<li>Compare TACACS+ vs RADIUS and HSRP vs VRRP vs GLBP without looking.</li>
+<li>Write a standard and an extended ACL from a plain-English requirement.</li>
+<li>Explain port security violation modes and DHCP snooping trust.</li>
+<li>State the northbound/southbound API distinction and the Ansible vs Puppet difference.</li>
+</ul>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

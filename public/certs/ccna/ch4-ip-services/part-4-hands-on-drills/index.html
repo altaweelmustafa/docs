@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch4, Part 4 - Hands-On Drills · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch4, Part 4 - Hands-On Drills</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <li><a href="#hard">Hard</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="easy">Easy</h2>
+<p><strong>1. DHCP pool with options.</strong> 1 router, 1 switch, 2 PCs set to DHCP. Configure a DHCP pool with the correct network, default gateway, and a DNS server option, excluding the router&rsquo;s own IP from the pool. Verify: both PCs pull an IP automatically, and <code>show ip dhcp binding</code> lists both leases.</p>
+<p><strong>2. SSH-only remote access.</strong> 1 router. Set a domain name, generate RSA keys, create a local user, and configure the vty lines for SSH only (<code>transport input ssh</code>). Verify: you can SSH into the router from a PC, and a Telnet attempt is refused.</p>
+<h2 id="hard">Hard</h2>
+<p><strong>1. PAT plus DHCP relay together.</strong> 3 routers: an &ldquo;edge&rdquo; router doing PAT to a simulated outside network, an &ldquo;internal&rdquo; router with a LAN subnet that has no local DHCP server, and a &ldquo;DHCP server&rdquo; router or a DHCP pool configured on the edge router. Configure <code>ip helper-address</code> on the internal router&rsquo;s LAN interface pointing at the DHCP server, and configure PAT (<code>overload</code>) on the edge router for outbound traffic. Verify: a PC on the internal LAN gets an IP via the relayed DHCP request, and its traffic to the &ldquo;outside&rdquo; network shows up correctly translated in <code>show ip nat translations</code>.</p>
+<p><strong>2. NTP sync plus syslog on an event.</strong> 2 routers: one as an NTP server (or use <code>ntp master</code>), one as a client syncing to it. Point the client&rsquo;s logging at a syslog server (a PC running a syslog service works in Packet Trace, or use <code>logging host</code>). Trigger a loggable event (interface flap, a port security violation, or an ACL deny with logging) and verify the syslog message arrives at the server with a timestamp that matches the NTP-synced clock, not the router&rsquo;s default clock.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-3-qos-remote-access/" id="nav-prev"><em>Ch4, Part 3 - QoS Basics and Remote Access</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

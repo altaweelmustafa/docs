@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch5, Part 3 - Layer 2 Security and Wireless Security · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch5, Part 3 - Layer 2 Security and Wireless Security</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#port-security">Port security</a></li>
+    <li><a href="#dhcp-snooping">DHCP snooping</a></li>
+    <li><a href="#dynamic-arp-inspection-dai">Dynamic ARP Inspection (DAI)</a></li>
+    <li><a href="#wireless-security-wpa-family">Wireless security (WPA family)</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="port-security">Port security</h2>
+<p>Limits which/how many MAC addresses can use an access port.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">interface fa0/1
+</span></span><span class="line"><span class="cl"> switchport port-security
+</span></span><span class="line"><span class="cl"> switchport port-security maximum 2
+</span></span><span class="line"><span class="cl"> switchport port-security mac-address sticky
+</span></span><span class="line"><span class="cl"> switchport port-security violation restrict
+</span></span></code></pre></div><table>
+	<thead>
+			<tr>
+					<th>Violation mode</th>
+					<th>Traffic from violating MAC</th>
+					<th>Port state</th>
+					<th>Logged?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Protect</td>
+					<td>Dropped</td>
+					<td>Stays up</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>Restrict</td>
+					<td>Dropped</td>
+					<td>Stays up</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>Shutdown (default)</td>
+					<td>Dropped</td>
+					<td>Err-disabled</td>
+					<td>Yes</td>
+			</tr>
+	</tbody>
+</table>
+<p>Recover an err-disabled port: <code>shutdown</code> then <code>no shutdown</code>, or configure <code>errdisable recovery</code>.</p>
+<h2 id="dhcp-snooping">DHCP snooping</h2>
+<p>Prevents rogue DHCP servers. Ports are either trusted (uplinks toward the real DHCP server) or untrusted (access ports, default). Untrusted ports can&rsquo;t send DHCP offers/acks, and snooping builds a binding table (MAC to IP to VLAN to port) used by DAI.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip dhcp snooping
+</span></span><span class="line"><span class="cl">ip dhcp snooping vlan 10
+</span></span><span class="line"><span class="cl">interface g0/1
+</span></span><span class="line"><span class="cl"> ip dhcp snooping trust
+</span></span></code></pre></div><h2 id="dynamic-arp-inspection-dai">Dynamic ARP Inspection (DAI)</h2>
+<p>Prevents ARP spoofing/man-in-the-middle by validating ARP packets against the DHCP snooping binding table. Requires DHCP snooping to be enabled first. Trusted ports (usually the same as DHCP snooping trusted ports) skip inspection.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip arp inspection vlan 10
+</span></span><span class="line"><span class="cl">interface g0/1
+</span></span><span class="line"><span class="cl"> ip arp inspection trust
+</span></span></code></pre></div><h2 id="wireless-security-wpa-family">Wireless security (WPA family)</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Standard</th>
+					<th>Encryption</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>WEP</td>
+					<td>RC4</td>
+					<td>broken, never the right answer</td>
+			</tr>
+			<tr>
+					<td>WPA</td>
+					<td>TKIP</td>
+					<td>transitional, legacy</td>
+			</tr>
+			<tr>
+					<td>WPA2</td>
+					<td>AES-CCMP</td>
+					<td>current baseline, PSK or Enterprise (802.1X/RADIUS)</td>
+			</tr>
+			<tr>
+					<td>WPA3</td>
+					<td>AES-GCMP, SAE</td>
+					<td>current best, protects against offline dictionary attacks (SAE replaces PSK&rsquo;s 4-way handshake weakness)</td>
+			</tr>
+	</tbody>
+</table>
+<p>PSK = shared passphrase for everyone. Enterprise = individual per-user credentials validated against a RADIUS server, always the answer for &ldquo;scalable&rdquo; or &ldquo;auditable&rdquo; wireless auth.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-2-acls/" id="nav-prev"><em>Ch5, Part 2 - Access Control Lists</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/" id="nav-next"><em>Ch5, Part 4 - Hands-On Drills</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

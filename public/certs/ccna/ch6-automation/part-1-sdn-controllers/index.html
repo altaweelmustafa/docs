@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch6, Part 1 - SDN and Controller-Based Networking · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch6, Part 1 - SDN and Controller-Based Networking</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#traditional-vs-controller-based">Traditional vs controller-based</a></li>
+    <li><a href="#northbound-vs-southbound">Northbound vs southbound</a></li>
+    <li><a href="#cisco-dna-center">Cisco DNA Center</a></li>
+    <li><a href="#cisco-aci">Cisco ACI</a></li>
+    <li><a href="#underlay-vs-overlay">Underlay vs overlay</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="traditional-vs-controller-based">Traditional vs controller-based</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Model</th>
+					<th>Control plane</th>
+					<th>Management</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Traditional</td>
+					<td>distributed, each device runs its own (e.g. OSPF process)</td>
+					<td>device-by-device CLI</td>
+			</tr>
+			<tr>
+					<td>Controller-based (SDN)</td>
+					<td>centralized on a controller</td>
+					<td>one place configures the whole fabric</td>
+			</tr>
+	</tbody>
+</table>
+<p>Controller-based networking trades per-device autonomy for centralized visibility, consistency, and faster changes at scale.</p>
+<h2 id="northbound-vs-southbound">Northbound vs southbound</h2>
+<table>
+	<thead>
+			<tr>
+					<th>API direction</th>
+					<th>Between</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Northbound</td>
+					<td>Controller to applications/orchestration</td>
+					<td>REST APIs, used by DNA Center apps</td>
+			</tr>
+			<tr>
+					<td>Southbound</td>
+					<td>Controller to network devices</td>
+					<td>OpenFlow, NETCONF, OpFlex, CLI/SNMP</td>
+			</tr>
+	</tbody>
+</table>
+<p>Mnemonic: north is &ldquo;up&rdquo; toward the apps/humans, south is &ldquo;down&rdquo; toward the hardware.</p>
+<h2 id="cisco-dna-center">Cisco DNA Center</h2>
+<p>Cisco&rsquo;s SDN controller for enterprise campus. Key ideas to know by name: automation (push config to many devices at once), assurance (analytics/telemetry), policy-based segmentation via SD-Access, and it exposes northbound REST APIs.</p>
+<h2 id="cisco-aci">Cisco ACI</h2>
+<p>Cisco&rsquo;s SDN for the data center, controlled by the APIC (Application Policy Infrastructure Controller). Key terms: spine-leaf underlay (physical fabric), overlay (VXLAN-based logical networks), endpoint groups (EPGs) instead of traditional VLAN-based policy.</p>
+<h2 id="underlay-vs-overlay">Underlay vs overlay</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Term</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Underlay</td>
+					<td>the physical network providing basic IP connectivity</td>
+			</tr>
+			<tr>
+					<td>Overlay</td>
+					<td>a virtual network built on top (e.g. VXLAN tunnels) carrying the actual logical topology</td>
+			</tr>
+	</tbody>
+</table>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch6-automation/part-2-apis-json-config-mgmt/" id="nav-next"><em>Ch6, Part 2 - REST APIs, JSON, Config Management</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch6, Part 3 - Hands-On Drills · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch6, Part 3 - Hands-On Drills</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <li><a href="#hard">Hard</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <p>Packet Tracer doesn&rsquo;t cover this domain well. Use a terminal with <code>curl</code> (and <code>jq</code> if you have it) instead, against any free public test API (search for a free &ldquo;JSON placeholder&rdquo; test API to point <code>curl</code> at).</p>
+<h2 id="easy">Easy</h2>
+<p><strong>1. Read an HTTP response.</strong> Send a GET request with <code>curl -i</code> to a free test API endpoint. Identify the HTTP status code in the response and state whether the request succeeded, and which method (GET/POST/PUT/DELETE) you used.</p>
+<p><strong>2. Extract values from JSON by hand.</strong> Write a small JSON object describing a router: <code>hostname</code>, an <code>interfaces</code> array with 2-3 entries, and an <code>enabled</code> boolean. Without any tool, by reading the text, write down the value of each field and the data type of each (string, array, boolean).</p>
+<h2 id="hard">Hard</h2>
+<p><strong>1. GET, POST, and extract a nested field.</strong> Send a GET to a free test API and a POST with a small JSON body of your own. Capture both JSON responses. From the GET response, extract a field that&rsquo;s nested two levels deep (an object inside an object, or a value inside an array of objects) and write down the exact <code>jq</code>-style path (or manual description) you used to find it.</p>
+<p><strong>2. Push vs pull, on paper.</strong> Write a short YAML snippet that looks like an Ansible task setting a device&rsquo;s hostname (doesn&rsquo;t need to run, just needs correct YAML structure: task name, module, parameter). Next to it, write one sentence describing how Puppet would achieve the same result differently. Then explain in your own words which one needs an agent process running on the managed device and continuously checking in, and which one just needs SSH reachability, and why that maps to &ldquo;pull&rdquo; vs &ldquo;push.&rdquo;</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch6-automation/part-2-apis-json-config-mgmt/" id="nav-prev"><em>Ch6, Part 2 - REST APIs, JSON, Config Management</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

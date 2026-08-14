@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch2, Part 3 - EtherChannel, CDP, LLDP · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch2, Part 3 - EtherChannel, CDP, LLDP</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#etherchannel">EtherChannel</a></li>
+    <li><a href="#cdp-cisco-discovery-protocol">CDP (Cisco Discovery Protocol)</a></li>
+    <li><a href="#lldp-link-layer-discovery-protocol">LLDP (Link Layer Discovery Protocol)</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="etherchannel">EtherChannel</h2>
+<p>Bundles multiple physical links into one logical link for redundancy and bandwidth. All ports in the bundle must match: speed, duplex, VLAN/trunk config.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Owner</th>
+					<th>Modes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>LACP (802.3ad)</td>
+					<td>open standard</td>
+					<td>active / passive</td>
+			</tr>
+			<tr>
+					<td>PAgP</td>
+					<td>Cisco proprietary</td>
+					<td>desirable / auto</td>
+			</tr>
+			<tr>
+					<td>(none)</td>
+					<td>manual</td>
+					<td>on</td>
+			</tr>
+	</tbody>
+</table>
+<p>Negotiation pairing rules:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Side A</th>
+					<th>Side B</th>
+					<th>Forms channel?</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>active</td>
+					<td>active or passive</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>passive</td>
+					<td>passive</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>desirable</td>
+					<td>desirable or auto</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>auto</td>
+					<td>auto</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>on</td>
+					<td>on</td>
+					<td>Yes (no negotiation)</td>
+			</tr>
+			<tr>
+					<td>on</td>
+					<td>anything else</td>
+					<td>No</td>
+			</tr>
+	</tbody>
+</table>
+<p>Layer 3 EtherChannel exists too (routed port bundling), same negotiation logic.</p>
+<h2 id="cdp-cisco-discovery-protocol">CDP (Cisco Discovery Protocol)</h2>
+<ul>
+<li>Cisco proprietary, Layer 2, discovers directly connected Cisco devices.</li>
+<li>Enabled by default on Cisco devices.</li>
+<li>Timer: 60 sec advertisement, 180 sec holdtime.</li>
+<li><code>show cdp neighbors detail</code> gives IP address, platform, capabilities.</li>
+</ul>
+<h2 id="lldp-link-layer-discovery-protocol">LLDP (Link Layer Discovery Protocol)</h2>
+<ul>
+<li>Open standard (802.1AB) equivalent to CDP, works across vendors.</li>
+<li>Not enabled by default on Cisco devices, must turn on with <code>lldp run</code>.</li>
+<li>Same general idea as CDP, timers differ slightly (default 30 sec advertisement).</li>
+</ul>
+<p>Exam angle: if the topology has mixed vendors, LLDP is the answer, not CDP.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch2-network-access/part-2-stp/" id="nav-prev"><em>Ch2, Part 2 - Spanning Tree Protocol</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch2-network-access/part-4-wireless/" id="nav-next"><em>Ch2, Part 4 - Wireless Fundamentals</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

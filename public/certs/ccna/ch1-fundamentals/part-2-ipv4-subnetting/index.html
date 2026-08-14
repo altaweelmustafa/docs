@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch1, Part 2 - IPv4 Addressing and Subnetting · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch1, Part 2 - IPv4 Addressing and Subnetting</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#private-ranges-rfc-1918-and-special-addresses">Private ranges (RFC 1918) and special addresses</a></li>
+    <li><a href="#default-classful-masks">Default classful masks</a></li>
+    <li><a href="#the-cidr-table-memorize-this-cold">The CIDR table (memorize this cold)</a></li>
+    <li><a href="#subnetting-shortcut-the-only-method-you-need">Subnetting shortcut (the only method you need)</a></li>
+    <li><a href="#vlsm">VLSM</a></li>
+    <li><a href="#wildcard-masks">Wildcard masks</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="private-ranges-rfc-1918-and-special-addresses">Private ranges (RFC 1918) and special addresses</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Range</th>
+					<th>Class</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>10.0.0.0/8</td>
+					<td>A</td>
+					<td>large orgs</td>
+			</tr>
+			<tr>
+					<td>172.16.0.0/12</td>
+					<td>B</td>
+					<td>172.16.0.0 to 172.31.255.255</td>
+			</tr>
+			<tr>
+					<td>192.168.0.0/16</td>
+					<td>C</td>
+					<td>small networks</td>
+			</tr>
+			<tr>
+					<td>169.254.0.0/16</td>
+					<td>-</td>
+					<td>APIPA, self-assigned when DHCP fails</td>
+			</tr>
+			<tr>
+					<td>127.0.0.0/8</td>
+					<td>-</td>
+					<td>loopback</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="default-classful-masks">Default classful masks</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Class</th>
+					<th>Range (1st octet)</th>
+					<th>Default mask</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>A</td>
+					<td>1-126</td>
+					<td>/8 (255.0.0.0)</td>
+			</tr>
+			<tr>
+					<td>B</td>
+					<td>128-191</td>
+					<td>/16 (255.255.0.0)</td>
+			</tr>
+			<tr>
+					<td>C</td>
+					<td>192-223</td>
+					<td>/24 (255.255.255.0)</td>
+			</tr>
+	</tbody>
+</table>
+<p>127 is reserved for loopback. Classful addressing is legacy, but the exam still expects you to recognize it.</p>
+<h2 id="the-cidr-table-memorize-this-cold">The CIDR table (memorize this cold)</h2>
+<table>
+	<thead>
+			<tr>
+					<th>CIDR</th>
+					<th>Mask</th>
+					<th>Block size</th>
+					<th style="text-align: right">Usable hosts</th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>/24</td>
+					<td>255.255.255.0</td>
+					<td>256</td>
+					<td style="text-align: right">254</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/25</td>
+					<td>255.255.255.128</td>
+					<td>128</td>
+					<td style="text-align: right">126</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/26</td>
+					<td>255.255.255.192</td>
+					<td>64</td>
+					<td style="text-align: right">62</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/27</td>
+					<td>255.255.255.224</td>
+					<td>32</td>
+					<td style="text-align: right">30</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/28</td>
+					<td>255.255.255.240</td>
+					<td>16</td>
+					<td style="text-align: right">14</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/29</td>
+					<td>255.255.255.248</td>
+					<td>8</td>
+					<td style="text-align: right">6</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/30</td>
+					<td>255.255.255.252</td>
+					<td>4</td>
+					<td style="text-align: right">2</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/31</td>
+					<td>255.255.255.254</td>
+					<td>2</td>
+					<td style="text-align: right">2 (point-to-point, RFC 3021)</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>/32</td>
+					<td>255.255.255.255</td>
+					<td>1</td>
+					<td style="text-align: right">host route</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="subnetting-shortcut-the-only-method-you-need">Subnetting shortcut (the only method you need)</h2>
+<ol>
+<li>Block size = 256 minus the interesting octet&rsquo;s mask value.</li>
+<li>Subnets increase by the block size in that octet.</li>
+<li>Broadcast = next subnet address minus 1.</li>
+<li>Usable hosts = subnet address + 1 to broadcast - 1.</li>
+</ol>
+<p>Example: 192.168.10.0/27, mask octet = 224, block size = 32.
+Subnets: .0, .32, .64, .96, .128, .160, .192, .224.
+For .64: usable = .65-.94, broadcast = .95.</p>
+<p>Do this in your head, not on paper. Speed here is the single highest-leverage skill for the whole exam.</p>
+<h2 id="vlsm">VLSM</h2>
+<p>Variable Length Subnet Masking: use different mask sizes across the same major network so you don&rsquo;t waste address space. Rule of thumb: assign the largest subnet requirement first, then work down to the smallest (point-to-point links get /30 or /31).</p>
+<h2 id="wildcard-masks">Wildcard masks</h2>
+<p>Wildcard mask = 255.255.255.255 minus the subnet mask. Used in ACLs and OSPF <code>network</code> statements. <code>0</code> bits mean &ldquo;must match,&rdquo; <code>1</code> bits mean &ldquo;don&rsquo;t care.&rdquo; This is the #1 confusion point on the exam, don&rsquo;t mix it up with the subnet mask itself.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-1-osi-tcpip-devices-cabling/" id="nav-prev"><em>Ch1, Part 1 - OSI/TCP-IP, TCP vs UDP, Devices, Cabling</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-3-ipv6/" id="nav-next"><em>Ch1, Part 3 - IPv6 Addressing</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch5, Part 2 - Access Control Lists · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch5, Part 2 - Access Control Lists</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#standard-vs-extended">Standard vs extended</a></li>
+    <li><a href="#core-rules-these-get-tested-directly">Core rules (these get tested directly)</a></li>
+    <li><a href="#wildcard-masks">Wildcard masks</a></li>
+    <li><a href="#config-syntax">Config syntax</a></li>
+    <li><a href="#verification">Verification</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="standard-vs-extended">Standard vs extended</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Number range</th>
+					<th>Filters on</th>
+					<th>Placement</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Standard</td>
+					<td>1-99, 1300-1999</td>
+					<td>source IP only</td>
+					<td>as close to the <strong>destination</strong> as possible</td>
+			</tr>
+			<tr>
+					<td>Extended</td>
+					<td>100-199, 2000-2699</td>
+					<td>source, destination, protocol, port</td>
+					<td>as close to the <strong>source</strong> as possible</td>
+			</tr>
+	</tbody>
+</table>
+<p>Named ACLs work the same way, just with a name instead of a number, and let you edit/delete individual lines (numbered ACLs pre-2000s IOS required full re-entry, modern IOS supports sequence numbers for both).</p>
+<h2 id="core-rules-these-get-tested-directly">Core rules (these get tested directly)</h2>
+<ol>
+<li>Processed top-down, first match wins, stops evaluating after a match.</li>
+<li>Implicit <code>deny any</code> (or <code>deny ip any any</code> on extended) at the end of every ACL, even though it&rsquo;s invisible in the config.</li>
+<li>An ACL with no entries permits everything (rare trick question: an ACL that only has deny statements blocks everything, because of the implicit deny).</li>
+<li>Applied to an interface with a direction: <code>in</code> or <code>out</code>, relative to the router.</li>
+<li>One ACL per protocol, per direction, per interface.</li>
+</ol>
+<h2 id="wildcard-masks">Wildcard masks</h2>
+<p>Wildcard = inverse of a subnet mask. <code>0</code> = must match, <code>1</code> = don&rsquo;t care.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Subnet mask</th>
+					<th>Wildcard mask</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>255.255.255.0</td>
+					<td>0.0.0.255</td>
+			</tr>
+			<tr>
+					<td>255.255.255.192</td>
+					<td>0.0.0.63</td>
+			</tr>
+			<tr>
+					<td>255.255.255.255</td>
+					<td>0.0.0.0 (host, exact match)</td>
+			</tr>
+			<tr>
+					<td>0.0.0.0</td>
+					<td>255.255.255.255 (any)</td>
+			</tr>
+	</tbody>
+</table>
+<p><code>host 10.1.1.1</code> is shorthand for <code>10.1.1.1 0.0.0.0</code>. <code>any</code> is shorthand for <code>0.0.0.0 255.255.255.255</code>.</p>
+<h2 id="config-syntax">Config syntax</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">! standard
+</span></span><span class="line"><span class="cl">access-list 10 permit 192.168.1.0 0.0.0.255
+</span></span><span class="line"><span class="cl">interface g0/1
+</span></span><span class="line"><span class="cl"> ip access-group 10 out
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">! extended
+</span></span><span class="line"><span class="cl">access-list 110 permit tcp 192.168.1.0 0.0.0.255 any eq 443
+</span></span><span class="line"><span class="cl">access-list 110 deny ip any any
+</span></span><span class="line"><span class="cl">interface g0/0
+</span></span><span class="line"><span class="cl"> ip access-group 110 in
+</span></span></code></pre></div><h2 id="verification">Verification</h2>
+<p><code>show access-lists</code>, <code>show ip interface</code> (shows which ACLs are applied and in which direction).</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-1-security-concepts-aaa/" id="nav-prev"><em>Ch5, Part 1 - Security Concepts and AAA</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-3-layer2-wireless-security/" id="nav-next"><em>Ch5, Part 3 - Layer 2 Security and Wireless Security</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

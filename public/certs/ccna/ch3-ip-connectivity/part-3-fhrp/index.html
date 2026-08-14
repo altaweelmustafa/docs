@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3, Part 3 - First Hop Redundancy Protocols · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch3, Part 3 - First Hop Redundancy Protocols</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-fhrp-exists">Why FHRP exists</a></li>
+    <li><a href="#comparison">Comparison</a></li>
+    <li><a href="#hsrp-details-the-one-the-exam-favors">HSRP details (the one the exam favors)</a></li>
+    <li><a href="#glbp-details">GLBP details</a></li>
+    <li><a href="#quick-exam-distinction">Quick exam distinction</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-fhrp-exists">Why FHRP exists</h2>
+<p>Gives hosts a single default gateway IP that stays reachable even if the physical router providing it fails. Two or more routers share a virtual IP/MAC; one is active, the failover is transparent to hosts.</p>
+<h2 id="comparison">Comparison</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th>Owner</th>
+					<th>Roles</th>
+					<th>Load balancing</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>HSRP</td>
+					<td>Cisco proprietary</td>
+					<td>Active / Standby</td>
+					<td>No (per group, need multiple groups)</td>
+			</tr>
+			<tr>
+					<td>VRRP</td>
+					<td>Open standard</td>
+					<td>Master / Backup</td>
+					<td>No (same idea, standard-based)</td>
+			</tr>
+			<tr>
+					<td>GLBP</td>
+					<td>Cisco proprietary</td>
+					<td>AVG (Active Virtual Gateway) / AVF (Active Virtual Forwarder)</td>
+					<td>Yes, built in</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="hsrp-details-the-one-the-exam-favors">HSRP details (the one the exam favors)</h2>
+<ul>
+<li>Virtual MAC: <code>0000.0c07.acXX</code> where XX is the HSRP group number in hex.</li>
+<li>Default hello timer: 3 sec. Default hold timer: 10 sec.</li>
+<li>Default priority: 100. Higher priority wins active role.</li>
+<li>Preemption is off by default, if enabled, a router with higher priority reclaims active role when it comes back up.</li>
+<li>States: Initial, Learn, Listen, Speak, Standby, Active.</li>
+</ul>
+<h2 id="glbp-details">GLBP details</h2>
+<p>Achieves load balancing by having the AVG hand out different virtual MACs (up to 4 AVFs) to different clients in round-robin, so multiple routers actively forward traffic instead of one sitting idle.</p>
+<h2 id="quick-exam-distinction">Quick exam distinction</h2>
+<p>If the question says &ldquo;Cisco only, simplest, one active router&rdquo; think HSRP. If it says &ldquo;multi-vendor / open standard&rdquo; think VRRP. If it says &ldquo;load balancing across gateways&rdquo; think GLBP.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-2-ospf/" id="nav-prev"><em>Ch3, Part 2 - Single-Area OSPFv2</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/" id="nav-next"><em>Ch3, Part 4 - Hands-On Drills</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

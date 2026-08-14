@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3, Part 1 - Routing Table and Static Routing · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch3, Part 1 - Routing Table and Static Routing</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#routing-table-components">Routing table components</a></li>
+    <li><a href="#administrative-distance-memorize-this-table">Administrative distance (memorize this table)</a></li>
+    <li><a href="#route-selection-logic">Route selection logic</a></li>
+    <li><a href="#static-route-types">Static route types</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="routing-table-components">Routing table components</h2>
+<p>Each entry has: source code (C/S/O/D&hellip;), destination network + prefix, administrative distance, metric, next hop, outgoing interface, and how long it&rsquo;s been in the table.</p>
+<p><code>show ip route</code> codes: <code>C</code> connected, <code>L</code> local, <code>S</code> static, <code>O</code> OSPF, <code>D</code> EIGRP, <code>R</code> RIP, <code>*</code> candidate default.</p>
+<h2 id="administrative-distance-memorize-this-table">Administrative distance (memorize this table)</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Source</th>
+					<th style="text-align: right">AD</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Connected</td>
+					<td style="text-align: right">0</td>
+			</tr>
+			<tr>
+					<td>Static route</td>
+					<td style="text-align: right">1</td>
+			</tr>
+			<tr>
+					<td>EIGRP (internal)</td>
+					<td style="text-align: right">90</td>
+			</tr>
+			<tr>
+					<td>OSPF</td>
+					<td style="text-align: right">110</td>
+			</tr>
+			<tr>
+					<td>IS-IS</td>
+					<td style="text-align: right">115</td>
+			</tr>
+			<tr>
+					<td>RIP</td>
+					<td style="text-align: right">120</td>
+			</tr>
+			<tr>
+					<td>EIGRP (external)</td>
+					<td style="text-align: right">170</td>
+			</tr>
+			<tr>
+					<td>Unknown/unreachable</td>
+					<td style="text-align: right">255</td>
+			</tr>
+	</tbody>
+</table>
+<p>Lower AD wins when multiple sources advertise the same route. This is trust between protocols, not route quality.</p>
+<h2 id="route-selection-logic">Route selection logic</h2>
+<ol>
+<li>Longest prefix match wins first, always. A /26 is preferred over a /24 for the same destination, regardless of AD or protocol.</li>
+<li>If prefix length ties, lowest AD wins.</li>
+<li>If AD ties (same protocol), lowest metric wins.</li>
+</ol>
+<h2 id="static-route-types">Static route types</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Standard static</td>
+					<td><code>ip route 10.1.1.0 255.255.255.0 192.168.1.1</code></td>
+			</tr>
+			<tr>
+					<td>Default static</td>
+					<td><code>ip route 0.0.0.0 0.0.0.0 192.168.1.1</code></td>
+			</tr>
+			<tr>
+					<td>Floating static</td>
+					<td>same as above but with a higher AD, used as backup: <code>ip route 10.1.1.0 255.255.255.0 192.168.1.1 200</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>Next hop can be specified as an IP address, an exit interface, or both. Using only an exit interface on a multi-access network can cause proxy ARP issues, using the next-hop IP is the safer/preferred form on the exam.</p>
+<p>IPv6 static route: <code>ipv6 route 2001:db8::/64 2001:db8:1::1</code></p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-2-ospf/" id="nav-next"><em>Ch3, Part 2 - Single-Area OSPFv2</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

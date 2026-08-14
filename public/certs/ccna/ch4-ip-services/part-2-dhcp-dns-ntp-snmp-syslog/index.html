@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch4, Part 2 - DHCP, DNS, NTP, SNMP, Syslog · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch4, Part 2 - DHCP, DNS, NTP, SNMP, Syslog</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dhcp">DHCP</a></li>
+    <li><a href="#dns">DNS</a></li>
+    <li><a href="#ntp">NTP</a></li>
+    <li><a href="#snmp">SNMP</a></li>
+    <li><a href="#syslog-severity-levels-0--worst">Syslog severity levels (0 = worst)</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="dhcp">DHCP</h2>
+<ul>
+<li>Process: <strong>D</strong>iscover → <strong>O</strong>ffer → <strong>R</strong>equest → <strong>A</strong>cknowledge (DORA).</li>
+<li>Ports: client 68, server 67 (UDP).</li>
+<li>DHCP relay: <code>ip helper-address &lt;dhcp-server-ip&gt;</code> on the router interface facing the client subnet, forwards broadcast DHCP requests as unicast to a remote server.</li>
+</ul>
+<h2 id="dns">DNS</h2>
+<ul>
+<li>Port 53 (TCP and UDP, UDP for normal queries, TCP for zone transfers or large responses).</li>
+<li>Resolves names to IP addresses. Know the difference between a recursive query (resolver does all the work) and iterative (client walks the chain itself), though CCNA depth here is shallow.</li>
+</ul>
+<h2 id="ntp">NTP</h2>
+<ul>
+<li>Port 123 (UDP).</li>
+<li>Stratum levels: stratum 0 = reference clock (atomic/GPS), stratum 1 = directly connected to stratum 0, each additional hop increases stratum by 1. Lower stratum = more authoritative.</li>
+</ul>
+<h2 id="snmp">SNMP</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Version</th>
+					<th>Security</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>v1</td>
+					<td>community string, plaintext, weak</td>
+			</tr>
+			<tr>
+					<td>v2c</td>
+					<td>community string, plaintext, adds bulk retrieval (GetBulk)</td>
+			</tr>
+			<tr>
+					<td>v3</td>
+					<td>username/password + optional encryption, actual security</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>Port 161: agent listens for manager requests (Get/Set).</li>
+<li>Port 162: traps sent from agent to manager (unsolicited alerts).</li>
+</ul>
+<h2 id="syslog-severity-levels-0--worst">Syslog severity levels (0 = worst)</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: right">Level</th>
+					<th>Name</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: right">0</td>
+					<td>Emergency</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">1</td>
+					<td>Alert</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">2</td>
+					<td>Critical</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">3</td>
+					<td>Error</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">4</td>
+					<td>Warning</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">5</td>
+					<td>Notice</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">6</td>
+					<td>Informational</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">7</td>
+					<td>Debug</td>
+			</tr>
+	</tbody>
+</table>
+<p>Mnemonic: &ldquo;Every Awesome Cisco Engineer Will Need Ice cream Daily.&rdquo; Port 514 (UDP).</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-1-nat/" id="nav-prev"><em>Ch4, Part 1 - NAT</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-3-qos-remote-access/" id="nav-next"><em>Ch4, Part 3 - QoS Basics and Remote Access</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

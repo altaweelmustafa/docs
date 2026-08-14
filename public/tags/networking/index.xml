@@ -10,15 +10,8 @@
 		
 		
 		
-			<lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate></lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/docs/tags/networking/index.xml" rel="self" type="application/rss+xml" />
-			<item>
-				<title>Chapter 1, Part 4 – Proxy Servers</title>
-				<link>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</link>
-				<pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
-				<guid>http://localhost:1313/docs/courses/iot/ch1/ch1-part4-proxy-servers/</guid>
-				<description>&lt;h2 id=&#34;what-is-a-proxy-server&#34;&gt;What Is a Proxy Server?&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A proxy server is an intermediary server that acts as a gateway between clients&#xA;(such as web browsers or applications) and destination servers (such as web&#xA;servers or internet resources).&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When a client sends a request to access a resource, the request is first routed&#xA;through the proxy server rather than going directly to the destination. The proxy&#xA;then forwards the request on the client&amp;rsquo;s behalf and returns the response.&lt;/p&gt;</description>
-			</item>
 	</channel>
 </rss>

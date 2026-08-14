@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Drills on Docs</title>
+		<link>http://localhost:1313/docs/tags/drills/</link>
+		<description>Recent content in Drills on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/drills/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Ch6, Part 3 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch6-automation/part-3-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch6-automation/part-3-hands-on-drills/</guid>
+				<description>&lt;p&gt;Packet Tracer doesn&amp;rsquo;t cover this domain well. Use a terminal with &lt;code&gt;curl&lt;/code&gt; (and &lt;code&gt;jq&lt;/code&gt; if you have it) instead, against any free public test API (search for a free &amp;ldquo;JSON placeholder&amp;rdquo; test API to point &lt;code&gt;curl&lt;/code&gt; at).&lt;/p&gt;&#xA;&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Read an HTTP response.&lt;/strong&gt; Send a GET request with &lt;code&gt;curl -i&lt;/code&gt; to a free test API endpoint. Identify the HTTP status code in the response and state whether the request succeeded, and which method (GET/POST/PUT/DELETE) you used.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch3, Part 4 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Static routes with a floating backup.&lt;/strong&gt; 2 routers with 2 paths between them (a primary link and a backup link). Configure static routes for full connectivity over the primary path. Add a floating static route over the backup path with a higher AD. Verify: connectivity works, then shut the primary link and confirm traffic fails over to the backup (&lt;code&gt;show ip route&lt;/code&gt;, note the floating route appears only after the primary disappears).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch4, Part 4 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-4-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-4-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. DHCP pool with options.&lt;/strong&gt; 1 router, 1 switch, 2 PCs set to DHCP. Configure a DHCP pool with the correct network, default gateway, and a DNS server option, excluding the router&amp;rsquo;s own IP from the pool. Verify: both PCs pull an IP automatically, and &lt;code&gt;show ip dhcp binding&lt;/code&gt; lists both leases.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. SSH-only remote access.&lt;/strong&gt; 1 router. Set a domain name, generate RSA keys, create a local user, and configure the vty lines for SSH only (&lt;code&gt;transport input ssh&lt;/code&gt;). Verify: you can SSH into the router from a PC, and a Telnet attempt is refused.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch5, Part 4 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Standard ACL to block one host.&lt;/strong&gt; 1 router, 2 PCs, 1 server. Write a standard ACL that blocks only one specific PC from reaching the server while everything else can. Apply it in the correct direction, as close to the destination as the rules require. Verify: the blocked PC&amp;rsquo;s pings fail, the other PC&amp;rsquo;s pings succeed.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. Port security with sticky MAC.&lt;/strong&gt; 1 switch, 1 PC on an access port. Configure port security with a maximum of 1 MAC, sticky learning, and violation mode shutdown. Verify: the port learns the PC&amp;rsquo;s MAC automatically, then connect a second device to the same port (or spoof a different MAC) and confirm the port goes err-disabled. Recover it with &lt;code&gt;shutdown&lt;/code&gt; / &lt;code&gt;no shutdown&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch1, Part 5 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-5-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-5-hands-on-drills/</guid>
+				<description>&lt;p&gt;Use Packet Tracer (or real gear) for all of these. Don&amp;rsquo;t just read the steps, build the topology.&lt;/p&gt;&#xA;&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Subnet a /24 into 4 equal subnets.&lt;/strong&gt; 1 router, 2 switches, 4 PCs (2 per switch). Split 192.168.1.0/24 into four /26 subnets, use two of them, configure router interfaces as gateways, assign static PC IPs. Verify: same-subnet PCs ping directly, cross-subnet pings work once router interfaces are up (&lt;code&gt;show ip interface brief&lt;/code&gt;).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch2, Part 5 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-5-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-5-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Two VLANs, one switch.&lt;/strong&gt; 1 switch, 4 PCs. Create VLAN 10 and VLAN 20, assign 2 ports to each. Verify: PCs in the same VLAN ping each other, PCs in different VLANs cannot (no router yet).&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. CDP and LLDP discovery.&lt;/strong&gt; 2 switches + 1 router, all connected. Use &lt;code&gt;show cdp neighbors detail&lt;/code&gt; to find each neighbor&amp;rsquo;s IP and platform. Then run &lt;code&gt;lldp run&lt;/code&gt; on all devices and repeat with &lt;code&gt;show lldp neighbors detail&lt;/code&gt;. Verify: you can list every neighbor&amp;rsquo;s IP and device type from both protocols.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

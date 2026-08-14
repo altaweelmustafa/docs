@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Port-Security on Docs</title>
+		<link>http://localhost:1313/docs/tags/port-security/</link>
+		<description>Recent content in Port-Security on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/port-security/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Ch5, Part 3 - Layer 2 Security and Wireless Security</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch5-security/part-3-layer2-wireless-security/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch5-security/part-3-layer2-wireless-security/</guid>
+				<description>&lt;h2 id=&#34;port-security&#34;&gt;Port security&lt;/h2&gt;&#xA;&lt;p&gt;Limits which/how many MAC addresses can use an access port.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface fa0/1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; switchport port-security&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; switchport port-security maximum 2&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; switchport port-security mac-address sticky&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; switchport port-security violation restrict&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Violation mode&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Traffic from violating MAC&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Port state&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Logged?&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Protect&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Dropped&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Stays up&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;No&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Restrict&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Dropped&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Stays up&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Yes&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Shutdown (default)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Dropped&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Err-disabled&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Yes&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Recover an err-disabled port: &lt;code&gt;shutdown&lt;/code&gt; then &lt;code&gt;no shutdown&lt;/code&gt;, or configure &lt;code&gt;errdisable recovery&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;dhcp-snooping&#34;&gt;DHCP snooping&lt;/h2&gt;&#xA;&lt;p&gt;Prevents rogue DHCP servers. Ports are either trusted (uplinks toward the real DHCP server) or untrusted (access ports, default). Untrusted ports can&amp;rsquo;t send DHCP offers/acks, and snooping builds a binding table (MAC to IP to VLAN to port) used by DAI.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch5, Part 4 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Standard ACL to block one host.&lt;/strong&gt; 1 router, 2 PCs, 1 server. Write a standard ACL that blocks only one specific PC from reaching the server while everything else can. Apply it in the correct direction, as close to the destination as the rules require. Verify: the blocked PC&amp;rsquo;s pings fail, the other PC&amp;rsquo;s pings succeed.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. Port security with sticky MAC.&lt;/strong&gt; 1 switch, 1 PC on an access port. Configure port security with a maximum of 1 MAC, sticky learning, and violation mode shutdown. Verify: the port learns the PC&amp;rsquo;s MAC automatically, then connect a second device to the same port (or spoof a different MAC) and confirm the port goes err-disabled. Recover it with &lt;code&gt;shutdown&lt;/code&gt; / &lt;code&gt;no shutdown&lt;/code&gt;.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

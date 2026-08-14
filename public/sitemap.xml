@@ -3,6 +3,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/docs/certs/ccna/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-1-osi-tcpip-devices-cabling/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-1-vlans-trunking/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-1-routing-static/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-1-nat/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch5-security/part-1-security-concepts-aaa/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch6-automation/part-1-sdn-controllers/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch1/part1-definitions-objectives/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch1/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch2/part1-divisibility/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/part1-cipher-model-cryptanalysis/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/ch1/part-1-from-networked-to-distributed/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -66,6 +102,39 @@
     <loc>http://localhost:1313/docs/courses/os/ch9/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-2-ipv4-subnetting/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-2-stp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-2-ospf/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-2-dhcp-dns-ntp-snmp-syslog/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch5-security/part-2-acls/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch6-automation/part-2-apis-json-config-mgmt/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch1/part2-osi-architecture-attacks/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch2/part2-euclidean-gcd/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch2/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/ch1/part-2-design-goals-transparency-openness/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -102,6 +171,39 @@
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part2-regular-expressions/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-3-ipv6/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-3-etherchannel-cdp-lldp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-3-fhrp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-3-qos-remote-access/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch5-security/part-3-layer2-wireless-security/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch6-automation/part-3-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch1/part3-security-services/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch2/part3-modular-arithmetic/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/ch1/part-3-dependability-security-scalability/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -135,6 +237,36 @@
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part3-finite-state-automata/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-4-switching-virtualization/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-4-wireless/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-4-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch5-security/part-4-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch4-ip-services/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch1/part4-mechanisms-crypto-families/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/ch1/part-4-classification-of-distributed-systems/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -159,6 +291,18 @@
     <loc>http://localhost:1313/docs/courses/compiler/ch4/ch4-part4-ndfsa-construction/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch1-fundamentals/part-5-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch2-network-access/part-5-hands-on-drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch5-security/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/ch1/part-5-pervasive-systems-and-pitfalls/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -176,6 +320,9 @@
   </url><url>
     <loc>http://localhost:1313/docs/courses/compiler/ch3/p2/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/ch6-automation/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/courses/os/ch4/ch4-part1/</loc>
     <lastmod>2026-06-28T00:00:00+00:00</lastmod>
@@ -195,16 +342,340 @@
     <loc>http://localhost:1313/docs/courses/os/ch7/ch7-part1/</loc>
     <lastmod>2026-06-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/docs/certs/ccna/exam-cheatsheet/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/courses/distributed/exam-cheatsheet/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/802.1q/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/aaa/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/acl/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/administrative-distance/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ansible/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/automation/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cabling/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ccna/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cdp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/certification/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/certs/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter1/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter2/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter3/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter4/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter5/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chapter6/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cheatsheet/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/chef/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cisco/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/controllers/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dai/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dhcp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dhcp-snooping/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/dns/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/drills/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/etherchannel/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/exam/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/fhrp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/glbp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/hsrp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ip-connectivity/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ip-services/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ipv4/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ipv6/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/json/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/lacp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/lldp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/nat/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/network-access/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/network-fundamentals/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/networking/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ntp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/osi/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ospf/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/pat/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/port-security/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/puppet/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/qos/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/radius/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/rest-api/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/routing/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/rstp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/sdn/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/security/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/snmp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/ssh/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/static-routes/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/stp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/subnetting/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/switching/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/syslog/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/tacacs/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/tcp-udp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/tftp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/trunking/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/virtualization/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/vlans/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/vlsm/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/vrrp/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/wireless/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/wlc/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/wpa/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/attacks/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/birzeit/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/caesar-cipher/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cia-triad/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/classical-ciphers/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/computer-science/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/courses/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cryptanalysis/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/cryptography/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/definitions/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/digital-watermarking/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/divisibility/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/euclidean-algorithm/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/euler/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/fermat/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/gcd/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/hill-cipher/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/information-security/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/introduction/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/modular-arithmetic/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/number-theory/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/one-time-pad/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/osi-architecture/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/playfair-cipher/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/primes/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/security-mechanisms/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/security-services/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/steganography/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/substitution-ciphers/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/symmetric-encryption/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/transposition-ciphers/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/vigenere-cipher/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/docs/tags/watermarking/</loc>
+    <lastmod>2026-08-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/art/</loc>
     <lastmod>2026-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/art/cyberpunk2077/</loc>
-    <lastmod>2026-07-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/</loc>
     <lastmod>2026-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/art/the-trial/art1/</loc>
@@ -219,25 +690,7 @@
     <loc>http://localhost:1313/docs/tags/amqp/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/birzeit/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/cdn/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/chapter1/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/chapter3/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/chapter4/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/chapter5/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/cheatsheet/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/classification/</loc>
@@ -258,16 +711,10 @@
     <loc>http://localhost:1313/docs/tags/communication/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/computer-science/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/containers/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/coordination/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/courses/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/dependability/</loc>
@@ -288,9 +735,6 @@
     <loc>http://localhost:1313/docs/tags/event-matching/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/exam/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/exam-notes/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -301,9 +745,6 @@
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/gps/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/introduction/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/lamport/</loc>
@@ -351,9 +792,6 @@
     <loc>http://localhost:1313/docs/tags/scalability/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/security/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/sensor-networks/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -366,9 +804,6 @@
     <loc>http://localhost:1313/docs/tags/sockets/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/threads/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -376,9 +811,6 @@
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/vector-clocks/</loc>
-    <lastmod>2026-07-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/virtualization/</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/wifi/</loc>
@@ -552,9 +984,6 @@
     <loc>http://localhost:1313/docs/tags/cost/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tags/definitions/</loc>
-    <lastmod>2026-06-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/docs/tags/error-detection/</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -670,9 +1099,6 @@
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/offloading/</loc>
-    <lastmod>2026-05-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tags/routing/</loc>
     <lastmod>2026-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tags/rpl/</loc>

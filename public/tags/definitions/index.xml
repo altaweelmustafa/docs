@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="http://localhost:1313/docs/tags/definitions/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 1 – Cybersecurity, Information Security &amp; Security Objectives</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch1/part1-definitions-objectives/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch1/part1-definitions-objectives/</guid>
+				<description>&lt;h2 id=&#34;three-overlapping-terms&#34;&gt;Three overlapping terms&lt;/h2&gt;&#xA;&lt;p&gt;The field uses three related terms, and exam questions like to probe whether you can tell them apart.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Term&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Scope&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Cybersecurity&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The broadest term — tools, policies, safeguards, risk management, and technologies used to protect the whole cyberspace environment: devices, people, infrastructure, applications, and stored/transmitted information.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Information security&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Preserving &lt;strong&gt;confidentiality, integrity, and availability&lt;/strong&gt; of information — electronic &lt;em&gt;and&lt;/em&gt; physical (e.g. paper records). Also covers authenticity, accountability, non-repudiation, and reliability.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Network security&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Protecting networks and the services running over them from unauthorized modification, destruction, or disclosure, while making sure the network keeps doing its job correctly.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Information security and network security are both &lt;strong&gt;subsets of cybersecurity&lt;/strong&gt;. In everyday use, &amp;ldquo;cybersecurity&amp;rdquo; and &amp;ldquo;information security&amp;rdquo; are often used interchangeably — but if a question asks specifically about physical/paper records, the correct umbrella term is information security, not network security.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Chapter 1, Part 1 – Nature of the Course &amp; What is a Programming Language</title>
 				<link>http://localhost:1313/docs/courses/compiler/ch1/ch1-part1/</link>

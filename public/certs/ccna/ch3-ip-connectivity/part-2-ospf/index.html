@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch3, Part 2 - Single-Area OSPFv2 · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch3, Part 2 - Single-Area OSPFv2</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#core-idea">Core idea</a></li>
+    <li><a href="#neighbor-states-memorize-the-order">Neighbor states (memorize the order)</a></li>
+    <li><a href="#router-id-selection-in-order-of-priority">Router ID selection (in order of priority)</a></li>
+    <li><a href="#drbdr-election">DR/BDR election</a></li>
+    <li><a href="#timers">Timers</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#config-essentials">Config essentials</a></li>
+    <li><a href="#verification-commands">Verification commands</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="core-idea">Core idea</h2>
+<p>Link-state protocol, builds a full topology map (LSDB) per area, runs Dijkstra SPF to compute best paths. CCNA only requires single-area (Area 0) OSPFv2.</p>
+<h2 id="neighbor-states-memorize-the-order">Neighbor states (memorize the order)</h2>
+<p>Down → Init → 2-Way → ExStart → Exchange → Loading → Full</p>
+<ul>
+<li><strong>2-Way</strong>: neighbor relationship confirmed, DR/BDR election happens here on multi-access networks.</li>
+<li><strong>Full</strong>: LSDBs fully synchronized, this is the healthy end state.</li>
+<li>On a broadcast segment, non-DR/BDR routers stay in <strong>2-Way</strong> with each other but reach <strong>Full</strong> with the DR and BDR only.</li>
+</ul>
+<h2 id="router-id-selection-in-order-of-priority">Router ID selection (in order of priority)</h2>
+<ol>
+<li>Manually configured (<code>router-id X.X.X.X</code>).</li>
+<li>Highest IP on any loopback interface.</li>
+<li>Highest IP on any active physical interface.</li>
+</ol>
+<h2 id="drbdr-election">DR/BDR election</h2>
+<ul>
+<li>Happens on multi-access segments (Ethernet), not on point-to-point links.</li>
+<li>Highest OSPF priority wins (default priority = 1). Priority 0 means the router can never become DR/BDR.</li>
+<li>Tie-break: highest router ID.</li>
+<li>Purpose: reduces adjacencies from full mesh to a hub-and-spoke via the DR, cuts down flooding traffic.</li>
+</ul>
+<h2 id="timers">Timers</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Network type</th>
+					<th style="text-align: right">Hello</th>
+					<th style="text-align: right">Dead</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Broadcast (Ethernet)</td>
+					<td style="text-align: right">10 sec</td>
+					<td style="text-align: right">40 sec</td>
+			</tr>
+			<tr>
+					<td>Non-broadcast (NBMA)</td>
+					<td style="text-align: right">30 sec</td>
+					<td style="text-align: right">120 sec</td>
+			</tr>
+	</tbody>
+</table>
+<p>Dead interval is always 4x the hello interval. Timers must match between neighbors or the adjacency won&rsquo;t form.</p>
+<h2 id="cost">Cost</h2>
+<p><code>Cost = reference bandwidth / interface bandwidth</code>. Default reference bandwidth = 100 Mbps. So a 100 Mbps interface = cost 1, a 10 Mbps interface = cost 10, anything faster than 100 Mbps (like Gigabit) also rounds to cost 1 unless you raise the reference bandwidth with <code>auto-cost reference-bandwidth</code>.</p>
+<h2 id="config-essentials">Config essentials</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">router ospf 1
+</span></span><span class="line"><span class="cl"> router-id 1.1.1.1
+</span></span><span class="line"><span class="cl"> network 10.0.0.0 0.0.0.255 area 0
+</span></span></code></pre></div><p>The <code>network</code> command uses a <strong>wildcard mask</strong>, not a subnet mask. Area must match on both sides of a link, area 0 is mandatory as the backbone if you have more than one area (not required for CCNA single-area scope, but know the term).</p>
+<h2 id="verification-commands">Verification commands</h2>
+<p><code>show ip ospf neighbor</code>, <code>show ip protocols</code>, <code>show ip ospf interface brief</code>.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-1-routing-static/" id="nav-prev"><em>Ch3, Part 1 - Routing Table and Static Routing</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-3-fhrp/" id="nav-next"><em>Ch3, Part 3 - First Hop Redundancy Protocols</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

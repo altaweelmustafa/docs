@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch5, Part 4 - Hands-On Drills · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch5, Part 4 - Hands-On Drills</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <li><a href="#hard">Hard</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="easy">Easy</h2>
+<p><strong>1. Standard ACL to block one host.</strong> 1 router, 2 PCs, 1 server. Write a standard ACL that blocks only one specific PC from reaching the server while everything else can. Apply it in the correct direction, as close to the destination as the rules require. Verify: the blocked PC&rsquo;s pings fail, the other PC&rsquo;s pings succeed.</p>
+<p><strong>2. Port security with sticky MAC.</strong> 1 switch, 1 PC on an access port. Configure port security with a maximum of 1 MAC, sticky learning, and violation mode shutdown. Verify: the port learns the PC&rsquo;s MAC automatically, then connect a second device to the same port (or spoof a different MAC) and confirm the port goes err-disabled. Recover it with <code>shutdown</code> / <code>no shutdown</code>.</p>
+<h2 id="hard">Hard</h2>
+<p><strong>1. Extended ACL with a carve-out.</strong> 1 router, a subnet of PCs, one management PC in that subnet, and a server. Write an extended ACL that allows only HTTP/HTTPS from the general subnet to the server, denies everything else from that subnet to the server, but still gives the management PC full access to everything. Verify each rule individually: general PC can reach the server on 80/443 but nothing else, management PC can reach anything, and confirm the rule order in <code>show access-lists</code> actually produces that behavior (order matters here).</p>
+<p><strong>2. DHCP snooping plus DAI end to end.</strong> 1 switch, 2 PCs on DHCP, 1 router as the DHCP server on a trusted uplink. Enable DHCP snooping on the VLAN, mark the uplink to the router as trusted. Enable DAI on the same VLAN. Let both PCs get real DHCP leases (building the snooping binding table). Then on one PC, manually set a static ARP entry (or static IP) that conflicts with the other PC&rsquo;s DHCP-assigned IP/MAC pairing, and confirm DAI drops the spoofed ARP while the legitimately-leased PC keeps working normally.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch5-security/part-3-layer2-wireless-security/" id="nav-prev"><em>Ch5, Part 3 - Layer 2 Security and Wireless Security</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch4, Part 3 - QoS Basics and Remote Access · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch4, Part 3 - QoS Basics and Remote Access</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#qos-per-hop-behaviors">QoS per-hop behaviors</a></li>
+    <li><a href="#remote-access">Remote access</a></li>
+    <li><a href="#file-transfer">File transfer</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="qos-per-hop-behaviors">QoS per-hop behaviors</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Step</th>
+					<th>What it does</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Classification</td>
+					<td>Identifies traffic type (ACL, DSCP, protocol)</td>
+			</tr>
+			<tr>
+					<td>Marking</td>
+					<td>Tags the packet/frame (DSCP, CoS) so downstream devices trust it</td>
+			</tr>
+			<tr>
+					<td>Congestion management</td>
+					<td>Queuing strategies (e.g. priority queuing) when link is busy</td>
+			</tr>
+			<tr>
+					<td>Congestion avoidance</td>
+					<td>Drops packets proactively before the queue fully fills (e.g. WRED)</td>
+			</tr>
+			<tr>
+					<td>Policing</td>
+					<td>Drops traffic that exceeds a rate (no buffering)</td>
+			</tr>
+			<tr>
+					<td>Shaping</td>
+					<td>Buffers/delays traffic that exceeds a rate instead of dropping</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>DSCP: Layer 3 marking, in the IP header, 6 bits, survives end to end.</li>
+<li>CoS: Layer 2 marking, in the 802.1Q tag, only survives within the L2 domain (stripped at L3 boundary).</li>
+<li>Mark as close to the source as possible, at the trust boundary (edge switch or endpoint).</li>
+</ul>
+<h2 id="remote-access">Remote access</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th style="text-align: right">Port</th>
+					<th>Encrypted</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Telnet</td>
+					<td style="text-align: right">23</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>SSH</td>
+					<td style="text-align: right">22</td>
+					<td>Yes</td>
+			</tr>
+	</tbody>
+</table>
+<p>Always the &ldquo;correct&rdquo; exam answer for remote CLI management is SSH, Telnet is legacy/insecure.</p>
+<h2 id="file-transfer">File transfer</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Protocol</th>
+					<th style="text-align: right">Port</th>
+					<th>Transport</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>FTP</td>
+					<td style="text-align: right">20 (data), 21 (control)</td>
+					<td>TCP</td>
+			</tr>
+			<tr>
+					<td>TFTP</td>
+					<td style="text-align: right">69</td>
+					<td>UDP</td>
+			</tr>
+	</tbody>
+</table>
+<p>TFTP is simple, no authentication, commonly used for IOS image/config transfers to/from a router or switch.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-2-dhcp-dns-ntp-snmp-syslog/" id="nav-prev"><em>Ch4, Part 2 - DHCP, DNS, NTP, SNMP, Syslog</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch4-ip-services/part-4-hands-on-drills/" id="nav-next"><em>Ch4, Part 4 - Hands-On Drills</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

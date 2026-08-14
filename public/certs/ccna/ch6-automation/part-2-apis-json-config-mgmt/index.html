@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch6, Part 2 - REST APIs, JSON, Config Management · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch6, Part 2 - REST APIs, JSON, Config Management</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rest-api-basics">REST API basics</a></li>
+    <li><a href="#json-syntax-essentials">JSON syntax essentials</a></li>
+    <li><a href="#configuration-management-tools">Configuration management tools</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="rest-api-basics">REST API basics</h2>
+<ul>
+<li>Stateless: each request contains everything needed, server holds no client session state between calls.</li>
+<li>Uses standard HTTP methods:</li>
+</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Action</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>GET</td>
+					<td>read</td>
+			</tr>
+			<tr>
+					<td>POST</td>
+					<td>create</td>
+			</tr>
+			<tr>
+					<td>PUT</td>
+					<td>replace/update</td>
+			</tr>
+			<tr>
+					<td>PATCH</td>
+					<td>partial update</td>
+			</tr>
+			<tr>
+					<td>DELETE</td>
+					<td>remove</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>Responses commonly formatted as JSON.</li>
+<li>HTTP status codes: 2xx success, 3xx redirect, 4xx client error (e.g. 404 not found, 401 unauthorized), 5xx server error.</li>
+</ul>
+<h2 id="json-syntax-essentials">JSON syntax essentials</h2>
+<ul>
+<li>Data is key-value pairs: <code>&quot;key&quot;: &quot;value&quot;</code>.</li>
+<li>Objects wrapped in <code>{}</code>, arrays wrapped in <code>[]</code>.</li>
+<li>Data types: string, number, boolean, null, object, array.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;hostname&#34;</span><span class="p">:</span> <span class="s2">&#34;R1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;interfaces&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;Gi0/0&#34;</span><span class="p">,</span> <span class="s2">&#34;Gi0/1&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Be able to read a small JSON blob and pull out a specific value, that&rsquo;s the practical exam skill (not writing JSON from scratch).</p>
+<h2 id="configuration-management-tools">Configuration management tools</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Tool</th>
+					<th>Agent?</th>
+					<th>Push or pull</th>
+					<th>Language</th>
+					<th>Owner style</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Puppet</td>
+					<td>Agent-based</td>
+					<td>Pull</td>
+					<td>Ruby DSL (manifests)</td>
+					<td>Ruby-based, declarative</td>
+			</tr>
+			<tr>
+					<td>Chef</td>
+					<td>Agent-based</td>
+					<td>Pull</td>
+					<td>Ruby (recipes/cookbooks)</td>
+					<td>Ruby-based, procedural-ish</td>
+			</tr>
+			<tr>
+					<td>Ansible</td>
+					<td>Agentless (uses SSH)</td>
+					<td>Push</td>
+					<td>YAML (playbooks)</td>
+					<td>simplest to start with</td>
+			</tr>
+			<tr>
+					<td>SaltStack</td>
+					<td>Can be either</td>
+					<td>Push (typically)</td>
+					<td>YAML</td>
+					<td>fast, uses a message bus</td>
+			</tr>
+	</tbody>
+</table>
+<p>Exam angle: Ansible is agentless and uses SSH, this is the fact most likely to be tested directly, since it&rsquo;s the differentiator from Puppet/Chef.</p>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/certs/ccna/ch6-automation/part-1-sdn-controllers/" id="nav-prev"><em>Ch6, Part 1 - SDN and Controller-Based Networking</em></a>
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch6-automation/part-3-hands-on-drills/" id="nav-next"><em>Ch6, Part 3 - Hands-On Drills</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Ospf on Docs</title>
+		<link>http://localhost:1313/docs/tags/ospf/</link>
+		<description>Recent content in Ospf on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/ospf/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Ch3, Part 2 - Single-Area OSPFv2</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-2-ospf/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-2-ospf/</guid>
+				<description>&lt;h2 id=&#34;core-idea&#34;&gt;Core idea&lt;/h2&gt;&#xA;&lt;p&gt;Link-state protocol, builds a full topology map (LSDB) per area, runs Dijkstra SPF to compute best paths. CCNA only requires single-area (Area 0) OSPFv2.&lt;/p&gt;&#xA;&lt;h2 id=&#34;neighbor-states-memorize-the-order&#34;&gt;Neighbor states (memorize the order)&lt;/h2&gt;&#xA;&lt;p&gt;Down → Init → 2-Way → ExStart → Exchange → Loading → Full&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;2-Way&lt;/strong&gt;: neighbor relationship confirmed, DR/BDR election happens here on multi-access networks.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Full&lt;/strong&gt;: LSDBs fully synchronized, this is the healthy end state.&lt;/li&gt;&#xA;&lt;li&gt;On a broadcast segment, non-DR/BDR routers stay in &lt;strong&gt;2-Way&lt;/strong&gt; with each other but reach &lt;strong&gt;Full&lt;/strong&gt; with the DR and BDR only.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;router-id-selection-in-order-of-priority&#34;&gt;Router ID selection (in order of priority)&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Manually configured (&lt;code&gt;router-id X.X.X.X&lt;/code&gt;).&lt;/li&gt;&#xA;&lt;li&gt;Highest IP on any loopback interface.&lt;/li&gt;&#xA;&lt;li&gt;Highest IP on any active physical interface.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;drbdr-election&#34;&gt;DR/BDR election&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Happens on multi-access segments (Ethernet), not on point-to-point links.&lt;/li&gt;&#xA;&lt;li&gt;Highest OSPF priority wins (default priority = 1). Priority 0 means the router can never become DR/BDR.&lt;/li&gt;&#xA;&lt;li&gt;Tie-break: highest router ID.&lt;/li&gt;&#xA;&lt;li&gt;Purpose: reduces adjacencies from full mesh to a hub-and-spoke via the DR, cuts down flooding traffic.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;timers&#34;&gt;Timers&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Network type&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;Hello&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;Dead&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Broadcast (Ethernet)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;10 sec&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;40 sec&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Non-broadcast (NBMA)&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;30 sec&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;120 sec&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Dead interval is always 4x the hello interval. Timers must match between neighbors or the adjacency won&amp;rsquo;t form.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Ch3, Part 4 - Hands-On Drills</title>
+				<link>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/</link>
+				<pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/certs/ccna/ch3-ip-connectivity/part-4-hands-on-drills/</guid>
+				<description>&lt;h2 id=&#34;easy&#34;&gt;Easy&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Static routes with a floating backup.&lt;/strong&gt; 2 routers with 2 paths between them (a primary link and a backup link). Configure static routes for full connectivity over the primary path. Add a floating static route over the backup path with a higher AD. Verify: connectivity works, then shut the primary link and confirm traffic fails over to the backup (&lt;code&gt;show ip route&lt;/code&gt;, note the floating route appears only after the primary disappears).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

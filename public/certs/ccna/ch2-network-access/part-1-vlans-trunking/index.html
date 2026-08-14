@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch2, Part 1 - VLANs and Trunking · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/certs">Certs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Ch2, Part 1 - VLANs and Trunking</h2>
+  <p class="post-date"><em>posted on 2026 Aug 14</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#vlan-basics">VLAN basics</a></li>
+    <li><a href="#access-vs-trunk-ports">Access vs trunk ports</a></li>
+    <li><a href="#8021q-tagging">802.1Q tagging</a></li>
+    <li><a href="#dtp-dynamic-trunking-protocol">DTP (Dynamic Trunking Protocol)</a></li>
+    <li><a href="#key-commands">Key commands</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="vlan-basics">VLAN basics</h2>
+<ul>
+<li>VLAN 1 is the default VLAN on every switch, cannot be deleted, carries CDP/DTP/VTP/STP traffic by default.</li>
+<li>Normal range: 1-1005. Extended range: 1006-4094.</li>
+<li>Each VLAN is its own broadcast domain, needs a router (or L3 switch/SVI) to talk to other VLANs.</li>
+<li>Voice VLAN: separate VLAN for IP phones so voice and data traffic on the same access port don&rsquo;t share a broadcast domain.</li>
+</ul>
+<h2 id="access-vs-trunk-ports">Access vs trunk ports</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Port type</th>
+					<th>Carries</th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Access</td>
+					<td>one VLAN, untagged</td>
+					<td><code>switchport mode access</code> / <code>switchport access vlan X</code></td>
+			</tr>
+			<tr>
+					<td>Trunk</td>
+					<td>multiple VLANs, tagged</td>
+					<td><code>switchport mode trunk</code> / <code>switchport trunk allowed vlan X</code></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="8021q-tagging">802.1Q tagging</h2>
+<ul>
+<li>Inserts a 4-byte tag into the Ethernet frame: 12 bits for VLAN ID (1-4094), plus a 3-bit priority field (CoS).</li>
+<li>Native VLAN traffic is sent untagged across a trunk (default VLAN 1).</li>
+<li><strong>Native VLAN mismatch</strong> between two trunk ends is a classic exam trap: it doesn&rsquo;t stop the trunk, but causes VLAN leakage and CDP will flag it as a native VLAN mismatch warning.</li>
+</ul>
+<h2 id="dtp-dynamic-trunking-protocol">DTP (Dynamic Trunking Protocol)</h2>
+<p>Cisco proprietary, auto-negotiates access/trunk. Best practice (and often the &ldquo;correct&rdquo; exam answer for security): disable it with <code>switchport nonegotiate</code> and hardcode the mode.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Mode</th>
+					<th>Negotiates to trunk with</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>dynamic auto</td>
+					<td>trunk, dynamic desirable, or trunk-set peer</td>
+			</tr>
+			<tr>
+					<td>dynamic desirable</td>
+					<td>trunk, dynamic auto, dynamic desirable</td>
+			</tr>
+			<tr>
+					<td>trunk</td>
+					<td>always trunk</td>
+			</tr>
+			<tr>
+					<td>access</td>
+					<td>always access</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="key-commands">Key commands</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vlan 10
+</span></span><span class="line"><span class="cl"> name SALES
+</span></span><span class="line"><span class="cl">interface fa0/1
+</span></span><span class="line"><span class="cl"> switchport mode access
+</span></span><span class="line"><span class="cl"> switchport access vlan 10
+</span></span><span class="line"><span class="cl">interface fa0/24
+</span></span><span class="line"><span class="cl"> switchport mode trunk
+</span></span><span class="line"><span class="cl"> switchport trunk allowed vlan 10,20,30
+</span></span><span class="line"><span class="cl"> switchport trunk native vlan 99
+</span></span></code></pre></div>
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+       
+      <a href="http://localhost:1313/docs/certs/ccna/ch2-network-access/part-2-stp/" id="nav-next"><em>Ch2, Part 2 - Spanning Tree Protocol</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
