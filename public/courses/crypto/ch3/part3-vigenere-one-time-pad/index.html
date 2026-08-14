@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#polyalphabetic-substitution-ciphers">Polyalphabetic substitution ciphers</a></li>
+    <li><a href="#vigenère-cipher">Vigenère cipher</a>
+      <ul>
+        <li><a href="#encryption">Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#vernam-cipher">Vernam cipher</a></li>
+    <li><a href="#the-one-time-pad">The one-time pad</a>
+      <ul>
+        <li><a href="#why-its-unbreakable">Why it&rsquo;s unbreakable</a></li>
+        <li><a href="#why-its-rarely-used-in-practice">Why it&rsquo;s rarely used in practice</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="polyalphabetic-substitution-ciphers">Polyalphabetic substitution ciphers</h2>
+<p>Instead of one fixed substitution rule (monoalphabetic), use <strong>different</strong> monoalphabetic substitutions as you move through the message. Common features:</p>
+<ol>
+<li>A <strong>set of related</strong> monoalphabetic substitution rules.</li>
+<li>A <strong>key</strong> determines which rule applies at each position.</li>
+</ol>
+<p>This smooths out single-letter frequency statistics, since the same plaintext letter can map to different ciphertext letters depending on position.</p>
+<hr>
+<h2 id="vigenère-cipher">Vigenère cipher</h2>
+<p>The best-known, simplest polyalphabetic cipher. The &ldquo;rule set&rdquo; is the 26 Caesar shifts (0–25); each is identified by a <strong>key letter</strong> (the ciphertext letter that <code>a</code> maps to under that shift).</p>
+<h3 id="encryption">Encryption</h3>
+<p>The key is a repeating keyword, written under the plaintext letter-by-letter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">key:        deceptivedeceptivedeceptive
+</span></span><span class="line"><span class="cl">plaintext:  wearediscoveredsaveyourself
+</span></span><span class="line"><span class="cl">ciphertext: ZICVTWQNGRZGVTWAVZHCQYGLMGJ
+</span></span></code></pre></div><p>Each plaintext letter is Caesar-shifted by the amount indicated by the corresponding key letter.</p>
+<p><strong>Strength:</strong> multiple ciphertext letters can represent the same plaintext letter (one per unique key letter), obscuring single-letter frequency. <strong>Weakness:</strong> if the keyword is short, it repeats — and repetition still leaks structure. A longer keyword frequency-distribution table (e.g. keyword length 9) shows an improvement over Playfair, but considerable frequency information still survives.</p>
+<blockquote>
+<p>Exam sentence: Vigenère&rsquo;s security scales with keyword length — the fundamental flaw is that any <em>repeating</em> key, no matter how long, still leaves statistical patterns for a cryptanalyst to exploit (this is what motivated the Vernam cipher and, ultimately, the one-time pad).</p>
+</blockquote>
+<hr>
+<h2 id="vernam-cipher">Vernam cipher</h2>
+<p>Introduced by AT&amp;T engineer Gilbert Vernam (1918). Works on <strong>binary data</strong> rather than letters. The key idea: use a keyword as long as the plaintext, generated from a running loop of tape — but because the tape <em>eventually repeats</em>, it&rsquo;s really still a very long repeating key. Given enough ciphertext (or known/probable plaintext), it can still be broken.</p>
+<hr>
+<h2 id="the-one-time-pad">The one-time pad</h2>
+<p>Proposed by Army Signal Corps officer Joseph Mauborgne as the ultimate fix to the Vernam cipher&rsquo;s weakness:</p>
+<ul>
+<li>Use a <strong>truly random key</strong>, as long as the message itself, so it never needs to repeat.</li>
+<li>The key is used for <strong>exactly one message</strong>, then discarded.</li>
+<li>Every new message gets a brand-new random key of matching length.</li>
+</ul>
+<h3 id="why-its-unbreakable">Why it&rsquo;s unbreakable</h3>
+<p>The scheme produces ciphertext that is statistically indistinguishable from random noise — it bears <strong>no relationship whatsoever</strong> to the plaintext. In fact, for any ciphertext, there exists <em>some</em> key that decrypts it to <em>any</em> plaintext of the same length. An exhaustive key search would surface every possible legible plaintext with no way to know which one is correct.</p>
+<p>This makes the one-time pad the <strong>only cryptosystem with proven perfect secrecy</strong> — its security rests entirely on the randomness of the key.</p>
+<h3 id="why-its-rarely-used-in-practice">Why it&rsquo;s rarely used in practice</h3>
+<p>Despite perfect theoretical security, two practical problems limit it:</p>
+<ol>
+<li><strong>Generating truly random keys at scale</strong> — a heavily used system might need millions of random characters; generating genuine randomness in that volume is hard.</li>
+<li><strong>Key distribution</strong> — a key as long as <em>every</em> message must reach both parties securely. This is a &ldquo;mammoth&rdquo; logistics problem, arguably harder than the original secure-communication problem.</li>
+</ol>
+<p>Because of these, the one-time pad is mainly reserved for <strong>low-bandwidth, very-high-security channels</strong> (e.g. historically, diplomatic and intelligence communications).</p>
+<blockquote>
+<p>Exam sentence: perfect secrecy ≠ practical usability. The one-time pad is provably unbreakable but its key-management burden makes it impractical for general-purpose, high-volume communication.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Vigenère: multiple Caesar shifts driven by a repeating keyword — better than monoalphabetic, but a repeating key still leaks patterns. Vernam: binary version, still effectively a repeating key over time. One-time pad: truly random, message-length, single-use key → provably perfect secrecy, but impractical due to key generation and distribution costs.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Using keyword <code>&quot;LEMON&quot;</code>, encrypt the plaintext <code>&quot;ATTACK&quot;</code> with the Vigenère cipher.</li>
+<li>Why does a repeating keyword still leave the cipher vulnerable, no matter how long it is?</li>
+<li>Explain why the one-time pad is unbreakable, and name its two practical limitations.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/" id="nav-prev"><em>Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/" id="nav-next"><em>Chapter 3, Part 4 – Transposition Techniques</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

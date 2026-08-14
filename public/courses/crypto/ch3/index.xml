@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Chapter 3: Classical Encryption, Steganography &amp; Watermarking on Docs</title>
+		<link>http://localhost:1313/docs/courses/crypto/ch3/</link>
+		<description>Recent content in Chapter 3: Classical Encryption, Steganography &amp; Watermarking on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/courses/crypto/ch3/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 1 – Basic Concepts &amp; the Symmetric Cipher Model</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part1-cipher-model-cryptanalysis/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part1-cipher-model-cryptanalysis/</guid>
+				<description>&lt;h2 id=&#34;core-terminology&#34;&gt;Core terminology&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Term&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Meaning&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Plaintext&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The original, intelligible message.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Ciphertext&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The coded (unintelligible) message.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Encryption / enciphering&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Converting plaintext → ciphertext.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Decryption / deciphering&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Restoring plaintext from ciphertext.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Cryptography&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;The study of schemes used for encryption.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Cryptographic system / cipher&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;A particular such scheme.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Cryptanalysis&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Techniques for deciphering a message &lt;em&gt;without&lt;/em&gt; knowing the enciphering details — &amp;ldquo;breaking the code.&amp;rdquo;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Cryptology&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Cryptography + cryptanalysis together.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;the-symmetric-cipher-model&#34;&gt;The symmetric cipher model&lt;/h2&gt;&#xA;&lt;p&gt;A symmetric encryption scheme has five ingredients (Figure 3.1):&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/</guid>
+				<description>&lt;h2 id=&#34;substitution-technique&#34;&gt;Substitution technique&lt;/h2&gt;&#xA;&lt;p&gt;Letters of the plaintext are replaced by other letters, numbers, or symbols (or, at the bit level, plaintext bit patterns are replaced by ciphertext bit patterns).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;caesar-cipher&#34;&gt;Caesar cipher&lt;/h2&gt;&#xA;&lt;p&gt;The earliest and simplest substitution cipher, attributed to Julius Caesar: shift every letter three places down the alphabet, wrapping &lt;code&gt;Z → A&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Generalized to any shift &lt;code&gt;k&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;c = E(k, p) = (p + k) mod 26        (encryption)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p = D(k, c) = (c − k) mod 26        (decryption)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with letters numbered &lt;code&gt;a=0, b=1, ..., z=25&lt;/code&gt; and &lt;code&gt;k&lt;/code&gt; in the range 1–25.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/</guid>
+				<description>&lt;h2 id=&#34;polyalphabetic-substitution-ciphers&#34;&gt;Polyalphabetic substitution ciphers&lt;/h2&gt;&#xA;&lt;p&gt;Instead of one fixed substitution rule (monoalphabetic), use &lt;strong&gt;different&lt;/strong&gt; monoalphabetic substitutions as you move through the message. Common features:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A &lt;strong&gt;set of related&lt;/strong&gt; monoalphabetic substitution rules.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;strong&gt;key&lt;/strong&gt; determines which rule applies at each position.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This smooths out single-letter frequency statistics, since the same plaintext letter can map to different ciphertext letters depending on position.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;vigenère-cipher&#34;&gt;Vigenère cipher&lt;/h2&gt;&#xA;&lt;p&gt;The best-known, simplest polyalphabetic cipher. The &amp;ldquo;rule set&amp;rdquo; is the 26 Caesar shifts (0–25); each is identified by a &lt;strong&gt;key letter&lt;/strong&gt; (the ciphertext letter that &lt;code&gt;a&lt;/code&gt; maps to under that shift).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 4 – Transposition Techniques</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part4-transposition-ciphers/</guid>
+				<description>&lt;h2 id=&#34;transposition-vs-substitution&#34;&gt;Transposition vs. substitution&lt;/h2&gt;&#xA;&lt;p&gt;Every technique so far substituted one symbol for another. A &lt;strong&gt;transposition cipher&lt;/strong&gt; instead &lt;strong&gt;permutes&lt;/strong&gt; (rearranges) the plaintext letters — no letter is replaced, just moved.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;rail-fence-cipher&#34;&gt;Rail fence cipher&lt;/h2&gt;&#xA;&lt;p&gt;The simplest transposition technique. Write the plaintext diagonally across a set number of &amp;ldquo;rails,&amp;rdquo; then read off row by row.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt; — &lt;code&gt;&amp;quot;meet me after the toga party&amp;quot;&lt;/code&gt;, depth 2:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;m e m a t r h t g p r y&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; e t e f e t e o a a t&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reading row by row gives the ciphertext:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chapter 3, Part 5 – Steganography &amp; Digital Watermarking</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/</guid>
+				<description>&lt;h2 id=&#34;steganography&#34;&gt;Steganography&lt;/h2&gt;&#xA;&lt;p&gt;Where encryption hides the &lt;strong&gt;meaning&lt;/strong&gt; of a message, steganography hides the &lt;strong&gt;existence&lt;/strong&gt; of a message altogether — an observer shouldn&amp;rsquo;t even suspect communication is happening.&lt;/p&gt;&#xA;&lt;h3 id=&#34;classical-methods&#34;&gt;Classical methods&lt;/h3&gt;&#xA;&lt;p&gt;Character marking, invisible ink, pin punctures, typewriter correction-ribbon tricks — all pre-digital ways of embedding a hidden channel in an innocuous-looking cover.&lt;/p&gt;&#xA;&lt;h3 id=&#34;modern-digital-methods&#34;&gt;Modern digital methods&lt;/h3&gt;&#xA;&lt;p&gt;Embedding data in the &lt;strong&gt;least-significant bits (LSB)&lt;/strong&gt; of image, audio, or video files — changes imperceptible to human senses but recoverable by anyone who knows the embedding scheme.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

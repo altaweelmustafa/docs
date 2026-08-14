@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 3 – Security Services · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 3 – Security Services</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#authentication">Authentication</a></li>
+    <li><a href="#access-control">Access control</a></li>
+    <li><a href="#data-confidentiality">Data confidentiality</a></li>
+    <li><a href="#data-integrity">Data integrity</a></li>
+    <li><a href="#non-repudiation">Non-repudiation</a></li>
+    <li><a href="#availability-service">Availability service</a></li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="authentication">Authentication</h2>
+<p>Concerned with assuring a communication is genuinely from who it claims to be from.</p>
+<ul>
+<li><strong>Single message case</strong>: assures the recipient the message really came from the claimed source.</li>
+<li><strong>Ongoing connection case</strong>: assures both entities are authentic <em>and</em> that a third party can&rsquo;t hijack the connection to masquerade as one of the legitimate parties.</li>
+</ul>
+<p>X.800 defines two specific authentication services:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Service</th>
+					<th>What it covers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Peer entity authentication</strong></td>
+					<td>Corroborates the identity of a peer at connection setup or during data transfer. Guards against masquerade or unauthorized replay of a previous connection.</td>
+			</tr>
+			<tr>
+					<td><strong>Data origin authentication</strong></td>
+					<td>Corroborates the source of a single data unit. Does <em>not</em> protect against duplication/modification — useful for connectionless applications like email where there&rsquo;s no ongoing session.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="access-control">Access control</h2>
+<p>The ability to limit and control access to hosts and applications over communication links. Requires that every entity first be <strong>identified/authenticated</strong>, so access rights can be tailored to that specific individual.</p>
+<hr>
+<h2 id="data-confidentiality">Data confidentiality</h2>
+<p>Protects transmitted data from <strong>passive</strong> attacks, at two possible levels:</p>
+<ul>
+<li><strong>Content protection</strong> — broadest form protects <em>all</em> user data on a connection; narrower forms protect just one message or specific fields.</li>
+<li><strong>Traffic-flow protection</strong> — hides <em>that</em> communication is happening at all: source, destination, frequency, and length of traffic, not just its content.</li>
+</ul>
+<h2 id="data-integrity">Data integrity</h2>
+<p>Can apply to a stream of messages, one message, or selected fields.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Covers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Connection-oriented (stream) integrity</strong></td>
+					<td>Messages arrive as sent — no duplication, insertion, modification, reordering, or replay. Also covers destruction of data (so it overlaps with denial-of-service protection).</td>
+			</tr>
+			<tr>
+					<td><strong>Connectionless integrity</strong></td>
+					<td>Deals with individual messages in isolation — generally just protects against modification.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Because integrity relates to <em>active</em> attacks, the emphasis is on <strong>detection</strong> rather than prevention — and ideally automated recovery once a violation is detected.</p>
+<h2 id="non-repudiation">Non-repudiation</h2>
+<p>Prevents either party from denying a transmitted message:</p>
+<ul>
+<li>If a message is sent, the <strong>receiver</strong> can prove the sender really sent it.</li>
+<li>If a message is received, the <strong>sender</strong> can prove the receiver really received it.</li>
+</ul>
+<h2 id="availability-service">Availability service</h2>
+<p>Protects a system to ensure it stays available, directly countering denial-of-service attacks. It depends on proper management of system resources, and therefore leans on access control and the other services above.</p>
+<blockquote>
+<p>Exam sentence: X.800 defines five service families — authentication, access control, confidentiality, integrity, and non-repudiation — plus a dedicated availability service that addresses DoS.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Each security service maps to specific attacks it defends against: authentication → masquerade, access control → unauthorized access, confidentiality → passive attacks, integrity → active/data-modification attacks, non-repudiation → denial of having sent/received, availability → DoS.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>What&rsquo;s the difference between peer entity authentication and data origin authentication?</li>
+<li>Contrast connection-oriented integrity with connectionless integrity.</li>
+<li>Explain non-repudiation with a concrete sender/receiver example.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch1/part2-osi-architecture-attacks/" id="nav-prev"><em>Chapter 1, Part 2 – The OSI Security Architecture &amp; Security Attacks</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch1/part4-mechanisms-crypto-families/" id="nav-next"><em>Chapter 1, Part 4 – Security Mechanisms &amp; Cryptographic Algorithm Families</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

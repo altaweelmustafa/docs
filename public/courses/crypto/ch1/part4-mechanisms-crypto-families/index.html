@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 4 – Security Mechanisms &amp; Cryptographic Algorithm Families · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 4 – Security Mechanisms &amp; Cryptographic Algorithm Families</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#security-mechanisms-x800">Security mechanisms (X.800)</a></li>
+    <li><a href="#cryptographic-algorithms-three-families">Cryptographic algorithms: three families</a>
+      <ul>
+        <li><a href="#1-keyless-algorithms">1. Keyless algorithms</a></li>
+        <li><a href="#2-single-key-symmetric-algorithms">2. Single-key (symmetric) algorithms</a></li>
+        <li><a href="#3-two-key-asymmetric-algorithms">3. Two-key (asymmetric) algorithms</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="security-mechanisms-x800">Security mechanisms (X.800)</h2>
+<p>These are the building blocks that implement the services from Part 3.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Mechanism</th>
+					<th>What it does</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Cryptographic algorithms</strong></td>
+					<td>Reversible (encryption — data can be decrypted back) or irreversible (hash functions, MACs — used for signatures and authentication).</td>
+			</tr>
+			<tr>
+					<td><strong>Data integrity</strong></td>
+					<td>A family of mechanisms that check a data unit or stream hasn&rsquo;t been tampered with.</td>
+			</tr>
+			<tr>
+					<td><strong>Digital signature</strong></td>
+					<td>Data (or a transformation of data) appended to a unit so a recipient can prove its source and integrity, and it resists forgery.</td>
+			</tr>
+			<tr>
+					<td><strong>Authentication exchange</strong></td>
+					<td>Confirms an entity&rsquo;s identity through an information exchange.</td>
+			</tr>
+			<tr>
+					<td><strong>Traffic padding</strong></td>
+					<td>Inserts filler bits into gaps in a data stream to frustrate traffic analysis.</td>
+			</tr>
+			<tr>
+					<td><strong>Routing control</strong></td>
+					<td>Chooses secure physical/logical routes for sensitive data, and allows re-routing if a breach is suspected.</td>
+			</tr>
+			<tr>
+					<td><strong>Notarization</strong></td>
+					<td>Uses a trusted third party to guarantee properties of a data exchange (e.g. that it occurred, or when).</td>
+			</tr>
+			<tr>
+					<td><strong>Access control</strong></td>
+					<td>Mechanisms that enforce access rights to resources.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="cryptographic-algorithms-three-families">Cryptographic algorithms: three families</h2>
+<p>Cryptographic algorithms (Figure 1.4) split into three categories based on how many keys they use:</p>
+<h3 id="1-keyless-algorithms">1. Keyless algorithms</h3>
+<p>No key is involved — deterministic functions with properties useful for cryptography.</p>
+<ul>
+<li><strong>Cryptographic hash function</strong> — turns an arbitrary amount of text into a small, fixed-length digest/hash value. A <em>cryptographic</em> hash function has extra properties that make it safe to use inside a MAC or digital signature.</li>
+<li><strong>Pseudorandom number generator (PRNG)</strong> — deterministic, but produces a sequence that <em>looks</em> truly random.</li>
+</ul>
+<h3 id="2-single-key-symmetric-algorithms">2. Single-key (symmetric) algorithms</h3>
+<p>Both parties share one <strong>secret key</strong>. Forms:</p>
+<ul>
+<li><strong>Block cipher</strong> — operates on fixed-size blocks of data; in most modes of operation, the transformation of a block depends on the key <em>and</em> on previous blocks.</li>
+<li><strong>Stream cipher</strong> — operates on a continuous sequence of bits, transforming them one at a time (typically via XOR) as a function of the key.</li>
+<li><strong>Message Authentication Code (MAC)</strong> — not encryption at all: a data element derived from a message plus a secret key, used to <em>verify integrity</em>. The recipient recomputes the MAC and compares it — a mismatch means the message was altered.</li>
+</ul>
+<h3 id="3-two-key-asymmetric-algorithms">3. Two-key (asymmetric) algorithms</h3>
+<p>Uses a <strong>private key</strong> (known to one party) and a related <strong>public key</strong> (widely distributed). Applications:</p>
+<ul>
+<li><strong>Digital signature algorithm</strong> — the signer uses their private key to sign; anyone with the public key can verify origin and integrity.</li>
+<li><strong>Key exchange</strong> — securely distributing a symmetric key to two or more parties.</li>
+<li><strong>User authentication</strong> — proving a user (or a service) is genuinely who it claims to be.</li>
+</ul>
+<blockquote>
+<p>Exam sentence: keyless → no key; single-key → one shared secret key (symmetric); two-key → a private/public key pair (asymmetric). Block/stream ciphers and MACs are single-key; digital signatures, key exchange, and asymmetric encryption are two-key.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Mechanisms are the <em>tools</em> (cryptographic algorithms, digital signatures, access control, etc.); cryptographic algorithms themselves split into keyless, single-key, and two-key families based on how many keys are used and by whom.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Name the eight X.800 security mechanisms.</li>
+<li>What distinguishes a keyless algorithm from a single-key algorithm?</li>
+<li>Why is a MAC not the same thing as encryption, even though it uses a secret key?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch1/part3-security-services/" id="nav-prev"><em>Chapter 1, Part 3 – Security Services</em></a>
+       
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

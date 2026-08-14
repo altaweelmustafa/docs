@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Steganography on Docs</title>
+		<link>http://localhost:1313/docs/tags/steganography/</link>
+		<description>Recent content in Steganography on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/steganography/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 5 – Steganography &amp; Digital Watermarking</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part5-steganography-watermarking/</guid>
+				<description>&lt;h2 id=&#34;steganography&#34;&gt;Steganography&lt;/h2&gt;&#xA;&lt;p&gt;Where encryption hides the &lt;strong&gt;meaning&lt;/strong&gt; of a message, steganography hides the &lt;strong&gt;existence&lt;/strong&gt; of a message altogether — an observer shouldn&amp;rsquo;t even suspect communication is happening.&lt;/p&gt;&#xA;&lt;h3 id=&#34;classical-methods&#34;&gt;Classical methods&lt;/h3&gt;&#xA;&lt;p&gt;Character marking, invisible ink, pin punctures, typewriter correction-ribbon tricks — all pre-digital ways of embedding a hidden channel in an innocuous-looking cover.&lt;/p&gt;&#xA;&lt;h3 id=&#34;modern-digital-methods&#34;&gt;Modern digital methods&lt;/h3&gt;&#xA;&lt;p&gt;Embedding data in the &lt;strong&gt;least-significant bits (LSB)&lt;/strong&gt; of image, audio, or video files — changes imperceptible to human senses but recoverable by anyone who knows the embedding scheme.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

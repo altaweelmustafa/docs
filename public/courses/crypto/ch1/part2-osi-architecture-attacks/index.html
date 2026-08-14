@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1, Part 2 – The OSI Security Architecture &amp; Security Attacks · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 1, Part 2 – The OSI Security Architecture &amp; Security Attacks</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-a-formal-architecture">Why a formal architecture?</a></li>
+    <li><a href="#threat-vs-attack">Threat vs. attack</a></li>
+    <li><a href="#passive-vs-active-attacks">Passive vs. active attacks</a>
+      <ul>
+        <li><a href="#passive-attacks">Passive attacks</a></li>
+        <li><a href="#active-attacks">Active attacks</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="why-a-formal-architecture">Why a formal architecture?</h2>
+<p>Security managers need a systematic way to define requirements and evaluate products — that&rsquo;s hard in a single machine, and even harder across networks. ITU-T Recommendation <strong>X.800 (Security Architecture for OSI)</strong> gives that systematic approach, organized around three core concepts.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>Definition</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Security attack</strong></td>
+					<td>Any action that compromises the security of information owned by an organization.</td>
+			</tr>
+			<tr>
+					<td><strong>Security mechanism</strong></td>
+					<td>A process (or device) designed to detect, prevent, or recover from an attack.</td>
+			</tr>
+			<tr>
+					<td><strong>Security service</strong></td>
+					<td>A processing/communication service that enhances security; it counters attacks by using one or more mechanisms.</td>
+			</tr>
+	</tbody>
+</table>
+<p>Think of it as: <strong>attacks</strong> are the threat, <strong>mechanisms</strong> are the tools, <strong>services</strong> are the goals the tools are assembled to achieve.</p>
+<hr>
+<h2 id="threat-vs-attack">Threat vs. attack</h2>
+<ul>
+<li><strong>Threat</strong> — a <em>potential</em> for a security violation: a circumstance, capability, action, or event that <em>could</em> breach security. A possible danger that might exploit a vulnerability.</li>
+<li><strong>Attack</strong> — an <em>actual</em> assault: a deliberate, intelligent attempt to evade security services and violate a security policy.</li>
+</ul>
+<p>A threat is the possibility; an attack is the realization of that possibility.</p>
+<hr>
+<h2 id="passive-vs-active-attacks">Passive vs. active attacks</h2>
+<p>X.800 and RFC 4949 both classify attacks along this axis:</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Passive attack</th>
+					<th>Active attack</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Effect on system resources</strong></td>
+					<td>None — the attacker only observes/learns</td>
+					<td>Alters system resources or their operation</td>
+			</tr>
+			<tr>
+					<td><strong>Detectability</strong></td>
+					<td>Very hard to detect (no data is changed)</td>
+					<td>Easier to detect, but hard to prevent outright</td>
+			</tr>
+			<tr>
+					<td><strong>Defense strategy</strong></td>
+					<td>Prevention (e.g. encryption)</td>
+					<td>Detection + recovery</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="passive-attacks">Passive attacks</h3>
+<ul>
+<li><strong>Release of message contents</strong> — an opponent simply reads a sensitive email, call, or file.</li>
+<li><strong>Traffic analysis</strong> — even if content is encrypted, an opponent can still observe <em>who</em> is talking to <em>whom</em>, how often, and for how long, and infer something from that pattern.</li>
+</ul>
+<h3 id="active-attacks">Active attacks</h3>
+<p>Four categories:</p>
+<ul>
+<li><strong>Masquerade</strong> — one entity pretends to be another (often combined with another active attack, e.g. replaying a captured authentication sequence to gain elevated privileges).</li>
+<li><strong>Replay</strong> — capturing a legitimate data unit and retransmitting it later to cause an unauthorized effect.</li>
+<li><strong>Data modification</strong> — part of a legitimate message is altered, or messages are reordered/delayed, to produce an unauthorized effect.</li>
+<li><strong>Denial of service (DoS)</strong> — prevents or degrades normal use of communication facilities, either against a specific target or by overwhelming/disabling an entire network.</li>
+</ul>
+<blockquote>
+<p>Exam sentence: passive attacks are hard to detect but easy to prevent (encryption); active attacks are hard to prevent but the goal shifts to detection and recovery.</p>
+</blockquote>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>X.800 organizes the field around attacks, mechanisms, and services. A threat is a potential danger; an attack is the realized act. Attacks split into passive (eavesdropping, traffic analysis — prevent them) and active (masquerade, replay, modification, DoS — detect and recover from them).</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Define security attack, security mechanism, and security service, and explain how they relate.</li>
+<li>What&rsquo;s the difference between a threat and an attack?</li>
+<li>List the four types of active attack and give one real-world example of each.</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch1/part1-definitions-objectives/" id="nav-prev"><em>Chapter 1, Part 1 – Cybersecurity, Information Security &amp; Security Objectives</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch1/part3-security-services/" id="nav-next"><em>Chapter 1, Part 3 – Security Services</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>

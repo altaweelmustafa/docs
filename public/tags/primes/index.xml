@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Primes on Docs</title>
+		<link>http://localhost:1313/docs/tags/primes/</link>
+		<description>Recent content in Primes on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/primes/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 2, Part 4 – Prime Numbers, Fermat&#39;s &amp; Euler&#39;s Theorems</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch2/part4-primes-fermat-euler/</guid>
+				<description>&lt;h2 id=&#34;prime-numbers&#34;&gt;Prime numbers&lt;/h2&gt;&#xA;&lt;p&gt;An integer &lt;code&gt;p &amp;gt; 1&lt;/code&gt; is &lt;strong&gt;prime&lt;/strong&gt; if and only if its only divisors are &lt;code&gt;±1&lt;/code&gt; and &lt;code&gt;±p&lt;/code&gt;. Primes are central to number theory and to everything that follows in public-key cryptography.&lt;/p&gt;&#xA;&lt;h3 id=&#34;fundamental-theorem-of-arithmetic&#34;&gt;Fundamental theorem of arithmetic&lt;/h3&gt;&#xA;&lt;p&gt;Every integer &lt;code&gt;a &amp;gt; 1&lt;/code&gt; factors &lt;strong&gt;uniquely&lt;/strong&gt; as:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a = p1^a1 × p2^a2 × ... × pt^at&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;where &lt;code&gt;p1 &amp;lt; p2 &amp;lt; ... &amp;lt; pt&lt;/code&gt; are primes and each &lt;code&gt;ai&lt;/code&gt; is a positive integer. In other words, every integer greater than 1 has one and only one prime factorization (up to ordering).&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

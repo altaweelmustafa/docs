@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Caesar-Cipher on Docs</title>
+		<link>http://localhost:1313/docs/tags/caesar-cipher/</link>
+		<description>Recent content in Caesar-Cipher on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/caesar-cipher/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch3/part2-substitution-ciphers/</guid>
+				<description>&lt;h2 id=&#34;substitution-technique&#34;&gt;Substitution technique&lt;/h2&gt;&#xA;&lt;p&gt;Letters of the plaintext are replaced by other letters, numbers, or symbols (or, at the bit level, plaintext bit patterns are replaced by ciphertext bit patterns).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;caesar-cipher&#34;&gt;Caesar cipher&lt;/h2&gt;&#xA;&lt;p&gt;The earliest and simplest substitution cipher, attributed to Julius Caesar: shift every letter three places down the alphabet, wrapping &lt;code&gt;Z → A&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Generalized to any shift &lt;code&gt;k&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;c = E(k, p) = (p + k) mod 26        (encryption)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;p = D(k, c) = (c − k) mod 26        (decryption)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with letters numbered &lt;code&gt;a=0, b=1, ..., z=25&lt;/code&gt; and &lt;code&gt;k&lt;/code&gt; in the range 1–25.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

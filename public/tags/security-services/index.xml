@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Security-Services on Docs</title>
+		<link>http://localhost:1313/docs/tags/security-services/</link>
+		<description>Recent content in Security-Services on Docs</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 09 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/docs/tags/security-services/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Chapter 1, Part 3 – Security Services</title>
+				<link>http://localhost:1313/docs/courses/crypto/ch1/part3-security-services/</link>
+				<pubDate>Sun, 09 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/docs/courses/crypto/ch1/part3-security-services/</guid>
+				<description>&lt;h2 id=&#34;authentication&#34;&gt;Authentication&lt;/h2&gt;&#xA;&lt;p&gt;Concerned with assuring a communication is genuinely from who it claims to be from.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Single message case&lt;/strong&gt;: assures the recipient the message really came from the claimed source.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ongoing connection case&lt;/strong&gt;: assures both entities are authentic &lt;em&gt;and&lt;/em&gt; that a third party can&amp;rsquo;t hijack the connection to masquerade as one of the legitimate parties.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;X.800 defines two specific authentication services:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Service&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;What it covers&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Peer entity authentication&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Corroborates the identity of a peer at connection setup or during data transfer. Guards against masquerade or unauthorized replay of a previous connection.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;Data origin authentication&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Corroborates the source of a single data unit. Does &lt;em&gt;not&lt;/em&gt; protect against duplication/modification — useful for connectionless applications like email where there&amp;rsquo;s no ongoing session.&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;access-control&#34;&gt;Access control&lt;/h2&gt;&#xA;&lt;p&gt;The ability to limit and control access to hosts and applications over communication links. Requires that every entity first be &lt;strong&gt;identified/authenticated&lt;/strong&gt;, so access rights can be tailored to that specific individual.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

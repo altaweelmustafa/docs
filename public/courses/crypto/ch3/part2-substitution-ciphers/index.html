@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/docs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=docs/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill · Docs</title>
+  <link rel="stylesheet" href="/docs/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="/docs/%20/">Docs</a></h1>
+    <nav>
+      <a href="/docs/courses">Courses</a><a href="/docs/art">Art</a><a href="/docs/apis">APIs</a><a href="/docs/about">About</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    
+<article>
+  <h2 class="post-title">Chapter 3, Part 2 – Substitution Techniques: Caesar, Monoalphabetic, Playfair &amp; Hill</h2>
+  <p class="post-date"><em>posted on 2026 Aug 09</em></p>
+   
+  <nav class="toc">
+    <strong>Contents</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#substitution-technique">Substitution technique</a></li>
+    <li><a href="#caesar-cipher">Caesar cipher</a></li>
+    <li><a href="#monoalphabetic-cipher">Monoalphabetic cipher</a>
+      <ul>
+        <li><a href="#frequency-analysis">Frequency analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#playfair-cipher">Playfair cipher</a>
+      <ul>
+        <li><a href="#building-the-key-matrix">Building the key matrix</a></li>
+        <li><a href="#encryption-rules-for-each-plaintext-digram">Encryption rules (for each plaintext digram)</a></li>
+      </ul>
+    </li>
+    <li><a href="#hill-cipher">Hill cipher</a>
+      <ul>
+        <li><a href="#worked-example-22-key">Worked example (2×2 key)</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-to-remember-for-the-exam">What to remember for the exam</a></li>
+    <li><a href="#exam-check">Exam check</a></li>
+  </ul>
+</nav>
+  </nav>
+  <hr />
+   <h2 id="substitution-technique">Substitution technique</h2>
+<p>Letters of the plaintext are replaced by other letters, numbers, or symbols (or, at the bit level, plaintext bit patterns are replaced by ciphertext bit patterns).</p>
+<hr>
+<h2 id="caesar-cipher">Caesar cipher</h2>
+<p>The earliest and simplest substitution cipher, attributed to Julius Caesar: shift every letter three places down the alphabet, wrapping <code>Z → A</code>.</p>
+<p><strong>Generalized to any shift <code>k</code>:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">c = E(k, p) = (p + k) mod 26        (encryption)
+</span></span><span class="line"><span class="cl">p = D(k, c) = (c − k) mod 26        (decryption)
+</span></span></code></pre></div><p>with letters numbered <code>a=0, b=1, ..., z=25</code> and <code>k</code> in the range 1–25.</p>
+<p><strong>Weakness:</strong> only 25 possible keys — trivially brute-forceable.</p>
+<hr>
+<h2 id="monoalphabetic-cipher">Monoalphabetic cipher</h2>
+<p>Instead of a fixed shift, allow the &ldquo;cipher alphabet&rdquo; to be <strong>any permutation</strong> of the 26 letters. That gives <code>26! ≈ 4×10²⁶</code> possible keys — far too many to brute-force (10 orders of magnitude more than DES&rsquo;s key space!).</p>
+<p><strong>But it&rsquo;s still weak</strong>, because a monoalphabetic substitution preserves the <strong>frequency statistics</strong> of the underlying language.</p>
+<h3 id="frequency-analysis">Frequency analysis</h3>
+<p>English letter frequencies are far from uniform (e.g. <code>e</code> and <code>t</code> are common; <code>z</code>, <code>q</code> are rare). A cryptanalyst can:</p>
+<ol>
+<li>Tally letter frequencies in the ciphertext and match them against known English frequencies.</li>
+<li>Use <strong>digrams</strong> (2-letter combinations — most common is <code>th</code>) and <strong>trigrams</strong> (3-letter — most common is <code>the</code>) to pin down specific letters once the high-frequency singles are guessed.</li>
+<li>Iterate: partial guesses reveal word fragments, which confirm or rule out other guesses.</li>
+</ol>
+<p>Given enough ciphertext, this is usually enough to fully break a monoalphabetic cipher — this is why the countermeasure of <strong>homophones</strong> (assigning multiple cipher symbols to one plaintext letter, proportional to its frequency) was introduced. Even homophones don&rsquo;t fully solve the problem, though, because multi-letter patterns (digram frequencies) still leak through.</p>
+<blockquote>
+<p>Exam sentence: a huge key space (26! for monoalphabetic) does <strong>not</strong> guarantee security — frequency analysis breaks monoalphabetic ciphers regardless of key-space size, because each plaintext letter always maps to the same ciphertext letter.</p>
+</blockquote>
+<hr>
+<h2 id="playfair-cipher">Playfair cipher</h2>
+<p>Invented by Sir Charles Wheatstone (1854); used as a field cipher by the British Army in WWI and the US Army in WWII. Encrypts <strong>digrams</strong> (letter pairs) as single units instead of individual letters.</p>
+<h3 id="building-the-key-matrix">Building the key matrix</h3>
+<p>Fill a 5×5 grid with the letters of a keyword (duplicates removed), left-to-right/top-to-bottom, then fill the rest with remaining letters alphabetically. <code>I</code> and <code>J</code> share one cell.</p>
+<p><strong>Example — keyword <code>MONARCHY</code>:</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>M</th>
+					<th>O</th>
+					<th>N</th>
+					<th>A</th>
+					<th>R</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>C</td>
+					<td>H</td>
+					<td>Y</td>
+					<td>B</td>
+					<td>D</td>
+			</tr>
+			<tr>
+					<td>E</td>
+					<td>F</td>
+					<td>G</td>
+					<td>I/J</td>
+					<td>K</td>
+			</tr>
+			<tr>
+					<td>L</td>
+					<td>P</td>
+					<td>Q</td>
+					<td>S</td>
+					<td>T</td>
+			</tr>
+			<tr>
+					<td>U</td>
+					<td>V</td>
+					<td>W</td>
+					<td>X</td>
+					<td>Z</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="encryption-rules-for-each-plaintext-digram">Encryption rules (for each plaintext digram)</h3>
+<ol>
+<li><strong>Same-pair repeat</strong>: if a digram would repeat the same letter, insert a filler (e.g. <code>x</code>) between them. <code>balloon</code> → <code>ba lx lo on</code>.</li>
+<li><strong>Same row</strong>: replace each letter with the one to its right (wrapping around). <code>ar → RM</code>.</li>
+<li><strong>Same column</strong>: replace each letter with the one below it (wrapping around). <code>mu → CM</code>.</li>
+<li><strong>Otherwise (rectangle rule)</strong>: each letter is replaced by the letter in its own row but the other letter&rsquo;s column. <code>hs → BP</code>, <code>ea → IM</code>.</li>
+</ol>
+<p><strong>Why it&rsquo;s stronger than monoalphabetic:</strong> 26×26 = 676 possible digrams vs. 26 letters, so frequency analysis is much harder. <strong>Why it&rsquo;s still breakable:</strong> a few hundred letters of ciphertext are typically enough, since digram structure still leaks information.</p>
+<hr>
+<h2 id="hill-cipher">Hill cipher</h2>
+<p>Developed by Lester Hill (1929). Uses <strong>matrix arithmetic mod 26</strong>: an <code>m×m</code> key matrix encrypts <code>m</code> plaintext letters at once into <code>m</code> ciphertext letters, via linear equations over <code>Z26</code>.</p>
+<ul>
+<li><strong>Strength</strong>: completely hides single-letter frequency (and with a 3×3+ matrix, two-letter frequency too).</li>
+<li><strong>Weakness</strong>: strong against ciphertext-only attacks, but easily broken with a <strong>known-plaintext</strong> attack (enough plaintext/ciphertext pairs let you solve for the key matrix directly with linear algebra).</li>
+</ul>
+<h3 id="worked-example-22-key">Worked example (2×2 key)</h3>
+<p>Letters as numbers (<code>A=0 ... Z=25</code>). Key matrix <code>K = [[3,3],[2,5]]</code> — invertible mod 26 since <code>gcd(det K, 26) = gcd(9, 26) = 1</code>.</p>
+<p>Encrypt <code>&quot;HI&quot;</code> → plaintext vector <code>(7, 8)</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">c1 = (3×7 + 3×8) mod 26 = 45 mod 26 = 19 → &#39;T&#39;
+</span></span><span class="line"><span class="cl">c2 = (2×7 + 5×8) mod 26 = 54 mod 26 =  2 → &#39;C&#39;
+</span></span></code></pre></div><p>So <code>HI → TC</code>. Decryption uses <code>K⁻¹ mod 26</code> applied to the ciphertext vector to recover the plaintext.</p>
+<hr>
+<h2 id="what-to-remember-for-the-exam">What to remember for the exam</h2>
+<p>Caesar: single shift, 25 keys, trivial. Monoalphabetic: huge key space but broken by frequency analysis. Playfair: encrypts digrams via a 5×5 keyword matrix with 4 rules (repeat/row/column/rectangle) — much stronger, still breakable. Hill: matrix multiplication mod 26, hides multi-letter frequency, strong against ciphertext-only but weak against known-plaintext.</p>
+<hr>
+<h2 id="exam-check">Exam check</h2>
+<ol>
+<li>Encrypt <code>&quot;HELP&quot;</code> with a Caesar cipher, <code>k = 5</code>.</li>
+<li>Using the <code>MONARCHY</code> Playfair matrix, encrypt the digram <code>&quot;HS&quot;</code>, showing which rule applies.</li>
+<li>Why is the Hill cipher vulnerable to a known-plaintext attack even though it hides letter frequencies well?</li>
+</ol>
+
+  <nav class="post-nav">
+    <div class="post-nav-arrows">
+      
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part1-cipher-model-cryptanalysis/" id="nav-prev"><em>Chapter 3, Part 1 – Basic Concepts &amp; the Symmetric Cipher Model</em></a>
+       
+      <a href="http://localhost:1313/docs/courses/crypto/ch3/part3-vigenere-one-time-pad/" id="nav-next"><em>Chapter 3, Part 3 – Polyalphabetic Ciphers &amp; the One-Time Pad</em></a>
+      
+    </div>
+  </nav>
+</article>
+<script>
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") {
+      const prev = document.getElementById("nav-prev");
+      if (prev) window.location.href = prev.href;
+    }
+    if (e.key === "ArrowRight") {
+      const next = document.getElementById("nav-next");
+      if (next) window.location.href = next.href;
+    }
+  });
+</script>
+
+  </main>
+  <footer>
+    <hr>
+    
+    <p>© 2026 Mustafa and Samaa</p>
+    
+  </footer>
+  <script>
+    document.querySelectorAll('article p, article li, article h2, article h3').forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/==(.+?)==/g, '<mark>$1</mark>');
+    });
+  </script>
+</body>
+
+</html>
